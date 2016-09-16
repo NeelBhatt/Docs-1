@@ -1,0 +1,12 @@
+﻿xhtml/
+packages/
+obj/
+_site/
+Tools/NuGet/
+.optemp/
+_themes/
+log/
+
+.openpublishing.build.mdproj
+.openpublishing.buildcore.ps1
+packages.configgit sta
