@@ -15,10 +15,20 @@ Note: If you are porting an existing Web API app to ASP.NET Core, see [Migrating
 
   ## Overview
 
-Here is the API that you’ll create:
+Here is the API that you’ll create:  
 
-<!--         API  Description  Request body  Response body  GET /api/todo  Get all to-do items  None  Array of to-do items  GET /api/todo/{id}  Get an item by ID  None  To-do item  POST /api/todo  Add a new item  To-do item  To-do item  PUT /api/todo/{id}  Update an existing item  To-do item  None  PATCH /api/todo/{id}  Update an existing item  To-do item  None  DELETE /api/todo/{id}  Delete an item.  None  None -->
+<!-- QAfix fix table -->
 
+API | Description    | Request body    | Response body   
+--- | ---- | ---- | ---- 
+GET /api/todo  | Get all to-do items | None | Array of to-do items
+GET /api/todo/{id}  | Get an item by ID | None | To-do item
+POST /api/todo | Add a new item | To-do item  | To-do item 
+PUT /api/todo/{id} | Update an existing item &nbsp;  | To-do item 
+DELETE /api/todo/{id}  &nbsp;  &nbsp; | Delete an item &nbsp;  &nbsp;  | None. No request body-  | None
+     
+<br>     
+    
 The following diagram show the basic design of the app.
 
 ![image](first-web-api/_static/architecture.png)
@@ -57,20 +67,7 @@ Add a `TodoItem` class. Right-click the *Models* folder and select **Add** > **C
 
 Replace the generated code with:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/first-web-api/sample/src/TodoApi/Models/TodoItem.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
-
-````c#
-
-   namespace TodoApi.Models
-   {
-       public class TodoItem
-       {
-           public string Key { get; set; }
-           public string Name { get; set; }
-           public bool IsComplete { get; set; }
-       }
-   }
-   ````
+[!code-csharp[Main](first-web-api/sample/src/TodoApi/Models/TodoItem.cs)]
 
   ## Add a repository class
 
@@ -78,81 +75,13 @@ A *repository* is an object that encapsulates the data layer, and contains logic
 
 Start by defining a repository interface named `ITodoRepository`. Use the class template (**Add New Item**  > **Class**).
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/first-web-api/sample/src/TodoApi/Models/ITodoRepository.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
-
-````c#
-
-   using System.Collections.Generic;
-
-   namespace TodoApi.Models
-   {
-       public interface ITodoRepository
-       {
-           void Add(TodoItem item);
-           IEnumerable<TodoItem> GetAll();
-           TodoItem Find(string key);
-           TodoItem Remove(string key);
-           void Update(TodoItem item);
-       }
-   }
-   ````
+[!code-csharp[Main](first-web-api/sample/src/TodoApi/Models/ITodoRepository.cs)]
 
 This interface defines basic CRUD operations.
 
 Next, add a `TodoRepository` class that implements `ITodoRepository`:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/first-web-api/sample/src/TodoApi/Models/TodoRepository.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
-
-````c#
-
-   using System;
-   using System.Collections.Generic;
-   using System.Collections.Concurrent;
-
-   namespace TodoApi.Models
-   {
-       public class TodoRepository : ITodoRepository
-       {
-           private static ConcurrentDictionary<string, TodoItem> _todos =
-                 new ConcurrentDictionary<string, TodoItem>();
-
-           public TodoRepository()
-           {
-               Add(new TodoItem { Name = "Item1" });
-           }
-
-           public IEnumerable<TodoItem> GetAll()
-           {
-               return _todos.Values;
-           }
-
-           public void Add(TodoItem item)
-           {
-               item.Key = Guid.NewGuid().ToString();
-               _todos[item.Key] = item;
-           }
-
-           public TodoItem Find(string key)
-           {
-               TodoItem item;
-               _todos.TryGetValue(key, out item);
-               return item;
-           }
-
-           public TodoItem Remove(string key)
-           {
-               TodoItem item;
-               _todos.TryRemove(key, out item);
-               return item;
-           }
-
-           public void Update(TodoItem item)
-           {
-               _todos[item.Key] = item;
-           }
-       }
-   }
-   ````
+[!code-csharp[Main](first-web-api/sample/src/TodoApi/Models/TodoRepository.cs)]
 
 Build the app to verify you don't have any compiler errors.
 
@@ -164,8 +93,6 @@ This approach makes it easier to unit test your controllers. Unit tests should i
 
 In order to inject the repository into the controller, we need to register it with the DI container. Open the *Startup.cs* file. Add the following using directive:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
-
 ````c#
 
    using TodoApi.Models;
@@ -173,19 +100,7 @@ In order to inject the repository into the controller, we need to register it wi
 
 In the `ConfigureServices` method, add the highlighted code:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/first-web-api/sample/src/TodoApi/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [6], "linenostart": 1}} -->
-
-````c#
-
-   public void ConfigureServices(IServiceCollection services)
-   {
-       // Add framework services.
-       services.AddMvc();
-
-       services.AddSingleton<ITodoRepository, TodoRepository>();
-   }
-
-   ````
+[!code-csharp[Main](first-web-api/sample/src/TodoApi/Startup.cs?name=snippet_AddSingleton&highlight=6)]
 
   ## Add a controller
 
@@ -193,28 +108,8 @@ In Solution Explorer, right-click the *Controllers* folder. Select **Add** > **N
 
 Replace the generated code with the following:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/first-web-api/sample/src/TodoApi/Controllers/TodoController1.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](first-web-api/sample/src/TodoApi/Controllers/TodoController1.cs?name=snippet_todo1)]
 
-````c#
-
-   using System.Collections.Generic;
-   using Microsoft.AspNetCore.Mvc;
-   using TodoApi.Models;
-
-   namespace TodoApi.Controllers
-   {
-       [Route("api/[controller]")]
-       public class TodoController : Controller
-       {
-           public TodoController(ITodoRepository todoItems)
-           {
-               TodoItems = todoItems;
-           }
-           public ITodoRepository TodoItems { get; set; }
-       }
-   }
-
-   ````
 
 This defines an empty controller class. In the next sections, we'll add methods to implement the API.
 
@@ -222,28 +117,7 @@ This defines an empty controller class. In the next sections, we'll add methods 
 
 To get to-do items, add the following methods to the `TodoController` class.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/first-web-api/sample/src/TodoApi/Controllers/TodoController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
-
-````c#
-
-   [HttpGet]
-   public IEnumerable<TodoItem> GetAll()
-   {
-       return TodoItems.GetAll();
-   }
-
-   [HttpGet("{id}", Name = "GetTodo")]
-   public IActionResult GetById(string id)
-   {
-       var item = TodoItems.Find(id);
-       if (item == null)
-       {
-           return NotFound();
-       }
-       return new ObjectResult(item);
-   }
-
-   ````
+[!code-csharp[Main](first-web-api/sample/src/TodoApi/Controllers/TodoController.cs?name=snippet_GetAll)]
 
 These methods implement the two GET methods:
 
@@ -252,8 +126,6 @@ These methods implement the two GET methods:
 * `GET /api/todo/{id}`
 
 Here is an example HTTP response for the `GetAll` method:
-
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "names": [], "classes": [], "xml:space": "preserve"} -->
 
 ````
 
@@ -280,8 +152,6 @@ The `[HttpGet]` attribute ([HttpGetAttribute](http://docs.asp.net/projects/api/e
 
 In the `GetById` method:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
-
 ````c#
 
    [HttpGet("{id}", Name = "GetTodo")]
@@ -290,7 +160,7 @@ In the `GetById` method:
 
 `"{id}"` is a placeholder variable for the ID of the `todo` item. When `GetById` is invoked, it assigns the value of "{id}" in the URL to the method's `id` parameter.
 
-`Name = "GetTodo"` creates a named route and allows you to link to this route in an HTTP Response. I'll explain it with an example later.
+`Name = "GetTodo"` creates a named route and allows you to link to this route in an HTTP Response. I'll explain it with an example later. See [Routing to Controller Actions](../mvc/controllers/routing.md) for detailed information.
 
   ### Return values
 
@@ -302,7 +172,8 @@ In contrast, the `GetById` method returns the more general `IActionResult` type,
 
 * Otherwise, the method returns 200 with a JSON response body. This is done by returning an [ObjectResult](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ObjectResult/index.html.md#Microsoft.AspNetCore.Mvc.ObjectResult.md)
 
-  ### Launch the app
+  
+### Launch the app
 
 In Visual Studio, press CTRL+F5 to launch the app. Visual Studio launches a browser and navigates to `http://localhost:port/api/values`, where *port* is a randomly chosen port number. If you're using Chrome, Edge or Firefox, the data will be displayed. If you're using IE, IE will prompt to you open or save the *values.json* file.
 
@@ -312,22 +183,7 @@ We'll add `Create`, `Update`, and `Delete` methods to the controller. These are 
 
   ### Create
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/first-web-api/sample/src/TodoApi/Controllers/TodoController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
-
-````c#
-
-   [HttpPost]
-   public IActionResult Create([FromBody] TodoItem item)
-   {
-       if (item == null)
-       {
-           return BadRequest();
-       }
-       TodoItems.Add(item);
-       return CreatedAtRoute("GetTodo", new { id = item.Key }, item);
-   }
-
-   ````
+[!code-csharp[Main](first-web-api/sample/src/TodoApi/Controllers/TodoController.cs?name=snippet_Create)]
 
 This is an HTTP POST method, indicated by the [[HttpPost]](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/HttpPostAttribute/index.html) attribute. The [[FromBody]](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/FromBodyAttribute/index.html) attribute tells MVC to get the value of the to-do item from the body of the HTTP request.
 
@@ -355,8 +211,6 @@ Tap the Headers tab and copy the **Location** header:
 
 You can use the Location header URI to access the resource you just created. Recall the `GetById` method created the `"GetTodo"` named route:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
-
 ````c#
 
    [HttpGet("{id}", Name = "GetTodo")]
@@ -365,86 +219,16 @@ You can use the Location header URI to access the resource you just created. Rec
 
   ### Update
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/first-web-api/sample/src/TodoApi/Controllers/TodoController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
-
-````c#
-
-   [HttpPut("{id}")]
-   public IActionResult Update(string id, [FromBody] TodoItem item)
-   {
-       if (item == null || item.Key != id)
-       {
-           return BadRequest();
-       }
-
-       var todo = TodoItems.Find(id);
-       if (todo == null)
-       {
-           return NotFound();
-       }
-
-       TodoItems.Update(item);
-       return new NoContentResult();
-   }
-
-   ````
+[!code-csharp[Main](first-web-api/sample/src/TodoApi/Controllers/TodoController.cs?name=snippet_Update)]
 
 `Update` is similar to `Create`, but uses HTTP PUT. The response is [204 (No Content)](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html). According to the HTTP spec, a PUT request requires the client to send the entire updated entity, not just the deltas. To support partial updates, use HTTP PATCH.
 
 ![image](first-web-api/_static/pmcput.png)
 
-  ### Update with Patch
-
-This overload is similar to the previously shown `Update`, but uses HTTP PATCH. The response is [204 (No Content)](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html).
-
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/first-web-api/sample/src/TodoApi/Controllers/TodoController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
-
-````c#
-
-   [HttpPatch("{id}")]
-   public IActionResult Update([FromBody] TodoItem item, string id)
-   {
-       if (item == null)
-       {
-           return BadRequest();
-       }
-
-       var todo = TodoItems.Find(id);
-       if (todo == null)
-       {
-           return NotFound();
-       }
-
-       item.Key = todo.Key;
-
-       TodoItems.Update(item);
-       return new NoContentResult();
-   }
-
-   ````
-
-![image](first-web-api/_static/pmcpat.png)
-
+  
   ### Delete
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/first-web-api/sample/src/TodoApi/Controllers/TodoController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
-
-````c#
-
-   [HttpDelete("{id}")]
-   public IActionResult Delete(string id)
-   {
-       var todo = TodoItems.Find(id);
-       if (todo == null)
-       {
-           return NotFound();
-       }
-
-       TodoItems.Remove(id);
-       return new NoContentResult();
-   }
-
-   ````
+[!code-csharp[Main](first-web-api/sample/src/TodoApi/Controllers/TodoController.cs?name=snippet_Delete)]
 
 The response is [204 (No Content)](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html).
 
@@ -452,7 +236,9 @@ The response is [204 (No Content)](http://www.w3.org/Protocols/rfc2616/rfc2616-s
 
   ## Next steps
 
-* To learn about creating a backend for a native mobile app, see [🔧 Creating Backend Services for Native Mobile Applications](../mobile/native-mobile-backend.md).
+* To learn about creating a backend for a native mobile app, see [Creating Backend Services for Native Mobile Applications](../mobile/native-mobile-backend.md).
+
+* [Routing to Controller Actions](../mvc/controllers/routing.md)
 
 * For information about deploying your API, see [Publishing and Deployment](../publishing/index.md).
 
