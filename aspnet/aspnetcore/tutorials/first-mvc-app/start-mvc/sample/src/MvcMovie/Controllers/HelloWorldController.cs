@@ -98,12 +98,12 @@ namespace MvcMovie.Controllers
     {
         // 
         // GET: /HelloWorld/ 
-        //#region snippet_4
+        #region snippet_4
         public IActionResult Index()
         {
             return View();
         }
-        //#endregion
+        #endregion
 // 
         // GET: /HelloWorld/Welcome/ 
 
