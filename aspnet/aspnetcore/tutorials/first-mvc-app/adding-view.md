@@ -1,3 +1,5 @@
+<!-- manual conversion almost complete -->
+
 ---
 uid: tutorials/first-mvc-app/adding-view
 ---
@@ -11,16 +13,7 @@ You'll create a view template file using Razor. Razor-based view templates have 
 
 Currently the `Index` method returns a string with a message that is hard-coded in the controller class. Change the `Index` method to return a View object, as shown in the following code:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/first-mvc-app/start-mvc/sample/src/MvcMovie/Controllers/HelloWorldController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
-
-````c#
-
-   public IActionResult Index()
-   {
-       return View();
-   }
-
-   ````
+[!code-csharp[Main](start-mvc/sample/src/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_4)]
 
 The `Index` method above uses a view template to generate an HTML response to the browser. Controller methods (also known as action methods) such as the `Index` method above, generally return an `IActionResult` (or a class derived from `ActionResult`), not primitive types like string.
 
@@ -42,18 +35,7 @@ The `Index` method above uses a view template to generate an HTML response to th
 
 Replace the contents of the *Views/HelloWorld/Index.cshtml* Razor view file with the following:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/first-mvc-app/start-mvc/sample/src/MvcMovie/Views/HelloWorld/Index.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "HTML", "highlight_args": {"linenostart": 1}} -->
-
-````HTML
-
-   @{
-       ViewData["Title"] = "Index";
-   }
-
-   <h2>Index</h2>
-
-   <p>Hello from our View Template!</p>
-   ````
+[!code-HTML[Main](start-mvc/sample/src/MvcMovie/Views/HelloWorld/Index.cshtml)]
 
 Navigate to `http://localhost:xxxx/HelloWorld`. The `Index` method in the `HelloWorldController` didn't do much work; it simply ran the statement `return View();`, which specified that the method should use a view template file to render a response to the browser. Because you didn't explicitly specify the name of the view template file to use, MVC defaulted to using the *Index.cshtml* view file in the */Views/HelloWorld* folder. The image below shows the string "Hello from our View Template!" hard-coded in the view.
 
@@ -77,56 +59,8 @@ Change the contents of the title element. Change the anchor text in the layout t
 
 <!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/first-mvc-app/start-mvc/sample/src/MvcMovie/Views/Shared/_Layout.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "HTML", "highlight_args": {"hl_lines": [29, 6], "linenostart": 1}} -->
 
-````HTML
 
-   <!DOCTYPE html>
-   <html>
-   <head>
-       <meta charset="utf-8" />
-       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-       <title>@ViewData["Title"] - Movie App </title>
-
-       <environment names="Development">
-           <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-           <link rel="stylesheet" href="~/css/site.css" />
-       </environment>
-       <environment names="Staging,Production">
-           <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
-                 asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-                 asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-           <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-       </environment>
-   </head>
-   <body>
-       <div class="navbar navbar-inverse navbar-fixed-top">
-           <div class="container">
-               <div class="navbar-header">
-                   <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                       <span class="sr-only">Toggle navigation</span>
-                       <span class="icon-bar"></span>
-                       <span class="icon-bar"></span>
-                       <span class="icon-bar"></span>
-                   </button>
-                   <a asp-area="" asp-controller="Movies" asp-action="Index" class="navbar-brand">MvcMovie</a>
-               </div>
-               <div class="navbar-collapse collapse">
-                   <ul class="nav navbar-nav">
-                       <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                       <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                       <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                   </ul>
-               </div>
-           </div>
-       </div>
-       <div class="container body-content">
-           @RenderBody()
-           <hr />
-           <footer>
-               <p>&copy; 2016 - MvcMovie</p>
-           </footer>
-       </div>
-
-   ````
+[!code-html[Main](start-mvc/sample/src/MvcMovie/Views/Shared/_Layout.html?range=1-47&highlight=6,29)]
 
 Warning: We haven't implemented the `Movies` controller yet, so if you click on that link, you'll get a 404 (Not found) error.
 
@@ -134,7 +68,6 @@ Save your changes and tap the **About** link. Notice how each page displays the 
 
 Examine the *Views/_ViewStart.cshtml* file:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/first-mvc-app/start-mvc/sample/src/MvcMovie/Views/_ViewStart.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "HTML", "highlight_args": {"linenostart": 1}} -->
 
 ````HTML
 
@@ -156,7 +89,6 @@ Open *Views/HelloWorld/Index.cshtml*. There are two places to make a change:
 
 You'll make them slightly different so you can see which bit of code changes which part of the app.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/first-mvc-app/start-mvc/sample/src/MvcMovie/Views/HelloWorld/Index2.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "HTML", "highlight_args": {"hl_lines": [2, 5], "linenostart": 1}} -->
 
 ````HTML
 
@@ -171,7 +103,6 @@ You'll make them slightly different so you can see which bit of code changes whi
 
 `ViewData["Title"] = "Movie List";` in the code above sets the `Title` property of the [ViewDataDictionary](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ViewFeatures/ViewDataDictionary/index.html.md#Microsoft.AspNetCore.Mvc.ViewFeatures.ViewDataDictionary.md) to "Movie List". The `Title` property is used in the `<title>` HTML element in the layout page:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "HTML", "highlight_args": {}} -->
 
 ````HTML
 
@@ -196,33 +127,7 @@ Currently, the `Welcome` method in the `HelloWorldController` class takes a `nam
 
 Return to the *HelloWorldController.cs* file and change the `Welcome` method to add a `Message` and `NumTimes` value to the `ViewData` dictionary. The `ViewData` dictionary is a dynamic object, which means you can put whatever you want in to it; the `ViewData` object has no defined properties until you put something inside it. The [MVC model binding system](../../mvc/models/model-binding.md) automatically maps the named parameters (`name` and `numTimes`) from the query string in the address bar to parameters in your method. The complete *HelloWorldController.cs* file looks like this:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/first-mvc-app/start-mvc/sample/src/MvcMovie/Controllers/HelloWorldController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
-
-````c#
-
-   using Microsoft.AspNetCore.Mvc;
-   using System.Text.Encodings.Web;
-
-   namespace MvcMovie.Controllers
-   {
-       public class HelloWorldController : Controller
-       {
-           public IActionResult Index()
-           {
-               return View();
-           }
-
-           public IActionResult Welcome(string name, int numTimes = 1)
-           {
-               ViewData["Message"] = "Hello " + name;
-               ViewData["NumTimes"] = numTimes;
-
-               return View();
-           }
-       }
-   }
-
-   ````
+[!code-csharp[Main](start-mvc/sample/src/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_5)]
 
 The `ViewData` dictionary object contains data that will be passed to the view. Next, you need a Welcome view template.
 
@@ -240,7 +145,6 @@ The `ViewData` dictionary object contains data that will be passed to the view. 
 
 You'll create a loop in the *Welcome.cshtml* view template that displays "Hello" `NumTimes`. Replace the contents of *Views/HelloWorld/Welcome.cshtml* with the following:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/first-mvc-app/start-mvc/sample/src/MvcMovie/Views/HelloWorld/Welcome.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "none", "highlight_args": {"linenostart": 1}} -->
 
 ````none
 
