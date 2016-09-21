@@ -1,6 +1,8 @@
+<!—manual conversion complete -->
 ---
 uid: tutorials/first-mvc-app/start-mvc
 ---
+
   # Getting started with ASP.NET Core MVC and Visual Studio
 
 By [Rick Anderson](https://twitter.com/RickAndMSFT)

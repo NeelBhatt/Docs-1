@@ -1,6 +1,10 @@
+
 ---
 uid: tutorials/first-mvc-app/adding-controller
 ---
+
+<!-- manual conversion complete -->
+
   # Adding a controller
 
 By [Rick Anderson](https://twitter.com/RickAndMSFT)
@@ -27,36 +31,7 @@ We'll be covering all these concepts in this tutorial series and show you how to
 
 Replace the contents of *Controllers/HelloWorldController.cs* with the following:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/first-mvc-app/start-mvc/sample/src/MvcMovie/Controllers/HelloWorldController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
-
-````c#
-
-   using Microsoft.AspNetCore.Mvc;
-   using System.Text.Encodings.Web;
-
-   namespace MvcMovie.Controllers
-   {
-       public class HelloWorldController : Controller
-       {
-           // 
-           // GET: /HelloWorld/
-
-           public string Index()
-           {
-               return "This is my default action...";
-           }
-
-           // 
-           // GET: /HelloWorld/Welcome/ 
-
-           public string Welcome()
-           {
-               return "This is the Welcome action method...";
-           }
-       }
-   }
-
-   ````
+[!code-csharp[Main](start-mvc/sample/src/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_1)]
 
 Every `public` method in a controller is callable as an HTTP endpoint. In the sample above, both methods return a string.  Note the comments preceding each method.
 
@@ -72,18 +47,7 @@ MVC invokes controller classes (and the action methods within them) depending on
 
 You set the format for routing in the *Startup.cs* file.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/first-mvc-app/start-mvc/sample/src/MvcMovie/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [5], "linenostart": 1}} -->
-
-````c#
-
-   app.UseMvc(routes =>
-   {
-       routes.MapRoute(
-           name: "default",
-           template: "{controller=Home}/{action=Index}/{id?}");
-   });
-
-   ````
+[!code-csharp[Main](start-mvc/sample/src/MvcMovie/Startup.cs?name=snippet_1)]
 
 When you run the app and don't supply any URL segments, it defaults to the "Home" controller and the "Index" method specified in the template line highlighted above.
 
@@ -95,16 +59,7 @@ Browse to `http://localhost:xxxx/HelloWorld/Welcome`. The `Welcome` method runs 
 
 Let's modify the example slightly so that you can pass some parameter information  from the URL to the controller (for example, `/HelloWorld/Welcome?name=Scott&numtimes=4`).  Change the `Welcome` method  to include two parameters as shown below. Note that the code uses the C# optional-parameter feature to indicate that the `numTimes` parameter defaults to 1 if no value is passed for that parameter.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/first-mvc-app/start-mvc/sample/src/MvcMovie/Controllers/HelloWorldController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "none", "highlight_args": {"linenostart": 1}} -->
-
-````none
-
-   public string Welcome(string name, int numTimes = 1)
-   {
-       return HtmlEncoder.Default.Encode($"Hello {name}, numTimes: {numTimes}");
-   }
-
-   ````
+[!code-csharp[Main](start-mvc/sample/src/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_2)]
 
 Note: The code above uses `HtmlEncoder.Default.Encode` to protect the app from malicious input (namely JavaScript). It also uses [Interpolated Strings](https://msdn.microsoft.com/en-us/library/dn961160.aspx).
 
@@ -122,16 +77,7 @@ In the sample above, the URL segment (`Parameters`) is not used, the `name` and 
 
 Replace the `Welcome` method with the following code:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/first-mvc-app/start-mvc/sample/src/MvcMovie/Controllers/HelloWorldController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "none", "highlight_args": {"linenostart": 1}} -->
-
-````none
-
-   public string Welcome(string name, int ID = 1)
-   {
-       return HtmlEncoder.Default.Encode($"Hello {name}, ID: {ID}");
-   }
-
-   ````
+[!code-csharp[Main](start-mvc/sample/src/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_3)]
 
 Run the app and enter the following URL:  `http://localhost:xxx/HelloWorld/Welcome/3?name=Rick`
 
@@ -139,17 +85,6 @@ Run the app and enter the following URL:  `http://localhost:xxx/HelloWorld/Welco
 
 This time the third URL segment  matched the route parameter `id`. The `Welcome`  method contains a parameter  `id` that matched the URL template in the `MapRoute` method. The trailing `?`  (in `id?`) indicates the `id` parameter is optional.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [5], "linenostart": 1}} -->
-
-````c#
-
-   app.UseMvc(routes =>
-   {
-       routes.MapRoute(
-           name: "default",
-           template: "{controller=Home}/{action=Index}/{id?}");
-   });
-
-   ````
+[!code-csharp[Main](start-mvc/sample2/src/MvcMovie/Startup.cs?name=snippet_1)]
 
 In these examples the controller has been doing the "VC" portion  of MVC - that is, the view and controller work. The controller is returning HTML  directly. Generally you don't want controllers returning HTML directly, since  that becomes very cumbersome to code and maintain. Instead we'll typically use a separate Razor view template file to help generate the HTML response. We'll do that in the next tutorial.
