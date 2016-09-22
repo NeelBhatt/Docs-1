@@ -23,7 +23,8 @@ There is an extension method AddDataProtection which returns an IDataProtectionB
    }
    ````
 
-Warning: If you change the key persistence location, the system will no longer automatically encrypt keys at rest since it doesn't know whether DPAPI is an appropriate encryption mechanism.
+>[!WARNING]
+> If you change the key persistence location, the system will no longer automatically encrypt keys at rest since it doesn't know whether DPAPI is an appropriate encryption mechanism.
 
 <a name=configuring-x509-certificate></a>
 

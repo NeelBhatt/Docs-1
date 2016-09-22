@@ -129,7 +129,8 @@ Update the `SeedData` class so that it provides a value for the new column. A sa
 
    ````
 
-Warning: You must stop IIS Express before you run the `dotnet ef` commands.   See [To Stop IIS Express:](adding-model.md#stop-iis-express-reference-label.md)
+>[!WARNING]
+> You must stop IIS Express before you run the `dotnet ef` commands.   See [To Stop IIS Express:](adding-model.md#stop-iis-express-reference-label.md)
 
 Build the solution then open a command prompt. Enter the following commands:
 

@@ -11,7 +11,8 @@ The ASP.NET Core data protection stack provides a simple and easy to use cryptog
 
 ## Configuring Data Protection
 
-Warning: Data Protection is used by various ASP.NET middleware, including those used in authentication. The default behavior on IIS hosted web sites is to store keys in memory and discard them when the process restarts. This behavior will have side effects, for example, discarding keys invalidate any cookies written by the cookie authentication and users will have to login again.
+>[!WARNING]
+> Data Protection is used by various ASP.NET middleware, including those used in authentication. The default behavior on IIS hosted web sites is to store keys in memory and discard them when the process restarts. This behavior will have side effects, for example, discarding keys invalidate any cookies written by the cookie authentication and users will have to login again.
 
 To automatically persist keys for an application hosted in IIS, you must create registry hives for each application pool. Use the [Provisioning PowerShell script](https://github.com/aspnet/DataProtection/blob/dev/Provision-AutoGenKeys.ps1) for each application pool you will be hosting ASP.NET Core applications under. This script will create a special registry key in the HKLM registry that is ACLed only to the worker process account. Keys are encrypted at rest using DPAPI.
 

@@ -35,7 +35,8 @@ Complete the **New Project** dialog:
 
 ![image](start-mvc/_static/new_project2.png)
 
-Warning: You must have the **Authentication** set to **Individual User Accounts** in this release for the scaffolding engine to work.
+>[!WARNING]
+> You must have the **Authentication** set to **Individual User Accounts** in this release for the scaffolding engine to work.
 
 In the **New ASP.NET Core Web Application - MvcMovie** dialog:
 
@@ -117,7 +118,8 @@ We'll follow those instructions to get the database ready for our Movie app.
 
 ### Update the database
 
-Warning: You must stop IIS Express before you update the database.
+>[!WARNING]
+> You must stop IIS Express before you update the database.
 
 <a name=stop-iis-express-reference-label></a>
 

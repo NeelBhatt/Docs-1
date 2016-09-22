@@ -144,7 +144,8 @@ You chain multiple request delegates together; the `next` parameter represents t
 
    ````
 
-Warning: Avoid modifying `HttpResponse` after invoking next, one of the next components in the pipeline may have written to the response, causing it to be sent to the client.
+>[!WARNING]
+> Avoid modifying `HttpResponse` after invoking next, one of the next components in the pipeline may have written to the response, causing it to be sent to the client.
 
 > [!NOTE]
 > This `ConfigureLogInline` method is called when the application is run with an environment set to `LogInline`. Learn more about [Working with Multiple Environments](environments.md). We will be using variations of `Configure[Environment]` to show different options in the rest of this article. The easiest way to run the samples in Visual Studio is with the `web` command, which is configured in *project.json*. See also [Application Startup](startup.md).

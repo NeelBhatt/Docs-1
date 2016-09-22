@@ -1,7 +1,8 @@
 ---
 uid: performance/caching/memory
 ---
-Warning: This page documents version 1.0.0-rc2 and has not yet been updated for version 1.0.0
+>[!WARNING]
+> This page documents version 1.0.0-rc2 and has not yet been updated for version 1.0.0
 
 # In Memory Caching
 
@@ -209,7 +210,8 @@ You can configure cache entries to depend on other cache entries, the file syste
 
 The callback is run on a different thread from the code that removes the item from the cache.
 
-Warning: If the callback is used to repopulate the cache it is possible other requests for the cache will take place (and find it empty) before the callback completes, possibly resulting in several threads repopulating the cached value.
+>[!WARNING]
+> If the callback is used to repopulate the cache it is possible other requests for the cache will take place (and find it empty) before the callback completes, possibly resulting in several threads repopulating the cached value.
 
 Possible [eviction reasons](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Memory/EvictionReason/index.html) are:
 

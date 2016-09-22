@@ -47,7 +47,8 @@ This view outputs the contents of the *untrustedInput* variable. This variable i
    &lt;&quot;123&quot;&gt;
    ````
 
-Warning: ASP.NET Core MVC provides an `HtmlString` class which is not automatically encoded upon output. This should never be used in combination with untrusted input as this will expose an XSS vulnerability.
+>[!WARNING]
+> ASP.NET Core MVC provides an `HtmlString` class which is not automatically encoded upon output. This should never be used in combination with untrusted input as this will expose an XSS vulnerability.
 
 ## Javascript Encoding using Razor
 
@@ -146,7 +147,8 @@ This will render in the browser as follows;
    </script>
    ````
 
-Warning: Do not concatenate untrusted input in JavaScript to create DOM elements. You should use `createElement()` and assign property values appropriately such as `node.TextContent=`, or use `element.SetAttribute()`/`element[attribute]=` otherwise you expose yourself to DOM-based XSS.
+>[!WARNING]
+> Do not concatenate untrusted input in JavaScript to create DOM elements. You should use `createElement()` and assign property values appropriately such as `node.TextContent=`, or use `element.SetAttribute()`/`element[attribute]=` otherwise you expose yourself to DOM-based XSS.
 
 ## Accessing encoders in code
 
@@ -189,7 +191,8 @@ If you want to build a URL query string with untrusted input as a value use the 
 
 After encoding the encodedValue variable will contain `%22Quoted%20Value%20with%20spaces%20and%20%26%22`. Spaces, quotes, punctuation and other unsafe characters will be percent encoded to their hexadecimal value, for example a space character will become %20.
 
-Warning: Do not use untrusted input as part of a URL path. Always pass untrusted input as a query string value.
+>[!WARNING]
+> Do not use untrusted input as part of a URL path. Always pass untrusted input as a query string value.
 
 <a name=security-cross-site-scripting-customization></a>
 

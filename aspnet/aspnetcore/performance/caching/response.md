@@ -1,7 +1,8 @@
 ---
 uid: performance/caching/response
 ---
-Warning: This page documents version 1.0.0-rc1 and has not yet been updated for version 1.0.0
+>[!WARNING]
+> This page documents version 1.0.0-rc1 and has not yet been updated for version 1.0.0
 
 # Response Caching
 

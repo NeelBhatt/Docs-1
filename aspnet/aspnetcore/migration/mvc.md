@@ -1,7 +1,8 @@
 ---
 uid: migration/mvc
 ---
-Warning: This page documents version 1.0.0-rc2 and has not yet been updated for version 1.0.0
+>[!WARNING]
+> This page documents version 1.0.0-rc2 and has not yet been updated for version 1.0.0
 
 # Migrating From ASP.NET MVC to ASP.NET Core MVC
 

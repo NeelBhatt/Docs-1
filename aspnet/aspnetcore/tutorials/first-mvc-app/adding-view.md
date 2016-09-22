@@ -62,7 +62,8 @@ Change the contents of the title element. Change the anchor text in the layout t
 
 [!code-html[Main](start-mvc/sample/src/MvcMovie/Views/Shared/_Layout.html?range=1-47&highlight=6,29)]
 
-Warning: We haven't implemented the `Movies` controller yet, so if you click on that link, you'll get a 404 (Not found) error.
+>[!WARNING]
+> We haven't implemented the `Movies` controller yet, so if you click on that link, you'll get a 404 (Not found) error.
 
 Save your changes and tap the **About** link. Notice how each page displays the **Mvc Movie** link. We were able to make the change once in the layout template and have all pages on the site reflect the new link text and new title.
 

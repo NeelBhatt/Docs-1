@@ -208,7 +208,8 @@ In this case, both `ICharacterRepository` and in turn `ApplicationDbContext` mus
 
 Entity Framework contexts should be added to the services container using the `Scoped` lifetime. This is taken care of automatically if you use the helper methods as shown above. Repositories that will make use of Entity Framework should use the same lifetime.
 
-Warning: The main danger to be wary of is resolving a `Scoped` service from a singleton. It's likely in such a case that the service will have incorrect state when processing subsequent requests.
+>[!WARNING]
+> The main danger to be wary of is resolving a `Scoped` service from a singleton. It's likely in such a case that the service will have incorrect state when processing subsequent requests.
 
 ## Service Lifetimes and Registration Options
 

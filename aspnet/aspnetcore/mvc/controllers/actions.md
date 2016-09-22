@@ -34,7 +34,8 @@ Tip: The Controller is a *UI level* abstraction. Its responsibility is to ensure
 
 Any public method on a controller type is an action. Parameters on actions are bound to request data and validated using [model binding](../models/model-binding.md).
 
-Warning: Action methods that accept parameters should verify the `ModelState.IsValid` property is true.
+>[!WARNING]
+> Action methods that accept parameters should verify the `ModelState.IsValid` property is true.
 
 Action methods should contain logic for mapping an incoming request to a business concern. Business concerns should typically be represented as services that your controller accesses through [dependency injection](dependency-injection.md). Actions then map the result of the business action to an application state.
 

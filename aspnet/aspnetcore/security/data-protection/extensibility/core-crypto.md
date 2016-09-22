@@ -5,7 +5,8 @@ uid: security/data-protection/extensibility/core-crypto
 
 # Core cryptography extensibility
 
-Warning: Types that implement any of the following interfaces should be thread-safe for multiple callers.
+>[!WARNING]
+> Types that implement any of the following interfaces should be thread-safe for multiple callers.
 
 <a name=data-protection-extensibility-core-crypto-iauthenticatedencryptor></a>
 

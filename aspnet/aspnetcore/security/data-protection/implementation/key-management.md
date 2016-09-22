@@ -17,7 +17,8 @@ The data protection system automatically manages the lifetime of master keys use
 
 Created, active, and expired keys may all be used to unprotect incoming payloads. Revoked keys by default may not be used to unprotect payloads, but the application developer can [override this behavior](../consumer-apis/dangerous-unprotect.md#data-protection-consumer-apis-dangerous-unprotect.md) if necessary.
 
-Warning: The developer might be tempted to delete a key from the key ring (e.g., by deleting the corresponding file from the file system). At that point, all data protected by the key is permanently undecipherable, and there is no emergency override like there is with revoked keys. Deleting a key is truly destructive behavior, and consequently the data protection system exposes no first-class API for performing this operation.
+>[!WARNING]
+> The developer might be tempted to delete a key from the key ring (e.g., by deleting the corresponding file from the file system). At that point, all data protected by the key is permanently undecipherable, and there is no emergency override like there is with revoked keys. Deleting a key is truly destructive behavior, and consequently the data protection system exposes no first-class API for performing this operation.
 
 ## Default key selection
 
@@ -56,7 +57,8 @@ An administrator can also change the default system-wide, though an explicit cal
 
 When the data protection system initializes, it reads the key ring from the underlying repository and caches it in memory. This cache allows Protect and Unprotect operations to proceed without hitting the backing store. The system will automatically check the backing store for changes approximately every 24 hours or when the current default key expires, whichever comes first.
 
-Warning: Developers should very rarely (if ever) need to use the key management APIs directly. The data protection system will perform automatic key management as described above.
+>[!WARNING]
+> Developers should very rarely (if ever) need to use the key management APIs directly. The data protection system will perform automatic key management as described above.
 
 The data protection system exposes an interface IKeyManager that can be used to inspect and make changes to the key ring. The DI system that provided the instance of IDataProtectionProvider can also provide an instance of IKeyManager for your consumption. Alternatively, you can pull the IKeyManager straight from the IServiceProvider as in the example below.
 

@@ -7,7 +7,8 @@ uid: security/data-protection/extensibility/key-management
 
 Tip: Read the [key management](../implementation/key-management.md#data-protection-implementation-key-management.md) section before reading this section, as it explains some of the fundamental concepts behind these APIs.
 
-Warning: Types that implement any of the following interfaces should be thread-safe for multiple callers.
+>[!WARNING]
+> Types that implement any of the following interfaces should be thread-safe for multiple callers.
 
 ## Key
 
@@ -34,7 +35,8 @@ The IKeyManager interface represents an object responsible for general key stora
 
 * Revoke one or more keys and persist the revocation information to storage.
 
-Warning: Writing an IKeyManager is a very advanced task, and the majority of developers should not attempt it. Instead, most developers should take advantage of the facilities offered by the [XmlKeyManager](xref:security/data-protection/extensibility/key-management#data-protection-extensibility-key-management-xmlkeymanager) class.
+>[!WARNING]
+> Writing an IKeyManager is a very advanced task, and the majority of developers should not attempt it. Instead, most developers should take advantage of the facilities offered by the [XmlKeyManager](xref:security/data-protection/extensibility/key-management#data-protection-extensibility-key-management-xmlkeymanager) class.
 
 <a name=data-protection-extensibility-key-management-xmlkeymanager></a>
 

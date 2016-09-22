@@ -1,7 +1,8 @@
 ---
 uid: security/authentication/2fa
 ---
-Warning: This page documents version 1.0.0-beta8 and has not yet been updated for version 1.0.0
+>[!WARNING]
+> This page documents version 1.0.0-beta8 and has not yet been updated for version 1.0.0
 
 <a name=security-authentication-2fa></a>
 

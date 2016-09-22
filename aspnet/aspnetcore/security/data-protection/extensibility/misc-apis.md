@@ -5,7 +5,8 @@ uid: security/data-protection/extensibility/misc-apis
 
 # Miscellaneous APIs
 
-Warning: Types that implement any of the following interfaces should be thread-safe for multiple callers.
+>[!WARNING]
+> Types that implement any of the following interfaces should be thread-safe for multiple callers.
 
 ## ISecret
 
