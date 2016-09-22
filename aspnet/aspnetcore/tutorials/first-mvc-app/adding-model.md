@@ -54,25 +54,8 @@ Follow the instructions in [Change the title and menu link in the layout file](a
 
 In Solution Explorer, right click the *Models* folder > **Add** > **Class**. Name the class **Movie** and add the following properties:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Models/MovieNoEF.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [7], "linenostart": 1}} -->
 
-````c#
-
-   using System;
-
-   namespace MvcMovie.Models
-   {
-       public class Movie
-       {
-           public int ID { get; set; }
-           public string Title { get; set; }
-           public DateTime ReleaseDate { get; set; }
-           public string Genre { get; set; }
-           public decimal Price { get; set; }
-       }
-   }
-
-   ````
+[!code-csharp[Main](start-mvc/sample2/src/MvcMovie/Models/MovieNoEF.cs?name=snippet_1)]
 
 In addition to the properties you'd expect to model a movie, the `ID` field is required by the DB for the primary key. Build the project. If you don't build the app, you'll get an error in the next section. We've finally added a **M**odel to our **M**VC app.
 
@@ -159,16 +142,14 @@ We'll follow those instructions to get the database ready for our Movie app.
 
 * Run the following commands in the command prompt:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "console", "highlight_args": {}} -->
-
 ````console
 
-   dotnet ef migrations add Initial
-   dotnet ef database update
+dotnet ef migrations add Initial
+dotnet ef database update
    ````
-
-> [!NOTE]
-> If IIS-Express is running, you'll get the error *CS2012: Cannot open 'MvcMovie/bin/Debug/netcoreapp1.0/MvcMovie.dll' for writing -- 'The process cannot access the file 'MvcMovie/bin/Debug/netcoreapp1.0/MvcMovie.dll' because it is being used by another process.'*
+   
+> [!NOTE] 
+> If IIS-Express is running, you'll get the error *CS2012: Cannot open 'MvcMovie/bin/Debug/netcoreapp1.0/MvcMovie.dll' for writing -- 'The process cannot access the file 'MvcMovie/bin/Debug/netcoreapp1.0/MvcMovie.dll' because it is being used by another process.'* If you get that error, exit and restart Visual Studio.
 
 ## dotnet ef commands
 
@@ -197,27 +178,7 @@ We'll follow those instructions to get the database ready for our Movie app.
 > [!NOTE]
 > In some locales you'll need to specify the date format. See the highlighted code below.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Models/MovieDateFormat.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [10, 2], "linenostart": 1}} -->
-
-````c#
-
-   using System;
-   using System.ComponentModel.DataAnnotations;
-
-   namespace MvcMovie.Models
-   {
-       public class Movie
-       {
-           public int ID { get; set; }
-           public string Title { get; set; }
-           [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-           public DateTime ReleaseDate { get; set; }
-           public string Genre { get; set; }
-           public decimal Price { get; set; }
-       }
-   }
-
-   ````
+[!code-csharp[Main](start-mvc/sample2/src/MvcMovie/Models/MovieDateFormat.cs?name=snippet_1&highlight=2,10)]
 
 Tapping **Create** causes the form to be posted to the server, where the movie information is saved in a database. You are then redirected to the */Movies* URL, where you can see the newly created movie in the listing.
 
@@ -229,7 +190,8 @@ Create a couple more movie entries. Try the **Edit**, **Details**, and **Delete*
 
 Open the *Controllers/MoviesController.cs* file and examine the generated `Index` method. A portion of the movie controller with the `Index` method is shown below:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- l.. can't use literalinclude  because we comment out the initial index method and update it later
+.. comment :: start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs -->
 
 ````c#
 
@@ -263,28 +225,7 @@ MVC also provides the ability to pass strongly typed objects to a view. This str
 
 Examine the generated `Details` method in the *Controllers/MoviesController.cs* file:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
-
-````c#
-
-   // GET: Movies/Details/5 
-   public async Task<IActionResult> Details(int? id)
-   {
-       if (id == null)
-       {
-           return NotFound();
-       }
-
-       var movie = await _context.Movie.SingleOrDefaultAsync(m => m.ID == id);
-       if (movie == null)
-       {
-           return NotFound();
-       }
-
-       return View(movie);
-   }
-
-   ````
+[!code-csharp[Main](start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs?name=snippet_details)]
 
 The `id` parameter is generally passed as route data, for example `http://localhost:1234/movies/details/1` sets:
 
@@ -300,8 +241,6 @@ You could also pass in the `id` with a query string as follows:
 
 If a Movie is found, an instance of the `Movie` model is passed to the `Details` view:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "C#", "highlight_args": {}} -->
-
 ````C#
 
    return View(movie);
@@ -309,58 +248,9 @@ If a Movie is found, an instance of the `Movie` model is passed to the `Details`
 
 Examine the contents of the *Views/Movies/Details.cshtml* file:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Views/Movies/DetailsOriginal.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "HTML", "highlight_args": {"hl_lines": [1], "linenostart": 1}} -->
-
-````HTML
-
-   @model MvcMovie.Models.Movie
-
-   @{
-       ViewData["Title"] = "Details";
-   }
-
-   <h2>Details</h2>
-
-   <div>
-       <h4>Movie</h4>
-       <hr />
-       <dl class="dl-horizontal">
-           <dt>
-               @Html.DisplayNameFor(model => model.Genre)
-           </dt>
-           <dd>
-               @Html.DisplayFor(model => model.Genre)
-           </dd>
-           <dt>
-               @Html.DisplayNameFor(model => model.Price)
-           </dt>
-           <dd>
-               @Html.DisplayFor(model => model.Price)
-           </dd>
-           <dt>
-               @Html.DisplayNameFor(model => model.ReleaseDate)
-           </dt>
-           <dd>
-               @Html.DisplayFor(model => model.ReleaseDate)
-           </dd>
-           <dt>
-               @Html.DisplayNameFor(model => model.Title)
-           </dt>
-           <dd>
-               @Html.DisplayFor(model => model.Title)
-           </dd>
-       </dl>
-   </div>
-   <div>
-       <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
-       <a asp-action="Index">Back to List</a>
-   </div>
-
-   ````
+[!code-html[Main](start-mvc/sample2/src/MvcMovie/Views/Movies/DetailsOriginal.cshtml)]
 
 By including a `@model` statement at the top of the view file, you can specify the type of object that the view expects. When you created the movie controller, Visual Studio automatically included the following `@model` statement at the top of the *Details.cshtml* file:
-
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "HTML", "highlight_args": {}} -->
 
 ````HTML
 
@@ -371,91 +261,18 @@ This `@model` directive allows you to access the movie that the controller passe
 
 Examine the *Index.cshtml* view and the `Index` method in the Movies controller. Notice how the code creates a `List` object when it calls the View method. The code passes this `Movies` list from the `Index` action method to the view:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
 
-````c#
-
-   // GET: Movies
-   public async Task<IActionResult> Index()
-   {
-       return View(await _context.Movie.ToListAsync());
-   }
-
-   ````
+[!code-csharp[Main](start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs?name=snippet_index)]
 
 When you created the movies controller, Visual Studio automatically included the following `@model` statement at the top of the *Index.cshtml* file:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Views/Movies/IndexOriginal.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "HTML", "highlight_args": {"linenostart": 1}} -->
+<!-- Copy Index.cshtml to IndexOriginal.cshtml -->
 
-````HTML
-
-   @model IEnumerable<MvcMovie.Models.Movie>
-
-   ````
+[!code-html[Main](start-mvc/sample2/src/MvcMovie/Views/Movies/IndexOriginal.cshtml?range=1)]
 
 The `@model` directive allows you to access the list of movies that the controller passed to the view by using a `Model` object that's strongly typed. For example, in the *Index.cshtml* view, the code loops through the movies with a `foreach` statement over the strongly typed `Model` object:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Views/Movies/IndexOriginal.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "HTML", "highlight_args": {"hl_lines": [1, 31, 34, 37, 40, 43, 46, 47, 48], "linenostart": 1}} -->
-
-````HTML
-
-   @model IEnumerable<MvcMovie.Models.Movie>
-
-   @{
-       ViewData["Title"] = "Index";
-   }
-
-   <h2>Index</h2>
-
-   <p>
-       <a asp-action="Create">Create New</a>
-   </p>
-   <table class="table">
-       <thead>
-           <tr>
-               <th>
-                   @Html.DisplayNameFor(model => model.Genre)
-               </th>
-               <th>
-                   @Html.DisplayNameFor(model => model.Price)
-               </th>
-               <th>
-                   @Html.DisplayNameFor(model => model.ReleaseDate)
-               </th>
-               <th>
-                   @Html.DisplayNameFor(model => model.Title)
-               </th>
-               <th></th>
-           </tr>
-       </thead>
-       <tbody>
-   @foreach (var item in Model) {
-           <tr>
-               <td>
-                   @Html.DisplayFor(modelItem => item.Genre)
-               </td>
-               <td>
-                   @Html.DisplayFor(modelItem => item.Price)
-               </td>
-               <td>
-                   @Html.DisplayFor(modelItem => item.ReleaseDate)
-               </td>
-               <td>
-                   @Html.DisplayFor(modelItem => item.Title)
-               </td>
-               @*<snippet_1>*@
-               <td>
-                   <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                   <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                   <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-               </td>
-               @*</snippet_1>*@
-           </tr>
-   }
-       </tbody>
-   </table>
-
-   ````
+[!code-html[Main](start-mvc/sample2/src/MvcMovie/Views/Movies/IndexOriginal.cshtml?highlight=1,31,34,37,40,43,46-48)]
 
 Because the `Model` object is strongly typed (as an `IEnumerable<Movie>` object), each item in the loop is typed as `Movie`. Among other benefits, this means that you get compile-time checking of the code and full [IntelliSense](https://msdn.microsoft.com/en-us/library/hcw1s69b.aspx) support in the code editor:
 
