@@ -58,7 +58,8 @@ The `ConfigureServices` method in the `Startup` class is responsible for definin
 
 The features and middleware provided by ASP.NET, such as MVC, follow a convention of using a single Add*Service*extension method to register all of the services required by that feature.
 
-Tip: You can request certain framework-provided services within `Startup` methods through their parameter lists - see [Application Startup](startup.md) for more details.
+>[!TIP]
+> You can request certain framework-provided services within `Startup` methods through their parameter lists - see [Application Startup](startup.md) for more details.
 
 Of course, in addition to configuring the application to take advantage of various framework features, you can also use `ConfigureServices` to configure your own application services.
 

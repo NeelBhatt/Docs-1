@@ -129,7 +129,8 @@ Calling UseCryptographicAlgorithms will allow the developer to specify the desir
 
 The developer can manually specify an implementation if desired via a call to UseCustomCryptographicAlgorithms, as show in the below examples.
 
-Tip: Changing algorithms does not affect existing keys in the key ring. It only affects newly-generated keys.
+>[!TIP]
+> Changing algorithms does not affect existing keys in the key ring. It only affects newly-generated keys.
 
 <a name=data-protection-changing-algorithms-custom-managed></a>
 

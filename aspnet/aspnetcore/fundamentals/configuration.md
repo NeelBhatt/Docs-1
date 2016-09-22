@@ -223,7 +223,8 @@ Options can be injected into your application using the [IOptions<TOptions>](htt
 
    ````
 
-Tip: Learn more about [Dependency Injection](dependency-injection.md).
+>[!TIP]
+> Learn more about [Dependency Injection](dependency-injection.md).
 
 To setup the [IOptions<TOptions>](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Options/IOptions-TOptions/index.html.md#Microsoft.Extensions.Options.IOptions<TOptions>.md) service you call the [AddOptions](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/DependencyInjection/OptionsServiceCollectionExtensions/index.html.md#Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.AddOptions.md) extension method during startup in your `ConfigureServices` method:
 

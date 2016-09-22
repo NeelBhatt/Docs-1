@@ -5,7 +5,8 @@ uid: security/data-protection/extensibility/key-management
 
 # Key management extensibility
 
-Tip: Read the [key management](../implementation/key-management.md#data-protection-implementation-key-management.md) section before reading this section, as it explains some of the fundamental concepts behind these APIs.
+>[!TIP]
+> Read the [key management](../implementation/key-management.md#data-protection-implementation-key-management.md) section before reading this section, as it explains some of the fundamental concepts behind these APIs.
 
 >[!WARNING]
 > Types that implement any of the following interfaces should be thread-safe for multiple callers.

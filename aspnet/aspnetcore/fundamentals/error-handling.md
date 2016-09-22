@@ -207,7 +207,8 @@ One of the trickiest places to handle exceptions in your app is during its start
 
 Exception filters can be configured globally or on a per-controller or per-action basis in an [MVC](../mvc/index.md) app. These filters handle any unhandled exception that occurs during the execution of a controller action or another filter, and are not called otherwise. Exception filters are detailed in [filters](../mvc/controllers/filters.md).
 
-Tip: Exception filters are good for trapping exceptions that occur within MVC actions, but they're not as flexible as error handling middleware. Prefer middleware for the general case, and use filters only where you need to do error handling *differently* based on which MVC action was chosen.
+>[!TIP]
+> Exception filters are good for trapping exceptions that occur within MVC actions, but they're not as flexible as error handling middleware. Prefer middleware for the general case, and use filters only where you need to do error handling *differently* based on which MVC action was chosen.
 
 ### Handling Model State Errors
 

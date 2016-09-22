@@ -38,7 +38,8 @@ Controllers are the components that handle user interaction, work with the model
 > [!NOTE]
 > Controllers should not be overly complicated by too many responsibilities. To keep controller logic from becoming overly complex, use the [Single Responsibility Principle](http://deviq.com/single-responsibility-principle/) to push business logic out of the controller and into the domain model.
 
-Tip: If you find that your controller actions frequently perform the same kinds of actions, you can follow the [Don't Repeat Yourself principle](http://deviq.com/don-t-repeat-yourself/) by moving these common actions into [filters](#filters).
+>[!TIP]
+> If you find that your controller actions frequently perform the same kinds of actions, you can follow the [Don't Repeat Yourself principle](http://deviq.com/don-t-repeat-yourself/) by moving these common actions into [filters](#filters).
 
 ## What is ASP.NET Core MVC
 
