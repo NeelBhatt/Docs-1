@@ -7,7 +7,8 @@ uid: tutorials/nano-server
 
 By [Sourabh Shirhatti](https://twitter.com/sshirhatti)
 
-Attention: This tutorial uses a pre-release version of the Nano Server installation option of Windows Server Technical Preview 5. You may use the software in the virtual hard disk image only to internally demonstrate and evaluate it. You may not use the software in a live operating environment. Please see [https://go.microsoft.com/fwlink/?LinkId=624232](https://go.microsoft.com/fwlink/?LinkId=624232) for specific information about the end date for the preview.
+>[!IMPORTANT]
+> This tutorial uses a pre-release version of the Nano Server installation option of Windows Server Technical Preview 5. You may use the software in the virtual hard disk image only to internally demonstrate and evaluate it. You may not use the software in a live operating environment. Please see [https://go.microsoft.com/fwlink/?LinkId=624232](https://go.microsoft.com/fwlink/?LinkId=624232) for specific information about the end date for the preview.
 
 In this tutorial, you'll take an existing ASP.NET Core app and deploy it to a Nano Server instance running IIS.
 
