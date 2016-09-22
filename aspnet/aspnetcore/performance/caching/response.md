@@ -26,7 +26,8 @@ private
 no-cache
    Indicates the response **must not** be used by a cache to satisfy any subsequent request (without successful revalidation with the origin server).
 
-Note: **Response caching does not cache responses on the web server**. It differs from [output caching](http://www.asp.net/mvc/overview/older-versions-1/controllers-and-routing/improving-performance-with-output-caching-cs), which would cache responses in memory on the server in earlier versions of ASP.NET and ASP.NET MVC. Output caching middleware is planned to be added to ASP.NET Core in a future release.
+> [!NOTE]
+> **Response caching does not cache responses on the web server**. It differs from [output caching](http://www.asp.net/mvc/overview/older-versions-1/controllers-and-routing/improving-performance-with-output-caching-cs), which would cache responses in memory on the server in earlier versions of ASP.NET and ASP.NET MVC. Output caching middleware is planned to be added to ASP.NET Core in a future release.
 
 Additional HTTP headers used for caching include `Pragma` and `Vary`, which are described below. Learn more about [Caching in HTTP from the specification](https://tools.ietf.org/html/rfc7234#section-3).
 
@@ -90,7 +91,8 @@ This will result in the following headers:
 
 To enable caching, `Duration` must be set to a positive value and `Location` must be either `Any` (the default) or `Client`. In this case, the `Cache-Control` header will be set to the location value followed by the "max-age" of the response.
 
-Note: `Location`'s options of `Any` and `Client` translate into `Cache-Control` header values of `public` and `private`, respectively. As noted previously, setting `Location` to `None` will set both `Cache-Control` and `Pragma` headers to `no-cache`.
+> [!NOTE]
+> `Location`'s options of `Any` and `Client` translate into `Cache-Control` header values of `public` and `private`, respectively. As noted previously, setting `Location` to `None` will set both `Cache-Control` and `Pragma` headers to `no-cache`.
 
 Below is an example showing the headers produced by setting `Duration` and leaving the default `Location` value.
 

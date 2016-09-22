@@ -56,7 +56,8 @@ In order for static files to be served, you must configure the [Middleware](midd
 
 You must include "Microsoft.AspNetCore.StaticFiles" in the *project.json* file.
 
-Note: `web root` defaults to the *wwwroot* directory, but you can set the `web root` directory with [UseWebRoot](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/HostingAbstractionsWebHostBuilderExtensions/index.html.md#Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseWebRoot.md). See [Introduction to ASP.NET Core](../intro.md) for more information.
+> [!NOTE]
+> `web root` defaults to the *wwwroot* directory, but you can set the `web root` directory with [UseWebRoot](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/HostingAbstractionsWebHostBuilderExtensions/index.html.md#Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseWebRoot.md). See [Introduction to ASP.NET Core](../intro.md) for more information.
 
 Suppose you have a project hierarchy where the static files you wish to serve are outside the `web root`. For example:
 
@@ -193,7 +194,8 @@ Setting a default home page gives site visitors a place to start when visiting y
 
    ````
 
-Note: [UseDefaultFiles](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/DefaultFilesExtensions/index.html.md#Microsoft.AspNetCore.Builder.DefaultFilesExtensions.UseDefaultFiles.md) must be called before `UseStaticFiles` to serve the default file. `UseDefaultFiles` is a URL re-writer that doesn't actually serve the file. You must enable the static file middleware (`UseStaticFiles`) to serve the file.
+> [!NOTE]
+> [UseDefaultFiles](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/DefaultFilesExtensions/index.html.md#Microsoft.AspNetCore.Builder.DefaultFilesExtensions.UseDefaultFiles.md) must be called before `UseStaticFiles` to serve the default file. `UseDefaultFiles` is a URL re-writer that doesn't actually serve the file. You must enable the static file middleware (`UseStaticFiles`) to serve the file.
 
 With [UseDefaultFiles](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/DefaultFilesExtensions/index.html.md#Microsoft.AspNetCore.Builder.DefaultFilesExtensions.UseDefaultFiles.md), requests to a folder will search for:
 
@@ -305,7 +307,8 @@ If no default named files are in the *MyStaticFiles* directory, http://<app>/Sta
 
 ![image](static-files/_static/db2.PNG)
 
-Note: `UseDefaultFiles` and `UseDirectoryBrowser` will take the url http://<app>/StaticFiles without the trailing slash and cause a client side redirect to http://<app>/StaticFiles/ (adding the trailing slash). Without the trailing slash relative URLs within the documents would be incorrect.
+> [!NOTE]
+> `UseDefaultFiles` and `UseDirectoryBrowser` will take the url http://<app>/StaticFiles without the trailing slash and cause a client side redirect to http://<app>/StaticFiles/ (adding the trailing slash). Without the trailing slash relative URLs within the documents would be incorrect.
 
   ### FileExtensionContentTypeProvider
 

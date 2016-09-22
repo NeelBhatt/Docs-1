@@ -21,7 +21,8 @@ As its name suggests, the type is responsible for providing authenticated encryp
 
 The Encrypt method returns a blob that includes the enciphered plaintext and an authentication tag. The authentication tag must encompass the additional authenticated data (AAD), though the AAD itself need not be recoverable from the final payload. The Decrypt method validates the authentication tag and returns the deciphered payload. All failures (except ArgumentNullException and similar) should be homogenized to CryptographicException.
 
-Note: The IAuthenticatedEncryptor instance itself doesn't actually need to contain the key material. For example, the implementation could delegate to an HSM for all operations.
+> [!NOTE]
+> The IAuthenticatedEncryptor instance itself doesn't actually need to contain the key material. For example, the implementation could delegate to an HSM for all operations.
 
 <a name=data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptor></a>
 
@@ -86,7 +87,8 @@ Types which implement IAuthenticatedEncryptorDescriptorDeserializer should have 
 
 * .ctor()
 
-Note: The IServiceProvider passed to the constructor may be null.
+> [!NOTE]
+> The IServiceProvider passed to the constructor may be null.
 
   ## IAuthenticatedEncryptorConfiguration
 

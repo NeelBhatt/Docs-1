@@ -112,7 +112,8 @@ Warning: .NET Core applications are hosted via a reverse-proxy between IIS and t
 
 2. Set the application pool to **No Managed Code**. ASP.NET Core runs in a separate process and manages the runtime.
 
-Note: If you change the default identity of the application pool from **ApplicationPoolIdentity**, verify the new identity has the required permissions to access the application's assets and database.
+> [!NOTE]
+> If you change the default identity of the application pool from **ApplicationPoolIdentity**, verify the new identity has the required permissions to access the application's assets and database.
 
 Open the **Add Website** window.
 

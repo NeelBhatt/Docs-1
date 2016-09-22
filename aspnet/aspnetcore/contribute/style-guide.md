@@ -1,4 +1,4 @@
----
+﻿---
 uid: contribute/style-guide
 ---
 <a name=style-guide></a>
@@ -61,7 +61,8 @@ Surround text with:
 
 * Two backticks for ``code samples``(an `<html>` element)
 
-Note: Inline markup cannot be nested, nor can surrounded content start or end with whitespace (`* foo*` is wrong).
+> [!NOTE]
+> Inline markup cannot be nested, nor can surrounded content start or end with whitespace (`* foo*` is wrong).
 
 Escaping is done using the `\` backslash.
 
@@ -192,15 +193,18 @@ This results in:
    }
    ````
 
-Note: Once the `emphasize-lines` is determined, remove `:linenos:`. When updating a doc, remove all occurrences of `:linenos:`.
+> [!NOTE]
+> Once the `emphasize-lines` is determined, remove `:linenos:`. When updating a doc, remove all occurrences of `:linenos:`.
 
-Note: `caption` and `name` will result in a code-block not being displayed due to our builds using a Sphinx version prior to version 1.3. If you don't see a code block displayed above this note, it's most likely because the version of Sphinx is < 1.3.
+> [!NOTE]
+> `caption` and `name` will result in a code-block not being displayed due to our builds using a Sphinx version prior to version 1.3. If you don't see a code block displayed above this note, it's most likely because the version of Sphinx is < 1.3.
 
   ### Images
 
 Images such as screen shots and explanatory figures or diagrams should be placed in a `_static` folder within a folder named the same as the article file. References to images should therefore always be made using relative references, e.g. `article-name/style-guide/_static/asp-net.png`. Note that images should always be saved as all lower-case file names, using hyphens to separate words, if necessary.
 
-Note: Do not use images for code. Use `code-block` or `literalinclude` instead.
+> [!NOTE]
+> Do not use images for code. Use `code-block` or `literalinclude` instead.
 
 To include an image in an article, use the `.. image` directive:
 
@@ -211,7 +215,8 @@ To include an image in an article, use the `.. image` directive:
    .. image:: style-guide/_static/asp-net.png
    ````
 
-Note: No quotes are needed around the file name.
+> [!NOTE]
+> No quotes are needed around the file name.
 
 Here's an example using the above syntax:
 
@@ -232,7 +237,8 @@ To add a note callout, like the ones shown in this document, use the `.. note::`
 
 This results in:
 
-Note: This is a note.
+> [!NOTE]
+> This is a note.
 
   ### Including External Source Files
 

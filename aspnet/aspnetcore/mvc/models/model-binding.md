@@ -24,7 +24,8 @@ Since the route template looks like this, `{controller=Home}/{action=Index}/{id?
    public IActionResult Edit(int? id)
    ````
 
-Note: The strings in the URL route are not case sensitive.
+> [!NOTE]
+> The strings in the URL route are not case sensitive.
 
 MVC will try to bind request data to the action parameters by name. MVC will look for values for each parameter using the parameter name and the names of its public settable properties. In the above example, the only action parameter is named `id`, which MVC binds to the value with the same name in the route values. In addition to route values MVC will bind data from various parts of the request and it does so in a set order. Below is a list of the data sources in the order that model binding looks through them:
 
@@ -34,7 +35,8 @@ MVC will try to bind request data to the action parameters by name. MVC will loo
 
 3. `Query strings`: The query string part of the URI.
 
-Note: Form values, route data, and query strings are all stored as name-value pairs.
+> [!NOTE]
+> Form values, route data, and query strings are all stored as name-value pairs.
 
 Since model binding asked for a key named `id` and there is nothing named `id` in the form values, it moved on to the route values looking for that key. In our example, it's a match. Binding happens, and the value is converted to the integer 2. The same request using Edit(string id) would convert to the string "2".
 
@@ -45,7 +47,8 @@ In order for binding to happen the class must have a public default constructor 
 
 When a parameter is bound, model binding stops looking for values with that name and it moves on to bind the next parameter. If binding fails, MVC does not throw an error. You can query for model state errors by checking the `ModelState.IsValid` property.
 
-Note: Each entry in the controller's `ModelState` property is a `ModelStateEntry` containing an `Errors property`. It's rarely necessary to query this collection yourself. Use `ModelState.IsValid` instead.
+> [!NOTE]
+> Each entry in the controller's `ModelState` property is a `ModelStateEntry` containing an `Errors property`. It's rarely necessary to query this collection yourself. Use `ModelState.IsValid` instead.
 
 Additionally, there are some special data types that MVC must consider when performing model binding:
 
@@ -79,9 +82,11 @@ Attributes are very helpful tools when you need to override the default behavior
 
 Request data can come in a variety of formats including JSON, XML and many others. When you use the [FromBody] attribute to indicate that you want to bind a parameter to data in the request body, MVC uses a configured set of formatters to handle the request data based on its content type. By default MVC includes a `JsonInputFormatter` class for handling JSON data, but you can add additional formatters for handling XML and other custom formats.
 
-Note: There can be at most one parameter per action decorated with `[FromBody]`. The ASP.NET Core MVC run-time delegates the responsibility of reading the request stream to the formatter. Once the request stream is read for a parameter, it's generally not possible to read the request stream again for binding other `[FromBody]` parameters.
+> [!NOTE]
+> There can be at most one parameter per action decorated with `[FromBody]`. The ASP.NET Core MVC run-time delegates the responsibility of reading the request stream to the formatter. Once the request stream is read for a parameter, it's generally not possible to read the request stream again for binding other `[FromBody]` parameters.
 
-Note: The `JsonInputFormatter` is the default formatter and it is based off of [Json.NET](http://www.newtonsoft.com/json).
+> [!NOTE]
+> The `JsonInputFormatter` is the default formatter and it is based off of [Json.NET](http://www.newtonsoft.com/json).
 
 ASP.NET selects input formatters based on the [Content-Type](https://www.w3.org/Protocols/rfc1341/4_Content-Type.html) header and the type of the parameter, unless there is an attribute applied to it specifying otherwise. If you'd like to use XML or another format you must configure it in the *Startup.cs* file, but you may first have to obtain a reference to `Microsoft.AspNetCore.Mvc.Formatters.Xml` using NuGet. Your startup code should look something like this:
 

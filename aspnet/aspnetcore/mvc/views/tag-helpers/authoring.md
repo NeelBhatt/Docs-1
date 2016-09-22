@@ -135,7 +135,8 @@ To add a tag helper to a view using a FQN, you first add the FQN (`AuthoringTagH
 
 4. Run the app and use your favorite browser to view the HTML source so you can verify that the email tags are replaced with anchor markup (For example, `<a>Support</a>`). *Support* and *Marketing* are rendered as a links, but they don't have an `href` attribute to make them functional. We'll fix that in the next section.
 
-Note: Like [HTML tags and attributes](http://www.w3.org/TR/html-markup/documents.html#case-insensitivity), tags, class names and attributes in Razor, and C# are not case-sensitive.
+> [!NOTE]
+> Like [HTML tags and attributes](http://www.w3.org/TR/html-markup/documents.html#case-insensitivity), tags, class names and attributes in Razor, and C# are not case-sensitive.
 
   ## A working email Tag Helper
 

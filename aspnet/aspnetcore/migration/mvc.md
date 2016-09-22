@@ -189,7 +189,8 @@ Upon saving the file, Bower will automatically download the dependencies to the 
 
 ![image](mvc/_static/search.png)
 
-Note: *bower.json* is not visible in **Solution Explorer**. You can display the hidden *.json* files by selecting the project in **Solution Explorer** and then tapping the **Show All Files** icon. You won't see **Show All Files** unless the project is selected.
+> [!NOTE]
+> *bower.json* is not visible in **Solution Explorer**. You can display the hidden *.json* files by selecting the project in **Solution Explorer** and then tapping the **Show All Files** icon. You won't see **Show All Files** unless the project is selected.
 
 ![image](mvc/_static/show_all_files.png)
 
@@ -273,7 +274,8 @@ See [Using Gulp](../client-side/using-gulp.md).
 
 If you created the optional *FullAspNetCore* project, add the *package.json* NPM file from that project to the project we are updating. The *package.json* NPM file lists the dependencies for the client-side build processes defined in *gulpfile.js*.
 
-Note: *package.json* is not visible in **Solution Explorer**.
+> [!NOTE]
+> *package.json* is not visible in **Solution Explorer**.
 
 Right-click the web app project, choose **Add > Existing Item**, and add the *package.json* NPM file. Alternatively, you can add a new NPM configuration file as follows:
 

@@ -220,4 +220,5 @@ A sample `_ViewStart.cshtml` file:
 
 The file above specifies that all views will use the `_Layout.cshtml` layout.
 
-Note: Neither `_ViewStart.cshtml` nor `_ViewImports.cshtml` are typically placed in the `/Views/Shared` folder. The app-level versions of these files should be placed directly in the `/Views` folder.
+> [!NOTE]
+> Neither `_ViewStart.cshtml` nor `_ViewImports.cshtml` are typically placed in the `/Views/Shared` folder. The app-level versions of these files should be placed directly in the `/Views` folder.

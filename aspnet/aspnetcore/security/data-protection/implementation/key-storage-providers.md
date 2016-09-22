@@ -7,7 +7,8 @@ uid: security/data-protection/implementation/key-storage-providers
 
 By default the data protection system [employs a heuristic](../configuration/default-settings.md#data-protection-default-settings.md) to determine where cryptographic key material should be persisted. The developer can override the heuristic and manually specify the location.
 
-Note: If you specify an explicit key persistence location, the data protection system will deregister the default key encryption at rest mechanism that the heuristic provided, so keys will no longer be encrypted at rest. It is recommended that you additionally [specify an explicit key encryption mechanism](key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest-providers.md) for production applications.
+> [!NOTE]
+> If you specify an explicit key persistence location, the data protection system will deregister the default key encryption at rest mechanism that the heuristic provided, so keys will no longer be encrypted at rest. It is recommended that you additionally [specify an explicit key encryption mechanism](key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest-providers.md) for production applications.
 
 The data protection system ships with two in-box key storage providers.
 

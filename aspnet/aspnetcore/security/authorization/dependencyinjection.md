@@ -44,4 +44,5 @@ You would register the handler with `services.AddSingleton()`:
 
 An instance of the handler will be created when your application starts, and DI will inject the registered [ILoggerFactory](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Logging/ILoggerFactory/index.html.md#Microsoft.Extensions.Logging.ILoggerFactory.md) into your constructor.
 
-Note: Handlers that use Entity Framework shouldn't be registered as singletons.
+> [!NOTE]
+> Handlers that use Entity Framework shouldn't be registered as singletons.

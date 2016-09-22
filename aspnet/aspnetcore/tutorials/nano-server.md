@@ -1,4 +1,4 @@
----
+﻿---
 uid: tutorials/nano-server
 ---
 <a name=nano-server></a>
@@ -99,7 +99,8 @@ Run the following commands in the PowerShell session that was created earlier:
    Install-NanoServerPackage -Name Microsoft-NanoServer-IIS-Package
    ````
 
-Note: Installing *Microsoft-NanoServer-Storage-Package* requires a reboot. This is a temporary work around and won't be required in the future.
+> [!NOTE]
+> Installing *Microsoft-NanoServer-Storage-Package* requires a reboot. This is a temporary work around and won't be required in the future.
 
 To quickly verify if IIS is setup correctly, you can visit the url `http://<nanoserver-ip-address>/` and should see a welcome page. When IIS is installed, by default a web site called `Default Web Site` listening on port 80 is created.
 

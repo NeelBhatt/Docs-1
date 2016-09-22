@@ -151,7 +151,8 @@ Note that we're not really trying to test the correctness of our prime number ch
 
 ![image](integration-testing/_static/test-explorer.png)
 
-Note: You can learn more about the unit tests in the [Unit testing](https://docs.microsoft.com/en-us/dotnet/articles/core/testing/unit-testing-with-dotnet-test) article.
+> [!NOTE]
+> You can learn more about the unit tests in the [Unit testing](https://docs.microsoft.com/en-us/dotnet/articles/core/testing/unit-testing-with-dotnet-test) article.
 
 Now that we have a set of passing tests, it's a good time to think about whether we're happy with the current way in which we've designed our application. If we see any [code smells](http://deviq.com/code-smells/), now may be a good time to refactor the application to improve its design.
 
@@ -210,7 +211,8 @@ We can, however, take advantage of ASP.NET Core [middleware](../fundamentals/mid
 
 We want to allow the path the middleware uses to be specified as a parameter, so the middleware class expects a `RequestDelegate` and a `PrimeCheckerOptions` instance in its constructor. If the path of the request doesn't match what this middleware is configured to expect, we simply call the next middleware in the chain and do nothing further. The rest of the implementation code that was in `Configure` is now in the `Invoke` method.
 
-Note: Since our middleware depends on the `PrimeService` service, we are also requesting an instance of this service via the constructor. The framework will provide this service via [Dependency Injection](../fundamentals/dependency-injection.md), assuming it has been configured (e.g. in `ConfigureServices`).
+> [!NOTE]
+> Since our middleware depends on the `PrimeService` service, we are also requesting an instance of this service via the constructor. The framework will provide this service via [Dependency Injection](../fundamentals/dependency-injection.md), assuming it has been configured (e.g. in `ConfigureServices`).
 
 <!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/testing/integration-testing/sample/src/PrimeWeb/Middleware/PrimeCheckerMiddleware.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "none", "highlight_args": {"hl_lines": [39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63], "linenostart": 1}} -->
 
@@ -285,7 +287,8 @@ Note: Since our middleware depends on the `PrimeService` service, we are also re
 
    ````
 
-Note: Since this middleware acts as an endpoint in the request delegate chain when its path matches, there is no call to `_next.Invoke` in the case where this middleware handles the request.
+> [!NOTE]
+> Since this middleware acts as an endpoint in the request delegate chain when its path matches, there is no call to `_next.Invoke` in the case where this middleware handles the request.
 
 With this middleware in place and some helpful extension methods created to make configuring it easier, the refactored `Configure` method looks like this:
 

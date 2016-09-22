@@ -1,4 +1,4 @@
----
+﻿---
 uid: tutorials/first-mvc-app/adding-model
 ---
   # Adding a model
@@ -165,7 +165,8 @@ Warning: You must stop IIS Express before you update the database.
    dotnet ef database update
    ````
 
-Note: If IIS-Express is running, you'll get the error *CS2012: Cannot open 'MvcMovie/bin/Debug/netcoreapp1.0/MvcMovie.dll' for writing -- 'The process cannot access the file 'MvcMovie/bin/Debug/netcoreapp1.0/MvcMovie.dll' because it is being used by another process.'*
+> [!NOTE]
+> If IIS-Express is running, you'll get the error *CS2012: Cannot open 'MvcMovie/bin/Debug/netcoreapp1.0/MvcMovie.dll' for writing -- 'The process cannot access the file 'MvcMovie/bin/Debug/netcoreapp1.0/MvcMovie.dll' because it is being used by another process.'*
 
   ## dotnet ef commands
 
@@ -177,7 +178,8 @@ Note: If IIS-Express is running, you'll get the error *CS2012: Cannot open 'MvcM
 
   ### Test the app
 
-Note: If your browser is unable to connect to the movie app you might need to wait for IIS Express to load the app. It can sometimes take up to 30 seconds to build the app and have it ready to respond to requests.
+> [!NOTE]
+> If your browser is unable to connect to the movie app you might need to wait for IIS Express to load the app. It can sometimes take up to 30 seconds to build the app and have it ready to respond to requests.
 
 * Run the app and tap the **Mvc Movie** link
 
@@ -185,11 +187,13 @@ Note: If your browser is unable to connect to the movie app you might need to wa
 
 ![image](adding-model/_static/movies.png)
 
-Note: You may not be able to enter decimal points or commas in the `Price` field. To support [jQuery validation](http://jqueryvalidation.org/) for non-English locales that use a comma (",") for a decimal point, and non US-English date formats, you must take steps to globalize your app. See [Additional resources](#additional-resources) for more information. For now, just enter whole numbers like 10.
+> [!NOTE]
+> You may not be able to enter decimal points or commas in the `Price` field. To support [jQuery validation](http://jqueryvalidation.org/) for non-English locales that use a comma (",") for a decimal point, and non US-English date formats, you must take steps to globalize your app. See [Additional resources](#additional-resources) for more information. For now, just enter whole numbers like 10.
 
 <a name=displayformatdatelocal></a>
 
-Note: In some locales you'll need to specify the date format. See the highlighted code below.
+> [!NOTE]
+> In some locales you'll need to specify the date format. See the highlighted code below.
 
 <!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Models/MovieDateFormat.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [10, 2], "linenostart": 1}} -->
 

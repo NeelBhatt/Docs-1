@@ -7,7 +7,8 @@ By [Erik Reitan](https://github.com/Erikre)
 
 This tutorial shows you how to create an ASP.NET Core web app using Visual Studio and deploy it from Visual Studio to Azure App Service using continuous deployment.
 
-Note: To complete this tutorial, you need a Microsoft Azure account. If you don't have an account, you can [activate your MSDN subscriber benefits](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F) or [sign up for a free trial](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F).
+> [!NOTE]
+> To complete this tutorial, you need a Microsoft Azure account. If you don't have an account, you can [activate your MSDN subscriber benefits](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F) or [sign up for a free trial](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F).
 
   ## Prerequisites
 
@@ -167,7 +168,8 @@ This command will start the process of pushing your local project files to Azure
    Branch master set up to track remote branch master from Azure-SampleApp.
 
 
-Note: If you need to collaborate on a project, you should consider pushing to [GitHub](https://github.com) in between pushing to Azure.
+> [!NOTE]
+> If you need to collaborate on a project, you should consider pushing to [GitHub](https://github.com) in between pushing to Azure.
 
   ### Verify the Active Deployment
 

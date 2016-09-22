@@ -19,7 +19,8 @@ A distributed cache is shared by multiple app servers (see [Caching Basics](memo
 
 3. The source data store has fewer requests made to it (than with multiple in-memory caches or no cache at all).
 
-Note: If using a SQL Server Distributed Cache, some of these advantages are only true if a separate database instance is used for the cache than for the app's source data.
+> [!NOTE]
+> If using a SQL Server Distributed Cache, some of these advantages are only true if a separate database instance is used for the cache than for the app's source data.
 
 Like any cache, a distributed cache can dramatically improve an app's responsiveness, since typically data can be retrieved from the cache much faster than from a relational database (or web service).
 
@@ -49,7 +50,8 @@ To use the [IDistributedCache](https://docs.asp.net/projects/api/en/latest/autoa
 
    3. From the app's [Middleware](../../fundamentals/middleware.md) or MVC controller classes, request an instance of [IDistributedCache](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html) from the constructor. The instance will be provided by [Dependency Injection](../../fundamentals/dependency-injection.md) (DI).
 
-Note: There is no need to use a Singleton or Scoped lifetime for [IDistributedCache](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html) instances (at least for the built-in implementations). You can also create an instance wherever you might need one (instead of using [Dependency Injection](../../fundamentals/dependency-injection.md)), but this can make your code harder to test, and violates the [Explicit Dependencies Principle](http://deviq.com/explicit-dependencies-principle/).
+> [!NOTE]
+> There is no need to use a Singleton or Scoped lifetime for [IDistributedCache](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html) instances (at least for the built-in implementations). You can also create an instance wherever you might need one (instead of using [Dependency Injection](../../fundamentals/dependency-injection.md)), but this can make your code harder to test, and violates the [Explicit Dependencies Principle](http://deviq.com/explicit-dependencies-principle/).
 
 The following example shows how to use an instance of [IDistributedCache](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html) in a simple middleware component:
 
@@ -128,7 +130,8 @@ The following code from *Startup.cs* shows the value being set:
 
    ````
 
-Note: Since [IDistributedCache](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html) is configured in the `ConfigureServices` method, it is available to the `Configure` method as a parameter. Adding it as a parameter will allow the configured instance to be provided through DI.
+> [!NOTE]
+> Since [IDistributedCache](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html) is configured in the `ConfigureServices` method, it is available to the `Configure` method as a parameter. Adding it as a parameter will allow the configured instance to be provided through DI.
 
   ## Using a Redis Distributed Cache
 
@@ -159,7 +162,8 @@ In the sample code, a `RedisCache` implementation is used when the server is con
 
    ````
 
-Note: To install Redis on your local machine, install the chocolatey package [http://chocolatey.org/packages/redis-64/](http://chocolatey.org/packages/redis-64/) and run `redis-server` from a command prompt.
+> [!NOTE]
+> To install Redis on your local machine, install the chocolatey package [http://chocolatey.org/packages/redis-64/](http://chocolatey.org/packages/redis-64/) and run `redis-server` from a command prompt.
 
   ## Using a SQL Server Distributed Cache
 
@@ -229,7 +233,8 @@ Like all cache implementations, your app should get and set cache values using a
 
    ````
 
-Note: The `ConnectionString` (and optionally, `SchemaName` and `TableName`) should typically be stored outside of source control (such as UserSecrets), as they may contain credentials.
+> [!NOTE]
+> The `ConnectionString` (and optionally, `SchemaName` and `TableName`) should typically be stored outside of source control (such as UserSecrets), as they may contain credentials.
 
   ## Recommendations
 

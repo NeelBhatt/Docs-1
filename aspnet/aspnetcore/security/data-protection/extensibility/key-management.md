@@ -21,7 +21,8 @@ The IKey interface is the basic representation of a key in cryptosystem. The ter
 
 Additionally, IKey exposes a CreateEncryptorInstance method which can be used to create an [IAuthenticatedEncryptor](core-crypto.md#data-protection-extensibility-core-crypto-iauthenticatedencryptor.md) instance tied to this key.
 
-Note: There is no API to retrieve the raw cryptographic material from an IKey instance.
+> [!NOTE]
+> There is no API to retrieve the raw cryptographic material from an IKey instance.
 
   ## IKeyManager
 
@@ -107,7 +108,8 @@ Types which implement IXmlDecryptor should have one of the following two public 
 
 * .ctor()
 
-Note: The IServiceProvider passed to the constructor may be null.
+> [!NOTE]
+> The IServiceProvider passed to the constructor may be null.
 
   ## IKeyEscrowSink
 
@@ -125,7 +127,8 @@ There is no API to read material from an IKeyEscrowSink instance. This is consis
 
 The following sample code demonstrates creating and registering an IKeyEscrowSink where keys are escrowed such that only members of "CONTOSODomain Admins" can recover them.
 
-Note: To run this sample, you must be on a domain-joined Windows 8 / Windows Server 2012 machine, and the domain controller must be Windows Server 2012 or later.
+> [!NOTE]
+> To run this sample, you must be on a domain-joined Windows 8 / Windows Server 2012 machine, and the domain controller must be Windows Server 2012 or later.
 
 <!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/security/data-protection/extensibility/key-management/samples/key-management-extensibility.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "none", "highlight_args": {"linenostart": 1}} -->
 

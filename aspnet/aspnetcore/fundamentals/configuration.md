@@ -36,7 +36,8 @@ You must configure at least one source in order for `Configuration` to function 
 
    ````
 
-Note: You must set at least one configuration source.
+> [!NOTE]
+> You must set at least one configuration source.
 
 It's not unusual to store configuration values in a hierarchical structure, especially when using external files (e.g. JSON, XML, INI). In this case, configuration values can be retrieved using a `:` separated key, starting from the root of the hierarchy. For example, consider the following *appsettings.json* file:
 
@@ -66,7 +67,8 @@ The application uses configuration to configure the right connection string. Acc
 
 The settings required by your application and the mechanism used to specify those settings (configuration being one example) can be decoupled using the [options pattern](xref:fundamentals/configuration#options-config-objects). To use the options pattern you create your own options class (probably several different classes, corresponding to different cohesive groups of settings) that you can inject into your application using an options service. You can then specify your settings using configuration or whatever mechanism you choose.
 
-Note: You could store your `Configuration` instance as a service, but this would unnecessarily couple your application to a single configuration system and specific configuration keys. Instead, you can use the [Options pattern](xref:fundamentals/configuration#options-config-objects) to avoid these issues.
+> [!NOTE]
+> You could store your `Configuration` instance as a service, but this would unnecessarily couple your application to a single configuration system and specific configuration keys. Instead, you can use the [Options pattern](xref:fundamentals/configuration#options-config-objects) to avoid these issues.
 
   ## Using the built-in sources
 
@@ -99,7 +101,8 @@ Adding support for additional configuration sources is accomplished through exte
 
 The order in which configuration sources are specified is important, as this establishes the precedence with which settings will be applied if they exist in multiple locations. In the example below, if the same setting exists in both *appsettings.json* and in an environment variable, the setting from the environment variable will be the one that is used. The last configuration source specified "wins" if a setting exists in more than one location. The ASP.NET team recommends specifying environment variables last, so that the local environment can override anything set in deployed configuration files.
 
-Note: To override nested keys through environment variables in shells that don't support `:` in variable names, replace them with `__` (double underscore).
+> [!NOTE]
+> To override nested keys through environment variables in shells that don't support `:` in variable names, replace them with `__` (double underscore).
 
 It can be useful to have environment-specific configuration files. This can be achieved using the following:
 

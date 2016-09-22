@@ -7,7 +7,8 @@ By [Damien Pontifex](https://github.com/DamienPontifex)
 
 This tutorial shows you how to create an ASP.NET Core web app using Visual Studio and deploy it from Visual Studio to Azure App Service using continuous deployment.
 
-Note: To complete this tutorial, you need a Microsoft Azure account. If you don't have an account, you can [activate your MSDN subscriber benefits](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F) or [sign up for a free trial](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F). You will also need a Visual Studio Team Services account. If you don't have an account, you can [sign up for free](https://www.visualstudio.com/products/visual-studio-team-services-vs).
+> [!NOTE]
+> To complete this tutorial, you need a Microsoft Azure account. If you don't have an account, you can [activate your MSDN subscriber benefits](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F) or [sign up for a free trial](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F). You will also need a Visual Studio Team Services account. If you don't have an account, you can [sign up for free](https://www.visualstudio.com/products/visual-studio-team-services-vs).
 
   ## Prerequisites
 

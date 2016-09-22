@@ -1,4 +1,4 @@
----
+﻿---
 uid: security/data-protection/consumer-apis/overview
 ---
   # Consumer APIs Overview
@@ -23,7 +23,8 @@ The concept of same vs. different IDataProtector ties back to the concept of pur
 
 For a DI-aware component, the intended usage is that the component take an IDataProtectionProvider parameter in its constructor and that the DI system automatically provides this service when the component is instantiated.
 
-Note: Some applications (such as console applications or ASP.NET 4.x applications) might not be DI-aware so cannot use the mechanism described here. For these scenarios consult the [Non DI Aware Scenarios](../configuration/non-di-scenarios.md) document for more information on getting an instance of an IDataProtection provider without going through DI.
+> [!NOTE]
+> Some applications (such as console applications or ASP.NET 4.x applications) might not be DI-aware so cannot use the mechanism described here. For these scenarios consult the [Non DI Aware Scenarios](../configuration/non-di-scenarios.md) document for more information on getting an instance of an IDataProtection provider without going through DI.
 
 The following sample demonstrates three concepts:
 

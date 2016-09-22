@@ -50,7 +50,8 @@ ASP.NET Core defines a number of HTTP feature interfaces in [Microsoft.AspNetCor
 [ITlsTokenBindingFeature](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Http/Features/ITlsTokenBindingFeature/index.html.md#Microsoft.AspNetCore.Http.Features.ITlsTokenBindingFeature.md)
    Defines methods for working with TLS token binding parameters.
 
-Note: [ISessionFeature](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Http/Features/ISessionFeature/index.html.md#Microsoft.AspNetCore.Http.Features.ISessionFeature.md) is not a server feature, but is implemented by the [SessionMiddleware](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Session/SessionMiddleware/index.html.md#Microsoft.AspNetCore.Session.SessionMiddleware.md) (see [Managing Application State](app-state.md)).
+> [!NOTE]
+> [ISessionFeature](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Http/Features/ISessionFeature/index.html.md#Microsoft.AspNetCore.Http.Features.ISessionFeature.md) is not a server feature, but is implemented by the [SessionMiddleware](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Session/SessionMiddleware/index.html.md#Microsoft.AspNetCore.Session.SessionMiddleware.md) (see [Managing Application State](app-state.md)).
 
   ## Feature collections
 

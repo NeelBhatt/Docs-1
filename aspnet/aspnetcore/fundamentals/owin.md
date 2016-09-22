@@ -70,9 +70,11 @@ The following code shows how to add the `OwinHello` middleware (shown above) to 
 
 You can configure other actions to take place within the OWIN pipeline.
 
-Note: Response headers should only be modified prior to the first write to the response stream.
+> [!NOTE]
+> Response headers should only be modified prior to the first write to the response stream.
 
-Note: Multiple calls to `UseOwin` is discouraged for performance reasons. OWIN components will operate best if grouped together.
+> [!NOTE]
+> Multiple calls to `UseOwin` is discouraged for performance reasons. OWIN components will operate best if grouped together.
 
 <!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 

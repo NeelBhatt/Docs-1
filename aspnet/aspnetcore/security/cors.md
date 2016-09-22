@@ -1,4 +1,4 @@
----
+﻿---
 uid: security/cors
 ---
   # Enabling Cross-Origin Requests (CORS)
@@ -29,7 +29,8 @@ These URLs have different origins than the previous two:
 
 * http://www.example.com/foo.html - Different subdomain
 
-Note: Internet Explorer does not consider the port when comparing origins.
+> [!NOTE]
+> Internet Explorer does not consider the port when comparing origins.
 
   ## Setting up CORS
 

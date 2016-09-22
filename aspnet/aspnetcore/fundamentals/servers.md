@@ -199,7 +199,8 @@ You can add support for WebListener to your ASP.NET application by adding the "M
    "web": "Microsoft.AspNetCore.Hosting --server Microsoft.AspNetCore.Server.WebListener --server.urls http://localhost:5000"
    ````
 
-Note: WebListener is currently still in preview.
+> [!NOTE]
+> WebListener is currently still in preview.
 
 <a name=kestrel></a>
 
@@ -209,7 +210,8 @@ Kestrel is a cross-platform web server based on [libuv](https://github.com/libuv
 
 Learn more about working with Kestrel to create [Your First ASP.NET Core Application on a Mac Using Visual Studio Code](../tutorials/your-first-mac-aspnet.md).
 
-Note: Kestrel is designed to be run behind a proxy (for example IIS or Nginx) and should not be deployed directly facing the Internet.
+> [!NOTE]
+> Kestrel is designed to be run behind a proxy (for example IIS or Nginx) and should not be deployed directly facing the Internet.
 
   ## Choosing a server
 

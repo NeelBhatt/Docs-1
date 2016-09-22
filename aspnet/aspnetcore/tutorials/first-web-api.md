@@ -1,4 +1,4 @@
----
+﻿---
 uid: tutorials/first-web-api
 ---
   # Building Your First Web API with ASP.NET Core MVC and Visual Studio
@@ -11,7 +11,8 @@ In this tutorial, you’ll build a simple web API for managing a list of "to-do"
 
 ASP.NET Core has built-in support for MVC building Web APIs. Unifying the two frameworks makes it simpler to build apps that include both UI (HTML) and APIs, because now they share the same code base and pipeline.
 
-Note: If you are porting an existing Web API app to ASP.NET Core, see [Migrating from ASP.NET Web API](../migration/webapi.md)
+> [!NOTE]
+> If you are porting an existing Web API app to ASP.NET Core, see [Migrating from ASP.NET Web API](../migration/webapi.md)
 
   ## Overview
 
@@ -61,7 +62,8 @@ Add a folder named "Models". In Solution Explorer, right-click the project. Sele
 
 ![image](first-web-api/_static/add-folder.png)
 
-Note: You can put model classes anywhere in your project, but the *Models* folder is used by convention.
+> [!NOTE]
+> You can put model classes anywhere in your project, but the *Models* folder is used by convention.
 
 Add a `TodoItem` class. Right-click the *Models* folder and select **Add** > **Class**. Name the class `TodoItem` and tap **Add**.
 

@@ -1,4 +1,4 @@
----
+﻿---
 uid: client-side/yeoman
 ---
   # Building Projects with Yeoman
@@ -20,7 +20,8 @@ Follow the instructions on [http://yeoman.io/learning/](http://yeoman.io/learnin
    npm install -g yo bower
    ````
 
-Note: If you get the error `npm ERR! Please try running this command again as root/Administrator.` on Mac OS, run the following command using [sudo](https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man8/sudo.8.html): `sudo npm install -g yo bower grunt-cli gulp`
+> [!NOTE]
+> If you get the error `npm ERR! Please try running this command again as root/Administrator.` on Mac OS, run the following command using [sudo](https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man8/sudo.8.html): `sudo npm install -g yo bower grunt-cli gulp`
 
 From the command line, install the ASP.NET generator:
 
@@ -31,7 +32,8 @@ From the command line, install the ASP.NET generator:
    npm install -g generator-aspnet
    ````
 
-Note: If you get a permission error, run the command under `sudo` as described above.
+> [!NOTE]
+> If you get a permission error, run the command under `sudo` as described above.
 
 The `–g` flag installs the generator globally, so that it can be used from any path.
 

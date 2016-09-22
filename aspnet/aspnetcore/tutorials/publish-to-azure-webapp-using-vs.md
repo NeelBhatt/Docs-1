@@ -9,7 +9,8 @@ By [Rick Anderson](https://twitter.com/RickAndMSFT), [Cesar Blum Silveira](https
 
 * Install the latest [Azure SDK for Visual Studio](https://www.visualstudio.com/features/azure-tools-vs). The SDK installs Visual Studio if you don't already have it.
 
-Note: The SDK installation can take more than 30 minutes if your machine doesn't have many of the dependencies.
+> [!NOTE]
+> The SDK installation can take more than 30 minutes if your machine doesn't have many of the dependencies.
 
 * Install [.NET Core + Visual Studio tooling](http://go.microsoft.com/fwlink/?LinkID=798306)
 
@@ -112,7 +113,8 @@ Create a new resource group and app service plan:
 
 ![image](publish-to-azure-webapp-using-vs/_static/conf_servername.png)
 
-Note: "admin" is not allowed as the administrator user name.
+> [!NOTE]
+> "admin" is not allowed as the administrator user name.
 
 * Tap **OK** on the  **Configure SQL Database** dialog
 

@@ -13,7 +13,8 @@ This tutorial shows you how to build an ASP.NET Core app with email confirmation
 
   ## Create a New ASP.NET Core Project
 
-Note: The tutorial requires Visual Studio 2015 updated 2 and ASP.NET Core RC2 or higher.
+> [!NOTE]
+> The tutorial requires Visual Studio 2015 updated 2 and ASP.NET Core RC2 or higher.
 
 * In Visual Studio, create a New Project (from the Start Page, or via **File > New > Project**)
 
@@ -427,7 +428,8 @@ With the current templates, once a user completes the registration form, they ar
 
    ````
 
-Note: A security best practice is to not use production secrets in test and development. If you publish the app to Azure, you can set the SendGrid secrets as application settings in the Azure Web App portal. The configuration system is setup to read keys from environment variables.
+> [!NOTE]
+> A security best practice is to not use production secrets in test and development. If you publish the app to Azure, you can set the SendGrid secrets as application settings in the Azure Web App portal. The configuration system is setup to read keys from environment variables.
 
   ## Combine social and local login accounts
 

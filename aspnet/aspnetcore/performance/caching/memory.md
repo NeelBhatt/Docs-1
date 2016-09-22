@@ -17,7 +17,8 @@ Caching involves keeping a copy of data in a location that can be accessed more 
 
 Caching can dramatically improve the performance and scalability of ASP.NET applications, by eliminating unnecessary requests to external data sources for data that changes infrequently.
 
-Note: Caching in all forms (in-memory or distributed, including session state) involves making a copy of data in order to optimize performance. The copied data should be considered ephemeral - it could disappear at any time. Apps should be written to not depend on cached data, but use it when available.
+> [!NOTE]
+> Caching in all forms (in-memory or distributed, including session state) involves making a copy of data in order to optimize performance. The copied data should be considered ephemeral - it could disappear at any time. Apps should be written to not depend on cached data, but use it when available.
 
 ASP.NET supports several different kinds of caches, the simplest of which is represented by the [IMemoryCache](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Memory/IMemoryCache/index.html) interface, which represents a cache stored in the memory of the local web server.
 
@@ -301,7 +302,8 @@ Cache entries will inherit triggers and timeouts from other entries accessed whi
 
    ````
 
-Note: When one cache entry is used to create another, the new one copies the existing entry's expiration tokens and time-based expiration settings, if any. It is not expired in response to manual removal or updating of the existing entry.
+> [!NOTE]
+> When one cache entry is used to create another, the new one copies the existing entry's expiration tokens and time-based expiration settings, if any. It is not expired in response to manual removal or updating of the existing entry.
 
   ## Other Resources
 

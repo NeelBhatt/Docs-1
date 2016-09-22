@@ -120,7 +120,8 @@ ConfigureServices - `IServiceCollection`
 
 Configure - `IApplicationBuilder` - `IHostingEnvironment` - `ILoggerFactory`
 
-Note: Although `ILoggerFactory` is available in the constructor, it is typically configured in the `Configure` method. Learn more about [Logging](logging.md).
+> [!NOTE]
+> Although `ILoggerFactory` is available in the constructor, it is typically configured in the `Configure` method. Learn more about [Logging](logging.md).
 
   ## Additional Resources
 

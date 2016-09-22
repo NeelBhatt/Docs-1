@@ -346,7 +346,8 @@ A type is considered a controller if **all** the following conditions are met:
 
 * The type name ends with `Controller`, or [ControllerAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ControllerAttribute/index.html.md#Microsoft.AspNetCore.Mvc.ControllerAttribute.md) is applied to the type or one of its ancestors.
 
-Note: If [NonControllerAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/NonControllerAttribute/index.html.md#Microsoft.AspNetCore.Mvc.NonControllerAttribute.md) is applied anywhere in the type hierarchy, the discovery conventions will never consider that type or its descendants to be a controller. In other words, [NonControllerAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/NonControllerAttribute/index.html.md#Microsoft.AspNetCore.Mvc.NonControllerAttribute.md) takes precedence over [ControllerAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ControllerAttribute/index.html.md#Microsoft.AspNetCore.Mvc.ControllerAttribute.md).
+> [!NOTE]
+> If [NonControllerAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/NonControllerAttribute/index.html.md#Microsoft.AspNetCore.Mvc.NonControllerAttribute.md) is applied anywhere in the type hierarchy, the discovery conventions will never consider that type or its descendants to be a controller. In other words, [NonControllerAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/NonControllerAttribute/index.html.md#Microsoft.AspNetCore.Mvc.NonControllerAttribute.md) takes precedence over [ControllerAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ControllerAttribute/index.html.md#Microsoft.AspNetCore.Mvc.ControllerAttribute.md).
 
   ## Configuration
 

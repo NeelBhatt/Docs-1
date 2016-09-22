@@ -184,7 +184,8 @@ Test the app
 
    * If you were running VS in debug mode, stop the debugger and press ^F5
 
-Note: If the database doesn't initialize, put a break point on the line `if (context.Movie.Any())` and start debugging.
+> [!NOTE]
+> If the database doesn't initialize, put a break point on the line `if (context.Movie.Any())` and start debugging.
 
 ![image](working-with-sql/_static/dbg.png)
 

@@ -23,7 +23,8 @@ These two conventions are not required.
 
 Within the Model-View-Controller pattern, a Controller is responsible for the initial processing of the request and instantiation of the Model. Generally, business decisions should  be performed within the Model.
 
-Note: The Model should be a *Plain Old CLR Object (POCO)*, not a `DbContext` or database-related type.
+> [!NOTE]
+> The Model should be a *Plain Old CLR Object (POCO)*, not a `DbContext` or database-related type.
 
 The controller takes the result of the model's processing (if any), returns the proper view along with the associated view data. Learn more: [Overview of ASP.NET Core MVC](../overview.md) and [Getting started with ASP.NET Core MVC and Visual Studio](../../tutorials/first-mvc-app/start-mvc.md).
 
@@ -71,4 +72,5 @@ Other examples of cross-cutting concerns in MVC apps may include:
 
    * [Response Caching](../../performance/caching/response.md)
 
-Note: Many cross-cutting concerns can be handled using filters in MVC apps. Another option to keep in mind that is available to any ASP.NET Core app is custom [middleware](../../fundamentals/middleware.md).
+> [!NOTE]
+> Many cross-cutting concerns can be handled using filters in MVC apps. Another option to keep in mind that is available to any ASP.NET Core app is custom [middleware](../../fundamentals/middleware.md).

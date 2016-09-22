@@ -1,4 +1,4 @@
----
+﻿---
 uid: client-side/bootstrap
 ---
 <a name=bootstrap-index></a>
@@ -65,7 +65,8 @@ You can also install bootstrap using one of several package managers, such as bo
    Install-Package bootstrap
    ````
 
-Note: The recommended way to install client-side dependencies like Bootstrap in ASP.NET Core is via Bower (using `bower.json`, as shown above). The use of npm/NuGet are shown to demonstrate how easily Bootstrap can be added to other kinds of web applications, including earlier versions of ASP.NET.
+> [!NOTE]
+> The recommended way to install client-side dependencies like Bootstrap in ASP.NET Core is via Bower (using `bower.json`, as shown above). The use of npm/NuGet are shown to demonstrate how easily Bootstrap can be added to other kinds of web applications, including earlier versions of ASP.NET.
 
 If you're referencing your own local versions of Bootstrap, you'll need to reference them in any pages that will use it. In production you should reference bootstrap using a CDN. In the default ASP.NET site template, the `_Layout.cshtml` file does so like this:
 
@@ -144,7 +145,8 @@ If you're referencing your own local versions of Bootstrap, you'll need to refer
 
    ````
 
-Note: If you're going to be using any of Bootstrap's jQuery plugins, you will also need to reference jQuery.
+> [!NOTE]
+> If you're going to be using any of Bootstrap's jQuery plugins, you will also need to reference jQuery.
 
   ## Basic Templates and Features
 

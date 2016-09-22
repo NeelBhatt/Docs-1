@@ -10,7 +10,8 @@ By [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 This tutorial will teach you the basics of building an ASP.NET Core MVC web app using [Visual Studio 2015](https://www.visualstudio.com/en-us/visual-studio-homepage-vs.aspx).
 
-Note: For the tutorial using .NET Core on a Mac see [Your First ASP.NET Core Application on a Mac Using Visual Studio Code](../your-first-mac-aspnet.md).
+> [!NOTE]
+> For the tutorial using .NET Core on a Mac see [Your First ASP.NET Core Application on a Mac Using Visual Studio Code](../your-first-mac-aspnet.md).
 
   ## Install Visual Studio and .NET Core
 

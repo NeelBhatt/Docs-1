@@ -21,9 +21,11 @@ When a system is designed to use DI, with many classes requesting their dependen
 
 ASP.NET Core includes a simple built-in container (represented by the `IServiceProvider` interface) that supports constructor injection by default, and ASP.NET makes certain services available through DI. ASP.NET's container refers to the types it manages as *services*. Throughout the rest of this article, *services* will refer to types that are managed by ASP.NET Core's IoC container. You configure the built-in container's services in the `ConfigureServices` method in your application's `Startup` class.
 
-Note: Martin Fowler has written an extensive article on [Inversion of Control Containers and the Dependency Injection Pattern](http://www.martinfowler.com/articles/injection.html). Microsoft Patterns and Practices also has a great description of [Dependency Injection](https://msdn.microsoft.com/en-us/library/dn178469(v=pandp.30).aspx).
+> [!NOTE]
+> Martin Fowler has written an extensive article on [Inversion of Control Containers and the Dependency Injection Pattern](http://www.martinfowler.com/articles/injection.html). Microsoft Patterns and Practices also has a great description of [Dependency Injection](https://msdn.microsoft.com/en-us/library/dn178469(v=pandp.30).aspx).
 
-Note: This article covers Dependency Injection as it applies to all ASP.NET applications. Dependency Injection within MVC controllers is covered in [Dependency Injection and Controllers](../mvc/controllers/dependency-injection.md).
+> [!NOTE]
+> This article covers Dependency Injection as it applies to all ASP.NET applications. Dependency Injection within MVC controllers is covered in [Dependency Injection and Controllers](../mvc/controllers/dependency-injection.md).
 
   ## Using Framework-Provided Services
 
@@ -73,7 +75,8 @@ You can register your own application services as follows. The first generic typ
 
    ````
 
-Note: Each `services.Add<service>` call adds (and potentially configures) services. For example, `services.AddMvc()` adds the services MVC requires.
+> [!NOTE]
+> Each `services.Add<service>` call adds (and potentially configures) services. For example, `services.AddMvc()` adds the services MVC requires.
 
 The `AddTransient` method is used to map abstract types to concrete services that are instantiated separately for every object that requires it. This is known as the service's *lifetime*, and additional lifetime options are described below. It is important to choose an appropriate lifetime for each of the services you register. Should a new instance of the service be provided to each class that requests it? Should one instance be used throughout a given web request? Or should a single instance be used for the lifetime of the application?
 
@@ -136,7 +139,8 @@ The `ICharacterRepository` simply defines the two methods the controller needs t
 
 This interface is in turn implemented by a concrete type, `CharacterRepository`, that is used at runtime.
 
-Note: The way DI is used with the `CharacterRepository` class is a general model you can follow for all of your application services, not just in "repositories" or data access classes.
+> [!NOTE]
+> The way DI is used with the `CharacterRepository` class is a general model you can follow for all of your application services, not just in "repositories" or data access classes.
 
 <!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/fundamentals/dependency-injection/sample/DependencyInjectionSample/Models/CharacterRepository.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [9, 11, 12, 13, 14], "linenostart": 1}} -->
 
@@ -173,7 +177,8 @@ Note: The way DI is used with the `CharacterRepository` class is a general model
 
 Note that `CharacterRepository` requests an `ApplicationDbContext` in its constructor. It is not unusual for dependency injection to be used in a chained fashion like this, with each requested dependency in turn requesting its own dependencies. The container is responsible for resolving all of the dependencies in the graph and returning the fully resolved service.
 
-Note: Creating the requested object, and all of the objects it requires, and all of the objects those require, is sometimes referred to as an *object graph*. Likewise, the collective set of dependencies that must be resolved is typically referred to as a *dependency tree* or *dependency graph*.
+> [!NOTE]
+> Creating the requested object, and all of the objects it requires, and all of the objects those require, is sometimes referred to as an *object graph*. Likewise, the collective set of dependencies that must be resolved is typically referred to as a *dependency tree* or *dependency graph*.
 
 In this case, both `ICharacterRepository` and in turn `ApplicationDbContext` must be registered with the services container in `ConfigureServices` in `Startup`. `ApplicationDbContext` is configured with the call to the extension method `AddDbContext<T>`. The following code shows the registration of the `CharacterRepository` type.
 
@@ -372,7 +377,8 @@ Request Services represent the services you configure and request as part of you
 
 Generally, you shouldn't use these properties directly, preferring instead to request the types your classes you require via your class's constructor, and letting the framework inject these dependencies. This yields classes that are easier to test (see [Testing](../testing/index.md)) and are more loosely coupled.
 
-Note: Prefer requesting dependencies as constructor parameters to accessing the `RequestServices` collection.
+> [!NOTE]
+> Prefer requesting dependencies as constructor parameters to accessing the `RequestServices` collection.
 
   ## Designing Your Services For Dependency Injection
 
@@ -420,7 +426,8 @@ Next, configure the container in `ConfigureServices` and return an `IServiceProv
    }
    ````
 
-Note: When using a third-party DI container, you must change `ConfigureServices` so that it returns `IServiceProvider` instead of `void`.
+> [!NOTE]
+> When using a third-party DI container, you must change `ConfigureServices` so that it returns `IServiceProvider` instead of `void`.
 
 Finally, configure Autofac as normal in `DefaultModule`:
 
@@ -453,7 +460,8 @@ When working with dependency injection, keep the following recommendations in mi
 
 * Avoid static access to `HttpContext`.
 
-Note: Like all sets of recommendations, you may encounter situations where ignoring one is required. We have found exceptions to be rare -- mostly very special cases within the framework itself.
+> [!NOTE]
+> Like all sets of recommendations, you may encounter situations where ignoring one is required. We have found exceptions to be rare -- mostly very special cases within the framework itself.
 
 Remember, dependency injection is an *alternative* to static/global object access patterns. You will not be able to realize the benefits of DI if you mix it with static object access.
 

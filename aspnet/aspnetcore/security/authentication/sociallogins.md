@@ -1,4 +1,4 @@
----
+﻿---
 uid: security/authentication/sociallogins
 ---
 <a name=security-authentication-social-logins></a>
@@ -13,7 +13,8 @@ Enabling these credentials in your web sites provides a significant advantage be
 
   ## Create a New ASP.NET Core Project
 
-Note: The tutorial requires the latest version of Visual Studio 2015 and ASP.NET Core.
+> [!NOTE]
+> The tutorial requires the latest version of Visual Studio 2015 and ASP.NET Core.
 
 * In Visual Studio, create a New Project (from the Start Page, or via **File > New > Project**)
 

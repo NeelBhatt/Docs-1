@@ -46,7 +46,8 @@ Warning: The Secret Manager tool does not encrypt the stored secrets and should 
      dotnet user-secrets -h
      ````
 
-Note: When any of the tools are defined in the project.json file, you must be in the same directory in order to use the tooling commands.
+> [!NOTE]
+> When any of the tools are defined in the project.json file, you must be in the same directory in order to use the tooling commands.
 
 The Secret Manager tool will display usage, options and command help.
 

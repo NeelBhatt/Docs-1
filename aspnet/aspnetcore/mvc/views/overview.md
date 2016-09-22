@@ -84,9 +84,11 @@ Tip: We recommend following the convention of simply returning `View()` from act
 
 A view file path can be provided, instead of a view name. In this case, the *.cshtml* extension must be specified as part of the file path. The path should be relative to the application root (and can optionally start with "/" or "~/"). For example: `return View("Views/Home/About.cshtml");`
 
-Note: [Partial views](partial.md) and [view components](view-components.md) use similar (but not identical) discovery mechanisms.
+> [!NOTE]
+> [Partial views](partial.md) and [view components](view-components.md) use similar (but not identical) discovery mechanisms.
 
-Note: You can customize the default convention regarding where views are located within the app by using a custom [IViewLocationExpander](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Razor/IViewLocationExpander/index.html.md#Microsoft.AspNetCore.Mvc.Razor.IViewLocationExpander.md).
+> [!NOTE]
+> You can customize the default convention regarding where views are located within the app by using a custom [IViewLocationExpander](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Razor/IViewLocationExpander/index.html.md#Microsoft.AspNetCore.Mvc.Razor.IViewLocationExpander.md).
 
 Tip: View names may be case sensitive depending on the underlying file system. For compatibility across operating systems, always match case between controller and action names and associated view folders and filenames.
 
@@ -149,7 +151,8 @@ There are no restrictions on the types that can be provided to a view as a model
    }
    ````
 
-Note: Nothing prevents you from using the same classes as your business model types and your display model types. However, keeping them separate allows your views to vary independently from your domain or persistence model, and can offer some security benefits as well (for models that users will send to the app using [model binding](../models/model-binding.md)).
+> [!NOTE]
+> Nothing prevents you from using the same classes as your business model types and your display model types. However, keeping them separate allows your views to vary independently from your domain or persistence model, and can offer some security benefits as well (for models that users will send to the app using [model binding](../models/model-binding.md)).
 
   ### Loosely Typed Data
 
@@ -214,7 +217,8 @@ The `ViewBag` objects provides dynamic access to the objects stored in `ViewData
    </address>
    ````
 
-Note: Since both refer to the same underlying `ViewData` collection, you can mix and match between `ViewData` and `ViewBag` when reading and writing values, if convenient.
+> [!NOTE]
+> Since both refer to the same underlying `ViewData` collection, you can mix and match between `ViewData` and `ViewBag` when reading and writing values, if convenient.
 
   ### Dynamic Views
 

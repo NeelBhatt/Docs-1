@@ -1,4 +1,4 @@
----
+﻿---
 uid: client-side/angular
 ---
 Warning: This page documents version 1.0.0-rc1 and has not yet been updated for version 1.0.0
@@ -379,7 +379,8 @@ Here is the resulting output:
 
 `$scope` is a JavaScript object that acts as glue between the view (template) and the controller (explained below). A view template in AngularJS only knows about the values attached to the `$scope` object in the controller.
 
-Note: In the MVVM world, the `$scope` object in AngularJS is often defined as the ViewModel. The AngularJS team refers to the `$scope` object as the Data-Model. [Learn more about Scopes in AngularJS](https://docs.angularjs.org/guide/scope).
+> [!NOTE]
+> In the MVVM world, the `$scope` object in AngularJS is often defined as the ViewModel. The AngularJS team refers to the `$scope` object as the Data-Model. [Learn more about Scopes in AngularJS](https://docs.angularjs.org/guide/scope).
 
 Below is a simple example showing how to set properties on `$scope` within a separate JavaScript file, `scope.js`:
 
@@ -782,9 +783,11 @@ Let's see the application in action:
 
 You can [view the application's structure on GitHub](https://github.com/aspnet/Docs/tree/master/aspnet/client-side/angular/sample).
 
-Note: For more on structuring AngularJS applications, see [John Papa's Angular Style Guide](https://github.com/johnpapa/angular-styleguide)
+> [!NOTE]
+> For more on structuring AngularJS applications, see [John Papa's Angular Style Guide](https://github.com/johnpapa/angular-styleguide)
 
-Note: To create AngularJS module, controller, factory, directive and view files easily, be sure to check out Sayed Hashimi's [SideWaffle template pack for Visual Studio](http://sidewaffle.com/). Sayed Hashimi is a Senior Program Manager on the Visual Studio Web Team at Microsoft and SideWaffle templates are considered the gold standard. At the time of this writing, SideWaffle is available for Visual Studio 2012, 2013, and 2015.
+> [!NOTE]
+> To create AngularJS module, controller, factory, directive and view files easily, be sure to check out Sayed Hashimi's [SideWaffle template pack for Visual Studio](http://sidewaffle.com/). Sayed Hashimi is a Senior Program Manager on the Visual Studio Web Team at Microsoft and SideWaffle templates are considered the gold standard. At the time of this writing, SideWaffle is available for Visual Studio 2012, 2013, and 2015.
 
   ### Routing and Multiple Views
 
@@ -920,7 +923,8 @@ There are a number of directives in AngularJS that add event-handling capabiliti
 
    * `ng-change`
 
-Note: You can add your own event handlers using the [custom directives feature in AngularJS](https://docs.angularjs.org/guide/directive).
+> [!NOTE]
+> You can add your own event handlers using the [custom directives feature in AngularJS](https://docs.angularjs.org/guide/directive).
 
 Let's look at how the `ng-click` event is wired up. Create a new JavaScript file named `eventHandlerController.js`, and add the following to it:
 

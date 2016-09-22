@@ -1,4 +1,4 @@
----
+﻿---
 uid: publishing/linuxproduction
 ---
   # Publish to a Linux Production Environment
@@ -23,7 +23,8 @@ Run `dotnet publish` from your dev environment to package your application into 
 
 Before we proceed, copy your ASP.NET Core application to your server using whatever tool (SCP, FTP, etc) integrates into your workflow. Try and run the app and navigate to `http://<serveraddress>:<port>` in your browser to see if the application runs fine on Linux. I recommend you have a working app before proceeding.
 
-Note: You can use [Yeoman](../client-side/yeoman.md) to create a new ASP.NET Core application for a new project.
+> [!NOTE]
+> You can use [Yeoman](../client-side/yeoman.md) to create a new ASP.NET Core application for a new project.
 
   ## Configure a reverse proxy server
 
@@ -44,7 +45,8 @@ For the purposes of this guide, we are going to use a single instance of Nginx t
    sudo apt-get install nginx
    ````
 
-Note: If you plan to install optional Nginx modules you may be required to build Nginx from source.
+> [!NOTE]
+> If you plan to install optional Nginx modules you may be required to build Nginx from source.
 
 We are going to `apt-get` to install Nginx. The installer also creates a System V init script that runs Nginx as daemon on system startup. Since we just installed Nginx for the first time, we can explicitly start it by running
 
@@ -97,7 +99,8 @@ Nginx will forward requests to your Kestrel server, however unlike IIS on Window
    sudo apt-get install supervisor
    ````
 
-Note: `supervisor` is a python based tool and you can acquire it through [pip](http://supervisord.org/installing.html#installing-via-pip) or [easy_install](http://supervisord.org/installing.html#internet-installing-with-setuptools) instead.
+> [!NOTE]
+> `supervisor` is a python based tool and you can acquire it through [pip](http://supervisord.org/installing.html#installing-via-pip) or [easy_install](http://supervisord.org/installing.html#internet-installing-with-setuptools) instead.
 
   ### Configuring supervisor
 

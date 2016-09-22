@@ -9,7 +9,8 @@ The implementation of the <machineKey> element in ASP.NET [is replaceable](http:
 
   ## Package installation
 
-Note: The new data protection system can only be installed into an existing ASP.NET application targeting .NET 4.5.1 or higher. Installation will fail if the application targets .NET 4.5 or lower.
+> [!NOTE]
+> The new data protection system can only be installed into an existing ASP.NET application targeting .NET 4.5.1 or higher. Installation will fail if the application targets .NET 4.5 or lower.
 
 To install the new data protection system into an existing ASP.NET 4.5.1+ project, install the package Microsoft.AspNetCore.DataProtection.SystemWeb. This will instantiate the data protection system using the [default configuration](../configuration/default-settings.md#data-protection-default-settings.md) settings.
 

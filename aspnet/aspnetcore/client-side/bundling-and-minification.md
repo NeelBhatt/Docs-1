@@ -1,4 +1,4 @@
----
+﻿---
 uid: client-side/bundling-and-minification
 ---
 Warning: This page documents version 1.0.0-rc2 and has not yet been updated for version 1.0.0
@@ -195,7 +195,8 @@ To run bundling and minification tasks from the command-line using gulp (`gulp m
 
 ![image](bundling-and-minification/_static/task-runner-explorer.png)
 
-Note: The gulp tasks for bundling and minification do not general run when your project is built and must be run manually.
+> [!NOTE]
+> The gulp tasks for bundling and minification do not general run when your project is built and must be run manually.
 
   ## Impact of Bundling and Minification
 

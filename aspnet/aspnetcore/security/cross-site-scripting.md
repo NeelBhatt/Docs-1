@@ -1,4 +1,4 @@
----
+﻿---
 uid: security/cross-site-scripting
 ---
 <a name=security-cross-site-scripting></a>
@@ -241,7 +241,8 @@ This example widens the safe list to include the Unicode Range CjkUnifiedIdeogra
 
 Safe list ranges are specified as Unicode code charts, not languages. The [Unicode standard](http://unicode.org/) has a list of [code charts](http://www.unicode.org/charts/index.html) you can use to find the chart containing your characters. Each encoder, Html, JavaScript and Url, must be configured separately.
 
-Note: Customization of the safe list only affects encoders sourced via DI. If you directly access an encoder via `System.Text.Encodings.Web.*Encoder.Default` then the default, Basic Latin only safelist will be used.
+> [!NOTE]
+> Customization of the safe list only affects encoders sourced via DI. If you directly access an encoder via `System.Text.Encodings.Web.*Encoder.Default` then the default, Basic Latin only safelist will be used.
 
   ## Where encoding should take place?
 
