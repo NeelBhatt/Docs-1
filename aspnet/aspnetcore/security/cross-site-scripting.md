@@ -3,11 +3,11 @@ uid: security/cross-site-scripting
 ---
 <a name=security-cross-site-scripting></a>
 
-  # Preventing Cross-Site Scripting
+# Preventing Cross-Site Scripting
 
 Cross-Site Scripting (XSS) is a security vulnerability which enables an attacker to place client side scripts (usually JavaScript) into web pages. When other users load affected pages the attackers scripts will run, enabling the attacher to steal cookies and session tokens, change the contents of the web page through DOM manipulation or redirect the browser to another page. XSS vulnerabilities generally occur when an application takes user input and outputs it in a page without validating, encoding or escaping it.
 
-  ## Protecting your application against XSS
+## Protecting your application against XSS
 
 At a basic level XSS works by tricking your application into inserting a `<script>` tag into your rendered page, or by inserting an `On*` event into an element. Developers should use the following prevention steps to avoid introducing XSS into their application.
 
@@ -21,7 +21,7 @@ At a basic level XSS works by tricking your application into inserting a `<scrip
 
 5. Before putting untrusted data into a URL query string ensure it is URL encoded.
 
-  ## HTML Encoding using Razor
+## HTML Encoding using Razor
 
 The Razor engine used in MVC automatically encodes all output sourced from variables, unless you work really hard to prevent it doing so. It uses HTML Attribute encoding rules whenever you use the *@* directive. As HTML attribute encoding is a superset of HTML encoding this means you don't have to concern yourself with whether you should use HTML encoding or HTML attribute encoding. You must ensure that you only use @ in an HTML context, not when attempting to insert untrusted input directly into JavaScript. Tag helpers will also encode input you use in tag parameters.
 
@@ -49,7 +49,7 @@ This view outputs the contents of the *untrustedInput* variable. This variable i
 
 Warning: ASP.NET Core MVC provides an `HtmlString` class which is not automatically encoded upon output. This should never be used in combination with untrusted input as this will expose an XSS vulnerability.
 
-  ## Javascript Encoding using Razor
+## Javascript Encoding using Razor
 
 There may be times you want to insert a value into JavaScript to process in your view. There are two ways to do this. The safest way to insert simple values is to place the value in a data attribute of a tag and retrieve it in your JavaScript. For example:
 
@@ -148,7 +148,7 @@ This will render in the browser as follows;
 
 Warning: Do not concatenate untrusted input in JavaScript to create DOM elements. You should use `createElement()` and assign property values appropriately such as `node.TextContent=`, or use `element.SetAttribute()`/`element[attribute]=` otherwise you expose yourself to DOM-based XSS.
 
-  ## Accessing encoders in code
+## Accessing encoders in code
 
 The HTML, JavaScript and URL encoders are available to your code in two ways, you can inject them via [dependency injection](../fundamentals/dependency-injection.md#fundamentals-dependency-injection.md) or you can use the default encoders contained in the `System.Text.Encodings.Web` namespace. If you use the default encoders then any  you applied to character ranges to be treated as safe will not take effect - the default encoders use the safest encoding rules possible.
 
@@ -175,7 +175,7 @@ To use the configurable encoders via DI your constructors should take an *HtmlEn
    }
    ````
 
-  ## Encoding URL Parameters
+## Encoding URL Parameters
 
 If you want to build a URL query string with untrusted input as a value use the `UrlEncoder` to encode the value. For example,
 
@@ -193,7 +193,7 @@ Warning: Do not use untrusted input as part of a URL path. Always pass untrusted
 
 <a name=security-cross-site-scripting-customization></a>
 
-  ## Customizing the Encoders
+## Customizing the Encoders
 
 By default encoders use a safe list limited to the Basic Latin Unicode range and encode all characters outside of that range as their character code equivalents. This behavior also affects Razor TagHelper and HtmlHelper rendering as it will use the encoders to output your strings.
 
@@ -244,10 +244,10 @@ Safe list ranges are specified as Unicode code charts, not languages. The [Unico
 > [!NOTE]
 > Customization of the safe list only affects encoders sourced via DI. If you directly access an encoder via `System.Text.Encodings.Web.*Encoder.Default` then the default, Basic Latin only safelist will be used.
 
-  ## Where encoding should take place?
+## Where encoding should take place?
 
 The general accepted practice is that encoding takes place at the point of output and encoded values should never be stored in a database. Encoding at the point of output allows you to change the use of data, for example, from HTML to a query string value. It also enables you to easily search your data without having to encode values before searching and allows you to take advantage of any changes or bug fixes made to encoders.
 
-  ## Validation as an XSS prevention technique
+## Validation as an XSS prevention technique
 
 Validation can be a useful tool in limiting XSS attacks. For example, a simple numeric string containing only the characters 0-9 will not trigger an XSS attack. Validation becomes more complicated should you wish to accept HTML in user input - parsing HTML input is difficult, if not impossible. MarkDown and other text formats would be a safer option for rich input. You should never rely on validation alone. Always encode untrusted input before output, no matter what validation you have performed.

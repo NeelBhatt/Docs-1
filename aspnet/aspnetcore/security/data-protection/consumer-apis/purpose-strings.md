@@ -3,7 +3,7 @@ uid: security/data-protection/consumer-apis/purpose-strings
 ---
 <a name=data-protection-consumer-apis-purposes></a>
 
-  # Purpose Strings
+# Purpose Strings
 
 Components which consume IDataProtectionProvider must pass a unique *purposes* parameter to the CreateProtector method. The purposes *parameter* is inherent to the security of the data protection system, as it provides isolation between cryptographic consumers, even if the root cryptographic keys are the same.
 

@@ -3,11 +3,11 @@ uid: security/authorization/resourcebased
 ---
 <a name=security-authorization-resource-based></a>
 
-  # Resource Based Authorization
+# Resource Based Authorization
 
 Often authorization depends upon the resource being accessed. For example a document may have an author property. Only the document author would be allowed to update it, so the resource must be loaded from the document repository before an authorization evaluation can be made. This cannot be done with an Authorize attribute, as attribute evaluation takes place before data binding and before your own code to load a resource runs inside an action. Instead of declarative authorization, the attribute method, we must use imperative authorization, where a developer calls an authorize function within his own code.
 
-  ## Authorizing within your code
+## Authorizing within your code
 
 Authorization is implemented as a service, [IAuthorizationService](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/IAuthorizationService/index.html.md#Microsoft.AspNetCore.Authorization.IAuthorizationService.md), registered in the service collection and available via [dependency injection](../../fundamentals/dependency-injection.md#fundamentals-dependency-injection.md) for Controllers to access.
 
@@ -68,7 +68,7 @@ To call the service load your resource within your action then call the [Authori
    }
    ````
 
-  ## Writing a resource based handler
+## Writing a resource based handler
 
 Writing a handler for resource based authorization is not that much different to [writing a plain requirements handler](policies.md#security-authorization-policies-based-authorization-handler.md). You create a requirement, and then implement a handler for the requirement, specifying the requirement as before and also the resource type. For example, a handler which might accept a Document resource would look as follows;
 
@@ -98,7 +98,7 @@ Don't forget you also need to register your handler in the `ConfigureServices` m
    services.AddSingleton<IAuthorizationHandler, DocumentAuthorizationHandler>();
    ````
 
-  ### Operational Requirements
+### Operational Requirements
 
 If you are making decisions based on operations such as read, write, update and delete, you can use the [OperationAuthorizationRequirement](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/Infrastructure/OperationAuthorizationRequirement/index.html.md#Microsoft.AspNetCore.Authorization.Infrastructure.OperationAuthorizationRequirement.md) class in the [Microsoft.AspNetCore.Authorization.Infrastructure](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/Infrastructure/index.html.md#Microsoft.AspNetCore.Authorization.Infrastructure.md) namespace. This prebuilt requirement class enables you to write a single handler which has a parameterized operation name, rather than create individual classes for each operation. To use it provide some operation names:
 

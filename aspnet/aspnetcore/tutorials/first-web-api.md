@@ -1,7 +1,7 @@
 ﻿---
 uid: tutorials/first-web-api
 ---
-  # Building Your First Web API with ASP.NET Core MVC and Visual Studio
+# Building Your First Web API with ASP.NET Core MVC and Visual Studio
 
 By [Mike Wasson](https://github.com/mikewasson) and [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -14,7 +14,7 @@ ASP.NET Core has built-in support for MVC building Web APIs. Unifying the two fr
 > [!NOTE]
 > If you are porting an existing Web API app to ASP.NET Core, see [Migrating from ASP.NET Web API](../migration/webapi.md)
 
-  ## Overview
+## Overview
 
 Here is the API that you’ll create:  
 
@@ -42,7 +42,7 @@ The following diagram show the basic design of the app.
 
 * To keep the tutorial simple, the app doesn’t use a database. Instead, it just keeps to-do items in memory. But we’ll still include a (trivial) data access layer, to illustrate the separation between the web API and the data layer. For a tutorial that uses a database, see [Building your first ASP.NET Core MVC app with Visual Studio](first-mvc-app/index.md).
 
-  ## Create the project
+## Create the project
 
 Start Visual Studio. From the **File** menu, select **New** > **Project**.
 
@@ -54,7 +54,7 @@ In the **New ASP.NET Core Web Application (.NET Core) - TodoApi** dialog, select
 
 ![image](first-web-api/_static/web-api-project.png)
 
-  ## Add a model class
+## Add a model class
 
 A model is an object that represents the data in your application. In this case, the only model is a to-do item.
 
@@ -71,7 +71,7 @@ Replace the generated code with:
 
 [!code-csharp[Main](first-web-api/sample/src/TodoApi/Models/TodoItem.cs)]
 
-  ## Add a repository class
+## Add a repository class
 
 A *repository* is an object that encapsulates the data layer, and contains logic for retrieving data and mapping it to an entity model. Even though the example app doesn’t use a database, it’s useful to see how you can inject a repository into your controllers. Create the repository code in the *Models* folder.
 
@@ -87,7 +87,7 @@ Next, add a `TodoRepository` class that implements `ITodoRepository`:
 
 Build the app to verify you don't have any compiler errors.
 
-  ## Register the repository
+## Register the repository
 
 By defining a repository interface, we can decouple the repository class from the MVC controller that uses it. Instead of instantiating a `TodoRepository` inside the controller we will inject an `ITodoRepository` using the built-in support in ASP.NET Core for [dependency injection](../fundamentals/dependency-injection.md).
 
@@ -104,7 +104,7 @@ In the `ConfigureServices` method, add the highlighted code:
 
 [!code-csharp[Main](first-web-api/sample/src/TodoApi/Startup.cs?name=snippet_AddSingleton&highlight=6)]
 
-  ## Add a controller
+## Add a controller
 
 In Solution Explorer, right-click the *Controllers* folder. Select **Add** > **New Item**. In the **Add New Item** dialog, select the **Web  API Controller Class** template. Name the class `TodoController`.
 
@@ -115,7 +115,7 @@ Replace the generated code with the following:
 
 This defines an empty controller class. In the next sections, we'll add methods to implement the API.
 
-  ## Getting to-do items
+## Getting to-do items
 
 To get to-do items, add the following methods to the `TodoController` class.
 
@@ -142,7 +142,7 @@ Here is an example HTTP response for the `GetAll` method:
 
 Later in the tutorial I'll show how you can view the HTTP response using [Postman](https://www.getpostman.com/).
 
-  ### Routing and URL paths
+### Routing and URL paths
 
 The `[HttpGet]` attribute ([HttpGetAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/HttpGetAttribute/index.html.md#Microsoft.AspNetCore.Mvc.HttpGetAttribute.md)) specifies an HTTP GET method. The URL path for each method is constructed as follows:
 
@@ -164,7 +164,7 @@ In the `GetById` method:
 
 `Name = "GetTodo"` creates a named route and allows you to link to this route in an HTTP Response. I'll explain it with an example later. See [Routing to Controller Actions](../mvc/controllers/routing.md) for detailed information.
 
-  ### Return values
+### Return values
 
 The `GetAll` method returns an `IEnumerable`. MVC automatically serializes the object to [JSON](http://www.json.org/) and writes the JSON into the body of the response message. The response code for this method is 200, assuming there are no unhandled exceptions. (Unhandled exceptions are translated into 5xx errors.)
 
@@ -179,11 +179,11 @@ In contrast, the `GetById` method returns the more general `IActionResult` type,
 
 In Visual Studio, press CTRL+F5 to launch the app. Visual Studio launches a browser and navigates to `http://localhost:port/api/values`, where *port* is a randomly chosen port number. If you're using Chrome, Edge or Firefox, the data will be displayed. If you're using IE, IE will prompt to you open or save the *values.json* file.
 
-  ## Implement the other CRUD operations
+## Implement the other CRUD operations
 
 We'll add `Create`, `Update`, and `Delete` methods to the controller. These are variations on a theme, so I'll just show the code and highlight the main differences. Build the project after adding or changing code.
 
-  ### Create
+### Create
 
 [!code-csharp[Main](first-web-api/sample/src/TodoApi/Controllers/TodoController.cs?name=snippet_Create)]
 
@@ -191,7 +191,7 @@ This is an HTTP POST method, indicated by the [[HttpPost]](https://docs.asp.net/
 
 The [CreatedAtRoute](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Controller/index.html) method returns a 201 response, which is the standard response for an HTTP POST method that creates a new resource on the server. `CreateAtRoute` also adds a Location header to the response. The Location header specifies the URI of the newly created to-do item. See [10.2.2 201 Created](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
 
-  ### Use Postman to send a Create request
+### Use Postman to send a Create request
 
 ![image](first-web-api/_static/pmc.png)
 
@@ -219,7 +219,7 @@ You can use the Location header URI to access the resource you just created. Rec
    public IActionResult GetById(string id)
    ````
 
-  ### Update
+### Update
 
 [!code-csharp[Main](first-web-api/sample/src/TodoApi/Controllers/TodoController.cs?name=snippet_Update)]
 
@@ -228,7 +228,7 @@ You can use the Location header URI to access the resource you just created. Rec
 ![image](first-web-api/_static/pmcput.png)
 
   
-  ### Delete
+### Delete
 
 [!code-csharp[Main](first-web-api/sample/src/TodoApi/Controllers/TodoController.cs?name=snippet_Delete)]
 
@@ -236,7 +236,7 @@ The response is [204 (No Content)](http://www.w3.org/Protocols/rfc2616/rfc2616-s
 
 ![image](first-web-api/_static/pmd.png)
 
-  ## Next steps
+## Next steps
 
 * To learn about creating a backend for a native mobile app, see [Creating Backend Services for Native Mobile Applications](../mobile/native-mobile-backend.md).
 

@@ -1,7 +1,7 @@
 ---
 uid: performance/caching/distributed
 ---
-  # Working with a Distributed Cache
+# Working with a Distributed Cache
 
 By [Steve Smith](http://ardalis.com)
 
@@ -9,7 +9,7 @@ Distributed caches can improve the performance and scalability of ASP.NET Core a
 
 [View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnet/performance/caching/distributed/sample)
 
-  ## What is a Distributed Cache
+## What is a Distributed Cache
 
 A distributed cache is shared by multiple app servers (see [Caching Basics](memory.md#caching-basics.md)). The information in the cache is not stored in the memory of individual web servers, and the cached data is available to all of the app's servers. This provides several advantages:
 
@@ -26,7 +26,7 @@ Like any cache, a distributed cache can dramatically improve an app's responsive
 
 Cache configuration is implementation specific. This article describes how to configure both Redis and SQL Server distributed caches. Regardless of which implementation is selected, the app interacts with the cache using a common [IDistributedCache](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html) interface.
 
-  ## The IDistributedCache Interface
+## The IDistributedCache Interface
 
 The [IDistributedCache](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html) interface includes synchronous and asynchronous methods. The interface allows items to be added, retrieved, and removed from the distributed cache implementation. The [IDistributedCache](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html) interface includes the following methods:
 
@@ -133,7 +133,7 @@ The following code from *Startup.cs* shows the value being set:
 > [!NOTE]
 > Since [IDistributedCache](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html) is configured in the `ConfigureServices` method, it is available to the `Configure` method as a parameter. Adding it as a parameter will allow the configured instance to be provided through DI.
 
-  ## Using a Redis Distributed Cache
+## Using a Redis Distributed Cache
 
 [Redis](http://redis.io) is an open source in-memory data store, which is often used as a distributed cache. You can use it locally, and you can configure an [Azure Redis Cache](https://azure.microsoft.com/en-us/services/cache/) for your Azure-hosted ASP.NET Core apps. Your ASP.NET Core app configures the cache implementation using a `RedisDistributedCache` instance.
 
@@ -165,7 +165,7 @@ In the sample code, a `RedisCache` implementation is used when the server is con
 > [!NOTE]
 > To install Redis on your local machine, install the chocolatey package [http://chocolatey.org/packages/redis-64/](http://chocolatey.org/packages/redis-64/) and run `redis-server` from a command prompt.
 
-  ## Using a SQL Server Distributed Cache
+## Using a SQL Server Distributed Cache
 
 The SqlServerCache implementation allows the distributed cache to use a SQL Server database as its backing store. To create SQL Server table you can use sql-cache tool, the tool creates a table with the name and schema you specify.
 
@@ -236,7 +236,7 @@ Like all cache implementations, your app should get and set cache values using a
 > [!NOTE]
 > The `ConnectionString` (and optionally, `SchemaName` and `TableName`) should typically be stored outside of source control (such as UserSecrets), as they may contain credentials.
 
-  ## Recommendations
+## Recommendations
 
 When deciding which implementation of [IDistributedCache](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html) is right for your app, choose between Redis and SQL Server based on your existing infrastructure and environment, your performance requirements, and your team's experience. If your team is more comfortable working with Redis, it's an excellent choice. If your team prefers SQL Server, you can be confident in that implementation as well. Note that A traditional caching solution stores data in-memory which allows for fast retrieval of data. You should store commonly used data in a cache and store the entire data in a backend persistent store such as SQL Server or Azure Storage. Redis Cache is a caching solution which gives you high throughput and low latency as compared to SQL Cache. Also, you should avoid using the in-memory implementation (`MemoryCache`) in multi-server environments.
 

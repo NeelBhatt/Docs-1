@@ -3,7 +3,7 @@ uid: security/data-protection/configuration/overview
 ---
 <a name=data-protection-configuring></a>
 
-  # Configuring Data Protection
+# Configuring Data Protection
 
 When the data protection system is initialized it applies some [default settings](default-settings.md#data-protection-default-settings.md) based on the operational environment. These settings are generally good for applications running on a single machine. There are some cases where a developer may want to change these (perhaps because his application is spread across multiple machines or for compliance reasons), and for these scenarios the data protection system offers a rich configuration API.
 
@@ -88,7 +88,7 @@ Finally, you may have a scenario where you do not want an application to automat
 
 <a name=data-protection-configuration-per-app-isolation></a>
 
-  ## Per-application isolation
+## Per-application isolation
 
 When the data protection system is provided by an ASP.NET Core host, it will automatically isolate applications from one another, even if those applications are running under the same worker process account and are using the same master keying material. This is somewhat similar to the IsolateApps modifier from System.Web's <machineKey> element.
 
@@ -106,7 +106,7 @@ If the data protection system is not provided by an ASP.NET Core host (e.g., if 
 
 <a name=data-protection-changing-algorithms></a>
 
-  ## Changing algorithms
+## Changing algorithms
 
 The data protection stack allows changing the default algorithm used by newly-generated keys. The simplest way to do this is to call UseCryptographicAlgorithms from the configuration callback, as in the below example.
 
@@ -132,7 +132,7 @@ Tip: Changing algorithms does not affect existing keys in the key ring. It only 
 
 <a name=data-protection-changing-algorithms-custom-managed></a>
 
-  ### Specifying custom managed algorithms
+### Specifying custom managed algorithms
 
 To specify custom managed algorithms, create a ManagedAuthenticatedEncryptionSettings instance that points to the implementation types.
 
@@ -161,7 +161,7 @@ Generally the *Type properties must point to concrete, instantiable (via a publi
 
 <a name=data-protection-changing-algorithms-cng></a>
 
-  ### Specifying custom Windows CNG algorithms
+### Specifying custom Windows CNG algorithms
 
 To specify a custom Windows CNG algorithm using CBC-mode encryption + HMAC validation, create a CngCbcAuthenticatedEncryptionSettings instance that contains the algorithmic information.
 
@@ -210,11 +210,11 @@ To specify a custom Windows CNG algorithm using Galois/Counter Mode encryption +
 > [!NOTE]
 > The symmetric block cipher algorithm must have a key length of ≥ 128 bits and a block size of exactly 128 bits, and it must support GCM encryption. The EncryptionAlgorithmProvider property can be set to null to use the default provider for the specified algorithm. See the [BCryptOpenAlgorithmProvider](https://msdn.microsoft.com/en-us/library/windows/desktop/aa375479(v=vs.85).aspx) documentation for more information.
 
-  ### Specifying other custom algorithms
+### Specifying other custom algorithms
 
 Though not exposed as a first-class API, the data protection system is extensible enough to allow specifying almost any kind of algorithm. For example, it is possible to keep all keys contained within an HSM and to provide a custom implementation of the core encryption and decryption routines. See IAuthenticatedEncryptorConfiguration in the core cryptography extensibility section for more information.
 
-  ### See also
+### See also
 
 [Non DI Aware Scenarios](non-di-scenarios.md)
 

@@ -3,7 +3,7 @@ uid: performance/caching/memory
 ---
 Warning: This page documents version 1.0.0-rc2 and has not yet been updated for version 1.0.0
 
-  # In Memory Caching
+# In Memory Caching
 
 By [Steve Smith](http://ardalis.com)
 
@@ -13,7 +13,7 @@ Caching involves keeping a copy of data in a location that can be accessed more 
 
 <a name=caching-basics></a>
 
-  ## Caching Basics
+## Caching Basics
 
 Caching can dramatically improve the performance and scalability of ASP.NET applications, by eliminating unnecessary requests to external data sources for data that changes infrequently.
 
@@ -28,7 +28,7 @@ An in-memory cache is stored in the memory of a single server hosting an ASP.NET
 
 Tip: A common use case for caching is data-driven navigation menus, which rarely change but are frequently read for display within an application. Caching results that do not vary often but which are requested frequently can greatly improve performance by reducing round trips to out of process data stores and unnecessary computation.
 
-  ## Configuring In Memory Caching
+## Configuring In Memory Caching
 
 To use an in memory cache in your ASP.NET application, add the following dependencies to your *project.json* file:
 
@@ -78,7 +78,7 @@ You utilize caching in your app by requesting an instance of `IMemoryCache` in y
 
    ````
 
-  ## Reading and Writing to a Memory Cache
+## Reading and Writing to a Memory Cache
 
 The middleware's `Invoke` method returns the cached data when it's available.
 
@@ -176,7 +176,7 @@ When you do want to explicitly remove an item from the cache, you can do so easi
    cache.Remove(cacheKey);
    ````
 
-  ## Cache Dependencies and Callbacks
+## Cache Dependencies and Callbacks
 
 You can configure cache entries to depend on other cache entries, the file system, or programmatic tokens, evicting the entry in response to changes. You can register a callback, which will run when a cache item is evicted.
 
@@ -305,6 +305,6 @@ Cache entries will inherit triggers and timeouts from other entries accessed whi
 > [!NOTE]
 > When one cache entry is used to create another, the new one copies the existing entry's expiration tokens and time-based expiration settings, if any. It is not expired in response to manual removal or updating of the existing entry.
 
-  ## Other Resources
+## Other Resources
 
 * [Working with a Distributed Cache](distributed.md)

@@ -1,7 +1,7 @@
 ---
 uid: mvc/controllers/index
 ---
-  # Controllers
+# Controllers
 
 * [Controllers, Actions, and Action Results](actions.md)
 

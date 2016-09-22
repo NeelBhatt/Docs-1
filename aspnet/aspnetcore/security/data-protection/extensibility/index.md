@@ -1,7 +1,7 @@
 ---
 uid: security/data-protection/extensibility/index
 ---
-  # Extensibility APIs
+# Extensibility APIs
 
 * [Core cryptography extensibility](core-crypto.md)
 

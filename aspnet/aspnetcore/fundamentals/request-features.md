@@ -1,13 +1,13 @@
 ---
 uid: fundamentals/request-features
 ---
-  # Request Features
+# Request Features
 
 By [Steve Smith](http://ardalis.com)
 
 Individual web server features related to how HTTP requests and responses are handled have been factored into separate interfaces. These abstractions are used by individual server implementations and middleware to create and modify the application's hosting pipeline.
 
-  ## Feature interfaces
+## Feature interfaces
 
 ASP.NET Core defines a number of HTTP feature interfaces in [Microsoft.AspNetCore.Http.Features](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Http/Features/index.html.md#Microsoft.AspNetCore.Http.Features.md) which are used by servers to identify the features they support. The following feature interfaces handle requests and return responses:
 
@@ -53,11 +53,11 @@ ASP.NET Core defines a number of HTTP feature interfaces in [Microsoft.AspNetCor
 > [!NOTE]
 > [ISessionFeature](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Http/Features/ISessionFeature/index.html.md#Microsoft.AspNetCore.Http.Features.ISessionFeature.md) is not a server feature, but is implemented by the [SessionMiddleware](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Session/SessionMiddleware/index.html.md#Microsoft.AspNetCore.Session.SessionMiddleware.md) (see [Managing Application State](app-state.md)).
 
-  ## Feature collections
+## Feature collections
 
 The [Features](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Http/HttpContext/index.html.md#Microsoft.AspNetCore.Http.HttpContext.Features.md) property of [HttpContext](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Http/HttpContext/index.html.md#Microsoft.AspNetCore.Http.HttpContext.md) provides an interface for getting and setting the available HTTP features for the current request. Since the feature collection is mutable even within the context of a request, middleware can be used to modify the collection and add support for additional features.
 
-  ## Middleware and request features
+## Middleware and request features
 
 While servers are responsible for creating the feature collection, middleware can both add to this collection and consume features from the collection. For example, the [StaticFileMiddleware](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/StaticFiles/StaticFileMiddleware/index.html.md#Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.md) accesses the [IHttpSendFileFeature](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Http/Features/IHttpSendFileFeature/index.html.md#Microsoft.AspNetCore.Http.Features.IHttpSendFileFeature.md) feature. If the feature exists, it is used to send the requested static file from its physical path. Otherwise, a slower alternative method is used to send the file. When available, the [IHttpSendFileFeature](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Http/Features/IHttpSendFileFeature/index.html.md#Microsoft.AspNetCore.Http.Features.IHttpSendFileFeature.md) allows the operating
 system to open the file and perform a direct kernel mode copy to the network card.
@@ -66,11 +66,11 @@ Additionally, middleware can add to the feature collection established by the se
 
 By combining custom server implementations and specific middleware enhancements, the precise set of features an application requires can be constructed. This allows missing features to be added without requiring a change in server, and ensures only the minimal amount of features are exposed, thus limiting attack surface area and improving performance.
 
-  ## Summary
+## Summary
 
 Feature interfaces define specific HTTP features that a given request may support. Servers define collections of features, and the initial set of features supported by that server, but middleware can be used to enhance these features.
 
-  ## Additional Resources
+## Additional Resources
 
 * [Servers](servers.md)
 

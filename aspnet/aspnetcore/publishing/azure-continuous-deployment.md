@@ -1,7 +1,7 @@
 ---
 uid: publishing/azure-continuous-deployment
 ---
-  # Publishing to an Azure Web App with Continuous Deployment
+# Publishing to an Azure Web App with Continuous Deployment
 
 By [Erik Reitan](https://github.com/Erikre)
 
@@ -10,7 +10,7 @@ This tutorial shows you how to create an ASP.NET Core web app using Visual Studi
 > [!NOTE]
 > To complete this tutorial, you need a Microsoft Azure account. If you don't have an account, you can [activate your MSDN subscriber benefits](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F) or [sign up for a free trial](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F).
 
-  ## Prerequisites
+## Prerequisites
 
 This tutorial assumes you have already installed the following:
 
@@ -20,7 +20,7 @@ This tutorial assumes you have already installed the following:
 
 * [Git](http://git-scm.com/downloads) for Windows
 
-  ## Create an ASP.NET Core web app
+## Create an ASP.NET Core web app
 
 1. Start Visual Studio.
 
@@ -38,7 +38,7 @@ This tutorial assumes you have already installed the following:
 
    ![image](azure-continuous-deployment/_static/03-source-control.png)
 
-  ### Running the web app locally
+### Running the web app locally
 
 1. Once Visual Studio finishes creating the app, run the app by selecting **Debug** -> **Start Debugging**. As an alternative, you can press **F5**.
 
@@ -48,7 +48,7 @@ This tutorial assumes you have already installed the following:
 
 2. After reviewing the running Web app, close the browser and click the "Stop Debugging" icon in the toolbar of Visual Studio to stop the app.
 
-  ## Create a web app in the Azure Portal
+## Create a web app in the Azure Portal
 
 The following steps will guide you through creating a web app in the Azure Portal.
 
@@ -74,7 +74,7 @@ The following steps will guide you through creating a web app in the Azure Porta
 
 ![image](azure-continuous-deployment/_static/07-azure-webappblade.png)
 
-  ## Enable Git publishing for the new web app
+## Enable Git publishing for the new web app
 
 Git is a distributed version control system that you can use to deploy your Azure App Service web app. You'll store the code you write for your web app in a local Git repository, and you'll deploy your code to Azure by pushing to a remote repository.
 
@@ -108,7 +108,7 @@ Git is a distributed version control system that you can use to deploy your Azur
 
    ![image](azure-continuous-deployment/_static/09-azure-giturl.png)
 
-  ## Publish your web app to Azure App Service
+## Publish your web app to Azure App Service
 
 In this section, you will create a local Git repository using Visual Studio and push from that repository to Azure to deploy your web app. The steps involved include the following:
 
@@ -171,7 +171,7 @@ This command will start the process of pushing your local project files to Azure
 > [!NOTE]
 > If you need to collaborate on a project, you should consider pushing to [GitHub](https://github.com) in between pushing to Azure.
 
-  ### Verify the Active Deployment
+### Verify the Active Deployment
 
 You can verify that you successfully transferred the web app from your local environment to Azure. You'll see the listed successful deployment.
 
@@ -179,7 +179,7 @@ You can verify that you successfully transferred the web app from your local env
 
    ![image](azure-continuous-deployment/_static/13-verify-deployment.png)
 
-  ## Run the app in Azure
+## Run the app in Azure
 
 Now that you have deployed your web app to Azure, you can run the app.
 
@@ -191,7 +191,7 @@ This can be done in two ways:
 
   `http://SampleWebAppDemo.azurewebsites.net`
 
-  ## Update your web app and republish
+## Update your web app and republish
 
 After you make changes to your local code, you can republish.
 
@@ -225,13 +225,13 @@ After you make changes to your local code, you can republish.
 
    Note: As an alternative, you can push your changes from the **Command Window** by opening the **Command Window**, changing to your project directory, and entering a git command. For example:`git push -u Azure-SampleApp master`
 
-  ## View the updated web app in Azure
+## View the updated web app in Azure
 
 View your updated web app by selecting **Browse** from the web app blade in the Azure Portal or by opening a browser and entering the URL for your web app. For example:
 
    `http://SampleWebAppDemo.azurewebsites.net`
 
-  ## Additional Resources
+## Additional Resources
 
 * [Publishing and Deployment](index.md)
 

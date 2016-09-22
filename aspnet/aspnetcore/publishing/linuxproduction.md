@@ -1,7 +1,7 @@
 ﻿---
 uid: publishing/linuxproduction
 ---
-  # Publish to a Linux Production Environment
+# Publish to a Linux Production Environment
 
 By [Sourabh Shirhatti](https://twitter.com/sshirhatti)
 
@@ -11,13 +11,13 @@ We will take an existing ASP.NET Core application and place it behind a reverse-
 
 Additionally we will ensure our web application runs on startup as a daemon and configure a process management tool to help restart our web application in the event of a crash to guarantee high availability.
 
-  ## Prerequisites
+## Prerequisites
 
 1. Access to an Ubuntu 14.04 Server with a standard user account with sudo privilege.
 
 2. An existing ASP.NET Core application.
 
-  ## Copy over your app
+## Copy over your app
 
 Run `dotnet publish` from your dev environment to package your application into a self-contained directory that can run on your server.
 
@@ -26,17 +26,17 @@ Before we proceed, copy your ASP.NET Core application to your server using whate
 > [!NOTE]
 > You can use [Yeoman](../client-side/yeoman.md) to create a new ASP.NET Core application for a new project.
 
-  ## Configure a reverse proxy server
+## Configure a reverse proxy server
 
 A reverse proxy is a common setup for serving dynamic web applications. The reverse proxy terminates the HTTP request and forwards it to the ASP.NET application.
 
-  ### Why use a reverse-proxy server?
+### Why use a reverse-proxy server?
 
 Kestrel is great for serving dynamic content from ASP.NET, however the web serving parts aren’t as feature rich as full-featured servers like IIS, Apache or Nginx. A reverse proxy-server can allow you to offload work like serving static content, caching requests, compressing requests, and SSL termination from the HTTP server. The reverse proxy server may reside on a dedicated machine or may be deployed alongside an HTTP server.
 
 For the purposes of this guide, we are going to use a single instance of Nginx that runs on the same server alongside your HTTP server. However, based on your requirements you may choose a different setup.
 
-  ### Install Nginx
+### Install Nginx
 
 <!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "bash", "highlight_args": {}} -->
 
@@ -59,7 +59,7 @@ We are going to `apt-get` to install Nginx. The installer also creates a System 
 
 At this point you should be able to navigate to your browser and see the default landing page for Nginx.
 
-  ### Configure Nginx
+### Configure Nginx
 
 We will now configure Nginx as a reverse proxy to forward requests to our ASP.NET application
 
@@ -86,11 +86,11 @@ This is one of the simplest configuration files for Nginx that forwards incoming
 
 Once you have completed making changes to your nginx configuration you can run `sudo nginx -t` to verify the syntax of your configuration files. If the configuration file test is successful you can ask nginx to pick up the changes by running `sudo nginx -s reload`.
 
-  ## Monitoring our Web Application
+## Monitoring our Web Application
 
 Nginx will forward requests to your Kestrel server, however unlike IIS on Windows, it does not mangage your Kestrel process. In this tutorial, we will use [supervisor](http://supervisord.org/) to start our application on system boot and restart our process in the event of a failure.
 
-  ### Installing supervisor
+### Installing supervisor
 
 <!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "bash", "highlight_args": {}} -->
 
@@ -102,7 +102,7 @@ Nginx will forward requests to your Kestrel server, however unlike IIS on Window
 > [!NOTE]
 > `supervisor` is a python based tool and you can acquire it through [pip](http://supervisord.org/installing.html#installing-via-pip) or [easy_install](http://supervisord.org/installing.html#internet-installing-with-setuptools) instead.
 
-  ### Configuring supervisor
+### Configuring supervisor
 
 Supervisor works by creating child processes based on data in its configuration file. When a child process dies, supervisor is notified via the `SIGCHILD` signal and supervisor can react accordingly and restart your web application.
 
@@ -138,11 +138,11 @@ Once you are done editing the configuration file, restart the `supervisord` proc
    sudo service supervisor start
    ````
 
-  ## Start our web application on startup
+## Start our web application on startup
 
 In our case, since we are using supervisor to manage our application, the application will be automatically started by supervisor. Supervisor uses a System V Init script to run as a daemon on system boot and will susbsequently launch your application. If you chose not to use supervisor or an equivalent tool, you will need to write a `systemd` or `upstart` or `SysVinit` script to start your application on startup.
 
-  ## Viewing logs
+## Viewing logs
 
 **Supervisord** logs messages about its own health and its subprocess' state changes to the activity log. The path to the activity log is configured via the `logfile` parameter in the configuration file.
 
@@ -162,11 +162,11 @@ You can redirect application logs (`STDOUT` and `STERR`) in the program section 
    tail -f /var/log/hellomvc.out.log
    ````
 
-  ## Securing our application  ### Enable `AppArmor`
+## Securing our application  ### Enable `AppArmor`
 
 Linux Security Modules (LSM) is a framework that is part of the Linux kernel since Linux 2.6 that supports different implementations of security modules. `AppArmor` is a LSM that implements a Mandatory Access Control system which allows you to confine the program to a limited set of resources. Ensure [AppArmor](https://wiki.ubuntu.com/AppArmor) is enabled and properly configured.
 
-  ### Configuring our firewall
+### Configuring our firewall
 
 Close off all external ports that are not in use. Uncomplicated firewall (ufw) provides a frontend for `iptables` by providing a command-line interface for configuring the firewall. Verify that `ufw` is configured to allow traffic on any ports you need.
 
@@ -181,11 +181,11 @@ Close off all external ports that are not in use. Uncomplicated firewall (ufw) p
    sudo ufw allow 443/tcp
    ````
 
-  ### Securing Nginx
+### Securing Nginx
 
 The default distribution of Nginx doesn't enable SSL. To enable all the security features we require, we will build from source.
 
-  #### Download the source and install the build dependencies
+#### Download the source and install the build dependencies
 
 <!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "bash", "highlight_args": {}} -->
 
@@ -200,7 +200,7 @@ The default distribution of Nginx doesn't enable SSL. To enable all the security
    tar zxf nginx-1.10.0.tar.gz
    ````
 
-  #### Change the Nginx response name
+#### Change the Nginx response name
 
 Edit *src/http/ngx_http_header_filter_module.c*
 
@@ -212,7 +212,7 @@ Edit *src/http/ngx_http_header_filter_module.c*
    static char ngx_http_server_full_string[] = "Server: Your Web Server" CRLF;
    ````
 
-  #### Configure the options and build
+#### Configure the options and build
 
 The PCRE library is required for regular expressions. Regular expressions are used in the  location  directive for the ngx_http_rewrite_module. The http_ssl_module adds HTTPS protocol support.
 
@@ -230,7 +230,7 @@ Consider using a web application firewall like *ModSecurity* to harden your appl
    --with-mail=dynamic
    ````
 
-  #### Configure SSL
+#### Configure SSL
 
 * Configure your server to listen to HTTPS traffic on port `443` by specifying a valid certificate issued by a trusted Certificate Authority (CA).
 

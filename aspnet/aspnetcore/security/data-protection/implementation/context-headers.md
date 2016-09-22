@@ -3,7 +3,7 @@ uid: security/data-protection/implementation/context-headers
 ---
 <a name=data-protection-implementation-context-headers></a>
 
-  # Context headers  ## Background and theory
+# Context headers  ## Background and theory
 
 In the data protection system, a "key" means an object that can provide authenticated encryption services. Each key is identified by a unique id (a GUID), and it carries with it algorithmic information and entropic material. It is intended that each key carry unique entropy, but the system cannot enforce that, and we also need to account for developers who might change the key ring manually by modifying the algorithmic information of an existing key in the key ring. To achieve our security requirements given these cases the data protection system has a concept of [cryptographic agility](http://research.microsoft.com/apps/pubs/default.aspx?id=121045), which allows securely using a single entropic value across multiple cryptographic algorithms.
 
@@ -13,7 +13,7 @@ Stepping back, we decided that we were approaching the problem from the wrong di
 
 We use this concept of strong PRPs and PRFs to build up a context header. This context header essentially acts as a stable thumbprint over the algorithms in use for any given operation, and it provides the cryptographic agility needed by the data protection system. This header is reproducible and is used later as part of the [subkey derivation process](subkeyderivation.md#data-protection-implementation-subkey-derivation.md). There are two different ways to build the context header depending on the modes of operation of the underlying algorithms.
 
-  ## CBC-mode encryption + HMAC authentication
+## CBC-mode encryption + HMAC authentication
 
 <a name=data-protection-implementation-context-headers-cbc-components></a>
 
@@ -39,7 +39,7 @@ Instead, we use the NIST SP800-108 KDF in Counter Mode (see [NIST SP800-108](htt
 
 ( K_E || K_H ) = SP800_108_CTR(prf = HMACSHA512, key = "", label = "", context = "")
 
-  ### Example: AES-192-CBC + HMACSHA256
+### Example: AES-192-CBC + HMACSHA256
 
 As an example, consider the case where the symmetric block cipher algorithm is AES-192-CBC and the validation algorithm is HMACSHA256. The system would generate the context header using the following steps.
 
@@ -95,7 +95,7 @@ This context header is the thumbprint of the authenticated encryption algorithm 
 > [!NOTE]
 > The CBC-mode encryption + HMAC authentication context header is built the same way regardless of whether the algorithms implementations are provided by Windows CNG or by managed SymmetricAlgorithm and KeyedHashAlgorithm types. This allows applications running on different operating systems to reliably produce the same context header even though the implementations of the algorithms differ between OSes. (In practice, the KeyedHashAlgorithm doesn't have to be a proper HMAC. It can be any keyed hash algorithm type.)
 
-  ### Example: 3DES-192-CBC + HMACSHA1
+### Example: 3DES-192-CBC + HMACSHA1
 
 First, let ( K_E || K_H ) = SP800_108_CTR(prf = HMACSHA512, key = "", label = "", context = ""), where | K_E | = 192 bits and | K_H | = 160 bits per the specified algorithms. This leads to K_E = A219..E2BB and K_H = DC4A..B464 in the example below:
 
@@ -143,7 +143,7 @@ The components break down as follows:
 
 * the HMAC PRF output (76 EB - end).
 
-  ## Galois/Counter Mode encryption + authentication
+## Galois/Counter Mode encryption + authentication
 
 The context header consists of the following components:
 
@@ -163,7 +163,7 @@ K_E is derived using the same mechanism as in the CBC encryption + HMAC authenti
 
 K_E = SP800_108_CTR(prf = HMACSHA512, key = "", label = "", context = "")
 
-  ### Example: AES-256-GCM
+### Example: AES-256-GCM
 
 First, let K_E = SP800_108_CTR(prf = HMACSHA512, key = "", label = "", context = ""), where | K_E | = 256 bits.
 

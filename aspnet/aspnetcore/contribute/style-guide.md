@@ -3,13 +3,13 @@ uid: contribute/style-guide
 ---
 <a name=style-guide></a>
 
-  # ASP.NET Docs Style Guide
+# ASP.NET Docs Style Guide
 
 By [Steve Smith](http://ardalis.com)
 
 This document provides an overview of how articles published on [docs.asp.net](https://docs.asp.net) should be formatted. You can actually use this file, itself, as a template when contributing articles.
 
-  ## Article Structure
+## Article Structure
 
 Articles should be submitted as individual text files with a **.rst** extension. Authors should be sure they are familiar with the [Sphinx Style Guide](http://documentation-style-guide-sphinx.readthedocs.org/en/latest/style-guide.html), but where there are disagreements, this document takes precedence. The article should begin with its title on line 1, followed by a line of === characters. Next, the author should be displayed with a link to an author specific page (ex. the author's GitHub user page, Twitter page, etc.).
 
@@ -17,7 +17,7 @@ Articles should typically begin with a brief abstract describing what will be co
 
 Articles should typically include a Summary section at the end, and optionally additional sections like Next Steps or Additional Resources. These should not be included in the bulleted list of topics, however.
 
-  ### Headings
+### Headings
 
 Typically articles will use at most 3 levels of headings. The title of the document is the highest level heading and must appear on lines 1-2 of the document. The title is designated by a row of === characters.
 
@@ -47,11 +47,11 @@ For section headings, only the first word should be capitalized:
 
 More on sections and headings in ReStructuredText: [http://sphinx-doc.org/rest.html#sections](http://sphinx-doc.org/rest.html#sections)
 
-  ## ReStructuredText Syntax
+## ReStructuredText Syntax
 
 The following ReStructuredText elements are commonly used in ASP.NET documentation articles. Note that **indentation and blank lines are significant!**
 
-  ### Inline Markup
+### Inline Markup
 
 Surround text with:
 
@@ -74,7 +74,7 @@ Format specific items using these rules:
 
 * `Code Elements` (surround with ``) - Classes and members - Command-line commands - Database table and column names - Language keywords
 
-  ### Links
+### Links
 
 Links should use HTTPS when possible. Inline hyperlinks are formatted like this:
 
@@ -102,7 +102,7 @@ For example, here is a link to the [Inline Markup](#inline-markup) section, abov
 
 Any element that is rendered as a link should not have any additional formatting or styling.
 
-  ### Lists
+### Lists
 
 Lists can be started with a `-` or `*` character:
 
@@ -127,7 +127,7 @@ Numbered lists can start with a number, or they can be auto numbered by starting
    #. Auto-numbered two.
    ````
 
-  ### Source Code
+### Source Code
 
 Source code is very commonly included in these articles. Images should never be used to display source code. Prefer `literalinclude` for most code samples. Reserve `code-block` for small snippets that are not included in the sample project. A `code-block` can be declared as shown below, including spaces, blank lines, and indentation:
 
@@ -199,7 +199,7 @@ This results in:
 > [!NOTE]
 > `caption` and `name` will result in a code-block not being displayed due to our builds using a Sphinx version prior to version 1.3. If you don't see a code block displayed above this note, it's most likely because the version of Sphinx is < 1.3.
 
-  ### Images
+### Images
 
 Images such as screen shots and explanatory figures or diagrams should be placed in a `_static` folder within a folder named the same as the article file. References to images should therefore always be made using relative references, e.g. `article-name/style-guide/_static/asp-net.png`. Note that images should always be saved as all lower-case file names, using hyphens to separate words, if necessary.
 
@@ -224,7 +224,7 @@ Here's an example using the above syntax:
 
 Images are responsively sized according to the browser viewport when using this directive. Currently the maximum width supported by the [https://docs.asp.net](https://docs.asp.net) theme is 697px.
 
-  ### Notes
+### Notes
 
 To add a note callout, like the ones shown in this document, use the `.. note::` directive.
 
@@ -240,7 +240,7 @@ This results in:
 > [!NOTE]
 > This is a note.
 
-  ### Including External Source Files
+### Including External Source Files
 
 One nice feature of ReStructuredText is its ability to reference external files. This allows actual sample source files to be referenced from documentation articles, reducing the chances of the documentation content getting out of sync with the actual, working code sample (assuming the code sample works, of course). However, if documentation articles are referencing samples by filename and line number, it is important that the documentation articles be reviewed whenever changes are made to the source code, otherwise these references may be broken or point to the wrong line number. For this reason, it is recommended that samples be specific to individual articles, so that updates to the sample will only affect a single article (at most, an article series could reference a common sample). Samples should therefore be placed in a subfolder named the same as the article file, in a `sample` folder (e.g. `/article-name/sample/`).
 
@@ -311,11 +311,11 @@ Literal includes also support [Captions](#captions) and names, as with `code-blo
 
 Format code to eliminate or minimize horizontal scroll bars.
 
-  ### Tables
+### Tables
 
 Tables should never render with horizontal scroll bars. Tables can be constructed using grid-like "ASCII Art" style text. In general they should only be used where it makes sense to present some tabular data. Rather than include all of the syntax options here, you will find a detailed reference at [http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#grid-tables](http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#grid-tables).
 
-  ### UI navigation
+### UI navigation
 
 When documenting how a user should navigate a series of menus, use the `:menuselection:` directive:
 
@@ -328,7 +328,7 @@ When documenting how a user should navigate a series of menus, use the `:menusel
 
 This will result in Windows ‣ Views ‣ Other....
 
-  ## Additional Reading
+## Additional Reading
 
 Learn more about Sphinx and ReStructuredText:
 
@@ -336,6 +336,6 @@ Learn more about Sphinx and ReStructuredText:
 
 * [RST Quick Reference](http://docutils.sourceforge.net/docs/user/rst/quickref.html)
 
-  ## Summary
+## Summary
 
 This style guide is intended to help contributors quickly create new articles for [docs.asp.net](https://docs.asp.net). It includes the most common RST syntax elements that are used, as well as overall document organization guidance. If you discover mistakes or gaps in this guide, please [submit an issue](https://github.com/aspnet/docs/issues).

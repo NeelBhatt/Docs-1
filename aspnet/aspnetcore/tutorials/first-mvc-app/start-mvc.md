@@ -4,7 +4,7 @@
 uid: tutorials/first-mvc-app/start-mvc
 ---
 
-  # Getting started with ASP.NET Core MVC and Visual Studio
+# Getting started with ASP.NET Core MVC and Visual Studio
 
 By [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -13,7 +13,7 @@ This tutorial will teach you the basics of building an ASP.NET Core MVC web app 
 > [!NOTE]
 > For the tutorial using .NET Core on a Mac see [Your First ASP.NET Core Application on a Mac Using Visual Studio Code](../your-first-mac-aspnet.md).
 
-  ## Install Visual Studio and .NET Core
+## Install Visual Studio and .NET Core
 
 * Install Visual Studio Community 2015. Select the Community download and the default installation. Skip this step if you have Visual Studio 2015 installed.
 
@@ -21,7 +21,7 @@ This tutorial will teach you the basics of building an ASP.NET Core MVC web app 
 
 * Install [.NET Core + Visual Studio tooling](http://go.microsoft.com/fwlink/?LinkID=798306)
 
-  ## Create a web app
+## Create a web app
 
 From the Visual Studio **Start** page, tap **New Project**.
 

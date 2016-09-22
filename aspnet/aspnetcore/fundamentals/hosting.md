@@ -1,21 +1,21 @@
 ---
 uid: fundamentals/hosting
 ---
-  # Hosting
+# Hosting
 
 By [Steve Smith](http://ardalis.com)
 
 To run an ASP.NET Core app, you need to configure and launch a host using [WebHostBuilder](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/WebHostBuilder/index.html).
 
-  ## What is a Host?
+## What is a Host?
 
 ASP.NET Core apps require a *host* in which to execute. A host must implement the [IWebHost](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/IWebHost/index.html.md#Microsoft.AspNetCore.Hosting.IWebHost.md) interface, which exposes collections of features and services, and a `Start` method. The host is typically created using an instance of a [WebHostBuilder](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/WebHostBuilder/index.html.md#Microsoft.AspNetCore.Hosting.WebHostBuilder.md), which builds and returns a  [WebHost](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/Internal/WebHost/index.html.md#Microsoft.AspNetCore.Hosting.Internal.WebHost.md) instance. The `WebHost` references the server that will handle requests. Learn more about [servers](servers.md).
 
-  ### What is the difference between a host and a server?
+### What is the difference between a host and a server?
 
 The host is responsible for application startup and lifetime management. The server is responsible for accepting HTTP requests. Part of the host's responsibility includes ensuring the application's services and the server are available and properly configured. You can think of the host as being a wrapper around the server. The host is configured to use a particular server; the server is unaware of its host.
 
-  ## Setting up a Host
+## Setting up a Host
 
 You create a host using an instance of `WebHostBuilder`. This is typically done in your app's entry point: `public static void Main`, (which in the project templates is located in a *Program.cs* file). A typical *Program.cs*, shown below, demonstrates how to use a `WebHostBuilder` to build a host.
 
@@ -82,7 +82,7 @@ A minimal implementation of configuring a host (and an ASP.NET Core app) would i
 > [!NOTE]
 > When setting up a host, you can provide `Configure` and `ConfigureServices` methods, instead of or in addition to specifying a `Startup` class (which must also define these methods - see [Application Startup](startup.md)). Multiple calls to `ConfigureServices` will append to one another; calls to `Configure` or `UseStartup` will replace previous settings.
 
-  ## Configuring a Host
+## Configuring a Host
 
 The `WebHostBuilder` provides methods for setting most of the available configuration values for the host, which can also be set directly using `UseSetting` and associated key. For example, to specify the application name:
 
@@ -94,7 +94,7 @@ The `WebHostBuilder` provides methods for setting most of the available configur
        .UseSetting("applicationName", "MyApp")
    ````
 
-  ### Host Configuration Values
+### Host Configuration Values
 
 Application Name `string`
    Key: `applicationName`. This configuration setting specifies the value that will be returned from `IHostingEnvironment.ApplicationName`.
@@ -267,7 +267,7 @@ Pass a list of URLs to the `Start` method and it will listen on the URLs specifi
    }
    ````
 
-  ### Ordering Importance
+### Ordering Importance
 
 `WebHostBuilder` settings are first read from certain environment variables, if set. These environment variables must use the format `ASPNETCORE_{configurationKey}`, so for example to set the URLs the server will listen on by default, you would set `ASPNETCORE_URLS`.
 
@@ -288,7 +288,7 @@ You can override any of these environment variable values by specifying configur
        .Build();
    ````
 
-  ## Additional resources
+## Additional resources
 
 * [Publishing to IIS](../publishing/iis.md)
 

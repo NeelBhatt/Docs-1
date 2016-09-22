@@ -1,15 +1,15 @@
 ---
 uid: mvc/models/model-binding
 ---
-  # Model Binding
+# Model Binding
 
 By [Rachel Appel](http://github.com/rachelappel)
 
-  ## Introduction to model binding
+## Introduction to model binding
 
 Model binding in ASP.NET Core MVC maps data from HTTP requests to action method parameters. The parameters may be simple types such as strings, integers, or floats, or they may be complex types. This is a great feature of MVC because mapping incoming data to a counterpart is an often repeated scenario, regardless of size or complexity of the data. MVC solves this problem by abstracting binding away so developers don't have to keep rewriting a slightly different version of that same code in every app. Writing your own text to type converter code is tedious, and error prone.
 
-  ## How model binding works
+## How model binding works
 
 When MVC receives an HTTP request, it routes it to a specific action method of a controller. It determines which action method to run based on what is in the route data, then it binds values from the HTTP request to that action method's parameters. For example, consider the following URL:
 
@@ -60,7 +60,7 @@ These types can be bound to action parameters or to properties on a class type.
 
 Once model binding is complete, [validation](https://docs.asp.net/projects/mvc/en/latest/models/validation.html) occurs. Default model binding works great for the vast majority of development scenarios. It is also extensible so if you have unique needs you can customize the built-in behavior.
 
-  ## Customize model binding behavior with attributes
+## Customize model binding behavior with attributes
 
 MVC contains several attributes that you can use to direct its default model binding behavior to a different source. For example, you can specify whether binding is required for a property, or if it should never happen at all by using the `[BindRequired]` or `[BindNever]` attributes. Alternatively, you can override the default data source, and specify the model binder's data source. Below is a list of model binding attributes:
 
@@ -78,7 +78,7 @@ MVC contains several attributes that you can use to direct its default model bin
 
 Attributes are very helpful tools when you need to override the default behavior of model binding.
 
-  ## Binding formatted data from the request body
+## Binding formatted data from the request body
 
 Request data can come in a variety of formats including JSON, XML and many others. When you use the [FromBody] attribute to indicate that you want to bind a parameter to data in the request body, MVC uses a configured set of formatters to handle the request data based on its content type. By default MVC includes a `JsonInputFormatter` class for handling JSON data, but you can add additional formatters for handling XML and other custom formats.
 

@@ -1,7 +1,7 @@
 ---
 uid: security/data-protection/index
 ---
-  # Data Protection
+# Data Protection
 
 * [Introduction to Data Protection](introduction.md)
 

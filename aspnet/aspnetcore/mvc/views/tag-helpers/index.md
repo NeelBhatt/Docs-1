@@ -3,7 +3,7 @@ uid: mvc/views/tag-helpers/index
 ---
 <a name=tag-helpers-index></a>
 
-  # Tag Helpers
+# Tag Helpers
 
 * [Introduction to Tag Helpers](intro.md)
 

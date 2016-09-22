@@ -3,13 +3,13 @@ uid: migration/http-modules
 ---
 Warning: This page documents version 1.0.0-rc1 and has not yet been updated for version 1.0.0
 
-  # Migrating HTTP Modules to Middleware
+# Migrating HTTP Modules to Middleware
 
 By [Matt Perdeck](http://www.linkedin.com/in/mattperdeck)
 
 This article shows how to migrate existing ASP.NET [HTTP modules and handlers](https://msdn.microsoft.com/en-us/library/bb398986.aspx) to ASP.NET Core [middleware](../fundamentals/middleware.md#fundamentals-middleware.md).
 
-  ## Handlers and modules revisited
+## Handlers and modules revisited
 
 Before proceeding to ASP.NET Core middleware, let's first recap how HTTP modules and handlers work:
 
@@ -41,7 +41,7 @@ Modules are:
 
 In addition to modules, you can add handlers for the life cycle events to your *Global.asax.cs* file. These handlers run after the handlers in the configured modules.
 
-  ## From handlers and modules to middleware
+## From handlers and modules to middleware
 
 Middleware are simpler than HTTP modules and handlers:
    * Modules, handlers, *Global.asax.cs*, *Web.config* (except for IIS configuration) and the application life cycle are gone
@@ -70,7 +70,7 @@ Middleware and modules are processed in a different order:
 
 Note how in the image above, the authentication middleware short-circuited the request.
 
-  ## Migrating module code to middleware
+## Migrating module code to middleware
 
 An existing HTTP module will look similar to this:
 
@@ -212,7 +212,7 @@ A middleware handles this by simply not calling `Invoke` on the next middleware 
 
 When you migrate your module's functionality to your new middleware, you may find that your code doesn't compile because the `HttpContext` class has significantly changed in ASP.NET Core. [Later on](#migrating-to-the-new-httpcontext), you'll see how to migrate to the new ASP.NET Core HttpContext.
 
-  ## Migrating module insertion into the request pipeline
+## Migrating module insertion into the request pipeline
 
 HTTP modules are typically added to the request pipeline using *Web.config*:
 
@@ -263,7 +263,7 @@ As previously stated, there is no more application life cycle in ASP.NET Core an
 
 If ordering becomes a problem, you could split your module into multiple middleware that can be ordered independently.
 
-  ## Migrating handler code to middleware
+## Migrating handler code to middleware
 
 An HTTP handler looks something like this:
 
@@ -342,7 +342,7 @@ In your ASP.NET Core project, you would translate this to a middleware similar t
 
 This middleware is very similar to the middleware corresponding to modules. The only real difference is that here there is no call to `_next.Invoke(context)`. That makes sense, because the handler is at the end of the request pipeline, so there will be no next middleware to invoke.
 
-  ## Migrating handler insertion into the request pipeline
+## Migrating handler insertion into the request pipeline
 
 Configuring an HTTP handler is done in *Web.config* and looks something like this:
 
@@ -400,7 +400,7 @@ One solution is to branch the pipeline for requests with a given extension, usin
 
 Middleware added to the pipeline before the branch will be invoked on all requests; the branch will have no impact on them.
 
-  ## Loading middleware options using the options pattern
+## Loading middleware options using the options pattern
 
 Some modules and handlers have configuration options that are stored in *Web.config*. However, in ASP.NET Core a new configuration model is used in place of *Web.config*.
 
@@ -550,7 +550,7 @@ The new [configuration system](../fundamentals/configuration.md) gives you these
 
 <a name=loading-middleware-options-through-direct-injection></a>
 
-  ## Loading middleware options through direct injection
+## Loading middleware options through direct injection
 
 The options pattern has the advantage that it creates loose coupling between options values and their consumers. Once you've associated an options class with the actual options values, any other class can get access to the options through the dependency injection framework. There is no need to pass around options values.
 
@@ -696,7 +696,7 @@ The solution is to get the options objects with the actual options values in you
 
          ````
 
-  ## Migrating to the new HttpContext
+## Migrating to the new HttpContext
 
 You saw earlier that the `Invoke` method in your middleware takes a parameter of type `HttpContext`:
 
@@ -709,7 +709,7 @@ You saw earlier that the `Invoke` method in your middleware takes a parameter of
 
 `HttpContext` has significantly changed in ASP.NET Core. This section shows how to translate the most commonly used properties of [System.Web.HttpContext](https://msdn.microsoft.com/en-us/library/system.web.httpcontext(v=vs.110).aspx) to the new [Microsoft.AspNetCore.Http.HttpContext](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Http/HttpContext/index.html).
 
-  ### HttpContext
+### HttpContext
 
 **HttpContext.Items** translates to:
 
@@ -733,7 +733,7 @@ Gives you a unique id for each request. Very useful to include in your logs.
 
       ````
 
-  ### HttpContext.Request
+### HttpContext.Request
 
 **HttpContext.Request.HttpMethod** translates to:
 
@@ -913,7 +913,7 @@ Caution: Use this code only in a handler type middleware, at the end of a pipeli
 
 RouteData is not available in middleware in RC1.
 
-  ### HttpContext.Response
+### HttpContext.Response
 
 **HttpContext.Response.Status and HttpContext.Response.StatusDescription** translate to:
 
@@ -1060,7 +1060,7 @@ The `SetCookies` callback method would look like the following:
 
       ````
 
-  ## Additional Resources
+## Additional Resources
 
 * [HTTP Handlers and HTTP Modules Overview](https://msdn.microsoft.com/en-us/library/bb398986.aspx)
 

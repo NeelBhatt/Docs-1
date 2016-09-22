@@ -3,13 +3,13 @@ uid: security/data-protection/extensibility/core-crypto
 ---
 <a name=data-protection-extensibility-core-crypto></a>
 
-  # Core cryptography extensibility
+# Core cryptography extensibility
 
 Warning: Types that implement any of the following interfaces should be thread-safe for multiple callers.
 
 <a name=data-protection-extensibility-core-crypto-iauthenticatedencryptor></a>
 
-  ## IAuthenticatedEncryptor
+## IAuthenticatedEncryptor
 
 The **IAuthenticatedEncryptor** interface is the basic building block of the cryptographic subsystem. There is generally one IAuthenticatedEncryptor per key, and the IAuthenticatedEncryptor instance wraps all cryptographic key material and algorithmic information necessary to perform cryptographic operations.
 
@@ -26,7 +26,7 @@ The Encrypt method returns a blob that includes the enciphered plaintext and an 
 
 <a name=data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptor></a>
 
-  ## IAuthenticatedEncryptorDescriptor
+## IAuthenticatedEncryptorDescriptor
 
 The **IAuthenticatedEncryptorDescriptor** interface represents a type that knows how to create an [IAuthenticatedEncryptor](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptor) instance. Its API is as follows.
 
@@ -57,7 +57,7 @@ Like IAuthenticatedEncryptor, an instance of IAuthenticatedEncryptorDescriptor i
    // the 'roundTripped' and 'plaintext' buffers should be equivalent
    ````
 
-  ## XML Serialization
+## XML Serialization
 
 The primary difference between IAuthenticatedEncryptor and IAuthenticatedEncryptorDescriptor is that the descriptor knows how to create the encryptor and supply it with valid arguments. Consider an IAuthenticatedEncryptor whose implementation relies on SymmetricAlgorithm and KeyedHashAlgorithm. The encryptor's job is to consume these types, but it doesn't necessarily know where these types came from, so it can't really write out a proper description of how to recreate itself if the application restarts. The descriptor acts as a higher level on top of this. Since the descriptor knows how to create the encryptor instance (e.g., it knows how to create the required algorithms), it can serialize that knowledge in XML form so that the encryptor instance can be recreated after an application reset.
 
@@ -73,7 +73,7 @@ There can also be cases where the serialized descriptor doesn't contain sensitiv
 
 <a name=data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptordeserializer></a>
 
-  ## IAuthenticatedEncryptorDescriptorDeserializer
+## IAuthenticatedEncryptorDescriptorDeserializer
 
 The **IAuthenticatedEncryptorDescriptorDeserializer** interface represents a type that knows how to deserialize an IAuthenticatedEncryptorDescriptor instance from an XElement. It exposes a single method:
 
@@ -90,7 +90,7 @@ Types which implement IAuthenticatedEncryptorDescriptorDeserializer should have 
 > [!NOTE]
 > The IServiceProvider passed to the constructor may be null.
 
-  ## IAuthenticatedEncryptorConfiguration
+## IAuthenticatedEncryptorConfiguration
 
 The **IAuthenticatedEncryptorConfiguration** interface represents a type which knows how to create [IAuthenticatedEncryptorDescriptor](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptor) instances. It exposes a single API.
 

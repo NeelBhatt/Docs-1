@@ -1,7 +1,7 @@
 ---
 uid: mvc/views/index
 ---
-  # Views
+# Views
 
 * [Views Overview](overview.md)
 

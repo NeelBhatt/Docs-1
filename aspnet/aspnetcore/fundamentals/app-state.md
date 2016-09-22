@@ -3,7 +3,7 @@ uid: fundamentals/app-state
 ---
 Warning: This page documents version 1.0.0-rc1 and has not yet been updated for version 1.0.0
 
-  # Managing Application State
+# Managing Application State
 
 By [Steve Smith](http://ardalis.com)
 
@@ -11,7 +11,7 @@ In ASP.NET Core, application state can be managed in a variety of ways, dependin
 
 [View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnet/fundamentals/app-state/sample)
 
-  ## Application State Options
+## Application State Options
 
 *Application state* refers to any data that is used to represent the current representation of the application. This includes both global and user-specific data. Previous versions of ASP.NET (and even ASP) have had built-in support for global `Application` and `Session` state stores, as well as a variety of other options.
 
@@ -32,36 +32,36 @@ Application developers are free to use different state storage providers dependi
 
 Based on answers to these questions, application state in ASP.NET Core apps can be stored or managed in a variety of ways.
 
-  ### HttpContext.Items
+### HttpContext.Items
 
 The `Items` collection is the best location to store data that is only needed while processing a given request. Its contents are discarded after each request. It is best used as a means of communicating between components or middleware that operate at different points in time during a request, and have no direct relationship with one another through which to pass parameters or return values. See [Working with HttpContext.Items](#working-with-httpcontext-items), below.
 
-  ### QueryString and Post
+### QueryString and Post
 
 State from one request can be provided to another request by adding values to the new request's query string or by POSTing the data. These techniques should not be used with sensitive data, because these techniques require that the data be sent to the client and then sent back to the server. It is also best used with small amounts of data. Query strings are especially useful for capturing state in a persistent manner, allowing links with embedded state to be created and sent via email or social networks, for use potentially far into the future. However, no assumption can be made about the user making the request, since URLs with query strings can easily be shared, and care must also be taken to avoid [Cross-Site Request Forgery (CSRF)](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)) attacks (for instance, even assuming only authenticated users are able to perform actions using query string based URLs, an attacker could trick a user into visiting such a URL while
 already authenticated).
 
-  ### Cookies
+### Cookies
 
 Very small pieces of state-related data can be stored in Cookies. These are sent with every request, and so the size should be kept to a minimum. Ideally, only an identifier should be used, with the actual data stored somewhere on the server, keyed to the identifier.
 
-  ### Session
+### Session
 
 Session storage relies on a cookie-based identifier to access data related to a given browser session (a series of requests from a particular browser and machine). You can't necessarily assume that a session is restricted to a single user, so be careful what kind of information you store in Session. It is a good place to store application state that is specific to a particular session but which doesn't need to be persisted permanently (or which can be reproduced as needed from a persistent store). See [Installing and Configuring Session](#installing-and-configuring-session), below for more details.
 
-  ### Cache
+### Cache
 
 Caching provides a means of storing and efficiently retrieving arbitrary application data based on developer-defined keys. It provides rules for expiring cached items based on time and other considerations. Learn more about [Caching](../performance/caching/index.md).
 
-  ### Configuration
+### Configuration
 
 Configuration can be thought of as another form of application state storage, though typically it is read-only while the application is running. Learn more about [Configuration](configuration.md).
 
-  ### Other Persistence
+### Other Persistence
 
 Any other form of persistent storage, whether using Entity Framework and a database or something like Azure Table Storage, can also be used to store application state, but these fall outside of what ASP.NET supports directly.
 
-  ## Working with HttpContext.Items
+## Working with HttpContext.Items
 
 The `HttpContext` abstraction provides support for a simple dictionary collection of type `IDictionary<object, object>`, called `Items`. This collection is available from the start of an *HttpRequest`* and is discarded at the end of each request. You can access it by simply assigning a value to a keyed entry, or by requesting the value for a given key.
 
@@ -96,7 +96,7 @@ and later in the pipeline, another piece of middleware could access it:
 
 <a name=id1></a>
 
-  ## Installing and Configuring Session
+## Installing and Configuring Session
 
 ASP.NET Core ships a session package that provides middleware for managing session state. You can install it by including a reference to the `Microsoft.AspNetCore.Session` package in your project.json file.
 
@@ -133,7 +133,7 @@ Warning: If you attempt to create a new `Session` (i.e. no session cookie has be
 
 ![image](app-state/_static/session-after-response-error.png)
 
-  ### Implementation Details
+### Implementation Details
 
 Session uses a cookie to track and disambiguate between requests from different browsers. By default this cookie is named ".AspNet.Session" and uses a path of "/". Further, by default this cookie does not specify a domain, and is not made available to client-side script on the page (because `CookieHttpOnly` defaults to `true`).
 
@@ -155,7 +155,7 @@ The `IdleTimeout` is used by the server to determine how long a session can be i
 > [!NOTE]
 > `Session` is *non-locking*, so if two requests both attempt to modify the contents of session, the last one will win. Further, `Session` is implemented as a *coherent session*, which means that all of the contents are stored together. This means that if two requests are modifying different parts of the session (different keys), they may still impact each other.
 
-  ### ISession
+### ISession
 
 Once session is installed and configured, you refer to it via HttpContext, which exposes a property called `Session` of type [ISession](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Http/ISession/index.html.md#Microsoft.AspNetCore.Http.ISession.md). You can use this interface to get and set values in `Session`, such as `byte[]`.
 
@@ -193,7 +193,7 @@ Because `Session` is built on top of `IDistributedCache`, you must always serial
 
 If you're storing more complex objects, you will need to serialize the object to a `byte[]` in order to store them, and then deserialize them from `byte[]` when retrieving them.
 
-  ## A Working Sample Using Session
+## A Working Sample Using Session
 
 The associated sample application demonstrates how to work with Session, including storing and retrieving simple types as well as custom objects. In order to see what happens when session expires, the sample has configured sessions to last just 10 seconds:
 

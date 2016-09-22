@@ -1,7 +1,7 @@
 ---
 uid: fundamentals/environments
 ---
-  # Working with Multiple Environments
+# Working with Multiple Environments
 
 By [Steve Smith](http://ardalis.com)
 
@@ -9,7 +9,7 @@ ASP.NET Core introduces improved support for controlling application behavior ac
 
 [View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnet/fundamentals/environments/sample)
 
-  ## Development, Staging, Production
+## Development, Staging, Production
 
 ASP.NET Core references a particular [environment variable](https://github.com/aspnet/Home/wiki/Environment-Variables), `ASPNETCORE_ENVIRONMENT` to describe the environment the application is currently running in. This variable can be set to any value you like, but three values are used by convention: `Development`, `Staging`, and `Production`. You will find these values used in the samples and templates provided with ASP.NET Core.
 
@@ -18,7 +18,7 @@ The current environment setting can be detected programmatically from within you
 > [!NOTE]
 > The specified environment name is case insensitive. Whether you set the variable to `Development` or `development` or `DEVELOPMENT` the results will be the same.
 
-  ### Development
+### Development
 
 This should be the environment used when developing an application. When using Visual Studio, this setting can be specified in your project's debug profiles, such as for IIS Express, shown here:
 
@@ -67,11 +67,11 @@ You can create multiple different launch profiles for various different configur
 
 Warning: Environment variables stored in *launchSettings.json* are not secured in any way and will be part of the source code repository for your project, if you use one. **Never store credentials or other secret data in this file.** If you need a place to store such data, use the *Secret Manager* tool described in [Safe storage of app secrets during development](../security/app-secrets.md#security-app-secrets.md).
 
-  ### Staging
+### Staging
 
 By convention, a `Staging` environment is a pre-production environment used for final testing before deployment to production. Ideally, its physical characteristics should mirror that of production, so that any issues that may arise in production occur first in the staging environment, where they can be addressed without impact to users.
 
-  ### Production
+### Production
 
 The `Production` environment is the environment in which the application runs when it is live and being used by end users. This environment should be configured to maximize security, performance, and application robustness. Some common settings that a production environment might have that would differ from development include:
 
@@ -87,7 +87,7 @@ The `Production` environment is the environment in which the application runs wh
 
 This is by no means meant to be a complete list. It's best to avoid scattering environment checks in many parts of your application. Instead, the recommended approach is to perform such checks within the application's `Startup` class(es) wherever possible
 
-  ## Determining the environment at runtime
+## Determining the environment at runtime
 
 The [IHostingEnvironment](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/IHostingEnvironment/index.html.md#Microsoft.AspNetCore.Hosting.IHostingEnvironment.md) service provides the core abstraction for working with environments. This service is provided by the ASP.NET hosting layer, and can be injected into your startup logic via [Dependency Injection](dependency-injection.md). The ASP.NET Core web site template in Visual Studio uses this approach to load environment-specific configuration files (if present) and to customize the app's error handling settings. In both cases, this behavior is achieved by referring to the currently specified environment by calling [EnvironmentName](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/IHostingEnvironment/index.html.md#Microsoft.AspNetCore.Hosting.IHostingEnvironment.EnvironmentName.md) or
 [IsEnvironment](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/HostingEnvironmentExtensions/index.html.md#Microsoft.AspNetCore.Hosting.HostingEnvironmentExtensions.IsEnvironment.md) on the instance of [IHostingEnvironment](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/IHostingEnvironment/index.html.md#Microsoft.AspNetCore.Hosting.IHostingEnvironment.md) passed into the appropriate method.
@@ -140,7 +140,7 @@ You may need to determine which content to send to the client at runtime, depend
 
 To get started with using tag helpers in your application see [Introduction to Tag Helpers](../mvc/views/tag-helpers/intro.md).
 
-  ## Startup conventions
+## Startup conventions
 
 ASP.NET Core supports a convention-based approach to configuring an application's startup based on the current environment. You can also programmatically control how your application behaves according to which environment it is in, allowing you to create and manage your own conventions.
 
@@ -148,11 +148,11 @@ When an ASP.NET Core application starts, the `Startup` class is used to bootstra
 
 In addition to using an entirely separate `Startup` class based on the current environment, you can also make adjustments to how the application is configured within a `Startup` class. The `Configure()` and `ConfigureServices()` methods support environment-specific versions similar to the `Startup` class itself, of the form `Configure{EnvironmentName}()` and `Configure{EnvironmentName}Services()`. If you define a method `ConfigureDevelopment()` it will be called instead of `Configure()` when the environment is set to development. Likewise, `ConfigureDevelopmentServices()` would be called instead of `ConfigureServices()` in the same environment.
 
-  ## Summary
+## Summary
 
 ASP.NET Core provides a number of features and conventions that allow developers to easily control how their applications behave in different environments. When publishing an application from development to staging to production, environment variables set appropriately for the environment allow for optimization of the application for debugging, testing, or production use, as appropriate.
 
-  ## Additional Resources
+## Additional Resources
 
 * [Configuration](configuration.md)
 

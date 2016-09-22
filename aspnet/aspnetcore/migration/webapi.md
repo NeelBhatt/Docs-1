@@ -1,7 +1,7 @@
 ---
 uid: migration/webapi
 ---
-  # Migrating from ASP.NET Web API
+# Migrating from ASP.NET Web API
 
 By [Steve Smith](http://ardalis.com) and [Scott Addie](https://scottaddie.com)
 
@@ -9,7 +9,7 @@ Web APIs are HTTP services that reach a broad range of clients, including browse
 
 [View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnet/migration/webapi/sample)
 
-  ## Review ASP.NET Web API Project
+## Review ASP.NET Web API Project
 
 This article uses the sample project, *ProductsApp*, created in the article [Getting Started with ASP.NET Web API](http://www.asp.net/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api) as its starting point. In that project, a simple ASP.NET Web API  project is configured as follows.
 
@@ -138,7 +138,7 @@ Finally, the model, *Product*, used by the *ProductsApp*, is a simple class:
 
 Now that we have a simple project from which to start, we can demonstrate how to migrate this Web API project to ASP.NET Core MVC.
 
-  ## Create the Destination Project
+## Create the Destination Project
 
 Using Visual Studio, create a new, empty solution, and name it *WebAPIMigration*. Add the existing *ProductsApp* project to it, then, add a new ASP.NET Core Web Application Project to the solution. Name the new project *ProductsCore*.
 
@@ -152,7 +152,7 @@ Delete the `Project_Readme.html` file from the new project. Your solution should
 
 ![image](webapi/_static/webapimigration-solution.png)
 
-  ## Migrate Configuration
+## Migrate Configuration
 
 ASP.NET Core no longer uses *Global.asax*, *web.config*, or *App_Start* folders. Instead, all startup tasks are done in *Startup.cs* in the root of the project (see [Application Startup](../fundamentals/startup.md)). In ASP.NET Core MVC, attribute-based routing is now included by default when `UseMvc()` is called; and, this is the recommended approach for configuring Web API routes (and is how the Web API starter project handles routing).
 
@@ -286,7 +286,7 @@ You also need to add the `[HttpGet]` attribute to the two methods, since they bo
 
 At this point, routing is configured correctly; however, we can't yet test it. Additional changes must be made before *ProductsController* will compile.
 
-  ## Migrate Models and Controllers
+## Migrate Models and Controllers
 
 The last step in the migration process for this simple Web API project is to copy over the Controllers and any Models they use. In this case, simply copy *Controllers/ProductsController.cs* from the original project to the new one. Then, copy the entire Models folder from the original project to the new one. Adjust the namespaces to match the new project name (*ProductsCore*).  At this point, you can build the application, and you will find a number of compilation errors. These should generally fall into the following categories:
 
@@ -352,6 +352,6 @@ Once these changes have been made and unused using statements removed, the migra
 
 You should now be able to run the migrated project and browse to */api/products*; and, you should see the full list of 3 products. Browse to */api/products/1* and you should see the first product.
 
-  ## Summary
+## Summary
 
 Migrating a simple ASP.NET Web API project to ASP.NET Core MVC is fairly straightforward, thanks to the built-in support for Web APIs in ASP.NET Core MVC. The main pieces every ASP.NET Web API project will need to migrate are routes, controllers, and models, along with updates to the types used by  controllers and actions.

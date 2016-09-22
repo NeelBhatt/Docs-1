@@ -3,7 +3,7 @@ uid: fundamentals/servers
 ---
 Warning: This page documents version 1.0.0-rc1 and has not yet been updated for version 1.0.0
 
-  # Servers
+# Servers
 
 By [Steve Smith](http://ardalis.com)
 
@@ -11,7 +11,7 @@ ASP.NET Core is completely decoupled from the web server environment that hosts 
 
 [View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnet/fundamentals/servers/sample)
 
-  ## Servers and commands
+## Servers and commands
 
 ASP.NET Core was designed to decouple web applications from the underlying HTTP server. Traditionally, ASP.NET apps have been windows-only hosted on Internet Information Server (IIS). The recommended way to run ASP.NET Core applications on Windows is using IIS as a reverse-proxy server. The HttpPlatformHandler module in IIS manages and proxies requests to an HTTP server hosted out-of-process. ASP.NET Core ships with two different HTTP servers:
 
@@ -107,7 +107,7 @@ program.cs
 
    ````
 
-  ## Supported Features by Server
+## Supported Features by Server
 
 ASP.NET defines a number of [Request Features](request-features.md). The following table lists the WebListener and Kestrel support for request features.
 
@@ -147,7 +147,7 @@ The `hosting.json` can include the settings the server will use (including the s
    }
    ````
 
-  ### Programmatic configuration
+### Programmatic configuration
 
 The server hosting the application can be referenced programmatically via the [IApplicationBuilder](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/IApplicationBuilder/index.html) interface, available in the `Configure` method in `Startup`. [IApplicationBuilder](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/IApplicationBuilder/index.html) exposes Server Features of type [IFeatureCollection](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Http/Features/IFeatureCollection/index.html). `IServerAddressesFeature` only expose a `Addresses` property, but different server implementations may expose additional functionality. For instance, WebListener exposes `AuthenticationManager` that can be used to configure the server's authentication:
 
@@ -176,17 +176,17 @@ The server hosting the application can be referenced programmatically via the [I
 
    ````
 
-  ## IIS and IIS Express
+## IIS and IIS Express
 
 IIS is the most feature rich server, and includes IIS management functionality and access to other IIS modules. Hosting ASP.NET Core no longer uses the `System.Web` infrastructure used by prior versions of ASP.NET.
 
-  ### ASP.NET Core Module
+### ASP.NET Core Module
 
 In ASP.NET Core on Windows, the web application is hosted by an external process outside of IIS. The ASP.NET Core Module is a native IIS  module that is used to proxy requests to external processes that it manages. See [ASP.NET Core Module Configuration Reference](../hosting/aspnet-core-module.md) for more details.
 
 <a name=weblistener></a>
 
-  ## WebListener
+## WebListener
 
 WebListener is a Windows-only HTTP server for ASP.NET Core. It runs directly on the [Http.Sys kernel driver](http://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture), and has very little overhead.
 
@@ -204,7 +204,7 @@ You can add support for WebListener to your ASP.NET application by adding the "M
 
 <a name=kestrel></a>
 
-  ## Kestrel
+## Kestrel
 
 Kestrel is a cross-platform web server based on [libuv](https://github.com/libuv/libuv), a cross-platform asynchronous I/O library. You add support for Kestrel by including `Microsoft.AspNetCore.Server.Kestrel` in your project's dependencies listed in *project.json*.
 
@@ -213,11 +213,11 @@ Learn more about working with Kestrel to create [Your First ASP.NET Core Applica
 > [!NOTE]
 > Kestrel is designed to be run behind a proxy (for example IIS or Nginx) and should not be deployed directly facing the Internet.
 
-  ## Choosing a server
+## Choosing a server
 
 If you intend to deploy your application on a Windows server, you should run IIS as a reverse proxy server that manages and proxies requests to Kestrel. If deploying on Linux, you should run a comparable reverse proxy server such as Apache or Nginx to proxy requests to Kestrel (see [Publish to a Linux Production Environment](../publishing/linuxproduction.md)).
 
-  ## Custom Servers
+## Custom Servers
 
 You can create your own server in which to host ASP.NET apps, or use other open source servers. When implementing your own server, you're free to implement just the feature interfaces your application needs, though at a minimum you must support [IHttpRequestFeature](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Http/Features/IHttpRequestFeature/index.html) and [IHttpResponseFeature](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Http/Features/IHttpResponseFeature/index.html).
 
@@ -225,6 +225,6 @@ Since Kestrel is open source, it makes an excellent starting point if you need t
 
 Kestrel currently supports a limited number of feature interfaces, but additional features will be added in the future.
 
-  ## Additional Reading
+## Additional Reading
 
 * [Request Features](request-features.md)

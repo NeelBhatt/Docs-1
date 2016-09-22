@@ -1,11 +1,11 @@
 ---
 uid: tutorials/publish-to-azure-webapp-using-vs
 ---
-  # Deploy an ASP.NET Core web app to Azure using Visual Studio
+# Deploy an ASP.NET Core web app to Azure using Visual Studio
 
 By [Rick Anderson](https://twitter.com/RickAndMSFT), [Cesar Blum Silveira](https://github.com/cesarbs)
 
-  ## Set up the development environment
+## Set up the development environment
 
 * Install the latest [Azure SDK for Visual Studio](https://www.visualstudio.com/features/azure-tools-vs). The SDK installs Visual Studio if you don't already have it.
 
@@ -16,7 +16,7 @@ By [Rick Anderson](https://twitter.com/RickAndMSFT), [Cesar Blum Silveira](https
 
 * Verify your [Azure account](https://portal.azure.com/). You can [open a free Azure account](https://azure.microsoft.com/pricing/free-trial/) or [Activate Visual Studio subscriber benefits](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/).
 
-  ## Create a web app
+## Create a web app
 
 In the Visual Studio Start Page, tap **New Project...**.
 
@@ -48,7 +48,7 @@ In the **New ASP.NET Core Web Application (.NET Core)** dialog:
 
 ![image](publish-to-azure-webapp-using-vs/_static/noath.png)
 
-  ## Test the app locally
+## Test the app locally
 
 * Press **Ctrl-F5** to run the app locally
 
@@ -77,7 +77,7 @@ The app displays the email used to register the new user and a **Log off** link.
 
 ![image](publish-to-azure-webapp-using-vs/_static/hello.png)
 
-  ## Deploy the app to Azure
+## Deploy the app to Azure
 
 Right-click on the project in Solution Explorer and select **Publish...**.
 
@@ -140,7 +140,7 @@ Create a new resource group and app service plan:
 
 Visual Studio will publish your app to Azure and launch the cloud app in your browser.
 
-  ### Test your app in Azure
+### Test your app in Azure
 
 * Test the **About** and **Contact** links
 
@@ -148,7 +148,7 @@ Visual Studio will publish your app to Azure and launch the cloud app in your br
 
 ![image](publish-to-azure-webapp-using-vs/_static/final.png)
 
-  ### Update the app
+### Update the app
 
 * Edit the `Views/Home/About.cshtml` Razor view file and change its contents. For example:
 
@@ -171,7 +171,7 @@ Visual Studio will publish your app to Azure and launch the cloud app in your br
 
 * After the app is published, verify the changes you made are available on Azure
 
-  ### Clean up
+### Clean up
 
 When you have finished testing the app, go to the [Azure portal](https://portal.azure.com/) and delete the app.
 
@@ -185,7 +185,7 @@ When you have finished testing the app, go to the [Azure portal](https://portal.
 
 * Enter the name of the resource group and tap **Delete**. Your app and all other resources created in this tutorial are now deleted from Azure
 
-  ### Next steps
+### Next steps
 
 * [Getting started with ASP.NET Core MVC and Visual Studio](first-mvc-app/start-mvc.md)
 

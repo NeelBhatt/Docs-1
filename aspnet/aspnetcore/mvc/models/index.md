@@ -1,7 +1,7 @@
 ---
 uid: mvc/models/index
 ---
-  # Models
+# Models
 
 * [Model Binding](model-binding.md)
 

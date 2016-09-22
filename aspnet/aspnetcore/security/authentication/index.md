@@ -1,7 +1,7 @@
 ---
 uid: security/authentication/index
 ---
-  # Authentication
+# Authentication
 
 * [Introduction to Identity](identity.md)
 

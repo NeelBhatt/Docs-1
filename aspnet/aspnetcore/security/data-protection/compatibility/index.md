@@ -1,7 +1,7 @@
 ---
 uid: security/data-protection/compatibility/index
 ---
-  # Compatibility
+# Compatibility
 
 * [Sharing cookies between applications](cookie-sharing.md)
 

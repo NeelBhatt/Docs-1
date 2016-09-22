@@ -3,13 +3,13 @@ uid: migration/mvc
 ---
 Warning: This page documents version 1.0.0-rc2 and has not yet been updated for version 1.0.0
 
-  # Migrating From ASP.NET MVC to ASP.NET Core MVC
+# Migrating From ASP.NET MVC to ASP.NET Core MVC
 
 By [Rick Anderson](https://twitter.com/RickAndMSFT), [Daniel Roth](https://github.com/danroth27), [Steve Smith](http://ardalis.com) and [Scott Addie](https://scottaddie.com)
 
 This article shows how to get started migrating an ASP.NET MVC project to [ASP.NET Core MVC](../mvc/index.md). In the process, it highlights many of the things that have changed from ASP.NET MVC. Migrating from ASP.NET MVC is a multiple step process and this article covers the initial setup, basic controllers and views, static content, and client-side dependencies. Additional articles cover migrating configuration and identity code found in many ASP.NET MVC projects.
 
-  ## Create the starter ASP.NET MVC project
+## Create the starter ASP.NET MVC project
 
 To demonstrate the upgrade, we'll start by creating a ASP.NET MVC app. Create it with the name *WebApp1* so the namespace will match the ASP.NET Core project we create in the next step.
 
@@ -19,7 +19,7 @@ To demonstrate the upgrade, we'll start by creating a ASP.NET MVC app. Create it
 
 *Optional:* Change the name of the Solution from *WebApp1* to *Mvc5*. Visual Studio will display the new solution name (*Mvc5*), which will make it easier to tell this project from the next project.
 
-  ## Create the ASP.NET Core project
+## Create the ASP.NET Core project
 
 Create a new *empty* ASP.NET Core web app with the same name as the previous project (*WebApp1*) so the namespaces in the two projects match. Having the same namespace makes it easier to copy code between the two projects. You'll have to create this project in a different directory than the previous project to use the same name.
 
@@ -29,7 +29,7 @@ Create a new *empty* ASP.NET Core web app with the same name as the previous pro
 
 * *Optional:* Create a new ASP.NET Core app named *WebApp1* with authentication set to **Individual User Accounts**. Rename this app *FullAspNetCore*.  Creating this project will save you time in the conversion. You can look at the template generated code to see the end result or to copy code to the conversion project. It's also helpful when you get stuck on a conversion step to compare with the template generated project.
 
-  ## Configure the site to use MVC
+## Configure the site to use MVC
 
 Open the *project.json* file.
 
@@ -90,7 +90,7 @@ Open the *project.json* file.
 
 `UseStaticFiles` adds the static file handler. As mentioned previously, the ASP.NET runtime is modular, and you must explicitly opt in to serve static files. `app.UseMvc(routes =>` adds routing. For more information, see [Application Startup](../fundamentals/startup.md) and [Routing](../fundamentals/routing.md).
 
-  ## Add a controller and view
+## Add a controller and view
 
 In this section, you'll add a minimal controller and view to serve as placeholders for the ASP.NET MVC controller and views you'll migrate in the next section.
 
@@ -143,7 +143,7 @@ Now that we have a minimal working ASP.NET Core project, we can start migrating 
 
 * Log in/out, identity (This will be done in the next tutorial.)
 
-  ## Controllers and views
+## Controllers and views
 
 * Copy each of the methods from the ASP.NET MVC `HomeController` to the new `HomeController`. Note that in ASP.NET MVC, the built-in template's controller action method return type is [ActionResult](https://msdn.microsoft.com/en-us/library/system.web.mvc.actionresult(v=vs.118).aspx); in ASP.NET Core MVC the actions return [IActionResult](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/IActionResult/index.html) instead. `ActionResult` implements `IActionResult`, so there is no need to change the return type of your action methods.
 
@@ -159,7 +159,7 @@ Now that we have a minimal working ASP.NET Core project, we can start migrating 
 
 Note the lack of styling and menu items. We'll fix that in the next section.
 
-  ## Static content
+## Static content
 
 In previous versions of  ASP.NET MVC, static content was hosted from the root of the web project and was intermixed with server-side files. In ASP.NET Core, static content is hosted in the *wwwroot* folder. You'll want to copy the static content from your old ASP.NET MVC app to the *wwwroot* folder in your ASP.NET Core project. In this sample conversion:
 
@@ -196,7 +196,7 @@ Upon saving the file, Bower will automatically download the dependencies to the 
 
 See [Manage Client-Side Packages with Bower](../client-side/bower.md) for more information.
 
-  ## Gulp
+## Gulp
 
 When you create a new web app using the ASP.NET Core Web Application template, the project is setup to use [Gulp](http://gulpjs.com). Gulp is a streaming build system for client-side code (HTML, LESS, SASS, etc.). The *gulpfile.js* contains JavaScript that defines a set of gulp tasks that you can set to run automatically on build events or you can run manually using **Task Runner Explorer**. In this section we'll show how to use *gulpfile.js* to bundle and minify the projects JavaScript and CSS files.
 
@@ -268,7 +268,7 @@ The code above performs these functions:
 
 See [Using Gulp](../client-side/using-gulp.md).
 
-  ## NPM
+## NPM
 
 [NPM](https://docs.npmjs.com/) (Node Package Manager) is a package manager which is used to acquire tooling such as [Bower](http://bower.io/) and [Gulp](http://gulpjs.com/); and, it is fully supported in Visual Studio. We'll use NPM to manage Gulp dependencies.
 
@@ -316,7 +316,7 @@ For more information, see [Client-Side Development](../client-side/index.md).
 
 <a name=migrate-layout-file></a>
 
-  ## Migrate the layout file
+## Migrate the layout file
 
 * Copy the *_ViewStart.cshtml* file from the old ASP.NET MVC project's *Views* folder into the ASP.NET Core project's *Views* folder. The *_ViewStart.cshtml* file has not changed in ASP.NET Core MVC.
 
@@ -411,13 +411,13 @@ View the site in the browser. It should now load correctly, with the expected st
 
 * Optional: You might want to try using the new layout file. For this project you can copy the layout file from the *FullAspNetCore* project. The new layout file uses [Tag Helpers](../mvc/views/tag-helpers/index.md) and has other improvements.
 
-  ## Configure Bundling
+## Configure Bundling
 
 The ASP.NET MVC starter web template utilized the ASP.NET Web Optimization for bundling. In ASP.NET Core, this functionality is performed as part of the build process using [Gulp](http://gulpjs.com/). We've previously configured bundling and minification; all that's left is to change the references to Bootstrap, jQuery and other assets to use the bundled and minified versions. You can see how this is done in the layout file (*Views/Shared/_Layout.cshtml*) of the full template project. See [Bundling and Minification](../client-side/bundling-and-minification.md) for more information.
 
 <a name=solving-http-500-errors></a>
 
-  ## Solving HTTP 500 errors
+## Solving HTTP 500 errors
 
 There are many problems that can cause a HTTP 500 error message that contain no information on the source of the problem. For example, if the *Views/_ViewImports.cshtml* file contains a namespace that doesn't exist in your project, you'll get a HTTP 500 error. To get a detailed error message, add the following code:
 
@@ -445,7 +445,7 @@ There are many problems that can cause a HTTP 500 error message that contain no 
 
 See **Using the Developer Exception Page** in [Error Handling](../fundamentals/error-handling.md) for more information.
 
-  ## Additional Resources
+## Additional Resources
 
 * [Client-Side Development](../client-side/index.md)
 

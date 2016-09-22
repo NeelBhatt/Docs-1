@@ -1,7 +1,7 @@
----
+﻿---
 uid: publishing/web-publishing-vs
 ---
-  # How Web Publishing In Visual Studio Works
+# How Web Publishing In Visual Studio Works
 
 By [Sayed Ibrahim Hashimi](https://github.com/sayedihashimi)
 

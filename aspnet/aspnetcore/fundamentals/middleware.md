@@ -3,13 +3,13 @@ uid: fundamentals/middleware
 ---
 <a name=fundamentals-middleware></a>
 
-  # Middleware
+# Middleware
 
 By [Steve Smith](http://ardalis.com) and [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 [View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnet/fundamentals/middleware/sample)
 
-  ## What is middleware
+## What is middleware
 
 Middleware are software components that are assembled into an application pipeline to handle requests and responses. Each component chooses whether to pass the request on to the next component in the pipeline, and can perform certain actions before and after the next component is invoked in the pipeline. Request delegates are used to build the request pipeline. The request delegates handle each HTTP request.
 
@@ -18,7 +18,7 @@ components*. Each middleware component in the request pipeline is responsible fo
 
 [Migrating HTTP Modules to Middleware](../migration/http-modules.md) explains the difference between request pipelines in ASP.NET Core and the previous versions and provides more middleware samples.
 
-  ## Creating a middleware pipeline with IApplicationBuilder
+## Creating a middleware pipeline with IApplicationBuilder
 
 The ASP.NET request pipeline consists of a sequence of request delegates, called one after the next, as this diagram shows (the thread of execution follows the black arrows):
 
@@ -155,7 +155,7 @@ In the above example, the call to `await next.Invoke()` will call into the next 
 
 <a name=middleware-run-map-use></a>
 
-  ### Run, Map, and Use
+### Run, Map, and Use
 
 You configure the HTTP pipeline using [Run](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/RunExtensions/index.html), [Map](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/MapExtensions/index.html),  and [Use](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/UseExtensions/index.html). The `Run` method short circuits the pipeline (that is, it will not call a `next` request delegate). Thus, `Run` should only be called at the end of your pipeline. `Run` is a convention, and some middleware components may expose their own Run[Middleware] methods that should only run at the end of the pipeline. The following two middleware are equivalent as the `Use` version doesn't use the `next` parameter:
 
@@ -257,7 +257,7 @@ You can also nest Maps:
    });
    ````
 
-  ## Built-in middleware
+## Built-in middleware
 
 ASP.NET ships with the following middleware components:
 
@@ -265,7 +265,7 @@ ASP.NET ships with the following middleware components:
 
 <a name=middleware-writing-middleware></a>
 
-  ## Writing middleware
+## Writing middleware
 
 The [CodeLabs middleware tutorial](https://github.com/Microsoft-Build-2016/CodeLabs-WebDev/tree/master/Module2-AspNetCore) provides a good introduction to writing middleware.
 
@@ -352,7 +352,7 @@ Testing the middleware (by setting the `Hosting:Environment` environment variabl
 > [!NOTE]
 > The [UseStaticFiles](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/StaticFileExtensions/index.html#meth-Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles) extension method (which creates the [StaticFileMiddleware](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/StaticFiles/StaticFileMiddleware/index.html)) also uses `UseMiddleware<T>`. In this case, the `StaticFileOptions` parameter is passed in, but other constructor parameters are supplied by `UseMiddleware<T>` and dependency injection.
 
-  ## Additional Resources
+## Additional Resources
 
 * [CodeLabs middleware tutorial](https://github.com/Microsoft-Build-2016/CodeLabs-WebDev/tree/master/Module2-AspNetCore)
 

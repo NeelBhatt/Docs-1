@@ -3,7 +3,7 @@ uid: security/authorization/claims
 ---
 <a name=security-authorization-claims-based></a>
 
-  # Claims-Based Authorization
+# Claims-Based Authorization
 
 When an identity is created it may be assigned one or more claims issued by a trusted party. A claim is name value pair that represents what the subject is, not what the subject can do. For example you may have a Drivers License, issued by a local driving license authority. Your driver's license has your date of birth on it. In this case the claim name would be `DateOfBirth`, the claim value would be your date of birth, for example `8th June 1970` and the issuer would be the driving license authority. Claims based authorization, at its simplest, checks the value of a claim and allows access to a resource based upon that value. For example if you want access to a night club the authorization process might be:
 
@@ -11,7 +11,7 @@ The door security officer would evaluate the value of your date of birth claim a
 
 An identity can contain multiple claims with multiple values and can contain multiple claims of the same type.
 
-  ## Adding claims checks
+## Adding claims checks
 
 Claim based authorization checks are declarative - the developer embeds them within their code, against a controller or an action within a controller, specifying claims which the current user must possess, and optionally the value the claim must hold to access the requested resource. Claims requirements are policy based, the developer must build and register a policy expressing the claims requirements.
 
@@ -102,7 +102,7 @@ Most claims come with a value. You can specify a list of allowed values when cre
    }
    ````
 
-  ## Multiple Policy Evaluation
+## Multiple Policy Evaluation
 
 If you apply multiple policies to a controller or action then all policies must pass before access is granted. For example;
 

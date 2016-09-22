@@ -1,7 +1,7 @@
 ---
 uid: security/data-protection/consumer-apis/index
 ---
-  # Consumer APIs
+# Consumer APIs
 
 * [Consumer APIs Overview](overview.md)
 

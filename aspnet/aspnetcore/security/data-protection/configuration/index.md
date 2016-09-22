@@ -1,7 +1,7 @@
 ---
 uid: security/data-protection/configuration/index
 ---
-  # Configuration
+# Configuration
 
 * [Configuring Data Protection](overview.md)
 

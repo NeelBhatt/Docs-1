@@ -1,7 +1,7 @@
 ---
 uid: performance/caching/index
 ---
-  # Caching
+# Caching
 
 * [In Memory Caching](memory.md)
 

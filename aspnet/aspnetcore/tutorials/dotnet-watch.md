@@ -3,17 +3,17 @@ uid: tutorials/dotnet-watch
 ---
 <a name=dotnet-watch></a>
 
-  # Developing ASP.NET Core applications using dotnet watch
+# Developing ASP.NET Core applications using dotnet watch
 
 By [Victor Hurdugaci](https://twitter.com/victorhurdugaci)
 
-  ## Introduction
+## Introduction
 
 `dotnet watch` is a development time tool that runs a `dotnet` command when source files change. It can be used to compile, run tests, or publish when code changes.
 
 In this tutorial we'll use an existing WebApi application that calculates the sum and product of two numbers to demonstrate the use cases of `dotnet watch`. The sample application contains an intentional bug that we'll fix as part of this tutorial.
 
-  ## Getting started
+## Getting started
 
 Start by downloading [the sample application](https://github.com/aspnet/Docs/tree/master/aspnet/tutorials/dotnet-watch/sample). It contains two projects, `WebApp` (a web application) and `WebAppTests` (unit tests for the web application)
 
@@ -53,7 +53,7 @@ If you navigate to `http://localhost:5000/api/math/product?a=4&b=5` instead, you
 
 We'll fix that.
 
-  ## Adding `dotnet watch` to a project
+## Adding `dotnet watch` to a project
 
 1. Add `Microsoft.DotNet.Watcher.Tools` to the `tools` section of the *WebApp/project.json* file as in the example below:
 
@@ -81,7 +81,7 @@ The console output will show messages similar to the ones below:
    log  : Installing Microsoft.DotNet.Watcher.Tools 1.0.0-preview2-final.
    ````
 
-  ## Running `dotnet` commands using `dotnet watch`
+## Running `dotnet` commands using `dotnet watch`
 
 Any `dotnet` command can be run with  `dotnet watch`:  For example:
 
@@ -103,7 +103,7 @@ To run `WebApp` using the watcher, run `dotnet watch run` in the `WebApp` folder
    Application started. Press Ctrl+C to shut down.
    ````
 
-  ## Making changes with `dotnet watch`
+## Making changes with `dotnet watch`
 
 Make sure `dotnet watch` is running.
 
@@ -152,7 +152,7 @@ Save the file. The console output will show messages similar to the ones below, 
 
 Verify `http://localhost:5000/api/math/product?a=4&b=5` returns the correct result.
 
-  ## Running tests using `dotnet watch`
+## Running tests using `dotnet watch`
 
 The file watcher can run other `dotnet` commands like `test` or `publish`.
 

@@ -3,7 +3,7 @@ uid: fundamentals/dependency-injection
 ---
 <a name=fundamentals-dependency-injection></a>
 
-  # Dependency Injection
+# Dependency Injection
 
 [Steve Smith](http://ardalis.com), [Scott Addie](https://scottaddie.com)
 
@@ -11,7 +11,7 @@ ASP.NET Core is designed from the ground up to support and leverage dependency i
 
 [View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnet/fundamentals/dependency-injection/sample)
 
-  ## What is Dependency Injection?
+## What is Dependency Injection?
 
 Dependency injection (DI) is a technique for achieving loose coupling between objects and their collaborators, or dependencies. Rather than directly instantiating collaborators, or using static references, the objects a class needs in order to perform its actions are provided to the class in some fashion. Most often, classes will declare their dependencies via their constructor, allowing them to follow the [Explicit Dependencies Principle](http://deviq.com/explicit-dependencies-principle/). This approach is known as "constructor injection".
 
@@ -27,7 +27,7 @@ ASP.NET Core includes a simple built-in container (represented by the `IServiceP
 > [!NOTE]
 > This article covers Dependency Injection as it applies to all ASP.NET applications. Dependency Injection within MVC controllers is covered in [Dependency Injection and Controllers](../mvc/controllers/dependency-injection.md).
 
-  ## Using Framework-Provided Services
+## Using Framework-Provided Services
 
 The `ConfigureServices` method in the `Startup` class is responsible for defining the services the application will use, including platform features like Entity Framework Core and ASP.NET Core MVC. Initially, the `IServiceCollection` provided to `ConfigureServices` has just a handful of services defined. Below is an example of how to add additional services to the container using a number of extension methods like `AddDbContext`, `AddIdentity`, and `AddMvc`.
 
@@ -62,7 +62,7 @@ Tip: You can request certain framework-provided services within `Startup` method
 
 Of course, in addition to configuring the application to take advantage of various framework features, you can also use `ConfigureServices` to configure your own application services.
 
-  ## Registering Your Own Services
+## Registering Your Own Services
 
 You can register your own application services as follows. The first generic type represents the type (typically an interface) that will be requested from the container. The second generic type represents the concrete type that will be instantiated by the container and used to fulfill such requests.
 
@@ -210,7 +210,7 @@ Entity Framework contexts should be added to the services container using the `S
 
 Warning: The main danger to be wary of is resolving a `Scoped` service from a singleton. It's likely in such a case that the service will have incorrect state when processing subsequent requests.
 
-  ## Service Lifetimes and Registration Options
+## Service Lifetimes and Registration Options
 
 ASP.NET services can be configured with the following lifetimes:
 
@@ -367,7 +367,7 @@ Observe which of the `OperationId` values varies within a request, and between r
 
 * *Singleton* objects are the same for every object and every request (regardless of whether an instance is provided in `ConfigureServices`)
 
-  ## Request Services
+## Request Services
 
 The services available within an ASP.NET request from `HttpContext` are exposed through the `RequestServices` collection.
 
@@ -380,7 +380,7 @@ Generally, you shouldn't use these properties directly, preferring instead to re
 > [!NOTE]
 > Prefer requesting dependencies as constructor parameters to accessing the `RequestServices` collection.
 
-  ## Designing Your Services For Dependency Injection
+## Designing Your Services For Dependency Injection
 
 You should design your services to use dependency injection to get their collaborators. This means avoiding the use of stateful static method calls (which result in a code smell known as [static cling](http://deviq.com/static-cling/)) and the direct instantiation of dependent classes within your services. It may help to remember the phrase, [New is Glue](http://ardalis.com/new-is-glue), when choosing whether to instantiate a type or to request it via dependency injection. By following the [SOLID Principles of Object Oriented Design](http://deviq.com/solid/), your classes will naturally tend to be small, well-factored, and easily tested.
 
@@ -390,7 +390,7 @@ With regards to data access specifically, you can inject the `DbContext` into yo
 
 <a name=replacing-the-default-services-container></a>
 
-  ## Replacing the default services container
+## Replacing the default services container
 
 The built-in services container is meant to serve the basic needs of the framework and most consumer applications built on it. However, developers who wish to replace the built-in container with their preferred container can easily do so. The `ConfigureServices` method typically returns `void`, but if its signature is changed to return `IServiceProvider`, a different container can be configured and returned. There are many IOC containers available for .NET. In this example, the [Autofac](http://autofac.org/) package is used.
 
@@ -446,7 +446,7 @@ Finally, configure Autofac as normal in `DefaultModule`:
 
 At runtime, Autofac will be used to resolve types and inject dependencies. [Learn more about using Autofac and ASP.NET Core](http://docs.autofac.org/en/latest/integration/aspnetcore.html).
 
-  ## Recommendations
+## Recommendations
 
 When working with dependency injection, keep the following recommendations in mind:
 
@@ -465,7 +465,7 @@ When working with dependency injection, keep the following recommendations in mi
 
 Remember, dependency injection is an *alternative* to static/global object access patterns. You will not be able to realize the benefits of DI if you mix it with static object access.
 
-  ## Additional Resources
+## Additional Resources
 
 * [Application Startup](startup.md)
 

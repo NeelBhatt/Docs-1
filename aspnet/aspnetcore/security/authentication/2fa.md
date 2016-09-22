@@ -5,13 +5,13 @@ Warning: This page documents version 1.0.0-beta8 and has not yet been updated fo
 
 <a name=security-authentication-2fa></a>
 
-  # Two-factor authentication with SMS
+# Two-factor authentication with SMS
 
 By [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 This tutorial will show you how to set up two-factor authentication (2FA) using SMS. Twilio is used, but you can use any other SMS provider. We recommend you complete [Account Confirmation and Password Recovery](accconfirm.md) before starting this tutorial.
 
-  ## Create a new ASP.NET Core project
+## Create a new ASP.NET Core project
 
 Create a new ASP.NET Core web app with individual user accounts.
 
@@ -19,7 +19,7 @@ Create a new ASP.NET Core web app with individual user accounts.
 
 After you create the project, follow the instructions in [Account Confirmation and Password Recovery](accconfirm.md) to set up and require SSL.
 
-  ## Setup up SMS for two-factor authentication with Twilio
+## Setup up SMS for two-factor authentication with Twilio
 
 * Create a [Twilio](http://www.twilio.com/) account.
 
@@ -79,7 +79,7 @@ After you create the project, follow the instructions in [Account Confirmation a
 > [!NOTE]
 > You can remove `//` line comment characters from the `System.Diagnostics.Debug.WriteLine(message);` line to test the application when you can't get SMS messages. A better approach to logging is to use the built in [logging](../../fundamentals/logging.md#fundamentals-logging.md).
 
-  ### Configure the SMS provider key/value
+### Configure the SMS provider key/value
 
 We'll use the [Options pattern](../../fundamentals/configuration.md#options-config-objects.md) to access the user account and key settings. For more information, see [configuration](../../fundamentals/configuration.md#fundamentals-configuration.md).
 
@@ -108,7 +108,7 @@ Set `SID`, `AuthToken`, and `SendNumber` with the [secret-manager tool](../app-s
    info: Successfully saved SID = abcdefghi to the secret store.
    ````
 
-  ### Configure startup to use `AuthMessageSMSSenderOptions`
+### Configure startup to use `AuthMessageSMSSenderOptions`
 
 Add `AuthMessageSMSSenderOptions` to the service container at the end of the `ConfigureServices` method in the *Startup.cs* file:
 
@@ -124,7 +124,7 @@ Add `AuthMessageSMSSenderOptions` to the service container at the end of the `Co
 
    ````
 
-  ## Enable two-factor authentication
+## Enable two-factor authentication
 
 * Open the *Views/Manage/Index.cshtml* Razor view file.
 
@@ -193,7 +193,7 @@ Add `AuthMessageSMSSenderOptions` to the service container at the end of the `Co
 
       ````
 
-  ## Log in with two-factor authentication
+## Log in with two-factor authentication
 
 * Run the app and register a new user
 
@@ -221,7 +221,7 @@ If you don't get a text message, see [Debugging Twilio](#debugging-twilio).
 
 ![image](2fa/_static/login2fa6.png)
 
-  ### Test two-factor authentication
+### Test two-factor authentication
 
 * Log off.
 
@@ -237,7 +237,7 @@ If you don't get a text message, see [Debugging Twilio](#debugging-twilio).
 
 ![image](2fa/_static/login2fa8.png)
 
-  ## Account lockout for protecting against brute force attacks
+## Account lockout for protecting against brute force attacks
 
 We recommend you use account lockout with 2FA. Once a user logs in (through a local account or social account), each failed attempt at 2FA is stored, and if the maximum attempts (default is 5) is reached, the user is locked out for five minutes (you can set the lock out time with `DefaultAccountLockoutTimeSpan`). The following configures Account to be locked out for 10 minutes after 10 failed attempts.
 
@@ -259,7 +259,7 @@ We recommend you use account lockout with 2FA. Once a user logs in (through a lo
 
    ````
 
-  ## Debugging  Twilio
+## Debugging  Twilio
 
 If you're able to use the Twilio API, but you don't get an SMS message, try the following:
 

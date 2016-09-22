@@ -1,7 +1,7 @@
 ---
 uid: data/azure-storage/index
 ---
-  # Azure Storage
+# Azure Storage
 
 * [Adding Azure Storage by Using Visual Studio Connected Services](https://azure.microsoft.com/documentation/articles/vs-azure-tools-connected-services-storage/.md)
 

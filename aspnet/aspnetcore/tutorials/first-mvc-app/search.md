@@ -1,7 +1,7 @@
 ---
 uid: tutorials/first-mvc-app/search
 ---
-  # Adding Search
+# Adding Search
 
 By [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -240,7 +240,7 @@ The following markup shows the change to the `form` tag:
    <form asp-controller="Movies" asp-action="Index" method="get">
    ````
 
-  ## Adding Search by Genre
+## Adding Search by Genre
 
 Add the following `MovieGenreViewModel` class to the *Models* folder:
 
@@ -326,7 +326,7 @@ The `SelectList` of genres is created by projecting the distinct genres (we don'
    movieGenreVM.genres = new SelectList(await genreQuery.Distinct().ToListAsync())
    ````
 
-  ## Adding search by genre to the Index view
+## Adding search by genre to the Index view
 
 <!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Views/Movies/IndexFormGenre.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "HTML", "highlight_args": {"hl_lines": [1, 15, 16, 17, 27, 41], "linenostart": 1}} -->
 

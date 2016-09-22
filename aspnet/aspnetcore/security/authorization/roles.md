@@ -3,11 +3,11 @@ uid: security/authorization/roles
 ---
 <a name=security-authorization-role-based></a>
 
-  # Role based Authorization
+# Role based Authorization
 
 When an identity is created it may belong to one or more roles, for example Tracy may belong to the Administrator and User roles whilst Scott may only belong to the user role. How these roles are created and managed depends on the backing store of the authorization process. Roles are exposed to the developer through the [IsInRole](https://msdn.microsoft.com/en-us/library/system.security.claims.claimsprincipal.isinrole(v=vs.110).aspx) property on the [ClaimsPrincipal](https://msdn.microsoft.com/en-us/library/system.security.claims.claimsprincipal(v=vs.110).aspx) class.
 
-  ## Adding role checks
+## Adding role checks
 
 Role based authorization checks are declarative - the developer embeds them within their code, against a controller or an action within a controller, specifying roles which the current user must be a member of to access the requested resource.
 
@@ -94,7 +94,7 @@ You can also lock down a controller but allow anonymous, unauthenticated access 
 
 <a name=security-authorization-role-policy></a>
 
-  ## Policy based role checks
+## Policy based role checks
 
 Role requirements can also be expressed using the new Policy syntax, where a developer registers a policy at startup as part of the Authorization service configuration. This normally takes part in `ConfigureServices()` in your *Startup.cs* file.
 

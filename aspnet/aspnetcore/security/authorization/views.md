@@ -3,7 +3,7 @@ uid: security/authorization/views
 ---
 <a name=security-authorization-views></a>
 
-  # View Based Authorization
+# View Based Authorization
 
 Often a developer will want to show, hide or otherwise modify a UI based on the current user identity. You can access the authorization service within MVC views via [dependency injection](../../fundamentals/dependency-injection.md#fundamentals-dependency-injection.md). To inject the authorization service into a Razor view use the `@inject` directive, for example `@inject IAuthorizationService AuthorizationService`. If you want the authorization service in every view then place the `@inject` directive into the `_ViewImports.cshtml` file in the `Views` directory. For more information on dependency injection into views see [Dependency injection into views](../../mvc/views/dependency-injection.md).
 

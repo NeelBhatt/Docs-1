@@ -1,7 +1,7 @@
 ---
 uid: migration/configuration
 ---
-  # Migrating Configuration
+# Migrating Configuration
 
 By [Steve Smith](http://ardalis.com) and [Scott Addie](https://scottaddie.com)
 
@@ -9,7 +9,7 @@ In the previous article, we began [migrating an ASP.NET MVC project to ASP.NET C
 
 [View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnet/migration/configuration/samples)
 
-  ## Setup Configuration
+## Setup Configuration
 
 ASP.NET Core no longer uses the *Global.asax* and *web.config* files that previous versions of ASP.NET utilized. In earlier versions of ASP.NET, application startup logic was placed in an `Application_StartUp` method within *Global.asax*. Later, in ASP.NET MVC, a *Startup.cs* file was included in the root of the project; and, it was called when the application started. ASP.NET Core has adopted this approach completely by placing all startup logic in the *Startup.cs* file.
 
@@ -48,7 +48,7 @@ Add an *appsettings.json* file to the root of the project using the appropriate 
 
 ![image](configuration/_static/add-appsettings-json.png)
 
-  ## Migrate Configuration Settings from web.config
+## Migrate Configuration Settings from web.config
 
 Our ASP.NET MVC project included the required database connection string in *web.config*, in the `<connectionStrings>` element. In our ASP.NET Core project, we are going to store this information in the *appsettings.json* file. Open *appsettings.json*, and note that it already includes the following:
 
@@ -67,6 +67,6 @@ Our ASP.NET MVC project included the required database connection string in *web
 
 In the highlighted line depicted above, change the name of the database from **_CHANGE_ME** to the name of your database.
 
-  ## Summary
+## Summary
 
 ASP.NET Core places all startup logic for the application in a single file, in which the necessary services and dependencies can be defined and configured. It replaces the *web.config* file with a flexible configuration feature that can leverage a variety of file formats, such as JSON, as well as environment variables.

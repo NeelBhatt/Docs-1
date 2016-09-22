@@ -1,15 +1,15 @@
----
+﻿---
 uid: mvc/views/view-components
 ---
 Warning: This page documents version 1.0.0-rc1 and has not yet been updated for version 1.0.0
 
-  # View Components
+# View Components
 
 By [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 [View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnet/mvc/views/view-components/sample)
 
-  ## Introducing view components
+## Introducing view components
 
 New to ASP.NET Core MVC, view components are similar to partial views, but they are much more powerful. View components don’t use model binding, and only depend on the data you provide when calling into it. A view component:
 
@@ -39,11 +39,11 @@ View Components are intended anywhere you have reusable rendering logic that is 
 
 A [view component](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ViewComponent/index.html) consists of two parts, the class (typically derived from  `ViewComponent`) and the result it returns (typically a view). Like controllers, a view component can be a POCO, but most developers will want to take advantage of the methods and properties available by deriving from `ViewComponent`.
 
-  ## Creating a view component
+## Creating a view component
 
 This section contains the high level requirements to create a view component. Later in the article we'll examine each step in detail and create a view component.
 
-  ### The view component class
+### The view component class
 
 A view component class can be created by any of the following:
 
@@ -61,7 +61,7 @@ A view component class:
 
 * Does not take part in the controller lifecycle, which means you can't use [filters](../controllers/filters.md) in a view component
 
-  ### View component methods
+### View component methods
 
 A view component defines its logic in an `InvokeAsync` method that returns an [IViewComponentResult](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/IViewComponentResult/index.html). Parameters come directly from invocation of the view component, not from model binding. A view component never directly handles a request. Typically a view component initializes a model and passes it to a view by calling the [View](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ViewComponent/index.html) method. In summary, view component methods:
 
@@ -75,7 +75,7 @@ A view component defines its logic in an `InvokeAsync` method that returns an [I
 
 * Are overloaded on the signature rather than any details from the current HTTP request
 
-  ### View search path
+### View search path
 
 The runtime searches for the view in the following paths:
 
@@ -87,7 +87,7 @@ The default view name for a view component is *Default*, which means your view f
 
 We recommend you name the view file *Default.cshtml* and use the *Views/Shared/Components/<view_component_name>/<view_name>* path. The `PriorityList` view component used in this sample uses *Views/Shared/Components/PriorityList/Default.cshtml* for the view component view.
 
-  ## Invoking a view component
+## Invoking a view component
 
 To use the view component, call `@Component.InvokeAsync("Name of view component", <anonymous type containing parameters>)` from a view. The parameters will be passed to the `InvokeAsync` method.  The `PriorityList` view component developed in the article is invoked from the *Views/Todo/Index.cshtml* view file. In the following, the `InvokeAsync` method is called with two parameters:
 
@@ -98,7 +98,7 @@ To use the view component, call `@Component.InvokeAsync("Name of view component"
    @await Component.InvokeAsync("PriorityList", new { maxPriority = 2, isDone = false })
    ````
 
-  ### Invoking a view component directly from a controller
+### Invoking a view component directly from a controller
 
 View components are typically invoked from a view, but you can invoke them directly from a controller method. While view components do not define endpoints like controllers, you can easily implement a controller action that returns the content of a [ViewComponentResult](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ViewComponentResult/index.html).
 
@@ -115,13 +115,13 @@ In this example, the view component is called directly from the controller:
 
    ````
 
-  ## Walkthrough: Creating a simple view component
+## Walkthrough: Creating a simple view component
 
 [Download](https://github.com/aspnet/Docs/tree/master/aspnet/mvc/views/view-components/sample), build and test the starter code. It's a simple project with a `Todo` controller that displays a list of *Todo* items.
 
 ![image](view-components/_static/2dos.png)
 
-  ### Add a ViewComponent class
+### Add a ViewComponent class
 
 Create a *ViewComponents* folder and add the following `PriorityListViewComponent` class.
 
@@ -187,7 +187,7 @@ Notes on the code:
 
 * The `InvokeAsync` method returns the set of `ToDo` items that are not completed and have priority lower than or equal to `maxPriority`.
 
-  ### Create the view component Razor view
+### Create the view component Razor view
 
 1. Create the *Views/Shared/Components* folder. This folder **must** be named *Components*.
 
@@ -247,7 +247,7 @@ You can also call the view component directly from the controller:
 
    ````
 
-  ### Specifying a view name
+### Specifying a view name
 
 A complex view component might need to specify a non-default view under some conditions. The following code shows how to specify the "PVC" view  from the `InvokeAsync` method. Update the `InvokeAsync` method in the `PriorityListViewComponent` class.
 
@@ -308,7 +308,7 @@ Run the app and verify PVC view.
 
 If the PVC view is not rendered, verify you are calling the view component with a priority of 4 or higher.
 
-  ### Examine the view path
+### Examine the view path
 
 1. Change the priority parameter to three or less so the priority view is not returned.
 
@@ -337,7 +337,7 @@ If the PVC view is not rendered, verify you are calling the view component with 
 
 ![image](view-components/_static/shared.png)
 
-  ### Avoiding magic strings
+### Avoiding magic strings
 
 If you want compile time safety you can replace the hard coded view component name with the class name. Create the view component without the "ViewComponent" suffix:
 
@@ -401,7 +401,7 @@ Add a `using` statement to your Razor view file and use the `nameof` operator:
 
    ````
 
-  ## Additional Resources
+## Additional Resources
 
 * [Dependency injection into views](dependency-injection.md)
 

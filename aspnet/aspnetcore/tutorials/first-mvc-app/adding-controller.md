@@ -5,7 +5,7 @@ uid: tutorials/first-mvc-app/adding-controller
 
 <!-- manual conversion complete -->
 
-  # Adding a controller
+# Adding a controller
 
 By [Rick Anderson](https://twitter.com/RickAndMSFT)
 

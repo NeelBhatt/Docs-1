@@ -3,7 +3,7 @@ uid: security/authorization/policies
 ---
 <a name=security-authorization-policies-based></a>
 
-  # Custom Policy-Based Authorization
+# Custom Policy-Based Authorization
 
 Underneath the covers the [role authorization](roles.md#security-authorization-role-based.md) and [claims authorization](claims.md#security-authorization-claims-based.md) make use of a requirement, a handler for the requirement and a pre-configured policy. These building blocks allow you to express authorization evaluations in code, allowing for a richer, reusable, and easily testable authorization structure.
 
@@ -46,7 +46,7 @@ Policies are applied using the `Authorize` attribute by specifying the policy na
    }
    ````
 
-  ## Requirements
+## Requirements
 
 An authorization requirement is a collection of data parameters that a policy can use to evaluate the current user principal. In our Minimum Age policy the requirement we have a single parameter, the minimum age. A requirement must implement `IAuthorizationRequirement`. This is an empty, marker interface. A parameterized minimum age requirement might be implemented as follows;
 
@@ -69,7 +69,7 @@ A requirement doesn't need to have data or properties.
 
 <a name=security-authorization-policies-based-authorization-handler></a>
 
-  ## Authorization Handlers
+## Authorization Handlers
 
 An authorization handler is responsible for the evaluation of any properties of a requirement. The  authorization handler must evaluate them against a provided `AuthorizationContext` to decide if authorization is allowed. A requirement can have [multiple handlers](xref:security/authorization/policies#security-authorization-policies-based-multiple-handlers). Handlers must inherit `AuthorizationHandler<T>` where T is the requirement it handles.
 
@@ -135,7 +135,7 @@ Handlers must be registered in the services collection during configuration, for
 
 Each handler is added to the services collection by using `services.AddSingleton<IAuthorizationHandler, YourHandlerClass>();` passing in your handler class.
 
-  ## What should a handler return?
+## What should a handler return?
 
 You can see in our [handler example](xref:security/authorization/policies#security-authorization-handler-example) that the `Handle()` method has no return value, so how do we indicate success or failure?
 
@@ -149,7 +149,7 @@ Regardless of what you call inside your handler all handlers for a requirement w
 
 <a name=security-authorization-policies-based-multiple-handlers></a>
 
-  ## Why would I want multiple handlers for a requirement?
+## Why would I want multiple handlers for a requirement?
 
 In cases where you want evaluation to be on an **OR** basis you implement multiple handlers for a single requirement. For example, Microsoft has doors which only open with key cards. If you leave your key card at home the receptionist prints a temporary sticker and opens the door for you. In this scenario you'd have a single requirement, *EnterBuilding*, but multiple handlers, each one examining a single requirement.
 
@@ -191,7 +191,7 @@ In cases where you want evaluation to be on an **OR** basis you implement multip
 
 Now, assuming both handlers are [registered](xref:security/authorization/policies#security-authorization-policies-based-handler-registration) when a policy evaluates the `EnterBuildingRequirement` if either handler succeeds the policy evaluation will succeed.
 
-  ## Using a func to fufill a policy
+## Using a func to fufill a policy
 
 There may be occasions where fufilling a policy is simple to express in code. It is possible to simply supply a `Func<AuthorizationHandlerContext, bool>` when configuring your policy with the `RequireAssertion` policy builder.
 
@@ -214,7 +214,7 @@ For example the previous `BadgeEntryHandler` could be rewritten as follows;
     }
    ````
 
-  ## Accessing MVC Request Context In Handlers
+## Accessing MVC Request Context In Handlers
 
 The `Handle` method you must implement in an authorization handler has two parameters, an `AuthorizationContext` and the `Requirement` you are handling. Frameworks such as MVC or Jabbr are free to add any object to the `Resource` property on the `AuthorizationContext` to pass through extra information.
 

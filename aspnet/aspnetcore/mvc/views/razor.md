@@ -1,15 +1,15 @@
 ---
 uid: mvc/views/razor
 ---
-  # Razor Syntax Reference
+# Razor Syntax Reference
 
 [Taylor Mullen](https://twitter.com/ntaylormullen) and [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-  ## What is Razor?
+## What is Razor?
 
 Razor is a markup syntax for embedding server based code into web pages. The Razor syntax consists of Razor markup, C# and HTML. Files containing Razor generally have a *.cshtml* file extension.
 
-  ## Rendering HTML
+## Rendering HTML
 
 The default Razor language is HTML. Rendering HTML from Razor is no different than in an HTML file. A Razor file with the following markup:
 
@@ -22,7 +22,7 @@ The default Razor language is HTML. Rendering HTML from Razor is no different th
 
 Is rendered unchanged as `<p>Hello World</p>` by the server.
 
-  ## Razor syntax
+## Razor syntax
 
 Razor supports C# and uses the `@` symbol to transition from HTML to C#. Razor evaluates C# expressions and renders them in the HTML output. Razor can transition from HTML into C# or into Razor specific markup. When an `@` symbol is followed by a  it transitions into Razor specific markup, otherwise it transitions into plain C# .
 
@@ -52,7 +52,7 @@ HTML attributes and content containing email addresses don’t treat the `@` sym
 
    `<a href="mailto:Support@contoso.com">Support@contoso.com</a>`
 
-  ## Implicit Razor expressions
+## Implicit Razor expressions
 
 Implicit Razor expressions start with `@` followed by C# code. For example:
 
@@ -75,7 +75,7 @@ With the exception of the C# `await` keyword implicit expressions must not conta
 
 <a name=explicit-razor-expressions></a>
 
-  ## Explicit Razor expressions
+## Explicit Razor expressions
 
 Explicit Razor expressions consists of an @ symbol with balanced parenthesis. For example, to render last weeks’ time:
 
@@ -126,7 +126,7 @@ Without the explicit expression, `<p>Age@joe.Age</p>` would be treated as an ema
 
 <a name=expression-encoding-label></a>
 
-  ## Expression encoding
+## Expression encoding
 
 C# expressions that evaluate to a string are HTML encoded. C# expressions that evaluate to [IHtmlContent](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Html/IHtmlContent/index.html.md#Microsoft.AspNetCore.Html.IHtmlContent.md) are rendered directly through *IHtmlContent.WriteTo*. C# expressions that don't evaluate to *IHtmlContent* are converted to a string (by *ToString*) and encoded before they are rendered. For example, the following Razor markup:
 
@@ -174,7 +174,7 @@ Renders this HTML:
 
 <a name=razor-code-blocks-label></a>
 
-  ## Razor code blocks
+## Razor code blocks
 
 Razor code blocks start with `@` and are enclosed by `{}`. Unlike expressions, C# code inside code blocks is not rendered. Code blocks and expressions in a Razor page share the same scope and are defined in order (that is, declarations in a code block will be in scope for later code blocks and expressions).
 
@@ -200,7 +200,7 @@ Would render:
 
 <a name=implicit-transitions-label></a>
 
-  ### Implicit transitions
+### Implicit transitions
 
 The default language in a code block is C#, but you can transition back to HTML. HTML within a code block will transition back into rendering HTML:
 
@@ -216,7 +216,7 @@ The default language in a code block is C#, but you can transition back to HTML.
 
 <a name=explicit-delimited-transition-label></a>
 
-  ### Explicit delimited transition
+### Explicit delimited transition
 
 To define a sub-section of a code block that should render HTML, surround the characters to be rendered with the Razor `<text>` tag:
 
@@ -235,7 +235,7 @@ You generally use this approach when you want to render HTML that is not surroun
 
 <a name=explicit-line-transition-with-label></a>
 
-  ### Explicit Line Transition with `@:`
+### Explicit Line Transition with `@:`
 
 To render the rest of an entire line as HTML inside a code block, use the `@:` syntax:
 
@@ -254,11 +254,11 @@ Without the `@:` in the code above, you'd get a Razor run time error.
 
 <a name=control-structures-razor-label></a>
 
-  ## Control Structures
+## Control Structures
 
 Control structures are an extension of code blocks. All aspects of code blocks (transitioning to markup, inline C#) also apply to the following structures.
 
-  ### Conditionals `@if`, `else if`, `else` and `@switch`
+### Conditionals `@if`, `else if`, `else` and `@switch`
 
 The `@if` family controls when code runs:
 
@@ -312,7 +312,7 @@ You can use a switch statement like this:
    }
    ````
 
-  ### Looping `@for`, `@foreach`, `@while`, and `@do while`
+### Looping `@for`, `@foreach`, `@while`, and `@do while`
 
 You can render templated HTML with looping control statements. For example, to render a list of people:
 
@@ -392,7 +392,7 @@ You can use any of the following looping statements:
    } while (i < people.Length);
    ````
 
-  ### Compound `@using`
+### Compound `@using`
 
 In C# a using statement is used to ensure an object is disposed. In Razor this same mechanism can be used to create [HTML helpers](html-helpers.md) that contain additional content. For instance, we can utilize [🔧 HTML Helpers](html-helpers.md) to render a form tag with the `@using` statement:
 
@@ -412,7 +412,7 @@ In C# a using statement is used to ensure an object is disposed. In Razor this s
 
 You can also perform scope level actions like the above with [Tag Helpers](tag-helpers/index.md).
 
-  ### `@try`, `catch`, `finally`
+### `@try`, `catch`, `finally`
 
 Exception handling is similar to  C#:
 
@@ -434,7 +434,7 @@ Exception handling is similar to  C#:
    }
    ````
 
-  ### `@lock`
+### `@lock`
 
 Razor has the capability to protect critical sections with lock statements:
 
@@ -448,7 +448,7 @@ Razor has the capability to protect critical sections with lock statements:
    }
    ````
 
-  ### Comments
+### Comments
 
 Razor supports C# and HTML comments. The following markup:
 
@@ -489,7 +489,7 @@ Razor comments are removed by the server before the page is rendered. Razor uses
 
 <a name=razor-directives-label></a>
 
-  ## Directives
+## Directives
 
 Razor directives are represented by implicit expressions with reserved keywords following the `@` symbol. A directive will typically change the way a page is parsed or enable different functionality within your Razor page.
 
@@ -528,7 +528,7 @@ Generates a class similar to the following:
 
  explains how to view this generated class.
 
-  ### `@using`
+### `@using`
 
 The `@using` directive will add the c# `using` directive to the generated razor page:
 
@@ -543,7 +543,7 @@ The `@using` directive will add the c# `using` directive to the generated razor 
    <p>@dir</p>
    ````
 
-  ### `@model`
+### `@model`
 
 The `@model` directive allows you to specify the type of the model passed to your Razor page. It uses the following syntax:
 
@@ -592,7 +592,7 @@ Razor pages expose a `Model` property for accessing the model passed to the page
 
 The `@model` directive specified the type of this property (by specifying the `T` in `RazorPage<T>` that the generated class for your page derives from). If you don't specify the `@model` directive the `Model` property will be of type `dynamic`. The value of the model is passed from the controller to the view. See [Strongly typed models and the @model keyword](../../tutorials/first-mvc-app/adding-model.md#strongly-typed-models-keyword-label.md) for more information.
 
-  ### `@inherits`
+### `@inherits`
 
 The `@inherits` directive gives you full control of the class your Razor page inherits:
 
@@ -664,11 +664,11 @@ When passed "[Rick@contoso.com](mailto:Rick@contoso.com)" in the model:
 
    See [Layout](layout.md) for more information.
 
-  ### `@inject`
+### `@inject`
 
 The `@inject` directive enables you to inject a service from your [service container](../../fundamentals/dependency-injection.md)  into your Razor page for use. See [Dependency injection into views](dependency-injection.md).
 
-  ### `@functions`
+### `@functions`
 
 The `@functions` directive enables you to add function level content to your Razor page. The syntax is:
 
@@ -733,11 +733,11 @@ The generated Razor C# looks like:
 
    ````
 
-  ### `@section`
+### `@section`
 
 The `@section` directive is used in conjunction with the [layout page](layout.md) to enable views to render content in different parts of the rendered HTML page. See [Sections](layout.md#layout-sections-label.md) for more information.
 
-  ## TagHelpers
+## TagHelpers
 
 The following [Tag Helpers](tag-helpers/index.md) directives are detailed in the links provided.
 
@@ -749,7 +749,7 @@ The following [Tag Helpers](tag-helpers/index.md) directives are detailed in the
 
 <a name=razor-reserved-keywords-label></a>
 
-  ## Razor reserved keywords  ### Razor keywords
+## Razor reserved keywords  ### Razor keywords
 
 * functions
 
@@ -763,7 +763,7 @@ The following [Tag Helpers](tag-helpers/index.md) directives are detailed in the
 
 Razor keywords can be escaped with `@(Razor Keyword)`, for example `@(functions)`. See the complete sample below.
 
-  ### C# Razor keywords
+### C# Razor keywords
 
 * case
 
@@ -789,7 +789,7 @@ Razor keywords can be escaped with `@(Razor Keyword)`, for example `@(functions)
 
 C# Razor keywords need to be double escaped with `@(@C# Razor Keyword)`, for example `@(@case)`. The first `@` escapes the Razor parser, the second `@` escapes the C# parser. See the complete sample below.
 
-  ### Reserved keywords not used by Razor
+### Reserved keywords not used by Razor
 
 * namespace
 
@@ -797,7 +797,7 @@ C# Razor keywords need to be double escaped with `@(@C# Razor Keyword)`, for exa
 
 <a name=razor-customcompilationservice-label></a>
 
-  ## Viewing the Razor C# class generated for a view
+## Viewing the Razor C# class generated for a view
 
 Add the following class to your ASP.NET Core MVC project:
 

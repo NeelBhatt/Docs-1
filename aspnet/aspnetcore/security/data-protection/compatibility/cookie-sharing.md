@@ -1,13 +1,13 @@
 ---
 uid: security/data-protection/compatibility/cookie-sharing
 ---
-  # Sharing cookies between applications
+# Sharing cookies between applications
 
 Web sites commonly consist of many individual web applications, all working together harmoniously. If an application developer wants to provide a good single-sign-on experience, he'll often need all of the different web applications within the site to share authentication tickets between each other.
 
 To support this scenario, the data protection stack allows sharing Katana cookie authentication and ASP.NET Core cookie authentication tickets.
 
-  ## Sharing authentication cookies between applications
+## Sharing authentication cookies between applications
 
 To share authentication cookies between two different ASP.NET Core applications, configure each application that should share cookies as follows.
 
@@ -57,7 +57,7 @@ Caution: You should consider configuring the DataProtectionProvider such that ke
      });
      ````
 
-  ## Sharing authentication cookies between ASP.NET 4.x and ASP.NET Core applications
+## Sharing authentication cookies between ASP.NET 4.x and ASP.NET Core applications
 
 ASP.NET 4.x applications which use Katana cookie authentication middleware can be configured to generate authentication cookies which are compatible with the ASP.NET Core cookie authentication middleware. This allows upgrading a large site's individual applications piecemeal while still providing a smooth single sign on experience across the site.
 

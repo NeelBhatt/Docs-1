@@ -1,13 +1,13 @@
 ﻿---
 uid: client-side/yeoman
 ---
-  # Building Projects with Yeoman
+# Building Projects with Yeoman
 
 By [Steve Smith](http://ardalis.com), [Scott Addie](https://scottaddie.com), [Rick Anderson](https://twitter.com/RickAndMSFT), [Noel Rice](http://blog.falafel.com/author/noel-rice/), and [Shayne Boyer](https://twitter.com/spboyer)
 
 [Yeoman](http://yeoman.io/) generates complete projects for a given set of client tools. Yeoman is an open-source tool that works like a Visual Studio project template. The Yeoman command line tool [yo](https://github.com/yeoman/yo) works alongside a Yeoman generator. Generators define the technologies that go into a project.
 
-  ## Install Node.js, npm, and Yeoman
+## Install Node.js, npm, and Yeoman
 
 To get started with Yeoman install [Node.js](https://nodejs.org/en/). The installer includes [Node.js](https://nodejs.org/en/) and [npm](https://www.npmjs.com/).
 
@@ -37,7 +37,7 @@ From the command line, install the ASP.NET generator:
 
 The `–g` flag installs the generator globally, so that it can be used from any path.
 
-  ## Create an ASP.NET app
+## Create an ASP.NET app
 
 Create a directory for your projects
 
@@ -70,7 +70,7 @@ Yeoman will scaffold the project and its supporting files. Suggested next steps 
 
 The [ASP.NET generator](https://www.npmjs.com/package/generator-aspnet) creates ASP.NET Core projects that can be loaded into Visual Studio Code, Visual Studio, or run from the command line.
 
-  ## Restore, build and run
+## Restore, build and run
 
 Follow the suggested commands by changing directories to the `EmptyWeb1` directory. Then run `dotnet restore`.
 
@@ -82,13 +82,13 @@ Build and run the app using `dotnet build` and `dotnet run`:
 
 At this point you can navigate to the URL shown to test the newly created ASP.NET Core app.
 
-  ## Client-Side Packages
+## Client-Side Packages
 
 The front end resources are provided by the templates from the yeoman generator using the [Bower](bower.md) client-side package manager, adding *bower.json* and *.bowerrc* files to restore client-side packages using the [Bower](bower.md) client-side package manager.
 
 The [BundlerMinifier](https://github.com/madskristensen/BundlerMinifier/wiki) component is also included by default for ease of concatenation (bundling) and minification of CSS, JavaScript and HTML.
 
-  ## Building and Running from Visual Studio
+## Building and Running from Visual Studio
 
 You can load your generated ASP.NET Core web project directly into Visual Studio, then build and run your project from there. Follow the instructions above to scaffold a new ASP.NET Core app using yeoman. This time, choose **Web Application** from the menu and name the app `MyWebApp`.
 
@@ -106,7 +106,7 @@ When all the dependencies are restored, press **F5** to run the project. The def
 
 ![image](yeoman/_static/yeoman-home-page.png)
 
-  ## Restoring, Building, and Hosting from the Command Line
+## Restoring, Building, and Hosting from the Command Line
 
 You can prepare and host your web application using the [.NET Core](https://microsoft.com/net/core) command-line interface.
 
@@ -143,7 +143,7 @@ Open a web browser, and navigate to http://localhost:5000.
 
 ![image](yeoman/_static/yeoman-home-page_5000.png)
 
-  ## Adding to Your Project with Sub Generators
+## Adding to Your Project with Sub Generators
 
 You can add new generated files using Yeoman even after the project is created. Use [sub generators](https://www.github.com/omnisharp/generator-aspnet#sub-generators) to add any of the file types that make up your project. For example, to add a new class to your project, enter the `yo aspnet:Class` command followed by the name of the class. Execute the following command from the directory in which the file should be created:
 
@@ -176,7 +176,7 @@ The result is a file named Person.cs with a class named `Person`:
    }
    ````
 
-  ## Related Resources
+## Related Resources
 
 * [Servers (HttpPlatformHandler, Kestrel and WebListener)](../fundamentals/servers.md)
 

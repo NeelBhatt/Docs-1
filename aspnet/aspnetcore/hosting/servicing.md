@@ -3,7 +3,7 @@ uid: hosting/servicing
 ---
 <a name=hosting-servicing></a>
 
-  # Servicing
+# Servicing
 
 By [Sourabh Shirhatti](https://twitter.com/sshirhatti), [Daniel Roth](https://github.com/danroth27)
 

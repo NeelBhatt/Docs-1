@@ -1,7 +1,7 @@
 ---
 uid: security/data-protection/implementation/index
 ---
-  # Implementation
+# Implementation
 
 * [Authenticated encryption details.](authenticated-encryption-details.md)
 

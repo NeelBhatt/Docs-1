@@ -1,7 +1,7 @@
 ---
 uid: security/authorization/index
 ---
-  # Authorization
+# Authorization
 
 * [Introduction](introduction.md)
 

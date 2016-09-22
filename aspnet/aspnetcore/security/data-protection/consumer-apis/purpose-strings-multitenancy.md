@@ -1,7 +1,7 @@
 ---
 uid: security/data-protection/consumer-apis/purpose-strings-multitenancy
 ---
-  # Purpose hierarchy and multi-tenancy
+# Purpose hierarchy and multi-tenancy
 
 Since an IDataProtector is also implicitly an IDataProtectionProvider, purposes can be chained together. In this sense provider.CreateProtector([ "purpose1", "purpose2" ]) is equivalent to provider.CreateProtector("purpose1").CreateProtector("purpose2").
 

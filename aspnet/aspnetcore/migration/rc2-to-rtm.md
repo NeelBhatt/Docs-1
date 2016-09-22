@@ -1,11 +1,11 @@
 ---
 uid: migration/rc2-to-rtm
 ---
-  # Migrating from ASP.NET Core RC2 to ASP.NET Core 1.0
+# Migrating from ASP.NET Core RC2 to ASP.NET Core 1.0
 
 By [Cesar Blum Silveira](https://github.com/cesarbs)
 
-  ## Overview
+## Overview
 
 This migration guide covers migrating an ASP.NET Core RC2 application to ASP.NET Core 1.0.
 
@@ -27,7 +27,7 @@ Update the global.json to
    }
    ````
 
-  ## Tools
+## Tools
 
 For the tools we ship, you no longer need to use `imports` in *project.json*. For example:
 
@@ -58,14 +58,14 @@ Becomes:
    }
    ````
 
-  ## Hosting
+## Hosting
 
 The `UseServer` is no longer available for [IWebHostBuilder](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/IWebHostBuilder/index.html.md#Microsoft.AspNetCore.Hosting.IWebHostBuilder.md). You must now use [UseKestrel](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/WebHostBuilderKestrelExtensions/index.html.md#Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel.md) or [UseWebListener](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/WebHostBuilderWebListenerExtensions/index.html.md#Microsoft.AspNetCore.Hosting.WebHostBuilderWebListenerExtensions.UseWebListener.md).
 
-  ## ASP.NET MVC Core
+## ASP.NET MVC Core
 
 The `HtmlEncodedString` class has been replaced by [HtmlString](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Html/HtmlString/index.html.md#Microsoft.AspNetCore.Html.HtmlString.md) (contained in the  `Microsoft.AspNetCore.Html.Abstractions` package).
 
-  ## Security
+## Security
 
 The [AuthorizationHandler<TRequirement>](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizationHandler-TRequirement/index.html.md#Microsoft.AspNetCore.Authorization.AuthorizationHandler<TRequirement>.md) class now only contains an asynchronous interface.

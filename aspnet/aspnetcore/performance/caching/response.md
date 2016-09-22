@@ -3,13 +3,13 @@ uid: performance/caching/response
 ---
 Warning: This page documents version 1.0.0-rc1 and has not yet been updated for version 1.0.0
 
-  # Response Caching
+# Response Caching
 
 [Steve Smith](http://ardalis.com)
 
 [View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnet/performance/caching/response/sample)
 
-  ## What is Response Caching
+## What is Response Caching
 
 *Response caching* refers to specifying cache-related headers on HTTP responses made by ASP.NET Core MVC actions. These headers specify how you want client and intermediate (proxy) machines to cache responses to certain requests (if at all). This can reduce the number of requests a client or proxy makes to the web server, since future requests for the same action may be served from the client or proxy's cache. In this case, the request is never made to the web server.
 
@@ -31,7 +31,7 @@ no-cache
 
 Additional HTTP headers used for caching include `Pragma` and `Vary`, which are described below. Learn more about [Caching in HTTP from the specification](https://tools.ietf.org/html/rfc7234#section-3).
 
-  ## ResponseCache Attribute
+## ResponseCache Attribute
 
 The [ResponseCacheAttribute](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ResponseCacheAttribute/index.html) is used to specify how a controller action's headers should be set to control its cache behavior. The attribute has the following properties, all of which are optional unless otherwise noted.
 
@@ -55,11 +55,11 @@ Order `int`
 
 The [ResponseCacheAttribute](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ResponseCacheAttribute/index.html) is used to configure and create (via [IFilterFactory](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Filters/IFilterFactory/index.html)) a [ResponseCacheFilter](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Filters/ResponseCacheFilter/index.html), which performs the work of writing the appropriate HTTP headers to the response. The filter will first remove any existing headers for `Vary`, `Cache-Control`, and `Pragma`, and then will write out the appropriate headers based on the properties set in the [ResponseCacheAttribute](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ResponseCacheAttribute/index.html).
 
-  ### The `Vary` Header
+### The `Vary` Header
 
 This header is only written when the `VaryByHeader` property is set, in which case it is set to that property's value.
 
-  ### `NoStore` and `Location.None`
+### `NoStore` and `Location.None`
 
 `NoStore` is a special property that overrides most of the other properties. When this property is set to `true`, the `Cache-Control` header will be set to "no-store". Additionally, if `Location` is set to `None`, then `Cache-Control` will be set to "no-store, no-cache" and `Pragma` is likewise set to `no-cache`. (If `NoStore` is `false` and `Location` is `None`, then both `Cache-Control` and `Pragma` will be set to `no-cache`).
 
@@ -87,7 +87,7 @@ This will result in the following headers:
    Pragma: no-cache
    ````
 
-  ### Location and Duration
+### Location and Duration
 
 To enable caching, `Duration` must be set to a positive value and `Location` must be either `Any` (the default) or `Client`. In this case, the `Cache-Control` header will be set to the location value followed by the "max-age" of the response.
 
@@ -119,7 +119,7 @@ Produces the following headers:
    Cache-Control: public,max-age=60
    ````
 
-  ### Cache Profiles
+### Cache Profiles
 
 Instead of duplicating `ResponseCache` settings on many controller action attributes, cache profiles can be configured as options when setting up MVC in the `ConfigureServices` method in `Startup`. Values found in a referenced cache profile will be used as the defaults by the `ResponseCache` attribute, and will be overridden by any properties specified on the attribute.
 

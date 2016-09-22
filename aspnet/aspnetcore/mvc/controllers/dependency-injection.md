@@ -3,7 +3,7 @@ uid: mvc/controllers/dependency-injection
 ---
 <a name=dependency-injection-controllers></a>
 
-  # Dependency Injection and Controllers
+# Dependency Injection and Controllers
 
 By [Steve Smith](http://ardalis.com)
 
@@ -11,11 +11,11 @@ ASP.NET Core MVC controllers should request their dependencies explicitly via th
 
 [View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnet/mvc/controllers/dependency-injection/sample)
 
-  ## Dependency Injection
+## Dependency Injection
 
 Dependency injection is a technique that follows the [Dependency Inversion Principle](http://deviq.com/dependency-inversion-principle), allowing for applications to be composed of loosely coupled modules. ASP.NET Core has built-in support for [dependency injection](../../fundamentals/dependency-injection.md), which makes applications easier to test and maintain.
 
-  ## Constructor Injection
+## Constructor Injection
 
 ASP.NET Core's built-in support for constructor-based dependency injection extends to MVC controllers. By simply adding a service type to your controller as a constructor parameter, ASP.NET Core will attempt to resolve that type using its built in service container. Services are typically, but not always, defined using interfaces. For example, if your application has business logic that depends on the current time, you can inject a service that retrieves the time (rather than hard-coding it), which would allow your tests to pass in implementations that use a set time.
 
@@ -148,7 +148,7 @@ ASP.NET Core's built-in dependency injection supports having only a single const
 
 As the error message states, you can correct this problem having just a single constructor. You can also [replace the default dependency injection support with a third party implementation](../../fundamentals/dependency-injection.md#replacing-the-default-services-container.md), many of which support multiple constructors.
 
-  ## Action Injection with FromServices
+## Action Injection with FromServices
 
 Sometimes you don't need a service for more than one action within your controller. In this case, it may make sense to inject the service as a parameter to the action method. This is done by marking the parameter with the attribute `[FromServices]` as shown here:
 
@@ -165,7 +165,7 @@ Sometimes you don't need a service for more than one action within your controll
 
    ````
 
-  ## Accessing Settings from a Controller
+## Accessing Settings from a Controller
 
 Accessing application or configuration settings from within a controller is a common pattern. This access should use the Options pattern described in [configuration](../../fundamentals/configuration.md). You generally should not request settings directly from your controller using dependency injection. A better approach is to request an `IOptions<T>` instance, where `T` is the configuration class you need.
 

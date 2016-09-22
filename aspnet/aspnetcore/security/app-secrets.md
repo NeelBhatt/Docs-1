@@ -3,13 +3,13 @@ uid: security/app-secrets
 ---
 <a name=security-app-secrets></a>
 
-  # Safe storage of app secrets during development
+# Safe storage of app secrets during development
 
 By [Rick Anderson](https://twitter.com/RickAndMSFT), [Daniel Roth](https://github.com/danroth27)
 
 This document shows how you can use the Secret Manager tool to keep secrets out of your code. The most important point is you should never store passwords or other sensitive data in source code, and you shouldn't use production secrets in development and test mode. You can instead use the [configuration](../fundamentals/configuration.md) system to read these values from environment variables or from values stored using the Secret Manager tool. The Secret Manager tool helps prevent sensitive data from being checked into source control. The [configuration](../fundamentals/configuration.md) system can read secrets stored with the Secret Manager tool described in this article.
 
-  ## Environment variables
+## Environment variables
 
 To avoid storing app secrets in code or in local configuration files you store secrets in environment variables. You can setup the [configuration](../fundamentals/configuration.md) framework to read values from environment variables by calling `AddEnvironmentVariables`. You can then use environment variables to override configuration values for all previously specified configuration sources.
 
@@ -17,13 +17,13 @@ For example, if you create a new ASP.NET Core web app with individual user accou
 
 Warning: Environment variables are generally stored in plain text and are not encrypted. If the machine or process is compromised then environment variables can be accessed by untrusted parties. Additional measures to prevent disclosure of user secrets may still be required.
 
-  ## Secret Manager
+## Secret Manager
 
 The Secret Manager tool provides a more general mechanism to store sensitive data for development work outside of your project tree. The Secret Manager tool is a project tool that can be used to store secrets for a [.NET Core](https://microsoft.com/net/core) project during development. With the Secret Manager tool you can associate app secrets with a specific project and share them across multiple projects.
 
 Warning: The Secret Manager tool does not encrypt the stored secrets and should not be treated as a trusted store. It is for development purposes only. The keys and values are stored in a JSON configuration file in the user profile directory.
 
-  ### Installing the Secret Manager tool
+### Installing the Secret Manager tool
 
 * Add `SecretManager.Tools` to the `tools` section of the *project.json* file and run `dotnet restore`.
 
@@ -85,7 +85,7 @@ You can run the secret manager tool from other directories, but you must use the
 
 You can also use the Secret Manager tool to list, remove and clear app secrets.
 
-  ## Accessing user secrets via configuration
+## Accessing user secrets via configuration
 
 You access Secret Manager secrets through the configuration system. Add the `Microsoft.Extensions.Configuration.UserSecrets` as a dependency in your *project.json* file and run `dotnet restore`.
 
@@ -130,7 +130,7 @@ You can now access user secrets via the configuration API:
    string testConfig = Configuration["MySecret"];
    ````
 
-  ## How the Secret Manager tool works
+## How the Secret Manager tool works
 
 The secret manager tool abstracts away the implementation details, such as where and how the values are stored. You can use the tool without knowing these implementation details. In the current version, the values are stored in a [JSON](http://json.org/) configuration file in the user profile directory:
 
@@ -144,6 +144,6 @@ The value of `userSecretsId` comes from the value specified in *project.json*.
 
 You should not write code that depends on the location or format of the data saved with the secret manager tool, as these implementation details might change. For example, the secret values are currently *not* encrypted today, but could be someday.
 
-  ## Additional Resources
+## Additional Resources
 
 * [Configuration](../fundamentals/configuration.md).
