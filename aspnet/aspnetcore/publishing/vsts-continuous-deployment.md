@@ -1,15 +1,16 @@
 ---
 uid: publishing/vsts-continuous-deployment
 ---
-  # Use VSTS to Build and Publish to an Azure Web App with Continuous Deployment
+# Use VSTS to Build and Publish to an Azure Web App with Continuous Deployment
 
 By [Damien Pontifex](https://github.com/DamienPontifex)
 
 This tutorial shows you how to create an ASP.NET Core web app using Visual Studio and deploy it from Visual Studio to Azure App Service using continuous deployment.
 
-Note: To complete this tutorial, you need a Microsoft Azure account. If you don't have an account, you can [activate your MSDN subscriber benefits](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F) or [sign up for a free trial](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F). You will also need a Visual Studio Team Services account. If you don't have an account, you can [sign up for free](https://www.visualstudio.com/products/visual-studio-team-services-vs).
+> [!NOTE]
+> To complete this tutorial, you need a Microsoft Azure account. If you don't have an account, you can [activate your MSDN subscriber benefits](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F) or [sign up for a free trial](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F). You will also need a Visual Studio Team Services account. If you don't have an account, you can [sign up for free](https://www.visualstudio.com/products/visual-studio-team-services-vs).
 
-  ## Prerequisites
+## Prerequisites
 
 This tutorial assumes you already have the following:
 
@@ -19,7 +20,7 @@ This tutorial assumes you already have the following:
 
 * The [Trackyon Advantage](https://marketplace.visualstudio.com/items?itemName=Trackyon.trackyonadvantage) extension installed into your team services account. This adds an available zip task for later steps.
 
-  ## Setup VSTS Build
+## Setup VSTS Build
 
 1. Setup some build variables to make later steps clearer and easier to retain consistent paths across build steps.
 
@@ -83,7 +84,7 @@ This tutorial assumes you already have the following:
 
 ![image](vsts-continuous-deployment/_static/web-app-deployment.png)
 
-  ## Use VSTS Release
+## Use VSTS Release
 
 VSTS Release management can alternatively be used to manage the release pipeline from the VSTS build. We require a small change to the build pipeline and setup of the release process.
 
@@ -103,7 +104,7 @@ VSTS Release management can alternatively be used to manage the release pipeline
 
 3. You will be able to create a release definition and link to the Build definition and utilise the artifacts copied from step 2 here for publishing.
 
-  ## Additional Resources
+## Additional Resources
 
 * [Publishing and Deployment](index.md)
 

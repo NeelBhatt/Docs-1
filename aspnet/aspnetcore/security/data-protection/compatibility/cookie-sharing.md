@@ -1,13 +1,13 @@
 ---
 uid: security/data-protection/compatibility/cookie-sharing
 ---
-  # Sharing cookies between applications
+# Sharing cookies between applications
 
 Web sites commonly consist of many individual web applications, all working together harmoniously. If an application developer wants to provide a good single-sign-on experience, he'll often need all of the different web applications within the site to share authentication tickets between each other.
 
 To support this scenario, the data protection stack allows sharing Katana cookie authentication and ASP.NET Core cookie authentication tickets.
 
-  ## Sharing authentication cookies between applications
+## Sharing authentication cookies between applications
 
 To share authentication cookies between two different ASP.NET Core applications, configure each application that should share cookies as follows.
 
@@ -57,13 +57,14 @@ Caution: You should consider configuring the DataProtectionProvider such that ke
      });
      ````
 
-  ## Sharing authentication cookies between ASP.NET 4.x and ASP.NET Core applications
+## Sharing authentication cookies between ASP.NET 4.x and ASP.NET Core applications
 
 ASP.NET 4.x applications which use Katana cookie authentication middleware can be configured to generate authentication cookies which are compatible with the ASP.NET Core cookie authentication middleware. This allows upgrading a large site's individual applications piecemeal while still providing a smooth single sign on experience across the site.
 
 Tip: You can tell if your existing application uses Katana cookie authentication middleware by the existence of a call to UseCookieAuthentication in your project's Startup.Auth.cs. ASP.NET 4.x web application projects created with Visual Studio 2013 and later use the Katana cookie authentication middleware by default.
 
-Note: Your ASP.NET 4.x application must target .NET Framework 4.5.1 or higher, otherwise the necessary NuGet packages will fail to install.
+> [!NOTE]
+> Your ASP.NET 4.x application must target .NET Framework 4.5.1 or higher, otherwise the necessary NuGet packages will fail to install.
 
 To share authentication cookies between your ASP.NET 4.x applications and your ASP.NET Core applications, configure the ASP.NET Core application as stated above, then configure your ASP.NET 4.x applications by following the steps below.
 
@@ -105,4 +106,5 @@ To share authentication cookies between your ASP.NET 4.x applications and your A
 
 The ASP.NET 4.x and ASP.NET Core applications are now configured to share authentication cookies.
 
-Note: You'll need to make sure that the identity system for each application is pointed at the same user database. Otherwise the identity system will produce failures at runtime when it tries to match the information in the authentication cookie against the information in its database.
+> [!NOTE]
+> You'll need to make sure that the identity system for each application is pointed at the same user database. Otherwise the identity system will produce failures at runtime when it tries to match the information in the authentication cookie against the information in its database.

@@ -3,7 +3,7 @@ uid: hosting/directory-structure
 ---
 <a name=directory-structure></a>
 
-  # Directory Structure
+# Directory Structure
 
 By [Luke Latham](https://github.com/GuardRex)
 

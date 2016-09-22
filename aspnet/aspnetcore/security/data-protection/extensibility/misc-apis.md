@@ -3,11 +3,11 @@ uid: security/data-protection/extensibility/misc-apis
 ---
 <a name=data-protection-extensibility-mics-apis></a>
 
-  # Miscellaneous APIs
+# Miscellaneous APIs
 
 Warning: Types that implement any of the following interfaces should be thread-safe for multiple callers.
 
-  ## ISecret
+## ISecret
 
 The ISecret interface represents a secret value, such as cryptographic key material. It contains the following API surface.
 

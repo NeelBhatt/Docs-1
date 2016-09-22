@@ -1,9 +1,9 @@
----
+﻿---
 uid: client-side/angular
 ---
 Warning: This page documents version 1.0.0-rc1 and has not yet been updated for version 1.0.0
 
-  # Using Angular for Single Page Applications (SPAs)
+# Using Angular for Single Page Applications (SPAs)
 
 By [Venkata Koppaka](http://blog.falafel.com/author/venkata-koppaka/) and [Scott Addie](https://scottaddie.com)
 
@@ -11,7 +11,7 @@ In this article, you will learn how to build a SPA-style ASP.NET application usi
 
 [View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnet/client-side/angular/sample)
 
-  ## What is AngularJS?
+## What is AngularJS?
 
 [AngularJS](http://angularjs.org/) is a modern JavaScript framework from Google commonly used to work with Single Page Applications (SPAs). AngularJS is open sourced under MIT license, and the development progress of AngularJS can be followed on [its GitHub repository](https://github.com/angular/angular.js). The library is called Angular because HTML uses angular-shaped brackets.
 
@@ -19,11 +19,11 @@ AngularJS is not a DOM manipulation library like jQuery, but it uses a subset of
 
 This article focuses on Angular 1.X with some notes on where Angular is heading with 2.0.
 
-  ## Getting Started
+## Getting Started
 
 To start using AngularJS in your ASP.NET application, you must either install it as part of your project, or reference it from a content delivery network (CDN).
 
-  ### Installation
+### Installation
 
 There are several ways to add AngularJS to your application. If you’re starting a new ASP.NET Core web application in Visual Studio, you can add AngularJS using the built-in [Bower](bower.md#bower-index.md) support. Simply open `bower.json`, and add an entry to the `dependencies` property:
 
@@ -98,11 +98,11 @@ It's recommended that production applications utilize CDNs for common libraries 
 
 Once you have a reference to the angular.js script file, you're ready to begin using Angular in your web pages.
 
-  ## Key Components
+## Key Components
 
 AngularJS includes a number of major components, such as *directives*, *templates*, *repeaters*, *modules*, *controllers*, *components*, *component router* and more. Let's examine how these components work together to add behavior to your web pages.
 
-  ### Directives
+### Directives
 
 AngularJS uses [directives](https://docs.angularjs.org/guide/directive) to extend HTML with custom attributes and elements. AngularJS directives are defined via `data-ng-*` or `ng-*` prefixes (`ng` is short for angular). There are two types of AngularJS directives:
 
@@ -156,7 +156,7 @@ Other primitive directives in AngularJS include:
 
 For a full list of all primitive directives supported in AngularJS, please refer to the [directive documentation section on the AngularJS documentation website](https://docs.angularjs.org/api/ng/directive).
 
-  ### Data Binding
+### Data Binding
 
 AngularJS provides [data binding](https://docs.angularjs.org/guide/databinding) support out-of-the-box using either the `ng-bind` directive or a data binding expression syntax such as `{{expression}}`. AngularJS supports two-way data binding where data from a model is kept in synchronization with a view template at all times. Any changes to the view are automatically reflected in the model. Likewise, any changes in the model are reflected in the view.
 
@@ -189,7 +189,7 @@ Notice that you can display model values using either directives or data binding
 
 ![image](angular/_static/simple-databinding.png)
 
-  ### Templates
+### Templates
 
 [Templates](https://docs.angularjs.org/guide/templates) in AngularJS are just plain HTML pages decorated with AngularJS directives and artifacts. A template in AngularJS is a mixture of directives, expressions, filters, and controls that combine with HTML to form the view.
 
@@ -225,7 +225,7 @@ If you change the name by typing in the input field, you will see the text next 
 
 ![image](angular/_static/simple-templates-2.png)
 
-  ### Expressions
+### Expressions
 
 [Expressions](https://docs.angularjs.org/guide/expression) in AngularJS are JavaScript-like code snippets that are written inside the `{{ expression }}` syntax. The data from these expressions is bound to HTML the same way as `ng-bind` directives. The main difference between AngularJS expressions and regular JavaScript expressions is that AngularJS expressions are evaluated against the `$scope` object in AngularJS.
 
@@ -258,7 +258,7 @@ The example running in the browser displays the `personName` data and the result
 
 ![image](angular/_static/simple-expressions.png)
 
-  ### Repeaters
+### Repeaters
 
 Repeating in AngularJS is done via a primitive directive called `ng-repeat`. The `ng-repeat` directive repeats a given HTML element in a view over the length of a repeating data array. Repeaters in AngularJS can repeat over an array of strings or objects. Here is a sample usage of repeating over an array of strings:
 
@@ -375,11 +375,12 @@ Here is the resulting output:
 
 ![image](angular/_static/repeaters2.png)
 
-  ### $scope
+### $scope
 
 `$scope` is a JavaScript object that acts as glue between the view (template) and the controller (explained below). A view template in AngularJS only knows about the values attached to the `$scope` object in the controller.
 
-Note: In the MVVM world, the `$scope` object in AngularJS is often defined as the ViewModel. The AngularJS team refers to the `$scope` object as the Data-Model. [Learn more about Scopes in AngularJS](https://docs.angularjs.org/guide/scope).
+> [!NOTE]
+> In the MVVM world, the `$scope` object in AngularJS is often defined as the ViewModel. The AngularJS team refers to the `$scope` object as the Data-Model. [Learn more about Scopes in AngularJS](https://docs.angularjs.org/guide/scope).
 
 Below is a simple example showing how to set properties on `$scope` within a separate JavaScript file, `scope.js`:
 
@@ -427,7 +428,7 @@ Notice on line 9 that we are asking Angular to show the "name" property using ex
 
 ![image](angular/_static/scope.png)
 
-  ### Modules
+### Modules
 
 A [module](https://docs.angularjs.org/guide/module) in AngularJS is a collection of controllers, services, directives, etc. The `angular.module()` function call is used to create, register, and retrieve modules in AngularJS. All modules, including those shipped by the AngularJS team and third party libraries, should be registered using the `angular.module()` function.
 
@@ -449,7 +450,7 @@ Use the `ng-app` directive to represent an AngularJS module on the page. To use 
    <body ng-app="personApp">
    ````
 
-  ### Controllers
+### Controllers
 
 [Controllers](https://docs.angularjs.org/guide/controller) in AngularJS are the first point of entry for your code. The `<module name>.controller()` function call is used to create and register controllers in AngularJS. The `ng-controller` directive is used to represent an AngularJS controller on the HTML page. The role of the controller in Angular is to set state and behavior of the data model (`$scope`). Controllers should not be used to manipulate the DOM directly.
 
@@ -502,7 +503,7 @@ The page shows "Mary" and "Jane" that correspond to the `firstName` and `lastNam
 
 ![image](angular/_static/controllers.png)
 
-  ### Components
+### Components
 
 [Components](https://docs.angularjs.org/guide/component) in Angular 1.5.x allow for the encapsulation and capability of creating individual HTML elements. In Angular 1.4.x you could achieve the same feature using the .directive() method.
 
@@ -578,7 +579,7 @@ The page shows "Aftab" and "Ansari" that correspond to the `firstName` and `last
 
 ![image](angular/_static/components.png)
 
-  ### Services
+### Services
 
 [Services](https://docs.angularjs.org/guide/services) in AngularJS are commonly used for shared code that is abstracted away into a file which can be used throughout the lifetime of an Angular application. Services are lazily instantiated, meaning that there will not be an instance of a service unless a component that depends on the service gets used. Factories are an example of a service used in AngularJS applications. Factories are created using the `myApp.factory()` function call, where `myApp` is the module.
 
@@ -614,7 +615,7 @@ To call this factory from the controller, pass `personFactory` as a parameter to
    });
    ````
 
-  ### Using services to talk to a REST endpoint
+### Using services to talk to a REST endpoint
 
 Below is an end-to-end example using services in AngularJS to interact with an ASP.NET Core Web API endpoint. The example gets data from the Web API and displays the data in a view template. Let's start with the view first:
 
@@ -782,11 +783,13 @@ Let's see the application in action:
 
 You can [view the application's structure on GitHub](https://github.com/aspnet/Docs/tree/master/aspnet/client-side/angular/sample).
 
-Note: For more on structuring AngularJS applications, see [John Papa's Angular Style Guide](https://github.com/johnpapa/angular-styleguide)
+> [!NOTE]
+> For more on structuring AngularJS applications, see [John Papa's Angular Style Guide](https://github.com/johnpapa/angular-styleguide)
 
-Note: To create AngularJS module, controller, factory, directive and view files easily, be sure to check out Sayed Hashimi's [SideWaffle template pack for Visual Studio](http://sidewaffle.com/). Sayed Hashimi is a Senior Program Manager on the Visual Studio Web Team at Microsoft and SideWaffle templates are considered the gold standard. At the time of this writing, SideWaffle is available for Visual Studio 2012, 2013, and 2015.
+> [!NOTE]
+> To create AngularJS module, controller, factory, directive and view files easily, be sure to check out Sayed Hashimi's [SideWaffle template pack for Visual Studio](http://sidewaffle.com/). Sayed Hashimi is a Senior Program Manager on the Visual Studio Web Team at Microsoft and SideWaffle templates are considered the gold standard. At the time of this writing, SideWaffle is available for Visual Studio 2012, 2013, and 2015.
 
-  ### Routing and Multiple Views
+### Routing and Multiple Views
 
 AngularJS has a built-in route provider to handle SPA (Single Page Application) based navigation. To work with routing in AngularJS, you must add the `angular-route` library using Bower. You can see in the [bower.json](xref:client-side/angular#angular-bower-json) file referenced at the start of this article that we are already referencing it in our project.
 
@@ -894,7 +897,7 @@ If we navigate to a detail page, for example `people/spa#/persons/2`, we will se
 
 You can view the full source and any files not shown in this article on [GitHub](https://github.com/aspnet/Docs/tree/master/aspnet/client-side/angular/sample).
 
-  ### Event Handlers
+### Event Handlers
 
 There are a number of directives in AngularJS that add event-handling capabilities to the input elements in your HTML DOM. Below is a list of the events that are built into AngularJS.
 
@@ -920,7 +923,8 @@ There are a number of directives in AngularJS that add event-handling capabiliti
 
    * `ng-change`
 
-Note: You can add your own event handlers using the [custom directives feature in AngularJS](https://docs.angularjs.org/guide/directive).
+> [!NOTE]
+> You can add your own event handlers using the [custom directives feature in AngularJS](https://docs.angularjs.org/guide/directive).
 
 Let's look at how the `ng-click` event is wired up. Create a new JavaScript file named `eventHandlerController.js`, and add the following to it:
 
@@ -975,7 +979,7 @@ The running example demonstrates that the controller's `sayName` function is cal
 
 For more detail on AngularJS built-in event handler directives, be sure to head to the [documentation website](https://docs.angularjs.org/api/ng/directive/ngClick) of AngularJS.
 
-  ## Related Resources
+## Related Resources
 
 * [Angular Docs](https://docs.angularjs.org)
 

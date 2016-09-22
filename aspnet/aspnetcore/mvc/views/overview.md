@@ -1,13 +1,13 @@
 ---
 uid: mvc/views/overview
 ---
-  # Views Overview
+# Views Overview
 
 By [Steve Smith](http://ardalis.com)
 
 ASP.NET MVC Core controllers can return formatted results using *views*.
 
-  ## What are Views?
+## What are Views?
 
 In the Model-View-Controller (MVC) pattern, the *view* encapsulates the presentation details of the user's interaction with the app. Views are HTML templates with embedded code that generate content to send to the client. Views use [Razor syntax](razor.md), which allows code to interact with HTML with minimal code or ceremony.
 
@@ -17,11 +17,11 @@ ASP.NET Core MVC views are *.cshtml* files stored by default in a *Views* folder
 
 In addition to action-specific views, [partial views](partial.md), [layouts, and other special view files](layout.md) can be used to help reduce repetition and allow for reuse within the app's views.
 
-  ## Benefits of Using Views
+## Benefits of Using Views
 
 Views provide [separation of concerns](http://deviq.com/separation-of-concerns/) within an MVC app, encapsulating user interface level markup separately from business logic. ASP.NET MVC views use [Razor syntax](razor.md) to make switching between HTML markup and server side logic painless. Common, repetitive aspects of the app's user interface can easily be reused between views using [layout and shared directives](layout.md) or [partial views](partial.md).
 
-  ## Creating a View
+## Creating a View
 
 Views that are specific to a controller are created in the *Views/[ControllerName]* folder. Views that are shared among controllers are placed in the */Views/Shared* folder. Name the view file the same as its associated controller action, and add the *.cshtml* file extension. For example, to create a view for the *About* action on the *Home* controller, you would create the *About.cshtml* file in the */Views/Home* folder.
 
@@ -45,7 +45,7 @@ A sample view file (*About.cshtml*):
 
 This view focuses on just the portion of the output for which it is responsible. The rest of the page's layout, and other common aspects of the view, are specified elsewhere. Learn more about [layout and shared view logic](layout.md).
 
-  ## How do Controllers Specify Views?
+## How do Controllers Specify Views?
 
 Views are typically returned from actions as a [ViewResult](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ViewResult/index.html.md#Microsoft.AspNetCore.Mvc.ViewResult.md). Your action method can create and return a `ViewResult` directly, but more commonly if your controller inherits from [Controller](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Controller/index.html.md#Microsoft.AspNetCore.Mvc.Controller.md), you'll simply use the `View` helper method, as this example demonstrates:
 
@@ -70,7 +70,7 @@ When this action returns, the *About.cshtml* view shown above is rendered:
 
 ![image](overview/_static/about-page.png)
 
-  ### View Discovery
+### View Discovery
 
 When an action returns a view, a process called *view discovery* takes place. This process determines which view file will be used. Unless a specific view file is specified, the runtime looks for a controller-specific view first, then looks for matching view name in the *Shared* folder.
 
@@ -84,13 +84,15 @@ Tip: We recommend following the convention of simply returning `View()` from act
 
 A view file path can be provided, instead of a view name. In this case, the *.cshtml* extension must be specified as part of the file path. The path should be relative to the application root (and can optionally start with "/" or "~/"). For example: `return View("Views/Home/About.cshtml");`
 
-Note: [Partial views](partial.md) and [view components](view-components.md) use similar (but not identical) discovery mechanisms.
+> [!NOTE]
+> [Partial views](partial.md) and [view components](view-components.md) use similar (but not identical) discovery mechanisms.
 
-Note: You can customize the default convention regarding where views are located within the app by using a custom [IViewLocationExpander](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Razor/IViewLocationExpander/index.html.md#Microsoft.AspNetCore.Mvc.Razor.IViewLocationExpander.md).
+> [!NOTE]
+> You can customize the default convention regarding where views are located within the app by using a custom [IViewLocationExpander](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Razor/IViewLocationExpander/index.html.md#Microsoft.AspNetCore.Mvc.Razor.IViewLocationExpander.md).
 
 Tip: View names may be case sensitive depending on the underlying file system. For compatibility across operating systems, always match case between controller and action names and associated view folders and filenames.
 
-  ## Passing Data to Views
+## Passing Data to Views
 
 You can pass data to views using several mechanisms. The most robust approach is to specify a *model* type in the view (commonly referred to as a *viewmodel*, to distinguish it from business domain model types), and then pass an instance of this type to the view from the action. We recommend you use a model or view model to pass data to a view. This allows the view to take advantage of strong type checking. You can specify a model for a view using the `@model` directive:
 
@@ -149,9 +151,10 @@ There are no restrictions on the types that can be provided to a view as a model
    }
    ````
 
-Note: Nothing prevents you from using the same classes as your business model types and your display model types. However, keeping them separate allows your views to vary independently from your domain or persistence model, and can offer some security benefits as well (for models that users will send to the app using [model binding](../models/model-binding.md)).
+> [!NOTE]
+> Nothing prevents you from using the same classes as your business model types and your display model types. However, keeping them separate allows your views to vary independently from your domain or persistence model, and can offer some security benefits as well (for models that users will send to the app using [model binding](../models/model-binding.md)).
 
-  ### Loosely Typed Data
+### Loosely Typed Data
 
 In addition to strongly typed views, all views have access to a loosely typed collection of data. This same collection can be referenced through either the `ViewData` or `ViewBag` properties on controllers and views. The `ViewBag` property is a wrapper around `ViewData` that provides a dynamic view over that collection. It is not a separate collection.
 
@@ -214,9 +217,10 @@ The `ViewBag` objects provides dynamic access to the objects stored in `ViewData
    </address>
    ````
 
-Note: Since both refer to the same underlying `ViewData` collection, you can mix and match between `ViewData` and `ViewBag` when reading and writing values, if convenient.
+> [!NOTE]
+> Since both refer to the same underlying `ViewData` collection, you can mix and match between `ViewData` and `ViewBag` when reading and writing values, if convenient.
 
-  ### Dynamic Views
+### Dynamic Views
 
 Views that do not declare a model type but have a model instance passed to them can reference this instance dynamically. For example, if an instance of `Address` is passed to a view that doesn't declare an `@model`, the view would still be able to refer to the instance's properties dynamically as shown:
 
@@ -234,7 +238,7 @@ Views that do not declare a model type but have a model instance passed to them 
 
 This feature can offer some flexibility, but does not offer any compilation protection or IntelliSense. If the property doesn't exist, the page will fail at runtime.
 
-  ## More View Features
+## More View Features
 
 [Tag helpers](tag-helpers/intro.md) make it easy to add server-side behavior to existing HTML tags, avoiding the need to use custom code or helpers within views. Tag helpers are applied as attributes to HTML elements, which are ignored by editors that aren't familiar with them, allowing view markup to be edited and rendered in a variety of tools. Tag helpers have many uses, and in particular can make [working with forms](working-with-forms.md) much easier.
 

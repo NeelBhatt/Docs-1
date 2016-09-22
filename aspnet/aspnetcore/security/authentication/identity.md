@@ -1,7 +1,7 @@
 ---
 uid: security/authentication/identity
 ---
-  # Introduction to Identity
+# Introduction to Identity
 
 By [Pranav Rastogi](https://github.com/rustd), [Rick Anderson](https://twitter.com/RickAndMSFT), Tom Dykstra, Jon Galloway and [Erik Reitan](https://github.com/Erikre)
 
@@ -9,7 +9,7 @@ ASP.NET Core Identity is a membership system which allows you to add login funct
 
 You can configure ASP.NET Core Identity to use a SQL Server database to store user names, passwords, and profile data. Alternatively, you can use your own persistent store to store data in another persistent storage, such as Azure Table Storage.
 
-  ## Overview of Identity
+## Overview of Identity
 
 In this topic, you'll learn how to use ASP.NET Core Identity to add functionality to register, log in, and log out a user. You can follow along step by step or just read the details. For more detailed instructions about creating apps using ASP.NET Core Identity, see the Next Steps section at the end of this article.
 
@@ -298,7 +298,7 @@ In this topic, you'll learn how to use ASP.NET Core Identity to add functionalit
 
    ![image](identity/_static/04-db.png)
 
-  ## Identity Components
+## Identity Components
 
 The primary reference assembly for the identity system is `Microsoft.AspNetCore.Identity`. This package contains the core set of interfaces for ASP.NET Core Identity.
 
@@ -314,11 +314,11 @@ These dependencies are needed to use the identity system in ASP.NET Core applica
 
 * `Microsoft.AspNetCore.Hosting.Abstractions` - Hosting abstractions.
 
-  ## Migrating to ASP.NET Core Identity
+## Migrating to ASP.NET Core Identity
 
 For additional information and guidance on migrating your existing identity store see [Migrating Authentication and Identity](../../migration/identity.md)
 
-  ## Next Steps
+## Next Steps
 
 * [Migrating Authentication and Identity](../../migration/identity.md#migration-identity.md)
 

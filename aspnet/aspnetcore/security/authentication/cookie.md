@@ -3,13 +3,13 @@ uid: security/authentication/cookie
 ---
 <a name=security-authentication-cookie-middleware></a>
 
-  # Using Cookie Middleware without ASP.NET Core Identity
+# Using Cookie Middleware without ASP.NET Core Identity
 
 ASP.NET Core provides cookie [middleware](../../fundamentals/middleware.md#fundamentals-middleware.md) which serializes a user principal into an encrypted cookie and then, on subsequent requests, validates the cookie, recreates the principal and assigns it to the `User` property on `HttpContext`. If you want to provide your own login screens and user databases you can use the cookie middleware as a standalone feature.
 
 <a name=security-authentication-cookie-middleware-configuring></a>
 
-  ## Adding and configuring
+## Adding and configuring
 
 The first step is adding the cookie middleware to your application. First use nuget to add the `Microsoft.AspNetCore.Authentication.Cookies` package. Then add the following lines to the `Configure` method in your *Startup.cs* file before the `app.UseMvc()` statement;
 
@@ -43,7 +43,7 @@ The code snippet above configures a few options;
 
 <a name=security-authentication-cookie-middleware-creating-a-cookie></a>
 
-  ## Creating an identity cookie
+## Creating an identity cookie
 
 To create a cookie holding your user information you must construct a [ClaimsPrincipal](https://msdn.microsoft.com/en-us/library/system.security.claims.claimsprincipal(v=vs.110).aspx) holding the information you wish to be serialized in the cookie. Once you have a suitable *ClaimsPrincipal* inside your controller method call
 
@@ -58,7 +58,7 @@ This will create an encrypted cookie and add it to the current response. The `Au
 
 Under the covers the encryption used is ASP.NET's [Data Protection](../data-protection/using-data-protection.md#security-data-protection-getting-started.md) system. If you are hosting on multiple machines, load balancing or using a web farm then you will need to [configure](../data-protection/configuration/overview.md#data-protection-configuring.md) data protection to use the same key ring and application identifier.
 
-  ## Signing out
+## Signing out
 
 To sign out the current user, and delete their cookie call the following inside your controller
 
@@ -69,7 +69,7 @@ To sign out the current user, and delete their cookie call the following inside 
    await HttpContext.Authentication.SignOutAsync("MyCookieMiddlewareInstance");
    ````
 
-  ## Reacting to back-end changes
+## Reacting to back-end changes
 
 Warning: Once a principal cookie has been created it becomes the single source of identity - even if you disable a user in your back-end systems the cookie middleware has no knowledge of this and a user will continue to stay logged in as long as their cookie is valid.
 
@@ -136,7 +136,7 @@ If you want to non-destructively update the user principal, for example, their n
 
 <a name=security-authentication-cookie-options></a>
 
-  ## Controlling cookie options
+## Controlling cookie options
 
 The `CookieAuthenticationOptions` class comes with various configuration options to enable you to fine tune the cookies created.
 
@@ -154,7 +154,7 @@ The `CookieAuthenticationOptions` class comes with various configuration options
 
 * **SlidingExpiration** - a flag indicating if the cookie expiration date will be reset when the more than half of the `ExpireTimeSpan` interval has passed. The new expiry date will be moved forward to be the current date plus the `ExpireTimespan`. An [absolute expiry time](xref:security/authentication/cookie#security-authentication-absolute-expiry) can be set by using the `AuthenticationProperties` class when calling `SignInAsync`. An absolute expiry can improve the security of your application by limiting the amount of time for which the authentication cookie is valid.
 
-  ## Persistent cookies and absolute expiry times
+## Persistent cookies and absolute expiry times
 
 You may want to make the cookie expire be remembered over browser sessions. You may also want an absolute expiry to the identity and the cookie transporting it. You can do these things by using the `AuthenticationProperties` parameter on the `HttpContext.Authentication.SignInAsync` method called when [signing in an identity and creating the cookie](xref:security/authentication/cookie#security-authentication-cookie-middleware-creating-a-cookie). The `AuthenticationProperties` class is in the `Microsoft.AspNetCore.Http.Authentication` namespace.
 

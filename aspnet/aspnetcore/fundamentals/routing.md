@@ -1,7 +1,7 @@
 ---
 uid: fundamentals/routing
 ---
-  # Routing
+# Routing
 
 By [Ryan Nowak](https://github.com/rynowak), [Steve Smith](http://ardalis.com), and [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -11,7 +11,7 @@ This document covers the low level ASP.NET Core routing. For ASP.NET Core MVC ro
 
 [View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnet/fundamentals/routing/sample)
 
-  ## Routing basics
+## Routing basics
 
 Routing uses *routes* (implementations of [IRouter](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Routing/IRouter/index.html.md#Microsoft.AspNetCore.Routing.IRouter.md)) to:
 
@@ -25,7 +25,7 @@ Routing is connected to the [middleware](middleware.md) pipeline by the [RouterM
 
 <a name=url-matching-ref></a>
 
-  ### URL matching
+### URL matching
 
 URL matching is the process by which routing dispatches an incoming request to a *handler*. This process is generally based on data in the URL path, but can be extended to consider any data in the request. The ability to dispatch requests to separate handlers is key to scaling the size and complexity of an application.
 
@@ -42,7 +42,7 @@ A successful match during `RouteAsync` also will set the properties of the `Rout
 
 [RouteData](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Routing/RouteData/index.html.md#Microsoft.AspNetCore.Routing.RouteData.md) [Routers](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Routing/RouteData/index.html.md#Microsoft.AspNetCore.Routing.RouteData.Routers.md) is a list of the routes that took part in successfully matching the request. Routes can be nested inside one another, and the `Routers` property reflects the path through the logical tree of routes that resulted in a match. Generally the first item in `Routers` is the route collection, and should be used for URL generation. The last item in `Routers` is the route that matched.
 
-  ### URL generation
+### URL generation
 
 URL generation is the process by which routing can create a URL path based on a set of route values. This allows for a logical separation between your handlers and the URLs that access them.
 
@@ -68,13 +68,14 @@ The [VirtualPathData](http://docs.asp.net/projects/api/en/latest/autoapi/Microso
 
 The [VirtualPathData](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Routing/VirtualPathData/index.html.md#Microsoft.AspNetCore.Routing.VirtualPathData.md) [DataTokens](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Routing/VirtualPathData/index.html.md#Microsoft.AspNetCore.Routing.VirtualPathData.DataTokens.md) properties is a dictionary of additional data related to the route that generated the URL. This is the parallel of `RouteData.DataTokens`.
 
-  ### Creating routes
+### Creating routes
 
 Routing provides the [Route](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Routing/Route/index.html.md#Microsoft.AspNetCore.Routing.Route.md) class as the standard implementation of `IRouter`. `Route` uses the *route template* syntax to define patterns that will match against the URL path when [RouteAsync](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Routing/IRouter/index.html.md#Microsoft.AspNetCore.Routing.IRouter.RouteAsync.md) is called. `Route` will use the same route template to generate a URL when [GetVirtualPath](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Routing/IRouter/index.html.md#Microsoft.AspNetCore.Routing.IRouter.GetVirtualPath.md) is called.
 
 Most applications will create routes by calling `MapRoute` or one of the similar extension methods defined on [IRouteBuilder](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Routing/IRouteBuilder/index.html.md#Microsoft.AspNetCore.Routing.IRouteBuilder.md). All of these methods will create an instance of `Route` and add it to the route collection.
 
-Note: [MapRoute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/MapRouteRouteBuilderExtensions/index.html.md#Microsoft.AspNetCore.Builder.MapRouteRouteBuilderExtensions.MapRoute.md) doesn't take a route handler parameter - it only adds routes that will be handled by the [DefaultHandler](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Routing/IRouteBuilder/index.html.md#Microsoft.AspNetCore.Routing.IRouteBuilder.DefaultHandler.md). Since the default handler is an [IRouter](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Routing/IRouter/index.html.md#Microsoft.AspNetCore.Routing.IRouter.md), it may decide not to handle the request. For example, ASP.NET MVC is typically configured as a default handler that only handles requests that match an available controller and action. To learn more about routing to MVC, see [🔧 Routing to Controller Actions](../mvc/controllers/routing.md).
+> [!NOTE]
+> [MapRoute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/MapRouteRouteBuilderExtensions/index.html.md#Microsoft.AspNetCore.Builder.MapRouteRouteBuilderExtensions.MapRoute.md) doesn't take a route handler parameter - it only adds routes that will be handled by the [DefaultHandler](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Routing/IRouteBuilder/index.html.md#Microsoft.AspNetCore.Routing.IRouteBuilder.DefaultHandler.md). Since the default handler is an [IRouter](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Routing/IRouter/index.html.md#Microsoft.AspNetCore.Routing.IRouter.md), it may decide not to handle the request. For example, ASP.NET MVC is typically configured as a default handler that only handles requests that match an available controller and action. To learn more about routing to MVC, see [🔧 Routing to Controller Actions](../mvc/controllers/routing.md).
 
 This is an example of a `MapRoute` call used by a typical ASP.NET MVC route definition:
 
@@ -160,7 +161,7 @@ This template will match a URL path like `/en-US/Products/5` and will extract th
 
 <a name=id1></a>
 
-  ### URL generation
+### URL generation
 
 The `Route` class can also perform URL generation by combining a set of route values with its route template. This is logically the reverse process of matching the URL path.
 
@@ -187,7 +188,7 @@ For more details about the URL generation process, see [url-generation-reference
 
 <a name=using-routing-middleware></a>
 
-  ## Using Routing Middleware
+## Using Routing Middleware
 
 To use routing middleware, add it to the **dependencies** in *project.json*:
 
@@ -276,7 +277,7 @@ The `Map[Verb]` methods use constraints to limit the route to the HTTP Verb in t
 
 <a name=route-template-reference></a>
 
-  ## Route Template Reference
+## Route Template Reference
 
 Tokens within curly braces (`{ }`) define *route parameters* which will be bound if the route is matched. You can define more than one route parameter in a route segment, but they must be separated by a literal value. For example `{controller=Home}{action=Index}` would not be a valid route, since there is no literal value between `{controller}` and `{action}`. These route parameters must have a name, and may have additional attributes specified.
 
@@ -307,7 +308,7 @@ Tip: Enable [Logging](logging.md) to see how the built in routing implementation
 
 <a name=route-constraint-reference></a>
 
-  ## Route Constraint Reference
+## Route Constraint Reference
 
 Route constraints execute when a `Route` has matched the syntax of the incoming URL and tokenized the URL path into route values. Route constraints generally inspect the route value associated via the route template and make a simple yes/no decision about whether or not the value is acceptable. Some route constraints use data outside the route value to consider whether the request can be routed. For example, the [HttpMethodRouteConstraint](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Routing/Constraints/HttpMethodRouteConstraint/index.html#httpmethodrouteconstraint-class) can accept or reject a request based on its HTTP verb.
 
@@ -324,7 +325,7 @@ Tip: To constrain a parameter to a known set of possible values, you can use a r
 
 <a name=url-generation-reference></a>
 
-  ## URL Generation Reference
+## URL Generation Reference
 
 The example below shows how to generate a link to a route given a dictionary of route values and a `RouteCollection`.
 

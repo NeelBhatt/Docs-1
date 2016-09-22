@@ -1,17 +1,17 @@
----
+﻿---
 uid: tutorials/your-first-mac-aspnet
 ---
-  # Your First ASP.NET Core Application on a Mac Using Visual Studio Code
+# Your First ASP.NET Core Application on a Mac Using Visual Studio Code
 
 By [Daniel Roth](https://github.com/danroth27), [Steve Smith](http://ardalis.com), [Rick Anderson](https://twitter.com/RickAndMSFT) and [Shayne Boyer](https://twitter.com/spboyer)
 
 This article will show you how to write your first ASP.NET Core application on a Mac.
 
-  ## Setting Up Your Development Environment
+## Setting Up Your Development Environment
 
 To setup your development machine download and install [.NET Core](https://microsoft.com/net/core) and [Visual Studio Code](https://code.visualstudio.com) with the [C# extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp). Node.js and npm is also required. If not already installed visit [nodejs.org](https://nodejs.org/en/download/package-manager/#osx).
 
-  ## Scaffolding Applications Using Yeoman
+## Scaffolding Applications Using Yeoman
 
 We will be using `yo aspnet` to generate the **Web Application Basic** template, you may follow the full instructions in [Building Projects with Yeoman](../client-side/yeoman.md) to create an ASP.NET Core project which show an **Empty Web** for reference.
 
@@ -52,7 +52,7 @@ When the generator completes scaffolding the files, it will instruct you to rest
        dotnet run
    ````
 
-  ## Developing ASP.NET Core Applications on a Mac With Visual Studio Code
+## Developing ASP.NET Core Applications on a Mac With Visual Studio Code
 
 * Start **Visual Studio Code**
 
@@ -102,7 +102,7 @@ Code's editor has a ton of great features. You'll notice unused using statements
 
 More on editor in [Visual Studio Code](https://code.visualstudio.com).
 
-  ## Running Locally Using Kestrel
+## Running Locally Using Kestrel
 
 The sample is configured to use [Kestrel](../fundamentals/servers.md#kestrel.md) for the web server. You can see it configured in the *project.json* file, where it is specified as a dependency.
 
@@ -127,7 +127,7 @@ The sample is configured to use [Kestrel](../fundamentals/servers.md#kestrel.md)
        "Microsoft.AspNetCore.StaticFiles": "1.0.0",
    ````
 
-  ### Using Visual Studio Code Debugger
+### Using Visual Studio Code Debugger
 
 If you chose to have the debug and build assets added to the project:
 
@@ -145,7 +145,7 @@ Your default browser will automatically launch and navigate to `http://localhost
 
 ![image](your-first-mac-aspnet/_static/debugger.png)
 
-  ### Using the dotnet commands
+### Using the dotnet commands
 
 * Run `dotnet run` command to launch the app from terminal/bash
 
@@ -153,11 +153,11 @@ Your default browser will automatically launch and navigate to `http://localhost
 
 * To stop the web server enter `⌃+C`.
 
-  ## Publishing to Azure
+## Publishing to Azure
 
 Once you've developed your application, you can easily use the Git integration built into Visual Studio Code to push updates to production, hosted on [Microsoft Azure](http://azure.microsoft.com).
 
-  ### Initialize Git
+### Initialize Git
 
 Initialize Git in the folder you're working in. Tap on the Git viewlet and click the `Initialize Git repository` button.
 
@@ -169,7 +169,7 @@ Add a commit message and tap enter or tap the checkmark icon to commit the stage
 
 Git is tracking changes, so if you make an update to a file, the Git viewlet will display the files that have changed since your last commit.
 
-  ### Initialize Azure Website
+### Initialize Azure Website
 
 You can deploy to Azure Web Apps directly using Git.
 
@@ -201,7 +201,7 @@ Looking at the Deployment Details in the Azure Portal, you can see the logs and 
 
 ![image](your-first-mac-aspnet/_static/deployment.png)
 
-  ## Additional Resources
+## Additional Resources
 
 * [Visual Studio Code](https://code.visualstudio.com)
 

@@ -1,9 +1,9 @@
----
+﻿---
 uid: security/authentication/sociallogins
 ---
 <a name=security-authentication-social-logins></a>
 
-  # Enabling authentication using Facebook, Google and other external providers
+# Enabling authentication using Facebook, Google and other external providers
 
 By [Rick Anderson](https://twitter.com/RickAndMSFT) and [Pranav Rastogi](https://github.com/rustd)
 
@@ -11,9 +11,10 @@ This tutorial shows you how to build an ASP.NET Core app that enables users to l
 
 Enabling these credentials in your web sites provides a significant advantage because millions of users already have accounts with these external providers. These users may be more inclined to sign up for your site if they do not have to create and remember new credentials.
 
-  ## Create a New ASP.NET Core Project
+## Create a New ASP.NET Core Project
 
-Note: The tutorial requires the latest version of Visual Studio 2015 and ASP.NET Core.
+> [!NOTE]
+> The tutorial requires the latest version of Visual Studio 2015 and ASP.NET Core.
 
 * In Visual Studio, create a New Project (from the Start Page, or via **File > New > Project**)
 
@@ -49,7 +50,7 @@ Note: The tutorial requires the latest version of Visual Studio 2015 and ASP.NET
 
 * Test the app
 
-  ## Creating the app in Facebook
+## Creating the app in Facebook
 
 Each of the OAuth2 providers require provider specific keys to enable OAuth2.
 
@@ -87,7 +88,7 @@ Each of the OAuth2 providers require provider specific keys to enable OAuth2.
 
 ![image](sociallogins/_static/FBApp08.png)
 
-  ## Use SecretManager to store Facebook AppId and AppSecret
+## Use SecretManager to store Facebook AppId and AppSecret
 
 The project created has code in Startup which reads the configuration values from a secret store. As a best practice, it is not recommended to store the secrets in a configuration file in the application since they can be checked into source control which may be publicly accessible.
 
@@ -139,7 +140,7 @@ The following code reads the configuration values stored by the [Secret Manager]
 
    ````
 
-  ## Enable Facebook middleware
+## Enable Facebook middleware
 
 **Note:** You will need to use NuGet to install the Microsoft.AspNetCore.Authentication.Facebook package if it hasn't already been installed.
 
@@ -187,7 +188,7 @@ Add the Facebook middleware in the `Configure` method in `Startup`:
 
    ````
 
-  ## Login with Facebook
+## Login with Facebook
 
 Run your application and click Login. You will see an option for Facebook.
 
@@ -203,7 +204,7 @@ You are now logged in using your Facebook credentials.
 
 ![image](sociallogins/_static/FBLogin3.PNG)
 
-  ## Optionally set password
+## Optionally set password
 
 When you register with an external login provider, you do not have a password registered with the app. This alleviates you from creating and remembering a password for the site, but it also makes you dependent on the external login provider. If the external login provider is unavailable, you won't be able to log in to the web site.
 
@@ -219,7 +220,7 @@ To create a password and login using your email that you set during the login pr
 
 * Set a valid password and you can use this to login with your email
 
-  ## Next steps
+## Next steps
 
 * This article showed how you can authenticate with Facebook. You can follow a similar approach to authenticate with Microsoft Account, Twitter, Google and other providers.
 

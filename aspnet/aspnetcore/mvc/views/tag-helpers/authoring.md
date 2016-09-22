@@ -1,13 +1,13 @@
 ---
 uid: mvc/views/tag-helpers/authoring
 ---
-  # Authoring Tag Helpers
+# Authoring Tag Helpers
 
 By [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 [View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnet/mvc/views/tag-helpers/authoring/sample)
 
-  ## Getting started with Tag Helpers
+## Getting started with Tag Helpers
 
 This tutorial provides an introduction to programming Tag Helpers. [Introduction to Tag Helpers](intro.md) describes the benefits that Tag Helpers provide.
 
@@ -17,7 +17,7 @@ A tag helper is any class that implements the `ITagHelper` interface. However, w
 
 2. Create a folder to hold the Tag Helpers called *TagHelpers*. The *TagHelpers* folder is *not* required, but it is a reasonable convention. Now let's get started writing some simple tag helpers.
 
-  ## Starting the email Tag Helper
+## Starting the email Tag Helper
 
 In this section we will write a tag helper that updates an email tag. For example:
 
@@ -135,9 +135,10 @@ To add a tag helper to a view using a FQN, you first add the FQN (`AuthoringTagH
 
 4. Run the app and use your favorite browser to view the HTML source so you can verify that the email tags are replaced with anchor markup (For example, `<a>Support</a>`). *Support* and *Marketing* are rendered as a links, but they don't have an `href` attribute to make them functional. We'll fix that in the next section.
 
-Note: Like [HTML tags and attributes](http://www.w3.org/TR/html-markup/documents.html#case-insensitivity), tags, class names and attributes in Razor, and C# are not case-sensitive.
+> [!NOTE]
+> Like [HTML tags and attributes](http://www.w3.org/TR/html-markup/documents.html#case-insensitivity), tags, class names and attributes in Razor, and C# are not case-sensitive.
 
-  ## A working email Tag Helper
+## A working email Tag Helper
 
 In this section, we'll update the `EmailTagHelper` so that it will create a valid anchor tag for email. We'll update it to take information from a Razor view (in the form of a `mail-to` attribute) and use that in generating the anchor.
 
@@ -238,7 +239,7 @@ That approach works for the attribute "href" as long as it doesn't currently exi
 
 With a self-closing email tag helper, the output would be `<a href="mailto:Rick@contoso.com" />`. Self-closing anchor tags are not valid HTML, so you wouldn't want to create one, but you might want to create a tag helper that is self-closing. Tag helpers set the type of the `TagMode` property after reading a tag.
 
-  ### An asynchronous email helper
+### An asynchronous email helper
 
 In this section we'll write an asynchronous email helper.
 
@@ -297,7 +298,7 @@ In this section we'll write an asynchronous email helper.
 
 3. Run the app and verify that it generates valid email links.
 
-  ## The bold Tag Helper
+## The bold Tag Helper
 
 1. Add the following `BoldTagHelper` class to the *TagHelpers* folder.
 
@@ -400,7 +401,7 @@ You can also use the `[HtmlTargetElement]` to change the name of the targeted el
    [HtmlTargetElement("MyBold")]
    ````
 
-  ## Web site information Tag Helper
+## Web site information Tag Helper
 
 1. Add a *Models* folder.
 
@@ -545,7 +546,7 @@ Razor knows the `info` attribute is a class, not a string, and you want to write
    </website-information>
    ````
 
-  ## Condition Tag Helper
+## Condition Tag Helper
 
 The condition tag helper renders output when passed a true value.
 
@@ -647,7 +648,7 @@ The condition tag helper renders output when passed a true value.
 
 The [nameof](https://msdn.microsoft.com/en-us/library/dn986596.aspx) operator will protect the code should it ever be refactored (we might want to change the name to `RedCondition`).
 
-  ### Avoiding Tag Helper conflicts
+### Avoiding Tag Helper conflicts
 
 In this section, we will write a pair of auto-linking tag helpers. The first will replace markup containing a URL starting with HTTP to an HTML anchor tag containing the same URL (and thus yielding a link to the URL). The second will do the same for a URL starting with WWW.
 
@@ -826,7 +827,7 @@ The code above checks to see if the content has been modified, and if it has, it
 
 The above code will guarantee that the HTTP tag helper runs before the WWW tag helper. Change `Order` to `MaxValue` and verify that the markup generated for the  WWW tag is incorrect.
 
-  ## Inspecting and retrieving child content
+## Inspecting and retrieving child content
 
 The tag-helpers provide several properties to retrieve content.
 

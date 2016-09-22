@@ -1,7 +1,7 @@
 ---
 uid: fundamentals/owin
 ---
-  # Open Web Interface for .NET (OWIN)
+# Open Web Interface for .NET (OWIN)
 
 By [Steve Smith](http://ardalis.com) and  [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -9,7 +9,7 @@ ASP.NET Core supports the Open Web Interface for .NET (OWIN). OWIN allows web ap
 
 [View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnet/fundamentals/owin/sample)
 
-  ## Running OWIN middleware in the ASP.NET pipeline
+## Running OWIN middleware in the ASP.NET pipeline
 
 ASP.NET Core's OWIN support is deployed as part of the `Microsoft.AspNetCore.Owin` package. You can import OWIN support into your project by adding this package as a dependency in your *project.json* file:
 
@@ -70,9 +70,11 @@ The following code shows how to add the `OwinHello` middleware (shown above) to 
 
 You can configure other actions to take place within the OWIN pipeline.
 
-Note: Response headers should only be modified prior to the first write to the response stream.
+> [!NOTE]
+> Response headers should only be modified prior to the first write to the response stream.
 
-Note: Multiple calls to `UseOwin` is discouraged for performance reasons. OWIN components will operate best if grouped together.
+> [!NOTE]
+> Multiple calls to `UseOwin` is discouraged for performance reasons. OWIN components will operate best if grouped together.
 
 <!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
@@ -89,7 +91,7 @@ Note: Multiple calls to `UseOwin` is discouraged for performance reasons. OWIN c
    });
    ````
 
-  ## Using ASP.NET Hosting on an OWIN-based server
+## Using ASP.NET Hosting on an OWIN-based server
 
 OWIN-based servers can host ASP.NET applications. One such server is [Nowin](https://github.com/Bobris/Nowin), a .NET OWIN web server. In the sample for this article, I've included a project that references Nowin and uses it to create an `IServer` capable of self-hosting ASP.NET Core.
 
@@ -253,7 +255,7 @@ With this in place, all that's required to run an ASP.NET application using this
 
 Learn more about ASP.NET [Servers](servers.md).
 
-  ## Run ASP.NET Core on an OWIN-based server and use its WebSockets support
+## Run ASP.NET Core on an OWIN-based server and use its WebSockets support
 
 Another example of how OWIN-based servers' features can be leveraged by ASP.NET Core is access to features like WebSockets. The .NET OWIN web server used in the previous example has support for Web Sockets built in, which can be leveraged by an ASP.NET Core application. The example below shows a simple web app that supports Web Sockets and echoes back everything sent to the server through WebSockets.
 
@@ -311,11 +313,11 @@ This [sample](https://github.com/aspnet/Docs/tree/master/aspnet/fundamentals/owi
 
 ![image](owin/_static/websocket-test.png)
 
-  ## OWIN keys
+## OWIN keys
 
 OWIN depends on an `IDictionary<string,object>` object to communicate information throughout an HTTP Request/Response exchange. ASP.NET Core implements the keys listed below. See the [primary specification, extensions](http://owin.org/#spec), and [OWIN Key Guidelines and Common Keys](http://owin.org/spec/spec/CommonKeys.html).
 
-  ### Request Data (OWIN v1.0.0)<!--       Key  Value (type)  Description  owin.RequestScheme  String    owin.RequestMethod  String    owin.RequestPathBase  String    owin.RequestPath  String    owin.RequestQueryString  String    owin.RequestProtocol  String    owin.RequestHeaders  IDictionary<string,string[]>    owin.RequestBody  Stream   -->  ### Request Data (OWIN v1.1.0)<!--       Key  Value (type)  Description  owin.RequestId  String  Optional -->  ### Response Data (OWIN v1.0.0)<!--       Key  Value (type)  Description  owin.ResponseStatusCode  int  Optional  owin.ResponseReasonPhrase  String  Optional  owin.ResponseHeaders  IDictionary<string,string[]>    owin.ResponseBody  Stream   -->  ### Other Data (OWIN v1.0.0)<!--       Key  Value (type)  Description  owin.CallCancelled  CancellationToken    owin.Version  String   -->  ### Common Keys<!--       Key  Value (type)  Description  ssl.ClientCertificate  X509Certificate    ssl.LoadClientCertAsync  Func<Task>
+### Request Data (OWIN v1.0.0)<!--       Key  Value (type)  Description  owin.RequestScheme  String    owin.RequestMethod  String    owin.RequestPathBase  String    owin.RequestPath  String    owin.RequestQueryString  String    owin.RequestProtocol  String    owin.RequestHeaders  IDictionary<string,string[]>    owin.RequestBody  Stream   -->  ### Request Data (OWIN v1.1.0)<!--       Key  Value (type)  Description  owin.RequestId  String  Optional -->  ### Response Data (OWIN v1.0.0)<!--       Key  Value (type)  Description  owin.ResponseStatusCode  int  Optional  owin.ResponseReasonPhrase  String  Optional  owin.ResponseHeaders  IDictionary<string,string[]>    owin.ResponseBody  Stream   -->  ### Other Data (OWIN v1.0.0)<!--       Key  Value (type)  Description  owin.CallCancelled  CancellationToken    owin.Version  String   -->  ### Common Keys<!--       Key  Value (type)  Description  ssl.ClientCertificate  X509Certificate    ssl.LoadClientCertAsync  Func<Task>
 server.RemoteIpAddress  String    server.RemotePort  String    server.LocalIpAddress  String    server.LocalPort  String    server.IsLocal  bool    server.OnSendingHeaders  Action<Action<object>,object>   -->  ### SendFiles v0.3.0<!--       Key  Value (type)  Description  sendfile.SendAsync  See delegate signature  Per Request -->  ### Opaque v0.3.0<!--       Key  Value (type)  Description  opaque.Version  String    opaque.Upgrade  OpaqueUpgrade  See delegate signature  opaque.Stream  Stream    opaque.CallCancelled  CancellationToken   -->  ### WebSocket v0.3.0<!--       Key  Value (type)  Description  websocket.Version  String    websocket.Accept  WebSocketAccept  See delegate signature.  websocket.AcceptAlt    Non-spec  websocket.SubProtocol  String  See RFC6455 Section 4.2.2 Step 5.5  websocket.SendAsync  WebSocketSendAsync  See delegate signature.  websocket.ReceiveAsync  WebSocketReceiveAsync  See delegate signature.  websocket.CloseAsync  WebSocketCloseAsync  See delegate
 signature.  websocket.CallCancelled  CancellationToken    websocket.ClientCloseStatus  int  Optional  websocket.ClientCloseDescription  String  Optional -->  ## Additional Resources
 

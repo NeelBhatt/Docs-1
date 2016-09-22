@@ -1,19 +1,20 @@
----
+﻿---
 uid: security/data-protection/implementation/key-encryption-at-rest
 ---
 <a name=data-protection-implementation-key-encryption-at-rest></a>
 
-  # Key Encryption At Rest
+# Key Encryption At Rest
 
 By default the data protection system [employs a heuristic](../configuration/default-settings.md#data-protection-default-settings.md) to determine how cryptographic key material should be encrypted at rest. The developer can override the heuristic and manually specify how keys should be encrypted at rest.
 
-Note: If you specify an explicit key encryption at rest mechanism, the data protection system will deregister the default key storage mechanism that the heuristic provided. You must [specify an explicit key storage mechanism](key-storage-providers.md#data-protection-implementation-key-storage-providers.md), otherwise the data protection system will fail to start.
+> [!NOTE]
+> If you specify an explicit key encryption at rest mechanism, the data protection system will deregister the default key storage mechanism that the heuristic provided. You must [specify an explicit key storage mechanism](key-storage-providers.md#data-protection-implementation-key-storage-providers.md), otherwise the data protection system will fail to start.
 
 <a name=data-protection-implementation-key-encryption-at-rest-providers></a>
 
 The data protection system ships with three in-box key encryption mechanisms.
 
-  ## Windows DPAPI
+## Windows DPAPI
 
 *This mechanism is available only on Windows.*
 
@@ -39,7 +40,7 @@ If ProtectKeysWithDpapi is called with no parameters, only the current Windows u
        .ProtectKeysWithDpapi(protectToLocalMachine: true);
    ````
 
-  ## X.509 certificate
+## X.509 certificate
 
 *This mechanism is not yet available on `.NET Core`.*
 
@@ -58,7 +59,7 @@ Because this mechanism uses [X509Certificate2](https://msdn.microsoft.com/en-us/
 
 <a name=data-protection-implementation-key-encryption-at-rest-dpapi-ng></a>
 
-  ## Windows DPAPI-NG
+## Windows DPAPI-NG
 
 *This mechanism is available only on Windows 8 / Windows Server 2012 and later.*
 
@@ -93,7 +94,7 @@ There is also a parameterless overload of ProtectKeysWithDpapiNG. This is a conv
 
 In this scenario, the AD domain controller is responsible for distributing the encryption keys used by the DPAPI-NG operations. The target user will be able to decipher the encrypted payload from any domain-joined machine (provided that the process is running under their identity).
 
-  ## Certificate-based encryption with Windows DPAPI-NG
+## Certificate-based encryption with Windows DPAPI-NG
 
 If you're running on Windows 8.1 / Windows Server 2012 R2 or later, you can use Windows DPAPI-NG to perform certificate-based encryption, even if the application is running on [.NET Core](https://microsoft.com/net/core). To take advantage of this, use the rule descriptor string "CERTIFICATE=HashId:thumbprint", where thumbprint is the hex-encoded SHA1 thumbprint of the certificate to use. See below for an example.
 
@@ -109,6 +110,6 @@ If you're running on Windows 8.1 / Windows Server 2012 R2 or later, you can use 
 
 Any application which is pointed at this repository must be running on Windows 8.1 / Windows Server 2012 R2 or later to be able to decipher this key.
 
-  ## Custom key encryption
+## Custom key encryption
 
 If the in-box mechanisms are not appropriate, the developer can specify their own key encryption mechanism by providing a custom IXmlEncryptor.

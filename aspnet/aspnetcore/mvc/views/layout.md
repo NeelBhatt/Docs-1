@@ -1,13 +1,13 @@
 ---
 uid: mvc/views/layout
 ---
-  # Layout
+# Layout
 
 By [Steve Smith](http://ardalis.com)
 
 Views frequently share visual and programmatic elements. In this article, you'll learn how to use common layouts, share directives, and run common code before rendering views in your ASP.NET app.
 
-  ## What is a Layout
+## What is a Layout
 
 Most web apps have a common layout that provides the user with a consistent experience as they navigate from page to page. The layout typically includes common user interface elements such as the app header, navigation or menu elements, and footer.
 
@@ -98,7 +98,7 @@ An example `_Layout.cshtml`:
 
    ````
 
-  ## Specifying a Layout
+## Specifying a Layout
 
 Razor views have a `Layout` property. Individual views specify a layout by setting this property:
 
@@ -118,7 +118,7 @@ By default, every layout must call `RenderBody`. Wherever the call to `RenderBod
 
 <a name=layout-sections-label></a>
 
-  ### Sections
+### Sections
 
 A layout can optionally reference one or more *sections*, by calling `RenderSection`. Sections provide a way to organize where certain page elements should be placed. Each call to `RenderSection` can specify whether that section is required or optional. If a required section is not found, an exception will be thrown. Individual views specify the content to be rendered within a section using the `@section` Razor syntax. If a view defines a section, it must be rendered (or an error will occur).
 
@@ -137,7 +137,7 @@ In the code above, validation scripts are added to the `scripts` section on a vi
 
 Sections defined in a view are available only in its immediate layout page. They cannot be referenced from partials, view components, or other parts of the view system.
 
-  ### Ignoring sections
+### Ignoring sections
 
 By default, the body and all sections in a content page must all be rendered by the layout page. The Razor view engine enforces this by tracking whether the body and each section have been rendered.
 
@@ -147,7 +147,7 @@ The body and every section in a Razor page must be either rendered or ignored.
 
 <a name=viewimports></a>
 
-  ## Importing Shared Directives
+## Importing Shared Directives
 
 Views can use Razor directives to do many things, such as importing namespaces or performing [dependency injection](dependency-injection.md). Directives shared by many views may be specified in a common `_ViewImports.cshtml` file. The `_ViewImports` file supports the following directives:
 
@@ -202,7 +202,7 @@ If multiple `_ViewImports.cshtml` files are run for a view, combined behavior of
 
 <a name=viewstart></a>
 
-  ## Running Code Before Each View
+## Running Code Before Each View
 
 If you have code you need to run before every view, this should be placed in the `_ViewStart.cshtml` file. By convention, the `_ViewStart.cshtml` file is located in the `Views` folder. The statements listed in `_ViewStart.cshtml` are run before every full view (not layouts, and not partial views). Like [ViewImports.cshtml](xref:mvc/views/layout#viewimports), `_ViewStart.cshtml` is hierarchical. If a `_ViewStart.cshtml` file is defined in the controller-associated view folder, it will be run after the one defined in the root of the `Views` folder (if any).
 
@@ -220,4 +220,5 @@ A sample `_ViewStart.cshtml` file:
 
 The file above specifies that all views will use the `_Layout.cshtml` layout.
 
-Note: Neither `_ViewStart.cshtml` nor `_ViewImports.cshtml` are typically placed in the `/Views/Shared` folder. The app-level versions of these files should be placed directly in the `/Views` folder.
+> [!NOTE]
+> Neither `_ViewStart.cshtml` nor `_ViewImports.cshtml` are typically placed in the `/Views/Shared` folder. The app-level versions of these files should be placed directly in the `/Views` folder.

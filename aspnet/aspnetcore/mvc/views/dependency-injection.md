@@ -1,7 +1,7 @@
 ---
 uid: mvc/views/dependency-injection
 ---
-  # Dependency injection into views
+# Dependency injection into views
 
 By [Steve Smith](http://ardalis.com)
 
@@ -9,7 +9,7 @@ ASP.NET Core supports [dependency injection](../../fundamentals/dependency-injec
 
 [View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnet/mvc/views/dependency-injection/sample)
 
-  ## A Simple Example
+## A Simple Example
 
 You can inject a service into a view using the `@inject` directive. You can think of `@inject` as adding a property to your view, and populating the property using DI.
 
@@ -127,7 +127,7 @@ The sample displays data from the model bound to the view and the service inject
 
 ![image](dependency-injection/_static/screenshot.png)
 
-  ## Populating Lookup Data
+## Populating Lookup Data
 
 View injection can be useful to populate options in UI elements, such as dropdown lists. Consider a user profile form that includes options for specifying gender, state, and other preferences. Rendering such a form using a standard MVC approach would require the controller to request data access services for each of these sets of options, and then populate a model or `ViewBag` with each set of options to be bound.
 
@@ -244,7 +244,7 @@ The `ProfileOptionsService` is a UI-level service designed to provide just the d
 
 Tip: Don't forget to register types you will request through dependency injection in the  `ConfigureServices` method in *Startup.cs*.
 
-  ## Overriding Services
+## Overriding Services
 
 In addition to injecting new services, this technique can also be used to override previously injected services on a page. The figure below shows all of the fields available on the page used in the first example:
 
@@ -274,6 +274,6 @@ As you can see, the default fields include `Html`, `Component`, and `Url` (as we
 
 If you want to extend existing services, you can simply use this technique while inheriting from or wrapping the existing implementation with your own.
 
-  ## See Also
+## See Also
 
 * Simon Timms Blog: [Getting Lookup Data Into Your View](http://blog.simontimms.com/2015/06/09/getting-lookup-data-into-you-view/)

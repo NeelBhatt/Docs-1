@@ -1,19 +1,19 @@
 ---
 uid: fundamentals/choosing-the-right-dotnet
 ---
-  # Choosing the Right .NET For You on the Server
+# Choosing the Right .NET For You on the Server
 
 By [Daniel Roth](https://github.com/danroth27)
 
 ASP.NET Core is based on the [.NET Core](https://microsoft.com/net/core) project model, which supports building applications that can run cross-platform on Windows, Mac and Linux. When building a .NET Core project you also have a choice of which .NET flavor to target your application at: .NET Framework (CLR), .NET Core (CoreCLR) or [Mono](http://mono-project.com). Which .NET flavor should you choose? Let's look at the pros and cons of each one.
 
-  ## .NET Framework
+## .NET Framework
 
 The .NET Framework is the most well known and mature of the three options. The .NET Framework is a mature and fully featured framework that ships with Windows. The .NET Framework ecosystem is well established and has been around for well over a decade. The .NET Framework is production ready today and provides the highest level of compatibility for your existing applications and libraries.
 
 The .NET Framework runs on Windows only. It is also a monolithic component with a large API surface area and a slower release cycle. While the code for the .NET Framework is [available for reference](http://referencesource.microsoft.com/) it is not an active open source project.
 
-  ## .NET Core
+## .NET Core
 
 .NET Core is a modular runtime and library implementation that includes a subset of the .NET Framework. .NET Core is supported on Windows, Mac and Linux. .NET Core consists of a set of libraries, called "CoreFX", and a small, optimized runtime, called "CoreCLR". .NET Core is open-source, so you can follow progress on the project and contribute to it on [GitHub](https://github.com/dotnet).
 

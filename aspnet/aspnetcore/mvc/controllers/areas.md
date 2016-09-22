@@ -1,7 +1,7 @@
 ---
 uid: mvc/controllers/areas
 ---
-  # Areas
+# Areas
 
 By [Dhananjay Kumar](https://twitter.com/debug_mode)  and [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -140,7 +140,7 @@ Set up a route definition that works with your newly created areas. The [🔧 Ro
 
 Browsing to *http://<yourApp>/products*, the `Index` action method of the `HomeController` in the `Products` area will be invoked.
 
-  ## Link Generation
+## Link Generation
 
 * Generating links from an action within an area based controller to another action within the same controller.
 
@@ -180,7 +180,7 @@ Browsing to *http://<yourApp>/products*, the `Index` action method of the `HomeC
 
   Since we want to generate links to a non-area based controller action, we empty the ambient value for 'area' here.
 
-  ## Publishing Areas
+## Publishing Areas
 
 To publish all views of the areas folder, in the `project.json` file include an entry in the `publishOptions`'s `include` node like below:
 

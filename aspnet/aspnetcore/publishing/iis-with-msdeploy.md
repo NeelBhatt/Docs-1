@@ -1,7 +1,7 @@
----
+﻿---
 uid: publishing/iis-with-msdeploy
 ---
-  # Publishing to IIS with Web Deploy using Visual Studio
+# Publishing to IIS with Web Deploy using Visual Studio
 
 By [Sayed Ibrahim Hashimi](https://github.com/sayedihashimi)
 
@@ -17,7 +17,7 @@ To publish an ASP.NET Core application to a remote IIS server the following step
 
 In this document we will walk through each step.
 
-  ## Preparing your web server for ASP.NET Core
+## Preparing your web server for ASP.NET Core
 
 The first step is to ensure that your remote server is configured for ASP.NET Core. At a high level you’ll need.
 
@@ -35,7 +35,7 @@ The HttpPlatformHandler is a new component that connects IIS with your ASP.NET C
 
 In addition to installing the HttpPlatformHandler, you’ll need to install the latest version of Web Deploy (version 3.6). To install Web Deploy 3.6 you can use the [the Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx). (WebPI) or [directly from the download center](https://www.microsoft.com/en-us/download/details.aspx?id=43717). The preferred method is to use WebPI. WebPI offers a standalone setup as well as a configuration for hosting providers.
 
-  ## Configure Data Protection
+## Configure Data Protection
 
 To persist Data Protection keys you must create registry hives for each application pool to store the keys. You should use the [Provisioning PowerShell script](https://github.com/aspnet/DataProtection/blob/dev/Provision-AutoGenKeys.ps1) for each application pool you will be hosting ASP.NET Core applications under.
 
@@ -45,7 +45,7 @@ Warning: Data Protection is used by various ASP.NET middlewares, including those
 
 You can find more info on configuring your IIS server for ASP.NET Core at [Publishing to IIS](iis.md). Now let’s move on to the Visual Studio experience.
 
-  ## Publishing with Visual Studio
+## Publishing with Visual Studio
 
 After you have configured your web server, the next thing to do is to create a publish profile in Visual Studio. The easiest way to get started with publishing an ASP.NET Core application to a standard IIS host is to use a publish profile. If your hosting provider has support for creating a publish profile, download that and then import it into the Visual Studio publish dialog with the Import button. You can see that dialog shown below.
 

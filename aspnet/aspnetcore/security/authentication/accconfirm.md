@@ -5,15 +5,16 @@ Warning: This page documents version 1.0.0-rc2 and has not yet been updated for 
 
 <a name=security-authentication-account-confirmation></a>
 
-  # Account Confirmation and Password Recovery
+# Account Confirmation and Password Recovery
 
 By [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 This tutorial shows you how to build an ASP.NET Core app with email confirmation and password reset support.
 
-  ## Create a New ASP.NET Core Project
+## Create a New ASP.NET Core Project
 
-Note: The tutorial requires Visual Studio 2015 updated 2 and ASP.NET Core RC2 or higher.
+> [!NOTE]
+> The tutorial requires Visual Studio 2015 updated 2 and ASP.NET Core RC2 or higher.
 
 * In Visual Studio, create a New Project (from the Start Page, or via **File > New > Project**)
 
@@ -35,11 +36,11 @@ Note the `EmailConfirmed` field is `False`.
 
 Right-click on the row and from the context menu, select **Delete**. You might want to use this email again in the next step, when the app sends a confirmation email. Deleting the email alias now will make it easier in the following steps.
 
-  ## Require SSL
+## Require SSL
 
 In this section we'll set up our Visual Studio project to use SSL and our project to require SSL.
 
-  ### Enable SSL in Visual Studio
+### Enable SSL in Visual Studio
 
    * In solution explorer, right click the project and select **Properties**
 
@@ -74,13 +75,13 @@ Add the `[RequireHttps]` attribute to each controller. The `[RequireHttps]` attr
 
    ````
 
-  ## Require email confirmation
+## Require email confirmation
 
 It's a best practice to confirm the email of a new user registration to verify they are not impersonating someone else (that is, they haven't registered with someone else's email). Suppose you had a discussion forum, you would want to prevent "bob@example.com" from registering as "joe@contoso.com". Without email confirmation, "joe@contoso.com" could get unwanted email from your app. Suppose Bob accidentally registered as  "bib@example.com" and hadn't noticed it, he wouldn't be able to use password recovery because the app doesn't have his correct email. Email confirmation provides only limited protection from bots and doesn't provide protection from determined spammers who have many working email aliases they can use to register.
 
 You generally want to prevent new users from posting any data to your web site before they have been confirmed by email, an SMS text message, or another mechanism. In the sections below, we will enable email confirmation and modify the code to prevent newly registered  users from logging in until their email has been confirmed.
 
-  ### Configure email provider
+### Configure email provider
 
 We'll use the [Options pattern](../../fundamentals/configuration.md#options-config-objects.md) to access the user account and key settings. For more information, see [configuration](../../fundamentals/configuration.md#fundamentals-configuration.md).
 
@@ -137,7 +138,7 @@ At this time, the contents of the *secrets.json* file are not encrypted. The *se
    }
    ````
 
-  ### Configure startup to use `AuthMessageSenderOptions`
+### Configure startup to use `AuthMessageSenderOptions`
 
 Add the dependecy `Microsoft.Extensions.Options.ConfigurationExtensions` in the project.json file.
 
@@ -155,7 +156,7 @@ Add `AuthMessageSenderOptions` to the service container at the end of the `Confi
 
    ````
 
-  ### Configure the `AuthMessageSender` class
+### Configure the `AuthMessageSender` class
 
 This tutorial shows how to add email notification through [SendGrid](https://sendgrid.com/), but you can send email using SMTP and other mechanisms.
 
@@ -209,7 +210,7 @@ This tutorial shows how to add email notification through [SendGrid](https://sen
 
    ````
 
-  ## Enable account confirmation and password recovery
+## Enable account confirmation and password recovery
 
 The template already has the code for account confirmation and password recovery. Follow these steps to enable it:
 
@@ -338,7 +339,7 @@ Uncomment the highlighted `ForgotPassword` from in the *Views/Account/ForgotPass
 
    ````
 
-  ## Register, confirm email, and reset password
+## Register, confirm email, and reset password
 
 In this section, run the web app and show the account confirmation and password recovery flow.
 
@@ -362,7 +363,7 @@ In this section, run the web app and show the account confirmation and password 
 
 * Log off.
 
-  ### Test password reset
+### Test password reset
 
 * Login and select **Forgot your password?**
 
@@ -370,7 +371,7 @@ In this section, run the web app and show the account confirmation and password 
 
 * An email with a link to reset your password will be sent. Check your email and click the link to reset your password.  After your password has been successfully reset, you can login with your email and new password.
 
-  ## Require email confirmation before login
+## Require email confirmation before login
 
 With the current templates, once a user completes the registration form, they are logged in (authenticated). You generally want to confirm their email before logging them in. In the section below, we will modify the code to require new users have a confirmed email before they are logged in. Update the `[HttpPost] Login` action in the *AccountController.cs* file with the following highlighted changes.
 
@@ -427,9 +428,10 @@ With the current templates, once a user completes the registration form, they ar
 
    ````
 
-Note: A security best practice is to not use production secrets in test and development. If you publish the app to Azure, you can set the SendGrid secrets as application settings in the Azure Web App portal. The configuration system is setup to read keys from environment variables.
+> [!NOTE]
+> A security best practice is to not use production secrets in test and development. If you publish the app to Azure, you can set the SendGrid secrets as application settings in the Azure Web App portal. The configuration system is setup to read keys from environment variables.
 
-  ## Combine social and local login accounts
+## Combine social and local login accounts
 
 To complete this section, you must first enable an external authentication provider. See [Enabling authentication using Facebook, Google and other external providers](sociallogins.md).
 

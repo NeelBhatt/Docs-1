@@ -3,13 +3,14 @@ uid: security/data-protection/compatibility/replacing-machinekey
 ---
 <a name=compatibility-replacing-machinekey></a>
 
-  # Replacing <machineKey> in ASP.NET
+# Replacing <machineKey> in ASP.NET
 
 The implementation of the <machineKey> element in ASP.NET [is replaceable](http://blogs.msdn.com/b/webdev/archive/2012/10/23/cryptographic-improvements-in-asp-net-4-5-pt-2.aspx). This allows most calls to ASP.NET cryptographic routines to be routed through a replacement data protection mechanism, including the new data protection system.
 
-  ## Package installation
+## Package installation
 
-Note: The new data protection system can only be installed into an existing ASP.NET application targeting .NET 4.5.1 or higher. Installation will fail if the application targets .NET 4.5 or lower.
+> [!NOTE]
+> The new data protection system can only be installed into an existing ASP.NET application targeting .NET 4.5.1 or higher. Installation will fail if the application targets .NET 4.5 or lower.
 
 To install the new data protection system into an existing ASP.NET 4.5.1+ project, install the package Microsoft.AspNetCore.DataProtection.SystemWeb. This will instantiate the data protection system using the [default configuration](../configuration/default-settings.md#data-protection-default-settings.md) settings.
 
@@ -31,7 +32,7 @@ Tip: You can tell if the new data protection system is active by inspecting fiel
    <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="CfDJ8AWPr2EQPTBGs3L2GCZOpk..." />
    ````
 
-  ## Package configuration
+## Package configuration
 
 The data protection system is instantiated with a default zero-setup configuration. However, since by default keys are persisted to the local file system, this won't work for applications which are deployed in a farm. To resolve this, you can provide configuration by creating a type which subclasses DataProtectionStartup and overrides its ConfigureServices method.
 

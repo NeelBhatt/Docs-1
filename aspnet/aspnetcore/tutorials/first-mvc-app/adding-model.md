@@ -1,7 +1,7 @@
----
+﻿---
 uid: tutorials/first-mvc-app/adding-model
 ---
-  # Adding a model
+# Adding a model
 
 By [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -9,7 +9,7 @@ In this section you'll add some classes for managing movies in a database. These
 
 You’ll use a .NET Framework data-access technology known as the [Entity Framework Core](http://ef.readthedocs.org/) to define and work with these data model classes. Entity Framework Core (often referred to as **EF** Core) features a development paradigm called *Code First*. You write the code first, and the database tables are created from this code. Code First allows you to create data model objects by writing simple classes. (These are also known as POCO classes, from "plain-old CLR objects.") The database is created from your classes. If you are required to create the database first, you can still follow this tutorial to learn about MVC and EF app development.
 
-  ## Create a new project with individual user accounts
+## Create a new project with individual user accounts
 
 In the current version of the ASP.NET Core MVC tools for Visual Studio, scaffolding a model is only supported when you create a new project with individual user accounts. We hope to have this fixed in the next tooling update. Until that's fixed, you'll need to create a new project with the same name. Because the project has the same name, you'll need to create it in another directory.
 
@@ -49,7 +49,7 @@ In the **New ASP.NET Core Web Application - MvcMovie** dialog:
 
 Follow the instructions in [Change the title and menu link in the layout file](adding-view.md#change-title-link-reference-label.md) so you can tap the **MvcMovie** link to invoke the Movie controller. We'll scaffold the movies controller in this tutorial.
 
-  ### Adding data model classes
+### Adding data model classes
 
 In Solution Explorer, right click the *Models* folder > **Add** > **Class**. Name the class **Movie** and add the following properties:
 
@@ -75,7 +75,7 @@ In Solution Explorer, right click the *Models* folder > **Add** > **Class**. Nam
 
 In addition to the properties you'd expect to model a movie, the `ID` field is required by the DB for the primary key. Build the project. If you don't build the app, you'll get an error in the next section. We've finally added a **M**odel to our **M**VC app.
 
-  ### Scaffolding a controller
+### Scaffolding a controller
 
 In **Solution Explorer**, right-click the *Controllers* folder **> Add > Controller**.
 
@@ -115,13 +115,13 @@ If you run the app and click on the **Mvc Movie** link, you'll get the following
 
 We'll follow those instructions to get the database ready for our Movie app.
 
-  ### Update the database
+### Update the database
 
 Warning: You must stop IIS Express before you update the database.
 
 <a name=stop-iis-express-reference-label></a>
 
-  ## To Stop IIS Express:
+## To Stop IIS Express:
 
 * Right click the IIS Express system tray icon in the notification area
 
@@ -165,9 +165,10 @@ Warning: You must stop IIS Express before you update the database.
    dotnet ef database update
    ````
 
-Note: If IIS-Express is running, you'll get the error *CS2012: Cannot open 'MvcMovie/bin/Debug/netcoreapp1.0/MvcMovie.dll' for writing -- 'The process cannot access the file 'MvcMovie/bin/Debug/netcoreapp1.0/MvcMovie.dll' because it is being used by another process.'*
+> [!NOTE]
+> If IIS-Express is running, you'll get the error *CS2012: Cannot open 'MvcMovie/bin/Debug/netcoreapp1.0/MvcMovie.dll' for writing -- 'The process cannot access the file 'MvcMovie/bin/Debug/netcoreapp1.0/MvcMovie.dll' because it is being used by another process.'*
 
-  ## dotnet ef commands
+## dotnet ef commands
 
 * `dotnet` (.NET Core) is a cross-platform implementation of .NET. You can read about it [here](http://go.microsoft.com/fwlink/?LinkID=517853)
 
@@ -175,9 +176,10 @@ Note: If IIS-Express is running, you'll get the error *CS2012: Cannot open 'MvcM
 
 * `dotnet ef database update`  Updates the database with the migration we just created
 
-  ### Test the app
+### Test the app
 
-Note: If your browser is unable to connect to the movie app you might need to wait for IIS Express to load the app. It can sometimes take up to 30 seconds to build the app and have it ready to respond to requests.
+> [!NOTE]
+> If your browser is unable to connect to the movie app you might need to wait for IIS Express to load the app. It can sometimes take up to 30 seconds to build the app and have it ready to respond to requests.
 
 * Run the app and tap the **Mvc Movie** link
 
@@ -185,11 +187,13 @@ Note: If your browser is unable to connect to the movie app you might need to wa
 
 ![image](adding-model/_static/movies.png)
 
-Note: You may not be able to enter decimal points or commas in the `Price` field. To support [jQuery validation](http://jqueryvalidation.org/) for non-English locales that use a comma (",") for a decimal point, and non US-English date formats, you must take steps to globalize your app. See [Additional resources](#additional-resources) for more information. For now, just enter whole numbers like 10.
+> [!NOTE]
+> You may not be able to enter decimal points or commas in the `Price` field. To support [jQuery validation](http://jqueryvalidation.org/) for non-English locales that use a comma (",") for a decimal point, and non US-English date formats, you must take steps to globalize your app. See [Additional resources](#additional-resources) for more information. For now, just enter whole numbers like 10.
 
 <a name=displayformatdatelocal></a>
 
-Note: In some locales you'll need to specify the date format. See the highlighted code below.
+> [!NOTE]
+> In some locales you'll need to specify the date format. See the highlighted code below.
 
 <!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Models/MovieDateFormat.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [10, 2], "linenostart": 1}} -->
 
@@ -219,7 +223,7 @@ Tapping **Create** causes the form to be posted to the server, where the movie i
 
 Create a couple more movie entries. Try the **Edit**, **Details**, and **Delete** links, which are all functional.
 
-  ### Examining the Generated Code
+### Examining the Generated Code
 
 Open the *Controllers/MoviesController.cs* file and examine the generated `Index` method. A portion of the movie controller with the `Index` method is shown below:
 
@@ -249,7 +253,7 @@ A request to the Movies controller returns all the entries in the `Movies` table
 
 <a name=strongly-typed-models-keyword-label></a>
 
-  ## Strongly typed models and the @model keyword
+## Strongly typed models and the @model keyword
 
 Earlier in this tutorial, you saw how a controller can pass data or objects to a view using the `ViewData` dictionary. The `ViewData` dictionary is a dynamic object that provides a convenient late-bound way to pass information to a view.
 
@@ -457,7 +461,7 @@ Because the `Model` object is strongly typed (as an `IEnumerable<Movie>` object)
 
 You now have a database and pages to display, edit, update and delete data. In the next tutorial, we'll work with the database.
 
-  ### Additional resources
+### Additional resources
 
 * [Tag Helpers](../../mvc/views/tag-helpers/index.md)
 

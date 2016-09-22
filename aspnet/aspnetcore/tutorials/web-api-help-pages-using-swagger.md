@@ -3,7 +3,7 @@ uid: tutorials/web-api-help-pages-using-swagger
 ---
 <a name=web-api-help-pages-using-swagger></a>
 
-  # ASP.NET Web API Help Pages using Swagger
+# ASP.NET Web API Help Pages using Swagger
 
 By [Shayne Boyer](https://twitter.com/spboyer)
 
@@ -17,7 +17,7 @@ Generating good documentation and help pages as a part of your Web API using [Sw
 
 This tutorial builds on the sample on [Building Your First Web API with ASP.NET Core MVC and Visual Studio](first-web-api.md). If you'd like to follow along, download the sample at [https://github.com/aspnet/Docs/tree/master/aspnet/tutorials/first-web-api/sample](https://github.com/aspnet/Docs/tree/master/aspnet/tutorials/first-web-api/sample).
 
-  ## Getting Started
+## Getting Started
 
 There are two core components to Swashbuckle
 
@@ -25,7 +25,7 @@ There are two core components to Swashbuckle
 
 * *Swashbuckle.SwaggerUI* : an embedded version of the Swagger UI tool which uses the above documents for a rich customizable experience for describing the Web API functionality and includes built in test harness capabilities for the public methods.
 
-  ## NuGet Packages
+## NuGet Packages
 
 You can add Swashbuckle with any of the following approaches:
 
@@ -59,7 +59,7 @@ You can add Swashbuckle with any of the following approaches:
 
      * Tap the Swashbuckle package and then tap Install
 
-  ## Add and configure Swagger to the middleware
+## Add and configure Swagger to the middleware
 
 Add SwaggerGen to the services collection in the Configure method, and in the ConfigureServices method, enable the middleware for serving generated JSON document and the SwaggerUI.
 
@@ -97,7 +97,8 @@ Add SwaggerGen to the services collection in the Configure method, and in the Co
 
 In Visual Studio, press ^F5 to launch the app and navigate to `http://localhost:<random_port>/swagger/v1/swagger.json` to see the document generated that describes the endpoints.
 
-Note: Microsoft Edge, Google Chrome and Firefox display JSON documents natively.  There are extensions for Chrome that will format the document for easier reading. *Example below reduced for brevity.*
+> [!NOTE]
+> Microsoft Edge, Google Chrome and Firefox display JSON documents natively.  There are extensions for Chrome that will format the document for easier reading. *Example below reduced for brevity.*
 
 <!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "javascript", "highlight_args": {}} -->
 
@@ -178,11 +179,11 @@ Each of the methods in the ToDo controller can be tested from the UI. Tap a meth
 
 ![image](web-api-help-pages-using-swagger/_static/get-try-it-out.png)
 
-  ## Customization & Extensibility
+## Customization & Extensibility
 
 Swagger is not only a simple way to represent the API, but has options for documenting the object model, as well as customizing the interactive UI to match your look and feel or design language.
 
-  ### API Info and Description
+### API Info and Description
 
 The `ConfigureSwaggerGen` method can be used to add information such as the author, license, description.
 
@@ -208,7 +209,7 @@ The following image shows the Swagger UI displaying the version information adde
 
 ![image](web-api-help-pages-using-swagger/_static/custom-info.png)
 
-  ### XML Comments
+### XML Comments
 
 To enable XML comments, right click the project in Visual Studio and select **Properties** and then check the **XML Documentation file** box under the **Output Settings** section.
 
@@ -229,7 +230,8 @@ Alternatively, you can enable XML comments by setting *"xmlDoc": true* in *proje
 
 Configure Swagger to use the generated XML file.
 
-Note: For Linux or non-Windows operating systems, file names and paths can be case sensitive. So `ToDoApi.XML` would be found on Windows but not CentOS for example.
+> [!NOTE]
+> For Linux or non-Windows operating systems, file names and paths can be case sensitive. So `ToDoApi.XML` would be found on Windows but not CentOS for example.
 
 <!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [29, 32], "linenostart": 1}} -->
 
@@ -384,7 +386,7 @@ Notice the enhancement of the UI with these additional comments.
 
 ![image](web-api-help-pages-using-swagger/_static/xml-comments-extended.png)
 
-  ### DataAnnotations
+### DataAnnotations
 
 You can decorate the API controller with `System.ComponentModel.DataAnnotations` to help drive the Swagger UI components.
 
@@ -411,7 +413,7 @@ Adding the `[Required]` annotation to the `Name` property of the TodoItem class 
    }
    ````
 
-  ### Describing Response Types
+### Describing Response Types
 
 Consuming developers are probably most concerned with what is returned; specifically response types, error codes (if not standard). These are handled in the XML comments and DataAnnotations.
 
@@ -456,7 +458,7 @@ Take the `Create()` method for example, currently it returns only "201 Created" 
 
 ![image](web-api-help-pages-using-swagger/_static/data-annotations-response-types.png)
 
-  ### Customizing the UI
+### Customizing the UI
 
 The stock UI is very functional as well as presentable, however when building documentation pages for your API you want it to represent your brand or look and feel.
 

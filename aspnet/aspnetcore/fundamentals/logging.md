@@ -3,7 +3,7 @@ uid: fundamentals/logging
 ---
 <a name=fundamentals-logging></a>
 
-  # Logging
+# Logging
 
 By [Steve Smith](http://ardalis.com)
 
@@ -11,7 +11,7 @@ ASP.NET Core has built-in support for logging, and allows developers to easily l
 
 [View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnet/fundamentals/logging/sample)
 
-  ## Implementing Logging in your Application
+## Implementing Logging in your Application
 
 Adding logging to a component in your application is done by requesting either an `ILoggerFactory` or an `ILogger<T>` via [Dependency Injection](dependency-injection.md). If an `ILoggerFactory` is requested, a logger must be created using its `CreateLogger` method. The following example shows how to do this:
 
@@ -73,11 +73,11 @@ The logic for the API is contained within the *TodoController*, which uses [Depe
 
 Within each controller action, logging is done through the use of the local field, *_logger*, as shown on line 17, above. This technique is not limited to controllers, but can be utilized by any of your application services that utilize [Dependency Injection](dependency-injection.md).
 
-  ### Working with ILogger<T>
+### Working with ILogger<T>
 
 As we have just seen, your application can request an instance of `ILogger<T>` as a dependency in a class's constructor, where `T` is the type performing logging. The `TodoController` shows an example of this approach. When this technique is used, the logger will automatically use the type's name as its category name. By requesting an instance of `ILogger<T>`, your class doesn't need to create an instance of a logger via `ILoggerFactory`. You can use this approach anywhere you don't need the additional functionality offered by `ILoggerFactory`.
 
-  ### Logging Verbosity Levels
+### Logging Verbosity Levels
 
 When adding logging statements to your application, you must specify a [LogLevel](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Logging/LogLevel/index.html). The LogLevel allows you to control the verbosity of the logging output from your application, as well as the ability to pipe different kinds of log messages to different loggers. For example, you may wish to log debug messages to a local file, but log errors to the machine's event log or a database.
 
@@ -118,9 +118,11 @@ object[] args
 Exception error
    An exception instance to log.
 
-Note: The `EventId` type can be implicitly casted to `int`, so you can just pass an `int` to this argument.
+> [!NOTE]
+> The `EventId` type can be implicitly casted to `int`, so you can just pass an `int` to this argument.
 
-Note: Some loggers, such as the built-in `ConsoleLogger` used in this article, will ignore the `eventId` parameter. If you need to display it, you can include it in the message string. This is done in the following sample so you can easily see the eventId associated with each message, but in practice you would not typically include it in the log message.
+> [!NOTE]
+> Some loggers, such as the built-in `ConsoleLogger` used in this article, will ignore the `eventId` parameter. If you need to display it, you can include it in the message string. This is done in the following sample so you can easily see the eventId associated with each message, but in practice you would not typically include it in the log message.
 
 In the `TodoController` example, event id constants are defined for each event, and log statements are configured at the appropriate verbosity level based on the success of the operation. In this case, successful operations log as `Information` and not found results are logged as `Warning` (error handling is not shown).
 
@@ -151,7 +153,8 @@ In the `TodoController` example, event id constants are defined for each event, 
 
    ````
 
-Note: It is recommended that you perform application logging at the level of your application and its APIs, not at the level of the framework. The framework already has logging built in which can be enabled simply by setting the appropriate logging verbosity level.
+> [!NOTE]
+> It is recommended that you perform application logging at the level of your application and its APIs, not at the level of the framework. The framework already has logging built in which can be enabled simply by setting the appropriate logging verbosity level.
 
 To see more detailed logging at the framework level, you can adjust the *LogLevel* specified to your logging provider to something more verbose (like *Debug* or *Trace*). For example, if you modify the *AddConsole* call in the *Configure* method to use *LogLevel.Trace* and run the application, the result shows much more framework-level detail about each request:
 
@@ -165,7 +168,7 @@ In the course of logging information within your application, you can group a se
 
 Scopes are not required, and should be used sparingly, if at all. They're best used for operations that have a distinct beginning and end, such as a transaction involving multiple resources.
 
-  ## Configuring Logging in your Application
+## Configuring Logging in your Application
 
 To configure logging in your ASP.NET Core application, you should resolve `ILoggerFactory` in the `Configure` method of your `Startup` class. ASP.NET Core will automatically provide an instance of `ILoggerFactory` using [Dependency Injection](dependency-injection.md) when you add a parameter of this type to the `Configure` method.
 
@@ -181,7 +184,8 @@ To configure logging in your ASP.NET Core application, you should resolve `ILogg
 
 Once you've added `ILoggerFactory` as a parameter, you configure loggers within the `Configure` method by calling methods (or extension methods) on the logger factory. We have already seen an example of this configuration at the beginning of this article, when we added console logging by calling `loggerFactory.AddConsole`.
 
-Note: You can optionally configure logging when setting up [Hosting](hosting.md), rather than in `Startup`.
+> [!NOTE]
+> You can optionally configure logging when setting up [Hosting](hosting.md), rather than in `Startup`.
 
 Each logger provides its own set of extension methods to `ILoggerFactory`. The console, debug, and event log loggers allow you to specify the minimum logging level at which those loggers should write log messages. The console and debug loggers provide extension methods accepting a function to filter log messages according to their logging level and/or category (for example, `logLevel => logLevel >= LogLevel.Warning` or `(category, loglevel) => category.Contains("MyController") && loglevel >= LogLevel.Trace`). The event log logger provides a similar overload that takes an `EventLogSettings` instance as argument, which may contain a filtering function in its `Filter` property. The TraceSource logger does not provide any of those overloads, since its logging level and other parameters are based on the  `SourceSwitch` and `TraceListener` it uses.
 
@@ -202,7 +206,7 @@ A LoggerFactory instance can optionally be configured with custom `FilterLoggerS
 
    ````
 
-  ### Configuring TraceSource Logging
+### Configuring TraceSource Logging
 
 When running on the full .NET Framework you can configuring logging to use the existing [System.Diagnostics.TraceSource](https://msdn.microsoft.com/en-us/library/system.diagnostics.tracesource(v=vs.110).aspx) libraries and providers, including easy access to the Windows event log. `TraceSource` allows you to route messages to a variety of listeners and is already in use by many organizations.
 
@@ -269,7 +273,7 @@ To test out this code, you can trigger logging a warning by running the app from
 
 The yellow line with the "warn: " prefix, along with the following line, is output by the `ConsoleLogger`. The next line, beginning with "TodoApi.Controllers.TodoController", is output from the TraceSource logger. There are many other TraceSource listeners available, and the `TextWriterTraceListener` can be configured to use any `TextWriter` instance, making this a very flexible option for logging.
 
-  ### Configuring Other Providers
+### Configuring Other Providers
 
 In addition to the built-in loggers, you can configure logging to use other providers. Add the appropriate package to your *project.json* file, and then configure it just like any other provider. Typically, these packages include extension methods on `ILoggerFactory` to make it easy to add them.
 
@@ -283,7 +287,7 @@ In addition to the built-in loggers, you can configure logging to use other prov
 
 You can create your own custom providers as well, to support other logging frameworks or your own internal logging requirements.
 
-  ## Logging Recommendations
+## Logging Recommendations
 
 The following are some recommendations you may find helpful when implementing logging in your ASP.NET Core applications.
 
@@ -301,6 +305,6 @@ The following are some recommendations you may find helpful when implementing lo
 
 7. Application logging code should be related to the business concerns of the application. Increase the logging verbosity to reveal additional framework-related concerns, rather than implementing yourself.
 
-  ## Summary
+## Summary
 
 ASP.NET Core provides built-in support for logging, which can easily be configured within the `Startup` class and used throughout the application. Logging verbosity can be configured globally and per logging provider to ensure actionable information is logged appropriately. Built-in providers for console and trace source logging are included in the framework; other logging frameworks can easily be configured as well.

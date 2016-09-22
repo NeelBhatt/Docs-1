@@ -1,9 +1,9 @@
----
+﻿---
 uid: client-side/bundling-and-minification
 ---
 Warning: This page documents version 1.0.0-rc2 and has not yet been updated for version 1.0.0
 
-  # Bundling and Minification
+# Bundling and Minification
 
 By [Rick Anderson](https://twitter.com/RickAndMSFT), [Erik Reitan](https://github.com/Erikre) and [Daniel Roth](https://github.com/danroth27)
 
@@ -11,13 +11,13 @@ Bundling and minification are two techniques you can use in ASP.NET to improve p
 
 This article explains the benefits of using bundling and minification, including how these features can be used with ASP.NET Core applications.
 
-  ## Overview
+## Overview
 
 In ASP.NET Core apps, you bundle and minify the client-side resources during design-time using third party tools, such as [Gulp](using-gulp.md) and [Grunt](using-grunt.md). By using design-time bundling and minification, the minified files are created prior to the application’s deployment. Bundling and minifying before deployment provides the advantage of reduced server load. However, it’s important to recognize that design-time bundling and minification increases build complexity and only works with static files.
 
 Bundling and minification primarily improve the first page request load time. Once a web page has been requested, the browser caches the assets (JavaScript, CSS and images) so bundling and minification won’t provide any performance boost when requesting the same page, or pages on the same site requesting the same assets. If you don’t set the expires header correctly on your assets, and you don’t use bundling and minification, the browsers freshness heuristics will mark the assets stale after a few days and the browser will require a validation request for each asset. In this case, bundling and minification provide a performance increase even after the first page request.
 
-  ## Bundling
+## Bundling
 
 Bundling is a feature that makes it easy to combine or bundle multiple files into a single file. Because bundling combines multiple files into a single file, it reduces the number of requests to the server that is required to retrieve and display a web asset, such as a web page. You can create CSS, JavaScript and other bundles. Fewer files, means fewer HTTP requests from your browser to the server or from the service providing your application. This results in improved first page load performance.
 
@@ -99,7 +99,7 @@ You can then define gulp tasks that run `concat` on the desired files and output
 
 The [gulp.src](https://github.com/gulpjs/gulp/blob/master/docs/API.md#gulpsrcglobs-options) function emits a stream of files that can be [piped](http://nodejs.org/api/stream.html#stream_readable_pipe_destination_options) to gulp plugins. An array of globs specifies the files to emit using [node-glob syntax](https://github.com/isaacs/node-glob). The glob beginning with `!` excludes matching files from the glob results up to that point.
 
-  ## Minification
+## Minification
 
 Minification performs a variety of different code optimizations to reduce the size of requested assets (such as CSS, image, JavaScript files). Common results of minification include removing unnecessary white space and comments, and shortening variable names to one character.
 
@@ -195,9 +195,10 @@ To run bundling and minification tasks from the command-line using gulp (`gulp m
 
 ![image](bundling-and-minification/_static/task-runner-explorer.png)
 
-Note: The gulp tasks for bundling and minification do not general run when your project is built and must be run manually.
+> [!NOTE]
+> The gulp tasks for bundling and minification do not general run when your project is built and must be run manually.
 
-  ## Impact of Bundling and Minification
+## Impact of Bundling and Minification
 
 The following table shows several important differences between listing all the assets individually and using bundling and minification on a simple web page:
 
@@ -205,7 +206,7 @@ The following table shows several important differences between listing all the 
 
 The bytes sent had a significant reduction with bundling as browsers are fairly verbose with the HTTP headers that they apply on requests. The load time shows a big improvement, however this example was run locally. You will get greater gains in performance when using bundling and minification with assets transferred over a network.
 
-  ## Controlling Bundling and Minification
+## Controlling Bundling and Minification
 
 In general, you want to use the bundled and minified files of your app only in a production environment. During development, you want to use your original files so your app is easier to debug.
 
@@ -239,7 +240,7 @@ This environment tag will render the bundled and minified CSS files only when ru
 
    ````
 
-  ## See Also
+## See Also
 
 * [Using Gulp](using-gulp.md)
 

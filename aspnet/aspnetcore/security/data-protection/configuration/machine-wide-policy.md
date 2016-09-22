@@ -1,15 +1,15 @@
----
+﻿---
 uid: security/data-protection/configuration/machine-wide-policy
 ---
 <a name=data-protection-configuration-machinewidepolicy></a>
 
-  # Machine Wide Policy
+# Machine Wide Policy
 
 When running on Windows, the data protection system has limited support for setting default machine-wide policy for all applications which consume data protection. The general idea is that an administrator might wish to change some default setting (such as algorithms used or key lifetime) without needing to manually update every application on the machine.
 
 Warning: The system administrator can set default policy, but he cannot enforce it. The application developer can always override any value with one of his own choosing. The default policy only affects applications where the developer has not specified an explicit value for some particular setting.
 
-  ## Setting default policy
+## Setting default policy
 
 To set default policy, an administrator can set known values in the system registry under the following key.
 
@@ -27,7 +27,7 @@ The supported values are:
 
 <a name=data-protection-encryption-types></a>
 
-  ### Encryption types
+### Encryption types
 
 If EncryptionType is "CNG-CBC", the system will be configured to use a CBC-mode symmetric block cipher for confidentiality and HMAC for authenticity with services provided by Windows CNG (see [Specifying custom Windows CNG algorithms](overview.md#data-protection-changing-algorithms-cng.md) for more details). The following additional values are supported, each of which corresponds to a property on the CngCbcAuthenticatedEncryptionSettings type:
 

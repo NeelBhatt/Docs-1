@@ -3,13 +3,13 @@ uid: security/data-protection/extensibility/key-management
 ---
 <a name=data-protection-extensibility-key-management></a>
 
-  # Key management extensibility
+# Key management extensibility
 
 Tip: Read the [key management](../implementation/key-management.md#data-protection-implementation-key-management.md) section before reading this section, as it explains some of the fundamental concepts behind these APIs.
 
 Warning: Types that implement any of the following interfaces should be thread-safe for multiple callers.
 
-  ## Key
+## Key
 
 The IKey interface is the basic representation of a key in cryptosystem. The term key is used here in the abstract sense, not in the literal sense of "cryptographic key material". A key has the following properties:
 
@@ -21,9 +21,10 @@ The IKey interface is the basic representation of a key in cryptosystem. The ter
 
 Additionally, IKey exposes a CreateEncryptorInstance method which can be used to create an [IAuthenticatedEncryptor](core-crypto.md#data-protection-extensibility-core-crypto-iauthenticatedencryptor.md) instance tied to this key.
 
-Note: There is no API to retrieve the raw cryptographic material from an IKey instance.
+> [!NOTE]
+> There is no API to retrieve the raw cryptographic material from an IKey instance.
 
-  ## IKeyManager
+## IKeyManager
 
 The IKeyManager interface represents an object responsible for general key storage, retrieval, and manipulation. It exposes three high-level operations:
 
@@ -37,7 +38,7 @@ Warning: Writing an IKeyManager is a very advanced task, and the majority of dev
 
 <a name=data-protection-extensibility-key-management-xmlkeymanager></a>
 
-  ## XmlKeyManager
+## XmlKeyManager
 
 The XmlKeyManager type is the in-box concrete implementation of IKeyManager. It provides several useful facilities, including key escrow and encryption of keys at rest. Keys in this system are represented as XML elements (specifically, [XElement](https://msdn.microsoft.com/en-us/library/system.xml.linq.xelement(v=vs.110).aspx)).
 
@@ -69,7 +70,7 @@ In the implementation of GetAllKeys, the XML documents representing keys and rev
 
 Further information on the particular XML elements can be found in the [key storage format document](../implementation/key-storage-format.md#data-protection-implementation-key-storage-format.md).
 
-  ## IXmlRepository
+## IXmlRepository
 
 The IXmlRepository interface represents a type that can persist XML to and retrieve XML from a backing store. It exposes two APIs:
 
@@ -83,7 +84,7 @@ There are two built-in concrete types which implement IXmlRepository: FileSystem
 
 <a name=data-protection-extensibility-key-management-ixmlencryptor></a>
 
-  ## IXmlEncryptor
+## IXmlEncryptor
 
 The IXmlEncryptor interface represents a type that can encrypt a plaintext XML element. It exposes a single API:
 
@@ -93,7 +94,7 @@ If a serialized IAuthenticatedEncryptorDescriptor contains any elements marked a
 
 There are four built-in concrete types which implement IXmlEncryptor: CertificateXmlEncryptor, DpapiNGXmlEncryptor, DpapiXmlEncryptor, and NullXmlEncryptor. See the [key encryption at rest document](../implementation/key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest.md) for more information. To change the default key-encryption-at-rest mechanism application-wide, register a custom singleton IXmlEncryptor in the service provider.
 
-  ## IXmlDecryptor
+## IXmlDecryptor
 
 The IXmlDecryptor interface represents a type that knows how to decrypt an XElement that was enciphered via an IXmlEncryptor. It exposes a single API:
 
@@ -107,9 +108,10 @@ Types which implement IXmlDecryptor should have one of the following two public 
 
 * .ctor()
 
-Note: The IServiceProvider passed to the constructor may be null.
+> [!NOTE]
+> The IServiceProvider passed to the constructor may be null.
 
-  ## IKeyEscrowSink
+## IKeyEscrowSink
 
 The IKeyEscrowSink interface represents a type that can perform escrow of sensitive information. Recall that serialized descriptors might contain sensitive information (such as cryptographic material), and this is what led to the introduction of the [IXmlEncryptor](xref:security/data-protection/extensibility/key-management#data-protection-extensibility-key-management-ixmlencryptor) type in the first place. However, accidents happen, and keyrings can be deleted or become corrupted.
 
@@ -125,7 +127,8 @@ There is no API to read material from an IKeyEscrowSink instance. This is consis
 
 The following sample code demonstrates creating and registering an IKeyEscrowSink where keys are escrowed such that only members of "CONTOSODomain Admins" can recover them.
 
-Note: To run this sample, you must be on a domain-joined Windows 8 / Windows Server 2012 machine, and the domain controller must be Windows Server 2012 or later.
+> [!NOTE]
+> To run this sample, you must be on a domain-joined Windows 8 / Windows Server 2012 machine, and the domain controller must be Windows Server 2012 or later.
 
 <!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/security/data-protection/extensibility/key-management/samples/key-management-extensibility.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "none", "highlight_args": {"linenostart": 1}} -->
 

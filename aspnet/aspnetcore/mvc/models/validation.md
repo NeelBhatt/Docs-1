@@ -1,19 +1,19 @@
----
+﻿---
 uid: mvc/models/validation
 ---
-  # Model Validation
+# Model Validation
 
 By [Rachel Appel](http://github.com/rachelappel)
 
 In this article:
 
-  ## Introduction to model validation
+## Introduction to model validation
 
 Before an app stores data in a database, the app must validate the data. Data must be checked for potential security threats, verified that it is appropriately formatted by type and size, and it must conform to your rules. Validation is necessary although it can be redundant and tedious to implement. In MVC, validation happens on both the client and server.
 
 Fortunately, .NET has abstracted validation into validation attributes. These attributes contain validation code, thereby reducing the amount of code you must write.
 
-  ## Validation Attributes
+## Validation Attributes
 
 Validation attributes are a way to configure model validation so it's similar conceptually to validation on fields in database tables. This includes constraints such as assigning data types or required fields. Other types of validation include applying patterns to data to enforce business rules, such as a credit card, phone number, or email address. Validation attributes make enforcing these requirements much simpler and easier to use.
 
@@ -76,7 +76,7 @@ MVC supports any attribute that derives from `ValidationAttribute` for validatio
 
 There may be instances where you need more features than built-in attributes provide. For those times, you can create custom validation attributes by deriving from `ValidationAttribute` or changing your model to implement `IValidatableObject`.
 
-  ## Model State
+## Model State
 
 Model state represents validation errors in submitted HTML form values.
 
@@ -90,13 +90,13 @@ MVC will continue validating fields until reaches the maximum number of errors (
 
    ````
 
-  ## Handling Model State Errors
+## Handling Model State Errors
 
 Model validation occurs prior to each controller action being invoked, and it is the action method’s responsibility to inspect `ModelState.IsValid` and react appropriately. In many cases, the appropriate reaction is to return some kind of error response, ideally detailing the reason why model validation failed.
 
 Some apps will choose to follow a standard convention for dealing with model validation errors, in which case a filter may be an appropriate place to implement such a policy. You should test how your actions behave with valid and invalid model states.
 
-  ## Manual validation
+## Manual validation
 
 After model binding and validation are complete, you may want to repeat parts of it. For example, a user may have entered text in a field expecting an integer, or you may need to compute a value for a model's property.
 
@@ -110,7 +110,7 @@ You may need to run validation manually. To do so, call the `TryValidateModel` m
 
    ````
 
-  ## Custom validation
+## Custom validation
 
 Validation attributes work for most validation needs. However, some validation rules are specific to your business, as they're not just generic data validation such as ensuring a field is required or that it conforms to a range of values. For these scenarios, custom validation attributes are a great solution. Creating your own custom validation attributes in MVC is easy. Just inherit from the `ValidationAttribute`, and override the `IsValid` method. The `IsValid` method accepts two parameters, the first is an object named *value* and the second is a `ValidationContext` object named *validationContext*. *Value* refers to the actual value from the field that your custom validator is validating.
 
@@ -163,7 +163,7 @@ Alternatively, this same code could be placed in the model by implementing the `
 
    ````
 
-  ## Client side validation
+## Client side validation
 
 Client side validation is a great convenience for users. It saves time they would otherwise spend waiting for a round trip to the server. In business terms, even a few fractions of seconds multiplied hundreds of times each day adds up to be a lot of time, expense, and frustration. Straightforward and immediate validation enables users to work more efficiently and produce better quality input and output.
 
@@ -229,7 +229,7 @@ Client-side validation prevents submission until the form is valid. The Submit b
 
 MVC determines type attribute values based on the .NET data type of a property, possibly overridden using `[DataType]` attributes. The base `[DataType]` attribute does no real server-side validation. Browsers choose their own error messages and display those errors however they wish, however the jQuery Validation Unobtrusive package can override the messages and display them consistently with others. This happens most obviously when users apply `[DataType]` subclasses such as `[EmailAddress]`.
 
-  ## IClientModelValidator
+## IClientModelValidator
 
 You may create client side logic for your custom attribute, and [unobtrusive validation](http://jqueryvalidation.org/documentation/) will execute it on the client for you automatically as part of validation. The first step is to control what data- attributes are added by implementing the `IClientModelValidator` interface as shown here:
 
@@ -301,7 +301,7 @@ Unobtrusive validation uses the data in the `data-` attributes to display error 
 
 Now jQuery has the information to execute the custom JavaScript validation as well as the error message to display if that validation code returns false.
 
-  ## Remote validation
+## Remote validation
 
 Remote validation is a great feature to use when you need to validate data on the client against data on the server. For example, your app may need to verify whether an email or user name is already in use, and it must query a large amount of data to do so. Downloading large sets of data for validating one or a few fields consumes too many resources. It may also expose sensitive information. An alternative is to make a round-trip request to validate a field.
 

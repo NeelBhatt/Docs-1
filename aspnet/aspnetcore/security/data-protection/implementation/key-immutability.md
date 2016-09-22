@@ -1,7 +1,7 @@
 ---
 uid: security/data-protection/implementation/key-immutability
 ---
-  # Key Immutability and Changing Settings
+# Key Immutability and Changing Settings
 
 Once an object is persisted to the backing store, its representation is forever fixed. New data can be added to the backing store, but existing data can never be mutated. The primary purpose of this behavior is to prevent data corruption.
 

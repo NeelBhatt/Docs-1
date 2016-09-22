@@ -3,13 +3,13 @@ uid: migration/identity
 ---
 <a name=migration-identity></a>
 
-  # Migrating Authentication and Identity
+# Migrating Authentication and Identity
 
 By [Steve Smith](http://ardalis.com)
 
 In the previous article we [migrated configuration from an ASP.NET MVC project to ASP.NET Core MVC](configuration.md). In this article, we migrate the registration, login, and user management features.
 
-  ## Configure Identity and Membership
+## Configure Identity and Membership
 
 In ASP.NET MVC, authentication and identity features are configured using ASP.NET Identity in Startup.Auth.cs and IdentityConfig.cs, located in the App_Start folder. In ASP.NET Core MVC, these features are configured in *Startup.cs*. Before pulling in the required services and configuring them, we should add the required dependencies to the project. Open *project.json* and add `Microsoft.AspNetCore.Identity.EntityFramework` and `Microsoft.AspNetCore.Authentication.Cookies` to the list of dependencies:
 
@@ -113,7 +113,7 @@ With these files in place, the Startup.cs file can be made to compile by updatin
 
 Our application is now ready to support authentication and identity services - it just needs to have these features exposed to users.
 
-  ## Migrate Registration and Login Logic
+## Migrate Registration and Login Logic
 
 With identity services configured for the application and data access configured using Entity Framework and SQL Server, we are now ready to add support for registration and login to the application. Recall that [earlier in the migration process](mvc.md#migrate-layout-file.md) we commented out a reference to _LoginPartial in _Layout.cshtml. Now it's time to return to that code, uncomment it, and add in the necessary controllers and views to support login functionality.
 
@@ -165,6 +165,6 @@ Update _LoginPartial.cshtml with the following code (replace all of its contents
 
 At this point, you should be able to refresh the site in your browser.
 
-  ## Summary
+## Summary
 
 ASP.NET Core introduces changes to the ASP.NET Identity features. In this article, you have seen how to migrate the authentication and user management features of an ASP.NET Identity to ASP.NET Core.

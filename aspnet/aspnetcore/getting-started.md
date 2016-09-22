@@ -1,7 +1,7 @@
 ---
 uid: getting-started
 ---
-  # Getting Started
+# Getting Started
 
 1. Install [.NET Core](https://microsoft.com/net/core)
 
@@ -121,7 +121,7 @@ uid: getting-started
 
    ![image](getting-started/_static/running-output.png)
 
-  ## Next steps
+## Next steps
 
 * [Building your first ASP.NET Core MVC app with Visual Studio](tutorials/first-mvc-app/index.md)
 

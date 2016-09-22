@@ -1,7 +1,7 @@
----
+﻿---
 uid: client-side/using-grunt
 ---
-  # Using Grunt
+# Using Grunt
 
 [Noel Rice](http://blog.falafel.com/author/noel-rice/)
 
@@ -23,7 +23,7 @@ The finished example cleans the target deployment directory, combines JavaScript
 
 * **grunt-contrib-watch**: A plugin that watches file activity.
 
-  ## Preparing the application
+## Preparing the application
 
 To begin, set up a new empty web application and add TypeScript example files. TypeScript files are automatically compiled into JavaScript using default Visual Studio settings and will be our raw material to process using Grunt.
 
@@ -80,7 +80,7 @@ To begin, set up a new empty web application and add TypeScript example files. T
    }
    ````
 
-  ## Configuring NPM
+## Configuring NPM
 
 Next, configure NPM to download grunt and grunt-tasks.
 
@@ -90,7 +90,8 @@ Next, configure NPM to download grunt and grunt-tasks.
 
 ![image](using-grunt/_static/devdependencies-grunt.png)
 
-Note: NPM uses [semantic versioning](http://semver.org/) to organize dependencies. Semantic versioning, also known as SemVer, identifies packages with the numbering scheme <major>.<minor>.<patch>. Intellisense simplifies semantic versioning by showing only a few common choices. The top item in the Intellisense list (0.4.5 in the example above) is considered the latest stable version of the package. The caret (^) symbol matches the most recent major version and the tilde (~) matches the most recent minor version. See the [NPM semver version parser reference](https://www.npmjs.com/package/semver) as a guide to the full expressivity that SemVer provides.
+> [!NOTE]
+> NPM uses [semantic versioning](http://semver.org/) to organize dependencies. Semantic versioning, also known as SemVer, identifies packages with the numbering scheme <major>.<minor>.<patch>. Intellisense simplifies semantic versioning by showing only a few common choices. The top item in the Intellisense list (0.4.5 in the example above) is considered the latest stable version of the package. The caret (^) symbol matches the most recent major version and the tilde (~) matches the most recent minor version. See the [NPM semver version parser reference](https://www.npmjs.com/package/semver) as a guide to the full expressivity that SemVer provides.
 
 3. Add more dependencies to load grunt-contrib* packages for *clean, jshint, concat, uglify and watch* as shown in the example below. The versions do not need to match the example.
 
@@ -114,11 +115,12 @@ The packages for each devDependencies item will download, along with any files t
 
 ![image](using-grunt/_static/node-modules.png)
 
-Note: If you need to, you can manually restore dependencies in Solution Explorer by right-clicking on `Dependencies\NPM` and selecting the **Restore Packages** menu option.
+> [!NOTE]
+> If you need to, you can manually restore dependencies in Solution Explorer by right-clicking on `Dependencies\NPM` and selecting the **Restore Packages** menu option.
 
 ![image](using-grunt/_static/restore-packages.png)
 
-  ## Configuring Grunt
+## Configuring Grunt
 
 Grunt is configured using a manifest named `Gruntfile.js` that defines, loads and registers tasks that can be run manually or configured to run automatically based on events in Visual Studio.
 
@@ -174,7 +176,8 @@ The initial code includes a module definition and the `grunt.initConfig()` metho
 
 ![image](using-grunt/_static/task-runner-explorer-run-clean.png)
 
-Note: There are no files or directories to clean yet. If you like, you can manually create them in the Solution Explorer and then run the clean task as a test.
+> [!NOTE]
+> There are no files or directories to clean yet. If you like, you can manually create them in the Solution Explorer and then run the clean task as a test.
 
 8. In the initConfig() method, add an entry for `concat` using the code below.
 
@@ -192,7 +195,8 @@ The `src` property array lists files to combine, in the order that they should b
    },
    ````
 
-Note: The `all` property in the code above is the name of a target. Targets are used in some Grunt tasks to allow multiple build environments. You can view the built-in targets using Intellisense or assign your own.
+> [!NOTE]
+> The `all` property in the code above is the name of a target. Targets are used in some Grunt tasks to allow multiple build environments. You can view the built-in targets using Intellisense or assign your own.
 
 9. Add the `jshint` task using the code below.
 
@@ -210,7 +214,8 @@ The jshint code-quality utility is run against every JavaScript file found in th
    },
    ````
 
-Note: The option "-W069" is an error produced by jshint when JavaScript uses bracket syntax to assign a property instead of dot notation, i.e. `Tastes["Sweet"]` instead of `Tastes.Sweet`. The option turns off the warning to allow the rest of the process to continue.
+> [!NOTE]
+> The option "-W069" is an error produced by jshint when JavaScript uses bracket syntax to assign a property instead of dot notation, i.e. `Tastes["Sweet"]` instead of `Tastes.Sweet`. The option turns off the warning to allow the rest of the process to continue.
 
 10. Add the `uglify` task using the code below.
 
@@ -251,9 +256,10 @@ The concat task creates a new combined.js file and places it into the temp direc
 
 ![image](using-grunt/_static/solution-explorer-after-all-tasks.png)
 
-Note: For more information on the options for each package, visit [https://www.npmjs.com/](https://www.npmjs.com/) and lookup the package name in the search box on the main page. For example, you can look up the grunt-contrib-clean package to get a documentation link that explains all of its parameters.
+> [!NOTE]
+> For more information on the options for each package, visit [https://www.npmjs.com/](https://www.npmjs.com/) and lookup the package name in the search box on the main page. For example, you can look up the grunt-contrib-clean package to get a documentation link that explains all of its parameters.
 
-  ### All Together Now
+### All Together Now
 
 Use the Grunt `registerTask()` method to run a series of tasks in a particular sequence. For example, to run the example steps above in the order clean -> concat -> jshint -> uglify, add the code below to the module. The code should be added to the same level as the loadNpmTasks() calls, outside initConfig.
 
@@ -268,7 +274,7 @@ The new task shows up in Task Runner Explorer under Alias Tasks. You can right-c
 
 ![image](using-grunt/_static/alias-tasks.png)
 
-  ## Watching for changes
+## Watching for changes
 
 A `watch` task keeps an eye on files and directories. The watch triggers tasks automatically if it detects changes. Add the code below to initConfig to watch for changes to *.js files in the TypeScript directory. If a JavaScript file is changed, `watch` will run the `all` task.
 
@@ -295,7 +301,7 @@ Right-click the watch task in Task Runner Explorer and select Run from the conte
 
 ![image](using-grunt/_static/watch-running.png)
 
-  ## Binding to Visual Studio Events
+## Binding to Visual Studio Events
 
 Unless you want to manually start your tasks every time you work in Visual Studio, you can bind tasks to **Before Build**, **After Build**, **Clean**, and **Project Open** events.
 
@@ -305,10 +311,10 @@ Let’s bind `watch` so that it runs every time Visual Studio opens. In Task Run
 
 Unload and reload the project. When the project loads again, the watch task will start running automatically.
 
-  ## Summary
+## Summary
 
 Grunt is a powerful task runner that can be used to automate most client-build tasks. Grunt leverages NPM to deliver its packages, and features tooling integration with Visual Studio. Visual Studio's Task Runner Explorer detects changes to configuration files and provides a convenient interface to run tasks, view running tasks, and bind tasks to Visual Studio events.
 
-  ## See Also
+## See Also
 
    * [Using Gulp](using-gulp.md)

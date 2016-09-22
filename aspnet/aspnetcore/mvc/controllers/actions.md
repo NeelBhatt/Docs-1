@@ -1,13 +1,13 @@
 ---
 uid: mvc/controllers/actions
 ---
-  # Controllers, Actions, and Action Results
+# Controllers, Actions, and Action Results
 
 By [Steve Smith](http://ardalis.com)
 
 Actions and action results are a fundamental part of how developers build apps using ASP.NET MVC.
 
-  ## What is a Controller
+## What is a Controller
 
 In ASP.NET MVC, a *Controller* is used to define and group a set of actions. An *action* (or *action method*) is a method on a controller that handles incoming requests. Controllers provide a logical means of grouping similar actions together, allowing common sets of rules (e.g. routing, caching, authorization) to be applied collectively. Incoming requests are mapped to actions through [routing](routing.md).
 
@@ -23,13 +23,14 @@ These two conventions are not required.
 
 Within the Model-View-Controller pattern, a Controller is responsible for the initial processing of the request and instantiation of the Model. Generally, business decisions should  be performed within the Model.
 
-Note: The Model should be a *Plain Old CLR Object (POCO)*, not a `DbContext` or database-related type.
+> [!NOTE]
+> The Model should be a *Plain Old CLR Object (POCO)*, not a `DbContext` or database-related type.
 
 The controller takes the result of the model's processing (if any), returns the proper view along with the associated view data. Learn more: [Overview of ASP.NET Core MVC](../overview.md) and [Getting started with ASP.NET Core MVC and Visual Studio](../../tutorials/first-mvc-app/start-mvc.md).
 
 Tip: The Controller is a *UI level* abstraction. Its responsibility is to ensure incoming request data is valid and to choose which view (or result for an API) should be returned. In well-factored apps it will not directly include data access or business logic, but instead will delegate to services handling these responsibilities.
 
-  ## Defining Actions
+## Defining Actions
 
 Any public method on a controller type is an action. Parameters on actions are bound to request data and validated using [model binding](../models/model-binding.md).
 
@@ -39,7 +40,7 @@ Action methods should contain logic for mapping an incoming request to a busines
 
 Actions can return anything, but frequently will return an instance of `IActionResult` (or `Task<IActionResult>` for async methods) that produces a response. The action method is responsible for choosing *what kind of response*; the action result *does the responding*.
 
-  ### Controller Helper Methods
+### Controller Helper Methods
 
 Although not required, most developers will want to have their controllers inherit from the base `Controller` class. Doing so provides controllers with access to many properties and helpful methods, including the following helper methods designed to assist in returning various responses:
 
@@ -60,7 +61,7 @@ Redirect
 
 In addition to the methods above, an action can also simply return an object. In this case, the object will be formatted based on the client's request. Learn more about [Formatting Response Data](../models/formatting.md)
 
-  ### Cross-Cutting Concerns
+### Cross-Cutting Concerns
 
 In most apps, many actions will share parts of their workflow. For instance, most of an app might be available only to authenticated users, or might benefit from caching. When you want to perform some logic before or after an action method runs, you can use a *filter*. You can help keep your actions from growing too large by using [Filters](filters.md) to handle these cross-cutting concerns. This can help eliminate duplication within your actions, allowing them to follow the [Don't Repeat Yourself (DRY) principle](http://deviq.com/don-t-repeat-yourself/).
 
@@ -71,4 +72,5 @@ Other examples of cross-cutting concerns in MVC apps may include:
 
    * [Response Caching](../../performance/caching/response.md)
 
-Note: Many cross-cutting concerns can be handled using filters in MVC apps. Another option to keep in mind that is available to any ASP.NET Core app is custom [middleware](../../fundamentals/middleware.md).
+> [!NOTE]
+> Many cross-cutting concerns can be handled using filters in MVC apps. Another option to keep in mind that is available to any ASP.NET Core app is custom [middleware](../../fundamentals/middleware.md).

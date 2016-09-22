@@ -1,15 +1,15 @@
----
+﻿---
 uid: fundamentals/middleware
 ---
 <a name=fundamentals-middleware></a>
 
-  # Middleware
+# Middleware
 
 By [Steve Smith](http://ardalis.com) and [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 [View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnet/fundamentals/middleware/sample)
 
-  ## What is middleware
+## What is middleware
 
 Middleware are software components that are assembled into an application pipeline to handle requests and responses. Each component chooses whether to pass the request on to the next component in the pipeline, and can perform certain actions before and after the next component is invoked in the pipeline. Request delegates are used to build the request pipeline. The request delegates handle each HTTP request.
 
@@ -18,7 +18,7 @@ components*. Each middleware component in the request pipeline is responsible fo
 
 [Migrating HTTP Modules to Middleware](../migration/http-modules.md) explains the difference between request pipelines in ASP.NET Core and the previous versions and provides more middleware samples.
 
-  ## Creating a middleware pipeline with IApplicationBuilder
+## Creating a middleware pipeline with IApplicationBuilder
 
 The ASP.NET request pipeline consists of a sequence of request delegates, called one after the next, as this diagram shows (the thread of execution follows the black arrows):
 
@@ -82,7 +82,8 @@ The [static file module](https://docs.asp.net/projects/api/en/latest/autoapi/Mic
 
 A request that is handled by the static file module will short circuit the pipeline. (see [Working with Static Files](static-files.md).) If the request is not handled by the static file module, it's passed on to the [Identity module](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/BuilderExtensions/index.html#methods), which performs authentication. If the request is not authenticated, the pipeline is short circuited. If the request does not fail authentication, the last stage of this pipeline is called, which is the MVC framework.
 
-Note: The order in which you add middleware components is generally the order in which they take effect on the request, and then in reverse for the response. This can be critical to your app’s security, performance and functionality. In the code above, the [static file middleware](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/StaticFileExtensions/index.html) is called early in the pipeline so it can handle requests and short circuit without going through unnecessary components. The authentication middleware is added to the pipeline before anything that handles requests that need to be authenticated. Exception handling must be registered before other middleware components in order to catch exceptions thrown by those components.
+> [!NOTE]
+> The order in which you add middleware components is generally the order in which they take effect on the request, and then in reverse for the response. This can be critical to your app’s security, performance and functionality. In the code above, the [static file middleware](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/StaticFileExtensions/index.html) is called early in the pipeline so it can handle requests and short circuit without going through unnecessary components. The authentication middleware is added to the pipeline before anything that handles requests that need to be authenticated. Exception handling must be registered before other middleware components in order to catch exceptions thrown by those components.
 
 The simplest possible ASP.NET application sets up a single request delegate that handles all requests. In this case, there isn't really a request "pipeline", so much as a single anonymous function that is called in response to every HTTP request.
 
@@ -145,7 +146,8 @@ You chain multiple request delegates together; the `next` parameter represents t
 
 Warning: Avoid modifying `HttpResponse` after invoking next, one of the next components in the pipeline may have written to the response, causing it to be sent to the client.
 
-Note: This `ConfigureLogInline` method is called when the application is run with an environment set to `LogInline`. Learn more about [Working with Multiple Environments](environments.md). We will be using variations of `Configure[Environment]` to show different options in the rest of this article. The easiest way to run the samples in Visual Studio is with the `web` command, which is configured in *project.json*. See also [Application Startup](startup.md).
+> [!NOTE]
+> This `ConfigureLogInline` method is called when the application is run with an environment set to `LogInline`. Learn more about [Working with Multiple Environments](environments.md). We will be using variations of `Configure[Environment]` to show different options in the rest of this article. The easiest way to run the samples in Visual Studio is with the `web` command, which is configured in *project.json*. See also [Application Startup](startup.md).
 
 In the above example, the call to `await next.Invoke()` will call into the next delegate `await context.Response.WriteAsync("Hello from " + _environment);`. The client will receive the expected response ("Hello from LogInline"), and the server's console output includes both the before and after messages:
 
@@ -153,7 +155,7 @@ In the above example, the call to `await next.Invoke()` will call into the next 
 
 <a name=middleware-run-map-use></a>
 
-  ### Run, Map, and Use
+### Run, Map, and Use
 
 You configure the HTTP pipeline using [Run](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/RunExtensions/index.html), [Map](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/MapExtensions/index.html),  and [Use](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/UseExtensions/index.html). The `Run` method short circuits the pipeline (that is, it will not call a `next` request delegate). Thus, `Run` should only be called at the end of your pipeline. `Run` is a convention, and some middleware components may expose their own Run[Middleware] methods that should only run at the end of the pipeline. The following two middleware are equivalent as the `Use` version doesn't use the `next` parameter:
 
@@ -179,7 +181,8 @@ You configure the HTTP pipeline using [Run](https://docs.asp.net/projects/api/en
 
    ````
 
-Note: The [IApplicationBuilder](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/IApplicationBuilder/index.html) interface exposes a single `Use` method, so technically they're not all *extension* methods.
+> [!NOTE]
+> The [IApplicationBuilder](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/IApplicationBuilder/index.html) interface exposes a single `Use` method, so technically they're not all *extension* methods.
 
 We've already seen several examples of how to build a request pipeline with `Use`. `Map*` extensions are used as a convention for branching the pipeline. The current implementation supports branching based on the request's path, or using a predicate. The `Map` extension method is used to match request delegates based on a request's path. `Map` simply accepts a path and a function that configures a separate middleware pipeline. In the following example, any request with the base path of `/maptest` will be handled by the pipeline configured in the `HandleMapTest` method.
 
@@ -203,7 +206,8 @@ We've already seen several examples of how to build a request pipeline with `Use
 
    ````
 
-Note: When `Map` is used, the matched path segment(s) are removed from `HttpRequest.Path` and appended to `HttpRequest.PathBase` for each request.
+> [!NOTE]
+> When `Map` is used, the matched path segment(s) are removed from `HttpRequest.Path` and appended to `HttpRequest.PathBase` for each request.
 
 In addition to path-based mapping, the `MapWhen` method supports predicate-based middleware branching, allowing separate pipelines to be constructed in a very flexible fashion. Any predicate of type `Func<HttpContext, bool>` can be used to map requests to a new branch of the pipeline. In the following example, a simple predicate is used to detect the presence of a query string variable `branch`:
 
@@ -253,7 +257,7 @@ You can also nest Maps:
    });
    ````
 
-  ## Built-in middleware
+## Built-in middleware
 
 ASP.NET ships with the following middleware components:
 
@@ -261,7 +265,7 @@ ASP.NET ships with the following middleware components:
 
 <a name=middleware-writing-middleware></a>
 
-  ## Writing middleware
+## Writing middleware
 
 The [CodeLabs middleware tutorial](https://github.com/Microsoft-Build-2016/CodeLabs-WebDev/tree/master/Module2-AspNetCore) provides a good introduction to writing middleware.
 
@@ -345,9 +349,10 @@ Testing the middleware (by setting the `Hosting:Environment` environment variabl
 
 ![image](middleware/_static/console-logmiddleware.png)
 
-Note: The [UseStaticFiles](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/StaticFileExtensions/index.html#meth-Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles) extension method (which creates the [StaticFileMiddleware](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/StaticFiles/StaticFileMiddleware/index.html)) also uses `UseMiddleware<T>`. In this case, the `StaticFileOptions` parameter is passed in, but other constructor parameters are supplied by `UseMiddleware<T>` and dependency injection.
+> [!NOTE]
+> The [UseStaticFiles](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/StaticFileExtensions/index.html#meth-Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles) extension method (which creates the [StaticFileMiddleware](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/StaticFiles/StaticFileMiddleware/index.html)) also uses `UseMiddleware<T>`. In this case, the `StaticFileOptions` parameter is passed in, but other constructor parameters are supplied by `UseMiddleware<T>` and dependency injection.
 
-  ## Additional Resources
+## Additional Resources
 
 * [CodeLabs middleware tutorial](https://github.com/Microsoft-Build-2016/CodeLabs-WebDev/tree/master/Module2-AspNetCore)
 

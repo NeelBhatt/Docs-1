@@ -1,7 +1,7 @@
 ---
 uid: tutorials/first-mvc-app/index
 ---
-  # Building your first ASP.NET Core MVC app with Visual Studio
+# Building your first ASP.NET Core MVC app with Visual Studio
 
 * [Getting started with ASP.NET Core MVC and Visual Studio](start-mvc.md)
 

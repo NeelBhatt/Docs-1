@@ -1,7 +1,7 @@
 ---
 uid: security/authentication/azure-active-directory/index
 ---
-  # Azure Active Directory
+# Azure Active Directory
 
 * [Integrating Azure AD Into an ASP.NET Core Web App](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-openidconnect-aspnetcore.md)
 

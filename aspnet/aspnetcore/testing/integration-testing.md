@@ -3,7 +3,7 @@ uid: testing/integration-testing
 ---
 Warning: This page documents version 1.0.0-rc1 and has not yet been updated for version 1.0.0
 
-  # Integration Testing
+# Integration Testing
 
 By [Steve Smith](http://ardalis.com)
 
@@ -11,7 +11,7 @@ Integration testing ensures that an application's components function correctly 
 
 [View or download sample code](https://github.com/aspnet/docs/tree/master/aspnet/testing/integration-testing/sample)
 
-  ## Introduction to Integration Testing
+## Introduction to Integration Testing
 
 Integration tests verify that different parts of an application work correctly together. Unlike [Unit testing](https://docs.microsoft.com/en-us/dotnet/articles/core/testing/unit-testing-with-dotnet-test), integration tests frequently involve application infrastructure concerns, such as a database, file system, network resources, or web requests and responses. Unit tests use fakes or mock objects in place of these concerns, but the purpose of integration tests is to confirm that the system works as expected with these systems.
 
@@ -21,13 +21,13 @@ Tip: If some behavior can be tested using either a unit test or an integration t
 
 Testing the logic within your own methods is usually the domain of unit tests. Testing how your application works within its framework (e.g. ASP.NET Core) or with a database is where integration tests come into play. It doesn't take too many integration tests to confirm that you're able to write a row to and then read a row from the database. You don't need to test every possible permutation of your data access code - you only need to test enough to give you confidence that your application is working properly.
 
-  ## Integration Testing ASP.NET Core
+## Integration Testing ASP.NET Core
 
 To get set up to run integration tests, you'll need to create a test project, refer to your ASP.NET Core web project, and install a test runner. This process is described in the [Unit testing](https://docs.microsoft.com/en-us/dotnet/articles/core/testing/unit-testing-with-dotnet-test) documentation, along with more detailed instructions on running tests and recommendations for naming your tests and test classes.
 
 Tip: Separate your unit tests and your integration tests using different projects. This helps ensure you don't accidentally introduce infrastructure concerns into your unit tests, and lets you easily choose to run all tests, or just one set or the other.
 
-  ### The Test Host
+### The Test Host
 
 ASP.NET Core includes a test host that can be added to integration test projects and used to host ASP.NET Core applications, serving test requests without the need for a real web host. The provided sample includes an integration test project which has been configured to use [xUnit](https://xunit.github.io) and the Test Host, as you can see from this excerpt from its *project.json* file:
 
@@ -151,11 +151,12 @@ Note that we're not really trying to test the correctness of our prime number ch
 
 ![image](integration-testing/_static/test-explorer.png)
 
-Note: You can learn more about the unit tests in the [Unit testing](https://docs.microsoft.com/en-us/dotnet/articles/core/testing/unit-testing-with-dotnet-test) article.
+> [!NOTE]
+> You can learn more about the unit tests in the [Unit testing](https://docs.microsoft.com/en-us/dotnet/articles/core/testing/unit-testing-with-dotnet-test) article.
 
 Now that we have a set of passing tests, it's a good time to think about whether we're happy with the current way in which we've designed our application. If we see any [code smells](http://deviq.com/code-smells/), now may be a good time to refactor the application to improve its design.
 
-  ## Refactoring to use Middleware
+## Refactoring to use Middleware
 
 Refactoring is the process of changing an application's code to improve its design without changing its behavior. It should ideally be done when there is a suite of passing tests, since these help ensure the system's behavior remains the same before and after the changes. Looking at the way in which the prime checking logic is implemented in our web application, we see:
 
@@ -210,7 +211,8 @@ We can, however, take advantage of ASP.NET Core [middleware](../fundamentals/mid
 
 We want to allow the path the middleware uses to be specified as a parameter, so the middleware class expects a `RequestDelegate` and a `PrimeCheckerOptions` instance in its constructor. If the path of the request doesn't match what this middleware is configured to expect, we simply call the next middleware in the chain and do nothing further. The rest of the implementation code that was in `Configure` is now in the `Invoke` method.
 
-Note: Since our middleware depends on the `PrimeService` service, we are also requesting an instance of this service via the constructor. The framework will provide this service via [Dependency Injection](../fundamentals/dependency-injection.md), assuming it has been configured (e.g. in `ConfigureServices`).
+> [!NOTE]
+> Since our middleware depends on the `PrimeService` service, we are also requesting an instance of this service via the constructor. The framework will provide this service via [Dependency Injection](../fundamentals/dependency-injection.md), assuming it has been configured (e.g. in `ConfigureServices`).
 
 <!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/testing/integration-testing/sample/src/PrimeWeb/Middleware/PrimeCheckerMiddleware.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "none", "highlight_args": {"hl_lines": [39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63], "linenostart": 1}} -->
 
@@ -285,7 +287,8 @@ Note: Since our middleware depends on the `PrimeService` service, we are also re
 
    ````
 
-Note: Since this middleware acts as an endpoint in the request delegate chain when its path matches, there is no call to `_next.Invoke` in the case where this middleware handles the request.
+> [!NOTE]
+> Since this middleware acts as an endpoint in the request delegate chain when its path matches, there is no call to `_next.Invoke` in the case where this middleware handles the request.
 
 With this middleware in place and some helpful extension methods created to make configuring it easier, the refactored `Configure` method looks like this:
 
@@ -315,11 +318,11 @@ Following this refactoring, we are confident that the web application still work
 
 Tip: It's a good idea to commit your changes to source control after you complete a refactoring and your tests all pass. If you're practicing Test Driven Development, [consider adding Commit to your Red-Green-Refactor cycle](http://ardalis.com/rgrc-is-the-new-red-green-refactor-for-test-first-development).
 
-  ## Summary
+## Summary
 
 Integration testing provides a higher level of verification than unit testing. It tests application infrastructure and how different parts of an application work together. ASP.NET Core is very testable, and ships with a `TestServer` that makes wiring up integration tests for web server endpoints very easy.
 
-  ## Additional Resources
+## Additional Resources
 
 * [Unit testing](https://docs.microsoft.com/en-us/dotnet/articles/core/testing/unit-testing-with-dotnet-test)
 

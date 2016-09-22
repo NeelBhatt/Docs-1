@@ -3,7 +3,7 @@ uid: fundamentals/configuration
 ---
 <a name=fundamentals-configuration></a>
 
-  # Configuration
+# Configuration
 
 [Steve Smith](http://ardalis.com), [Daniel Roth](https://github.com/danroth27)
 
@@ -11,7 +11,7 @@ ASP.NET Core supports a variety of different configuration options. Application 
 
 [View or download sample code](https://github.com/aspnet/docs/tree/master/aspnet/fundamentals/configuration/sample)
 
-  ## Getting and setting configuration settings
+## Getting and setting configuration settings
 
 ASP.NET Core's configuration system has been re-architected from previous versions of ASP.NET, which relied on `System.Configuration` and XML configuration files like `web.config`. The new configuration model provides streamlined access to key/value based settings that can be retrieved from a variety of sources. Applications and frameworks can then access configured settings in a strongly typed fashion using the new [Options pattern](xref:fundamentals/configuration#options-config-objects).
 
@@ -36,7 +36,8 @@ You must configure at least one source in order for `Configuration` to function 
 
    ````
 
-Note: You must set at least one configuration source.
+> [!NOTE]
+> You must set at least one configuration source.
 
 It's not unusual to store configuration values in a hierarchical structure, especially when using external files (e.g. JSON, XML, INI). In this case, configuration values can be retrieved using a `:` separated key, starting from the root of the hierarchy. For example, consider the following *appsettings.json* file:
 
@@ -66,9 +67,10 @@ The application uses configuration to configure the right connection string. Acc
 
 The settings required by your application and the mechanism used to specify those settings (configuration being one example) can be decoupled using the [options pattern](xref:fundamentals/configuration#options-config-objects). To use the options pattern you create your own options class (probably several different classes, corresponding to different cohesive groups of settings) that you can inject into your application using an options service. You can then specify your settings using configuration or whatever mechanism you choose.
 
-Note: You could store your `Configuration` instance as a service, but this would unnecessarily couple your application to a single configuration system and specific configuration keys. Instead, you can use the [Options pattern](xref:fundamentals/configuration#options-config-objects) to avoid these issues.
+> [!NOTE]
+> You could store your `Configuration` instance as a service, but this would unnecessarily couple your application to a single configuration system and specific configuration keys. Instead, you can use the [Options pattern](xref:fundamentals/configuration#options-config-objects) to avoid these issues.
 
-  ## Using the built-in sources
+## Using the built-in sources
 
 The configuration framework has built-in support for JSON, XML, and INI configuration files, as well as support for in-memory configuration (directly setting values in code) and the ability to pull configuration from environment variables and command line parameters. Developers are not limited to using a single configuration source. In fact several may be set up together such that a default configuration is overridden by settings from another source if they are present.
 
@@ -99,7 +101,8 @@ Adding support for additional configuration sources is accomplished through exte
 
 The order in which configuration sources are specified is important, as this establishes the precedence with which settings will be applied if they exist in multiple locations. In the example below, if the same setting exists in both *appsettings.json* and in an environment variable, the setting from the environment variable will be the one that is used. The last configuration source specified "wins" if a setting exists in more than one location. The ASP.NET team recommends specifying environment variables last, so that the local environment can override anything set in deployed configuration files.
 
-Note: To override nested keys through environment variables in shells that don't support `:` in variable names, replace them with `__` (double underscore).
+> [!NOTE]
+> To override nested keys through environment variables in shells that don't support `:` in variable names, replace them with `__` (double underscore).
 
 It can be useful to have environment-specific configuration files. This can be achieved using the following:
 
@@ -178,7 +181,7 @@ When run, the program will display the default value unless a command line param
 
 <a name=options-config-objects></a>
 
-  ## Using Options and configuration objects
+## Using Options and configuration objects
 
 The options pattern enables using custom options classes to represent a group of related settings. A class needs to have a public read-write property for each setting and a constructor that does not take any parameters (e.g. a default constructor) in order to be used as an options class.
 
@@ -279,11 +282,11 @@ You can have multiple [IConfigureOptions<TOptions>](http://docs.asp.net/projects
 
 <a name=custom-config-providers></a>
 
-  ## Writing custom providers
+## Writing custom providers
 
 In addition to using the built-in configuration providers, you can also write your own. To do so, you simply implement the [IConfigurationSource](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Configuration/IConfigurationSource/index.html.md#Microsoft.Extensions.Configuration.IConfigurationSource.md) interface, which exposes a [Build](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Configuration/IConfigurationSource/index.html.md#Microsoft.Extensions.Configuration.IConfigurationSource.Build.md) method. The build method configures and returns an [IConfigurationProvider](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Configuration/IConfigurationProvider/index.html.md#Microsoft.Extensions.Configuration.IConfigurationProvider.md).
 
-  ### Example: Entity Framework Settings
+### Example: Entity Framework Settings
 
 You may wish to store some of your application's settings in a database, and access them using Entity Framework Core (EF). There are many ways in which you could choose to store such values, ranging from a simple table with a column for the setting name and another column for the setting value, to having separate columns for each setting value. In this example, we're going to create a simple configuration provider that reads name-value pairs from a database using EF.
 
@@ -473,6 +476,6 @@ Run the application to see the configured values:
 
 ![image](configuration/_static/custom-config.png)
 
-  ## Summary
+## Summary
 
 ASP.NET Core provides a very flexible configuration model that supports a number of different file-based options, as well as command-line, in-memory, and environment variables. It works seamlessly with the options model so that you can inject strongly typed settings into your application or framework. You can create your own custom configuration providers as well, which can work with or replace the built-in providers, allowing for extreme flexibility.

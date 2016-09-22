@@ -1,7 +1,7 @@
----
+﻿---
 uid: security/cors
 ---
-  # Enabling Cross-Origin Requests (CORS)
+# Enabling Cross-Origin Requests (CORS)
 
 By [Mike Wasson](https://github.com/mikewasson) and [Shayne Boyer](https://twitter.com/spboyer)
 
@@ -9,7 +9,7 @@ Browser security prevents a web page from making AJAX requests to another domain
 
 [Cross Origin Resource Sharing](http://www.w3.org/TR/cors/) (CORS) is a W3C standard that allows a server to relax the same-origin policy. Using CORS, a server can explicitly allow some cross-origin requests while rejecting others. CORS is safer and more flexible than earlier techniques such as [JSONP](http://en.wikipedia.org/wiki/JSONP). This topic shows how to enable CORS in your ASP.NET Core application.
 
-  ## What is "same origin"?
+## What is "same origin"?
 
 Two URLs have the same origin if they have identical schemes, hosts, and ports. ([RFC 6454](http://tools.ietf.org/html/rfc6454))
 
@@ -29,9 +29,10 @@ These URLs have different origins than the previous two:
 
 * http://www.example.com/foo.html - Different subdomain
 
-Note: Internet Explorer does not consider the port when comparing origins.
+> [!NOTE]
+> Internet Explorer does not consider the port when comparing origins.
 
-  ## Setting up CORS
+## Setting up CORS
 
 To setup CORS for your application add the `Microsoft.AspNetCore.Cors` package to your project.
 
@@ -48,7 +49,7 @@ Add the CORS services in Startup.cs:
 
    ````
 
-  ## Enabling CORS with middleware
+## Enabling CORS with middleware
 
 To enable CORS for your entire application add the CORS middleware to your request pipeline using the `UseCors` extension method. Note that the CORS middleware must precede any defined endpoints in your app that you want to support cross-origin requests (ex. before any call to `UseMvc`).
 
@@ -133,11 +134,11 @@ This example adds a CORS policy named "AllowSpecificOrigin". To select the polic
 
 <a name=cors-policy-options></a>
 
-  ## Enabling CORS in MVC
+## Enabling CORS in MVC
 
 You can alternatively use MVC to apply specific CORS per action, per controller, or globally for all controllers. When using MVC to enable CORS the same CORS services are used, but the CORS middleware is not.
 
-  ### Per action
+### Per action
 
 To specify a CORS policy for a specific action add the `[EnableCors]` attribute to the action. Specify the policy name.
 
@@ -157,7 +158,7 @@ To specify a CORS policy for a specific action add the `[EnableCors]` attribute 
 
    ````
 
-  ### Per controller
+### Per controller
 
 To specify the CORS policy for a specific controller add the `[EnableCors]` attribute to the controller class. Specify the policy name.
 
@@ -171,7 +172,7 @@ To specify the CORS policy for a specific controller add the `[EnableCors]` attr
 
    ````
 
-  ### Globally
+### Globally
 
 You can enable CORS globally for all controllers by adding the `CorsAuthorizationFilterFactory` filter to the global filter collection:
 
@@ -192,7 +193,7 @@ You can enable CORS globally for all controllers by adding the `CorsAuthorizatio
 
 The precedence order is: Action, controller, global. Action-level policies take precedence over controller-level policies, and controller-level policies take precedence over global policies.
 
-  ### Disable CORS
+### Disable CORS
 
 To disable CORS for a controller or action, use the `[DisableCors]` attribute.
 
@@ -208,7 +209,7 @@ To disable CORS for a controller or action, use the `[DisableCors]` attribute.
 
    ````
 
-  ## CORS policy options
+## CORS policy options
 
 This section describes the various options that you can set in a CORS policy.
 
@@ -226,7 +227,7 @@ This section describes the various options that you can set in a CORS policy.
 
 For some options it may be helpful to read [How CORS works](#how-cors-works) first.
 
-  ### Set the allowed origins
+### Set the allowed origins
 
 To allow one or more specific origins:
 
@@ -258,7 +259,7 @@ To allow all origins:
 
 Consider carefully before allowing requests from any origin. It means that literally any website can make AJAX calls to your app.
 
-  ### Set the allowed HTTP methods
+### Set the allowed HTTP methods
 
 To specify which HTTP methods are allowed to access the resource.
 
@@ -292,7 +293,7 @@ To allow all HTTP methods:
 
 This affects pre-flight requests and Access-Control-Allow-Methods header.
 
-  ### Set the allowed request headers
+### Set the allowed request headers
 
 A CORS preflight request might include an Access-Control-Request-Headers header, listing the HTTP headers set by the application (the so-called "author request headers").
 
@@ -328,7 +329,7 @@ To allow all author request headers:
 
 Browsers are not entirely consistent in how they set Access-Control-Request-Headers. If you set headers to anything other than "*", you should include at least "accept", "content-type", and "origin", plus any custom headers that you want to support.
 
-  ### Set the exposed response headers
+### Set the exposed response headers
 
 By default, the browser does not expose all of the response headers to the application. (See [http://www.w3.org/TR/cors/#simple-response-header](http://www.w3.org/TR/cors/#simple-response-header).) The response headers that are available by default are:
 
@@ -359,7 +360,7 @@ The CORS spec calls these *simple response headers*. To make other headers avail
 
    ````
 
-  ### Credentials in cross-origin requests
+### Credentials in cross-origin requests
 
 Credentials require special handling in a CORS request. By default, the browser does not send any credentials with a cross-origin request. Credentials include cookies as well as HTTP authentication schemes. To send credentials with a cross-origin request, the client must set XMLHttpRequest.withCredentials to true.
 
@@ -409,7 +410,7 @@ If the browser sends credentials, but the response does not include a valid Acce
 
 Be very careful about allowing cross-origin credentials, because it means a website at another domain can send a logged-in user’s credentials to your app on the user’s behalf, without the user being aware. The CORS spec also states that setting origins to "*" (all origins) is invalid if the Access-Control-Allow-Credentials header is present.
 
-  ### Set the preflight expiration time
+### Set the preflight expiration time
 
 The Access-Control-Max-Age header specifies how long the response to the preflight request can be cached. To set this header:
 
@@ -428,7 +429,7 @@ The Access-Control-Max-Age header specifies how long the response to the preflig
 
 <a name=cors-how-cors-works></a>
 
-  ## How CORS works
+## How CORS works
 
 This section describes what happens in a CORS request, at the level of the HTTP messages. It’s important to understand how CORS works, so that you can configure the your CORS policy correctly, and troubleshoot if things don’t work as you expect.
 
@@ -469,7 +470,7 @@ If the server allows the request, it sets the Access-Control-Allow-Origin header
 
 If the response does not include the Access-Control-Allow-Origin header, the AJAX request fails. Specifically, the browser disallows the request. Even if the server returns a successful response, the browser does not make the response available to the client application.
 
-  ### Preflight Requests
+### Preflight Requests
 
 For some CORS requests, the browser sends an additional request, called a "preflight request", before it sends the actual request for the resource. The browser can skip the preflight request if the following conditions are true:
 

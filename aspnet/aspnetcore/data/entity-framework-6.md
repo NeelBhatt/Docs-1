@@ -1,13 +1,13 @@
----
+﻿---
 uid: data/entity-framework-6
 ---
-  # Getting Started with ASP.NET Core and Entity Framework 6
+# Getting Started with ASP.NET Core and Entity Framework 6
 
 By [Paweł Grudzień](https://github.com/pgrudzien12) and [Damien Pontifex](https://github.com/DamienPontifex)
 
 This article will show you how to use Entity Framework 6 inside an ASP.NET Core application.
 
-  ## Prerequisites
+## Prerequisites
 
 Before you start, make sure that you compile against full .NET Framework in your project.json as Entity Framework 6 does not support .NET Core. If you need cross platform features you will need to upgrade to [Entity Framework Core](https://docs.efproject.net).
 
@@ -22,7 +22,7 @@ In your project.json file specify a single target for the full .NET Framework:
    }
    ````
 
-  ## Setup connection strings and dependency injection
+## Setup connection strings and dependency injection
 
 The simplest change is to explicitly get your connection string and setup dependency injection of your `DbContext` instance.
 
@@ -54,7 +54,7 @@ In the `Startup` class within `ConfigureServices` add factory method of your con
    }
    ````
 
-  ## Migrate configuration from config to code
+## Migrate configuration from config to code
 
 Entity Framework 6 allows configuration to be specified in xml (in web.config or app.config) or through code. As of ASP.NET Core, all configuration is code-based.
 
@@ -100,14 +100,14 @@ The `defaultConnectionFactory` element sets the factory for connections. If this
    }
    ````
 
-  ### SQL Server, SQL Server Express and LocalDB
+### SQL Server, SQL Server Express and LocalDB
 
 This is the default and so no explicit configuration is needed. The above `CodeConfig` class can be used to explicitly set the provider services and the appropriate connection string should be passed to the `DbContext` constructor as shown [above](#setup-connection-strings-and-dependency-injection).
 
-  ## Summary
+## Summary
 
 Entity Framework 6 is an object relational mapping (ORM) library, that is capable of mapping your classes to database entities with little effort. These features made it very popular so migrating large portions of code may be undesirable for many projects. This article shows how to avoid migration to focus on other new features of ASP.NET.
 
-  ## Additional Resources
+## Additional Resources
 
 * [Entity Framework - Code-Based Configuration](https://msdn.microsoft.com/en-us/data/jj680699.aspx)

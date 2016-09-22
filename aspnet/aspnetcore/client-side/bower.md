@@ -1,17 +1,18 @@
----
+﻿---
 uid: client-side/bower
 ---
 <a name=bower-index></a>
 
-  # Manage Client-Side Packages with Bower
+# Manage Client-Side Packages with Bower
 
 By [Noel Rice](http://blog.falafel.com/author/noel-rice/), [Scott Addie](https://scottaddie.com)
 
 Bower is a "package manager for the web." Bower lets you install and restore client-side packages, including JavaScript and CSS libraries. For example, with Bower you can install CSS files, fonts, client frameworks, and JavaScript libraries from external sources. Bower resolves dependencies and will automatically download and install all the packages you need. For example, if you configure Bower to load the Bootstrap package, the necessary jQuery package will automatically come along for the ride. For .NET libraries you still use [NuGet](https://nuget.org) package manager.
 
-Note: Visual Studio developers are already familiar with NuGet, so why not use NuGet instead of Bower? Mainly because Bower already has a rich ecosystem with over 34,000 packages in play; and, it integrates well with the Gulp and Grunt task runners.
+> [!NOTE]
+> Visual Studio developers are already familiar with NuGet, so why not use NuGet instead of Bower? Mainly because Bower already has a rich ecosystem with over 34,000 packages in play; and, it integrates well with the Gulp and Grunt task runners.
 
-  ## Getting Started with Bower
+## Getting Started with Bower
 
 ASP.NET Core project templates pre-construct the client build process for you. The ubiquitous jQuery and Bootstrap packages are installed, and the plumbing for NPM, Gulp, and Bower is already in place. The screenshot below depicts the initial project in Solution Explorer. It's important to enable the "Show All Files" option, as the bower.json file is hidden by default.
 
@@ -21,7 +22,7 @@ Client-side packages are listed in the bower.json file. The ASP.NET Core project
 
 Let’s add support for photo albums by installing the [Fotorama](http://fotorama.io/) jQuery plugin. Bower packages can be installed either via the Manage Bower Packages UI or manually in the bower.json file.
 
-  ### Installation via Manage Bower Packages UI
+### Installation via Manage Bower Packages UI
 
 1. Right-click the project name in Solution Explorer, and select the "Manage Bower Packages" menu option.
 
@@ -33,7 +34,7 @@ Let’s add support for photo albums by installing the [Fotorama](http://fotoram
 
 2. Across the bottom status bar of the IDE, an *Installing "fotorama" complete* message appears to indicate a successful installation.
 
-  ### Manual Installation in bower.json
+### Manual Installation in bower.json
 
 1. At the end of the `dependencies` section in bower.json, add a comma and type "fotorama". Notice as you type that you get IntelliSense with a list of available packages. Select "fotorama" from the list.
 
@@ -94,7 +95,7 @@ Press `Ctrl+Shift+W` to display the page in the browser. The control displays th
 
 ![image](bower/_static/photo-gallery.png)
 
-  ## Exploring the Client Build Process
+## Exploring the Client Build Process
 
 Most ASP.NET Core project templates are already configured to use Bower. This next walkthrough starts with an empty ASP.NET Core project and adds each piece manually, so you can get a feel for how Bower is used in a project. See what happens to the project structure and the runtime output as each configuration change is made to the project.
 
@@ -104,7 +105,7 @@ The general steps to use the client-side build process with Bower are:
 
 * Reference packages from your web pages.
 
-  ### Define Packages
+### Define Packages
 
 The first step is to define the packages your application needs and to download them. This example uses Bower to load jQuery and Bootstrap in the desired location.
 
@@ -144,7 +145,7 @@ The project should now include *bootstrap* and *jQuery* directories in two locat
 
 ![image](bower/_static/bower-dependencies.png)
 
-  ### Reference Packages
+### Reference Packages
 
 Now that Bower has copied the client support packages needed by the application, you can test that an HTML page can use the deployed jQuery and Bootstrap functionality.
 
@@ -177,7 +178,7 @@ Make sure bootstrap.js follows jquery.js, so that jQuery is loaded first.
    </html>
    ````
 
-  ### Use the Installed Packages
+### Use the Installed Packages
 
 Add jQuery and Bootstrap components to the page to verify that the web application is configured correctly.
 

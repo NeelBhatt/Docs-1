@@ -1,7 +1,7 @@
 ---
 uid: mvc/models/formatting
 ---
-  # Formatting Response Data
+# Formatting Response Data
 
 By [Steve Smith](http://ardalis.com)
 
@@ -9,11 +9,12 @@ ASP.NET Core MVC has built-in support for formatting response data, using fixed 
 
 [View or download sample from GitHub](https://github.com/aspnet/Docs/tree/master/mvc/models/formatting/sample).
 
-  ## Format-Specific Action Results
+## Format-Specific Action Results
 
 Some action result types are specific to a particular format, such as `JsonResult` and `ContentResult`. Actions can return specific results that are always formatted in a particular manner. For example, returning a `JsonResult` will return JSON-formatted data, regardless of client preferences. Likewise, returning a `ContentResult` will return plain-text-formatted string data (as will simply returning a string).
 
-Note: An action isn't required to return any particular type; MVC supports any object return value. If an action returns an `IActionResult` implementation and the controller inherits from `Controller`, developers have many helper methods corresponding to many of the choices. Results from actions that return objects that are not `IActionResult` types will be serialized using the appropriate `IOutputFormatter` implementation.
+> [!NOTE]
+> An action isn't required to return any particular type; MVC supports any object return value. If an action returns an `IActionResult` implementation and the controller inherits from `Controller`, developers have many helper methods corresponding to many of the choices. Results from actions that return objects that are not `IActionResult` types will be serialized using the appropriate `IOutputFormatter` implementation.
 
 To return data in a specific format from a controller that inherits from the `Controller` base class, use the built-in helper method `Json` to return JSON and `Content` for plain text. Your action method should return either the specific result type (for instance, `JsonResult`) or `IActionResult`.
 
@@ -74,7 +75,7 @@ Note in this case the `Content-Type` returned is `text/plain`. You can also achi
 
 Tip: For non-trivial actions with multiple return types or options (for example, different HTTP status codes based on the result of operations performed), prefer `IActionResult` as the return type.
 
-  ## Content Negotiation
+## Content Negotiation
 
 Content negotiation (*conneg* for short) occurs when the client specifies an [Accept header](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html). The default format used by ASP.NET Core MVC is JSON. Content negotiation is implemented by `ObjectResult`. It is also built into the status code specific action results returned from the helper methods (which are all based on `ObjectResult`). You can also return a model type (a class you've defined as your data transfer type) and the framework will automatically wrap it in an `ObjectResult` for you.
 
@@ -123,14 +124,15 @@ Returning an object type:
 
 In the sample, a request for a valid author alias will receive a 200 OK response with the author's data. A request for an invalid alias will receive a 204 No Content response. Screenshots showing the response in XML and JSON formats are shown below.
 
-  ### Content Negotiation Process
+### Content Negotiation Process
 
 Content *negotiation* only takes place if an `Accept` header appears in the request. When a request contains an accept header, the framework will enumerate the media types in the accept header in preference order and will try to find a formatter that can produce a response in one of the formats specified by the accept header. In case no formatter is found that can satisfy the client's request, the framework will try to find the first formatter that can produce a response (unless the developer has configured the option on `MvcOptions` to return 406 Not Acceptable instead). If the request specifies XML, but the XML formatter has not been configured, then the JSON formatter will be used. More generally, if no formatter is configured that can provide the requested format, then the first formatter than can format the object is used. If no header is given, the first formatter that can handle the object to be returned will be used to serialize the response. In this case, there isn't any
 negotiation taking place - the server is determining what format it will use.
 
-Note: If the Accept header contains `/`, the Header will be ignored unless `RespectBrowserAcceptHeader` is set to true on `MvcOptions`.
+> [!NOTE]
+> If the Accept header contains `/`, the Header will be ignored unless `RespectBrowserAcceptHeader` is set to true on `MvcOptions`.
 
-  ### Browsers and Content Negotiation
+### Browsers and Content Negotiation
 
 Unlike typical API clients, web browsers tend to supply `Accept` headers that include a wide array of formats, including wildcards. By default, when the framework detects that the request is coming from a browser, it will ignore the `Accept` header and instead return the content in the application's configured default format (JSON unless otherwise configured). This provides a more consistent experience when using different browsers to consume APIs.
 
@@ -146,11 +148,11 @@ If you would prefer your application honor browser accept headers, you can confi
    }
    ````
 
-  ## Configuring Formatters
+## Configuring Formatters
 
 If your application needs to support additional formats beyond the default of JSON, you can add these as additional dependencies in *project.json* and configure MVC to support them. There are separate formatters for input and output. Input formatters are used by [Model Binding](model-binding.md); output formatters are used to format responses. You can also configure [🔧 Custom Formatters](custom-formatters.md).
 
-  ### Adding XML Format Support
+### Adding XML Format Support
 
 To add support for XML formatting, add the "Microsoft.AspNetCore.Mvc.Formatters.Xml" package to your *project.json*'s list of dependencies.
 
@@ -206,7 +208,7 @@ Use the Composer tab to modify the request to specify `application/json` in the 
 
 In this screenshot, you can see the request sets a header of `Accept: application/json` and the response specifies the same as its `Content-Type`. The `Author` object is shown in the body of the response, in JSON format.
 
-  ### Forcing a Particular Format
+### Forcing a Particular Format
 
 If you would like to restrict the response formats for a specific action you can, you can apply the `[Produces]` filter. The `[Produces]` filter specifies the response formats for a specific action (or controller). Like most [Filters](../controllers/filters.md), this can be applied at the action, controller, or global scope.
 
@@ -220,7 +222,7 @@ If you would like to restrict the response formats for a specific action you can
 
 The `[Produces]` filter will force all actions within the `AuthorsController` to return JSON-formatted responses, even if other formatters were configured for the application and the client provided an `Accept` header requesting a different, available format. See [Filters](../controllers/filters.md) to learn more, including how to apply filters globally.
 
-  ### Special Case Formatters
+### Special Case Formatters
 
 Some special cases are implemented using built-in formatters. By default, `string` return types will be formatted as *text/plain* (*text/html* if requested via `Accept` header). This behavior can be removed by removing the `TextOutputFormatter`. You remove formatters in the `Configure` method in *Startup.cs* (shown below). Actions that have a model object return type will return a 204 No Content response when returning `null`. This behavior can be removed by removing the `HttpNoContentOutputFormatter`. The following code removes the `TextOutputFormatter` and *HttpNoContentOutputFormatter`*.
 
@@ -239,7 +241,7 @@ Without the `TextOutputFormatter`, `string` return types return 406 Not Acceptab
 
 Without the `HttpNoContentOutputFormatter`, null objects are formatted using the configured formatter. For example, the JSON formatter will simply return a response with a body of `null`, while the XML formatter will return an empty XML element with the attribute `xsi:nil="true"` set.
 
-  ## Response Format URL Mappings
+## Response Format URL Mappings
 
 Clients can request a particular format as part of the URL, such as in the query string or part of the path, or by using a format-specific file extension such as .xml or .json. The mapping from request path should be specified in the route the API is using. For example:
 

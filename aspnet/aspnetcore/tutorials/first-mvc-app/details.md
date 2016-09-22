@@ -1,7 +1,7 @@
 ---
 uid: tutorials/first-mvc-app/details
 ---
-  # Examining the Details and Delete methods
+# Examining the Details and Delete methods
 
 By [Rick Anderson](https://twitter.com/RickAndMSFT)
 

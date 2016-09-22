@@ -3,7 +3,7 @@ uid: security/data-protection/implementation/key-management
 ---
 <a name=data-protection-implementation-key-management></a>
 
-  # Key Management
+# Key Management
 
 The data protection system automatically manages the lifetime of master keys used to protect and unprotect payloads. Each key can exist in one of four stages.
 
@@ -19,7 +19,7 @@ Created, active, and expired keys may all be used to unprotect incoming payloads
 
 Warning: The developer might be tempted to delete a key from the key ring (e.g., by deleting the corresponding file from the file system). At that point, all data protected by the key is permanently undecipherable, and there is no emergency override like there is with revoked keys. Deleting a key is truly destructive behavior, and consequently the data protection system exposes no first-class API for performing this operation.
 
-  ## Default key selection
+## Default key selection
 
 When the data protection system reads the key ring from the backing repository, it will attempt to locate a "default" key from the key ring. The default key is used for new Protect operations.
 
@@ -31,7 +31,7 @@ There is an exception. If the application developer has [disabled automatic key 
 
 <a name=data-protection-implementation-key-management-expiration></a>
 
-  ## Key expiration and rolling
+## Key expiration and rolling
 
 When a key is created, it is automatically given an activation date of { now + 2 days } and an expiration date of { now + 90 days }. The 2-day delay before activation gives the key time to propagate through the system. That is, it allows other applications pointing at the backing store to observe the key at their next auto-refresh period, thus maximizing the chances that when the key ring does become active it has propagated to all applications that might need to use it.
 
@@ -52,7 +52,7 @@ The default key lifetime is 90 days, though this is configurable as in the follo
 
 An administrator can also change the default system-wide, though an explicit call to SetDefaultKeyLifetime will override any system-wide policy. The default key lifetime cannot be shorter than 7 days.
 
-  ## Automatic keyring refresh
+## Automatic keyring refresh
 
 When the data protection system initializes, it reads the key ring from the underlying repository and caches it in memory. This cache allows Protect and Unprotect operations to proceed without hitting the backing store. The system will automatically check the backing store for changes approximately every 24 hours or when the current default key expires, whichever comes first.
 
@@ -138,7 +138,7 @@ The sample below demonstrates using the IKeyManager interface to inspect and man
 
    ````
 
-  ## Key storage
+## Key storage
 
 The data protection system has a heuristic whereby it tries to deduce an appropriate key storage location and encryption at rest mechanism automatically. This is also configurable by the app developer. The following documents discuss the in-box implementations of these mechanisms:
 

@@ -1,9 +1,9 @@
-<!-- manual conversion almost complete -->
+﻿<!-- manual conversion almost complete -->
 
 ---
 uid: tutorials/first-mvc-app/adding-view
 ---
-  # Adding a view
+# Adding a view
 
 By [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -45,7 +45,7 @@ If your browser window is small (for example on a mobile device), you might need
 
 ![image](adding-view/_static/1.png)
 
-  ## Changing views and layout pages
+## Changing views and layout pages
 
 Tap on the menu links (**MvcMovie**, **Home**, **About**). Each page shows the same menu layout. The menu layout is implemented in the *Views/Shared/_Layout.cshtml* file. Open the *Views/Shared/_Layout.cshtml* file.
 
@@ -53,7 +53,7 @@ Tap on the menu links (**MvcMovie**, **Home**, **About**). Each page shows the s
 
 <a name=change-title-link-reference-label></a>
 
-  ### Change the title and menu link in the layout file
+### Change the title and menu link in the layout file
 
 Change the contents of the title element. Change the anchor text in the layout template to "MVC Movie" and the controller from `Home` to `Movies` as highlighted below:
 
@@ -117,7 +117,7 @@ Also notice how the content in the *Index.cshtml* view template was merged with 
 
 Our little bit of "data" (in this case the "Hello from our View Template!" message) is hard-coded, though. The MVC application has a "V" (view) and you've got a "C" (controller), but no "M" (model) yet. Shortly, we'll walk through how to create a database and retrieve model data from it.
 
-  ## Passing Data from the Controller to the View
+## Passing Data from the Controller to the View
 
 Before we go to a database and talk about models, though, let's first talk about passing information from the controller to a view. Controller actions are invoked in response to an incoming URL request. A controller class is where you write the code that handles the incoming browser requests, retrieves data from a database, and ultimately decides what type of response to send back to the browser. View templates can then be used from a controller to generate and format an HTML response to the browser.
 
