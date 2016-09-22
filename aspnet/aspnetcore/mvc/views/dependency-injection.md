@@ -242,7 +242,8 @@ The `ProfileOptionsService` is a UI-level service designed to provide just the d
 
    ````
 
-Tip: Don't forget to register types you will request through dependency injection in the  `ConfigureServices` method in *Startup.cs*.
+>[!TIP]
+> Don't forget to register types you will request through dependency injection in the  `ConfigureServices` method in *Startup.cs*.
 
 ## Overriding Services
 

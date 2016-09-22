@@ -58,7 +58,8 @@ The `ConfigureServices` method in the `Startup` class is responsible for definin
 
 The features and middleware provided by ASP.NET, such as MVC, follow a convention of using a single Add*Service*extension method to register all of the services required by that feature.
 
-Tip: You can request certain framework-provided services within `Startup` methods through their parameter lists - see [Application Startup](startup.md) for more details.
+>[!TIP]
+> You can request certain framework-provided services within `Startup` methods through their parameter lists - see [Application Startup](startup.md) for more details.
 
 Of course, in addition to configuring the application to take advantage of various framework features, you can also use `ConfigureServices` to configure your own application services.
 
@@ -208,7 +209,8 @@ In this case, both `ICharacterRepository` and in turn `ApplicationDbContext` mus
 
 Entity Framework contexts should be added to the services container using the `Scoped` lifetime. This is taken care of automatically if you use the helper methods as shown above. Repositories that will make use of Entity Framework should use the same lifetime.
 
-Warning: The main danger to be wary of is resolving a `Scoped` service from a singleton. It's likely in such a case that the service will have incorrect state when processing subsequent requests.
+>[!WARNING]
+> The main danger to be wary of is resolving a `Scoped` service from a singleton. It's likely in such a case that the service will have incorrect state when processing subsequent requests.
 
 ## Service Lifetimes and Registration Options
 

@@ -28,13 +28,15 @@ Within the Model-View-Controller pattern, a Controller is responsible for the in
 
 The controller takes the result of the model's processing (if any), returns the proper view along with the associated view data. Learn more: [Overview of ASP.NET Core MVC](../overview.md) and [Getting started with ASP.NET Core MVC and Visual Studio](../../tutorials/first-mvc-app/start-mvc.md).
 
-Tip: The Controller is a *UI level* abstraction. Its responsibility is to ensure incoming request data is valid and to choose which view (or result for an API) should be returned. In well-factored apps it will not directly include data access or business logic, but instead will delegate to services handling these responsibilities.
+>[!TIP]
+> The Controller is a *UI level* abstraction. Its responsibility is to ensure incoming request data is valid and to choose which view (or result for an API) should be returned. In well-factored apps it will not directly include data access or business logic, but instead will delegate to services handling these responsibilities.
 
 ## Defining Actions
 
 Any public method on a controller type is an action. Parameters on actions are bound to request data and validated using [model binding](../models/model-binding.md).
 
-Warning: Action methods that accept parameters should verify the `ModelState.IsValid` property is true.
+>[!WARNING]
+> Action methods that accept parameters should verify the `ModelState.IsValid` property is true.
 
 Action methods should contain logic for mapping an incoming request to a business concern. Business concerns should typically be represented as services that your controller accesses through [dependency injection](dependency-injection.md). Actions then map the result of the business action to an application state.
 

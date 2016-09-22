@@ -246,4 +246,5 @@ Azure Resources:
 
 * [SQL Database on Azure](https://azure.microsoft.com/en-us/documentation/services/sql-database/)
 
-Tip: The in-memory implementation of [IDistributedCache](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html) should only be used for testing purposes or for applications that are hosted on just one server instance.
+>[!TIP]
+> The in-memory implementation of [IDistributedCache](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html) should only be used for testing purposes or for applications that are hosted on just one server instance.

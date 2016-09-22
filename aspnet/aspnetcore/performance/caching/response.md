@@ -1,7 +1,8 @@
 ---
 uid: performance/caching/response
 ---
-Warning: This page documents version 1.0.0-rc1 and has not yet been updated for version 1.0.0
+>[!WARNING]
+> This page documents version 1.0.0-rc1 and has not yet been updated for version 1.0.0
 
 # Response Caching
 
@@ -168,7 +169,8 @@ Referencing a cache profile:
 
    ````
 
-Tip: The `ResponseCache` attribute can be applied both to actions (methods) as well as controllers (classes). Method-level attributes will override the settings specified in class-level attributes.
+>[!TIP]
+> The `ResponseCache` attribute can be applied both to actions (methods) as well as controllers (classes). Method-level attributes will override the settings specified in class-level attributes.
 
 In the above example, a class-level attribute specifies a duration of 30 seconds while a method-level attributes references a cache profile with a duration set to 60 seconds.
 

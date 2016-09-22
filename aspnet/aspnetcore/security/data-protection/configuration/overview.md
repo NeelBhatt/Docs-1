@@ -23,7 +23,8 @@ There is an extension method AddDataProtection which returns an IDataProtectionB
    }
    ````
 
-Warning: If you change the key persistence location, the system will no longer automatically encrypt keys at rest since it doesn't know whether DPAPI is an appropriate encryption mechanism.
+>[!WARNING]
+> If you change the key persistence location, the system will no longer automatically encrypt keys at rest since it doesn't know whether DPAPI is an appropriate encryption mechanism.
 
 <a name=configuring-x509-certificate></a>
 
@@ -128,7 +129,8 @@ Calling UseCryptographicAlgorithms will allow the developer to specify the desir
 
 The developer can manually specify an implementation if desired via a call to UseCustomCryptographicAlgorithms, as show in the below examples.
 
-Tip: Changing algorithms does not affect existing keys in the key ring. It only affects newly-generated keys.
+>[!TIP]
+> Changing algorithms does not affect existing keys in the key ring. It only affects newly-generated keys.
 
 <a name=data-protection-changing-algorithms-custom-managed></a>
 

@@ -5,7 +5,8 @@ uid: security/data-protection/extensibility/core-crypto
 
 # Core cryptography extensibility
 
-Warning: Types that implement any of the following interfaces should be thread-safe for multiple callers.
+>[!WARNING]
+> Types that implement any of the following interfaces should be thread-safe for multiple callers.
 
 <a name=data-protection-extensibility-core-crypto-iauthenticatedencryptor></a>
 
@@ -67,7 +68,8 @@ The descriptor can be serialized via its ExportToXml routine. This routine retur
 
 The serialized descriptor may contain sensitive information such as cryptographic key material. The data protection system has built-in support for encrypting information before it's persisted to storage. To take advantage of this, the descriptor should mark the element which contains sensitive information with the attribute name "requiresEncryption" (xmlns "http://schemas.asp.net/2015/03/dataProtection"), value "true".
 
-Tip: There's a helper API for setting this attribute. Call the extension method XElement.MarkAsRequiresEncryption() located in namespace Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.
+>[!TIP]
+> There's a helper API for setting this attribute. Call the extension method XElement.MarkAsRequiresEncryption() located in namespace Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.
 
 There can also be cases where the serialized descriptor doesn't contain sensitive information. Consider again the case of a cryptographic key stored in an HSM. The descriptor cannot write out the key material when serializing itself since the HSM will not expose the material in plaintext form. Instead, the descriptor might write out the key-wrapped version of the key (if the HSM allows export in this fashion) or the HSM's own unique identifier for the key.
 

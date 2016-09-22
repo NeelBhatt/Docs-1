@@ -58,7 +58,8 @@ The primary inputs to `GetVirtualPath` are:
 
 Routes primarily use the route values provided by the `Values` and `AmbientValues` to decide where it is possible to generate a URL and what values to include. The `AmbientValues` are the set of route values that were produced from matching the current request with the routing system. In contrast, `Values` are the route values that specify how to generate the desired URL for the current operation. The `HttpContext` is provided in case a route needs to get services or additional data associated with the current context.
 
-Tip: Think of `Values` as being a set of overrides for the `AmbientValues`. URL generation tries to reuse route values from the current request to make it easy to generate URLs for links using the same route or route values.
+>[!TIP]
+> Think of `Values` as being a set of overrides for the `AmbientValues`. URL generation tries to reuse route values from the current request to make it easy to generate URLs for links using the same route or route values.
 
 The output of `GetVirtualPath` is a [VirtualPathData](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Routing/VirtualPathData/index.html.md#Microsoft.AspNetCore.Routing.VirtualPathData.md). `VirtualPathData` is a parallel of `RouteData`; it contains the `VirtualPath` for the output URL as well as the some additional properties that should be set by the route.
 
@@ -125,7 +126,8 @@ The following two examples create equivalent routes:
        template: "{controller=Home}/{action=Index}/{id?}");
    ````
 
-Tip: The inline syntax for defining constraints and defaults can be more convenient for simple routes. However, there are features such as data tokens which are not supported by inline syntax.
+>[!TIP]
+> The inline syntax for defining constraints and defaults can be more convenient for simple routes. However, there are features such as data tokens which are not supported by inline syntax.
 
 This example demonstrates a few more features:
 
@@ -165,7 +167,8 @@ This template will match a URL path like `/en-US/Products/5` and will extract th
 
 The `Route` class can also perform URL generation by combining a set of route values with its route template. This is logically the reverse process of matching the URL path.
 
-Tip: To better understand URL generation, imagine what URL you want to generate and then think about how a route template would match that URL. What values would be produced? This is the rough equivalent of how URL generation works in the `Route` class.
+>[!TIP]
+> To better understand URL generation, imagine what URL you want to generate and then think about how a route template would match that URL. What values would be produced? This is the rough equivalent of how URL generation works in the `Route` class.
 
 This example uses a basic ASP.NET MVC style route:
 
@@ -182,7 +185,8 @@ With the route values `{ controller = Products, action = List }`, this route wil
 
 With the route values `{ controller = Home, action = Index }`, this route will generate the URL `/`. The route values that were provided match the default values so the segments corresponding to those values can be safely omitted. Note that both URLs generated would round-trip with this route definition and produce the same route values that were used to generate the URL.
 
-Tip: An app using ASP.NET MVC should use [UrlHelper](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Routing/UrlHelper/index.html.md#Microsoft.AspNetCore.Mvc.Routing.UrlHelper.md) to generate URLs instead of calling into routing directly.
+>[!TIP]
+> An app using ASP.NET MVC should use [UrlHelper](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Routing/UrlHelper/index.html.md#Microsoft.AspNetCore.Mvc.Routing.UrlHelper.md) to generate URLs instead of calling into routing directly.
 
 For more details about the URL generation process, see [url-generation-reference](#url-generation-reference).
 
@@ -304,7 +308,8 @@ The following table demonstrates some route templates and their behavior.
 
 Using a template is generally the simplest approach to routing. Constraints and defaults can also be specified outside the route template.
 
-Tip: Enable [Logging](logging.md) to see how the built in routing implementations, such as `Route`, match requests.
+>[!TIP]
+> Enable [Logging](logging.md) to see how the built in routing implementations, such as `Route`, match requests.
 
 <a name=route-constraint-reference></a>
 
@@ -312,16 +317,19 @@ Tip: Enable [Logging](logging.md) to see how the built in routing implementation
 
 Route constraints execute when a `Route` has matched the syntax of the incoming URL and tokenized the URL path into route values. Route constraints generally inspect the route value associated via the route template and make a simple yes/no decision about whether or not the value is acceptable. Some route constraints use data outside the route value to consider whether the request can be routed. For example, the [HttpMethodRouteConstraint](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Routing/Constraints/HttpMethodRouteConstraint/index.html#httpmethodrouteconstraint-class) can accept or reject a request based on its HTTP verb.
 
-Warning: Avoid using constraints for **input validation**, because doing so means that invalid input will result in a 404 (Not Found) instead of a 400 with an appropriate error message. Route constraints should be used to **disambiguate** between similar routes, not to validate the inputs for a particular route.
+>[!WARNING]
+> Avoid using constraints for **input validation**, because doing so means that invalid input will result in a 404 (Not Found) instead of a 400 with an appropriate error message. Route constraints should be used to **disambiguate** between similar routes, not to validate the inputs for a particular route.
 
 The following table demonstrates some route constraints and their expected behavior.
 
 <!-- Inline Route Constraints          constraint  Example  Example Match  Notes  int  {id:int}  123  Matches any integer  bool  {active:bool}  true  Matches true or false  datetime  {dob:datetime}  2016-01-01  Matches a valid DateTime value (in the invariant culture - see options)  decimal  {price:decimal}  49.99  Matches a valid decimal value  double  {weight:double}  4.234  Matches a valid double value  float  {weight:float}  3.14  Matches a valid float value  guid  {id:guid}  7342570B-<snip>  Matches a valid Guid value  long  {ticks:long}  123456789  Matches a valid long value  minlength(value)  {username:minlength(5)}  steve  String must be at least 5 characters long.  maxlength(value)  {filename:maxlength(8)}  somefile  String must be no more than 8 characters long.  length(min,max)  {filename:length(4,16)}  Somefile.txt  String must be at least 8 and no more than 16 characters long.  min(value)  {age:min(18)}  19  Value must be at least 18.  max(value)  {age:max(120)}  91
 Value must be no more than 120.  range(min,max)  {age:range(18,120)}  91  Value must be at least 18 but no more than 120.  alpha  {name:alpha}  Steve  String must consist of alphabetical characters.  regex(expression)  {ssn:regex(^d{3}-d{2}-d{4}$)}  123-45-6789  String must match the provided regular expression.  required  {name:required}  Steve  Used to enforce that a non-parameter value is present during URL generation. -->
 
-Warning: Route constraints that verify the URL can be converted to a CLR type (such as `int` or `DateTime`) always use the invariant culture - they assume the URL is non-localizable. The framework-provided route constraints do not modify the values stored in route values. All route values parsed from the URL will be stored as strings. For example, the [Float route constraint](https://github.com/aspnet/Routing/blob/1.0.0/src/Microsoft.AspNetCore.Routing/Constraints/FloatRouteConstraint.cs#L44-L60) will attempt to convert the route value to a float, but the converted value is used only to verify it can be converted to a float.
+>[!WARNING]
+> Route constraints that verify the URL can be converted to a CLR type (such as `int` or `DateTime`) always use the invariant culture - they assume the URL is non-localizable. The framework-provided route constraints do not modify the values stored in route values. All route values parsed from the URL will be stored as strings. For example, the [Float route constraint](https://github.com/aspnet/Routing/blob/1.0.0/src/Microsoft.AspNetCore.Routing/Constraints/FloatRouteConstraint.cs#L44-L60) will attempt to convert the route value to a float, but the converted value is used only to verify it can be converted to a float.
 
-Tip: To constrain a parameter to a known set of possible values, you can use a regular expression ( for example `{action:regex(list|get|create)}`. This would only match the `action` route value to `list`, `get`, or `create`. If passed into the constraints dictionary, the string "list|get|create" would be equivalent. Constraints that are passed in the constraints dictionary (not inline within a template) that don't match one of the known constraints are also treated as regular expressions.
+>[!TIP]
+> To constrain a parameter to a known set of possible values, you can use a regular expression ( for example `{action:regex(list|get|create)}`. This would only match the `action` route value to `list`, `get`, or `create`. If passed into the constraints dictionary, the string "list|get|create" would be equivalent. Constraints that are passed in the constraints dictionary (not inline within a template) that don't match one of the known constraints are also treated as regular expressions.
 
 <a name=url-generation-reference></a>
 

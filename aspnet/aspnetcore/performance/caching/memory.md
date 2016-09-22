@@ -1,7 +1,8 @@
 ---
 uid: performance/caching/memory
 ---
-Warning: This page documents version 1.0.0-rc2 and has not yet been updated for version 1.0.0
+>[!WARNING]
+> This page documents version 1.0.0-rc2 and has not yet been updated for version 1.0.0
 
 # In Memory Caching
 
@@ -26,7 +27,8 @@ You should always write (and test!) your application such that it can use cached
 
 An in-memory cache is stored in the memory of a single server hosting an ASP.NET app. If an app is hosted by multiple servers in a web farm or cloud hosting environment, the servers may have different values in their local in-memory caches. Apps that will be hosted in server farms or on cloud hosting should use a [distributed cache](distributed.md) to avoid cache consistency problems.
 
-Tip: A common use case for caching is data-driven navigation menus, which rarely change but are frequently read for display within an application. Caching results that do not vary often but which are requested frequently can greatly improve performance by reducing round trips to out of process data stores and unnecessary computation.
+>[!TIP]
+> A common use case for caching is data-driven navigation menus, which rarely change but are frequently read for display within an application. Caching results that do not vary often but which are requested frequently can greatly improve performance by reducing round trips to out of process data stores and unnecessary computation.
 
 ## Configuring In Memory Caching
 
@@ -209,7 +211,8 @@ You can configure cache entries to depend on other cache entries, the file syste
 
 The callback is run on a different thread from the code that removes the item from the cache.
 
-Warning: If the callback is used to repopulate the cache it is possible other requests for the cache will take place (and find it empty) before the callback completes, possibly resulting in several threads repopulating the cached value.
+>[!WARNING]
+> If the callback is used to repopulate the cache it is possible other requests for the cache will take place (and find it empty) before the callback completes, possibly resulting in several threads repopulating the cached value.
 
 Possible [eviction reasons](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Memory/EvictionReason/index.html) are:
 

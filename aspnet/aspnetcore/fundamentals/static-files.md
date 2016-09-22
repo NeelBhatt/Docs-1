@@ -374,11 +374,13 @@ The following code enables serving unknown types and will render the unknown fil
 
 With the code above, a request for a file with an unknown content type will be returned as an image.
 
-Warning: Enabling [ServeUnknownFileTypes](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/StaticFileOptions/index.html.md#Microsoft.AspNetCore.Builder.StaticFileOptions.ServeUnknownFileTypes.md) is a security risk and using it is discouraged.  [FileExtensionContentTypeProvider](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/StaticFiles/FileExtensionContentTypeProvider/index.html.md#Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider.md)  (explained below) provides a safer alternative to serving files with non-standard extensions.
+>[!WARNING]
+> Enabling [ServeUnknownFileTypes](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/StaticFileOptions/index.html.md#Microsoft.AspNetCore.Builder.StaticFileOptions.ServeUnknownFileTypes.md) is a security risk and using it is discouraged.  [FileExtensionContentTypeProvider](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/StaticFiles/FileExtensionContentTypeProvider/index.html.md#Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider.md)  (explained below) provides a safer alternative to serving files with non-standard extensions.
 
 ### Considerations
 
-Warning: `UseDirectoryBrowser` and `UseStaticFiles` can leak secrets. We recommend that you **not** enable directory browsing in production. Be careful about which directories you enable with `UseStaticFiles` or `UseDirectoryBrowser` as the entire directory and all sub-directories will be accessible. We recommend keeping public content in its own directory such as *<content root>/wwwroot*, away from application views, configuration files, etc.
+>[!WARNING]
+> `UseDirectoryBrowser` and `UseStaticFiles` can leak secrets. We recommend that you **not** enable directory browsing in production. Be careful about which directories you enable with `UseStaticFiles` or `UseDirectoryBrowser` as the entire directory and all sub-directories will be accessible. We recommend keeping public content in its own directory such as *<content root>/wwwroot*, away from application views, configuration files, etc.
 
 * The URLs for content exposed with `UseDirectoryBrowser` and `UseStaticFiles` are subject to the case sensitivity and character restrictions of their underlying file system. For example, Windows is case insensitive, but Mac and Linux are not.
 
@@ -392,7 +394,8 @@ Warning: `UseDirectoryBrowser` and `UseStaticFiles` can leak secrets. We recomme
 
      * Tap **Remove** in the **Actions** sidebar
 
-Warning: If the IIS static file handler is enabled **and** the ASP.NET Core Module (ANCM) is not correctly configured (for example if *web.config* was not deployed), static files will be served.
+>[!WARNING]
+> If the IIS static file handler is enabled **and** the ASP.NET Core Module (ANCM) is not correctly configured (for example if *web.config* was not deployed), static files will be served.
 
 * Code files (including c# and Razor) should be placed outside of the app project's `web root` (*wwwroot* by default). This creates a clean separation between your app's client side content and server side source code, which prevents server side code from being leaked.
 

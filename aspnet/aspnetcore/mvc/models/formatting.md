@@ -73,7 +73,8 @@ Note in this case the `Content-Type` returned is `text/plain`. You can also achi
 
    ````
 
-Tip: For non-trivial actions with multiple return types or options (for example, different HTTP status codes based on the result of operations performed), prefer `IActionResult` as the return type.
+>[!TIP]
+> For non-trivial actions with multiple return types or options (for example, different HTTP status codes based on the result of operations performed), prefer `IActionResult` as the return type.
 
 ## Content Negotiation
 

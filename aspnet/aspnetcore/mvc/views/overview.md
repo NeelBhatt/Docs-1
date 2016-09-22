@@ -80,7 +80,8 @@ When an action returns the `View` method, like so `return View();`, the action n
 
    2. Views/Shared/<ViewName>.cshtml
 
-Tip: We recommend following the convention of simply returning `View()` from actions when possible, as it results in more flexible, easier to refactor code.
+>[!TIP]
+> We recommend following the convention of simply returning `View()` from actions when possible, as it results in more flexible, easier to refactor code.
 
 A view file path can be provided, instead of a view name. In this case, the *.cshtml* extension must be specified as part of the file path. The path should be relative to the application root (and can optionally start with "/" or "~/"). For example: `return View("Views/Home/About.cshtml");`
 
@@ -90,7 +91,8 @@ A view file path can be provided, instead of a view name. In this case, the *.cs
 > [!NOTE]
 > You can customize the default convention regarding where views are located within the app by using a custom [IViewLocationExpander](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Razor/IViewLocationExpander/index.html.md#Microsoft.AspNetCore.Mvc.Razor.IViewLocationExpander.md).
 
-Tip: View names may be case sensitive depending on the underlying file system. For compatibility across operating systems, always match case between controller and action names and associated view folders and filenames.
+>[!TIP]
+> View names may be case sensitive depending on the underlying file system. For compatibility across operating systems, always match case between controller and action names and associated view folders and filenames.
 
 ## Passing Data to Views
 

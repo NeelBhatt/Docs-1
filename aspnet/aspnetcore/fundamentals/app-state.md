@@ -1,7 +1,8 @@
 ---
 uid: fundamentals/app-state
 ---
-Warning: This page documents version 1.0.0-rc1 and has not yet been updated for version 1.0.0
+>[!WARNING]
+> This page documents version 1.0.0-rc1 and has not yet been updated for version 1.0.0
 
 # Managing Application State
 
@@ -129,7 +130,8 @@ You can reference Session from `HttpContext` once it is installed and configured
 > [!NOTE]
 > If you attempt to access `Session` before `UseSession` has been called, you will get an `InvalidOperationException` exception stating that "Session has not been configured for this application or request."
 
-Warning: If you attempt to create a new `Session` (i.e. no session cookie has been created yet) after you have already begun writing to the `Response` stream, you will get an `InvalidOperationException` as well, stating that "The session cannot be established after the response has started". This exception may not be displayed in the browser; you may need to view the web server log  to discover it, as shown below:
+>[!WARNING]
+> If you attempt to create a new `Session` (i.e. no session cookie has been created yet) after you have already begun writing to the `Response` stream, you will get an `InvalidOperationException` as well, stating that "The session cannot be established after the response has started". This exception may not be displayed in the browser; you may need to view the web server log  to discover it, as shown below:
 
 ![image](app-state/_static/session-after-response-error.png)
 

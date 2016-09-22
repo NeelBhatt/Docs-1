@@ -1,7 +1,8 @@
 ---
 uid: mvc/views/partial
 ---
-Warning: This page documents version 1.0.0-rc2 and has not yet been updated for version 1.0.0
+>[!WARNING]
+> This page documents version 1.0.0-rc2 and has not yet been updated for version 1.0.0
 
 # Partial Views
 
@@ -24,7 +25,8 @@ Partial views are an effective way of breaking up large views into smaller compo
 
 If you have a complex page made up of several logical pieces, it can be helpful to work with each piece as its own partial view. Each piece of the page can be viewed in isolation from the rest of the page, and the view for the page itself becomes much simpler since it only contains the overall page structure and calls to render the partial views.
 
-Tip: Follow the [Don't Repeat Yourself Principle](http://deviq.com/don-t-repeat-yourself/) in your views.
+>[!TIP]
+> Follow the [Don't Repeat Yourself Principle](http://deviq.com/don-t-repeat-yourself/) in your views.
 
 ## Declaring Partial Views
 

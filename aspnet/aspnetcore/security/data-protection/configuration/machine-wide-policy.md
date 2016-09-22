@@ -7,7 +7,8 @@ uid: security/data-protection/configuration/machine-wide-policy
 
 When running on Windows, the data protection system has limited support for setting default machine-wide policy for all applications which consume data protection. The general idea is that an administrator might wish to change some default setting (such as algorithms used or key lifetime) without needing to manually update every application on the machine.
 
-Warning: The system administrator can set default policy, but he cannot enforce it. The application developer can always override any value with one of his own choosing. The default policy only affects applications where the developer has not specified an explicit value for some particular setting.
+>[!WARNING]
+> The system administrator can set default policy, but he cannot enforce it. The application developer can always override any value with one of his own choosing. The default policy only affects applications where the developer has not specified an explicit value for some particular setting.
 
 ## Setting default policy
 
@@ -59,4 +60,5 @@ If EncryptionType is "Managed", the system will be configured to use a managed S
 
 If EncryptionType has any other value (other than null / empty), the data protection system will throw an exception at startup.
 
-Warning: When configuring a default policy setting that involves type names (EncryptionAlgorithmType, ValidationAlgorithmType, KeyEscrowSinks), the types must be available to the application. In practice, this means that for applications running on Desktop CLR, the assemblies which contain these types should be GACed. For ASP.NET Core applications running on [.NET Core](https://microsoft.com/net/core), the packages which contain these types should be referenced in project.json.
+>[!WARNING]
+> When configuring a default policy setting that involves type names (EncryptionAlgorithmType, ValidationAlgorithmType, KeyEscrowSinks), the types must be available to the application. In practice, this means that for applications running on Desktop CLR, the assemblies which contain these types should be GACed. For ASP.NET Core applications running on [.NET Core](https://microsoft.com/net/core), the packages which contain these types should be referenced in project.json.
