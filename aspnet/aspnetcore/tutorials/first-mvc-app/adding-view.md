@@ -71,9 +71,9 @@ Examine the *Views/_ViewStart.cshtml* file:
 
 ````HTML
 
-   @{
-       Layout = "_Layout";
-   }
+@{
+    Layout = "_Layout";
+}
 
    ````
 
@@ -145,22 +145,7 @@ The `ViewData` dictionary object contains data that will be passed to the view. 
 
 You'll create a loop in the *Welcome.cshtml* view template that displays "Hello" `NumTimes`. Replace the contents of *Views/HelloWorld/Welcome.cshtml* with the following:
 
-
-````none
-
-   @{
-       ViewData["Title"] = "About";
-   }
-
-   <h2>Welcome</h2>
-
-   <ul>
-       @for (int i = 0; i < (int)ViewData["NumTimes"]; i++)
-       {
-           <li>@ViewData["Message"]</li>
-       }
-   </ul>
-   ````
+[!code-html[Main](start-mvc/sample/src/MvcMovie/Views/HelloWorld/Welcome.cshtml)]
 
 Save your changes and browse to the following URL:
 
