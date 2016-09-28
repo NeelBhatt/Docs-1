@@ -34,7 +34,7 @@ The following sample demonstrates three concepts:
 
 3. Creating an IDataProtector from an IDataProtectionProvider and using it to protect and unprotect data.
 
-[!code-none[Main](../security/data-protection/using-data-protection/samples/protectunprotect.cs?highlight=26,34,35,36,37,38,39,40)]
+[!code-none[Main](../using-data-protection/samples/protectunprotect.cs?highlight=26,34,35,36,37,38,39,40)]
 
 ````none
 
@@ -94,7 +94,7 @@ The following sample demonstrates three concepts:
 
 The package Microsoft.AspNetCore.DataProtection.Abstractions contains an extension method IServiceProvider.GetDataProtector as a developer convenience. It encapsulates as a single operation both retrieving an IDataProtectionProvider from the service provider and calling IDataProtectionProvider.CreateProtector. The following sample demonstrates its usage.
 
-[!code-none[Main](../../security/data-protection/consumer-apis/overview/samples/getdataprotector.cs?highlight=15)]
+[!code-none[Main](./overview/samples/getdataprotector.cs?highlight=15)]
 
 ````none
 

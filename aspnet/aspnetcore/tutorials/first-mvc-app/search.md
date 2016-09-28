@@ -155,7 +155,7 @@ However, you can't expect users to modify the URL every time they want to search
 
 Open the *Views/Movies/Index.cshtml* file, and add the `<form>` markup highlighted below:
 
-[!code-HTML[Main](../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Views/Movies/IndexForm1.cshtml?highlight=11,12,13,14,15,16)]
+[!code-HTML[Main](../../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Views/Movies/IndexForm1.cshtml?highlight=11,12,13,14,15,16)]
 
 ````HTML
 
@@ -320,7 +320,7 @@ The `SelectList` of genres is created by projecting the distinct genres (we don'
 
 ## Adding search by genre to the Index view
 
-[!code-HTML[Main](../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Views/Movies/IndexFormGenre.cshtml?highlight=1,15,16,17,27,41)]
+[!code-HTML[Main](../../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Views/Movies/IndexFormGenre.cshtml?highlight=1,15,16,17,27,41)]
 
 ````HTML
 
