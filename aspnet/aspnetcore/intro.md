@@ -76,7 +76,7 @@ An ASP.NET Core app is simply a console app that creates a web server in its `Ma
 
 The `UseStartup` method on `WebHostBuilder` specifies the `Startup` class for your app.
 
-[!code-csharp[Main](../getting-started/sample/aspnetcoreapp/Program.cs?highlight=7)]
+[!code-csharp[Main](./getting-started/sample/aspnetcoreapp/Program.cs?highlight=7)]
 
 ````csharp
 

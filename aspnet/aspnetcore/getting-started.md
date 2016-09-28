@@ -17,7 +17,7 @@ uid: getting-started
 
 3. Update the *project.json* file to add the Kestrel HTTP server package as a dependency:
 
-   [!code-csharp[Main](../getting-started/sample/aspnetcoreapp/project.json?highlight=15)]
+   [!code-csharp[Main](./getting-started/sample/aspnetcoreapp/project.json?highlight=15)]
 
    ````csharp
 
@@ -81,7 +81,7 @@ uid: getting-started
 
 6. Update the code in *Program.cs* to setup and start the Web host:
 
-   [!code-csharp[Main](../getting-started/sample/aspnetcoreapp/Program.cs?highlight=2,4,10,11,12,13,14,15)]
+   [!code-csharp[Main](./getting-started/sample/aspnetcoreapp/Program.cs?highlight=2,4,10,11,12,13,14,15)]
 
    ````csharp
 

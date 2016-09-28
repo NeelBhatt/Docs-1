@@ -59,7 +59,7 @@ Implementing an interface like this one so that it uses the system clock at runt
 
 With this in place, we can use the service in our controller. In this case, we have added some logic to the `HomeController` `Index` method to display a greeting to the user based on the time of day.
 
-[!code-csharp[Main](../mvc/controllers/dependency-injection/sample/src/ControllerDI/Controllers/HomeController.cs?highlight=8,10,12,17,18,19,20,21,22,23,24,25,26,27,28,29,30)]
+[!code-csharp[Main](./dependency-injection/sample/src/ControllerDI/Controllers/HomeController.cs?highlight=8,10,12,17,18,19,20,21,22,23,24,25,26,27,28,29,30)]
 
 ````csharp
 
@@ -113,7 +113,7 @@ If we run the application now, we will most likely encounter an error:
 
 This error occurs when we have not configured a service in the `ConfigureServices` method in our `Startup` class. To specify that requests for `IDateTime` should be resolved using an instance of `SystemDateTime`, add the highlighted line in the listing below to your `ConfigureServices` method:
 
-[!code-csharp[Main](../mvc/controllers/dependency-injection/sample/src/ControllerDI/Startup.cs?highlight=4)]
+[!code-csharp[Main](./dependency-injection/sample/src/ControllerDI/Startup.cs?highlight=4)]
 
 ````csharp
 
@@ -153,7 +153,7 @@ As the error message states, you can correct this problem having just a single c
 
 Sometimes you don't need a service for more than one action within your controller. In this case, it may make sense to inject the service as a parameter to the action method. This is done by marking the parameter with the attribute `[FromServices]` as shown here:
 
-[!code-csharp[Main](../mvc/controllers/dependency-injection/sample/src/ControllerDI/Controllers/HomeController.cs?highlight=1)]
+[!code-csharp[Main](./dependency-injection/sample/src/ControllerDI/Controllers/HomeController.cs?highlight=1)]
 
 ````csharp
 
@@ -189,7 +189,7 @@ To work with the options pattern, you need to create a class that represents the
 
 Then you need to configure the application to use the options model and add your configuration class to the services collection in `ConfigureServices`:
 
-[!code-csharp[Main](../mvc/controllers/dependency-injection/sample/src/ControllerDI/Startup.cs?highlight=3,4,5,6,9,16,19)]
+[!code-csharp[Main](./dependency-injection/sample/src/ControllerDI/Startup.cs?highlight=3,4,5,6,9,16,19)]
 
 ````csharp
 
@@ -232,7 +232,7 @@ Then you need to configure the application to use the options model and add your
 
 Once you've specified a strongly-typed configuration object (in this case, `SampleWebSettings`) and added it to the services collection, you can request it from any Controller or Action method by requesting an instance of `IOptions<T>` (in this case, `IOptions<SampleWebSettings>`). The following code shows how one would request the settings from a controller:
 
-[!code-csharp[Main](../mvc/controllers/dependency-injection/sample/src/ControllerDI/Controllers/SettingsController.cs?highlight=3,5,7)]
+[!code-csharp[Main](./dependency-injection/sample/src/ControllerDI/Controllers/SettingsController.cs?highlight=3,5,7)]
 
 ````csharp
 

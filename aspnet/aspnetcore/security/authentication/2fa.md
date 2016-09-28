@@ -111,7 +111,7 @@ Set `SID`, `AuthToken`, and `SendNumber` with the [secret-manager tool](../app-s
 
 Add `AuthMessageSMSSenderOptions` to the service container at the end of the `ConfigureServices` method in the *Startup.cs* file:
 
-[!code-csharp[Main](../security/authentication/2fa/sample/WebSMS/src/WebSMS/Startup.cs?highlight=4)]
+[!code-csharp[Main](./2fa/sample/WebSMS/src/WebSMS/Startup.cs?highlight=4)]
 
 ````csharp
 
@@ -240,7 +240,7 @@ If you don't get a text message, see [Debugging Twilio](#debugging-twilio).
 
 We recommend you use account lockout with 2FA. Once a user logs in (through a local account or social account), each failed attempt at 2FA is stored, and if the maximum attempts (default is 5) is reached, the user is locked out for five minutes (you can set the lock out time with `DefaultAccountLockoutTimeSpan`). The following configures Account to be locked out for 10 minutes after 10 failed attempts.
 
-[!code-csharp[Main](../security/authentication/2fa/sample/WebSMS/src/WebSMS/Startup.cs?highlight=1,2,3,4,5)]
+[!code-csharp[Main](./2fa/sample/WebSMS/src/WebSMS/Startup.cs?highlight=1,2,3,4,5)]
 
 ````csharp
 

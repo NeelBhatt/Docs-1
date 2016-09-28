@@ -143,7 +143,8 @@ Environment `string`
 > By default, the environment is read from the `ASPNETCORE_ENVIRONMENT` environment variable. When using Visual Studio, environment variables may be set in the *launchSettings.json* file.
 
 Server URLs `string`
-   Key: `urls`. Set to a semicolon (;) separated list of URL prefixes to which the server should respond. For example, "[http://localhost:123](http://localhost:123)". The domain/host name can be replaced with "*" to indicate the server should listen to requests on any IP address or host using the specified port and protocol (for example, "[http://](http://)*:5000" or "https://*:5001"). The protocol ("[http://](http://)" or "[https://](https://)") must be included with each URL. The prefixes are interpreted by the configured server; supported formats will vary between servers.
+
+Key: `urls`. Set to a semicolon (;) separated list of URL prefixes to which the server should respond. For example, "[http://localhost:123](http://localhost:123)". The domain/host name can be replaced with "*" to indicate the server should listen to requests on any IP address or host using the specified port and protocol (for example, "[http://](http://)*:5000" or "https://*:5001"). The protocol ("[http://](http://)" or "[https://](https://)") must be included with each URL. The prefixes are interpreted by the configured server; supported formats will vary between servers.
 
 ````csharp
 
@@ -152,7 +153,8 @@ Server URLs `string`
    ````
 
 Startup Assembly `string`
-   Key: `startupAssembly`. Determines the assembly to search for the `Startup` class. Set using the `UseStartup` method. May instead reference specific type using `WebHostBuilder.UseStartup<StartupType>`. If multiple `UseStartup` methods are called, the last one takes precedence.
+
+Key: `startupAssembly`. Determines the assembly to search for the `Startup` class. Set using the `UseStartup` method. May instead reference specific type using `WebHostBuilder.UseStartup<StartupType>`. If multiple `UseStartup` methods are called, the last one takes precedence.
 
 ````csharp
 
@@ -163,7 +165,8 @@ Startup Assembly `string`
 <a name=web-root-setting></a>
 
 Web Root `string`
-   Key: `webroot`. If not specified the default is `(Content Root Path)\wwwroot`, if it exists. If this path doesn't exist, then a no-op file provider is used. Set using `UseWebRoot`.
+
+Key: `webroot`. If not specified the default is `(Content Root Path)\wwwroot`, if it exists. If this path doesn't exist, then a no-op file provider is used. Set using `UseWebRoot`.
 
 ````csharp
 

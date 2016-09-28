@@ -144,7 +144,7 @@ The following code reads the configuration values stored by the [Secret Manager]
 
 Add the Facebook middleware in the `Configure` method in `Startup`:
 
-[!code-csharp[Main](../security/authentication/sociallogins/sample/Startup.cs?highlight=21,22,23,24,25)]
+[!code-csharp[Main](./sociallogins/sample/Startup.cs?highlight=21,22,23,24,25)]
 
 ````csharp
 

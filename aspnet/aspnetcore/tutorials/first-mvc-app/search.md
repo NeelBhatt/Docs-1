@@ -61,7 +61,7 @@ Navigate to `/Movies/Index`. Append a query string such as `?searchString=ghost`
 
 If you change the signature of the `Index` method to have a parameter named `id`, the `id` parameter will match the optional `{id}` placeholder for the default routes set in *Startup.cs*.
 
-[!code-csharp[Main](../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Startup.cs?highlight=5)]
+[!code-csharp[Main](./start-mvc/sample2/src/MvcMovie/Startup.cs?highlight=5)]
 
 ````csharp
 
@@ -88,7 +88,7 @@ Change the parameter to `id` and all occurrences of `searchString` change to `id
 
 The previous `Index` method:
 
-[!code-csharp[Main](../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs?highlight=1,8)]
+[!code-csharp[Main](./start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs?highlight=1,8)]
 
 ````csharp
 
@@ -109,7 +109,7 @@ The previous `Index` method:
 
 The updated `Index` method:
 
-[!code-csharp[Main](../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs?highlight=1,8)]
+[!code-csharp[Main](./start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs?highlight=1,8)]
 
 ````csharp
 
@@ -134,7 +134,7 @@ You can now pass the search title as route data (a URL segment) instead of as a 
 
 However, you can't expect users to modify the URL every time they want to search for a movie. So now you'll add UI to help them filter movies. If you changed the signature of the `Index` method to test how to pass the route-bound `ID` parameter, change it back so that it takes a parameter named `searchString`:
 
-[!code-csharp[Main](../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs?highlight=1)]
+[!code-csharp[Main](./start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs?highlight=1)]
 
 ````csharp
 
@@ -189,7 +189,7 @@ There's no `[HttpPost]` overload of the `Index` method as you might expect. You 
 
 You could add the following `[HttpPost] Index` method.
 
-[!code-csharp[Main](../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs?highlight=1)]
+[!code-csharp[Main](./start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs?highlight=1)]
 
 ````csharp
 
