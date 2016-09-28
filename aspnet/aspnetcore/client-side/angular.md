@@ -34,7 +34,7 @@ There are several ways to add AngularJS to your application. If you’re startin
 
 <!-- literal_block {"xml:space": "preserve", "source": "client-side/angular/sample/AngularSample/src/AngularSample/bower.json", "ids": ["angular-bower-json"], "names": ["angular-bower-json"], "linenos": true, "language": "json", "highlight_args": {"hl_lines": [9], "linenostart": 1}} -->
 
-[!code-json[Main](~/aspnetcoreaspnetcore/client-side/angular/sample/AngularSample/src/AngularSample/bower.json?highlight=9)]
+[!code-json[Main](~/aspnetcore/client-side/angular/sample/AngularSample/src/AngularSample/bower.json?highlight=9)]
 
 ````json
 
