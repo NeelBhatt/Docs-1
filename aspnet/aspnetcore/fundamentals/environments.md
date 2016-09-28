@@ -28,7 +28,7 @@ When you modify the default settings created with the project, your changes are 
 
 launchSettings.json
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/fundamentals/environments/sample/src/Environments/Properties/launchSettings.json", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "javascript", "highlight_args": {"hl_lines": [15, 22], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "fundamentals/environments/sample/src/Environments/Properties/launchSettings.json", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "javascript", "highlight_args": {"hl_lines": [15, 22], "linenostart": 1}} -->
 
 ````javascript
 
@@ -98,7 +98,7 @@ The [IHostingEnvironment](http://docs.asp.net/projects/api/en/latest/autoapi/Mic
 
 For example, you can use the following code in your Configure method to setup environment specific error handling:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/fundamentals/environments/sample/src/Environments/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "fundamentals/environments/sample/src/Environments/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -122,7 +122,7 @@ If the app is running in a `Development` environment, then it enables the runtim
 
 You may need to determine which content to send to the client at runtime, depending on the current environment. For example, in a development environment you generally serve non-minimized scripts and style sheets, which makes debugging easier. Production and test environments should serve the minified versions and generally from a CDN. You can do this using the Environment [tag helper](../mvc/views/tag-helpers/intro.md). The Environment tag helper will only render its contents if the current environment matches one of the environments specified using the `names` attribute.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/fundamentals/environments/sample/src/Environments/Views/Shared/_Layout.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "html", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "fundamentals/environments/sample/src/Environments/Views/Shared/_Layout.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "html", "highlight_args": {"linenostart": 1}} -->
 
 ````html
 

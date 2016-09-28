@@ -19,7 +19,7 @@ Dependency injection is a technique that follows the [Dependency Inversion Princ
 
 ASP.NET Core's built-in support for constructor-based dependency injection extends to MVC controllers. By simply adding a service type to your controller as a constructor parameter, ASP.NET Core will attempt to resolve that type using its built in service container. Services are typically, but not always, defined using interfaces. For example, if your application has business logic that depends on the current time, you can inject a service that retrieves the time (rather than hard-coding it), which would allow your tests to pass in implementations that use a set time.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/mvc/controllers/dependency-injection/sample/src/ControllerDI/Interfaces/IDateTime.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/controllers/dependency-injection/sample/src/ControllerDI/Interfaces/IDateTime.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -37,7 +37,7 @@ ASP.NET Core's built-in support for constructor-based dependency injection exten
 
 Implementing an interface like this one so that it uses the system clock at runtime is trivial:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/mvc/controllers/dependency-injection/sample/src/ControllerDI/Services/SystemDateTime.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/controllers/dependency-injection/sample/src/ControllerDI/Services/SystemDateTime.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -59,7 +59,7 @@ Implementing an interface like this one so that it uses the system clock at runt
 
 With this in place, we can use the service in our controller. In this case, we have added some logic to the `HomeController` `Index` method to display a greeting to the user based on the time of day.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/mvc/controllers/dependency-injection/sample/src/ControllerDI/Controllers/HomeController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [8, 10, 12, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/controllers/dependency-injection/sample/src/ControllerDI/Controllers/HomeController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [8, 10, 12, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30], "linenostart": 1}} -->
 
 ````c#
 
@@ -113,7 +113,7 @@ If we run the application now, we will most likely encounter an error:
 
 This error occurs when we have not configured a service in the `ConfigureServices` method in our `Startup` class. To specify that requests for `IDateTime` should be resolved using an instance of `SystemDateTime`, add the highlighted line in the listing below to your `ConfigureServices` method:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/mvc/controllers/dependency-injection/sample/src/ControllerDI/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [4], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/controllers/dependency-injection/sample/src/ControllerDI/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [4], "linenostart": 1}} -->
 
 ````c#
 
@@ -153,7 +153,7 @@ As the error message states, you can correct this problem having just a single c
 
 Sometimes you don't need a service for more than one action within your controller. In this case, it may make sense to inject the service as a parameter to the action method. This is done by marking the parameter with the attribute `[FromServices]` as shown here:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/mvc/controllers/dependency-injection/sample/src/ControllerDI/Controllers/HomeController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [1], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/controllers/dependency-injection/sample/src/ControllerDI/Controllers/HomeController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [1], "linenostart": 1}} -->
 
 ````c#
 
@@ -172,7 +172,7 @@ Accessing application or configuration settings from within a controller is a co
 
 To work with the options pattern, you need to create a class that represents the options, such as this one:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/mvc/controllers/dependency-injection/sample/src/ControllerDI/Model/SampleWebSettings.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/controllers/dependency-injection/sample/src/ControllerDI/Model/SampleWebSettings.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -189,7 +189,7 @@ To work with the options pattern, you need to create a class that represents the
 
 Then you need to configure the application to use the options model and add your configuration class to the services collection in `ConfigureServices`:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/mvc/controllers/dependency-injection/sample/src/ControllerDI/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [3, 4, 5, 6, 9, 16, 19], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/controllers/dependency-injection/sample/src/ControllerDI/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [3, 4, 5, 6, 9, 16, 19], "linenostart": 1}} -->
 
 ````c#
 
@@ -232,7 +232,7 @@ Then you need to configure the application to use the options model and add your
 
 Once you've specified a strongly-typed configuration object (in this case, `SampleWebSettings`) and added it to the services collection, you can request it from any Controller or Action method by requesting an instance of `IOptions<T>` (in this case, `IOptions<SampleWebSettings>`). The following code shows how one would request the settings from a controller:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/mvc/controllers/dependency-injection/sample/src/ControllerDI/Controllers/SettingsController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [3, 5, 7], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/controllers/dependency-injection/sample/src/ControllerDI/Controllers/SettingsController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [3, 5, 7], "linenostart": 1}} -->
 
 ````c#
 

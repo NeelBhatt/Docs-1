@@ -45,7 +45,7 @@ With ASP.NET Core you gain the following foundational improvements:
 
 An ASP.NET Core app is simply a console app that creates a web server in its `Main` method:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/getting-started/sample/aspnetcoreapp/Program.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "getting-started/sample/aspnetcoreapp/Program.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -76,7 +76,7 @@ An ASP.NET Core app is simply a console app that creates a web server in its `Ma
 
 The `UseStartup` method on `WebHostBuilder` specifies the `Startup` class for your app.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/getting-started/sample/aspnetcoreapp/Program.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [7], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "getting-started/sample/aspnetcoreapp/Program.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [7], "linenostart": 1}} -->
 
 ````c#
 

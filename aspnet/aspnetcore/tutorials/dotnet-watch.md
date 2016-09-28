@@ -57,7 +57,7 @@ We'll fix that.
 
 1. Add `Microsoft.DotNet.Watcher.Tools` to the `tools` section of the *WebApp/project.json* file as in the example below:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/dotnet-watch/sample/WebAppTests/project.json", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "javascript", "highlight_args": {"hl_lines": [2], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "tutorials/dotnet-watch/sample/WebAppTests/project.json", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "javascript", "highlight_args": {"hl_lines": [2], "linenostart": 1}} -->
 
 ````javascript
 
@@ -113,7 +113,7 @@ Open *WebApp/Controllers/MathController.cs*.
 
 We've intentionally introduced a bug in the code.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/dotnet-watch/sample/WebApp/Controllers/MathController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [5], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "tutorials/dotnet-watch/sample/WebApp/Controllers/MathController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [5], "linenostart": 1}} -->
 
 ````c#
 

@@ -200,7 +200,7 @@ To use routing middleware, add it to the **dependencies** in *project.json*:
 
 Add routing to the service container in *Startup.cs*:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/fundamentals/routing/sample/RoutingSample/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [3], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "fundamentals/routing/sample/RoutingSample/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [3], "linenostart": 1}} -->
 
 ````c#
 
@@ -221,7 +221,7 @@ Routes must configured in the `Configure` method in the `Startup` class. The sam
 
 * [UseRouter](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/RoutingBuilderExtensions/index.html.md#Microsoft.AspNetCore.Builder.RoutingBuilderExtensions.UseRouter.md)
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/fundamentals/routing/sample/RoutingSample/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "fundamentals/routing/sample/RoutingSample/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "highlight_args": {"linenostart": 1}} -->
 
 ````
 
@@ -337,7 +337,7 @@ Value must be no more than 120.  range(min,max)  {age:range(18,120)}  91  Value 
 
 The example below shows how to generate a link to a route given a dictionary of route values and a `RouteCollection`.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/fundamentals/routing/sample/RoutingSample/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "fundamentals/routing/sample/RoutingSample/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "highlight_args": {"linenostart": 1}} -->
 
 ````
 

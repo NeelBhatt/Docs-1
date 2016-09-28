@@ -58,7 +58,7 @@ Open the *project.json* file.
 
 * Open the *Startup.cs* file and change the code to match the following:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/migration/mvc/samples/WebApp1/src/WebApp1/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [7, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "migration/mvc/samples/WebApp1/src/WebApp1/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [7, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24], "linenostart": 1}} -->
 
 ````c#
 
@@ -172,7 +172,7 @@ In the new project, we'll add support for Bootstrap (and other client-side libra
 
 * Add a [Bower](http://bower.io/) configuration file named *bower.json* to the project root (Right-click on the project, and then **Add > New Item > Bower Configuration File**). Add [Bootstrap](http://getbootstrap.com/) and [jQuery](https://jquery.com/) to the file ^[1]: (see the highlighted lines below).
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/migration/mvc/samples/WebApp1/src/WebApp1/bower.json", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "json", "highlight_args": {"hl_lines": [5, 6], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "migration/mvc/samples/WebApp1/src/WebApp1/bower.json", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "json", "highlight_args": {"hl_lines": [5, 6], "linenostart": 1}} -->
 
 ````json
 
@@ -207,7 +207,7 @@ If you created the optional *FullAspNetCore* project (a new ASP.NET Core web app
 
 Navigate to *gulpfile.js* from the new ASP.NET Core web app with Individual User Accounts and add the add *gulpfile.js* file. Alternatively, right-click the web app project and choose **Add > New Item**. Select **Gulp Configuration File**, and name the file *gulpfile.js*. The *gulpfile.js* file:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/migration/mvc/samples/WebApp1/src/WebApp1/gulpfile.js", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "javascript", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "migration/mvc/samples/WebApp1/src/WebApp1/gulpfile.js", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "javascript", "highlight_args": {"linenostart": 1}} -->
 
 ````javascript
 
@@ -292,7 +292,7 @@ Right-click the web app project, choose **Add > Existing Item**, and add the *pa
 
 The *package.json* file ^[1]:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/migration/mvc/samples/WebApp1/src/WebApp1/package.json", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "json", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "migration/mvc/samples/WebApp1/src/WebApp1/package.json", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "json", "highlight_args": {"linenostart": 1}} -->
 
 ````json
 
@@ -360,7 +360,7 @@ The replacement script tags:
 
 The updated _Layout.cshtml file is shown below:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/migration/mvc/samples/WebApp1/src/WebApp1/Views/Shared/_Layout.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "html", "highlight_args": {"hl_lines": [7, 26, 38, 39], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "migration/mvc/samples/WebApp1/src/WebApp1/Views/Shared/_Layout.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "html", "highlight_args": {"hl_lines": [7, 26, 38, 39], "linenostart": 1}} -->
 
 ````html
 

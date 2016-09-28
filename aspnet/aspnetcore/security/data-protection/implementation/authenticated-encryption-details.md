@@ -21,7 +21,7 @@ The protected payload format consists of three primary components:
 
 A sample protected payload is illustrated below.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/security/data-protection/implementation/authenticated-encryption-details/_static/protectedpayload.txt", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "security/data-protection/implementation/authenticated-encryption-details/_static/protectedpayload.txt", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "highlight_args": {"linenostart": 1}} -->
 
 ````
 

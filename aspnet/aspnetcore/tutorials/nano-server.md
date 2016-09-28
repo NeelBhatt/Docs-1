@@ -131,7 +131,7 @@ On a Nano machine, you will need to copy the following files from the file share
 
 Run the following script in the remote session:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/nano-server/enable-ancm.ps1", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "tutorials/nano-server/enable-ancm.ps1", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "highlight_args": {"linenostart": 1}} -->
 
 ````
 
@@ -179,7 +179,7 @@ Run the following script in the remote session:
 
 If you published a portable app, .NET Core must be installed on the target machine. Execute the following Powershell script in a remote Powershell session to install the .NET Framework on your Nano Server.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/nano-server/Download-Dotnet.ps1", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "powershell", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "tutorials/nano-server/Download-Dotnet.ps1", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "powershell", "highlight_args": {"linenostart": 1}} -->
 
 ````powershell
 

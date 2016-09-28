@@ -34,7 +34,7 @@ An in-memory cache is stored in the memory of a single server hosting an ASP.NET
 
 To use an in memory cache in your ASP.NET application, add the following dependencies to your *project.json* file:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/performance/caching/memory/sample/src/CachingSample/project.json", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "highlight_args": {"hl_lines": [4], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "performance/caching/memory/sample/src/CachingSample/project.json", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "highlight_args": {"hl_lines": [4], "linenostart": 1}} -->
 
 ````
 
@@ -50,7 +50,7 @@ To use an in memory cache in your ASP.NET application, add the following depende
 
 Caching in ASP.NET Core is a *service* that should be referenced from your application by [Dependency Injection](../../fundamentals/dependency-injection.md). To register the caching service and make it available within your app, add the following line to your `ConfigureServices` method in `Startup`:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/performance/caching/memory/sample/src/CachingSample/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "highlight_args": {"hl_lines": [3], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "performance/caching/memory/sample/src/CachingSample/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "highlight_args": {"hl_lines": [3], "linenostart": 1}} -->
 
 ````
 
@@ -63,7 +63,7 @@ Caching in ASP.NET Core is a *service* that should be referenced from your appli
 
 You utilize caching in your app by requesting an instance of `IMemoryCache` in your controller or middleware constructor. In the sample for this article, we are using a simple middleware component to handle requests by returning customized greeting. The constructor is shown here:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/performance/caching/memory/sample/src/CachingSample/Middleware/GreetingMiddleware.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "highlight_args": {"hl_lines": [2, 7], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "performance/caching/memory/sample/src/CachingSample/Middleware/GreetingMiddleware.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "highlight_args": {"hl_lines": [2, 7], "linenostart": 1}} -->
 
 ````
 
@@ -96,7 +96,7 @@ Use the `Set` method to write to the cache. `Set` accepts the key to use to look
 
 The sample code (shown below) uses the `SetAbsoluteExpiration` method on `MemoryCacheEntryOptions` to cache greetings for one minute.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/performance/caching/memory/sample/src/CachingSample/Middleware/GreetingMiddleware.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "highlight_args": {"hl_lines": [7, 10, 16, 17, 18], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "performance/caching/memory/sample/src/CachingSample/Middleware/GreetingMiddleware.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "highlight_args": {"hl_lines": [7, 10, 16, 17, 18], "linenostart": 1}} -->
 
 ````
 
@@ -182,7 +182,7 @@ When you do want to explicitly remove an item from the cache, you can do so easi
 
 You can configure cache entries to depend on other cache entries, the file system, or programmatic tokens, evicting the entry in response to changes. You can register a callback, which will run when a cache item is evicted.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/performance/caching/memory/sample/test/CachingSample.Tests/MemoryCacheTests.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "highlight_args": {"hl_lines": [6, 7, 8, 9, 10, 11, 18], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "performance/caching/memory/sample/test/CachingSample.Tests/MemoryCacheTests.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "highlight_args": {"hl_lines": [6, 7, 8, 9, 10, 11, 18], "linenostart": 1}} -->
 
 ````
 
@@ -236,7 +236,7 @@ Capacity
 
 You can specify that one or more cache entries depend on a `CancellationTokenSource` by adding the expiration token to the `MemoryCacheEntryOptions` object. When a cached item is invalidated, call `Cancel` on the token, which will expire all of the associated cache entries (with a reason of `TokenExpired`). The following unit test demonstrates this:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/performance/caching/memory/sample/test/CachingSample.Tests/MemoryCacheTests.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "highlight_args": {"hl_lines": [7, 16, 21], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "performance/caching/memory/sample/test/CachingSample.Tests/MemoryCacheTests.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "highlight_args": {"hl_lines": [7, 16, 21], "linenostart": 1}} -->
 
 ````
 
@@ -269,7 +269,7 @@ Using a `CancellationTokenSource` allows multiple cache entries to all be expire
 
 Cache entries will inherit triggers and timeouts from other entries accessed while creating the new entry. This approach ensures that subordinate cache entries expire at the same time as related entries.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/performance/caching/memory/sample/test/CachingSample.Tests/MemoryCacheTests.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "highlight_args": {"hl_lines": [7, 11, 13, 23, 24], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "performance/caching/memory/sample/test/CachingSample.Tests/MemoryCacheTests.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "highlight_args": {"hl_lines": [7, 11, 13, 23, 24], "linenostart": 1}} -->
 
 ````
 

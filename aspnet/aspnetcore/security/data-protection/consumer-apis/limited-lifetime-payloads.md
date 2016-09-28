@@ -44,7 +44,7 @@ The Unprotect methods return the original unprotected data. If the payload hasn'
 
 The sample below uses the [non-DI code paths](../configuration/non-di-scenarios.md) for instantiating the data protection system. To run this sample, ensure that you have first added a reference to the Microsoft.AspNetCore.DataProtection.Extensions package.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/security/data-protection/consumer-apis/limited-lifetime-payloads/samples/limitedlifetimepayloads.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "language": "none", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "security/data-protection/consumer-apis/limited-lifetime-payloads/samples/limitedlifetimepayloads.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "language": "none", "highlight_args": {"linenostart": 1}} -->
 
 ````none
 

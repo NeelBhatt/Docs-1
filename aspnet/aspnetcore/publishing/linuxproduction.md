@@ -242,7 +242,7 @@ Consider using a web application firewall like *ModSecurity* to harden your appl
 
 Add `/etc/nginx/proxy.conf` configuration file.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/publishing/linuxproduction/proxy.conf", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "nginx", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "publishing/linuxproduction/proxy.conf", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "nginx", "highlight_args": {"linenostart": 1}} -->
 
 ````nginx
 
@@ -261,7 +261,7 @@ Add `/etc/nginx/proxy.conf` configuration file.
 
 Edit `/etc/nginx/nginx.conf` configuration file. The example contains both http and server sections in one configuration file.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/publishing/linuxproduction/nginx.conf", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "nginx", "highlight_args": {"hl_lines": [2], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "publishing/linuxproduction/nginx.conf", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "nginx", "highlight_args": {"hl_lines": [2], "linenostart": 1}} -->
 
 ````nginx
 

@@ -256,7 +256,7 @@ External file references can specify a language, emphasize certain lines, displa
      :linenos:
    ````
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/contribute/style-guide/_static/startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "language": "c#", "highlight_args": {"hl_lines": [19, 25, 26, 27], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "contribute/style-guide/_static/startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "language": "c#", "highlight_args": {"hl_lines": [19, 25, 26, 27], "linenostart": 1}} -->
 
 ````c#
 
