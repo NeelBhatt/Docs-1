@@ -68,7 +68,7 @@ The `HttpContext` abstraction provides support for a simple dictionary collectio
 
 For example, some simple [Middleware](middleware.md) could add something to the `Items` collection:
 
-````c#
+````csharp
 
    app.Use(async (context, next) =>
    {
@@ -80,7 +80,7 @@ For example, some simple [Middleware](middleware.md) could add something to the 
 
 and later in the pipeline, another piece of middleware could access it:
 
-````c#
+````csharp
 
    app.Run(async (context) =>
    {
@@ -104,7 +104,7 @@ Once the package is installed, Session must be configured in your application's 
 
 ASP.NET ships with several implementations of `IDistributedCache`, including an in-memory option (to be used during development and testing only). To configure session using this in-memory option add the `Microsoft.Extensions.Caching.Memory` package in your project.json file and then add the following to `ConfigureServices`:
 
-````c#
+````csharp
 
    services.AddDistributedMemoryCache();
    services.AddSession();
@@ -112,7 +112,7 @@ ASP.NET ships with several implementations of `IDistributedCache`, including an 
 
 Then, add the following to `Configure` **before** `app.UseMVC()` and you're ready to use session in your application code:
 
-````c#
+````csharp
 
    app.UseSession();
    ````
@@ -133,7 +133,7 @@ Session uses a cookie to track and disambiguate between requests from different 
 
 These defaults, as well as the default `IdleTimeout` (used on the server independent from the cookie), can be overridden when configuring `Session` by using `SessionOptions` as shown here:
 
-````c#
+````csharp
 
    services.AddSession(options =>
    {
@@ -151,7 +151,7 @@ The `IdleTimeout` is used by the server to determine how long a session can be i
 
 Once session is installed and configured, you refer to it via HttpContext, which exposes a property called `Session` of type [ISession](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Http/ISession/index.html.md#Microsoft.AspNetCore.Http.ISession.md). You can use this interface to get and set values in `Session`, such as `byte[]`.
 
-````c#
+````csharp
 
    public interface ISession
    {
@@ -169,7 +169,7 @@ Once session is installed and configured, you refer to it via HttpContext, which
 
 Because `Session` is built on top of `IDistributedCache`, you must always serialize the object instances being stored. Thus, the interface works with `byte[]` not simply `object`. However, there are extension methods that make working with simple types such as `String` and `Int32` easier, as well as making it easier to get a byte[] value from session.
 
-````c#
+````csharp
 
    // session extension usage examples
    context.Session.SetInt32("key1", 123);
@@ -187,7 +187,7 @@ The associated sample application demonstrates how to work with Session, includi
 
 [!code-csharp[Main](../fundamentals/app-state/sample/src/AppState/Startup.cs?highlight=2,6)]
 
-````c#
+````csharp
 
    {
        services.AddDistributedMemoryCache();
@@ -209,7 +209,7 @@ This default behavior is produced by the following middleware in *Startup.cs*, w
 
 [!code-csharp[Main](../fundamentals/app-state/sample/src/AppState/Startup.cs?highlight=4,6,8,9,10,11,28,29)]
 
-````c#
+````csharp
 
    // main catchall middleware
    app.Run(async context =>
@@ -249,7 +249,7 @@ This default behavior is produced by the following middleware in *Startup.cs*, w
 
 <!-- literal_block {"xml:space": "preserve", "source": "fundamentals/app-state/sample/src/AppState/Model/RequestEntry.cs", "ids": [], "linenos": true, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    public class RequestEntry
    {
@@ -262,7 +262,7 @@ This default behavior is produced by the following middleware in *Startup.cs*, w
 
 <!-- literal_block {"xml:space": "preserve", "source": "fundamentals/app-state/sample/src/AppState/Model/RequestEntryCollection.cs", "ids": [], "linenos": true, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
 
    public class RequestEntryCollection
@@ -295,7 +295,7 @@ Fetching the current instance of `RequestEntryCollection` is done via the `GetOr
 
 [!code-csharp[Main](../fundamentals/app-state/sample/src/AppState/Startup.cs?highlight=4,8,9)]
 
-````c#
+````csharp
 
    private RequestEntryCollection GetOrCreateEntries(HttpContext context)
    {
@@ -359,7 +359,7 @@ Requests to this path will get or create a `RequestEntryCollection`, will add th
 
 [!code-csharp[Main](../fundamentals/app-state/sample/src/AppState/Startup.cs?highlight=6)]
 
-````c#
+````csharp
 
    private void SaveEntries(HttpContext context, RequestEntryCollection collection)
    {
@@ -377,7 +377,7 @@ The sample includes one more piece of middleware worth mentioning, which is mapp
 
 [!code-csharp[Main](../fundamentals/app-state/sample/src/AppState/Startup.cs?highlight=2,13)]
 
-````c#
+````csharp
 
    // example middleware that does not reference session at all and is configured before app.UseSession()
    app.Map("/untracked", subApp =>

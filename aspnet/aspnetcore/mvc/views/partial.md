@@ -106,21 +106,21 @@ When a partial view is instantiated, it gets a copy of the parent view's `ViewDa
 
 You can pass an instance of `ViewDataDictionary` to the partial view:
 
-````c#
+````csharp
 
    @Html.Partial("PartialName", customViewData)
    ````
 
 You can also pass a model into a partial view. This can be the page's view model, or some portion of it, or a custom object. Simply pass in the model as the second parameter when calling `Partial`/`PartialAsync` or `RenderPartial`/`RenderPartialAsync`:
 
-````c#
+````csharp
 
    @Html.Partial("PartialName", viewModel)
    ````
 
 You can pass an instance of `ViewDataDictionary` and a view model to a partial view:
 
-````c#
+````csharp
 
    @Html.Partial("PartialName", viewModel, customViewData)
    ````

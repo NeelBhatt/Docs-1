@@ -105,7 +105,7 @@ In this example, the view component is called directly from the controller:
 
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/views/view-components/sample/ViewCompFinal/Controllers/ToDoController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
      public IActionResult IndexVC()
      {
@@ -126,7 +126,7 @@ Create a *ViewComponents* folder and add the following `PriorityListViewComponen
 
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/views/view-components/sample/ViewCompFinal/ViewComponents/PriorityListViewComponent1.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    using Microsoft.AspNet.Mvc;
    using Microsoft.Data.Entity;
@@ -172,7 +172,7 @@ Notes on the code:
 
   <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp"} -->
 
-  ````c#
+  ````csharp
 
      [ViewComponent(Name = "PriorityList")]
      public class XYZ : ViewComponent
@@ -237,7 +237,7 @@ You can also call the view component directly from the controller:
 
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/views/view-components/sample/ViewCompFinal/Controllers/ToDoController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
      public IActionResult IndexVC()
      {
@@ -252,7 +252,7 @@ A complex view component might need to specify a non-default view under some con
 
 [!code-csharp[Main](../../mvc/views/view-components/sample/ViewCompFinal/ViewComponents/PriorityListViewComponentFinal.cs?highlight=4,5,6,7,8,9)]
 
-````c#
+````csharp
 
    public async Task<IViewComponentResult> InvokeAsync(
        int maxPriority, bool isDone)
@@ -342,7 +342,7 @@ If you want compile time safety you can replace the hard coded view component na
 
 [!code-csharp[Main](../../mvc/views/view-components/sample/ViewCompFinal/ViewComponents/PriorityList.cs?highlight=10,14)]
 
-````c#
+````csharp
 
    using Microsoft.AspNet.Mvc;
    using Microsoft.Data.Entity;

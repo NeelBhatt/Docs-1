@@ -26,7 +26,7 @@ Your `Configure` method must accept an [IApplicationBuilder](https://docs.asp.ne
 
 [!code-csharp[Main](../common/samples/WebApplication1/src/WebApplication1/Startup.cs?highlight=8,9,10,14,17,19,23)]
 
-````c#
+````csharp
 
    public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
    {
@@ -72,7 +72,7 @@ Just as with `Configure`, it is recommended that features that require substanti
 
 [!code-csharp[Main](../common/samples/WebApplication1/src/WebApplication1/Startup.cs?highlight=4,7,11)]
 
-````c#
+````csharp
 
    public void ConfigureServices(IServiceCollection services)
    {

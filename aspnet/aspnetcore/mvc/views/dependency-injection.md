@@ -20,7 +20,7 @@ An example of `@inject` in action:
 
 [!code-csharp[Main](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Views/ToDo/Index.cshtml?highlight=4,5,15,16,17)]
 
-````c#
+````csharp
 
    @using System.Threading.Tasks
    @using ViewInjectSample.Model
@@ -64,7 +64,7 @@ This view displays a list of `ToDoItem` instances, along with a summary showing 
 
 [!code-csharp[Main](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Startup.cs?highlight=6,7)]
 
-````c#
+````csharp
 
    // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
    public void ConfigureServices(IServiceCollection services)
@@ -81,7 +81,7 @@ The `StatisticsService` performs some calculations on the set of `ToDoItem` inst
 
 [!code-csharp[Main](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Model/Services/StatisticsService.cs?highlight=15,20,26)]
 
-````c#
+````csharp
 
    using System.Linq;
    using ViewInjectSample.Interfaces;
@@ -135,7 +135,7 @@ An alternative approach injects services directly into the view to obtain the op
 
 [!code-csharp[Main](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Controllers/ProfileController.cs?highlight=9,19)]
 
-````c#
+````csharp
 
    using Microsoft.AspNetCore.Mvc;
    using ViewInjectSample.Model;
@@ -170,7 +170,7 @@ These lists are populated by a service that has been injected into the view:
 
 [!code-csharp[Main](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Views/Profile/Index.cshtml?highlight=4,16,17,21,22,26,27)]
 
-````c#
+````csharp
 
    @using System.Threading.Tasks
    @using ViewInjectSample.Model.Services
@@ -208,7 +208,7 @@ The `ProfileOptionsService` is a UI-level service designed to provide just the d
 
 [!code-csharp[Main](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Model/Services/ProfileOptionsService.cs?highlight=7,13,24)]
 
-````c#
+````csharp
 
    using System.Collections.Generic;
 

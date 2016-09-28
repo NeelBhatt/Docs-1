@@ -58,7 +58,7 @@ Open the *project.json* file.
 
 [!code-csharp[Main](../migration/mvc/samples/WebApp1/src/WebApp1/Startup.cs?highlight=7,13,14,15,16,17,18,19,20,21,22,23,24)]
 
-````c#
+````csharp
 
 
    public class Startup
@@ -416,7 +416,7 @@ There are many problems that can cause a HTTP 500 error message that contain no 
 
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [3, 4, 5, 6]}} -->
 
-````c#
+````csharp
 
     public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
     {

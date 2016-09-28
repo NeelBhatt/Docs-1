@@ -76,7 +76,7 @@ These are the default locations which can be changed via the `AreaViewLocationFo
 
 For example, in the below code instead of having the folder name as 'Areas', it has been changed to 'Categories'.
 
-````c#
+````csharp
 
    services.Configure<RazorViewEngineOptions>(options =>
    {
@@ -93,7 +93,7 @@ Once you've defined the folder hierarchy, you need to tell MVC that each control
 
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [4]}} -->
 
-````c#
+````csharp
 
    ...
    namespace MyStore.Areas.Products.Controllers
@@ -120,7 +120,7 @@ Set up a route definition that works with your newly created areas. The [🔧 Ro
 
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [4, 5, 6]}} -->
 
-````c#
+````csharp
 
    ...
    app.UseMvc(routes =>

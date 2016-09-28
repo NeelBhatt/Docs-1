@@ -61,7 +61,7 @@ Add SwaggerGen to the services collection in the Configure method, and in the Co
 
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [12, 21, 24]}} -->
 
-````c#
+````csharp
 
      public void ConfigureServices(IServiceCollection services)
      {
@@ -181,7 +181,7 @@ Swagger is not only a simple way to represent the API, but has options for docum
 
 The `ConfigureSwaggerGen` method can be used to add information such as the author, license, description.
 
-````c#
+````csharp
 
    services.ConfigureSwaggerGen(options =>
    {
@@ -227,7 +227,7 @@ Configure Swagger to use the generated XML file.
 
 [!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Startup.cs?highlight=29,32)]
 
-````c#
+````csharp
 
    // This method gets called by the runtime. Use this method to add services to the container.
    public void ConfigureServices(IServiceCollection services)
@@ -287,7 +287,7 @@ Adding the triple slash comments to the method enhances the Swagger UI by adding
 
 [!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Controllers/TodoController.cs?highlight=2)]
 
-````c#
+````csharp
 
    /// <summary>
    /// Deletes a specific TodoItem.
@@ -339,7 +339,7 @@ Here is a more robust example, adding `<remarks />` where the content can be jus
 
 [!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Controllers/TodoController.cs?highlight=4,5,6,7,8,9,10,11,12,13,14)]
 
-````c#
+````csharp
 
    /// <summary>
    /// Creates a TodoItem.
@@ -386,7 +386,7 @@ Adding the `[Required]` annotation to the `Name` property of the TodoItem class 
 
 [!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Models/TodoItem.cs?highlight=10)]
 
-````c#
+````csharp
 
    using System;
    using System.ComponentModel;
@@ -413,7 +413,7 @@ Take the `Create()` method for example, currently it returns only "201 Created" 
 
 [!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Controllers/TodoController.cs?highlight=17,18,20,21)]
 
-````c#
+````csharp
 
    /// <summary>
    /// Creates a TodoItem.
@@ -462,7 +462,7 @@ Enable static files middleware.
 
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [4]}} -->
 
-````c#
+````csharp
 
    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
    public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)

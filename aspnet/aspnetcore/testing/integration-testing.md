@@ -51,7 +51,7 @@ Once the Microsoft.AspNetCore.TestHost package is included in the project, you w
 
 [!code-csharp[Main](../testing/integration-testing/sample/test/PrimeWeb.IntegrationTests/PrimeWebDefaultRequestShould.cs?highlight=6,7)]
 
-````c#
+````csharp
 
    private readonly TestServer _server;
    private readonly HttpClient _client;
@@ -87,7 +87,7 @@ Now we can add a few additional integration tests to confirm that the prime chec
 
 [!code-csharp[Main](../testing/integration-testing/sample/test/PrimeWeb.IntegrationTests/PrimeWebCheckPrimeShould.cs?highlight=8,9)]
 
-````c#
+````csharp
 
    public class PrimeWebCheckPrimeShould
    {
@@ -165,7 +165,7 @@ Refactoring is the process of changing an application's code to improve its desi
 
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]}} -->
 
-````c#
+````csharp
 
      public void Configure(IApplicationBuilder app,
          IHostingEnvironment env)
@@ -297,7 +297,7 @@ With this middleware in place and some helpful extension methods created to make
 
 [!code-csharp[Main](../testing/integration-testing/sample/src/PrimeWeb/Startup.cs?highlight=9)]
 
-````c#
+````csharp
 
    public void Configure(IApplicationBuilder app,
        IHostingEnvironment env)

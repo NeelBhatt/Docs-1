@@ -39,7 +39,7 @@ That is, an anchor tag that makes this an email link. You might want to do this 
 
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1EmailTagHelperCopy.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
 
    using Microsoft.AspNetCore.Razor.TagHelpers;
@@ -71,7 +71,7 @@ That is, an anchor tag that makes this an email link. You might want to do this 
 
 * Our class name has a suffix of **TagHelper**, which is *not* required, but it's considered a best practice convention. You could declare the class as:
 
-````c#
+````csharp
 
    public class Email : TagHelper
    ````
@@ -140,7 +140,7 @@ Update the `EmailTagHelper` class with the following:
 
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/EmailTagHelperMailTo.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
 
    public class EmailTagHelper : TagHelper
@@ -175,7 +175,7 @@ Update the `EmailTagHelper` class with the following:
 
 [!code-csharp[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/EmailTagHelperMailTo.cs?highlight=6)]
 
-````c#
+````csharp
 
    public override void Process(TagHelperContext context, TagHelperOutput output)
    {
@@ -221,7 +221,7 @@ That approach works for the attribute "href" as long as it doesn't currently exi
 
 [!code-csharp[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/EmailTagHelperMailVoid.cs?highlight=1)]
 
-````c#
+````csharp
 
    [HtmlTargetElement("email", TagStructure = TagStructure.WithoutEndTag)] 
    public class EmailVoidTagHelper : TagHelper
@@ -241,7 +241,7 @@ In this section we'll write an asynchronous email helper.
 
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/EmailTagHelper.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    public class EmailTagHelper : TagHelper
    {
@@ -298,7 +298,7 @@ In this section we'll write an asynchronous email helper.
 
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/BoldTagHelper.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    using Microsoft.AspNetCore.Razor.TagHelpers;
 
@@ -361,7 +361,7 @@ Decorating a class with multiple `[HtmlTargetElement]` attributes results in a l
 
 [!code-csharp[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/zBoldTagHelperCopy.cs?highlight=1,2)]
 
-````c#
+````csharp
 
    [HtmlTargetElement("bold")]
    [HtmlTargetElement(Attributes = "bold")]
@@ -379,14 +379,14 @@ Decorating a class with multiple `[HtmlTargetElement]` attributes results in a l
 
 When multiple attributes are added to the same statement, the runtime treats them as a logical-AND. For example, in the code below, an HTML element must be named "bold" with an attribute named "bold" ( <bold bold /> ) to match.
 
-````c#
+````csharp
 
    [HtmlTargetElement("bold", Attributes = "bold")]
    ````
 
 You can also use the `[HtmlTargetElement]` to change the name of the targeted element. For example if you wanted the `BoldTagHelper` to target `<MyBold>` tags, you would use the following attribute:
 
-````c#
+````csharp
 
    [HtmlTargetElement("MyBold")]
    ````
@@ -399,7 +399,7 @@ You can also use the `[HtmlTargetElement]` to change the name of the targeted el
 
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Models/WebsiteContext.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    using System;
 
@@ -451,14 +451,14 @@ You can also use the `[HtmlTargetElement]` to change the name of the targeted el
 
 * We are not explicitly identifying the target element with the `[HtmlTargetElement]` attribute, so the default of `website-information` will be targeted. If you applied the following attribute (note it's not kebab case but matches the class name):
 
-````c#
+````csharp
 
    [HtmlTargetElement("WebsiteInformation")]
    ````
 
 The lower kebab case tag `<website-information />` would not match. If you want use the `[HtmlTargetElement]` attribute, you would use kebab case as shown below:
 
-````c#
+````csharp
 
    [HtmlTargetElement("Website-Information")]
    ````
@@ -538,7 +538,7 @@ The condition tag helper renders output when passed a true value.
 
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/ConditionTagHelper.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    using Microsoft.AspNetCore.Razor.TagHelpers;
 
@@ -590,7 +590,7 @@ The condition tag helper renders output when passed a true value.
 
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Controllers/HomeController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
      public IActionResult Index(bool approved = false)
      {
@@ -611,7 +611,7 @@ The condition tag helper renders output when passed a true value.
 
 [!code-csharp[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/zConditionTagHelperCopy.cs?highlight=1,2,5)]
 
-````c#
+````csharp
 
    [HtmlTargetElement(Attributes = nameof(Condition))]
     //   [HtmlTargetElement(Attributes = "condition")]
@@ -642,7 +642,7 @@ Because these two helpers are closely related and we may refactor them in the fu
 
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinker.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    [HtmlTargetElement("p")]
    public class AutoLinkerHttpTagHelper : TagHelper
@@ -696,7 +696,7 @@ Because these two helpers are closely related and we may refactor them in the fu
 
 [!code-csharp[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinker.cs?highlight=15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34)]
 
-````c#
+````csharp
 
    [HtmlTargetElement("p")]
    public class AutoLinkerHttpTagHelper : TagHelper
@@ -733,7 +733,7 @@ Because these two helpers are closely related and we may refactor them in the fu
 
 [!code-csharp[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinkerCopy.cs?highlight=5,6,10,21,22,26)]
 
-````c#
+````csharp
 
        public class AutoLinkerHttpTagHelper : TagHelper
        {
@@ -773,7 +773,7 @@ Because these two helpers are closely related and we may refactor them in the fu
 
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinker.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    var childContent = await output.GetChildContentAsync();
 
@@ -783,7 +783,7 @@ That is, we call `GetChildContentAsync` using the `TagHelperOutput` passed into 
 
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z2AutoLinkerCopy.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    var childContent = output.Content.IsModified ? output.Content.GetContent() :
        (await output.GetChildContentAsync()).GetContent();
@@ -796,7 +796,7 @@ The code above checks to see if the content has been modified, and if it has, it
 
 [!code-csharp[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z2AutoLinkerCopy.cs?highlight=5,6,7,8)]
 
-````c#
+````csharp
 
    public class AutoLinkerHttpTagHelper : TagHelper
    {
@@ -823,7 +823,7 @@ The tag-helpers provide several properties to retrieve content.
 
 [!code-csharp[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinkerCopy.cs?highlight=5,6,10)]
 
-````c#
+````csharp
 
    public class AutoLinkerHttpTagHelper : TagHelper
    {

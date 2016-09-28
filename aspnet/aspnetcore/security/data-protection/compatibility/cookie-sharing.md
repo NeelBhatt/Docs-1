@@ -15,7 +15,7 @@ In your configure method use the CookieAuthenticationOptions to set up the data 
 
 If you're using identity:
 
-````c#
+````csharp
 
    app.AddIdentity<ApplicationUser, IdentityRole>(options =>
    {
@@ -26,7 +26,7 @@ If you're using identity:
 
 If you're using cookies directly:
 
-````c#
+````csharp
 
    app.UseCookieAuthentication(new CookieAuthenticationOptions
    {
@@ -40,7 +40,7 @@ Caution: You should consider configuring the DataProtectionProvider such that ke
 
   <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp"} -->
 
-  ````c#
+  ````csharp
 
      app.UseCookieAuthentication(new CookieAuthenticationOptions
      {
@@ -70,7 +70,7 @@ To share authentication cookies between your ASP.NET 4.x applications and your A
 2. In Startup.Auth.cs, locate the call to UseCookieAuthentication, which will generally look like the following.
 
 
-   ````c#
+   ````csharp
 
       app.UseCookieAuthentication(new CookieAuthenticationOptions
       {
@@ -81,7 +81,7 @@ To share authentication cookies between your ASP.NET 4.x applications and your A
 3. Modify the call to UseCookieAuthentication as follows, changing the CookieName to match the name used by the ASP.NET Core cookie authentication middleware, and providing an instance of a DataProtectionProvider that has been initialized to a key storage location.
 
 
-   ````c#
+   ````csharp
 
       app.UseCookieAuthentication(new CookieAuthenticationOptions
       {

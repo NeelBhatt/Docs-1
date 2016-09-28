@@ -125,7 +125,7 @@ Add the user secrets configuration source to the `Startup` method:
 
 You can now access user secrets via the configuration API:
 
-````c#
+````csharp
 
    string testConfig = Configuration["MySecret"];
    ````

@@ -35,7 +35,7 @@ The data protection system is instantiated with a default zero-setup configurati
 
 Below is an example of a custom data protection startup type which configured both where keys are persisted and how they're encrypted at rest. It also overrides the default app isolation policy by providing its own application name.
 
-````c#
+````csharp
 
    using System;
    using System.IO;

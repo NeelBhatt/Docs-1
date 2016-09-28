@@ -60,7 +60,7 @@ program.cs
 
 [!code-csharp[Main](../fundamentals/servers/sample/ServersDemo/src/ServersDemo/Program.cs?highlight=32,33,34,35,36,37,38,39,40)]
 
-````c#
+````csharp
 
    using System;
    using System.Threading.Tasks;
@@ -148,7 +148,7 @@ The server hosting the application can be referenced programmatically via the [I
 
 [!code-csharp[Main](../fundamentals/servers/sample/ServersDemo/src/ServersDemo/Startup.cs?highlight=3,6,7,10,15)]
 
-````c#
+````csharp
 
    public void Configure(IApplicationBuilder app, IApplicationLifetime lifetime, ILoggerFactory loggerFactory)
    {

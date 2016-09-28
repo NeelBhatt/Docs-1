@@ -11,7 +11,7 @@ Suppose you had a repository of rules you wanted to evaluate inside an authoriza
 
 For example, if you wanted to use ASP.NET's logging infrastructure you would to inject [ILoggerFactory](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Logging/ILoggerFactory/index.html.md#Microsoft.Extensions.Logging.ILoggerFactory.md) into your handler. Such a handler might look like:
 
-````c#
+````csharp
 
    public class LoggingAuthorizationHandler : AuthorizationHandler<MyRequirement>
    {
@@ -33,7 +33,7 @@ For example, if you wanted to use ASP.NET's logging infrastructure you would to 
 
 You would register the handler with `services.AddSingleton()`:
 
-````c#
+````csharp
 
    services.AddSingleton<IAuthorizationHandler, LoggingAuthorizationHandler>();
    ````

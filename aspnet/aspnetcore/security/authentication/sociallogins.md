@@ -38,7 +38,7 @@ Enabling these credentials in your web sites provides a significant advantage be
 
 * Require SSL. Modify the services.AddMvc(); code in `Startup` under `ConfigureServices`:
 
-````c#
+````csharp
 
    services.AddMvc(options =>
    {
@@ -146,7 +146,7 @@ Add the Facebook middleware in the `Configure` method in `Startup`:
 
 [!code-csharp[Main](../security/authentication/sociallogins/sample/Startup.cs?highlight=21,22,23,24,25)]
 
-````c#
+````csharp
 
    public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
    {

@@ -13,7 +13,7 @@ Open the *Models/Movie.cs* file and add the highlighted lines shown below:
 
 [!code-csharp[Main](../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Models/MovieDate.cs?highlight=11,12)]
 
-````c#
+````csharp
 
    using System;
    using System.ComponentModel.DataAnnotations;
@@ -53,7 +53,7 @@ The updated code:
 
 [!code-csharp[Main](../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Models/MovieDate.cs?highlight=11,12)]
 
-````c#
+````csharp
 
    using System;
    using System.ComponentModel.DataAnnotations;
@@ -103,7 +103,7 @@ Recall the format for routing set in the *Startup.cs* file.
 
 [!code-csharp[Main](../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Startup.cs?highlight=5)]
 
-````c#
+````csharp
 
    app.UseMvc(routes =>
    {
@@ -124,7 +124,7 @@ Open the `Movies` controller and examine the two `Edit` action methods:
 
 <!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    // GET: Movies/Edit/5
    public async Task<IActionResult> Edit(int? id)
@@ -146,7 +146,7 @@ Open the `Movies` controller and examine the two `Edit` action methods:
 
 <!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    [HttpPost]
    [ValidateAntiForgeryToken]
@@ -188,7 +188,7 @@ Notice the second `Edit` action method is preceded by the `[HttpPost]` attribute
 
 [!code-csharp[Main](../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs?highlight=1)]
 
-````c#
+````csharp
 
    [HttpPost]
    [ValidateAntiForgeryToken]
@@ -242,7 +242,7 @@ The `HttpGet Edit` method takes the movie `ID` parameter, looks up the movie usi
 
 <!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    // GET: Movies/Edit/5
    public async Task<IActionResult> Edit(int? id)
@@ -378,7 +378,7 @@ The following listing shows the `[HttpPost]` version of the `Edit` action method
 
 [!code-csharp[Main](../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs?highlight=1,2,10,14,15,28)]
 
-````c#
+````csharp
 
    [HttpPost]
    [ValidateAntiForgeryToken]

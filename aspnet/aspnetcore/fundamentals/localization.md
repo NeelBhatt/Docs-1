@@ -26,7 +26,7 @@ targeted for localization and not need to create resource files early in develop
 
 <!-- literal_block {"xml:space": "preserve", "source": "fundamentals/localization/sample/Controllers/AboutController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    using Microsoft.AspNet.Mvc;
    using Microsoft.Extensions.Localization;
@@ -58,7 +58,7 @@ Use the [IHtmlLocalizer<T>](https://docs.asp.net/projects/api/en/latest/autoapi/
 
 [!code-csharp[Main](../fundamentals/localization/sample/Controllers/BookController.cs?highlight=3,5,20)]
 
-````c#
+````csharp
 
    using System;
    using Microsoft.AspNet.Http;
@@ -93,7 +93,7 @@ At the lowest level, you can get `IStringLocalizerFactory` out of [Dependency In
 
 [!code-csharp[Main](../fundamentals/localization/sample/Controllers/TestController.cs?highlight=6,7,8,9,10,11)]
 
-````c#
+````csharp
 
     public class TestController : Controller
     {
@@ -122,7 +122,7 @@ You can partition your localized strings by controller, area, or have just one c
 
 <!-- literal_block {"xml:space": "preserve", "source": "fundamentals/localization/sample/Resources/SharedResource.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    // Dummy class to group shared resources
 
@@ -139,7 +139,7 @@ Some developers use the `Startup` class to contain global or shared strings.  In
 
 <!-- literal_block {"xml:space": "preserve", "source": "fundamentals/localization/sample/Controllers/InfoController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
     public class InfoController : Controller
     {
@@ -230,7 +230,7 @@ DataAnnotations error messages are localized with [IStringLocalizer<T>](https://
 
 <!-- literal_block {"xml:space": "preserve", "source": "fundamentals/localization/sample/ViewModels/Account/RegisterViewModel.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
     public class RegisterViewModel
     {
@@ -294,7 +294,7 @@ Localization is configured in the `ConfigureServices` method:
 
 [!code-csharp[Main](../fundamentals/localization/sample/Startup.cs?highlight=4,7,8)]
 
-````c#
+````csharp
 
      public void ConfigureServices(IServiceCollection services)
      {
@@ -320,7 +320,7 @@ The current culture on a request is set in the localization [Middleware](middlew
 
 <!-- literal_block {"xml:space": "preserve", "source": "fundamentals/localization/sample/Startup.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
      public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
 
@@ -406,7 +406,7 @@ The [Accept-Language header](https://www.w3.org/International/questions/qa-accep
 
 Suppose you want to let your customers store their language and culture in your databases. You could write a provider to look up these values for the user. The following code shows how to add a custom provider:
 
-````c#
+````csharp
 
    services.Configure<RequestLocalizationOptions>(options =>
    {
@@ -511,7 +511,7 @@ The `SetLanguage` method sets the culture cookie.
 
 <!-- literal_block {"xml:space": "preserve", "source": "fundamentals/localization/sample/Controllers/HomeController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
      [HttpPost]
      public IActionResult SetLanguage(string culture, string returnUrl)

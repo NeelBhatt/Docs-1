@@ -15,7 +15,7 @@ Open the *Models/Movie.cs* file and add a `Rating` property:
 
 [!code-csharp[Main](../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Models/MovieDateRating.cs?highlight=11)]
 
-````c#
+````csharp
 
    public class Movie
    {
@@ -36,7 +36,7 @@ Build the app (Ctrl+Shift+B).
 
 Because you've added a new field to the `Movie` class, you also need to update the binding white list so this new property will be included. Update the `[Bind]` attribute for `Create` and `Edit` action methods to include the `Rating` property:
 
-````c#
+````csharp
 
    [Bind("ID,Title,ReleaseDate,Genre,Price,Rating")]
    ````
@@ -114,7 +114,7 @@ Update the `SeedData` class so that it provides a value for the new column. A sa
 
 [!code-csharp[Main](../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Models/SeedDataRating.cs?highlight=6)]
 
-````c#
+````csharp
 
         new Movie
         {

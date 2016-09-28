@@ -68,7 +68,7 @@ A good scenario in which to set `NoStore` to `true` is error pages. It's unlikel
 
 [!code-csharp[Main](../performance/caching/response/sample/src/ResponseCacheSample/Controllers/HomeController.cs?highlight=1)]
 
-````c#
+````csharp
 
    [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
    public IActionResult Error()
@@ -97,7 +97,7 @@ Below is an example showing the headers produced by setting `Duration` and leavi
 
 [!code-csharp[Main](../performance/caching/response/sample/src/ResponseCacheSample/Controllers/HomeController.cs?highlight=1)]
 
-````c#
+````csharp
 
    [ResponseCache(Duration = 60)]
    public IActionResult Contact()
@@ -124,7 +124,7 @@ Setting up a cache profile:
 
 [!code-csharp[Main](../performance/caching/response/sample/src/ResponseCacheSample/Startup.cs?highlight=5,6,7,8,9,10,11,12,13,14,15)]
 
-````c#
+````csharp
 
    public void ConfigureServices(IServiceCollection services)
    {
@@ -151,7 +151,7 @@ Referencing a cache profile:
 
 [!code-csharp[Main](../performance/caching/response/sample/src/ResponseCacheSample/Controllers/HomeController.cs?highlight=1,4)]
 
-````c#
+````csharp
 
    [ResponseCache(Duration = 30)]
    public class HomeController : Controller

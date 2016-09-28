@@ -39,7 +39,7 @@ Synchronous filters define both an On*Stage*Executing and On*Stage*Executed meth
 
 [!code-csharp[Main](../mvc/controllers/filters/sample/src/FiltersSample/Filters/SampleActionFilter.cs?highlight=6,8,13)]
 
-````c#
+````csharp
 
    using FiltersSample.Helper;
    using Microsoft.AspNetCore.Mvc.Filters;
@@ -65,7 +65,7 @@ Asynchronous filters define a single On*Stage*ExecutionAsync method that will su
 
 [!code-csharp[Main](../mvc/controllers/filters/sample/src/FiltersSample/Filters/SampleAsyncActionFilter.cs?highlight=6,8,9,10)]
 
-````c#
+````csharp
 
    using System.Threading.Tasks;
    using Microsoft.AspNetCore.Mvc.Filters;
@@ -97,7 +97,7 @@ Global filters are added in the `ConfigureServices` method in `Startup`, when co
 
 [!code-csharp[Main](../mvc/controllers/filters/sample/src/FiltersSample/Startup.cs?highlight=5,6)]
 
-````c#
+````csharp
 
    public void ConfigureServices(IServiceCollection services)
    {
@@ -120,7 +120,7 @@ It's often convenient to implement filter interfaces as *Attributes*. Filter att
 
 [!code-csharp[Main](../mvc/controllers/filters/sample/src/FiltersSample/Filters/AddHeaderAttribute.cs?highlight=5,16)]
 
-````c#
+````csharp
 
    using Microsoft.AspNetCore.Mvc.Filters;
 
@@ -151,7 +151,7 @@ Attributes allow filters to accept arguments, as shown in the example above. You
 
 [!code-csharp[Main](../mvc/controllers/filters/sample/src/FiltersSample/Controllers/SampleController.cs?highlight=1)]
 
-````c#
+````csharp
 
    [AddHeader("Author", "Steve Smith @ardalis")]
    public class SampleController : Controller
@@ -192,7 +192,7 @@ You can short-circuit the filter pipeline at any point by setting the `Result` p
 
 [!code-csharp[Main](../mvc/controllers/filters/sample/src/FiltersSample/Filters/ShortCircuitingResourceFilterAttribute.cs?highlight=12,13,14,15)]
 
-````c#
+````csharp
 
    using System;
    using Microsoft.AspNetCore.Mvc;
@@ -223,7 +223,7 @@ In the following code, both the `ShortCircuitingResourceFilter` and the `AddHead
 
 [!code-csharp[Main](../mvc/controllers/filters/sample/src/FiltersSample/Controllers/SampleController.cs?highlight=1,4)]
 
-````c#
+````csharp
 
    [AddHeader("Author", "Steve Smith @ardalis")]
    public class SampleController : Controller
@@ -257,7 +257,7 @@ A `TypeFilter` will instantiate an instance, using services from DI for its depe
 
 [!code-csharp[Main](../../mvc/controllers/filters/sample/src/FiltersSample/Controllers/HomeController.cs?highlight=1)]
 
-````c#
+````csharp
 
    [ServiceFilter(typeof(AddHeaderFilterWithDi))]
    public IActionResult Index()
@@ -279,7 +279,7 @@ To avoid this exception, you must register the `AddHeaderFilterWithDI` type in `
 
 [!code-csharp[Main](../mvc/controllers/filters/sample/src/FiltersSample/Startup.cs?highlight=1)]
 
-````c#
+````csharp
 
    services.AddScoped<AddHeaderFilterWithDi>();
 
@@ -308,7 +308,7 @@ If you have a simple filter that doesn't require any arguments, but which has co
 
 [!code-csharp[Main](../mvc/controllers/filters/sample/src/FiltersSample/Filters/SampleActionFilterAttribute.cs?highlight=1,3,7)]
 
-````c#
+````csharp
 
    public class SampleActionFilterAttribute : TypeFilterAttribute
    {
@@ -352,7 +352,7 @@ You can implement `IFilterFactory` on your own attribute implementations as anot
 
 [!code-csharp[Main](../mvc/controllers/filters/sample/src/FiltersSample/Filters/AddHeaderWithFactoryAttribute.cs?highlight=1,4,5,6,7)]
 
-````c#
+````csharp
 
    public class AddHeaderWithFactoryAttribute : Attribute, IFilterFactory
    {
@@ -409,7 +409,7 @@ Every controller that inherits from the `Controller` base class includes `OnActi
 
 To modify the default, scope-based order, you could explicitly set the `Order` property of a class-level or method-level filter. For example, adding `Order=-1` to a method level attribute:
 
-````c#
+````csharp
 
    [MyFilter(Name = "Method Level Attribute", Order=-1)]
    ````
@@ -455,7 +455,7 @@ The [short circuiting resource filter](xref:mvc/controllers/filters#short-circui
 
 [!code-csharp[Main](../mvc/controllers/filters/sample/src/FiltersSample/Filters/NaiveCacheResourceFilterAttribute.cs?highlight=1,2,11,16,17,27,30)]
 
-````c#
+````csharp
 
    public class NaiveCacheResourceFilterAttribute : Attribute,
        IResourceFilter
@@ -500,7 +500,7 @@ Adding this filter to a class or method is shown here:
 
 [!code-csharp[Main](../mvc/controllers/filters/sample/src/FiltersSample/Controllers/CachedController.cs?highlight=1,2,6)]
 
-````c#
+````csharp
 
    [TypeFilter(typeof(NaiveCacheResourceFilterAttribute))]
    public class CachedController : Controller
@@ -540,7 +540,7 @@ Exception filters do not have two events (for before and after) - they only impl
 
 [!code-csharp[Main](../mvc/controllers/filters/sample/src/FiltersSample/Filters/CustomExceptionFilterAttribute.cs?highlight=33,34)]
 
-````c#
+````csharp
 
    using Microsoft.AspNetCore.Hosting;
    using Microsoft.AspNetCore.Mvc;

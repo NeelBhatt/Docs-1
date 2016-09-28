@@ -24,7 +24,7 @@ In ASP.NET MVC, authentication and identity features are configured using ASP.NE
 
 Now, open Startup.cs and update the ConfigureServices() method to use Entity Framework and Identity services:
 
-````c#
+````csharp
 
    public void ConfigureServices(IServiceCollection services)
    {
@@ -45,7 +45,7 @@ At this point, there are two types referenced in the above code that we haven't 
 
 ApplicationUser.cs:
 
-````c#
+````csharp
 
    using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
@@ -59,7 +59,7 @@ ApplicationUser.cs:
 
 ApplicationDbContext.cs:
 
-````c#
+````csharp
 
    using Microsoft.AspNetCore.Identity.EntityFramework;
    using Microsoft.Data.Entity;
@@ -93,7 +93,7 @@ The ASP.NET Core MVC Starter Web project doesn't include much customization of u
 
 With these files in place, the Startup.cs file can be made to compile by updating its using statements:
 
-````c#
+````csharp
 
    using Microsoft.Framework.ConfigurationModel;
    using Microsoft.AspNetCore.Hosting;
@@ -122,7 +122,7 @@ Now, add a new MVC View Page called _LoginPartial to the Views/Shared folder:
 
 Update _LoginPartial.cshtml with the following code (replace all of its contents):
 
-````c#
+````csharp
 
    @inject SignInManager<User> SignInManager
    @inject UserManager<User> UserManager

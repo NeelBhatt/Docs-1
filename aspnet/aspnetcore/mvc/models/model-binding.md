@@ -19,7 +19,7 @@ Since the route template looks like this, `{controller=Home}/{action=Index}/{id?
 
 <!-- literal_block {"ids": [], "linenos": true, "xml:space": "preserve", "language": "csharp"} -->
 
-````c#
+````csharp
 
    public IActionResult Edit(int? id)
    ````
@@ -92,7 +92,7 @@ ASP.NET selects input formatters based on the [Content-Type](https://www.w3.org/
 
 <!-- literal_block {"ids": [], "linenos": true, "xml:space": "preserve", "language": "csharp"} -->
 
-````c#
+````csharp
 
    public void ConfigureServices(IServiceCollection services)
    {

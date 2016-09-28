@@ -142,7 +142,7 @@ The HTML, JavaScript and URL encoders are available to your code in two ways, yo
 
 To use the configurable encoders via DI your constructors should take an *HtmlEncoder*, *JavaScriptEncoder* and *UrlEncoder* parameter as appropriate. For example;
 
-````c#
+````csharp
 
    public class HomeController : Controller
    {
@@ -165,7 +165,7 @@ To use the configurable encoders via DI your constructors should take an *HtmlEn
 
 If you want to build a URL query string with untrusted input as a value use the `UrlEncoder` to encode the value. For example,
 
-````c#
+````csharp
 
    var example = "\"Quoted Value with spaces and &\"";
    var encodedValue = _urlEncoder.Encode(example);
@@ -202,7 +202,7 @@ When you view the source of the web page you will see it has been rendered as fo
 
 To widen the characters treated as safe by the encoder you would insert the following line into the `ConfigureServices()` method in `startup.cs`;
 
-````c#
+````csharp
 
    services.AddSingleton<HtmlEncoder>(
      HtmlEncoder.Create(allowedRanges: new[] { UnicodeRanges.BasicLatin,

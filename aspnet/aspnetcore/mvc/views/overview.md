@@ -53,7 +53,7 @@ Views are typically returned from actions as a [ViewResult](http://docs.asp.net/
 
 [!code-csharp[Main](../common/samples/WebApplication1/src/WebApplication1/Controllers/HomeController.cs?highlight=5)]
 
-````c#
+````csharp
 
        public IActionResult About()
        {
@@ -116,7 +116,7 @@ Once a model has been specified for a view, the instance sent to the view can be
 
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [13]}} -->
 
-````c#
+````csharp
 
    public IActionResult Contact()
    {
@@ -138,7 +138,7 @@ There are no restrictions on the types that can be provided to a view as a model
 
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [13]}} -->
 
-````c#
+````csharp
 
    namespace WebApplication1.ViewModels
    {
@@ -164,7 +164,7 @@ In addition to strongly typed views, all views have access to a loosely typed co
 
 Set some values for `ViewData` in an action:
 
-````c#
+````csharp
 
    public IActionResult SomeAction()
    {

@@ -208,7 +208,7 @@ Add jQuery and Bootstrap components to the page to verify that the web applicati
 1. Within the `Configure` method of the Startup.cs file, add a call to the `UseStaticFiles` extension method. This middleware adds files, found within the web root, to the request pipeline. This line of code will look as follows:
 
 
-   ````c#
+   ````csharp
 
       app.UseStaticFiles();
       ````

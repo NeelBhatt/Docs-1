@@ -81,7 +81,7 @@ ASP.NET Core MVC is built on top of [ASP.NET Core's routing](../fundamentals/rou
 
 *Convention-based routing* enables you to globally define the URL formats that your application accepts and how each of those formats maps to a specific action method on given controller. When an incoming request is received, the routing engine parses the URL and matches it to one of the defined URL formats, and then calls the associated controller's action method.
 
-````c#
+````csharp
 
    routes.MapRoute(name: "Default", template: "{controller=Home}/{action=Index}/{id?}");
    ````
@@ -90,7 +90,7 @@ ASP.NET Core MVC is built on top of [ASP.NET Core's routing](../fundamentals/rou
 
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [1, 4]}} -->
 
-````c#
+````csharp
 
    [Route("api/[controller]")]
    public class ProductsController : Controller
@@ -107,7 +107,7 @@ ASP.NET Core MVC is built on top of [ASP.NET Core's routing](../fundamentals/rou
 
 ASP.NET Core MVC [model binding](models/model-binding.md) converts client request data  (form values, route data, query string parameters, HTTP headers) into objects that the controller can handle. As a result, your controller logic doesn't have to do the work of figuring out the incoming request data; it simply has the data as parameters to its action methods.
 
-````C#
+````csharp
 
    public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null) { ... }
    ````
@@ -118,7 +118,7 @@ ASP.NET Core MVC supports [validation](models/validation.md) by decorating your 
 
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [4, 5, 8, 9]}} -->
 
-````c#
+````csharp
 
    using System.ComponentModel.DataAnnotations;
    public class LoginViewModel
@@ -140,7 +140,7 @@ A controller action:
 
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [3]}} -->
 
-````c#
+````csharp
 
    public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
    {
@@ -183,7 +183,7 @@ Your app can also use [dependency injection in view files](views/dependency-inje
 
 [!code-csharp[Main](../common/samples/WebApplication1/src/WebApplication1/Controllers/AccountController.cs?highlight=1)]
 
-````c#
+````csharp
 
        [Authorize]
        public class AccountController : Controller

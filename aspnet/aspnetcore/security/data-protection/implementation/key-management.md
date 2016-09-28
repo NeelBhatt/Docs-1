@@ -42,7 +42,7 @@ There might be circumstances where a key will be created with immediate activati
 
 The default key lifetime is 90 days, though this is configurable as in the following example.
 
-````c#
+````csharp
 
    services.AddDataProtection()
        // use 14-day lifetime instead of 90-day lifetime

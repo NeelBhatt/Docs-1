@@ -80,7 +80,7 @@ Most applications will create routes by calling `MapRoute` or one of the similar
 
 This is an example of a `MapRoute` call used by a typical ASP.NET MVC route definition:
 
-````c#
+````csharp
 
    routes.MapRoute(
        name: "default",
@@ -95,7 +95,7 @@ See [route-template-reference](#route-template-reference) for a thorough descrip
 
 This example includes a *route constraint*:
 
-````c#
+````csharp
 
    routes.MapRoute(
        name: "default",
@@ -108,7 +108,7 @@ Additional overloads of `MapRoute` accept values for `constraints`, `dataTokens`
 
 The following two examples create equivalent routes:
 
-````c#
+````csharp
 
    routes.MapRoute(
        name: "default_route",
@@ -125,7 +125,7 @@ The following two examples create equivalent routes:
 
 This example demonstrates a few more features:
 
-````c#
+````csharp
 
    routes.MapRoute(
      name: "blog",
@@ -137,7 +137,7 @@ This template will match a URL path like `/Blog/All-About-Routing/Introduction` 
 
 This example adds route constraints and data tokens:
 
-````c#
+````csharp
 
    routes.MapRoute(
        name: "us_english_products",
@@ -162,7 +162,7 @@ The `Route` class can also perform URL generation by combining a set of route va
 
 This example uses a basic ASP.NET MVC style route:
 
-````c#
+````csharp
 
    routes.MapRoute(
        name: "default",
@@ -190,7 +190,7 @@ Add routing to the service container in *Startup.cs*:
 
 [!code-csharp[Main](../fundamentals/routing/sample/RoutingSample/Startup.cs?highlight=3)]
 
-````c#
+````csharp
 
    public void ConfigureServices(IServiceCollection services)
    {
@@ -359,7 +359,7 @@ Values that are explicitly provided but which don't match anything are added to 
 
 If a route has a default value that doesn't correspond to a parameter and that value is explicitly provided, it must match the default value. For example:
 
-````c#
+````csharp
 
    routes.MapRoute("blog_route", "blog/{*slug}",
      defaults: new { controller = "Blog", action = "ReadPost" });

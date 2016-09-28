@@ -11,7 +11,7 @@ Update the `Index` action method to enable search:
 
 <!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    public async Task<IActionResult> Index(string searchString)
    {
@@ -30,7 +30,7 @@ Update the `Index` action method to enable search:
 
 The first line of the `Index` action method creates a [LINQ](http://msdn.microsoft.com/en-us/library/bb397926.aspx) query to select the movies:
 
-````c#
+````csharp
 
    var movies = from m in _context.Movie
                 select m;
@@ -42,7 +42,7 @@ If the `searchString` parameter contains a string, the movies query is modified 
 
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [3]}} -->
 
-````c#
+````csharp
 
       if (!String.IsNullOrEmpty(searchString))
       {
@@ -63,7 +63,7 @@ If you change the signature of the `Index` method to have a parameter named `id`
 
 [!code-csharp[Main](../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Startup.cs?highlight=5)]
 
-````c#
+````csharp
 
    app.UseMvc(routes =>
    {
@@ -90,7 +90,7 @@ The previous `Index` method:
 
 [!code-csharp[Main](../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs?highlight=1,8)]
 
-````c#
+````csharp
 
    public async Task<IActionResult> Index(string searchString)
    {
@@ -111,7 +111,7 @@ The updated `Index` method:
 
 [!code-csharp[Main](../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs?highlight=1,8)]
 
-````c#
+````csharp
 
    public async Task<IActionResult> Index(string id)
    {
@@ -136,7 +136,7 @@ However, you can't expect users to modify the URL every time they want to search
 
 [!code-csharp[Main](../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs?highlight=1)]
 
-````c#
+````csharp
 
    public async Task<IActionResult> Index(string searchString)
    {
@@ -191,7 +191,7 @@ You could add the following `[HttpPost] Index` method.
 
 [!code-csharp[Main](../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs?highlight=1)]
 
-````c#
+````csharp
 
    [HttpPost]
    public string Index(string searchString, bool notUsed)
@@ -242,7 +242,7 @@ Add the following `MovieGenreViewModel` class to the *Models* folder:
 
 <!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Models/MovieGenreViewModel.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    using Microsoft.AspNetCore.Mvc.Rendering;
    using System.Collections.Generic;
@@ -271,7 +271,7 @@ Replace the `Index` method with the following code:
 
 <!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    public async Task<IActionResult> Index(string movieGenre, string searchString)
    {
@@ -304,7 +304,7 @@ Replace the `Index` method with the following code:
 
 The following code is a `LINQ` query that retrieves all the genres from the database.
 
-````c#
+````csharp
 
    IQueryable<string> genreQuery = from m in _context.Movie
                                    orderby m.Genre
@@ -313,7 +313,7 @@ The following code is a `LINQ` query that retrieves all the genres from the data
 
 The `SelectList` of genres is created by projecting the distinct genres (we don't want our select list to have duplicate genres).
 
-````c#
+````csharp
 
    movieGenreVM.genres = new SelectList(await genreQuery.Distinct().ToListAsync())
    ````

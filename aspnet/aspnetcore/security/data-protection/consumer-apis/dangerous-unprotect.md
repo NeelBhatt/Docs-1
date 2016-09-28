@@ -18,7 +18,7 @@ To support the scenario of allowing payloads to be unprotected even in the face 
 
 IPersistedDataProtector exposes the following API surface:
 
-````c#
+````csharp
 
    DangerousUnprotect(byte[] protectedData, bool ignoreRevocationErrors,
      out bool requiresMigration, out bool wasRevoked) : byte[]

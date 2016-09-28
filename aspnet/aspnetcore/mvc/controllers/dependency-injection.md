@@ -21,7 +21,7 @@ ASP.NET Core's built-in support for constructor-based dependency injection exten
 
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/controllers/dependency-injection/sample/src/ControllerDI/Interfaces/IDateTime.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    using System;
 
@@ -39,7 +39,7 @@ Implementing an interface like this one so that it uses the system clock at runt
 
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/controllers/dependency-injection/sample/src/ControllerDI/Services/SystemDateTime.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    using System;
    using ControllerDI.Interfaces;
@@ -61,7 +61,7 @@ With this in place, we can use the service in our controller. In this case, we h
 
 [!code-csharp[Main](../mvc/controllers/dependency-injection/sample/src/ControllerDI/Controllers/HomeController.cs?highlight=8,10,12,17,18,19,20,21,22,23,24,25,26,27,28,29,30)]
 
-````c#
+````csharp
 
    using ControllerDI.Interfaces;
    using Microsoft.AspNetCore.Mvc;
@@ -115,7 +115,7 @@ This error occurs when we have not configured a service in the `ConfigureService
 
 [!code-csharp[Main](../mvc/controllers/dependency-injection/sample/src/ControllerDI/Startup.cs?highlight=4)]
 
-````c#
+````csharp
 
    public void ConfigureServices(IServiceCollection services)
    {
@@ -155,7 +155,7 @@ Sometimes you don't need a service for more than one action within your controll
 
 [!code-csharp[Main](../mvc/controllers/dependency-injection/sample/src/ControllerDI/Controllers/HomeController.cs?highlight=1)]
 
-````c#
+````csharp
 
    public IActionResult About([FromServices] IDateTime dateTime)
    {
@@ -174,7 +174,7 @@ To work with the options pattern, you need to create a class that represents the
 
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/controllers/dependency-injection/sample/src/ControllerDI/Model/SampleWebSettings.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    namespace ControllerDI.Model
    {
@@ -191,7 +191,7 @@ Then you need to configure the application to use the options model and add your
 
 [!code-csharp[Main](../mvc/controllers/dependency-injection/sample/src/ControllerDI/Startup.cs?highlight=3,4,5,6,9,16,19)]
 
-````c#
+````csharp
 
    public Startup(IHostingEnvironment env)
    {
@@ -234,7 +234,7 @@ Once you've specified a strongly-typed configuration object (in this case, `Samp
 
 [!code-csharp[Main](../mvc/controllers/dependency-injection/sample/src/ControllerDI/Controllers/SettingsController.cs?highlight=3,5,7)]
 
-````c#
+````csharp
 
        public class SettingsController : Controller
        {

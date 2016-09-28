@@ -133,7 +133,7 @@ Source code is very commonly included in these articles. Images should never be 
 
 This results in:
 
-````c#
+````csharp
 
    public void Foo()
    {
@@ -169,7 +169,7 @@ This results in:
 
 <!-- literal_block {"ids": [], "linenos": true, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [3]}} -->
 
-````c#
+````csharp
 
    public void Foo()
    {
@@ -236,7 +236,7 @@ External file references can specify a language, emphasize certain lines, displa
 
 [!code-csharp[Main](../contribute/style-guide/_static/startup.cs?highlight=19,25,26,27)]
 
-````c#
+````csharp
 
    using System;
    using Microsoft.AspNet.Builder;

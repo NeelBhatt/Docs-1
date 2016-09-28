@@ -17,7 +17,7 @@ Adding logging to a component in your application is done by requesting either a
 
 <!-- literal_block {"xml:space": "preserve", "source": "fundamentals/logging/sample/src/TodoApi/Startup.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    var logger = loggerFactory.CreateLogger("Catchall Endpoint");
    logger.LogInformation("No endpoint found for request {path}", context.Request.Path);
@@ -34,7 +34,7 @@ The call to the log method can utilize a format string with named placeholders (
 
 <!-- literal_block {"xml:space": "preserve", "source": "fundamentals/logging/sample/src/TodoApi/Startup.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    logger.LogInformation("No endpoint found for request {path}", context.Request.Path);
 
@@ -46,7 +46,7 @@ The logic for the API is contained within the *TodoController*, which uses [Depe
 
 [!code-csharp[Main](../fundamentals/logging/sample/src/TodoApi/Controllers/TodoController.cs?highlight=5,8,11,17)]
 
-````c#
+````csharp
 
    [Route("api/[controller]")]
    public class TodoController : Controller
@@ -128,7 +128,7 @@ In the `TodoController` example, event id constants are defined for each event, 
 
 [!code-csharp[Main](../fundamentals/logging/sample/src/TodoApi/Controllers/TodoController.cs?highlight=4,12,16)]
 
-````c#
+````csharp
 
    [HttpGet]
    public IEnumerable<TodoItem> GetAll()
@@ -174,7 +174,7 @@ To configure logging in your ASP.NET Core application, you should resolve `ILogg
 
 [!code-csharp[Main](../fundamentals/logging/sample/src/TodoApi/Startup.cs?highlight=25)]
 
-````c#
+````csharp
 
        public void Configure(IApplicationBuilder app,
            IHostingEnvironment env,
@@ -193,7 +193,7 @@ A LoggerFactory instance can optionally be configured with custom `FilterLoggerS
 
 <!-- literal_block {"xml:space": "preserve", "source": "fundamentals/logging/sample/src/TodoApi/Startup.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    loggerFactory
        .WithFilter(new FilterLoggerSettings
@@ -234,7 +234,7 @@ The following example demonstrates how to configure a `TraceSourceLogger` instan
 
 <!-- literal_block {"xml:space": "preserve", "source": "fundamentals/logging/sample/src/TodoApi/Startup.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    // add Trace Source logging
    var testSwitch = new SourceSwitch("sourceSwitch", "Logging Sample");
@@ -250,7 +250,7 @@ The API action below logs a warning when the specified `id` is not found:
 
 [!code-csharp[Main](../fundamentals/logging/sample/src/TodoApi/Controllers/TodoController.cs?highlight=8)]
 
-````c#
+````csharp
 
    [HttpGet("{id}", Name = "GetTodo")]
    public IActionResult GetById(string id)

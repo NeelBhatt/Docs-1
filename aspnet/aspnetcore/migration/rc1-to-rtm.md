@@ -159,7 +159,7 @@ For more information on the file watcher, see **Dotnet watch** in  [Tutorials](.
 
 ASP.NET Core 1.0 apps are console apps; you must define an entry point for your app that sets up a web host and runs it. Below is an example from the startup code for one of the Web Application templates in Visual Studio:
 
-````c#
+````csharp
 
    public class Program
    {
@@ -214,14 +214,14 @@ The environment key is set with the `ASPNETCORE_ENVIRONMENT` environment variabl
 
 Dependency injection code that uses `IApplicationEnvironment` must now use [IHostingEnvironment](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/IHostingEnvironment/index.html.md#Microsoft.AspNetCore.Hosting.IHostingEnvironment.md). For example, in your `Startup` class, change:
 
-````c#
+````csharp
 
    public Startup(IApplicationEnvironment applicationEnvironment)
    ````
 
 To:
 
-````c#
+````csharp
 
    public Startup(IHostingEnvironment hostingEnvironment)
    ````
@@ -283,14 +283,14 @@ To:
 
 ASP.NET 5 RC1:
 
-````c#
+````csharp
 
    @Component.InvokeAsync("Test", "MyName", 15)
    ````
 
 ASP.NET Core 1.0:
 
-````c#
+````csharp
 
    @Component.InvokeAsync("Test", new { name = "MyName", age = 15 })
    @Component.InvokeAsync("Test", new Dictionary<string, object> {
@@ -323,7 +323,7 @@ File-based configuration providers support both relative and absolute paths to c
 
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [4]}} -->
 
-````c#
+````csharp
 
    public Startup(IHostingEnvironment env)
    {
@@ -353,7 +353,7 @@ The signatures for the following methods or properties have changed:
 
 To use Identity in a view, add the following:
 
-````c#
+````csharp
 
    @using Microsoft.AspNetCore.Identity
    @inject SignInManager<TUser> SignInManager
@@ -386,7 +386,7 @@ The *Publish to IIS tool* generates a correct *web.config*. See [Publishing to I
 
 IIS integration middleware is now configured when creating the [Microsoft.AspNetCore.Hosting.WebHostBuilder](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/WebHostBuilder/index.html.md#Microsoft.AspNetCore.Hosting.WebHostBuilder.md), and is no longer called in the `Configure` method of the `Startup` class:
 
-````c#
+````csharp
 
    var host = new WebHostBuilder()
        .UseIISIntegration()

@@ -23,7 +23,7 @@ You must configure at least one source in order for `Configuration` to function 
 
 <!-- literal_block {"xml:space": "preserve", "source": "fundamentals/configuration/sample/src/CodeSnippets/ConfigSummarySnippet.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    var builder = new ConfigurationBuilder();
    builder.AddInMemoryCollection();
@@ -80,7 +80,7 @@ Adding support for additional configuration sources is accomplished through exte
 
 <!-- literal_block {"xml:space": "preserve", "source": "fundamentals/configuration/sample/src/CustomConfigurationProvider/Program.cs", "ids": ["custom-config"], "names": ["custom-config"], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    // work with with a builder using multiple calls
    var builder = new ConfigurationBuilder();
@@ -192,7 +192,7 @@ A simple `MyOptions` class is shown here:
 
 <!-- literal_block {"xml:space": "preserve", "source": "fundamentals/configuration/sample/src/UsingOptions/Models/MyOptions.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    public class MyOptions
    {
@@ -206,7 +206,7 @@ Options can be injected into your application using the [IOptions<TOptions>](htt
 
 [!code-csharp[Main](../fundamentals/configuration/sample/src/UsingOptions/Controllers/HomeController.cs?highlight=3,5,8)]
 
-````c#
+````csharp
 
    public class HomeController : Controller
    {
@@ -230,7 +230,7 @@ To setup the [IOptions<TOptions>](http://docs.asp.net/projects/api/en/latest/aut
 
 [!code-csharp[Main](../fundamentals/configuration/sample/src/UsingOptions/Startup.cs?highlight=4)]
 
-````c#
+````csharp
 
    public void ConfigureServices(IServiceCollection services)
    {
@@ -250,7 +250,7 @@ You configure options using the [Configure<TOptions>](http://docs.asp.net/projec
 
 [!code-csharp[Main](../fundamentals/configuration/sample/src/UsingOptions/Startup.cs?highlight=7,10,11,12,13,16)]
 
-````c#
+````csharp
 
    public void ConfigureServices(IServiceCollection services)
    {
@@ -296,7 +296,7 @@ To start off we'll define a simple `ConfigurationValue` entity for storing confi
 
 <!-- literal_block {"xml:space": "preserve", "source": "fundamentals/configuration/sample/src/CustomConfigurationProvider/ConfigurationValue.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    public class ConfigurationValue
    {
@@ -310,7 +310,7 @@ You need a `ConfigurationContext` to store and access the configured values usin
 
 [!code-csharp[Main](../fundamentals/configuration/sample/src/CustomConfigurationProvider/ConfigurationContext.cs?highlight=7)]
 
-````c#
+````csharp
 
    public class ConfigurationContext : DbContext
    {
@@ -327,7 +327,7 @@ Create an `EntityFrameworkConfigurationSource` that inherits from [IConfiguratio
 
 [!code-csharp[Main](../fundamentals/configuration/sample/src/CustomConfigurationProvider/EntityFrameworkConfigurationSource.cs?highlight=7,16,17,18,19)]
 
-````c#
+````csharp
 
    using System;
    using Microsoft.EntityFrameworkCore;
@@ -356,7 +356,7 @@ Next, create the custom configuration provider by inheriting from [Configuration
 
 [!code-csharp[Main](../fundamentals/configuration/sample/src/CustomConfigurationProvider/EntityFrameworkConfigurationProvider.cs?highlight=9,18,19,20,21,22,23,24,25,26,27,28,29,30,37,38)]
 
-````c#
+````csharp
 
    using System;
    using System.Collections.Generic;
@@ -414,7 +414,7 @@ By convention you can also add an `AddEntityFrameworkConfiguration` extension me
 
 [!code-csharp[Main](../fundamentals/configuration/sample/src/CustomConfigurationProvider/EntityFrameworkExtensions.cs?highlight=9)]
 
-````c#
+````csharp
 
    using System;
    using Microsoft.EntityFrameworkCore;
@@ -437,7 +437,7 @@ You can see an example of how to use this custom configuration provider in your 
 
 [!code-csharp[Main](../fundamentals/configuration/sample/src/CustomConfigurationProvider/Program.cs?highlight=21,22,23,24)]
 
-````c#
+````csharp
 
    using System;
    using System.IO;

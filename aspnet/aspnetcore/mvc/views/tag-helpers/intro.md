@@ -99,7 +99,7 @@ If your project contains an `EmailTagHelper` with the default namespace (`Author
 
 To add a Tag Helper to a view using an FQN, you first add the FQN (`AuthoringTagHelpers.TagHelpers.EmailTagHelper`), and then the assembly name (*AuthoringTagHelpers*). Most developers prefer to use the  "*" wildcard syntax. The wildcard syntax allows you to insert the wildcard character "*" as the suffix in an FQN. For example, any of the following directives will bring in the `EmailTagHelper`:
 
-````c#
+````csharp
 
    @addTagHelper "AuthoringTagHelpers.TagHelpers.E*, AuthoringTagHelpers"
    @addTagHelper "AuthoringTagHelpers.TagHelpers.Email*, AuthoringTagHelpers"
@@ -121,7 +121,7 @@ You can add a *_ViewImports.cshtml* to any view folder, and the view engine adds
 
 You can disable a Tag Helper at the element level with the Tag Helper opt-out character ("!"). For example, `Email` validation is disabled in the `<span>` with the Tag Helper opt-out character:
 
-````c#
+````csharp
 
    <!span asp-validation-for="Email" class="text-danger"></!span>
    ````
@@ -249,7 +249,7 @@ Consider the *Email* group:
 
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/intro/sample/Register.cshtml", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    <div class="form-group">
        <label asp-for="Email" class="col-md-2 control-label"></label>

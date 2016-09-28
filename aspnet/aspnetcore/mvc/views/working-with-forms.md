@@ -125,7 +125,7 @@ Sample:
 
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/ViewModels/RegisterViewModel.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    using System.ComponentModel.DataAnnotations;
 
@@ -208,7 +208,7 @@ You can also navigate to child properties using the property path of the view mo
 
 [!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/AddressViewModel.cs?highlight=1,2,3,4)]
 
-````c#
+````csharp
 
     public class AddressViewModel
     {
@@ -219,7 +219,7 @@ You can also navigate to child properties using the property path of the view mo
 
 [!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/RegisterAddressViewModel.cs?highlight=8)]
 
-````c#
+````csharp
 
     public class RegisterAddressViewModel
     {
@@ -263,7 +263,7 @@ Sample, a model containing an array of `Colors`:
 
 [!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/Person.cs?highlight=3)]
 
-````c#
+````csharp
 
     public class Person
     {
@@ -276,7 +276,7 @@ Sample, a model containing an array of `Colors`:
 
 The action method:
 
-````c#
+````csharp
 
    public IActionResult Edit(int id, int colorIndex)
    {
@@ -321,7 +321,7 @@ Sample using `List<T>`:
 
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/ViewModels/ToDoItem.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
     public class ToDoItem
     {
@@ -404,7 +404,7 @@ Sample:
 
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/ViewModels/DescriptionViewModel.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    using System.ComponentModel.DataAnnotations;
 
@@ -468,7 +468,7 @@ Sample:
 
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/ViewModels/SimpleViewModel.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    using System.ComponentModel.DataAnnotations;
 
@@ -564,7 +564,7 @@ In the following example, the data model is decorated with `DataAnnotation` attr
 
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/ViewModels/RegisterViewModel.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    using System.ComponentModel.DataAnnotations;
 
@@ -645,7 +645,7 @@ Sample:
 
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/ViewModels/CountryViewModel.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    using Microsoft.AspNetCore.Mvc.Rendering;
    using System.Collections.Generic;
@@ -670,7 +670,7 @@ The `Index` method initializes the `CountryViewModel`, sets the selected country
 
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/Controllers/HomeController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
      public IActionResult Index()
      {
@@ -685,7 +685,7 @@ The HTTP POST `Index` method displays the selection:
 
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/Controllers/HomeController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
      [HttpPost]
      [ValidateAntiForgeryToken]
@@ -756,7 +756,7 @@ Sample:
 
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/ViewModels/CountryEnumViewModel.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
     public class CountryEnumViewModel
     {
@@ -767,7 +767,7 @@ Sample:
 
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/ViewModels/CountryEnum.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    using System.ComponentModel.DataAnnotations;
 
@@ -806,7 +806,7 @@ You can decorate your enumerator list with the `Display` attribute to get a rich
 
 [!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/CountryEnum.cs?highlight=5,7)]
 
-````c#
+````csharp
 
    using System.ComponentModel.DataAnnotations;
 
@@ -855,7 +855,7 @@ The `CountryViewModelGroup` groups the `SelectListItem` elements into the "North
 
 [!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/CountryViewModelGroup.cs?highlight=5,6,14,20,26,32,38,44)]
 
-````c#
+````csharp
 
     public class CountryViewModelGroup
     {
@@ -946,7 +946,7 @@ The Select Tag Helper  will automatically generate the [multiple = "multiple"](h
 
 [!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/CountryViewModelIEnumerable.cs?highlight=6)]
 
-````c#
+````csharp
 
    using Microsoft.AspNetCore.Mvc.Rendering;
    using System.Collections.Generic;
@@ -1060,7 +1060,7 @@ Adding HTML [<option>](https://www.w3.org/wiki/HTML/Elements/option) elements is
 
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/Controllers/HomeController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
      public IActionResult IndexOption(int id)
      {

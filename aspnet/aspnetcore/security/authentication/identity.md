@@ -27,7 +27,7 @@ In this topic, you'll learn how to use ASP.NET Core Identity to add functionalit
 
    [!code-csharp[Main](../security/authentication/identity/sample/src/ASPNET-IdentityDemo/Startup.cs?highlight=10,11,12)]
 
-   ````c#
+   ````csharp
 
       // This method gets called by the runtime. Use this method to add services to the container.
       public void ConfigureServices(IServiceCollection services)
@@ -57,7 +57,7 @@ In this topic, you'll learn how to use ASP.NET Core Identity to add functionalit
 
    [!code-csharp[Main](../security/authentication/identity/sample/src/ASPNET-IdentityDemo/Startup.cs?highlight=22)]
 
-   ````c#
+   ````csharp
 
       // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
       public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -106,7 +106,7 @@ In this topic, you'll learn how to use ASP.NET Core Identity to add functionalit
 
    [!code-csharp[Main](../security/authentication/identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?highlight=3,4,11,12,17,18)]
 
-   ````c#
+   ````csharp
 
           public class AccountController : Controller
           {
@@ -140,7 +140,7 @@ In this topic, you'll learn how to use ASP.NET Core Identity to add functionalit
 
    [!code-csharp[Main](../security/authentication/identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?highlight=9)]
 
-   ````c#
+   ````csharp
 
       [HttpPost]
       [AllowAnonymous]
@@ -179,7 +179,7 @@ In this topic, you'll learn how to use ASP.NET Core Identity to add functionalit
 
    [!code-csharp[Main](../security/authentication/identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?highlight=18)]
 
-   ````c#
+   ````csharp
 
       [HttpPost]
       [AllowAnonymous]
@@ -220,7 +220,7 @@ In this topic, you'll learn how to use ASP.NET Core Identity to add functionalit
 
    [!code-csharp[Main](../security/authentication/identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?highlight=11)]
 
-   ````c#
+   ````csharp
 
       [HttpPost]
       [AllowAnonymous]
@@ -267,7 +267,7 @@ In this topic, you'll learn how to use ASP.NET Core Identity to add functionalit
 
    [!code-csharp[Main](../security/authentication/identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?highlight=5)]
 
-   ````c#
+   ````csharp
 
       [HttpPost]
       [ValidateAntiForgeryToken]

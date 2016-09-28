@@ -9,7 +9,7 @@ Often a developer will want to show, hide or otherwise modify a UI based on the 
 
 Once you have injected the authorization service you use it by calling the [AuthorizeAsync](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/IAuthorizationService/index.html.md#Microsoft.AspNetCore.Authorization.IAuthorizationService.AuthorizeAsync.md) method in exactly the same way as you would check during [resource based authorization](resourcebased.md#security-authorization-resource-based-imperative.md).
 
-````c#
+````csharp
 
    @if (await AuthorizationService.AuthorizeAsync(User, "PolicyName"))
    {
@@ -19,7 +19,7 @@ Once you have injected the authorization service you use it by calling the [Auth
 
 In some cases the resource will be your view model, and you can call [AuthorizeAsync](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/IAuthorizationService/index.html.md#Microsoft.AspNetCore.Authorization.IAuthorizationService.AuthorizeAsync.md) in exactly the same way as you would check during [resource based authorization](resourcebased.md#security-authorization-resource-based-imperative.md);
 
-````c#
+````csharp
 
    @if (await AuthorizationService.AuthorizeAsync(User, Model, Operations.Edit))
    {

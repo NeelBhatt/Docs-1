@@ -9,7 +9,7 @@ Open the Movie controller and examine the `Details` method:
 
 <!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    public async Task<IActionResult> Details(int? id)
    {
@@ -54,7 +54,7 @@ Examine the `Delete` and `DeleteConfirmed` methods.
 
 <!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    public async Task<IActionResult> Delete(int? id)
    {
@@ -90,7 +90,7 @@ Note that the `HTTP GET Delete` method doesn't delete the specified movie, it re
 
 The `[HttpPost]` method that deletes the data is named `DeleteConfirmed` to give the HTTP POST method a unique signature or name. The two method signatures are shown below:
 
-````c#
+````csharp
 
    // GET: Movies/Delete/5
    public async Task<IActionResult> Delete(int? id)
@@ -109,7 +109,7 @@ Another common work around for methods that have identical names and signatures 
 
 <!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    [ValidateAntiForgeryToken]
    public async Task<IActionResult> Delete(int id, bool notUsed)

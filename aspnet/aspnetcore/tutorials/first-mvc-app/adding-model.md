@@ -193,7 +193,7 @@ Open the *Controllers/MoviesController.cs* file and examine the generated `Index
 <!-- l.. can't use literalinclude  because we comment out the initial index method and update it later
 .. comment :: start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs -->
 
-````c#
+````csharp
 
    public class MoviesController : Controller
    {
@@ -241,7 +241,7 @@ You could also pass in the `id` with a query string as follows:
 
 If a Movie is found, an instance of the `Movie` model is passed to the `Details` view:
 
-````C#
+````csharp
 
    return View(movie);
    ````

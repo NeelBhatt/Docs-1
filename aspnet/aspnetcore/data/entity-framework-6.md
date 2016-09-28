@@ -28,7 +28,7 @@ In your `DbContext` subclass, ensure you have a constructor which takes the conn
 
 <!-- literal_block {"ids": [], "linenos": true, "xml:space": "preserve", "language": "csharp"} -->
 
-````c#
+````csharp
 
    public class ApplicationDbContext : DbContext
    {
@@ -42,7 +42,7 @@ In the `Startup` class within `ConfigureServices` add factory method of your con
 
 <!-- literal_block {"ids": [], "linenos": true, "xml:space": "preserve", "language": "csharp"} -->
 
-````c#
+````csharp
 
    public void ConfigureServices(IServiceCollection services)
    {
@@ -80,7 +80,7 @@ The `defaultConnectionFactory` element sets the factory for connections. If this
 
 <!-- literal_block {"ids": [], "linenos": true, "xml:space": "preserve", "language": "csharp"} -->
 
-````c#
+````csharp
 
    [DbConfigurationType(typeof(CodeConfig))] // point to the class that inherit from DbConfiguration
    public class ApplicationDbContext : DbContext

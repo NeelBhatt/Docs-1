@@ -9,7 +9,7 @@ The `ApplicationDbContext` class handles the task of connecting to the database 
 
 <!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Startup.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    public void ConfigureServices(IServiceCollection services)
    {
@@ -64,7 +64,7 @@ Create a new class named `SeedData` in the *Models* folder. Replace the generate
 
 <!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Models/SeedData.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    using Microsoft.EntityFrameworkCore;
    using Microsoft.Extensions.DependencyInjection;
@@ -130,7 +130,7 @@ Create a new class named `SeedData` in the *Models* folder. Replace the generate
 
 Notice if there are any movies in the DB, the seed initializer returns.
 
-````c#
+````csharp
 
    if (context.Movie.Any())
    {

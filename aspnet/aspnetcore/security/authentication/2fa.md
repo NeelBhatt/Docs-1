@@ -41,7 +41,7 @@ After you create the project, follow the instructions in [Account Confirmation a
 
 <!-- literal_block {"xml:space": "preserve", "source": "security/authentication/2fa/sample/WebSMS/src/WebSMS/Services/MessageServices.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    public class AuthMessageSender : IEmailSender, ISmsSender
    {
@@ -88,7 +88,7 @@ We'll use the [Options pattern](../../fundamentals/configuration.md#options-conf
 
 <!-- literal_block {"xml:space": "preserve", "source": "security/authentication/2fa/sample/WebSMS/src/WebSMS/Services/AuthMessageSMSSenderOptions.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    public class AuthMessageSMSSenderOptions
    {
@@ -113,7 +113,7 @@ Add `AuthMessageSMSSenderOptions` to the service container at the end of the `Co
 
 [!code-csharp[Main](../security/authentication/2fa/sample/WebSMS/src/WebSMS/Startup.cs?highlight=4)]
 
-````c#
+````csharp
 
        // Register application services.
        services.AddTransient<IEmailSender, AuthMessageSender>();
@@ -242,7 +242,7 @@ We recommend you use account lockout with 2FA. Once a user logs in (through a lo
 
 [!code-csharp[Main](../security/authentication/2fa/sample/WebSMS/src/WebSMS/Startup.cs?highlight=1,2,3,4,5)]
 
-````c#
+````csharp
 
        services.Configure<IdentityOptions>(options =>
        {
@@ -266,7 +266,7 @@ If you're able to use the Twilio API, but you don't get an SMS message, try the 
 
 2. Use the following code in a console application to test Twilio:
 
-````c#
+````csharp
 
    static void Main(string[] args)
    {

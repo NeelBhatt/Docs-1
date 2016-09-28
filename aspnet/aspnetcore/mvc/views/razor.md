@@ -456,7 +456,7 @@ Understanding how Razor generates code for a view will make it easier to underst
 
 Generates a class similar to the following:
 
-````c#
+````csharp
 
    public class _Views_Something_cshtml : RazorPage<dynamic>
    {
@@ -499,21 +499,21 @@ The `@model` directive allows you to specify the type of the model passed to you
 
 For example, if you create an ASP.NET Core MVC app with individual user accounts, the *Views/Account/Login.cshtml* Razor view contains the following model declaration:
 
-````c#
+````csharp
 
    @model LoginViewModel
    ````
 
 In the class example in , the class generated inherits from `RazorPage<dynamic>`. By adding an `@model` you control what’s inherited. For example
 
-````c#
+````csharp
 
    @model LoginViewModel
    ````
 
 Generates the following class
 
-````c#
+````csharp
 
    public class _Views_Account_Login_cshtml : RazorPage<LoginViewModel>
    ````
@@ -540,7 +540,7 @@ For instance, let’s say we had the following custom Razor page type:
 
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/views/razor/sample/Classes/CustomRazorPage.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    using Microsoft.AspNetCore.Mvc.Razor;
 
@@ -636,7 +636,7 @@ The generated Razor C# looks like:
 
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/views/razor/sample/Classes/Views_Home_Test_cshtml.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    using System.Threading.Tasks;
    using Microsoft.AspNetCore.Mvc.Razor;

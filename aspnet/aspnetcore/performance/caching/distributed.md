@@ -57,7 +57,7 @@ The following example shows how to use an instance of [IDistributedCache](https:
 
 [!code-csharp[Main](../performance/caching/distributed/sample/src/DistCacheSample/StartTimeHeader.cs?highlight=15,18,21,27,28,29,30,31)]
 
-````c#
+````csharp
 
    using Microsoft.AspNetCore.Builder;
    using Microsoft.AspNetCore.Http;
@@ -116,7 +116,7 @@ The following code from *Startup.cs* shows the value being set:
 
 [!code-csharp[Main](../performance/caching/distributed/sample/src/DistCacheSample/Startup.cs?highlight=2,4,5,6)]
 
-````c#
+````csharp
 
            public void Configure(IApplicationBuilder app,
                IDistributedCache cache)
@@ -143,7 +143,7 @@ In the sample code, a `RedisCache` implementation is used when the server is con
 
 [!code-csharp[Main](../performance/caching/distributed/sample/src/DistCacheSample/Startup.cs?highlight=8,9,10,11,12,13)]
 
-````c#
+````csharp
 
            /// <summary>
            /// Use Redis Cache in Staging
@@ -173,7 +173,7 @@ To use sql-cache tool add SqlConfig.Tools to the tools section of the project.js
 
 [!code-csharp[Main](../performance/caching/distributed/sample/src/DistCacheSample/project.json?highlight=6)]
 
-````c#
+````csharp
 
      "tools": {
        "Microsoft.AspNetCore.Server.IISIntegration.Tools": {
@@ -209,7 +209,7 @@ Like all cache implementations, your app should get and set cache values using a
 
 [!code-csharp[Main](../performance/caching/distributed/sample/src/DistCacheSample/Startup.cs?highlight=7,8,9,10,11,12)]
 
-````c#
+````csharp
 
            /// Use SQL Server Cache in Production
            /// </summary>

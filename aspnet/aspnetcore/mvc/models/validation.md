@@ -21,7 +21,7 @@ Below is an annotated `Movie` model from an app that stores information about mo
 
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/models/validation/sample/Movie.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    public class Movie
    {
@@ -84,7 +84,7 @@ MVC will continue validating fields until reaches the maximum number of errors (
 
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/models/validation/sample/Startup.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    services.AddMvc(options => options.MaxModelValidationErrors = 50);
 
@@ -104,7 +104,7 @@ You may need to run validation manually. To do so, call the `TryValidateModel` m
 
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/models/validation/sample/MoviesController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    TryValidateModel(movie);
 
@@ -118,7 +118,7 @@ In the following sample, a business rule states that users may not set the genre
 
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/models/validation/sample/ClassicMovieAttribute.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    public class ClassicMovieAttribute : ValidationAttribute, IClientModelValidator
    {
@@ -149,7 +149,7 @@ Alternatively, this same code could be placed in the model by implementing the `
 
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/models/validation/sample/MovieIValidatable.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
    {
@@ -235,7 +235,7 @@ You may create client side logic for your custom attribute, and [unobtrusive val
 
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/models/validation/sample/ClassicMovieAttribute.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    public void AddValidation(ClientModelValidationContext context)
    {
@@ -307,7 +307,7 @@ You can implement remote validation in a two step process. First, you must annot
 
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/models/validation/sample/User.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    public class User
    {

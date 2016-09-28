@@ -19,7 +19,7 @@ uid: getting-started
 
    [!code-csharp[Main](../getting-started/sample/aspnetcoreapp/project.json?highlight=15)]
 
-   ````c#
+   ````csharp
 
       {
         "version": "1.0.0-*",
@@ -56,7 +56,7 @@ uid: getting-started
 
    <!-- literal_block {"xml:space": "preserve", "source": "getting-started/sample/aspnetcoreapp/Startup.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-   ````c#
+   ````csharp
 
       using System;
       using Microsoft.AspNetCore.Builder;
@@ -83,7 +83,7 @@ uid: getting-started
 
    [!code-csharp[Main](../getting-started/sample/aspnetcoreapp/Program.cs?highlight=2,4,10,11,12,13,14,15)]
 
-   ````c#
+   ````csharp
 
       using System;
       using Microsoft.AspNetCore.Hosting;

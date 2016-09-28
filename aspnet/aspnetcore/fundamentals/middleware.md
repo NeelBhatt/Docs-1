@@ -38,7 +38,7 @@ You can see an example of setting up the request pipeline in the default web sit
 
 [!code-csharp[Main](../common/samples/WebApplication1/src/WebApplication1/Startup.cs?highlight=8,9,10,14,17,19,23)]
 
-````c#
+````csharp
 
    public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
    {
@@ -89,7 +89,7 @@ The simplest possible ASP.NET application sets up a single request delegate that
 
 <!-- literal_block {"xml:space": "preserve", "source": "fundamentals/middleware/sample/src/MiddlewareSample/Startup.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    app.Run(async context =>
    {
@@ -102,7 +102,7 @@ The first `App.Run` delegate terminates the pipeline. In the following example, 
 
 [!code-csharp[Main](../fundamentals/middleware/sample/src/MiddlewareSample/Startup.cs?highlight=5)]
 
-````c#
+````csharp
 
 
    public void Configure(IApplicationBuilder app)
@@ -123,7 +123,7 @@ You chain multiple request delegates together; the `next` parameter represents t
 
 [!code-csharp[Main](../fundamentals/middleware/sample/src/MiddlewareSample/Startup.cs?highlight=5,8,14)]
 
-````c#
+````csharp
 
    public void ConfigureLogInline(IApplicationBuilder app, ILoggerFactory loggerfactory)
    {
@@ -162,7 +162,7 @@ You configure the HTTP pipeline using [Run](https://docs.asp.net/projects/api/en
 
 [!code-csharp[Main](../fundamentals/middleware/sample/src/MiddlewareSample/Startup.cs?highlight=3,11)]
 
-````c#
+````csharp
 
    public void ConfigureEnvironmentOne(IApplicationBuilder app)
    {
@@ -189,7 +189,7 @@ We've already seen several examples of how to build a request pipeline with `Use
 
 [!code-csharp[Main](../fundamentals/middleware/sample/src/MiddlewareSample/Startup.cs?highlight=11)]
 
-````c#
+````csharp
 
    private static void HandleMapTest(IApplicationBuilder app)
    {
@@ -214,7 +214,7 @@ In addition to path-based mapping, the `MapWhen` method supports predicate-based
 
 [!code-csharp[Main](../fundamentals/middleware/sample/src/MiddlewareSample/Startup.cs?highlight=5,11,12,13)]
 
-````c#
+````csharp
 
    private static void HandleBranch(IApplicationBuilder app)
    {
@@ -274,7 +274,7 @@ RequestLoggerMiddleware.cs
 
 [!code-csharp[Main](../fundamentals/middleware/sample/src/MiddlewareSample/RequestLoggerMiddleware.cs?highlight=12,18)]
 
-````c#
+````csharp
 
    using System.Threading.Tasks;
    using Microsoft.AspNetCore.Http;
@@ -309,7 +309,7 @@ RequestLoggerExtensions.cs
 
 [!code-csharp[Main](../fundamentals/middleware/sample/src/MiddlewareSample/RequestLoggerExtensions.cs?highlight=5)]
 
-````c#
+````csharp
 
    public static class RequestLoggerExtensions
    {
@@ -325,7 +325,7 @@ Using the extension method and associated middleware class, the `Configure` meth
 
 [!code-csharp[Main](../fundamentals/middleware/sample/src/MiddlewareSample/Startup.cs?highlight=6)]
 
-````c#
+````csharp
 
    public void ConfigureLogMiddleware(IApplicationBuilder app,
        ILoggerFactory loggerfactory)

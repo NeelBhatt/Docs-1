@@ -100,7 +100,7 @@ For example, you can use the following code in your Configure method to setup en
 
 <!-- literal_block {"xml:space": "preserve", "source": "fundamentals/environments/sample/src/Environments/Startup.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
    {

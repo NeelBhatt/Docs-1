@@ -55,7 +55,7 @@ In this section we'll set up our Visual Studio project to use SSL and our projec
 
 * Add the following code to `ConfigureServices` in `Startup`:
 
-````c#
+````csharp
 
    services.Configure<MvcOptions>(options =>
    {
@@ -67,7 +67,7 @@ Add the `[RequireHttps]` attribute to each controller. The `[RequireHttps]` attr
 
 [!code-csharp[Main](../../security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/Controllers/HomeController.cs?highlight=9)]
 
-````c#
+````csharp
 
    [RequireHttps]
    public class HomeController : Controller
@@ -88,7 +88,7 @@ We'll use the [Options pattern](../../fundamentals/configuration.md#options-conf
 
       <!-- literal_block {"xml:space": "preserve", "source": "security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/Services/AuthMessageSenderOptions.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-      ````c#
+      ````csharp
 
          public class AuthMessageSenderOptions
          {
@@ -141,7 +141,7 @@ Add `AuthMessageSenderOptions` to the service container at the end of the `Confi
 
 [!code-csharp[Main](../../security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/Startup.cs?highlight=4)]
 
-````c#
+````csharp
 
        // Add application services.
        services.AddTransient<IEmailSender, AuthMessageSender>();
@@ -167,7 +167,7 @@ This tutorial shows how to add email notification through [SendGrid](https://sen
 
 <!-- literal_block {"xml:space": "preserve", "source": "security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/Services/MessageServices.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    public class AuthMessageSender : IEmailSender, ISmsSender
    {
@@ -252,7 +252,7 @@ The template already has the code for account confirmation and password recovery
 
 **Note:** We're also preventing a newly registered user from being automatically logged on by commenting out the following line:
 
-````c#
+````csharp
 
    //await _signInManager.SignInAsync(user, isPersistent: false);
    ````
@@ -370,7 +370,7 @@ With the current templates, once a user completes the registration form, they ar
 
 [!code-csharp[Main](../../security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/Controllers/AccountController.cs?highlight=11,12,13,14,15,16,17,18,19,20)]
 
-````c#
+````csharp
 
 
    //

@@ -45,7 +45,7 @@ To demonstrate unit testing, review the following controller. It displays a list
 
 [!code-csharp[Main](../mvc/controllers/testing/sample/TestingControllersSample/src/TestingControllersSample/Controllers/HomeController.cs?highlight=12,16,21,42,43)]
 
-````c#
+````csharp
 
    using System;
    using System.ComponentModel.DataAnnotations;
@@ -113,7 +113,7 @@ The controller is following the [explicit dependencies principle](http://deviq.c
 
 [!code-csharp[Main](../mvc/controllers/testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/HomeControllerTests.cs?highlight=17,18)]
 
-````c#
+````csharp
 
    using System;
    using System.Collections.Generic;
@@ -220,7 +220,7 @@ The `HTTP POST Index` method (shown below) should verify:
 
 [!code-csharp[Main](../mvc/controllers/testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/HomeControllerTests.cs?highlight=1,2,10,11,12,15,16,19,24,25,28)]
 
-````c#
+````csharp
 
            var viewResult = Assert.IsType<ViewResult>(result);
            var model = Assert.IsAssignableFrom<IEnumerable<StormSessionViewModel>>(
@@ -265,7 +265,7 @@ Another controller in the app displays information related to a particular brain
 
 [!code-csharp[Main](../mvc/controllers/testing/sample/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs?highlight=16,20,25,33)]
 
-````c#
+````csharp
 
    using System.Threading.Tasks;
    using Microsoft.AspNetCore.Mvc;
@@ -314,7 +314,7 @@ The controller action has three cases to test, one for each `return` statement:
 
 [!code-csharp[Main](../mvc/controllers/testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/SessionControllerTests.cs?highlight=16,26,39)]
 
-````c#
+````csharp
 
    using System;
    using System.Collections.Generic;
@@ -413,7 +413,7 @@ The app exposes functionality as a web API (a list of ideas associated with a br
 
 [!code-csharp[Main](../mvc/controllers/testing/sample/TestingControllersSample/src/TestingControllersSample/Api/IdeasController.cs?highlight=20,21,22,27,29,30,31,32,33,34,35,36,39,40,41,45,50,60)]
 
-````c#
+````csharp
 
    using System;
    using System.Linq;
@@ -493,7 +493,7 @@ The unit tests for the `Create` and `ForSession` API methods:
 
 [!code-csharp[Main](../mvc/controllers/testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/ApiIdeasControllerTests.cs?highlight=16,17,26,27,37,38,65,66,76,77)]
 
-````c#
+````csharp
 
    using System;
    using System.Collections.Generic;
@@ -656,7 +656,7 @@ The `Startup` class:
 
 [!code-csharp[Main](../mvc/controllers/testing/sample/TestingControllersSample/src/TestingControllersSample/Startup.cs?highlight=19,20,38,39,47,56)]
 
-````c#
+````csharp
 
    using System;
    using System.Linq;
@@ -750,7 +750,7 @@ To correct this issue, you need to configure the server to use the `ApplicationB
 
 [!code-csharp[Main](../mvc/controllers/testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/IntegrationTests/HomeControllerTests.cs?highlight=20,22,23,24,25,26,27,28,29,30,31,32,36,37,42)]
 
-````c#
+````csharp
 
    using System;
    using System.Collections.Generic;
@@ -815,7 +815,7 @@ The following set of tests target the `Create` method in the [IdeasController](x
 
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/controllers/testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/IntegrationTests/ApiIdeasControllerTests.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
            [Fact]
            public async Task CreatePostReturnsBadRequestForMissingNameValue()

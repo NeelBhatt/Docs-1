@@ -140,7 +140,7 @@ You can add new generated files using Yeoman even after the project is created. 
 
 The result is a file named Person.cs with a class named `Person`:
 
-````c#
+````csharp
 
    using System;
    using System.Collections.Generic;

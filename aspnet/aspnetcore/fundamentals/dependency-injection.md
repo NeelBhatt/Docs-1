@@ -33,7 +33,7 @@ The `ConfigureServices` method in the `Startup` class is responsible for definin
 
 [!code-csharp[Main](../common/samples/WebApplication1/src/WebApplication1/Startup.cs?highlight=5,8,12)]
 
-````c#
+````csharp
 
    // This method gets called by the runtime. Use this method to add services to the container.
    public void ConfigureServices(IServiceCollection services)
@@ -69,7 +69,7 @@ You can register your own application services as follows. The first generic typ
 
 <!-- literal_block {"xml:space": "preserve", "source": "common/samples/WebApplication1/src/WebApplication1/Startup.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    services.AddTransient<IEmailSender, AuthMessageSender>();
    services.AddTransient<ISmsSender, AuthMessageSender>();
@@ -85,7 +85,7 @@ In the sample for this article, there is a simple controller that displays chara
 
 [!code-csharp[Main](../fundamentals/dependency-injection/sample/DependencyInjectionSample/Controllers/CharactersController.cs?highlight=3,5,6,7,8,14,21,23,24,25,26)]
 
-````c#
+````csharp
 
    public class CharactersController : Controller
    {
@@ -123,7 +123,7 @@ The `ICharacterRepository` simply defines the two methods the controller needs t
 
 [!code-csharp[Main](../fundamentals/dependency-injection/sample/DependencyInjectionSample/Interfaces/ICharacterRepository.cs?highlight=8,9)]
 
-````c#
+````csharp
 
    using System.Collections.Generic;
    using DependencyInjectionSample.Models;
@@ -145,7 +145,7 @@ This interface is in turn implemented by a concrete type, `CharacterRepository`,
 
 [!code-csharp[Main](../fundamentals/dependency-injection/sample/DependencyInjectionSample/Models/CharacterRepository.cs?highlight=9,11,12,13,14)]
 
-````c#
+````csharp
 
    using System.Collections.Generic;
    using System.Linq;
@@ -185,7 +185,7 @@ In this case, both `ICharacterRepository` and in turn `ApplicationDbContext` mus
 
 [!code-csharp[Main](../fundamentals/dependency-injection/sample/DependencyInjectionSample/Startup.cs?highlight=2,3,4,10)]
 
-````c#
+````csharp
 
    {
        services.AddDbContext<ApplicationDbContext>(options =>
@@ -231,7 +231,7 @@ To demonstrate the difference between these lifetime and registration options, c
 
 [!code-csharp[Main](../fundamentals/dependency-injection/sample/DependencyInjectionSample/Interfaces/IOperation.cs?highlight=5,7)]
 
-````c#
+````csharp
 
    using System;
 
@@ -263,7 +263,7 @@ Next, in `ConfigureServices`, each type is added to the container according to i
 
 <!-- literal_block {"xml:space": "preserve", "source": "fundamentals/dependency-injection/sample/DependencyInjectionSample/Startup.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    services.AddScoped<ICharacterRepository, CharacterRepository>();
    services.AddTransient<IOperationTransient, Operation>();
@@ -279,7 +279,7 @@ Note that the `IOperationSingletonInstance` service is using a specific instance
 
 <!-- literal_block {"xml:space": "preserve", "source": "fundamentals/dependency-injection/sample/DependencyInjectionSample/Services/OperationService.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    using DependencyInjectionSample.Interfaces;
 
@@ -310,7 +310,7 @@ To demonstrate the object lifetimes within and between separate individual reque
 
 <!-- literal_block {"xml:space": "preserve", "source": "fundamentals/dependency-injection/sample/DependencyInjectionSample/Controllers/OperationsController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    using DependencyInjectionSample.Interfaces;
    using DependencyInjectionSample.Services;
@@ -410,7 +410,7 @@ Next, configure the container in `ConfigureServices` and return an `IServiceProv
 
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [1, 11]}} -->
 
-````c#
+````csharp
 
    public IServiceProvider ConfigureServices(IServiceCollection services)
    {
@@ -431,7 +431,7 @@ Next, configure the container in `ConfigureServices` and return an `IServiceProv
 
 Finally, configure Autofac as normal in `DefaultModule`:
 
-````c#
+````csharp
 
    public class DefaultModule : Module
    {

@@ -29,7 +29,7 @@ OWIN middleware conforms to the [OWIN specification](http://owin.org/spec/spec/o
 
 <!-- literal_block {"xml:space": "preserve", "source": "fundamentals/owin/sample/src/OwinSample/Startup.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    public Task OwinHello(IDictionary<string, object> environment)
    {
@@ -55,7 +55,7 @@ The following code shows how to add the `OwinHello` middleware (shown above) to 
 
 <!-- literal_block {"xml:space": "preserve", "source": "fundamentals/owin/sample/src/OwinSample/Startup.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    public void Configure(IApplicationBuilder app)
    {
@@ -76,7 +76,7 @@ You can configure other actions to take place within the OWIN pipeline.
 > [!NOTE]
 > Multiple calls to `UseOwin` is discouraged for performance reasons. OWIN components will operate best if grouped together.
 
-````c#
+````csharp
 
    app.UseOwin(pipeline =>
    {
@@ -95,7 +95,7 @@ OWIN-based servers can host ASP.NET applications. One such server is [Nowin](htt
 
 [!code-csharp[Main](../fundamentals/owin/sample/src/NowinSample/NowinServer.cs?highlight=15)]
 
-````c#
+````csharp
 
    using System;
    using System.Collections.Generic;
@@ -186,7 +186,7 @@ We'll also add an `IWebHostBuilder` extension to make it easy to add and configu
 
 [!code-csharp[Main](../fundamentals/owin/sample/src/NowinSample/NowinWebHostBuilderExtensions.cs?highlight=11)]
 
-````c#
+````csharp
 
    using System;
    using Microsoft.AspNetCore.Hosting.Server;
@@ -222,7 +222,7 @@ With this in place, all that's required to run an ASP.NET application using this
 
 [!code-csharp[Main](../fundamentals/owin/sample/src/NowinSample/Program.cs?highlight=15)]
 
-````c#
+````csharp
 
    using System;
    using System.Collections.Generic;
@@ -259,7 +259,7 @@ Another example of how OWIN-based servers' features can be leveraged by ASP.NET 
 
 [!code-csharp[Main](../fundamentals/owin/sample/src/NowinWebSockets/Startup.cs?highlight=7,9,10)]
 
-````c#
+````csharp
 
        public class Startup
        {

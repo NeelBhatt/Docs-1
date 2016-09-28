@@ -79,7 +79,7 @@ You might wonder how the validation UI was generated without any updates to the 
 
 <!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    public IActionResult Create()
    {
@@ -171,7 +171,7 @@ Open the *Movie.cs* file and examine the `Movie` class. The `System.ComponentMod
 
 [!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Models/MovieDateRatingDA.cs?highlight=2,6)]
 
-````c#
+````csharp
 
    [Display(Name = "Release Date")]
    [DataType(DataType.Date)]
@@ -190,7 +190,7 @@ The `DataType` attributes only provide hints for the view engine to format the d
 
 The `DisplayFormat` attribute is used to explicitly specify the date format:
 
-````c#
+````csharp
 
    [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
    public DateTime ReleaseDate { get; set; }
@@ -209,7 +209,7 @@ You can use the `DisplayFormat` attribute by itself, but it's generally a good i
 > [!NOTE]
 > jQuery validation does not work with the `Range` attribute and `DateTime`. For example, the following code will always display a client side validation error, even when the date is in the specified range:
 
-````c#
+````csharp
 
    [Range(typeof(DateTime), "1/1/1966", "1/1/2020")]
    ````
