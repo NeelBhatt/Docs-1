@@ -15,9 +15,9 @@ This article uses the sample project, *ProductsApp*, created in the article [Get
 
 In *Global.asax.cs*, a call is made to `WebApiConfig.Register`:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/migration/webapi/sample/ProductsApp/Global.asax.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "language": "c#", "highlight_args": {"hl_lines": [14], "linenostart": 1}} -->
+[!code-csharp[Main](../migration/webapi/sample/ProductsApp/Global.asax.cs?highlight=14)]
 
-````c#
+````csharp
 
    using System;
    using System.Collections.Generic;
@@ -41,9 +41,9 @@ In *Global.asax.cs*, a call is made to `WebApiConfig.Register`:
 
 `WebApiConfig` is defined in *App_Start*, and has just one static `Register` method:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/migration/webapi/sample/ProductsApp/App_Start/WebApiConfig.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "language": "c#", "highlight_args": {"hl_lines": [15, 16, 17, 18, 19, 20], "linenostart": 1}} -->
+[!code-csharp[Main](../migration/webapi/sample/ProductsApp/App_Start/WebApiConfig.cs?highlight=15,16,17,18,19,20)]
 
-````c#
+````csharp
 
    using System;
    using System.Collections.Generic;
@@ -76,9 +76,9 @@ This class configures [attribute routing](http://www.asp.net/web-api/overview/we
 
 The *ProductsApp* project includes just one simple controller, which inherits from `ApiController` and exposes two methods:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/migration/webapi/sample/ProductsApp/Controllers/ProductsController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "language": "c#", "highlight_args": {"hl_lines": [19, 24], "linenostart": 1}} -->
+[!code-csharp[Main](../migration/webapi/sample/ProductsApp/Controllers/ProductsController.cs?highlight=19,24)]
 
-````c#
+````csharp
 
    using ProductsApp.Models;
    using System;
@@ -119,9 +119,9 @@ The *ProductsApp* project includes just one simple controller, which inherits fr
 
 Finally, the model, *Product*, used by the *ProductsApp*, is a simple class:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/migration/webapi/sample/ProductsApp/Models/Product.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "migration/webapi/sample/ProductsApp/Models/Product.cs", "ids": [], "linenos": true, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
 
    namespace ProductsApp.Models
@@ -156,7 +156,7 @@ Delete the `Project_Readme.html` file from the new project. Your solution should
 
 ASP.NET Core no longer uses *Global.asax*, *web.config*, or *App_Start* folders. Instead, all startup tasks are done in *Startup.cs* in the root of the project (see [Application Startup](../fundamentals/startup.md)). In ASP.NET Core MVC, attribute-based routing is now included by default when `UseMvc()` is called; and, this is the recommended approach for configuring Web API routes (and is how the Web API starter project handles routing).
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/migration/webapi/sample/ProductsCore/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "language": "none", "highlight_args": {"hl_lines": [40], "linenostart": 1}} -->
+[!code-none[Main](../migration/webapi/sample/ProductsCore/Startup.cs?highlight=40)]
 
 ````none
 
@@ -208,9 +208,9 @@ ASP.NET Core no longer uses *Global.asax*, *web.config*, or *App_Start* folders.
 
 Assuming you want to use attribute routing in your project going forward, no additional configuration is needed. Simply apply the attributes as needed to your controllers and actions, as is done in the sample `ValuesController` class that is included in the Web API starter project:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/migration/webapi/sample/ProductsCore/Controllers/ValuesController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "language": "c#", "highlight_args": {"hl_lines": [9, 13, 20, 27, 33, 39], "linenostart": 1}} -->
+[!code-csharp[Main](../migration/webapi/sample/ProductsCore/Controllers/ValuesController.cs?highlight=9,13,20,27,33,39)]
 
-````c#
+````csharp
 
    using System;
    using System.Collections.Generic;
@@ -263,18 +263,14 @@ Note the presence of *[controller]* on line 8. Attribute-based routing now suppo
 
 To migrate the Products API controller, we must first copy *ProductsController* to the new project. Then simply include the route attribute on the controller:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
-
-````c#
+````csharp
 
    [Route("api/[controller]")]
    ````
 
 You also need to add the `[HttpGet]` attribute to the two methods, since they both should be called via HTTP Get. Include the expectation of an "id" parameter in the attribute for `GetProduct()`:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
-
-````c#
+````csharp
 
    // /api/products
    [HttpGet]
@@ -306,9 +302,9 @@ Fortunately, these are all very easy to correct:
 
 Once these changes have been made and unused using statements removed, the migrated *ProductsController* class looks like this:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/migration/webapi/sample/ProductsCore/Controllers/ProductsController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "language": "c#", "highlight_args": {"hl_lines": [1, 2, 6, 8, 9, 27], "linenostart": 1}} -->
+[!code-csharp[Main](../migration/webapi/sample/ProductsCore/Controllers/ProductsController.cs?highlight=1,2,6,8,9,27)]
 
-````c#
+````csharp
 
    using Microsoft.AspNetCore.Mvc;
    using ProductsCore.Models;

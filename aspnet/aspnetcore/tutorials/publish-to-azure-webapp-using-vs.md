@@ -66,7 +66,7 @@ You can fix the problem in two different ways:
 
 * Run the following from the command line in the project's directory:
 
-  <!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "names": [], "classes": [], "xml:space": "preserve"} -->
+  <!-- literal_block {"ids": [], "xml:space": "preserve"} -->
 
   ````
 
@@ -152,7 +152,7 @@ Visual Studio will publish your app to Azure and launch the cloud app in your br
 
 * Edit the `Views/Home/About.cshtml` Razor view file and change its contents. For example:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [7]}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [7]}} -->
 
 ````html
 

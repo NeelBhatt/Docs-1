@@ -21,9 +21,9 @@ At its simplest, `Configuration` is just a collection of sources, which provide 
 
 You must configure at least one source in order for `Configuration` to function correctly. The following sample shows how to test working with `Configuration` as a key/value store:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/fundamentals/configuration/sample/src/CodeSnippets/ConfigSummarySnippet.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/configuration/sample/src/CodeSnippets/ConfigSummarySnippet.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    var builder = new ConfigurationBuilder();
    builder.AddInMemoryCollection();
@@ -43,7 +43,7 @@ It's not unusual to store configuration values in a hierarchical structure, espe
 
 <a name=config-json></a>
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/common/samples/WebApplication1/src/WebApplication1/appsettings.json", "ids": ["config-json"], "dupnames": [], "names": ["config-json"], "classes": [], "linenos": false, "language": "json", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "common/samples/WebApplication1/src/WebApplication1/appsettings.json", "ids": ["config-json"], "names": ["config-json"], "linenos": false, "language": "json", "highlight_args": {"linenostart": 1}} -->
 
 ````json
 
@@ -78,9 +78,9 @@ Adding support for additional configuration sources is accomplished through exte
 
 <a name=custom-config></a>
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/fundamentals/configuration/sample/src/CustomConfigurationProvider/Program.cs", "ids": ["custom-config"], "dupnames": [], "names": ["custom-config"], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/configuration/sample/src/CustomConfigurationProvider/Program.cs", "ids": ["custom-config"], "names": ["custom-config"], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    // work with with a builder using multiple calls
    var builder = new ConfigurationBuilder();
@@ -106,7 +106,7 @@ The order in which configuration sources are specified is important, as this est
 
 It can be useful to have environment-specific configuration files. This can be achieved using the following:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/common/samples/WebApplication1/src/WebApplication1/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "none", "highlight_args": {"hl_lines": [6], "linenostart": 1}} -->
+[!code-none[Main](../common/samples/WebApplication1/src/WebApplication1/Startup.cs?highlight=6)]
 
 ````none
 
@@ -138,7 +138,7 @@ When specifying files as configuration sources, you can optionally specify wheth
 
 One way to leverage the order precedence of `Configuration` is to specify default values, which can be overridden. In the console application below, a default value for the `username` setting is specified in an in-memory collection, but this is overridden if a command line argument for `username` is passed to the application. You can see in the output how many different configuration sources are configured in the application at each stage of its execution.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/fundamentals/configuration/sample/src/ConfigConsole/Program.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "language": "none", "highlight_args": {"hl_lines": [22, 25], "linenostart": 1}} -->
+[!code-none[Main](../fundamentals/configuration/sample/src/ConfigConsole/Program.cs?highlight=22,25)]
 
 ````none
 
@@ -190,9 +190,9 @@ It's recommended that you create well-factored settings objects that correspond 
 
 A simple `MyOptions` class is shown here:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/fundamentals/configuration/sample/src/UsingOptions/Models/MyOptions.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/configuration/sample/src/UsingOptions/Models/MyOptions.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    public class MyOptions
    {
@@ -204,9 +204,9 @@ A simple `MyOptions` class is shown here:
 
 Options can be injected into your application using the [IOptions<TOptions>](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Options/IOptions-TOptions/index.html.md#Microsoft.Extensions.Options.IOptions<TOptions>.md) accessor service. For example, the following [controller](../mvc/controllers/index.md)  uses `IOptions<MyOptions>` to access the settings it needs to render the `Index` view:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/fundamentals/configuration/sample/src/UsingOptions/Controllers/HomeController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [3, 5, 8], "linenostart": 1}} -->
+[!code-csharp[Main](../fundamentals/configuration/sample/src/UsingOptions/Controllers/HomeController.cs?highlight=3,5,8)]
 
-````c#
+````csharp
 
    public class HomeController : Controller
    {
@@ -228,9 +228,9 @@ Options can be injected into your application using the [IOptions<TOptions>](htt
 
 To setup the [IOptions<TOptions>](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Options/IOptions-TOptions/index.html.md#Microsoft.Extensions.Options.IOptions<TOptions>.md) service you call the [AddOptions](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/DependencyInjection/OptionsServiceCollectionExtensions/index.html.md#Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.AddOptions.md) extension method during startup in your `ConfigureServices` method:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/fundamentals/configuration/sample/src/UsingOptions/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [4], "linenostart": 1}} -->
+[!code-csharp[Main](../fundamentals/configuration/sample/src/UsingOptions/Startup.cs?highlight=4)]
 
-````c#
+````csharp
 
    public void ConfigureServices(IServiceCollection services)
    {
@@ -248,9 +248,9 @@ The `Index` view displays the configured options:
 
 You configure options using the [Configure<TOptions>](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/DependencyInjection/OptionsServiceCollectionExtensions/index.html.md#Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.Configure<TOptions>.md) extension method. You can configure options using a delegate or by binding your options to configuration:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/fundamentals/configuration/sample/src/UsingOptions/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [7, 10, 11, 12, 13, 16], "linenostart": 1}} -->
+[!code-csharp[Main](../fundamentals/configuration/sample/src/UsingOptions/Startup.cs?highlight=7,10,11,12,13,16)]
 
-````c#
+````csharp
 
    public void ConfigureServices(IServiceCollection services)
    {
@@ -294,9 +294,9 @@ You may wish to store some of your application's settings in a database, and acc
 
 To start off we'll define a simple `ConfigurationValue` entity for storing configuration values in the database:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/fundamentals/configuration/sample/src/CustomConfigurationProvider/ConfigurationValue.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/configuration/sample/src/CustomConfigurationProvider/ConfigurationValue.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    public class ConfigurationValue
    {
@@ -308,9 +308,9 @@ To start off we'll define a simple `ConfigurationValue` entity for storing confi
 
 You need a `ConfigurationContext` to store and access the configured values using EF:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/fundamentals/configuration/sample/src/CustomConfigurationProvider/ConfigurationContext.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [7], "linenostart": 1}} -->
+[!code-csharp[Main](../fundamentals/configuration/sample/src/CustomConfigurationProvider/ConfigurationContext.cs?highlight=7)]
 
-````c#
+````csharp
 
    public class ConfigurationContext : DbContext
    {
@@ -325,9 +325,9 @@ You need a `ConfigurationContext` to store and access the configured values usin
 
 Create an `EntityFrameworkConfigurationSource` that inherits from [IConfigurationSource](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Configuration/IConfigurationSource/index.html.md#Microsoft.Extensions.Configuration.IConfigurationSource.md):
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/fundamentals/configuration/sample/src/CustomConfigurationProvider/EntityFrameworkConfigurationSource.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [7, 16, 17, 18, 19], "linenostart": 1}} -->
+[!code-csharp[Main](../fundamentals/configuration/sample/src/CustomConfigurationProvider/EntityFrameworkConfigurationSource.cs?highlight=7,16,17,18,19)]
 
-````c#
+````csharp
 
    using System;
    using Microsoft.EntityFrameworkCore;
@@ -354,9 +354,9 @@ Create an `EntityFrameworkConfigurationSource` that inherits from [IConfiguratio
 
 Next, create the custom configuration provider by inheriting from [ConfigurationProvider](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Configuration/ConfigurationProvider/index.html.md#Microsoft.Extensions.Configuration.ConfigurationProvider.md). The configuration data is loaded by overriding the `Load` method, which reads in all of the configuration data from the configured database. For demonstration purposes, the configuration provider also takes care of initializing the database if it hasn't already been created and populated:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/fundamentals/configuration/sample/src/CustomConfigurationProvider/EntityFrameworkConfigurationProvider.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [9, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 37, 38], "linenostart": 1}} -->
+[!code-csharp[Main](../fundamentals/configuration/sample/src/CustomConfigurationProvider/EntityFrameworkConfigurationProvider.cs?highlight=9,18,19,20,21,22,23,24,25,26,27,28,29,30,37,38)]
 
-````c#
+````csharp
 
    using System;
    using System.Collections.Generic;
@@ -412,9 +412,9 @@ Note the values that are being stored in the database ("value_from_ef_1" and "va
 
 By convention you can also add an `AddEntityFrameworkConfiguration` extension method for adding the configuration source:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/fundamentals/configuration/sample/src/CustomConfigurationProvider/EntityFrameworkExtensions.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [9], "linenostart": 1}} -->
+[!code-csharp[Main](../fundamentals/configuration/sample/src/CustomConfigurationProvider/EntityFrameworkExtensions.cs?highlight=9)]
 
-````c#
+````csharp
 
    using System;
    using Microsoft.EntityFrameworkCore;
@@ -435,9 +435,9 @@ By convention you can also add an `AddEntityFrameworkConfiguration` extension me
 
 You can see an example of how to use this custom configuration provider in your application in the following example. Create a new [ConfigurationBuilder](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Configuration/ConfigurationBuilder/index.html.md#Microsoft.Extensions.Configuration.ConfigurationBuilder.md) to set up your configuration sources. To add the `EntityFrameworkConfigurationProvider`, you first need to specify the EF data provider and connection string. How should you configure the connection string? Using configuration of course! Add an *appsettings.json* file as a configuration source to bootstrap setting up the `EntityFrameworkConfigurationProvider`. By adding the database settings to an existing configuration with other sources specified, any settings specified in the database will override settings specified in *appsettings.json*:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/fundamentals/configuration/sample/src/CustomConfigurationProvider/Program.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [21, 22, 23, 24], "linenostart": 1}} -->
+[!code-csharp[Main](../fundamentals/configuration/sample/src/CustomConfigurationProvider/Program.cs?highlight=21,22,23,24)]
 
-````c#
+````csharp
 
    using System;
    using System.IO;

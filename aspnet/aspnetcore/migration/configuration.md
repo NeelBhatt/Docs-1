@@ -17,7 +17,7 @@ The *web.config* file has also been replaced in ASP.NET Core. Configuration itse
 
 For this article, we are starting with the partially-migrated ASP.NET Core project from [the previous article](mvc.md). To setup configuration, add the following constructor and property to the *Startup.cs* file located in the root of the project:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/migration/configuration/samples/WebApp1/src/WebApp1/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "language": "none", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "migration/configuration/samples/WebApp1/src/WebApp1/Startup.cs", "ids": [], "linenos": true, "language": "none", "highlight_args": {"linenostart": 1}} -->
 
 ````none
 
@@ -37,9 +37,7 @@ For this article, we are starting with the partially-migrated ASP.NET Core proje
 
 Note that at this point, the *Startup.cs* file will not compile, as we still need to add the following `using` statement:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
-
-````c#
+````csharp
 
    using Microsoft.Extensions.Configuration;
    ````
@@ -52,7 +50,7 @@ Add an *appsettings.json* file to the root of the project using the appropriate 
 
 Our ASP.NET MVC project included the required database connection string in *web.config*, in the `<connectionStrings>` element. In our ASP.NET Core project, we are going to store this information in the *appsettings.json* file. Open *appsettings.json*, and note that it already includes the following:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/migration/configuration/samples/WebApp1/src/WebApp1/appsettings.json", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "language": "json", "highlight_args": {"hl_lines": [4], "linenostart": 1}} -->
+[!code-json[Main](../migration/configuration/samples/WebApp1/src/WebApp1/appsettings.json?highlight=4)]
 
 ````json
 

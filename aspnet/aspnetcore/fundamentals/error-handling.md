@@ -16,9 +16,9 @@ When errors occur in your ASP.NET app, you can handle them in a variety of ways,
 
 You configure the pipeline for each request in the `Startup` class's `Configure()` method (learn more about [Application Startup](startup.md)). You can add a simple exception page, meant only for use during development, very easily. All that's required is to add a dependency on `Microsoft.AspNetCore.Diagnostics` to the project and then add one line to `Configure()` in `Startup.cs`:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/fundamentals/error-handling/sample/src/ErrorHandlingSample/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [6, 8], "linenostart": 1}} -->
+[!code-csharp[Main](../fundamentals/error-handling/sample/src/ErrorHandlingSample/Startup.cs?highlight=6,8)]
 
-````c#
+````csharp
 
    public void Configure(IApplicationBuilder app, 
        IHostingEnvironment env)
@@ -36,9 +36,9 @@ The above code includes a check to ensure the environment is development before 
 
 The sample application includes a simple mechanism for creating an exception:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/fundamentals/error-handling/sample/src/ErrorHandlingSample/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [5, 6, 7, 8], "linenostart": 1}} -->
+[!code-csharp[Main](../fundamentals/error-handling/sample/src/ErrorHandlingSample/Startup.cs?highlight=5,6,7,8)]
 
-````c#
+````csharp
 
    public static void HomePage(IApplicationBuilder app)
    {
@@ -69,18 +69,14 @@ If a request includes a non-empty querystring parameter for the variable `throw`
 
 When not in development, it's a good idea to configure an exception handler path using the `UseExceptionHandler` middleware:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
-
-````c#
+````csharp
 
    app.UseExceptionHandler("/Error");
    ````
 
 For the action associated with the endpoint, don't explicitly decorate the `IActionResult` with HTTP method attributes, such as `HttpGet`. Using explicit verbs could prevent some requests from reaching the method.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
-
-````c#
+````csharp
 
    [Route("/Error")]
    public IActionResult Index()
@@ -109,9 +105,7 @@ In this case, you can see the value of the `throw` parameter that was passed to 
 
 By default, your app will not provide a rich status code page for HTTP status codes such as 500 (Internal Server Error) or 404 (Not Found). You can configure the `StatusCodePagesMiddleware` adding this line to the `Configure` method:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
-
-````c#
+````csharp
 
    app.UseStatusCodePages();
    ````
@@ -122,9 +116,7 @@ By default, this middleware adds very simple, text-only handlers for common stat
 
 The middleware supports several different extension methods. You can pass it a custom lamdba expression:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
-
-````c#
+````csharp
 
    app.UseStatusCodePages(context =>
      context.HttpContext.Response.SendAsync("Handler, status code: " +
@@ -133,18 +125,14 @@ The middleware supports several different extension methods. You can pass it a c
 
 Alternately, you can simply pass it a content type and a format string:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
-
-````c#
+````csharp
 
    app.UseStatusCodePages("text/plain", "Response, status code: {0}");
    ````
 
 The middleware can handle redirects (with either relative or absolute URL paths), passing the status code as part of the URL:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
-
-````c#
+````csharp
 
    app.UseStatusCodePagesWithRedirects("~/errors/{0}");
    ````
@@ -153,9 +141,7 @@ In the above case, the client browser will see a `302 / Found` status and will r
 
 Alternately, the middleware can re-execute the request from a new path format string:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
-
-````c#
+````csharp
 
    app.UseStatusCodePagesWithReExecute("/errors/{0}");
    ````
@@ -164,9 +150,7 @@ The `UseStatusCodePagesWithReExecute` method will still return the original stat
 
 If you need to disable status code pages for certain requests, you can do so using the following code:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
-
-````c#
+````csharp
 
    var statusCodePagesFeature = context.Features.Get<IStatusCodePagesFeature>();
    if (statusCodePagesFeature != null)

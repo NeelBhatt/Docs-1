@@ -15,8 +15,6 @@ Install the new tools from [https://dot.net/core](https://dot.net/core) and foll
 
 Update the global.json to
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "javascript", "highlight_args": {}} -->
-
 ````javascript
 
    {
@@ -31,8 +29,6 @@ Update the global.json to
 
 For the tools we ship, you no longer need to use `imports` in *project.json*. For example:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "json", "highlight_args": {}} -->
-
 ````json
 
    {
@@ -46,8 +42,6 @@ For the tools we ship, you no longer need to use `imports` in *project.json*. Fo
    ````
 
 Becomes:
-
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "json", "highlight_args": {}} -->
 
 ````json
 

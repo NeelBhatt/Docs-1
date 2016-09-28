@@ -7,9 +7,9 @@ By [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 Open the Movie controller and examine the `Details` method:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    public async Task<IActionResult> Details(int? id)
    {
@@ -32,7 +32,7 @@ Open the Movie controller and examine the `Details` method:
 
 The MVC scaffolding engine that created this action method adds a comment showing a HTTP request that invokes the method. In this case it's a GET request with three URL segments, the `Movies` controller, the `Details` method and a `id` value. Recall these segments are defined in Startup.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "highlight_args": {"hl_lines": [6], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Startup.cs", "ids": [], "linenos": false, "highlight_args": {"hl_lines": [6], "linenostart": 1}} -->
 
 ````
 
@@ -52,9 +52,9 @@ Code First makes it easy to search for data using the `SingleOrDefaultAsync` met
 
 Examine the `Delete` and `DeleteConfirmed` methods.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    public async Task<IActionResult> Delete(int? id)
    {
@@ -90,9 +90,7 @@ Note that the `HTTP GET Delete` method doesn't delete the specified movie, it re
 
 The `[HttpPost]` method that deletes the data is named `DeleteConfirmed` to give the HTTP POST method a unique signature or name. The two method signatures are shown below:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
-
-````c#
+````csharp
 
    // GET: Movies/Delete/5
    public async Task<IActionResult> Delete(int? id)
@@ -109,9 +107,9 @@ There are two approaches to this problem, one is to give the methods different n
 
 Another common work around for methods that have identical names and signatures is to artificially change the signature of the POST method to include an extra (unused) parameter. That's what we did in a previous post when we added the `notUsed` parameter. You could do the same thing here for the `[HttpPost] Delete` method:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    [ValidateAntiForgeryToken]
    public async Task<IActionResult> Delete(int id, bool notUsed)

@@ -9,7 +9,7 @@ To support these scenarios the package Microsoft.AspNetCore.DataProtection.Exten
 
 For example:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/security/data-protection/configuration/non-di-scenarios/_static/nodisample1.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "language": "none", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "security/data-protection/configuration/non-di-scenarios/_static/nodisample1.cs", "ids": [], "linenos": true, "language": "none", "highlight_args": {"linenostart": 1}} -->
 
 ````none
 
@@ -59,7 +59,7 @@ For example:
 
 The application developer can address both of these if desired. The DataProtectionProvider constructor accepts an [optional configuration callback](overview.md#data-protection-configuration-callback.md) which can be used to tweak the behaviors of the system. The sample below demonstrates restoring isolation via an explicit call to SetApplicationName, and it also demonstrates configuring the system to automatically encrypt persisted keys using Windows DPAPI. If the directory points to a UNC share, you may wish to distribute a shared certificate across all relevant machines and to configure the system to use certificate-based encryption instead via a call to [ProtectKeysWithCertificate](overview.md#configuring-x509-certificate.md).
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/security/data-protection/configuration/non-di-scenarios/_static/nodisample2.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "language": "none", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "security/data-protection/configuration/non-di-scenarios/_static/nodisample2.cs", "ids": [], "linenos": true, "language": "none", "highlight_args": {"linenostart": 1}} -->
 
 ````none
 

@@ -50,7 +50,6 @@ Let’s add support for photo albums by installing the [Fotorama](http://fotoram
 
 Now that the installation step has been completed, expand the twisty to the left of bower.json, and locate the .bowerrc file. Open it, and notice that the `directory` property is set to "wwwroot/lib". This setting indicates the location at which Bower will install the package assets.
 
-   <!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "json", "highlight_args": {}} -->
 
    ````json
 
@@ -64,8 +63,6 @@ In Solution Explorer, expand the *wwwroot* node. The *lib* directory should now 
    ![image](bower/_static/package-lib.png)
 
 Next, let's add an HTML page to the project. In Solution Explorer, right-click *wwwroot* node and select **Add** > **New Item** > **HTML Page**. Name the page Index.html. Replace the contents of the file with the following:
-
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
 
 ````html
 
@@ -125,7 +122,6 @@ The first step is to define the packages your application needs and to download 
 
 1. Open bower.json, and add jquery and bootstrap to the `dependencies` section. As an alternative to the manual file editing, the "Manage Bower Packages" UI may be used. The resulting bower.json file should look like the example here. The versions will change over time, so use the latest stable build version from the drop-down list.
 
-   <!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "json", "highlight_args": {}} -->
 
    ````json
 
@@ -159,8 +155,6 @@ Now that Bower has copied the client support packages needed by the application,
 
 Make sure bootstrap.js follows jquery.js, so that jQuery is loaded first.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
-
 ````html
 
    <!DOCTYPE html>
@@ -184,7 +178,6 @@ Add jQuery and Bootstrap components to the page to verify that the web applicati
 
 1. Inside the `body` tag, above the `script` references, add a `div` element with the Bootstrap **jumbotron** class and an anchor tag.
 
-   <!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
 
    ````html
 
@@ -197,7 +190,6 @@ Add jQuery and Bootstrap components to the page to verify that the web applicati
 
 1. Add the following code after the jQuery and Bootstrap `script` references.
 
-   <!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
 
    ````html
 
@@ -215,9 +207,8 @@ Add jQuery and Bootstrap components to the page to verify that the web applicati
 
 1. Within the `Configure` method of the Startup.cs file, add a call to the `UseStaticFiles` extension method. This middleware adds files, found within the web root, to the request pipeline. This line of code will look as follows:
 
-   <!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
-   ````c#
+   ````csharp
 
       app.UseStaticFiles();
       ````

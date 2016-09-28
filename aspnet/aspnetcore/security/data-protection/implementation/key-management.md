@@ -42,9 +42,7 @@ There might be circumstances where a key will be created with immediate activati
 
 The default key lifetime is 90 days, though this is configurable as in the following example.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
-
-````c#
+````csharp
 
    services.AddDataProtection()
        // use 14-day lifetime instead of 90-day lifetime
@@ -66,7 +64,7 @@ Any operation which modifies the key ring (creating a new key explicitly or perf
 
 The sample below demonstrates using the IKeyManager interface to inspect and manipulate the key ring, including revoking existing keys and generating a new key manually.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/security/data-protection/implementation/key-management/samples/key-management.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "language": "none", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "security/data-protection/implementation/key-management/samples/key-management.cs", "ids": [], "linenos": true, "language": "none", "highlight_args": {"linenostart": 1}} -->
 
 ````none
 

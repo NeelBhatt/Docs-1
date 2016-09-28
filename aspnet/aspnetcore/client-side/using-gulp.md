@@ -30,8 +30,6 @@ The ASP.NET Core Web Application project template is used to help you get starte
 
 When you create a new web project using ASP.NET Core Web Application template, Visual Studio includes the [Gulp.js npm package](https://www.npmjs.com/package/gulp), the *gulpfile.js* file, and a set of Gulp dependencies. The npm package contains all the prerequisites for running Gulp tasks in your Visual Studio project. The provided *gulpfile.js* file defines a set of Gulp tasks which can be run from the **Task Runner Explorer** window in Visual Studio. The `devDependencies` section of the *package.json* file specifies the development-time dependencies to install. These dependencies are not deployed with the application. You can add new packages to `devDependencies` and save the file:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "json", "highlight_args": {}} -->
-
 ````json
 
    {
@@ -52,8 +50,6 @@ After adding a new key-value pair in `devDependencies` and saving the file, Visu
 ## Gulp Starter Tasks in Visual Studio
 
 A starter set of Gulp tasks is defined in *gulpfile.js*. These tasks delete and minify the CSS and JavaScript files. The following JavaScript, from the first half of *gulpfile.js*, includes Gulp modules and specifies file paths to be referenced within the forthcoming tasks:
-
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "javascript", "highlight_args": {}} -->
 
 ````javascript
 
@@ -84,7 +80,7 @@ The above code specifies which Node modules are required. The `require` function
 
 Once the requisite modules are imported in *gulpfile.js*, the tasks can be specified. Visual Studio registers six tasks, represented by the following code in *gulpfile.js*:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "javascript", "highlight_args": {"hl_lines": [1, 5, 9, 11, 18, 25]}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "javascript", "highlight_args": {"hl_lines": [1, 5, 9, 11, 18, 25]}} -->
 
 ````javascript
 
@@ -160,8 +156,6 @@ To define a new Gulp task, modify *gulpfile.js*.
 
 1. Add the following JavaScript to the end of *gulpfile.js*:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "javascript", "highlight_args": {}} -->
-
 ````javascript
 
    gulp.task("first", function () {
@@ -186,8 +180,6 @@ This task is named `first`, and it simply displays a string.
 When you run multiple tasks, the tasks run concurrently by default. However, if you need to run tasks in a specific order, you must specify when each task is complete, as well as which tasks depend on the completion of another task.
 
 1. To define a series of tasks to run in order, replace the `first` task that you added above in *gulpfile.js* with the following:
-
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "javascript", "highlight_args": {}} -->
 
 ````javascript
 
@@ -223,8 +215,6 @@ IntelliSense provides code completion, parameter descriptions, and other feature
 ## Development, Staging, and Production Environments
 
 When Gulp is used to optimize client-side files for staging and production, the processed files are saved to a local staging and production location. The *_Layout.cshtml* file uses the **environment** tag helper to provide two different versions of CSS files. One version of CSS files is for development and the other version is optimized for both staging and production. In Visual Studio 2015, when you change the **Hosting:Environment** environment variable to `Production`, Visual Studio will build the Web app and link to the minimized CSS files. The following markup shows the **environment** tag helpers containing link tags to the `Development` CSS files and the minified `Staging, Production` CSS files.
-
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
 
 ````html
 

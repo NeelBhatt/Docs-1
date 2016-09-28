@@ -27,8 +27,6 @@ In a console, open the folder where you downloaded the sample application and ru
 
 The console output will show messages similar to the ones below, indicating that the application is now running and waiting for requests:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "bash", "highlight_args": {}} -->
-
 ````bash
 
    $ dotnet run
@@ -57,7 +55,7 @@ We'll fix that.
 
 1. Add `Microsoft.DotNet.Watcher.Tools` to the `tools` section of the *WebApp/project.json* file as in the example below:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/dotnet-watch/sample/WebAppTests/project.json", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "javascript", "highlight_args": {"hl_lines": [2], "linenostart": 1}} -->
+[!code-javascript[Main](../tutorials/dotnet-watch/sample/WebAppTests/project.json?highlight=2)]
 
 ````javascript
 
@@ -70,8 +68,6 @@ We'll fix that.
 2. Run `dotnet restore`.
 
 The console output will show messages similar to the ones below:
-
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "bash", "highlight_args": {}} -->
 
 ````bash
 
@@ -88,8 +84,6 @@ Any `dotnet` command can be run with  `dotnet watch`:  For example:
 <!--     Command  Command with watch  dotnet run  dotnet watch run  dotnet run -f net451  dotnet watch run -f net451  dotnet run -f net451 -- --arg1  dotnet watch run -f net451 -- --arg1  dotnet test  dotnet watch test -->
 
 To run `WebApp` using the watcher, run `dotnet watch run` in the `WebApp` folder. The console output will show messages similar to the ones below, indicating that `dotnet watch` is now watching code files:
-
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "bash", "highlight_args": {}} -->
 
 ````bash
 
@@ -113,9 +107,9 @@ Open *WebApp/Controllers/MathController.cs*.
 
 We've intentionally introduced a bug in the code.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/dotnet-watch/sample/WebApp/Controllers/MathController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [5], "linenostart": 1}} -->
+[!code-csharp[Main](../tutorials/dotnet-watch/sample/WebApp/Controllers/MathController.cs?highlight=5)]
 
-````c#
+````csharp
 
        public static int Product(int a, int b)
        {
@@ -129,8 +123,6 @@ We've intentionally introduced a bug in the code.
 Fix the code by replacing `a + b` with `a * b`.
 
 Save the file. The console output will show messages similar to the ones below, indicating that `dotnet watch` detected a file change and restarted the application.
-
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "bash", "highlight_args": {}} -->
 
 ````bash
 
@@ -162,8 +154,6 @@ The file watcher can run other `dotnet` commands like `test` or `publish`.
 
 If you previously fixed the bug in the `MathController` then you'll see an output similar to the one below, otherwise you'll see a test failure:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "bash", "highlight_args": {}} -->
-
 ````bash
 
    WebAppTests user$ dotnet watch test
@@ -188,8 +178,6 @@ Once all the tests run, the watcher will indicate that it's waiting for a file t
 3. Open the controller file in *WebApp/Controllers/MathController.cs* and change some code. If you haven't fixed the product bug, do it now. Save the file.
 
 `dotnet watch` will detect the file change and rerun the tests. The console output will show messages similar to the one below:
-
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "bash", "highlight_args": {}} -->
 
 ````bash
 

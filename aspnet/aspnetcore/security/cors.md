@@ -38,7 +38,7 @@ To setup CORS for your application add the `Microsoft.AspNetCore.Cors` package t
 
 Add the CORS services in Startup.cs:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/security/cors/sample/src/CorsExamples/CorsExample1/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "security/cors/sample/src/CorsExamples/CorsExample1/Startup.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
 ````csharp
 
@@ -55,7 +55,7 @@ To enable CORS for your entire application add the CORS middleware to your reque
 
 You can specify a cross-origin policy when adding the CORS middleware using the `CorsPolicyBuilder` class. There are two ways to do this. The first is to call UseCors with a lambda:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/security/cors/sample/src/CorsExamples/CorsExample1/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "csharp", "highlight_args": {"hl_lines": [11, 12], "linenostart": 1}} -->
+[!code-csharp[Main](../security/cors/sample/src/CorsExamples/CorsExample1/Startup.cs?highlight=11,12)]
 
 ````csharp
 
@@ -84,7 +84,7 @@ The lambda takes a CorsPolicyBuilder object. I’ll describe all of the configur
 
 Note that CorsPolicyBuilder has a fluent API, so you can chain method calls:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/security/cors/sample/src/CorsExamples/CorsExample3/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "csharp", "highlight_args": {"hl_lines": [3], "linenostart": 1}} -->
+[!code-csharp[Main](../security/cors/sample/src/CorsExamples/CorsExample3/Startup.cs?highlight=3)]
 
 ````csharp
 
@@ -98,7 +98,7 @@ Note that CorsPolicyBuilder has a fluent API, so you can chain method calls:
 
 The second approach is to define one or more named CORS policies, and then select the policy by name at run time.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/security/cors/sample/src/CorsExamples/CorsExample2/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "security/cors/sample/src/CorsExamples/CorsExample2/Startup.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
 ````csharp
 
@@ -142,7 +142,7 @@ You can alternatively use MVC to apply specific CORS per action, per controller,
 
 To specify a CORS policy for a specific action add the `[EnableCors]` attribute to the action. Specify the policy name.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/security/cors/sample/src/CorsExamples/CorsMVC/Controllers/HomeController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "security/cors/sample/src/CorsExamples/CorsMVC/Controllers/HomeController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
 ````csharp
 
@@ -162,7 +162,7 @@ To specify a CORS policy for a specific action add the `[EnableCors]` attribute 
 
 To specify the CORS policy for a specific controller add the `[EnableCors]` attribute to the controller class. Specify the policy name.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/security/cors/sample/src/CorsExamples/CorsMVC/Controllers/HomeController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "security/cors/sample/src/CorsExamples/CorsMVC/Controllers/HomeController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
 ````csharp
 
@@ -176,7 +176,7 @@ To specify the CORS policy for a specific controller add the `[EnableCors]` attr
 
 You can enable CORS globally for all controllers by adding the `CorsAuthorizationFilterFactory` filter to the global filter collection:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/security/cors/sample/src/CorsExamples/CorsMVC/Startup2.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "security/cors/sample/src/CorsExamples/CorsMVC/Startup2.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
 ````csharp
 
@@ -197,7 +197,7 @@ The precedence order is: Action, controller, global. Action-level policies take 
 
 To disable CORS for a controller or action, use the `[DisableCors]` attribute.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/security/cors/sample/src/CorsExamples/CorsMVC/Controllers/HomeController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "security/cors/sample/src/CorsExamples/CorsMVC/Controllers/HomeController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
 ````csharp
 
@@ -231,7 +231,7 @@ For some options it may be helpful to read [How CORS works](#how-cors-works) fir
 
 To allow one or more specific origins:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/security/cors/sample/src/CorsExamples/CorsExample4/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "security/cors/sample/src/CorsExamples/CorsExample4/Startup.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
 ````csharp
 
@@ -245,7 +245,7 @@ To allow one or more specific origins:
 
 To allow all origins:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/security/cors/sample/src/CorsExamples/CorsExample4/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "security/cors/sample/src/CorsExamples/CorsExample4/Startup.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
 ````csharp
 
@@ -263,7 +263,7 @@ Consider carefully before allowing requests from any origin. It means that liter
 
 To specify which HTTP methods are allowed to access the resource.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/security/cors/sample/src/CorsExamples/CorsExample4/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "security/cors/sample/src/CorsExamples/CorsExample4/Startup.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
 ````csharp
 
@@ -278,7 +278,7 @@ To specify which HTTP methods are allowed to access the resource.
 
 To allow all HTTP methods:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/security/cors/sample/src/CorsExamples/CorsExample4/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "security/cors/sample/src/CorsExamples/CorsExample4/Startup.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
 ````csharp
 
@@ -299,7 +299,7 @@ A CORS preflight request might include an Access-Control-Request-Headers header,
 
 To whitelist specific headers:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/security/cors/sample/src/CorsExamples/CorsExample4/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "security/cors/sample/src/CorsExamples/CorsExample4/Startup.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
 ````csharp
 
@@ -314,7 +314,7 @@ To whitelist specific headers:
 
 To allow all author request headers:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/security/cors/sample/src/CorsExamples/CorsExample4/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "security/cors/sample/src/CorsExamples/CorsExample4/Startup.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
 ````csharp
 
@@ -347,7 +347,7 @@ By default, the browser does not expose all of the response headers to the appli
 
 The CORS spec calls these *simple response headers*. To make other headers available to the application:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/security/cors/sample/src/CorsExamples/CorsExample4/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "security/cors/sample/src/CorsExamples/CorsExample4/Startup.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
 ````csharp
 
@@ -366,8 +366,6 @@ Credentials require special handling in a CORS request. By default, the browser 
 
 Using XMLHttpRequest directly:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "js", "highlight_args": {}} -->
-
 ````js
 
    var xhr = new XMLHttpRequest();
@@ -376,8 +374,6 @@ Using XMLHttpRequest directly:
    ````
 
 In jQuery:
-
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "js", "highlight_args": {}} -->
 
 ````js
 
@@ -391,7 +387,7 @@ In jQuery:
 
 In addition, the server must allow the credentials. To allow cross-origin credentials:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/security/cors/sample/src/CorsExamples/CorsExample4/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "security/cors/sample/src/CorsExamples/CorsExample4/Startup.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
 ````csharp
 
@@ -414,7 +410,7 @@ Be very careful about allowing cross-origin credentials, because it means a webs
 
 The Access-Control-Max-Age header specifies how long the response to the preflight request can be cached. To set this header:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/security/cors/sample/src/CorsExamples/CorsExample4/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "security/cors/sample/src/CorsExamples/CorsExample4/Startup.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
 ````csharp
 
@@ -437,7 +433,7 @@ The CORS specification introduces several new HTTP headers that enable cross-ori
 
 Here is an example of a cross-origin request. The "Origin" header gives the domain of the site that is making the request:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "names": [], "classes": [], "xml:space": "preserve"} -->
+<!-- literal_block {"ids": [], "xml:space": "preserve"} -->
 
 ````
 
@@ -453,7 +449,7 @@ Here is an example of a cross-origin request. The "Origin" header gives the doma
 
 If the server allows the request, it sets the Access-Control-Allow-Origin header. The value of this header either matches the Origin header, or is the wildcard value "*", meaning that any origin is allowed.:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "names": [], "classes": [], "xml:space": "preserve"} -->
+<!-- literal_block {"ids": [], "xml:space": "preserve"} -->
 
 ````
 
@@ -490,7 +486,7 @@ The rule about request headers applies to headers that the application sets by c
 
 Here is an example of a preflight request:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "names": [], "classes": [], "xml:space": "preserve"} -->
+<!-- literal_block {"ids": [], "xml:space": "preserve"} -->
 
 ````
 
@@ -513,7 +509,7 @@ The pre-flight request uses the HTTP OPTIONS method. It includes two special hea
 
 Here is an example response, assuming that the server allows the request:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "names": [], "classes": [], "xml:space": "preserve"} -->
+<!-- literal_block {"ids": [], "xml:space": "preserve"} -->
 
 ````
 

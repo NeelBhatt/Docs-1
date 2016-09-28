@@ -19,9 +19,9 @@ The host is responsible for application startup and lifetime management. The ser
 
 You create a host using an instance of `WebHostBuilder`. This is typically done in your app's entry point: `public static void Main`, (which in the project templates is located in a *Program.cs* file). A typical *Program.cs*, shown below, demonstrates how to use a `WebHostBuilder` to build a host.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/common/samples/WebApplication1/src/WebApplication1/Program.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [14, 15, 16, 17, 18, 19, 20, 21], "linenostart": 1}} -->
+[!code-csharp[Main](../common/samples/WebApplication1/src/WebApplication1/Program.cs?highlight=14,15,16,17,18,19,20,21)]
 
-````c#
+````csharp
 
    using System;
    using System.Collections.Generic;
@@ -64,9 +64,7 @@ If the app should work with IIS, the `UseIISIntegration` method should be called
 
 A minimal implementation of configuring a host (and an ASP.NET Core app) would include just a server and configuration of the app's request pipeline:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
-
-````c#
+````csharp
 
    var host = new WebHostBuilder()
        .UseKestrel()
@@ -86,9 +84,7 @@ A minimal implementation of configuring a host (and an ASP.NET Core app) would i
 
 The `WebHostBuilder` provides methods for setting most of the available configuration values for the host, which can also be set directly using `UseSetting` and associated key. For example, to specify the application name:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
-
-````c#
+````csharp
 
    new WebHostBuilder()
        .UseSetting("applicationName", "MyApp")
@@ -102,9 +98,7 @@ Application Name `string`
 Capture Startup Errors `bool`
    Key: `captureStartupErrors`. Defaults to `false`. When `false`, errors during startup result in the host exiting. When `true`, the host will capture any exceptions from the `Startup` class and attempt to start the server. It will display an error page (generic, or detailed, based on the Detailed Errors setting, below) for every request. Set using the `CaptureStartupErrors` method.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
-
-````c#
+````csharp
 
    new WebHostBuilder()
        .CaptureStartupErrors(true)
@@ -113,9 +107,7 @@ Capture Startup Errors `bool`
 Content Root `string`
    Key: `contentRoot`. Defaults to the folder where the application assembly resides (for Kestrel; IIS will use the web project root by default). This setting determines where ASP.NET Core will begin searching for content files, such as MVC Views. Also used as the base path for the . Set using the `UseContentRoot` method. Path must exist, or host will fail to start.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
-
-````c#
+````csharp
 
    new WebHostBuilder()
        .UseContentRoot("c:\\mywebsite")
@@ -124,9 +116,7 @@ Content Root `string`
 Detailed Errors `bool`
    Key: `detailedErrors`. Defaults to `false`. When `true` (or when Environment is set to "Development"), the app will display details of startup exceptions, instead of just a generic error page. Set using `UseSetting`.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
-
-````c#
+````csharp
 
    new WebHostBuilder()
        .UseSetting("detailedErrors", "true")
@@ -143,9 +133,7 @@ When Detailed Errors is set to `true` and Capture Startup Errors is `true`, a de
 Environment `string`
    Key: `environment`. Defaults to "Production". May be set to any value. Framework-defined values include "Development", "Staging", and "Production". Values are not case sensitive. See [Working with Multiple Environments](environments.md). Set using the `UseEnvironment` method.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
-
-````c#
+````csharp
 
    new WebHostBuilder()
        .UseEnvironment("Development")
@@ -155,22 +143,20 @@ Environment `string`
 > By default, the environment is read from the `ASPNETCORE_ENVIRONMENT` environment variable. When using Visual Studio, environment variables may be set in the *launchSettings.json* file.
 
 Server URLs `string`
-   Key: `urls`. Set to a semicolon (;) separated list of URL prefixes to which the server should respond. For example, "[http://localhost:123](http://localhost:123)". The domain/host name can be replaced with "*" to indicate the server should listen to requests on any IP address or host using the specified port and protocol (for example, "[http://](http://)*:5000" or "https://*:5001"). The protocol ("[http://](http://)" or "[https://](https://)") must be included with each URL. The prefixes are interpreted by the configured server; supported formats will vary between servers.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+Key: `urls`. Set to a semicolon (;) separated list of URL prefixes to which the server should respond. For example, "[http://localhost:123](http://localhost:123)". The domain/host name can be replaced with "*" to indicate the server should listen to requests on any IP address or host using the specified port and protocol (for example, "[http://](http://)*:5000" or "https://*:5001"). The protocol ("[http://](http://)" or "[https://](https://)") must be included with each URL. The prefixes are interpreted by the configured server; supported formats will vary between servers.
 
-````c#
+````csharp
 
    new WebHostBuilder()
        .UseUrls("http://*:5000;http://localhost:5001;https://hostname:5002")
    ````
 
 Startup Assembly `string`
-   Key: `startupAssembly`. Determines the assembly to search for the `Startup` class. Set using the `UseStartup` method. May instead reference specific type using `WebHostBuilder.UseStartup<StartupType>`. If multiple `UseStartup` methods are called, the last one takes precedence.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+Key: `startupAssembly`. Determines the assembly to search for the `Startup` class. Set using the `UseStartup` method. May instead reference specific type using `WebHostBuilder.UseStartup<StartupType>`. If multiple `UseStartup` methods are called, the last one takes precedence.
 
-````c#
+````csharp
 
    new WebHostBuilder()
        .UseStartup("StartupAssemblyName")
@@ -179,11 +165,10 @@ Startup Assembly `string`
 <a name=web-root-setting></a>
 
 Web Root `string`
-   Key: `webroot`. If not specified the default is `(Content Root Path)\wwwroot`, if it exists. If this path doesn't exist, then a no-op file provider is used. Set using `UseWebRoot`.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+Key: `webroot`. If not specified the default is `(Content Root Path)\wwwroot`, if it exists. If this path doesn't exist, then a no-op file provider is used. Set using `UseWebRoot`.
 
-````c#
+````csharp
 
    new WebHostBuilder()
        .UseWebRoot("public")
@@ -191,9 +176,9 @@ Web Root `string`
 
 Use [Configuration](configuration.md) to set configuration values to be used by the host. These values may be subsequently overridden. This is specified using `UseConfiguration`.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {"hl_lines": [3, 4, 5, 6, 9]}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [3, 4, 5, 6, 9]}} -->
 
-````c#
+````csharp
 
    public static void Main(string[] args)
    {
@@ -217,8 +202,6 @@ Use [Configuration](configuration.md) to set configuration values to be used by 
 
 In the example above, command line arguments may be passed in to configure the host, or configuration settings may optionally be specified in a *hosting.json* file. To specify the host run on a particular URL, you could pass in the desired value from the command line:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
-
 ````none
 
    dotnet run --urls "http://*:5000"
@@ -226,18 +209,14 @@ In the example above, command line arguments may be passed in to configure the h
 
 The `Run` method starts the web app and blocks the calling thread until the host is shutdown.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
-
-````c#
+````csharp
 
    host.Run();
    ````
 
 You can run the host in a non-blocking manner by calling its `Start` method:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
-
-````c#
+````csharp
 
    using (host)
    {
@@ -248,9 +227,7 @@ You can run the host in a non-blocking manner by calling its `Start` method:
 
 Pass a list of URLs to the `Start` method and it will listen on the URLs specified:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
-
-````c#
+````csharp
 
    var urls = new List<string>() {
      "http://*:5000",
@@ -273,9 +250,7 @@ Pass a list of URLs to the `Start` method and it will listen on the URLs specifi
 
 You can override any of these environment variable values by specifying configuration (using `UseConfiguration`) or by setting the value explicitly (using `UseUrls` for instance). The host will use whichever option sets the value last. For this reason, `UseIISIntegration` must appear after `UseUrls`, because it replaces the URL with one dynamically provided by IIS. If you want to programmatically set the default URL to one value, but allow it to be overridden with configuration, you could configure the host as follows:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
-
-````c#
+````csharp
 
    var config = new ConfigurationBuilder()
    .AddCommandLine(args)

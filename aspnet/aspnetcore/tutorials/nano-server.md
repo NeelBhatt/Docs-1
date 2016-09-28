@@ -36,7 +36,7 @@ After setting the local password, you will manage Nano Server using PowerShell r
 
 Open an elevated PowerShell window to add your remote Nano Server instance to your `TrustedHosts` list.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "names": [], "classes": ["code", "ps1"], "xml:space": "preserve"} -->
+<!-- literal_block {"ids": [], "classes": ["code", "ps1"], "xml:space": "preserve"} -->
 
 ````
 
@@ -48,7 +48,7 @@ Open an elevated PowerShell window to add your remote Nano Server instance to yo
 
 Once you have added your Nano Server instance to your `TrustedHosts`, you can connect to it using PowerShell remoting
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "names": [], "classes": ["code", "ps1"], "xml:space": "preserve"} -->
+<!-- literal_block {"ids": [], "classes": ["code", "ps1"], "xml:space": "preserve"} -->
 
 ````
 
@@ -62,7 +62,7 @@ A successful connection results in a prompt with a format looking like: `[10.83.
 
 Create a file share on the Nano server so that the published application can be copied to it. Run the following commands in the remote session:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "names": [], "classes": ["code", "ps1"], "xml:space": "preserve"} -->
+<!-- literal_block {"ids": [], "classes": ["code", "ps1"], "xml:space": "preserve"} -->
 
 ````
 
@@ -77,7 +77,7 @@ After running the above commands you should be able to access this share by visi
 
 Run the following commands in the remote session to open up a port in the firewall to listen for TCP traffic.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "names": [], "classes": ["code", "ps1"], "xml:space": "preserve"} -->
+<!-- literal_block {"ids": [], "classes": ["code", "ps1"], "xml:space": "preserve"} -->
 
 ````
 
@@ -90,7 +90,7 @@ Add the `NanoServerPackage` provider from the PowerShell gallery. Once the provi
 
 Run the following commands in the PowerShell session that was created earlier:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "names": [], "classes": ["code", "ps1"], "xml:space": "preserve"} -->
+<!-- literal_block {"ids": [], "classes": ["code", "ps1"], "xml:space": "preserve"} -->
 
 ````
 
@@ -111,7 +111,7 @@ The ASP.NET Core Module is an IIS 7.5+ module which is responsible for process m
 
 On a regular (not Nano) machine run the following copy commands:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "names": [], "classes": ["code", "ps1"], "xml:space": "preserve"} -->
+<!-- literal_block {"ids": [], "classes": ["code", "ps1"], "xml:space": "preserve"} -->
 
 ````
 
@@ -121,7 +121,7 @@ On a regular (not Nano) machine run the following copy commands:
 
 On a Nano machine, you will need to copy the following files from the file share that we created earlier to the valid locations. So, run the following copy commands:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "names": [], "classes": ["code", "ps1"], "xml:space": "preserve"} -->
+<!-- literal_block {"ids": [], "classes": ["code", "ps1"], "xml:space": "preserve"} -->
 
 ````
 
@@ -131,7 +131,7 @@ On a Nano machine, you will need to copy the following files from the file share
 
 Run the following script in the remote session:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/nano-server/enable-ancm.ps1", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "tutorials/nano-server/enable-ancm.ps1", "ids": [], "linenos": false, "highlight_args": {"linenostart": 1}} -->
 
 ````
 
@@ -179,7 +179,7 @@ Run the following script in the remote session:
 
 If you published a portable app, .NET Core must be installed on the target machine. Execute the following Powershell script in a remote Powershell session to install the .NET Framework on your Nano Server.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/nano-server/Download-Dotnet.ps1", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "powershell", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "tutorials/nano-server/Download-Dotnet.ps1", "ids": [], "linenos": false, "language": "powershell", "highlight_args": {"linenostart": 1}} -->
 
 ````powershell
 
@@ -236,7 +236,7 @@ You may need to make changes to your *web.config* to point to where you extracte
 
 Example of how a web.config might look like if `dotnet.exe` was **not** on the path:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "names": [], "classes": ["code", "xml"], "xml:space": "preserve"} -->
+<!-- literal_block {"ids": [], "classes": ["code", "xml"], "xml:space": "preserve"} -->
 
 ````
 
@@ -253,7 +253,7 @@ Example of how a web.config might look like if `dotnet.exe` was **not** on the p
 
 Run the following commands in the remote session to create a new site in IIS for the published app. This script uses the `DefaultAppPool` for simplicity. For more considerations on running under an application pool, see [Application Pools](../hosting/apppool.md#apppool.md).
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "names": [], "classes": ["code", "powershell"], "xml:space": "preserve"} -->
+<!-- literal_block {"ids": [], "classes": ["code", "powershell"], "xml:space": "preserve"} -->
 
 ````
 

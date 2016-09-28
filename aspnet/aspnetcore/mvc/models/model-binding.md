@@ -17,9 +17,9 @@ When MVC receives an HTTP request, it routes it to a specific action method of a
 
 Since the route template looks like this, `{controller=Home}/{action=Index}/{id?}`, `movies/edit/2` routes to the `Movies` controller, and its `Edit` action method. It also accepts an optional parameter called `id`. The code for the action method should look something like this:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": true, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": true, "xml:space": "preserve", "language": "csharp"} -->
 
-````c#
+````csharp
 
    public IActionResult Edit(int? id)
    ````
@@ -90,9 +90,9 @@ Request data can come in a variety of formats including JSON, XML and many other
 
 ASP.NET selects input formatters based on the [Content-Type](https://www.w3.org/Protocols/rfc1341/4_Content-Type.html) header and the type of the parameter, unless there is an attribute applied to it specifying otherwise. If you'd like to use XML or another format you must configure it in the *Startup.cs* file, but you may first have to obtain a reference to `Microsoft.AspNetCore.Mvc.Formatters.Xml` using NuGet. Your startup code should look something like this:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": true, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": true, "xml:space": "preserve", "language": "csharp"} -->
 
-````c#
+````csharp
 
    public void ConfigureServices(IServiceCollection services)
    {

@@ -15,9 +15,9 @@ Static files, such as HTML, CSS, image, and JavaScript, are assets that an ASP.N
 
 Static files are typically located in the `web root` (*<content-root>/wwwroot*) folder. See Content root and Web root in  [Introduction to ASP.NET Core](../intro.md) for more information. You generally set the content root to be the current directory so that your project's `web root` will be found while in development.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/common/samples/WebApplication1/src/WebApplication1/Program.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [5], "linenostart": 1}} -->
+[!code-csharp[Main](../common/samples/WebApplication1/src/WebApplication1/Program.cs?highlight=5)]
 
-````c#
+````csharp
 
    public static void Main(string[] args)
    {
@@ -41,9 +41,9 @@ Static files can be stored in any folder under the `web root` and accessed with 
 
 In order for static files to be served, you must configure the [Middleware](middleware.md) to add static files to the pipeline. The static file middleware can be configured by adding a dependency on the *Microsoft.AspNetCore.StaticFiles* package to your project and then calling the [UseStaticFiles](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/StaticFileExtensions/index.html.md#Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles.md) extension method from `Startup.Configure`:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/fundamentals/static-files/sample/StartupStaticFiles.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [3], "linenostart": 1}} -->
+[!code-csharp[Main](../fundamentals/static-files/sample/StartupStaticFiles.cs?highlight=3)]
 
-````c#
+````csharp
 
    public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
    {
@@ -75,9 +75,9 @@ Suppose you have a project hierarchy where the static files you wish to serve ar
 
 For a request to access *test.png*, configure the static files middleware as follows:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/fundamentals/static-files/sample/StartupTwoStaticFiles.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [5, 6, 7, 8, 9, 10], "linenostart": 1}} -->
+[!code-csharp[Main](../fundamentals/static-files/sample/StartupTwoStaticFiles.cs?highlight=5,6,7,8,9,10)]
 
-````c#
+````csharp
 
    public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
    {
@@ -107,9 +107,9 @@ The static file module provides **no** authorization checks. Any files served by
 
 Directory browsing allows the user of your web app to see a list of directories and files within a specified directory. Directory browsing is disabled by default for security reasons (see [Considerations](#considerations)). To enable directory browsing, call the [UseDirectoryBrowser](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/DirectoryBrowserExtensions/index.html.md#Microsoft.AspNetCore.Builder.DirectoryBrowserExtensions.UseDirectoryBrowser.md) extension method from  `Startup.Configure`:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/fundamentals/static-files/sample/StartupBrowse.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/static-files/sample/StartupBrowse.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
    {
@@ -134,9 +134,9 @@ Directory browsing allows the user of your web app to see a list of directories 
 
 And add required services by calling [AddDirectoryBrowser](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/DependencyInjection/DirectoryBrowserServiceExtensions/index.html.md#Microsoft.Extensions.DependencyInjection.DirectoryBrowserServiceExtensions.AddDirectoryBrowser.md) extension method from  `Startup.ConfigureServices`:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/fundamentals/static-files/sample/StartupBrowse.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/static-files/sample/StartupBrowse.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    public void ConfigureServices(IServiceCollection services)
    {
@@ -153,9 +153,9 @@ See [Considerations](#considerations) on the security risks when enabling browsi
 
 Note the two `app.UseStaticFiles` calls. The first one is required to serve the CSS, images and JavaScript in the *wwwroot* folder, and the second call for directory browsing of the *wwwroot/images* folder using the URL http://<app>/MyImages:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/fundamentals/static-files/sample/StartupBrowse.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [3, 5], "linenostart": 1}} -->
+[!code-csharp[Main](../fundamentals/static-files/sample/StartupBrowse.cs?highlight=3,5)]
 
-````c#
+````csharp
 
    public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
    {
@@ -182,9 +182,9 @@ Note the two `app.UseStaticFiles` calls. The first one is required to serve the 
 
 Setting a default home page gives site visitors a place to start when visiting your site. In order for your Web app to serve a default page without the user having to fully qualify the URI, call the `UseDefaultFiles` extension method from `Startup.Configure` as follows.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/fundamentals/static-files/sample/StartupEmpty.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [3], "linenostart": 1}} -->
+[!code-csharp[Main](../fundamentals/static-files/sample/StartupEmpty.cs?highlight=3)]
 
-````c#
+````csharp
 
    public void Configure(IApplicationBuilder app)
    {
@@ -211,9 +211,9 @@ The first file found from the list will be served as if the request was the full
 
 The following code shows how to change the default file name to *mydefault.html*.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/fundamentals/static-files/sample/StartupDefault.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/static-files/sample/StartupDefault.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    public void Configure(IApplicationBuilder app)
    {
@@ -233,18 +233,14 @@ The following code shows how to change the default file name to *mydefault.html*
 
 The following code enables static files and the default file to be served, but does not allow directory browsing:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
-
-````c#
+````csharp
 
    app.UseFileServer();
    ````
 
 The following code enables static files, default files and  directory browsing:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
-
-````c#
+````csharp
 
    app.UseFileServer(enableDirectoryBrowsing: true);
    ````
@@ -267,9 +263,9 @@ See [Considerations](#considerations) on the security risks when enabling browsi
 
 Using the hierarchy example above, you might want to enable static files, default files, and browsing for the `MyStaticFiles` directory. In the following code snippet, that is accomplished with a single call to [FileServerOptions](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/FileServerOptions/index.html.md#Microsoft.AspNetCore.Builder.FileServerOptions.md).
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/fundamentals/static-files/sample/StartupUseFileServer.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [5, 6, 7, 8, 9, 10, 11], "linenostart": 1}} -->
+[!code-csharp[Main](../fundamentals/static-files/sample/StartupUseFileServer.cs?highlight=5,6,7,8,9,10,11)]
 
-````c#
+````csharp
 
    public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
    {
@@ -288,9 +284,9 @@ Using the hierarchy example above, you might want to enable static files, defaul
 
 If `enableDirectoryBrowsing` is set to `true` you are required to call [AddDirectoryBrowser](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/DependencyInjection/DirectoryBrowserServiceExtensions/index.html.md#Microsoft.Extensions.DependencyInjection.DirectoryBrowserServiceExtensions.AddDirectoryBrowser.md) extension method from  `Startup.ConfigureServices`:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/fundamentals/static-files/sample/StartupUseFileServer.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/static-files/sample/StartupUseFileServer.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    public void ConfigureServices(IServiceCollection services)
    {
@@ -314,9 +310,9 @@ If no default named files are in the *MyStaticFiles* directory, http://<app>/Sta
 
 The [FileExtensionContentTypeProvider](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/StaticFiles/FileExtensionContentTypeProvider/index.html.md#Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider.md) class contains a  collection that maps file extensions to MIME content types. In the following sample, several file extensions are registered to known MIME types, the ".rtf" is replaced, and ".mp4" is removed.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/fundamentals/static-files/sample/StartupFileExtensionContentTypeProvider.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 19], "linenostart": 1}} -->
+[!code-csharp[Main](../fundamentals/static-files/sample/StartupFileExtensionContentTypeProvider.cs?highlight=3,4,5,6,7,8,9,10,11,12,19)]
 
-````c#
+````csharp
 
    public void Configure(IApplicationBuilder app)
    {
@@ -357,9 +353,9 @@ The ASP.NET static file middleware understands almost 400 known file content typ
 
 The following code enables serving unknown types and will render the unknown file as an image.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/fundamentals/static-files/sample/StartupServeUnknownFileTypes.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/static-files/sample/StartupServeUnknownFileTypes.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
    {

@@ -51,8 +51,6 @@ For more information on the ASP.NET Core Module, including configuration of the 
 
 Include a dependency on the *Microsoft.AspNetCore.Server.IISIntegration* package in the application dependencies. Incorporate IIS Integration middleware into the application by adding the *.UseIISIntegration()* extension method to *WebHostBuilder()*.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "csharp", "highlight_args": {}} -->
-
 ````csharp
 
    var host = new WebHostBuilder()
@@ -69,8 +67,6 @@ Note that code calling *.UseIISIntegration()* does not affect code portability.
 
 To configure *IISIntegration* service options, include a service configuration for *IISOptions* in *ConfigureServices*.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "csharp", "highlight_args": {}} -->
-
 ````csharp
 
    services.Configure<IISOptions>(options => {
@@ -83,8 +79,6 @@ To configure *IISIntegration* service options, include a service configuration f
 The *publish-iis* tool can be added to any .NET Core application and will configure the ASP.NET Core Module by creating or modifying the *web.config* file. The tool runs after publishing with the *dotnet publish* command or publishing with Visual Studio and will configure the *processPath* and *arguments* for you. If you're publishing a *web.config* file by including the file in your project and listing the file in the *publishOptions* section of *project.json*, the tool will not modify other IIS settings you have included in the file.
 
 To include the *publish-iis* tool in your application, add entries to the *tools* and *scripts* sections of *project.json*.
-
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
 
 ````none
 

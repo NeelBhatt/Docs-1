@@ -55,9 +55,9 @@ To use the [IDistributedCache](https://docs.asp.net/projects/api/en/latest/autoa
 
 The following example shows how to use an instance of [IDistributedCache](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html) in a simple middleware component:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/performance/caching/distributed/sample/src/DistCacheSample/StartTimeHeader.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "language": "c#", "highlight_args": {"hl_lines": [15, 18, 21, 27, 28, 29, 30, 31], "linenostart": 1}} -->
+[!code-csharp[Main](./distributed/sample/src/DistCacheSample/StartTimeHeader.cs?highlight=15,18,21,27,28,29,30,31)]
 
-````c#
+````csharp
 
    using Microsoft.AspNetCore.Builder;
    using Microsoft.AspNetCore.Http;
@@ -114,9 +114,9 @@ In the code above, the cached value is read, but never written. In this sample, 
 
 The following code from *Startup.cs* shows the value being set:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/performance/caching/distributed/sample/src/DistCacheSample/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "language": "c#", "highlight_args": {"hl_lines": [2, 4, 5, 6], "linenostart": 1}} -->
+[!code-csharp[Main](./distributed/sample/src/DistCacheSample/Startup.cs?highlight=2,4,5,6)]
 
-````c#
+````csharp
 
            public void Configure(IApplicationBuilder app,
                IDistributedCache cache)
@@ -141,9 +141,9 @@ You configure the Redis implementation in `ConfigureServices` and access it in y
 
 In the sample code, a `RedisCache` implementation is used when the server is configured for a `Staging` environment. Thus the `ConfigureStagingServices` method configures the `RedisCache`:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/performance/caching/distributed/sample/src/DistCacheSample/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "language": "c#", "highlight_args": {"hl_lines": [8, 9, 10, 11, 12, 13], "linenostart": 1}} -->
+[!code-csharp[Main](./distributed/sample/src/DistCacheSample/Startup.cs?highlight=8,9,10,11,12,13)]
 
-````c#
+````csharp
 
            /// <summary>
            /// Use Redis Cache in Staging
@@ -171,9 +171,9 @@ The SqlServerCache implementation allows the distributed cache to use a SQL Serv
 
 To use sql-cache tool add SqlConfig.Tools to the tools section of the project.json file and run dotnet restore.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/performance/caching/distributed/sample/src/DistCacheSample/project.json", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "language": "c#", "highlight_args": {"hl_lines": [6], "linenostart": 1}} -->
+[!code-csharp[Main](./distributed/sample/src/DistCacheSample/project.json?highlight=6)]
 
-````c#
+````csharp
 
      "tools": {
        "Microsoft.AspNetCore.Server.IISIntegration.Tools": {
@@ -187,16 +187,12 @@ To use sql-cache tool add SqlConfig.Tools to the tools section of the project.js
 
 Test SqlConfig.Tools by running the following command
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
-
 ````none
 
    C:\DistCacheSample\src\DistCacheSample>dotnet sql-cache create --help
    ````
 
 sql-cache tool  will display usage, options and command help, now you can create tables into sql server, running "sql-cache create" command :
-
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
 
 ````none
 
@@ -211,9 +207,9 @@ The created table have the following schema:
 
 Like all cache implementations, your app should get and set cache values using an instance of [IDistributedCache](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html), not a `SqlServerCache`. The sample implements `SqlServerCache` in the `Production` environment (so it is configured in `ConfigureProductionServices`).
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/performance/caching/distributed/sample/src/DistCacheSample/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "language": "c#", "highlight_args": {"hl_lines": [7, 8, 9, 10, 11, 12], "linenostart": 1}} -->
+[!code-csharp[Main](./distributed/sample/src/DistCacheSample/Startup.cs?highlight=7,8,9,10,11,12)]
 
-````c#
+````csharp
 
            /// Use SQL Server Cache in Production
            /// </summary>

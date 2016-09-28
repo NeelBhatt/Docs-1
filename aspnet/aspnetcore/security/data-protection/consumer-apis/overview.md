@@ -34,7 +34,7 @@ The following sample demonstrates three concepts:
 
 3. Creating an IDataProtector from an IDataProtectionProvider and using it to protect and unprotect data.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/security/data-protection/using-data-protection/samples/protectunprotect.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "language": "none", "highlight_args": {"hl_lines": [26, 34, 35, 36, 37, 38, 39, 40], "linenostart": 1}} -->
+[!code-none[Main](../using-data-protection/samples/protectunprotect.cs?highlight=26,34,35,36,37,38,39,40)]
 
 ````none
 
@@ -94,7 +94,7 @@ The following sample demonstrates three concepts:
 
 The package Microsoft.AspNetCore.DataProtection.Abstractions contains an extension method IServiceProvider.GetDataProtector as a developer convenience. It encapsulates as a single operation both retrieving an IDataProtectionProvider from the service provider and calling IDataProtectionProvider.CreateProtector. The following sample demonstrates its usage.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/security/data-protection/consumer-apis/overview/samples/getdataprotector.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "language": "none", "highlight_args": {"hl_lines": [15], "linenostart": 1}} -->
+[!code-none[Main](./overview/samples/getdataprotector.cs?highlight=15)]
 
 ````none
 

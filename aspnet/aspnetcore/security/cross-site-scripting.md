@@ -27,8 +27,6 @@ The Razor engine used in MVC automatically encodes all output sourced from varia
 
 Take the following Razor view;
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
-
 ````none
 
    @{
@@ -39,8 +37,6 @@ Take the following Razor view;
    ````
 
 This view outputs the contents of the *untrustedInput* variable. This variable includes some characters which are used in XSS attacks, namely <, " and >. Examining the source shows the rendered output encoded as:
-
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
 
 ````html
 
@@ -53,8 +49,6 @@ This view outputs the contents of the *untrustedInput* variable. This variable i
 ## Javascript Encoding using Razor
 
 There may be times you want to insert a value into JavaScript to process in your view. There are two ways to do this. The safest way to insert simple values is to place the value in a data attribute of a tag and retrieve it in your JavaScript. For example:
-
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
 
 ````none
 
@@ -85,8 +79,6 @@ There may be times you want to insert a value into JavaScript to process in your
 
 This will produce the following HTML
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
-
 ````html
 
    <div
@@ -110,8 +102,6 @@ This will produce the following HTML
 
 Which, when it runs, will render the following;
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
-
 ````none
 
    <"123">
@@ -119,8 +109,6 @@ Which, when it runs, will render the following;
    ````
 
 You can also call the JavaScript encoder directly,
-
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
 
 ````none
 
@@ -138,8 +126,6 @@ You can also call the JavaScript encoder directly,
 
 This will render in the browser as follows;
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
-
 ````html
 
    <script>
@@ -156,9 +142,7 @@ The HTML, JavaScript and URL encoders are available to your code in two ways, yo
 
 To use the configurable encoders via DI your constructors should take an *HtmlEncoder*, *JavaScriptEncoder* and *UrlEncoder* parameter as appropriate. For example;
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
-
-````c#
+````csharp
 
    public class HomeController : Controller
    {
@@ -181,9 +165,7 @@ To use the configurable encoders via DI your constructors should take an *HtmlEn
 
 If you want to build a URL query string with untrusted input as a value use the `UrlEncoder` to encode the value. For example,
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
-
-````c#
+````csharp
 
    var example = "\"Quoted Value with spaces and &\"";
    var encodedValue = _urlEncoder.Encode(example);
@@ -206,16 +188,12 @@ You can customize the encoder safe lists to include Unicode ranges appropriate t
 
 For example, using the default configuration you might use a Razor HtmlHelper like so;
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
-
 ````html
 
    <p>This link text is in Chinese: @Html.ActionLink("汉语/漢語", "Index")</p>
    ````
 
 When you view the source of the web page you will see it has been rendered as follows, with the Chinese text encoded;
-
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
 
 ````html
 
@@ -224,9 +202,7 @@ When you view the source of the web page you will see it has been rendered as fo
 
 To widen the characters treated as safe by the encoder you would insert the following line into the `ConfigureServices()` method in `startup.cs`;
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
-
-````c#
+````csharp
 
    services.AddSingleton<HtmlEncoder>(
      HtmlEncoder.Create(allowedRanges: new[] { UnicodeRanges.BasicLatin,
@@ -234,8 +210,6 @@ To widen the characters treated as safe by the encoder you would insert the foll
    ````
 
 This example widens the safe list to include the Unicode Range CjkUnifiedIdeographs. The rendered output would now become
-
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
 
 ````html
 

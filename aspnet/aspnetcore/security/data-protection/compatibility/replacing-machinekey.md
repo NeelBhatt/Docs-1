@@ -16,8 +16,6 @@ To install the new data protection system into an existing ASP.NET 4.5.1+ projec
 
 When you install the package, it inserts a line into Web.config that tells ASP.NET to use it for [most cryptographic operations](http://blogs.msdn.com/b/webdev/archive/2012/10/23/cryptographic-improvements-in-asp-net-4-5-pt-2.aspx), including forms authentication, view state, and calls to MachineKey.Protect. The line that's inserted reads as follows.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "xml", "highlight_args": {}} -->
-
 ````xml
 
    <machineKey compatibilityMode="Framework45" dataProtectorType="..." />
@@ -25,8 +23,6 @@ When you install the package, it inserts a line into Web.config that tells ASP.N
 
 >[!TIP]
 > You can tell if the new data protection system is active by inspecting fields like __VIEWSTATE, which should begin with "CfDJ8" as in the below example. "CfDJ8" is the base64 representation of the magic "09 F0 C9 F0" header that identifies a payload protected by the data protection system.
-
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
 
 ````html
 
@@ -39,9 +35,7 @@ The data protection system is instantiated with a default zero-setup configurati
 
 Below is an example of a custom data protection startup type which configured both where keys are persisted and how they're encrypted at rest. It also overrides the default app isolation policy by providing its own application name.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
-
-````c#
+````csharp
 
    using System;
    using System.IO;
@@ -69,8 +63,6 @@ Below is an example of a custom data protection startup type which configured bo
 
 To enable this custom configuration, go back to Web.config and look for the <appSettings> element that the package install added to the config file. It will look like the below.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "xml", "highlight_args": {}} -->
-
 ````xml
 
    <appSettings>
@@ -84,8 +76,6 @@ To enable this custom configuration, go back to Web.config and look for the <app
    ````
 
 Fill in the blank value with the assembly-qualified name of the DataProtectionStartup-derived type you just created. If the name of the application is DataProtectionDemo, this would look like the below.
-
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "xml", "highlight_args": {}} -->
 
 ````xml
 

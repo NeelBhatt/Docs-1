@@ -38,8 +38,6 @@ For the purposes of this guide, we are going to use a single instance of Nginx t
 
 ### Install Nginx
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "bash", "highlight_args": {}} -->
-
 ````bash
 
    sudo apt-get install nginx
@@ -49,8 +47,6 @@ For the purposes of this guide, we are going to use a single instance of Nginx t
 > If you plan to install optional Nginx modules you may be required to build Nginx from source.
 
 We are going to `apt-get` to install Nginx. The installer also creates a System V init script that runs Nginx as daemon on system startup. Since we just installed Nginx for the first time, we can explicitly start it by running
-
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "bash", "highlight_args": {}} -->
 
 ````bash
 
@@ -64,8 +60,6 @@ At this point you should be able to navigate to your browser and see the default
 We will now configure Nginx as a reverse proxy to forward requests to our ASP.NET application
 
 We will be modifying the `/etc/nginx/sites-available/default`, so open it up in your favorite text editor and replace the contents with the following.
-
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "nginx", "highlight_args": {}} -->
 
 ````nginx
 
@@ -92,8 +86,6 @@ Nginx will forward requests to your Kestrel server, however unlike IIS on Window
 
 ### Installing supervisor
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "bash", "highlight_args": {}} -->
-
 ````bash
 
    sudo apt-get install supervisor
@@ -109,8 +101,6 @@ Supervisor works by creating child processes based on data in its configuration 
 To have supervisor monitor our application, we will add a file to the `/etc/supervisor/conf.d/` directory.
 
 /etc/supervisor/conf.d/hellomvc.conf
-
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "ini", "highlight_args": {}} -->
 
 ````ini
 
@@ -130,8 +120,6 @@ To have supervisor monitor our application, we will add a file to the `/etc/supe
 
 Once you are done editing the configuration file, restart the `supervisord` process to change the set of programs controlled by supervisord.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "bash", "highlight_args": {}} -->
-
 ````bash
 
    sudo service supervisor stop
@@ -146,16 +134,12 @@ In our case, since we are using supervisor to manage our application, the applic
 
 **Supervisord** logs messages about its own health and its subprocess' state changes to the activity log. The path to the activity log is configured via the `logfile` parameter in the configuration file.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "bash", "highlight_args": {}} -->
-
 ````bash
 
    sudo tail -f /var/log/supervisor/supervisord.log
    ````
 
 You can redirect application logs (`STDOUT` and `STERR`) in the program section of your configuration file.
-
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "bash", "highlight_args": {}} -->
 
 ````bash
 
@@ -169,8 +153,6 @@ Linux Security Modules (LSM) is a framework that is part of the Linux kernel sin
 ### Configuring our firewall
 
 Close off all external ports that are not in use. Uncomplicated firewall (ufw) provides a frontend for `iptables` by providing a command-line interface for configuring the firewall. Verify that `ufw` is configured to allow traffic on any ports you need.
-
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "bash", "highlight_args": {}} -->
 
 ````bash
 
@@ -187,8 +169,6 @@ The default distribution of Nginx doesn't enable SSL. To enable all the security
 
 #### Download the source and install the build dependencies
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "bash", "highlight_args": {}} -->
-
 ````bash
 
    # Install the build dependencies
@@ -204,8 +184,6 @@ The default distribution of Nginx doesn't enable SSL. To enable all the security
 
 Edit *src/http/ngx_http_header_filter_module.c*
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c", "highlight_args": {}} -->
-
 ````c
 
    static char ngx_http_server_string[] = "Server: Your Web Server" CRLF;
@@ -217,8 +195,6 @@ Edit *src/http/ngx_http_header_filter_module.c*
 The PCRE library is required for regular expressions. Regular expressions are used in the  location  directive for the ngx_http_rewrite_module. The http_ssl_module adds HTTPS protocol support.
 
 Consider using a web application firewall like *ModSecurity* to harden your application.
-
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "bash", "highlight_args": {}} -->
 
 ````bash
 
@@ -242,7 +218,7 @@ Consider using a web application firewall like *ModSecurity* to harden your appl
 
 Add `/etc/nginx/proxy.conf` configuration file.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/publishing/linuxproduction/proxy.conf", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "nginx", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "publishing/linuxproduction/proxy.conf", "ids": [], "linenos": false, "language": "nginx", "highlight_args": {"linenostart": 1}} -->
 
 ````nginx
 
@@ -261,7 +237,7 @@ Add `/etc/nginx/proxy.conf` configuration file.
 
 Edit `/etc/nginx/nginx.conf` configuration file. The example contains both http and server sections in one configuration file.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/publishing/linuxproduction/nginx.conf", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "nginx", "highlight_args": {"hl_lines": [2], "linenostart": 1}} -->
+[!code-nginx[Main](../publishing/linuxproduction/nginx.conf?highlight=2)]
 
 ````nginx
 

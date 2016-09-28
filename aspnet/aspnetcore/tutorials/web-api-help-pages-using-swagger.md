@@ -31,16 +31,12 @@ You can add Swashbuckle with any of the following approaches:
 
 * From the Package Manager Console:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "bash", "highlight_args": {}} -->
-
 ````bash
 
    Install-Package Swashbuckle -Pre
    ````
 
 * Add Swashbuckle to *project.json*:
-
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "javascript", "highlight_args": {}} -->
 
 ````javascript
 
@@ -63,9 +59,9 @@ You can add Swashbuckle with any of the following approaches:
 
 Add SwaggerGen to the services collection in the Configure method, and in the ConfigureServices method, enable the middleware for serving generated JSON document and the SwaggerUI.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {"hl_lines": [12, 21, 24]}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [12, 21, 24]}} -->
 
-````c#
+````csharp
 
      public void ConfigureServices(IServiceCollection services)
      {
@@ -99,8 +95,6 @@ In Visual Studio, press ^F5 to launch the app and navigate to `http://localhost:
 
 > [!NOTE]
 > Microsoft Edge, Google Chrome and Firefox display JSON documents natively.  There are extensions for Chrome that will format the document for easier reading. *Example below reduced for brevity.*
-
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "javascript", "highlight_args": {}} -->
 
 ````javascript
 
@@ -187,9 +181,7 @@ Swagger is not only a simple way to represent the API, but has options for docum
 
 The `ConfigureSwaggerGen` method can be used to add information such as the author, license, description.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
-
-````c#
+````csharp
 
    services.ConfigureSwaggerGen(options =>
    {
@@ -217,7 +209,7 @@ To enable XML comments, right click the project in Visual Studio and select **Pr
 
 Alternatively, you can enable XML comments by setting *"xmlDoc": true* in *project.json*.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "javascript", "highlight_args": {"hl_lines": [4]}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "javascript", "highlight_args": {"hl_lines": [4]}} -->
 
 ````javascript
 
@@ -233,9 +225,9 @@ Configure Swagger to use the generated XML file.
 > [!NOTE]
 > For Linux or non-Windows operating systems, file names and paths can be case sensitive. So `ToDoApi.XML` would be found on Windows but not CentOS for example.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [29, 32], "linenostart": 1}} -->
+[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Startup.cs?highlight=29,32)]
 
-````c#
+````csharp
 
    // This method gets called by the runtime. Use this method to add services to the container.
    public void ConfigureServices(IServiceCollection services)
@@ -293,9 +285,9 @@ In the code above, ApplicationBasePath gets the base path of the app, which is n
 
 Adding the triple slash comments to the method enhances the Swagger UI by adding the description to the header of the section.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Controllers/TodoController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [2], "linenostart": 1}} -->
+[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Controllers/TodoController.cs?highlight=2)]
 
-````c#
+````csharp
 
    /// <summary>
    /// Deletes a specific TodoItem.
@@ -313,7 +305,7 @@ Adding the triple slash comments to the method enhances the Swagger UI by adding
 
 Note that the UI is driven by the generated JSON file, and these comments are also in that file as well.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "javascript", "highlight_args": {"hl_lines": [5]}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "javascript", "highlight_args": {"hl_lines": [5]}} -->
 
 ````javascript
 
@@ -345,9 +337,9 @@ Note that the UI is driven by the generated JSON file, and these comments are al
 
 Here is a more robust example, adding `<remarks />` where the content can be just text or adding the JSON or XML object for further documentation of the method.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Controllers/TodoController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "linenostart": 1}} -->
+[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Controllers/TodoController.cs?highlight=4,5,6,7,8,9,10,11,12,13,14)]
 
-````c#
+````csharp
 
    /// <summary>
    /// Creates a TodoItem.
@@ -392,9 +384,9 @@ You can decorate the API controller with `System.ComponentModel.DataAnnotations`
 
 Adding the `[Required]` annotation to the `Name` property of the TodoItem class will change the ModelSchema information in the UI. `[Produces("application/json"]`, RegularExpression validators and more will further detail the information delivered in the generated page.  The more metadata that is in the code produces a more desciptive UI or API help page.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Models/TodoItem.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [10], "linenostart": 1}} -->
+[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Models/TodoItem.cs?highlight=10)]
 
-````c#
+````csharp
 
    using System;
    using System.ComponentModel;
@@ -419,9 +411,9 @@ Consuming developers are probably most concerned with what is returned; specific
 
 Take the `Create()` method for example, currently it returns only "201 Created" response by default. That is of course if the item is in fact created, or a "204 No Content" if no data is passed in the POST Body.  However, there is no documentation to know that or any other response. That can be fixed by adding the following piece of code.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Controllers/TodoController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [17, 18, 20, 21], "linenostart": 1}} -->
+[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Controllers/TodoController.cs?highlight=17,18,20,21)]
 
-````c#
+````csharp
 
    /// <summary>
    /// Creates a TodoItem.
@@ -468,9 +460,9 @@ Add the `"Microsoft.AspNetCore.StaticFiles": "1.0.0-*"` NuGet package to the pro
 
 Enable static files middleware.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {"hl_lines": [4]}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [4]}} -->
 
-````c#
+````csharp
 
    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
    public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -494,8 +486,6 @@ Acquire the core *index.html* file used for the Swagger UI page from the [Github
 
 Reference *custom.css* in the *index.html* file.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
-
 ````html
 
    <link href='custom.css' media='screen' rel='stylesheet' type='text/css' />
@@ -505,7 +495,7 @@ The following CSS provides a simple sample of a custom header title to the page.
 
 *custom.css file*
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/wwwroot/swagger/ui/custom.css", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "css", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/wwwroot/swagger/ui/custom.css", "ids": [], "linenos": false, "language": "css", "highlight_args": {"linenostart": 1}} -->
 
 ````css
 
@@ -531,8 +521,6 @@ The following CSS provides a simple sample of a custom header title to the page.
    ````
 
 *index.html body*
-
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
 
 ````html
 

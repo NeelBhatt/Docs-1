@@ -66,9 +66,9 @@ This header is only written when the `VaryByHeader` property is set, in which ca
 
 A good scenario in which to set `NoStore` to `true` is error pages. It's unlikely you would want to respond to a user's request with the error response a different user previously generated, and such responses may include stack traces and other sensitive information that shouldn't be stored on intermediate servers. For example:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/performance/caching/response/sample/src/ResponseCacheSample/Controllers/HomeController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [1], "linenostart": 1}} -->
+[!code-csharp[Main](./response/sample/src/ResponseCacheSample/Controllers/HomeController.cs?highlight=1)]
 
-````c#
+````csharp
 
    [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
    public IActionResult Error()
@@ -79,8 +79,6 @@ A good scenario in which to set `NoStore` to `true` is error pages. It's unlikel
    ````
 
 This will result in the following headers:
-
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "javascript", "highlight_args": {}} -->
 
 ````javascript
 
@@ -97,9 +95,9 @@ To enable caching, `Duration` must be set to a positive value and `Location` mus
 
 Below is an example showing the headers produced by setting `Duration` and leaving the default `Location` value.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/performance/caching/response/sample/src/ResponseCacheSample/Controllers/HomeController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [1], "linenostart": 1}} -->
+[!code-csharp[Main](./response/sample/src/ResponseCacheSample/Controllers/HomeController.cs?highlight=1)]
 
-````c#
+````csharp
 
    [ResponseCache(Duration = 60)]
    public IActionResult Contact()
@@ -113,8 +111,6 @@ Below is an example showing the headers produced by setting `Duration` and leavi
 
 Produces the following headers:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "javascript", "highlight_args": {}} -->
-
 ````javascript
 
    Cache-Control: public,max-age=60
@@ -126,9 +122,9 @@ Instead of duplicating `ResponseCache` settings on many controller action attrib
 
 Setting up a cache profile:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/performance/caching/response/sample/src/ResponseCacheSample/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], "linenostart": 1}} -->
+[!code-csharp[Main](./response/sample/src/ResponseCacheSample/Startup.cs?highlight=5,6,7,8,9,10,11,12,13,14,15)]
 
-````c#
+````csharp
 
    public void ConfigureServices(IServiceCollection services)
    {
@@ -153,9 +149,9 @@ Setting up a cache profile:
 
 Referencing a cache profile:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/performance/caching/response/sample/src/ResponseCacheSample/Controllers/HomeController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [1, 4], "linenostart": 1}} -->
+[!code-csharp[Main](./response/sample/src/ResponseCacheSample/Controllers/HomeController.cs?highlight=1,4)]
 
-````c#
+````csharp
 
    [ResponseCache(Duration = 30)]
    public class HomeController : Controller
@@ -175,8 +171,6 @@ Referencing a cache profile:
 In the above example, a class-level attribute specifies a duration of 30 seconds while a method-level attributes references a cache profile with a duration set to 60 seconds.
 
 The resulting header:
-
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "javascript", "highlight_args": {}} -->
 
 ````javascript
 

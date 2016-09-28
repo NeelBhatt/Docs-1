@@ -45,7 +45,7 @@ As an example, consider the case where the symmetric block cipher algorithm is A
 
 First, let ( K_E || K_H ) = SP800_108_CTR(prf = HMACSHA512, key = "", label = "", context = ""), where | K_E | = 192 bits and | K_H | = 256 bits per the specified algorithms. This leads to K_E = 5BB6..21DD and K_H = A04A..00A9 in the example below:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "names": [], "classes": [], "xml:space": "preserve"} -->
+<!-- literal_block {"ids": [], "xml:space": "preserve"} -->
 
 ````
 
@@ -65,7 +65,7 @@ result := D4791184B996092EE1202F36E8608FA8FBD98ABDFF5402F264B1D7211536220C
 
 This produces the full context header below:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "names": [], "classes": [], "xml:space": "preserve"} -->
+<!-- literal_block {"ids": [], "xml:space": "preserve"} -->
 
 ````
 
@@ -99,7 +99,7 @@ This context header is the thumbprint of the authenticated encryption algorithm 
 
 First, let ( K_E || K_H ) = SP800_108_CTR(prf = HMACSHA512, key = "", label = "", context = ""), where | K_E | = 192 bits and | K_H | = 160 bits per the specified algorithms. This leads to K_E = A219..E2BB and K_H = DC4A..B464 in the example below:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "names": [], "classes": [], "xml:space": "preserve"} -->
+<!-- literal_block {"ids": [], "xml:space": "preserve"} -->
 
 ````
 
@@ -118,7 +118,7 @@ result := 76EB189B35CF03461DDF877CD9F4B1B4D63A7555
 
 This produces the full context header which is a thumbprint of the authenticated encryption algorithm pair (3DES-192-CBC encryption + HMACSHA1 validation), shown below:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "names": [], "classes": [], "xml:space": "preserve"} -->
+<!-- literal_block {"ids": [], "xml:space": "preserve"} -->
 
 ````
 
@@ -175,7 +175,7 @@ result := E7DCCE66DF855A323A6BB7BD7A59BE45
 
 This produces the full context header below:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "names": [], "classes": [], "xml:space": "preserve"} -->
+<!-- literal_block {"ids": [], "xml:space": "preserve"} -->
 
 ````
 

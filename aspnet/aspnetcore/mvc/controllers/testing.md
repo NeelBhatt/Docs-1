@@ -43,9 +43,9 @@ If you've writing custom filters, routes, etc, you should unit test them, but no
 
 To demonstrate unit testing, review the following controller. It displays a list of brainstorming sessions and allows new brainstorming sessions to be created with a POST:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/mvc/controllers/testing/sample/TestingControllersSample/src/TestingControllersSample/Controllers/HomeController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [12, 16, 21, 42, 43], "linenostart": 1}} -->
+[!code-csharp[Main](./testing/sample/TestingControllersSample/src/TestingControllersSample/Controllers/HomeController.cs?highlight=12,16,21,42,43)]
 
-````c#
+````csharp
 
    using System;
    using System.ComponentModel.DataAnnotations;
@@ -111,9 +111,9 @@ To demonstrate unit testing, review the following controller. It displays a list
 
 The controller is following the [explicit dependencies principle](http://deviq.com/explicit-dependencies-principle/), expecting dependency injection to provide it with an instance of `IBrainstormSessionRepository`. This makes it fairly easy to test using a mock object framework, like [Moq](https://www.nuget.org/packages/Moq/). The `HTTP GET Index` method has no looping or branching and only calls one method. To test this `Index` method, we need to verify that a `ViewResult` is returned, with a `ViewModel` from the repository's `List` method.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/mvc/controllers/testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/HomeControllerTests.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [17, 18], "linenostart": 1}} -->
+[!code-csharp[Main](./testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/HomeControllerTests.cs?highlight=17,18)]
 
-````c#
+````csharp
 
    using System;
    using System.Collections.Generic;
@@ -218,9 +218,9 @@ The `HTTP POST Index` method (shown below) should verify:
 
 * The `Add` method on the repository is called and a `RedirectToActionResult` is returned with the correct arguments when `ModelState.IsValid` is true.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/mvc/controllers/testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/HomeControllerTests.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [1, 2, 10, 11, 12, 15, 16, 19, 24, 25, 28], "linenostart": 1}} -->
+[!code-csharp[Main](./testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/HomeControllerTests.cs?highlight=1,2,10,11,12,15,16,19,24,25,28)]
 
-````c#
+````csharp
 
            var viewResult = Assert.IsType<ViewResult>(result);
            var model = Assert.IsAssignableFrom<IEnumerable<StormSessionViewModel>>(
@@ -263,9 +263,9 @@ The second test verifies that when `ModelState` is valid, a new `BrainstormSessi
 
 Another controller in the app displays information related to a particular brainstorming session. It includes some logic to deal with invalid id values:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/mvc/controllers/testing/sample/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [16, 20, 25, 33], "linenostart": 1}} -->
+[!code-csharp[Main](./testing/sample/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs?highlight=16,20,25,33)]
 
-````c#
+````csharp
 
    using System.Threading.Tasks;
    using Microsoft.AspNetCore.Mvc;
@@ -312,9 +312,9 @@ Another controller in the app displays information related to a particular brain
 
 The controller action has three cases to test, one for each `return` statement:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/mvc/controllers/testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/SessionControllerTests.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [16, 26, 39], "linenostart": 1}} -->
+[!code-csharp[Main](./testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/SessionControllerTests.cs?highlight=16,26,39)]
 
-````c#
+````csharp
 
    using System;
    using System.Collections.Generic;
@@ -411,9 +411,9 @@ The app exposes functionality as a web API (a list of ideas associated with a br
 
 <a name=ideas-controller></a>
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/mvc/controllers/testing/sample/TestingControllersSample/src/TestingControllersSample/Api/IdeasController.cs", "ids": ["ideas-controller"], "dupnames": [], "names": ["ideas-controller"], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [20, 21, 22, 27, 29, 30, 31, 32, 33, 34, 35, 36, 39, 40, 41, 45, 50, 60], "linenostart": 1}} -->
+[!code-csharp[Main](./testing/sample/TestingControllersSample/src/TestingControllersSample/Api/IdeasController.cs?highlight=20,21,22,27,29,30,31,32,33,34,35,36,39,40,41,45,50,60)]
 
-````c#
+````csharp
 
    using System;
    using System.Linq;
@@ -491,9 +491,9 @@ The `ForSession` method returns a list of `IdeaDTO` types, with property names c
 
 The unit tests for the `Create` and `ForSession` API methods:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/mvc/controllers/testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/ApiIdeasControllerTests.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [16, 17, 26, 27, 37, 38, 65, 66, 76, 77], "linenostart": 1}} -->
+[!code-csharp[Main](./testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/ApiIdeasControllerTests.cs?highlight=16,17,26,27,37,38,65,66,76,77)]
 
-````c#
+````csharp
 
    using System;
    using System.Collections.Generic;
@@ -654,9 +654,9 @@ In this sample application, I'm using Entity Framework Core's InMemoryDatabase s
 
 The `Startup` class:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/mvc/controllers/testing/sample/TestingControllersSample/src/TestingControllersSample/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [19, 20, 38, 39, 47, 56], "linenostart": 1}} -->
+[!code-csharp[Main](./testing/sample/TestingControllersSample/src/TestingControllersSample/Startup.cs?highlight=19,20,38,39,47,56)]
 
-````c#
+````csharp
 
    using System;
    using System.Linq;
@@ -740,8 +740,6 @@ You'll see the `GetTestSession` method used frequently in the integration tests 
 
 Each integration test class configures the `TestServer` that will run the ASP.NET Core app. By default, `TestServer` hosts the web app in the folder where it's running - in this case, the test project folder. Thus, when you attempt to test controller actions that return `ViewResult`, you may see this error:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
-
 ````none
 
    The view 'Index' was not found. The following locations were searched:
@@ -750,9 +748,9 @@ Each integration test class configures the `TestServer` that will run the ASP.NE
 
 To correct this issue, you need to configure the server to use the `ApplicationBasePath` and `ApplicationName` of the web project. This is done in the call to `UseServices` in the integration test class shown:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/mvc/controllers/testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/IntegrationTests/HomeControllerTests.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [20, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 36, 37, 42], "linenostart": 1}} -->
+[!code-csharp[Main](./testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/IntegrationTests/HomeControllerTests.cs?highlight=20,22,23,24,25,26,27,28,29,30,31,32,36,37,42)]
 
-````c#
+````csharp
 
    using System;
    using System.Collections.Generic;
@@ -815,9 +813,9 @@ If your app exposes web APIs, it's a good idea to have automated tests confirm t
 
 The following set of tests target the `Create` method in the [IdeasController](xref:mvc/controllers/testing#ideas-controller) class shown above:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/mvc/controllers/testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/IntegrationTests/ApiIdeasControllerTests.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/controllers/testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/IntegrationTests/ApiIdeasControllerTests.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
            [Fact]
            public async Task CreatePostReturnsBadRequestForMissingNameValue()

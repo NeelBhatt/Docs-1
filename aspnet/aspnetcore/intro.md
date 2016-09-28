@@ -45,9 +45,9 @@ With ASP.NET Core you gain the following foundational improvements:
 
 An ASP.NET Core app is simply a console app that creates a web server in its `Main` method:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/getting-started/sample/aspnetcoreapp/Program.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "getting-started/sample/aspnetcoreapp/Program.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
-````c#
+````csharp
 
    using System;
    using Microsoft.AspNetCore.Hosting;
@@ -76,9 +76,9 @@ An ASP.NET Core app is simply a console app that creates a web server in its `Ma
 
 The `UseStartup` method on `WebHostBuilder` specifies the `Startup` class for your app.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/getting-started/sample/aspnetcoreapp/Program.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [7], "linenostart": 1}} -->
+[!code-csharp[Main](./getting-started/sample/aspnetcoreapp/Program.cs?highlight=7)]
 
-````c#
+````csharp
 
    public class Program
    {
@@ -97,9 +97,7 @@ The `UseStartup` method on `WebHostBuilder` specifies the `Startup` class for yo
 
 The `Startup` class is where you define the request handling pipeline and where any services needed by the app are configured. The `Startup` class must be public and contain the following methods:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
-
-````c#
+````csharp
 
    public class Startup
    {

@@ -37,9 +37,9 @@ All filters support both synchronous and asynchronous implementations through di
 
 Synchronous filters define both an On*Stage*Executing and On*Stage*Executed method (with noted exceptions). The On*Stage*Executing method will be called before the event pipeline stage by the Stage name, and the On*Stage*Executed method will be called after the pipeline stage named by the Stage name.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/mvc/controllers/filters/sample/src/FiltersSample/Filters/SampleActionFilter.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [6, 8, 13], "linenostart": 1}} -->
+[!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/SampleActionFilter.cs?highlight=6,8,13)]
 
-````c#
+````csharp
 
    using FiltersSample.Helper;
    using Microsoft.AspNetCore.Mvc.Filters;
@@ -63,9 +63,9 @@ Synchronous filters define both an On*Stage*Executing and On*Stage*Executed meth
 
 Asynchronous filters define a single On*Stage*ExecutionAsync method that will surround execution of the pipeline stage named by Stage. The On*Stage*ExecutionAsync method is provided a *Stage*ExecutionDelegate delegate which will execute the pipeline stage named by Stage when invoked and awaited.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/mvc/controllers/filters/sample/src/FiltersSample/Filters/SampleAsyncActionFilter.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [6, 8, 9, 10], "linenostart": 1}} -->
+[!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/SampleAsyncActionFilter.cs?highlight=6,8,9,10)]
 
-````c#
+````csharp
 
    using System.Threading.Tasks;
    using Microsoft.AspNetCore.Mvc.Filters;
@@ -95,9 +95,9 @@ Filters can be *scoped* at three different levels. You can add a particular filt
 
 Global filters are added in the `ConfigureServices` method in `Startup`, when configuring MVC:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/mvc/controllers/filters/sample/src/FiltersSample/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [5, 6], "linenostart": 1}} -->
+[!code-csharp[Main](./filters/sample/src/FiltersSample/Startup.cs?highlight=5,6)]
 
-````c#
+````csharp
 
    public void ConfigureServices(IServiceCollection services)
    {
@@ -118,9 +118,9 @@ It's often convenient to implement filter interfaces as *Attributes*. Filter att
 
 <a name=add-header-attribute></a>
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/mvc/controllers/filters/sample/src/FiltersSample/Filters/AddHeaderAttribute.cs", "ids": ["add-header-attribute"], "dupnames": [], "names": ["add-header-attribute"], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [5, 16], "linenostart": 1}} -->
+[!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/AddHeaderAttribute.cs?highlight=5,16)]
 
-````c#
+````csharp
 
    using Microsoft.AspNetCore.Mvc.Filters;
 
@@ -149,9 +149,9 @@ It's often convenient to implement filter interfaces as *Attributes*. Filter att
 
 Attributes allow filters to accept arguments, as shown in the example above. You would add this attribute to a controller or action method and specify the name and value of the HTTP header you wished to add to the response:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/mvc/controllers/filters/sample/src/FiltersSample/Controllers/SampleController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [1], "linenostart": 1}} -->
+[!code-csharp[Main](./filters/sample/src/FiltersSample/Controllers/SampleController.cs?highlight=1)]
 
-````c#
+````csharp
 
    [AddHeader("Author", "Steve Smith @ardalis")]
    public class SampleController : Controller
@@ -190,9 +190,9 @@ You can short-circuit the filter pipeline at any point by setting the `Result` p
 
 <a name=short-circuiting-resource-filter></a>
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/mvc/controllers/filters/sample/src/FiltersSample/Filters/ShortCircuitingResourceFilterAttribute.cs", "ids": ["short-circuiting-resource-filter"], "dupnames": [], "names": ["short-circuiting-resource-filter"], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [12, 13, 14, 15], "linenostart": 1}} -->
+[!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/ShortCircuitingResourceFilterAttribute.cs?highlight=12,13,14,15)]
 
-````c#
+````csharp
 
    using System;
    using Microsoft.AspNetCore.Mvc;
@@ -221,9 +221,9 @@ You can short-circuit the filter pipeline at any point by setting the `Result` p
 
 In the following code, both the `ShortCircuitingResourceFilter` and the `AddHeader` filter target the `SomeResource` action method. However, because the `ShortCircuitingResourceFilter` runs first and short-circuits the rest of the pipeline, the `AddHeader` filter never runs for the `SomeResource` action. This behavior would be the same if both filters were applied at the action method level, provided the `ShortCircuitingResourceFilter` ran first (see [Ordering](xref:mvc/controllers/filters#ordering)).
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/mvc/controllers/filters/sample/src/FiltersSample/Controllers/SampleController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [1, 4], "linenostart": 1}} -->
+[!code-csharp[Main](./filters/sample/src/FiltersSample/Controllers/SampleController.cs?highlight=1,4)]
 
-````c#
+````csharp
 
    [AddHeader("Author", "Steve Smith @ardalis")]
    public class SampleController : Controller
@@ -255,9 +255,9 @@ However, if your filters have dependencies you need to access from DI, there are
 
 A `TypeFilter` will instantiate an instance, using services from DI for its dependencies. A `ServiceFilter` retrieves an instance of the filter from DI. The following example demonstrates using a `ServiceFilter`:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/mvc/controllers/filters/sample/src/FiltersSample/Controllers/HomeController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [1], "linenostart": 1}} -->
+[!code-csharp[Main](../../mvc/controllers/filters/sample/src/FiltersSample/Controllers/HomeController.cs?highlight=1)]
 
-````c#
+````csharp
 
    [ServiceFilter(typeof(AddHeaderFilterWithDi))]
    public IActionResult Index()
@@ -269,8 +269,6 @@ A `TypeFilter` will instantiate an instance, using services from DI for its depe
 
 Using `ServiceFilter` without registering the filter type in `ConfigureServices`, throws the following exception:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
-
 ````none
 
    System.InvalidOperationException: No service for type
@@ -279,9 +277,9 @@ Using `ServiceFilter` without registering the filter type in `ConfigureServices`
 
 To avoid this exception, you must register the `AddHeaderFilterWithDI` type in `ConfigureServices`:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/mvc/controllers/filters/sample/src/FiltersSample/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [1], "linenostart": 1}} -->
+[!code-csharp[Main](./filters/sample/src/FiltersSample/Startup.cs?highlight=1)]
 
-````c#
+````csharp
 
    services.AddScoped<AddHeaderFilterWithDi>();
 
@@ -293,7 +291,7 @@ To avoid this exception, you must register the `AddHeaderFilterWithDI` type in `
 
    Because of this difference, types that are referenced using the `TypeFilterAttribute` do not need to be registered with the container first (but they will still have their dependencies fulfilled by the container). Also, `TypeFilterAttribute` can optionally accept constructor arguments for the type in question. The following example demonstrates how to pass arguments to a type using `TypeFilterAttribute`:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/mvc/controllers/filters/sample/src/FiltersSample/Controllers/HomeController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "none", "highlight_args": {"hl_lines": [1, 2], "linenostart": 1}} -->
+[!code-none[Main](../../mvc/controllers/filters/sample/src/FiltersSample/Controllers/HomeController.cs?highlight=1,2)]
 
 ````none
 
@@ -308,9 +306,9 @@ To avoid this exception, you must register the `AddHeaderFilterWithDI` type in `
 
 If you have a simple filter that doesn't require any arguments, but which has constructor dependencies that need to be filled by DI, you can inherit from `TypeFilterAttribute`, allowing you to use your own named attribute on classes and methods (instead of `[TypeFilter(typeof(FilterType))]`). The following filter shows how this can be implemented:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/mvc/controllers/filters/sample/src/FiltersSample/Filters/SampleActionFilterAttribute.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [1, 3, 7], "linenostart": 1}} -->
+[!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/SampleActionFilterAttribute.cs?highlight=1,3,7)]
 
-````c#
+````csharp
 
    public class SampleActionFilterAttribute : TypeFilterAttribute
    {
@@ -352,9 +350,9 @@ This filter can be applied to classes or methods using the `[SampleActionFilter]
 
 You can implement `IFilterFactory` on your own attribute implementations as another approach to creating filters:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/mvc/controllers/filters/sample/src/FiltersSample/Filters/AddHeaderWithFactoryAttribute.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [1, 4, 5, 6, 7], "linenostart": 1}} -->
+[!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/AddHeaderWithFactoryAttribute.cs?highlight=1,4,5,6,7)]
 
-````c#
+````csharp
 
    public class AddHeaderWithFactoryAttribute : Attribute, IFilterFactory
    {
@@ -411,9 +409,7 @@ Every controller that inherits from the `Controller` base class includes `OnActi
 
 To modify the default, scope-based order, you could explicitly set the `Order` property of a class-level or method-level filter. For example, adding `Order=-1` to a method level attribute:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
-
-````c#
+````csharp
 
    [MyFilter(Name = "Method Level Attribute", Order=-1)]
    ````
@@ -457,9 +453,9 @@ Learn more about [Authorization](../../security/authorization/index.md).
 
 The [short circuiting resource filter](xref:mvc/controllers/filters#short-circuiting-resource-filter) shown above is one example of a resource filter. A very naive cache implementation (do not use this in production) that only works with `ContentResult` action results is shown below:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/mvc/controllers/filters/sample/src/FiltersSample/Filters/NaiveCacheResourceFilterAttribute.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [1, 2, 11, 16, 17, 27, 30], "linenostart": 1}} -->
+[!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/NaiveCacheResourceFilterAttribute.cs?highlight=1,2,11,16,17,27,30)]
 
-````c#
+````csharp
 
    public class NaiveCacheResourceFilterAttribute : Attribute,
        IResourceFilter
@@ -502,9 +498,9 @@ In `OnResourceExecuting`, if the result is already in the static dictionary cach
 
 Adding this filter to a class or method is shown here:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/mvc/controllers/filters/sample/src/FiltersSample/Controllers/CachedController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [1, 2, 6], "linenostart": 1}} -->
+[!code-csharp[Main](./filters/sample/src/FiltersSample/Controllers/CachedController.cs?highlight=1,2,6)]
 
-````c#
+````csharp
 
    [TypeFilter(typeof(NaiveCacheResourceFilterAttribute))]
    public class CachedController : Controller
@@ -542,9 +538,9 @@ Exception filters handle unhandled exceptions, including those that occur during
 
 Exception filters do not have two events (for before and after) - they only implement `OnException` (or `OnExceptionAsync`). The `ExceptionContext` provided in the `OnException` parameter includes the `Exception` that occurred. If you set `context.ExceptionHandled` to `true`, the effect is that you've handled the exception, so the request will proceed as if it hadn't occurred (generally returning a 200 OK status). The following filter uses a custom developer error view to display details about exceptions that occur when the application is in development:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/mvc/controllers/filters/sample/src/FiltersSample/Filters/CustomExceptionFilterAttribute.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [33, 34], "linenostart": 1}} -->
+[!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/CustomExceptionFilterAttribute.cs?highlight=33,34)]
 
-````c#
+````csharp
 
    using Microsoft.AspNetCore.Hosting;
    using Microsoft.AspNetCore.Mvc;

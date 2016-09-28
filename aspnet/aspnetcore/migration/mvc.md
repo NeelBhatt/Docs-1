@@ -38,8 +38,6 @@ Open the *project.json* file.
 
 * Add the "prepublish" line to the "scripts" section:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "JavaScript", "highlight_args": {}} -->
-
 ````JavaScript
 
    "scripts": {
@@ -58,9 +56,9 @@ Open the *project.json* file.
 
 * Open the *Startup.cs* file and change the code to match the following:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/migration/mvc/samples/WebApp1/src/WebApp1/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [7, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24], "linenostart": 1}} -->
+[!code-csharp[Main](../migration/mvc/samples/WebApp1/src/WebApp1/Startup.cs?highlight=7,13,14,15,16,17,18,19,20,21,22,23,24)]
 
-````c#
+````csharp
 
 
    public class Startup
@@ -114,8 +112,6 @@ The project structure is shown below:
 ![image](mvc/_static/project-structure-controller-view.png)
 
 Replace the contents of the *Views/Home/Index.cshtml* file with the following:
-
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
 
 ````html
 
@@ -172,7 +168,7 @@ In the new project, we'll add support for Bootstrap (and other client-side libra
 
 * Add a [Bower](http://bower.io/) configuration file named *bower.json* to the project root (Right-click on the project, and then **Add > New Item > Bower Configuration File**). Add [Bootstrap](http://getbootstrap.com/) and [jQuery](https://jquery.com/) to the file ^[1]: (see the highlighted lines below).
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/migration/mvc/samples/WebApp1/src/WebApp1/bower.json", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "json", "highlight_args": {"hl_lines": [5, 6], "linenostart": 1}} -->
+[!code-json[Main](../migration/mvc/samples/WebApp1/src/WebApp1/bower.json?highlight=5,6)]
 
 ````json
 
@@ -207,7 +203,7 @@ If you created the optional *FullAspNetCore* project (a new ASP.NET Core web app
 
 Navigate to *gulpfile.js* from the new ASP.NET Core web app with Individual User Accounts and add the add *gulpfile.js* file. Alternatively, right-click the web app project and choose **Add > New Item**. Select **Gulp Configuration File**, and name the file *gulpfile.js*. The *gulpfile.js* file:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/migration/mvc/samples/WebApp1/src/WebApp1/gulpfile.js", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "javascript", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "migration/mvc/samples/WebApp1/src/WebApp1/gulpfile.js", "ids": [], "linenos": false, "language": "javascript", "highlight_args": {"linenostart": 1}} -->
 
 ````javascript
 
@@ -292,7 +288,7 @@ Right-click the web app project, choose **Add > Existing Item**, and add the *pa
 
 The *package.json* file ^[1]:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/migration/mvc/samples/WebApp1/src/WebApp1/package.json", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "json", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "migration/mvc/samples/WebApp1/src/WebApp1/package.json", "ids": [], "linenos": false, "language": "json", "highlight_args": {"linenostart": 1}} -->
 
 ````json
 
@@ -341,16 +337,12 @@ Open *_Layout.cshtml* file and make the following changes (the completed code is
 
 The replacement CSS link:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
-
 ````html
 
    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
    ````
 
 The replacement script tags:
-
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
 
 ````html
 
@@ -360,7 +352,7 @@ The replacement script tags:
 
 The updated _Layout.cshtml file is shown below:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/migration/mvc/samples/WebApp1/src/WebApp1/Views/Shared/_Layout.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "html", "highlight_args": {"hl_lines": [7, 26, 38, 39], "linenostart": 1}} -->
+[!code-html[Main](../migration/mvc/samples/WebApp1/src/WebApp1/Views/Shared/_Layout.cshtml?highlight=7,26,38,39)]
 
 ````html
 
@@ -422,9 +414,9 @@ The ASP.NET MVC starter web template utilized the ASP.NET Web Optimization for b
 
 There are many problems that can cause a HTTP 500 error message that contain no information on the source of the problem. For example, if the *Views/_ViewImports.cshtml* file contains a namespace that doesn't exist in your project, you'll get a HTTP 500 error. To get a detailed error message, add the following code:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {"hl_lines": [3, 4, 5, 6]}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [3, 4, 5, 6]}} -->
 
-````c#
+````csharp
 
     public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
     {

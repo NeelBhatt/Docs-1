@@ -36,7 +36,7 @@ Partial views are created like any other view: you create a *.cshtml* file withi
 
 From within a view page, there are several ways in which you can render a partial view. The simplest is to use `Html.Partial`, which returns an `IHtmlString` and can be referenced by prefixing the call with `@`:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/mvc/views/partial/sample/src/PartialViewsSample/Views/Home/About.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/partial/sample/src/PartialViewsSample/Views/Home/About.cshtml", "ids": [], "linenos": false, "highlight_args": {"linenostart": 1}} -->
 
 ````
 
@@ -46,7 +46,7 @@ From within a view page, there are several ways in which you can render a partia
 
 The [PartialAsync](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Rendering/IHtmlHelper/index.html.md#Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper.PartialAsync.md) method is available for partial views containing asynchronous code (although code in views is generally discouraged):
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/mvc/views/partial/sample/src/PartialViewsSample/Views/Home/About.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/partial/sample/src/PartialViewsSample/Views/Home/About.cshtml", "ids": [], "linenos": false, "highlight_args": {"linenostart": 1}} -->
 
 ````
 
@@ -56,7 +56,7 @@ The [PartialAsync](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/
 
 You can render a partial view with [RenderPartial](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Rendering/HtmlHelperPartialExtensions/index.html.md#Microsoft.AspNetCore.Mvc.Rendering.HtmlHelperPartialExtensions.RenderPartial.md). This method doesn't return a result; it streams the rendered output directly to the response. Because it doesn't return a result, it must be called within a Razor code block (you can also call `RenderPartialAsync` if necessary):
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/mvc/views/partial/sample/src/PartialViewsSample/Views/Home/About.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/partial/sample/src/PartialViewsSample/Views/Home/About.cshtml", "ids": [], "linenos": false, "highlight_args": {"linenostart": 1}} -->
 
 ````
 
@@ -74,8 +74,6 @@ Because it streams the result directly, `RenderPartial` and `RenderPartialAsync`
 ### Partial View Discovery
 
 When referencing a partial view, you can refer to its location in several ways:
-
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "text", "highlight_args": {}} -->
 
 ````text
 
@@ -108,27 +106,21 @@ When a partial view is instantiated, it gets a copy of the parent view's `ViewDa
 
 You can pass an instance of `ViewDataDictionary` to the partial view:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
-
-````c#
+````csharp
 
    @Html.Partial("PartialName", customViewData)
    ````
 
 You can also pass a model into a partial view. This can be the page's view model, or some portion of it, or a custom object. Simply pass in the model as the second parameter when calling `Partial`/`PartialAsync` or `RenderPartial`/`RenderPartialAsync`:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
-
-````c#
+````csharp
 
    @Html.Partial("PartialName", viewModel)
    ````
 
 You can pass an instance of `ViewDataDictionary` and a view model to a partial view:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
-
-````c#
+````csharp
 
    @Html.Partial("PartialName", viewModel, customViewData)
    ````
@@ -137,7 +129,7 @@ You can pass an instance of `ViewDataDictionary` and a view model to a partial v
 
 The following view specifies a view model of type `Article`. `Article` has an `AuthorName` property that is passed to a partial view named *AuthorPartial*, and a property of type `List<ArticleSection>`, which is passed (in a loop) to a partial devoted to rendering that type:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/mvc/views/partial/sample/src/PartialViewsSample/Views/Articles/Read.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "highlight_args": {"hl_lines": [2, 5, 10], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/partial/sample/src/PartialViewsSample/Views/Articles/Read.cshtml", "ids": [], "linenos": false, "highlight_args": {"hl_lines": [2, 5, 10], "linenostart": 1}} -->
 
 ````
 
@@ -157,7 +149,7 @@ The following view specifies a view model of type `Article`. `Article` has an `A
 
 The *AuthorPartial* (which in this case is in the */Views/Shared* folder):
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/mvc/views/partial/sample/src/PartialViewsSample/Views/Shared/AuthorPartial.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "highlight_args": {"hl_lines": [1], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/partial/sample/src/PartialViewsSample/Views/Shared/AuthorPartial.cshtml", "ids": [], "linenos": false, "highlight_args": {"hl_lines": [1], "linenostart": 1}} -->
 
 ````
 
@@ -171,7 +163,7 @@ The *AuthorPartial* (which in this case is in the */Views/Shared* folder):
 
 The *ArticleSection* partial:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/mvc/views/partial/sample/src/PartialViewsSample/Views/Articles/ArticleSection.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "highlight_args": {"hl_lines": [2], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/partial/sample/src/PartialViewsSample/Views/Articles/ArticleSection.cshtml", "ids": [], "linenos": false, "highlight_args": {"hl_lines": [2], "linenostart": 1}} -->
 
 ````
 

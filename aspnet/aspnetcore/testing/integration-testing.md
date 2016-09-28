@@ -34,7 +34,7 @@ To get set up to run integration tests, you'll need to create a test project, re
 
 ASP.NET Core includes a test host that can be added to integration test projects and used to host ASP.NET Core applications, serving test requests without the need for a real web host. The provided sample includes an integration test project which has been configured to use [xUnit](https://xunit.github.io) and the Test Host, as you can see from this excerpt from its *project.json* file:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/testing/integration-testing/sample/test/PrimeWeb.IntegrationTests/project.json", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "javascript", "highlight_args": {"hl_lines": [5], "linenostart": 1}} -->
+[!code-javascript[Main](../testing/integration-testing/sample/test/PrimeWeb.IntegrationTests/project.json?highlight=5)]
 
 ````javascript
 
@@ -49,9 +49,9 @@ ASP.NET Core includes a test host that can be added to integration test projects
 
 Once the Microsoft.AspNetCore.TestHost package is included in the project, you will be able to create and configure a TestServer in your tests. The following test shows how to verify that a request made to the root of a site returns "Hello World!" and should run successfully against the default ASP.NET Core Empty Web template created by Visual Studio.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/testing/integration-testing/sample/test/PrimeWeb.IntegrationTests/PrimeWebDefaultRequestShould.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [6, 7], "linenostart": 1}} -->
+[!code-csharp[Main](../testing/integration-testing/sample/test/PrimeWeb.IntegrationTests/PrimeWebDefaultRequestShould.cs?highlight=6,7)]
 
-````c#
+````csharp
 
    private readonly TestServer _server;
    private readonly HttpClient _client;
@@ -85,9 +85,9 @@ In the Act portion of the test, a request is made to the `TestServer` instance f
 
 Now we can add a few additional integration tests to confirm that the prime checking functionality works via the web application:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/testing/integration-testing/sample/test/PrimeWeb.IntegrationTests/PrimeWebCheckPrimeShould.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [8, 9], "linenostart": 1}} -->
+[!code-csharp[Main](../testing/integration-testing/sample/test/PrimeWeb.IntegrationTests/PrimeWebCheckPrimeShould.cs?highlight=8,9)]
 
-````c#
+````csharp
 
    public class PrimeWebCheckPrimeShould
    {
@@ -163,9 +163,9 @@ Now that we have a set of passing tests, it's a good time to think about whether
 
 Refactoring is the process of changing an application's code to improve its design without changing its behavior. It should ideally be done when there is a suite of passing tests, since these help ensure the system's behavior remains the same before and after the changes. Looking at the way in which the prime checking logic is implemented in our web application, we see:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {"hl_lines": [11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]}} -->
 
-````c#
+````csharp
 
      public void Configure(IApplicationBuilder app,
          IHostingEnvironment env)
@@ -217,7 +217,7 @@ We want to allow the path the middleware uses to be specified as a parameter, so
 > [!NOTE]
 > Since our middleware depends on the `PrimeService` service, we are also requesting an instance of this service via the constructor. The framework will provide this service via [Dependency Injection](../fundamentals/dependency-injection.md), assuming it has been configured (e.g. in `ConfigureServices`).
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/testing/integration-testing/sample/src/PrimeWeb/Middleware/PrimeCheckerMiddleware.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "none", "highlight_args": {"hl_lines": [39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63], "linenostart": 1}} -->
+[!code-none[Main](../testing/integration-testing/sample/src/PrimeWeb/Middleware/PrimeCheckerMiddleware.cs?highlight=39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63)]
 
 ````none
 
@@ -295,9 +295,9 @@ We want to allow the path the middleware uses to be specified as a parameter, so
 
 With this middleware in place and some helpful extension methods created to make configuring it easier, the refactored `Configure` method looks like this:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/aspnet/testing/integration-testing/sample/src/PrimeWeb/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [9], "linenostart": 1}} -->
+[!code-csharp[Main](../testing/integration-testing/sample/src/PrimeWeb/Startup.cs?highlight=9)]
 
-````c#
+````csharp
 
    public void Configure(IApplicationBuilder app,
        IHostingEnvironment env)

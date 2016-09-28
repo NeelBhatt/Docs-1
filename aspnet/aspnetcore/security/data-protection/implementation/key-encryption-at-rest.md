@@ -20,9 +20,7 @@ The data protection system ships with three in-box key encryption mechanisms.
 
 When Windows DPAPI is used, key material will be encrypted via [CryptProtectData](https://msdn.microsoft.com/en-us/library/windows/desktop/aa380261(v=vs.85).aspx) before being persisted to storage. DPAPI is an appropriate encryption mechanism for data that will never be read outside of the current machine (though it is possible to back these keys up to Active Directory; see [DPAPI and Roaming Profiles](https://support.microsoft.com/en-us/kb/309408/#6)). For example to configure DPAPI key-at-rest encryption.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
-
-````c#
+````csharp
 
    sc.AddDataProtection()
        // only the local user account can decrypt the keys
@@ -31,9 +29,7 @@ When Windows DPAPI is used, key material will be encrypted via [CryptProtectData
 
 If ProtectKeysWithDpapi is called with no parameters, only the current Windows user account can decipher the persisted key material. You can optionally specify that any user account on the machine (not just the current user account) should be able to decipher the key material, as shown in the below example.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
-
-````c#
+````csharp
 
    sc.AddDataProtection()
        // all user accounts on the machine can decrypt the keys
@@ -46,9 +42,7 @@ If ProtectKeysWithDpapi is called with no parameters, only the current Windows u
 
 If your application is spread across multiple machines, it may be convenient to distribute a shared X.509 certificate across the machines and to configure applications to use this certificate for encryption of keys at rest. See below for an example.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
-
-````c#
+````csharp
 
    sc.AddDataProtection()
        // searches the cert store for the cert with this thumbprint
@@ -71,9 +65,7 @@ Beginning with Windows 8, the operating system supports DPAPI-NG (also called CN
 
 The principal is encoded as a protection descriptor rule. Consider the below example, which encrypts key material such that only the domain-joined user with the specified SID can decrypt the key material.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
-
-````c#
+````csharp
 
    sc.AddDataProtection()
      // uses the descriptor rule "SID=S-1-5-21-..."
@@ -83,9 +75,7 @@ The principal is encoded as a protection descriptor rule. Consider the below exa
 
 There is also a parameterless overload of ProtectKeysWithDpapiNG. This is a convenience method for specifying the rule "SID=mine", where mine is the SID of the current Windows user account.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
-
-````c#
+````csharp
 
    sc.AddDataProtection()
      // uses the descriptor rule "SID={current account SID}"
@@ -98,9 +88,7 @@ In this scenario, the AD domain controller is responsible for distributing the e
 
 If you're running on Windows 8.1 / Windows Server 2012 R2 or later, you can use Windows DPAPI-NG to perform certificate-based encryption, even if the application is running on [.NET Core](https://microsoft.com/net/core). To take advantage of this, use the rule descriptor string "CERTIFICATE=HashId:thumbprint", where thumbprint is the hex-encoded SHA1 thumbprint of the certificate to use. See below for an example.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
-
-````c#
+````csharp
 
    sc.AddDataProtection()
        // searches the cert store for the cert with this thumbprint
