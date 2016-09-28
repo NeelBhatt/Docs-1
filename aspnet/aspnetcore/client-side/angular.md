@@ -36,23 +36,6 @@ There are several ways to add AngularJS to your application. If you’re startin
 
 [!code-json[Main](../client-side/angular/sample/AngularSample/src/AngularSample/bower.json?highlight=9)]
 
-````json
-
-   {
-     "name": "ASP.NET",
-     "private": true,
-     "dependencies": {
-       "bootstrap": "3.3.5",
-       "jquery": "2.1.4",
-       "jquery-validation": "1.14.0",
-       "jquery-validation-unobtrusive": "3.2.4",
-       "angular": "1.5.7",
-       "angular-route": "1.5.7"
-     }
-   }
-
-   ````
-
 Upon saving the `bower.json` file, Angular will be installed in your project's `wwwroot/lib` folder. Additionally, it will be listed within the `Dependencies/Bower` folder. See the screenshot below.
 
 ![image](angular/_static/angular-solution-explorer.png)
