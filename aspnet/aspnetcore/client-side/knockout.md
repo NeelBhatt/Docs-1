@@ -308,7 +308,6 @@ To build the win-loss record string, we can use a computed observable. Note that
 
 Bind this function to a span within the `<h1>` element at the top of the page:
 
-   <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html"} -->
 
    ````html
 
@@ -323,7 +322,6 @@ Adding rows or modifying the selected element in any row's Result column will up
 
 In addition to binding to values, you can also use almost any legal JavaScript expression within a binding. For example, if a UI element should only appear under certain conditions, such as when a value exceeds a certain threshold, you can specify this logically within the binding expression:
 
-   <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html"} -->
 
    ````html
 

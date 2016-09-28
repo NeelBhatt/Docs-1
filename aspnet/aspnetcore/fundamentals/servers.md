@@ -30,7 +30,7 @@ The sample project for this article is configured to support each server option 
 
 project.json (truncated)
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/servers/sample/ServersDemo/src/ServersDemo/project.json", "ids": [], "linenos": true, "language": "json", "highlight_args": {"hl_lines": [12, 13], "linenostart": 1}} -->
+[!code-json[Main](../fundamentals/servers/sample/ServersDemo/src/ServersDemo/project.json?highlight=12,13)]
 
 ````json
 
@@ -58,7 +58,7 @@ The `run` command will launch the application from the `void main` method. The `
 
 program.cs
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/servers/sample/ServersDemo/src/ServersDemo/Program.cs", "ids": [], "linenos": true, "language": "c#", "highlight_args": {"hl_lines": [32, 33, 34, 35, 36, 37, 38, 39, 40], "linenostart": 1}} -->
+[!code-c#[Main](../fundamentals/servers/sample/ServersDemo/src/ServersDemo/Program.cs?highlight=32,33,34,35,36,37,38,39,40)]
 
 ````c#
 
@@ -146,7 +146,7 @@ The `hosting.json` can include the settings the server will use (including the s
 
 The server hosting the application can be referenced programmatically via the [IApplicationBuilder](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/IApplicationBuilder/index.html) interface, available in the `Configure` method in `Startup`. [IApplicationBuilder](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/IApplicationBuilder/index.html) exposes Server Features of type [IFeatureCollection](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Http/Features/IFeatureCollection/index.html). `IServerAddressesFeature` only expose a `Addresses` property, but different server implementations may expose additional functionality. For instance, WebListener exposes `AuthenticationManager` that can be used to configure the server's authentication:
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/servers/sample/ServersDemo/src/ServersDemo/Startup.cs", "ids": [], "linenos": true, "language": "c#", "highlight_args": {"hl_lines": [3, 6, 7, 10, 15], "linenostart": 1}} -->
+[!code-c#[Main](../fundamentals/servers/sample/ServersDemo/src/ServersDemo/Startup.cs?highlight=3,6,7,10,15)]
 
 ````c#
 

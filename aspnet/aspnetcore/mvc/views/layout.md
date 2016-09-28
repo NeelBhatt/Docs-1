@@ -23,7 +23,7 @@ This layout defines a top level template for views in the app. Apps do not requi
 
 An example `_Layout.cshtml`:
 
-<!-- literal_block {"xml:space": "preserve", "source": "/Users/shirhatti/docs/Docs/common/samples/WebApplication1/src/WebApplication1/Views/Shared/_Layout.cshtml", "ids": [], "linenos": false, "language": "html", "highlight_args": {"hl_lines": [42, 66], "linenostart": 1}} -->
+[!code-html[Main](../../common/samples/WebApplication1/src/WebApplication1/Views/Shared/_Layout.cshtml?highlight=42,66)]
 
 ````html
 
@@ -102,7 +102,7 @@ An example `_Layout.cshtml`:
 
 Razor views have a `Layout` property. Individual views specify a layout by setting this property:
 
-<!-- literal_block {"xml:space": "preserve", "source": "/Users/shirhatti/docs/Docs/common/samples/WebApplication1/src/WebApplication1/Views/_ViewStart.cshtml", "ids": [], "linenos": false, "language": "html", "highlight_args": {"hl_lines": [2], "linenostart": 1}} -->
+[!code-html[Main](../../common/samples/WebApplication1/src/WebApplication1/Views/_ViewStart.cshtml?highlight=2)]
 
 ````html
 
@@ -167,7 +167,7 @@ The file does not support other Razor features, such as functions and section de
 
 A sample `_ViewImports.cshtml` file:
 
-<!-- literal_block {"xml:space": "preserve", "source": "/Users/shirhatti/docs/Docs/common/samples/WebApplication1/src/WebApplication1/Views/_ViewImports.cshtml", "ids": [], "linenos": false, "language": "html", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "common/samples/WebApplication1/src/WebApplication1/Views/_ViewImports.cshtml", "ids": [], "linenos": false, "language": "html", "highlight_args": {"linenostart": 1}} -->
 
 ````html
 
@@ -206,7 +206,7 @@ If you have code you need to run before every view, this should be placed in the
 
 A sample `_ViewStart.cshtml` file:
 
-<!-- literal_block {"xml:space": "preserve", "source": "/Users/shirhatti/docs/Docs/common/samples/WebApplication1/src/WebApplication1/Views/_ViewStart.cshtml", "ids": [], "linenos": false, "language": "html", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "common/samples/WebApplication1/src/WebApplication1/Views/_ViewStart.cshtml", "ids": [], "linenos": false, "language": "html", "highlight_args": {"linenostart": 1}} -->
 
 ````html
 

@@ -13,7 +13,7 @@ By [Steve Smith](http://ardalis.com) and [Rick Anderson](https://twitter.com/Ric
 
 Middleware are software components that are assembled into an application pipeline to handle requests and responses. Each component chooses whether to pass the request on to the next component in the pipeline, and can perform certain actions before and after the next component is invoked in the pipeline. Request delegates are used to build the request pipeline. The request delegates handle each HTTP request.
 
-Request delegates are configured using [Run](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/RunExtensions/index.html), [Map](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/MapExtensions/index.html?highlight=Microsoft.AspNetCore.builder.mapextensions#Microsoft.AspNetCore.Builder.MapExtensions.Map), and [Use](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/UseExtensions/index.html?highlight=Microsoft.AspNetCore.builder.useextensions#Microsoft.AspNetCore.Builder.UseExtensions.Use) extension methods on the [IApplicationBuilder](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/IApplicationBuilder/index.html) type that is passed into the `Configure` method in the `Startup` class. An individual request delegate can be specified in-line as an anonymous method, or it can be defined in a reusable class. These reusable classes  are *middleware*, or *middleware
+Request delegates are configured using [Run](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/RunExtensions/index.html), [Map](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/MapExtensions/index.html?highlight=Microsoft.AspNetCore.builder.mapextensions#Microsoft.AspNetCore.Builder.MapExtensions.Map),and [Use](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/UseExtensions/index.html?highlight=Microsoft.AspNetCore.builder.useextensions#Microsoft.AspNetCore.Builder.UseExtensions.Use) extension methods on the [IApplicationBuilder](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/IApplicationBuilder/index.html) type that is passed into the `Configure` method in the `Startup` class. An individual request delegate can be specified in-line as an anonymous method,or it can be defined in a reusable class. These reusable classes  are *middleware*,or *middleware
 components*. Each middleware component in the request pipeline is responsible for invoking the next component in the pipeline, or short-circuiting the chain if appropriate.
 
 [Migrating HTTP Modules to Middleware](../migration/http-modules.md) explains the difference between request pipelines in ASP.NET Core and the previous versions and provides more middleware samples.
@@ -36,7 +36,7 @@ You can see an example of setting up the request pipeline in the default web sit
 
 4. MVC
 
-<!-- literal_block {"xml:space": "preserve", "source": "/Users/shirhatti/docs/Docs/common/samples/WebApplication1/src/WebApplication1/Startup.cs", "ids": [], "linenos": true, "language": "c#", "highlight_args": {"hl_lines": [8, 9, 10, 14, 17, 19, 23], "linenostart": 1}} -->
+[!code-c#[Main](../common/samples/WebApplication1/src/WebApplication1/Startup.cs?highlight=8,9,10,14,17,19,23)]
 
 ````c#
 
@@ -87,7 +87,7 @@ A request that is handled by the static file module will short circuit the pipel
 
 The simplest possible ASP.NET application sets up a single request delegate that handles all requests. In this case, there isn't really a request "pipeline", so much as a single anonymous function that is called in response to every HTTP request.
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/middleware/sample/src/MiddlewareSample/Startup.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/middleware/sample/src/MiddlewareSample/Startup.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -100,7 +100,7 @@ The simplest possible ASP.NET application sets up a single request delegate that
 
 The first `App.Run` delegate terminates the pipeline. In the following example, only the first delegate ("Hello, World!") will run.
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/middleware/sample/src/MiddlewareSample/Startup.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [5], "linenostart": 1}} -->
+[!code-c#[Main](../fundamentals/middleware/sample/src/MiddlewareSample/Startup.cs?highlight=5)]
 
 ````c#
 
@@ -121,7 +121,7 @@ The first `App.Run` delegate terminates the pipeline. In the following example, 
 
 You chain multiple request delegates together; the `next` parameter represents the next delegate in the pipeline. You can terminate (short-circuit) the pipeline by *not* calling the *next* parameter. You can typically perform actions both before and after the next delegate, as this example demonstrates:
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/middleware/sample/src/MiddlewareSample/Startup.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [5, 8, 14], "linenostart": 1}} -->
+[!code-c#[Main](../fundamentals/middleware/sample/src/MiddlewareSample/Startup.cs?highlight=5,8,14)]
 
 ````c#
 
@@ -160,7 +160,7 @@ In the above example, the call to `await next.Invoke()` will call into the next 
 
 You configure the HTTP pipeline using [Run](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/RunExtensions/index.html), [Map](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/MapExtensions/index.html),  and [Use](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/UseExtensions/index.html). The `Run` method short circuits the pipeline (that is, it will not call a `next` request delegate). Thus, `Run` should only be called at the end of your pipeline. `Run` is a convention, and some middleware components may expose their own Run[Middleware] methods that should only run at the end of the pipeline. The following two middleware are equivalent as the `Use` version doesn't use the `next` parameter:
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/middleware/sample/src/MiddlewareSample/Startup.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [3, 11], "linenostart": 1}} -->
+[!code-c#[Main](../fundamentals/middleware/sample/src/MiddlewareSample/Startup.cs?highlight=3,11)]
 
 ````c#
 
@@ -187,7 +187,7 @@ You configure the HTTP pipeline using [Run](https://docs.asp.net/projects/api/en
 
 We've already seen several examples of how to build a request pipeline with `Use`. `Map*` extensions are used as a convention for branching the pipeline. The current implementation supports branching based on the request's path, or using a predicate. The `Map` extension method is used to match request delegates based on a request's path. `Map` simply accepts a path and a function that configures a separate middleware pipeline. In the following example, any request with the base path of `/maptest` will be handled by the pipeline configured in the `HandleMapTest` method.
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/middleware/sample/src/MiddlewareSample/Startup.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [11], "linenostart": 1}} -->
+[!code-c#[Main](../fundamentals/middleware/sample/src/MiddlewareSample/Startup.cs?highlight=11)]
 
 ````c#
 
@@ -212,7 +212,7 @@ We've already seen several examples of how to build a request pipeline with `Use
 
 In addition to path-based mapping, the `MapWhen` method supports predicate-based middleware branching, allowing separate pipelines to be constructed in a very flexible fashion. Any predicate of type `Func<HttpContext, bool>` can be used to map requests to a new branch of the pipeline. In the following example, a simple predicate is used to detect the presence of a query string variable `branch`:
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/middleware/sample/src/MiddlewareSample/Startup.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [5, 11, 12, 13], "linenostart": 1}} -->
+[!code-c#[Main](../fundamentals/middleware/sample/src/MiddlewareSample/Startup.cs?highlight=5,11,12,13)]
 
 ````c#
 
@@ -272,7 +272,7 @@ For more complex request handling functionality, the ASP.NET team recommends imp
 
 RequestLoggerMiddleware.cs
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/middleware/sample/src/MiddlewareSample/RequestLoggerMiddleware.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [12, 18], "linenostart": 1}} -->
+[!code-c#[Main](../fundamentals/middleware/sample/src/MiddlewareSample/RequestLoggerMiddleware.cs?highlight=12,18)]
 
 ````c#
 
@@ -307,7 +307,7 @@ The middleware follows the [Explicit Dependencies Principle](http://deviq.com/ex
 
 RequestLoggerExtensions.cs
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/middleware/sample/src/MiddlewareSample/RequestLoggerExtensions.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [5], "linenostart": 1}} -->
+[!code-c#[Main](../fundamentals/middleware/sample/src/MiddlewareSample/RequestLoggerExtensions.cs?highlight=5)]
 
 ````c#
 
@@ -323,7 +323,7 @@ RequestLoggerExtensions.cs
 
 Using the extension method and associated middleware class, the `Configure` method becomes very simple and readable.
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/middleware/sample/src/MiddlewareSample/Startup.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [6], "linenostart": 1}} -->
+[!code-c#[Main](../fundamentals/middleware/sample/src/MiddlewareSample/Startup.cs?highlight=6)]
 
 ````c#
 

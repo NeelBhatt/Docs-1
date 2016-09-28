@@ -9,7 +9,7 @@ In this section you'll add search capability to the `Index` action method that l
 
 Update the `Index` action method to enable search:
 
-<!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -40,7 +40,7 @@ The query is *only* defined at this point, it **has not** been run against the d
 
 If the `searchString` parameter contains a string, the movies query is modified to filter on the value of the search string, using the following code:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {"hl_lines": [3]}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [3]}} -->
 
 ````c#
 
@@ -61,7 +61,7 @@ Navigate to `/Movies/Index`. Append a query string such as `?searchString=ghost`
 
 If you change the signature of the `Index` method to have a parameter named `id`, the `id` parameter will match the optional `{id}` placeholder for the default routes set in *Startup.cs*.
 
-<!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Startup.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [5], "linenostart": 1}} -->
+[!code-c#[Main](../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Startup.cs?highlight=5)]
 
 ````c#
 
@@ -88,7 +88,7 @@ Change the parameter to `id` and all occurrences of `searchString` change to `id
 
 The previous `Index` method:
 
-<!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [1, 8], "linenostart": 1}} -->
+[!code-c#[Main](../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs?highlight=1,8)]
 
 ````c#
 
@@ -109,7 +109,7 @@ The previous `Index` method:
 
 The updated `Index` method:
 
-<!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [1, 8], "linenostart": 1}} -->
+[!code-c#[Main](../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs?highlight=1,8)]
 
 ````c#
 
@@ -134,7 +134,7 @@ You can now pass the search title as route data (a URL segment) instead of as a 
 
 However, you can't expect users to modify the URL every time they want to search for a movie. So now you'll add UI to help them filter movies. If you changed the signature of the `Index` method to test how to pass the route-bound `ID` parameter, change it back so that it takes a parameter named `searchString`:
 
-<!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [1], "linenostart": 1}} -->
+[!code-c#[Main](../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs?highlight=1)]
 
 ````c#
 
@@ -155,7 +155,7 @@ However, you can't expect users to modify the URL every time they want to search
 
 Open the *Views/Movies/Index.cshtml* file, and add the `<form>` markup highlighted below:
 
-<!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Views/Movies/IndexForm1.cshtml", "ids": [], "linenos": false, "language": "HTML", "highlight_args": {"hl_lines": [11, 12, 13, 14, 15, 16], "linenostart": 1}} -->
+[!code-HTML[Main](../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Views/Movies/IndexForm1.cshtml?highlight=11,12,13,14,15,16)]
 
 ````HTML
 
@@ -189,7 +189,7 @@ There's no `[HttpPost]` overload of the `Index` method as you might expect. You 
 
 You could add the following `[HttpPost] Index` method.
 
-<!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [1], "linenostart": 1}} -->
+[!code-c#[Main](../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs?highlight=1)]
 
 ````c#
 
@@ -240,7 +240,7 @@ The following markup shows the change to the `form` tag:
 
 Add the following `MovieGenreViewModel` class to the *Models* folder:
 
-<!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Models/MovieGenreViewModel.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Models/MovieGenreViewModel.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -269,7 +269,7 @@ The movie-genre view model will contain:
 
 Replace the `Index` method with the following code:
 
-<!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -320,7 +320,7 @@ The `SelectList` of genres is created by projecting the distinct genres (we don'
 
 ## Adding search by genre to the Index view
 
-<!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Views/Movies/IndexFormGenre.cshtml", "ids": [], "linenos": false, "language": "HTML", "highlight_args": {"hl_lines": [1, 15, 16, 17, 27, 41], "linenostart": 1}} -->
+[!code-HTML[Main](../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Views/Movies/IndexFormGenre.cshtml?highlight=1,15,16,17,27,41)]
 
 ````HTML
 

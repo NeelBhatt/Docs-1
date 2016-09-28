@@ -24,7 +24,7 @@ App localization involves the following:
 Introduced in ASP.NET Core, [IStringLocalizer](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Localization/IStringLocalizer/index.html.md#Microsoft.Extensions.Localization.IStringLocalizer.md) and [IStringLocalizer<T>](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Localization/IStringLocalizer-T/index.html.md#Microsoft.Extensions.Localization.IStringLocalizer<T>.md) were architected to improve productivity when developing localized apps. `IStringLocalizer` uses the [ResourceManager](https://msdn.microsoft.com/en-us/library/system.resources.resourcemanager(v=vs.110).aspx) and [ResourceReader](https://msdn.microsoft.com/en-us/library/system.resources.resourcereader(v=vs.110).aspx) to provide culture-specific resources at run time. The simple interface has an indexer and an `IEnumerable` for returning localized strings. `IStringLocalizer` doesn't require you to store the default language strings in a resource file. You can develop an app
 targeted for localization and not need to create resource files early in development. The code below shows how to wrap the string "About Title" for localization.
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/localization/sample/Controllers/AboutController.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/localization/sample/Controllers/AboutController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -56,7 +56,7 @@ In the code above, the `IStringLocalizer<T>` implementation comes from [Dependen
 
 Use the [IHtmlLocalizer<T>](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Localization/IHtmlLocalizer-TResource/index.html) implementation for resources that contain HTML. `IHtmlLocalizer` HTML encodes arguments that are formatted in the resource string, but not the resource string. In the sample highlighted below, only the value of `name` parameter is HTML encoded.
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/localization/sample/Controllers/BookController.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [3, 5, 20], "linenostart": 1}} -->
+[!code-c#[Main](../fundamentals/localization/sample/Controllers/BookController.cs?highlight=3,5,20)]
 
 ````c#
 
@@ -91,7 +91,7 @@ Note:
 
 At the lowest level, you can get `IStringLocalizerFactory` out of [Dependency Injection](dependency-injection.md):
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/localization/sample/Controllers/TestController.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [6, 7, 8, 9, 10, 11], "linenostart": 1}} -->
+[!code-c#[Main](../fundamentals/localization/sample/Controllers/TestController.cs?highlight=6,7,8,9,10,11)]
 
 ````c#
 
@@ -120,7 +120,7 @@ The code above demonstrates each of the two factory create methods.
 
 You can partition your localized strings by controller, area, or have just one container. In the sample app, a dummy class named `SharedResource` is used for shared resources.
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/localization/sample/Resources/SharedResource.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/localization/sample/Resources/SharedResource.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -137,7 +137,7 @@ You can partition your localized strings by controller, area, or have just one c
 
 Some developers use the `Startup` class to contain global or shared strings.  In the sample below, the `InfoController` and the `SharedResource` localizers are used:
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/localization/sample/Controllers/InfoController.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/localization/sample/Controllers/InfoController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -202,7 +202,7 @@ Note:
 
 To use a shared resource file in a view, inject [IHtmlLocalizer<T>](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Localization/IHtmlLocalizer-TResource/index.html):
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/localization/sample/Views/Test/About.cshtml", "ids": [], "linenos": false, "language": "HTML", "highlight_args": {"hl_lines": [5, 12], "linenostart": 1}} -->
+[!code-HTML[Main](../fundamentals/localization/sample/Views/Test/About.cshtml?highlight=5,12)]
 
 ````HTML
 
@@ -228,7 +228,7 @@ DataAnnotations error messages are localized with [IStringLocalizer<T>](https://
 
 * Resources/ViewModels/Account/RegisterViewModel.fr.resx
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/localization/sample/ViewModels/Account/RegisterViewModel.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/localization/sample/ViewModels/Account/RegisterViewModel.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -292,7 +292,7 @@ Each language and culture combination (other than the default language) requires
 
 Localization is configured in the `ConfigureServices` method:
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/localization/sample/Startup.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [4, 7, 8], "linenostart": 1}} -->
+[!code-c#[Main](../fundamentals/localization/sample/Startup.cs?highlight=4,7,8)]
 
 ````c#
 
@@ -318,7 +318,7 @@ Localization is configured in the `ConfigureServices` method:
 
 The current culture on a request is set in the localization [Middleware](middleware.md). The localization middleware is enabled in the `Configure` method of *Startup.cs* file.
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/localization/sample/Startup.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/localization/sample/Startup.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -509,7 +509,7 @@ The *Views/Shared/_SelectLanguagePartial.cshtml* file is added to the `footer` s
 
 The `SetLanguage` method sets the culture cookie.
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/localization/sample/Controllers/HomeController.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/localization/sample/Controllers/HomeController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 

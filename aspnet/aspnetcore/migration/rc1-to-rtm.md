@@ -321,7 +321,7 @@ The [IConfigurationSource](http://docs.asp.net/projects/api/en/latest/autoapi/Mi
 
 File-based configuration providers support both relative and absolute paths to configuration files. If you want to specify file paths relative to your application's content root, you must call the [SetBasePath](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Configuration/FileConfigurationExtensions/index.html.md#Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath.md) extension method on [IConfigurationBuilder](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Configuration/IConfigurationBuilder/index.html.md#Microsoft.Extensions.Configuration.IConfigurationBuilder.md):
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {"hl_lines": [4]}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [4]}} -->
 
 ````c#
 

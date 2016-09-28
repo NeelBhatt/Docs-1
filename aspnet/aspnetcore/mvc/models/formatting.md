@@ -20,7 +20,7 @@ To return data in a specific format from a controller that inherits from the `Co
 
 Returning JSON-formatted data:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/models/formatting/sample/src/ResponseFormattingSample/Controllers/Api/AuthorsController.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [3, 5], "linenostart": 1}} -->
+[!code-c#[Main](../mvc/models/formatting/sample/src/ResponseFormattingSample/Controllers/Api/AuthorsController.cs?highlight=3,5)]
 
 ````c#
 
@@ -41,7 +41,7 @@ Note that the content type of the response is `application/json`, shown both in 
 
 To return plain text formatted data, use `ContentResult` and the `Content` helper:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/models/formatting/sample/src/ResponseFormattingSample/Controllers/Api/AuthorsController.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [3, 5], "linenostart": 1}} -->
+[!code-c#[Main](../mvc/models/formatting/sample/src/ResponseFormattingSample/Controllers/Api/AuthorsController.cs?highlight=3,5)]
 
 ````c#
 
@@ -60,7 +60,7 @@ A response from this action:
 
 Note in this case the `Content-Type` returned is `text/plain`. You can also achieve this same behavior using just a string response type:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/models/formatting/sample/src/ResponseFormattingSample/Controllers/Api/AuthorsController.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [3, 5], "linenostart": 1}} -->
+[!code-c#[Main](../mvc/models/formatting/sample/src/ResponseFormattingSample/Controllers/Api/AuthorsController.cs?highlight=3,5)]
 
 ````c#
 
@@ -82,7 +82,7 @@ Content negotiation (*conneg* for short) occurs when the client specifies an [Ac
 
 The following action method uses the `Ok` and `NotFound` helper methods:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/models/formatting/sample/src/ResponseFormattingSample/Controllers/Api/AuthorsController.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [8, 10], "linenostart": 1}} -->
+[!code-c#[Main](../mvc/models/formatting/sample/src/ResponseFormattingSample/Controllers/Api/AuthorsController.cs?highlight=8,10)]
 
 ````c#
 
@@ -110,7 +110,7 @@ Controller actions can return POCOs (Plain Old CLR Objects), in which case ASP.N
 
 Returning an object type:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/models/formatting/sample/src/ResponseFormattingSample/Controllers/Api/AuthorsController.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [3], "linenostart": 1}} -->
+[!code-c#[Main](../mvc/models/formatting/sample/src/ResponseFormattingSample/Controllers/Api/AuthorsController.cs?highlight=3)]
 
 ````c#
 
@@ -157,7 +157,7 @@ To add support for XML formatting, add the "Microsoft.AspNetCore.Mvc.Formatters.
 
 Add the XmlSerializerFormatters to MVC's configuration in *Startup.cs*:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/models/formatting/sample/src/ResponseFormattingSample/Startup.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [4], "linenostart": 1}} -->
+[!code-c#[Main](../mvc/models/formatting/sample/src/ResponseFormattingSample/Startup.cs?highlight=4)]
 
 ````c#
 

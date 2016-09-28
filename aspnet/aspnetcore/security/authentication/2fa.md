@@ -39,7 +39,7 @@ After you create the project, follow the instructions in [Account Confirmation a
 
 * Add code in the *Services/MessageServices.cs* file to enable SMS.
 
-<!-- literal_block {"xml:space": "preserve", "source": "security/authentication/2fa/sample/WebSMS/src/WebSMS/Services/MessageServices.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "security/authentication/2fa/sample/WebSMS/src/WebSMS/Services/MessageServices.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -86,7 +86,7 @@ We'll use the [Options pattern](../../fundamentals/configuration.md#options-conf
 
    * Create a class to fetch the secure SMS key. For this sample, the `AuthMessageSMSSenderOptions` class is created in the *Services/AuthMessageSMSSenderOptions.cs* file.
 
-<!-- literal_block {"xml:space": "preserve", "source": "security/authentication/2fa/sample/WebSMS/src/WebSMS/Services/AuthMessageSMSSenderOptions.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "security/authentication/2fa/sample/WebSMS/src/WebSMS/Services/AuthMessageSMSSenderOptions.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -111,7 +111,7 @@ Set `SID`, `AuthToken`, and `SendNumber` with the [secret-manager tool](../app-s
 
 Add `AuthMessageSMSSenderOptions` to the service container at the end of the `ConfigureServices` method in the *Startup.cs* file:
 
-<!-- literal_block {"xml:space": "preserve", "source": "security/authentication/2fa/sample/WebSMS/src/WebSMS/Startup.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [4], "linenostart": 1}} -->
+[!code-c#[Main](../security/authentication/2fa/sample/WebSMS/src/WebSMS/Startup.cs?highlight=4)]
 
 ````c#
 
@@ -240,7 +240,7 @@ If you don't get a text message, see [Debugging Twilio](#debugging-twilio).
 
 We recommend you use account lockout with 2FA. Once a user logs in (through a local account or social account), each failed attempt at 2FA is stored, and if the maximum attempts (default is 5) is reached, the user is locked out for five minutes (you can set the lock out time with `DefaultAccountLockoutTimeSpan`). The following configures Account to be locked out for 10 minutes after 10 failed attempts.
 
-<!-- literal_block {"xml:space": "preserve", "source": "security/authentication/2fa/sample/WebSMS/src/WebSMS/Startup.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [1, 2, 3, 4, 5], "linenostart": 1}} -->
+[!code-c#[Main](../security/authentication/2fa/sample/WebSMS/src/WebSMS/Startup.cs?highlight=1,2,3,4,5)]
 
 ````c#
 

@@ -103,7 +103,7 @@ View components are typically invoked from a view, but you can invoke them direc
 
 In this example, the view component is called directly from the controller:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/view-components/sample/ViewCompFinal/Controllers/ToDoController.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/view-components/sample/ViewCompFinal/Controllers/ToDoController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -124,7 +124,7 @@ In this example, the view component is called directly from the controller:
 
 Create a *ViewComponents* folder and add the following `PriorityListViewComponent` class.
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/view-components/sample/ViewCompFinal/ViewComponents/PriorityListViewComponent1.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/view-components/sample/ViewCompFinal/ViewComponents/PriorityListViewComponent1.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -170,7 +170,7 @@ Notes on the code:
 
 * The `[ViewComponent]` attribute can change the name used to reference a view component. For example, we could have named the class `XYZ`,  and  applied the  `ViewComponent` attribute:
 
-  <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
+  <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp"} -->
 
   ````c#
 
@@ -235,7 +235,7 @@ The following image shows the priority items:
 
 You can also call the view component directly from the controller:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/view-components/sample/ViewCompFinal/Controllers/ToDoController.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/view-components/sample/ViewCompFinal/Controllers/ToDoController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -250,7 +250,7 @@ You can also call the view component directly from the controller:
 
 A complex view component might need to specify a non-default view under some conditions. The following code shows how to specify the "PVC" view  from the `InvokeAsync` method. Update the `InvokeAsync` method in the `PriorityListViewComponent` class.
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/view-components/sample/ViewCompFinal/ViewComponents/PriorityListViewComponentFinal.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [4, 5, 6, 7, 8, 9], "linenostart": 1}} -->
+[!code-c#[Main](../../mvc/views/view-components/sample/ViewCompFinal/ViewComponents/PriorityListViewComponentFinal.cs?highlight=4,5,6,7,8,9)]
 
 ````c#
 
@@ -271,7 +271,7 @@ A complex view component might need to specify a non-default view under some con
 
 Copy the *Views/Shared/Components/PriorityList/Default.cshtml* file to a view named *Views/Shared/Components/PriorityList/PVC.cshtml*. Add a heading to indicate the PVC view is being used.
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/view-components/sample/ViewCompFinal/Views/Shared/Components/PriorityList/PVC.cshtml", "ids": [], "linenos": false, "language": "html", "highlight_args": {"hl_lines": [3], "linenostart": 1}} -->
+[!code-html[Main](../../mvc/views/view-components/sample/ViewCompFinal/Views/Shared/Components/PriorityList/PVC.cshtml?highlight=3)]
 
 ````html
 
@@ -340,7 +340,7 @@ If the PVC view is not rendered, verify you are calling the view component with 
 
 If you want compile time safety you can replace the hard coded view component name with the class name. Create the view component without the "ViewComponent" suffix:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/view-components/sample/ViewCompFinal/ViewComponents/PriorityList.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [10, 14], "linenostart": 1}} -->
+[!code-c#[Main](../../mvc/views/view-components/sample/ViewCompFinal/ViewComponents/PriorityList.cs?highlight=10,14)]
 
 ````c#
 

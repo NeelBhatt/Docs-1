@@ -100,7 +100,7 @@ You access Secret Manager secrets through the configuration system. Add the `Mic
 
 Add the user secrets configuration source to the `Startup` method:
 
-<!-- literal_block {"xml:space": "preserve", "source": "/Users/shirhatti/docs/Docs/common/samples/WebApplication1/src/WebApplication1/Startup.cs", "ids": [], "linenos": false, "language": "none", "highlight_args": {"hl_lines": [11], "linenostart": 1}} -->
+[!code-none[Main](../common/samples/WebApplication1/src/WebApplication1/Startup.cs?highlight=11)]
 
 ````none
 

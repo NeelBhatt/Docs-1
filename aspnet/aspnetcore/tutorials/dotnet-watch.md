@@ -55,7 +55,7 @@ We'll fix that.
 
 1. Add `Microsoft.DotNet.Watcher.Tools` to the `tools` section of the *WebApp/project.json* file as in the example below:
 
-<!-- literal_block {"xml:space": "preserve", "source": "tutorials/dotnet-watch/sample/WebAppTests/project.json", "ids": [], "linenos": false, "language": "javascript", "highlight_args": {"hl_lines": [2], "linenostart": 1}} -->
+[!code-javascript[Main](../tutorials/dotnet-watch/sample/WebAppTests/project.json?highlight=2)]
 
 ````javascript
 
@@ -107,7 +107,7 @@ Open *WebApp/Controllers/MathController.cs*.
 
 We've intentionally introduced a bug in the code.
 
-<!-- literal_block {"xml:space": "preserve", "source": "tutorials/dotnet-watch/sample/WebApp/Controllers/MathController.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [5], "linenostart": 1}} -->
+[!code-c#[Main](../tutorials/dotnet-watch/sample/WebApp/Controllers/MathController.cs?highlight=5)]
 
 ````c#
 

@@ -167,7 +167,7 @@ Line numbers should only be used while editing to assist in find the line number
 
 This results in:
 
-<!-- literal_block {"ids": [], "linenos": true, "xml:space": "preserve", "language": "c#", "highlight_args": {"hl_lines": [3]}} -->
+<!-- literal_block {"ids": [], "linenos": true, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [3]}} -->
 
 ````c#
 
@@ -234,7 +234,7 @@ External file references can specify a language, emphasize certain lines, displa
      :linenos:
    ````
 
-<!-- literal_block {"xml:space": "preserve", "source": "contribute/style-guide/_static/startup.cs", "ids": [], "linenos": true, "language": "c#", "highlight_args": {"hl_lines": [19, 25, 26, 27], "linenostart": 1}} -->
+[!code-c#[Main](../contribute/style-guide/_static/startup.cs?highlight=19,25,26,27)]
 
 ````c#
 

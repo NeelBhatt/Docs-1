@@ -19,7 +19,7 @@ The host is responsible for application startup and lifetime management. The ser
 
 You create a host using an instance of `WebHostBuilder`. This is typically done in your app's entry point: `public static void Main`, (which in the project templates is located in a *Program.cs* file). A typical *Program.cs*, shown below, demonstrates how to use a `WebHostBuilder` to build a host.
 
-<!-- literal_block {"xml:space": "preserve", "source": "/Users/shirhatti/docs/Docs/common/samples/WebApplication1/src/WebApplication1/Program.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [14, 15, 16, 17, 18, 19, 20, 21], "linenostart": 1}} -->
+[!code-c#[Main](../common/samples/WebApplication1/src/WebApplication1/Program.cs?highlight=14,15,16,17,18,19,20,21)]
 
 ````c#
 
@@ -173,7 +173,7 @@ Web Root `string`
 
 Use [Configuration](configuration.md) to set configuration values to be used by the host. These values may be subsequently overridden. This is specified using `UseConfiguration`.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {"hl_lines": [3, 4, 5, 6, 9]}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [3, 4, 5, 6, 9]}} -->
 
 ````c#
 

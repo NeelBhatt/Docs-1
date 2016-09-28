@@ -50,7 +50,7 @@ Add an *appsettings.json* file to the root of the project using the appropriate 
 
 Our ASP.NET MVC project included the required database connection string in *web.config*, in the `<connectionStrings>` element. In our ASP.NET Core project, we are going to store this information in the *appsettings.json* file. Open *appsettings.json*, and note that it already includes the following:
 
-<!-- literal_block {"xml:space": "preserve", "source": "migration/configuration/samples/WebApp1/src/WebApp1/appsettings.json", "ids": [], "linenos": true, "language": "json", "highlight_args": {"hl_lines": [4], "linenostart": 1}} -->
+[!code-json[Main](../migration/configuration/samples/WebApp1/src/WebApp1/appsettings.json?highlight=4)]
 
 ````json
 

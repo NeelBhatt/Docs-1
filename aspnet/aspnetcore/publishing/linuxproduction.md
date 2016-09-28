@@ -237,7 +237,7 @@ Add `/etc/nginx/proxy.conf` configuration file.
 
 Edit `/etc/nginx/nginx.conf` configuration file. The example contains both http and server sections in one configuration file.
 
-<!-- literal_block {"xml:space": "preserve", "source": "publishing/linuxproduction/nginx.conf", "ids": [], "linenos": false, "language": "nginx", "highlight_args": {"hl_lines": [2], "linenostart": 1}} -->
+[!code-nginx[Main](../publishing/linuxproduction/nginx.conf?highlight=2)]
 
 ````nginx
 

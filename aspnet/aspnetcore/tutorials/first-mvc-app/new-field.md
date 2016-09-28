@@ -13,7 +13,7 @@ When you use EF Code First to automatically create a database, Code First adds a
 
 Open the *Models/Movie.cs* file and add a `Rating` property:
 
-<!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Models/MovieDateRating.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [11], "linenostart": 1}} -->
+[!code-c#[Main](../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Models/MovieDateRating.cs?highlight=11)]
 
 ````c#
 
@@ -45,7 +45,7 @@ You also need to update the view templates in order to display, create and edit 
 
 Edit the */Views/Movies/Index.cshtml* file and add a `Rating` field:
 
-<!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Views/Movies/IndexGenreRating.cshtml", "ids": [], "linenos": false, "language": "HTML", "highlight_args": {"hl_lines": [16, 37], "linenostart": 1}} -->
+[!code-HTML[Main](../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Views/Movies/IndexGenreRating.cshtml?highlight=16,37)]
 
 ````HTML
 
@@ -112,7 +112,7 @@ For this tutorial, we'll use Code First Migrations.
 
 Update the `SeedData` class so that it provides a value for the new column. A sample change is shown below, but you'll want to make this change for each `new Movie`.
 
-<!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Models/SeedDataRating.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [6], "linenostart": 1}} -->
+[!code-c#[Main](../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Models/SeedDataRating.cs?highlight=6)]
 
 ````c#
 

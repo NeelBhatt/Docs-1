@@ -28,7 +28,7 @@ When you modify the default settings created with the project, your changes are 
 
 launchSettings.json
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/environments/sample/src/Environments/Properties/launchSettings.json", "ids": [], "linenos": false, "language": "javascript", "highlight_args": {"hl_lines": [15, 22], "linenostart": 1}} -->
+[!code-javascript[Main](../fundamentals/environments/sample/src/Environments/Properties/launchSettings.json?highlight=15,22)]
 
 ````javascript
 
@@ -98,7 +98,7 @@ The [IHostingEnvironment](http://docs.asp.net/projects/api/en/latest/autoapi/Mic
 
 For example, you can use the following code in your Configure method to setup environment specific error handling:
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/environments/sample/src/Environments/Startup.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/environments/sample/src/Environments/Startup.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 

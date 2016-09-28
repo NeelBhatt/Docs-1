@@ -188,7 +188,7 @@ To use routing middleware, add it to the **dependencies** in *project.json*:
 
 Add routing to the service container in *Startup.cs*:
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/routing/sample/RoutingSample/Startup.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [3], "linenostart": 1}} -->
+[!code-c#[Main](../fundamentals/routing/sample/RoutingSample/Startup.cs?highlight=3)]
 
 ````c#
 

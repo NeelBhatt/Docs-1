@@ -64,7 +64,7 @@ Tag Helpers scope is controlled by a combination of `@addTagHelper`, `@removeTag
 
 If you create a new ASP.NET Core web app named *AuthoringTagHelpers* (with no authentication), the following *Views/_ViewImports.cshtml* file will be added to your project:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopy.cshtml", "ids": [], "linenos": false, "language": "html", "highlight_args": {"hl_lines": [2], "linenostart": 1}} -->
+[!code-html[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopy.cshtml?highlight=2)]
 
 ````html
 
@@ -77,7 +77,7 @@ The `@addTagHelper` directive makes Tag Helpers available to the view. In this c
 
 To expose all of the Tag Helpers in this project (which creates an assembly named *AuthoringTagHelpers*), you would use the following:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopy.cshtml", "ids": [], "linenos": false, "language": "html", "highlight_args": {"hl_lines": [3], "linenostart": 1}} -->
+[!code-html[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopy.cshtml?highlight=3)]
 
 ````html
 
@@ -210,7 +210,6 @@ IntelliSense helps you write the entire line. The `LabelTagHelper` also defaults
 
 generates:
 
-   <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html"} -->
 
    ````html
 
@@ -223,7 +222,6 @@ The  camel-cased to sentence-cased content is not used if you add content to the
 
 generates:
 
-   <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html"} -->
 
    ````html
 
@@ -249,7 +247,7 @@ The markup is much cleaner and easier to read, edit, and maintain than the HTML 
 
 Consider the *Email* group:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/intro/sample/Register.cshtml", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/intro/sample/Register.cshtml", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 

@@ -21,7 +21,7 @@ Open the *Movie.cs* file. DataAnnotations provides a built-in set of validation 
 
 Update the `Movie` class to take advantage of the built-in `Required`, `StringLength`, `RegularExpression`, and `Range` validation attributes.
 
-<!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Models/MovieDateRatingDA.cs", "ids": [], "linenos": false, "language": "none", "highlight_args": {"hl_lines": [5, 12, 13, 14, 17, 18, 21, 22], "linenostart": 1}} -->
+[!code-none[Main](../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Models/MovieDateRatingDA.cs?highlight=5,12,13,14,17,18,21,22)]
 
 ````none
 
@@ -77,7 +77,7 @@ The form data is not sent to the server until there are no client side validatio
 
 You might wonder how the validation UI was generated without any updates to the code in the controller or views. The next listing shows the two `Create` methods.
 
-<!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -125,7 +125,7 @@ After you disable JavaScript, post invalid data and step through the debugger.
 
 Below is portion of the *Create.cshtml* view template that you scaffolded earlier in the tutorial. It's used by the action methods shown above both to display the initial form and to redisplay it in the event of an error.
 
-<!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Views/Movies/CreateRatingBrevity.cshtml", "ids": [], "linenos": false, "language": "HTML", "highlight_args": {"hl_lines": [9, 10, 17, 18, 13], "linenostart": 1}} -->
+[!code-HTML[Main](../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Views/Movies/CreateRatingBrevity.cshtml?highlight=9,10,17,18,13)]
 
 ````HTML
 
@@ -169,7 +169,7 @@ When you need to change validation logic, you can do so in exactly one place by 
 
 Open the *Movie.cs* file and examine the `Movie` class. The `System.ComponentModel.DataAnnotations` namespace provides formatting attributes in addition to the built-in set of validation attributes. We've already applied a `DataType` enumeration value to the release date and to the price fields. The following code shows the `ReleaseDate` and `Price` properties with the appropriate `DataType` attribute.
 
-<!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Models/MovieDateRatingDA.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [2, 6], "linenostart": 1}} -->
+[!code-c#[Main](../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Models/MovieDateRatingDA.cs?highlight=2,6)]
 
 ````c#
 
@@ -218,7 +218,7 @@ You will need to disable jQuery date validation to use the `Range` attribute wit
 
 The following code shows combining attributes on one line:
 
-<!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Models/MovieDateRatingDAmult.cs", "ids": [], "linenos": false, "language": "none", "highlight_args": {"hl_lines": [5, 8, 11, 14, 17], "linenostart": 1}} -->
+[!code-none[Main](../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Models/MovieDateRatingDAmult.cs?highlight=5,8,11,14,17)]
 
 ````none
 

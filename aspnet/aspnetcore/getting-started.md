@@ -7,7 +7,6 @@ uid: getting-started
 
 2. Create a new .NET Core project:
 
-   <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "console"} -->
 
    ````console
 
@@ -18,7 +17,7 @@ uid: getting-started
 
 3. Update the *project.json* file to add the Kestrel HTTP server package as a dependency:
 
-   <!-- literal_block {"xml:space": "preserve", "source": "getting-started/sample/aspnetcoreapp/project.json", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [15], "linenostart": 1}} -->
+   [!code-c#[Main](../getting-started/sample/aspnetcoreapp/project.json?highlight=15)]
 
    ````c#
 
@@ -47,7 +46,6 @@ uid: getting-started
 
 4. Restore the packages:
 
-   <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "console"} -->
 
    ````console
 
@@ -56,7 +54,7 @@ uid: getting-started
 
 5. Add a *Startup.cs* file that defines the request handling logic:
 
-   <!-- literal_block {"xml:space": "preserve", "source": "getting-started/sample/aspnetcoreapp/Startup.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+   <!-- literal_block {"xml:space": "preserve", "source": "getting-started/sample/aspnetcoreapp/Startup.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
    ````c#
 
@@ -83,7 +81,7 @@ uid: getting-started
 
 6. Update the code in *Program.cs* to setup and start the Web host:
 
-   <!-- literal_block {"xml:space": "preserve", "source": "getting-started/sample/aspnetcoreapp/Program.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [2, 4, 10, 11, 12, 13, 14, 15], "linenostart": 1}} -->
+   [!code-c#[Main](../getting-started/sample/aspnetcoreapp/Program.cs?highlight=2,4,10,11,12,13,14,15)]
 
    ````c#
 
@@ -110,7 +108,6 @@ uid: getting-started
 
 7. Run the app  (the `dotnet run` command will build the app when it's out of date):
 
-   <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "console"} -->
 
    ````console
 

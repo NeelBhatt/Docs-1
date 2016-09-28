@@ -38,7 +38,7 @@ When used in this manner, the DirectoryInfo should point to a key storage locati
 
 Caution: You should consider configuring the DataProtectionProvider such that keys are encrypted at rest, as in the below example.
 
-  <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
+  <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp"} -->
 
   ````c#
 
@@ -69,7 +69,6 @@ To share authentication cookies between your ASP.NET 4.x applications and your A
 
 2. In Startup.Auth.cs, locate the call to UseCookieAuthentication, which will generally look like the following.
 
-   <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
    ````c#
 
@@ -81,7 +80,6 @@ To share authentication cookies between your ASP.NET 4.x applications and your A
 
 3. Modify the call to UseCookieAuthentication as follows, changing the CookieName to match the name used by the ASP.NET Core cookie authentication middleware, and providing an instance of a DataProtectionProvider that has been initialized to a key storage location.
 
-   <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
    ````c#
 

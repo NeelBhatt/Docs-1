@@ -538,7 +538,7 @@ The `@inherits` directive gives you full control of the class your Razor page in
 
 For instance, let’s say we had the following custom Razor page type:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/razor/sample/Classes/CustomRazorPage.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/razor/sample/Classes/CustomRazorPage.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -634,7 +634,7 @@ Generates the following HTML markup:
 
 The generated Razor C# looks like:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/razor/sample/Classes/Views_Home_Test_cshtml.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/razor/sample/Classes/Views_Home_Test_cshtml.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 

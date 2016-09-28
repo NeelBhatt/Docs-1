@@ -55,7 +55,7 @@ To enable CORS for your entire application add the CORS middleware to your reque
 
 You can specify a cross-origin policy when adding the CORS middleware using the `CorsPolicyBuilder` class. There are two ways to do this. The first is to call UseCors with a lambda:
 
-<!-- literal_block {"xml:space": "preserve", "source": "security/cors/sample/src/CorsExamples/CorsExample1/Startup.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"hl_lines": [11, 12], "linenostart": 1}} -->
+[!code-csharp[Main](../security/cors/sample/src/CorsExamples/CorsExample1/Startup.cs?highlight=11,12)]
 
 ````csharp
 
@@ -84,7 +84,7 @@ The lambda takes a CorsPolicyBuilder object. I’ll describe all of the configur
 
 Note that CorsPolicyBuilder has a fluent API, so you can chain method calls:
 
-<!-- literal_block {"xml:space": "preserve", "source": "security/cors/sample/src/CorsExamples/CorsExample3/Startup.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"hl_lines": [3], "linenostart": 1}} -->
+[!code-csharp[Main](../security/cors/sample/src/CorsExamples/CorsExample3/Startup.cs?highlight=3)]
 
 ````csharp
 

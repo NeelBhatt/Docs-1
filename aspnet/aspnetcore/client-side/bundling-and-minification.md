@@ -24,7 +24,7 @@ Bundling is a feature that makes it easy to combine or bundle multiple files int
 
 Bundling can be accomplished using the [gulp-concat](https://www.npmjs.com/package/gulp-concat) plugin, which is installed with the Node Package Manager ([npm](https://www.npmjs.com/)). Add the `gulp-concat` package to the `devDependencies` section of your *package.json* file. To edit your *package.json* file from Visual Studio right-click on the **npm** node under **Dependencies** in the solution explorer and select **Open package.json**:
 
-<!-- literal_block {"xml:space": "preserve", "source": "client-side/bundling-and-minification/samples/WebApplication1/src/WebApplication1/package.json", "ids": [], "linenos": false, "language": "json", "highlight_args": {"hl_lines": [7], "linenostart": 1}} -->
+[!code-json[Main](../client-side/bundling-and-minification/samples/WebApplication1/src/WebApplication1/package.json?highlight=7)]
 
 ````json
 
@@ -47,7 +47,7 @@ Run `npm install` to install the specified packages. Visual Studio will automati
 
 In your *gulpfile.js* import the `gulp-concat` module:
 
-<!-- literal_block {"xml:space": "preserve", "source": "client-side/bundling-and-minification/samples/WebApplication1/src/WebApplication1/gulpfile.js", "ids": [], "linenos": false, "language": "js", "highlight_args": {"hl_lines": [3], "linenostart": 1}} -->
+[!code-js[Main](../client-side/bundling-and-minification/samples/WebApplication1/src/WebApplication1/gulpfile.js?highlight=3)]
 
 ````js
 
@@ -78,7 +78,7 @@ Use [globbing](http://www.tldp.org/LDP/abs/html/globbingref.html) patterns to sp
 
 You can then define gulp tasks that run `concat` on the desired files and output the result to your webroot:
 
-<!-- literal_block {"xml:space": "preserve", "source": "client-side/bundling-and-minification/samples/WebApplication1/src/WebApplication1/gulpfile.js", "ids": [], "linenos": false, "language": "js", "highlight_args": {"hl_lines": [3, 10], "linenostart": 1}} -->
+[!code-js[Main](../client-side/bundling-and-minification/samples/WebApplication1/src/WebApplication1/gulpfile.js?highlight=3,10)]
 
 ````js
 
@@ -133,7 +133,7 @@ In addition to removing the comments and unnecessary whitespace, the following p
 
 To minify your JavaScript files you can use the [gulp-uglify](https://www.npmjs.com/package/gulp-uglify) plugin. For CSS you can use the [gulp-cssmin](https://www.npmjs.com/package/gulp-cssmin) plugin. Install these packages using npm as before:
 
-<!-- literal_block {"xml:space": "preserve", "source": "client-side/bundling-and-minification/samples/WebApplication1/src/WebApplication1/package.json", "ids": [], "linenos": false, "language": "json", "highlight_args": {"hl_lines": [8, 9], "linenostart": 1}} -->
+[!code-json[Main](../client-side/bundling-and-minification/samples/WebApplication1/src/WebApplication1/package.json?highlight=8,9)]
 
 ````json
 
@@ -154,7 +154,7 @@ To minify your JavaScript files you can use the [gulp-uglify](https://www.npmjs.
 
 Import the `gulp-uglify` and `gulp-cssmin` modules in your *gulpfile.js* file:
 
-<!-- literal_block {"xml:space": "preserve", "source": "client-side/bundling-and-minification/samples/WebApplication1/src/WebApplication1/gulpfile.js", "ids": [], "linenos": false, "language": "js", "highlight_args": {"hl_lines": [4, 5], "linenostart": 1}} -->
+[!code-js[Main](../client-side/bundling-and-minification/samples/WebApplication1/src/WebApplication1/gulpfile.js?highlight=4,5)]
 
 ````js
 
@@ -168,7 +168,7 @@ Import the `gulp-uglify` and `gulp-cssmin` modules in your *gulpfile.js* file:
 
 Add `uglify` to minify your bundled JavaScript files and `cssmin` to minify your bundled CSS files.
 
-<!-- literal_block {"xml:space": "preserve", "source": "client-side/bundling-and-minification/samples/WebApplication1/src/WebApplication1/gulpfile.js", "ids": [], "linenos": false, "language": "js", "highlight_args": {"hl_lines": [4, 11], "linenostart": 1}} -->
+[!code-js[Main](../client-side/bundling-and-minification/samples/WebApplication1/src/WebApplication1/gulpfile.js?highlight=4,11)]
 
 ````js
 
@@ -211,7 +211,7 @@ You can specify which scripts and CSS files to include in your pages using the e
 
 The following environment tag will render the unprocessed CSS files when running in the `Development` environment:
 
-<!-- literal_block {"xml:space": "preserve", "source": "client-side/bundling-and-minification/samples/WebApplication1/src/WebApplication1/Views/Shared/_Layout.cshtml", "ids": [], "linenos": true, "language": "html", "highlight_args": {"hl_lines": [3], "linenostart": 1}} -->
+[!code-html[Main](../client-side/bundling-and-minification/samples/WebApplication1/src/WebApplication1/Views/Shared/_Layout.cshtml?highlight=3)]
 
 ````html
 
@@ -224,7 +224,7 @@ The following environment tag will render the unprocessed CSS files when running
 
 This environment tag will render the bundled and minified CSS files only when running in `Production` or `Staging`:
 
-<!-- literal_block {"xml:space": "preserve", "source": "client-side/bundling-and-minification/samples/WebApplication1/src/WebApplication1/Views/Shared/_Layout.cshtml", "ids": [], "linenos": true, "language": "html", "highlight_args": {"hl_lines": [5], "linenostart": 1}} -->
+[!code-html[Main](../client-side/bundling-and-minification/samples/WebApplication1/src/WebApplication1/Views/Shared/_Layout.cshtml?highlight=5)]
 
 ````html
 

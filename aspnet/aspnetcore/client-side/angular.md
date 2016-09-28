@@ -32,7 +32,7 @@ There are several ways to add AngularJS to your application. If you’re startin
 
 <!--[!code-json[Main](sample/AngularSample/src/AngularSample/bower.json )]-->
 
-<!-- literal_block {"xml:space": "preserve", "source": "client-side/angular/sample/AngularSample/src/AngularSample/bower.json", "ids": ["angular-bower-json"], "names": ["angular-bower-json"], "linenos": true, "language": "json", "highlight_args": {"hl_lines": [9], "linenostart": 1}} -->
+[!code-json[Main](../client-side/angular/sample/AngularSample/src/AngularSample/bower.json?highlight=9)]
 
 [!code-json[Main](../client-side/angular/sample/AngularSample/src/AngularSample/bower.json?highlight=9)]
 
@@ -44,7 +44,7 @@ Next, add a `<script>` reference to the bottom of the `<body>` section of your H
 
 <!--[!code-html[Main](sample/AngularSample/src/AngularSample/Views/Shared/_Layout.cshtml )]-->
 
-<!-- literal_block {"xml:space": "preserve", "source": "client-side/angular/sample/AngularSample/src/AngularSample/Views/Shared/_Layout.cshtml", "ids": [], "linenos": true, "language": "html", "highlight_args": {"hl_lines": [4], "linenostart": 1}} -->
+[!code-html[Main](../client-side/angular/sample/AngularSample/src/AngularSample/Views/Shared/_Layout.cshtml?highlight=4)]
 
 ````html
 
@@ -60,7 +60,7 @@ It's recommended that production applications utilize CDNs for common libraries 
 
 <!--[!code-html[Main](sample/AngularSample/src/AngularSample/Views/Shared/_Layout.cshtml )]-->
 
-<!-- literal_block {"xml:space": "preserve", "source": "client-side/angular/sample/AngularSample/src/AngularSample/Views/Shared/_Layout.cshtml", "ids": [], "linenos": true, "language": "html", "highlight_args": {"hl_lines": [10], "linenostart": 1}} -->
+[!code-html[Main](../client-side/angular/sample/AngularSample/src/AngularSample/Views/Shared/_Layout.cshtml?highlight=10&range=53-67)]
 
 ````html
 
@@ -100,7 +100,7 @@ One of the primitive directives used in all AngularJS applications is the `ng-ap
 
 <!--[!code-html[Main](sample/AngularSample/src/AngularSample/Views/Home/Directives.cshtml )]-->
 
-<!-- literal_block {"xml:space": "preserve", "source": "client-side/angular/sample/AngularSample/src/AngularSample/Views/Home/Directives.cshtml", "ids": [], "linenos": true, "language": "html", "highlight_args": {"hl_lines": [5, 7], "linenostart": 1}} -->
+[!code-html[Main](../client-side/angular/sample/AngularSample/src/AngularSample/Views/Home/Directives.cshtml?highlight=5,7)]
 
 ````html
 
@@ -150,7 +150,7 @@ Create either an HTML file or a controller action with an accompanying view name
 
 <!--[!code-html[Main](sample/AngularSample/src/AngularSample/Views/Home/Databinding.cshtml )]-->
 
-<!-- literal_block {"xml:space": "preserve", "source": "client-side/angular/sample/AngularSample/src/AngularSample/Views/Home/Databinding.cshtml", "ids": [], "linenos": true, "language": "html", "highlight_args": {"hl_lines": [8, 9, 10], "linenostart": 1}} -->
+[!code-html[Main](../client-side/angular/sample/AngularSample/src/AngularSample/Views/Home/Databinding.cshtml?highlight=8,9,10)]
 
 ````html
 
@@ -183,7 +183,7 @@ Add another view to demonstrate templates, and add the following to it:
 
 <!--[!code-html[Main](sample/AngularSample/src/AngularSample/Views/Home/Templates.cshtml )]-->
 
-<!-- literal_block {"xml:space": "preserve", "source": "client-side/angular/sample/AngularSample/src/AngularSample/Views/Home/Templates.cshtml", "ids": [], "linenos": true, "language": "html", "highlight_args": {"hl_lines": [8, 9, 10], "linenostart": 1}} -->
+[!code-html[Main](../client-side/angular/sample/AngularSample/src/AngularSample/Views/Home/Templates.cshtml?highlight=8,9,10)]
 
 ````html
 
@@ -219,7 +219,7 @@ The AngularJS expressions in the sample below bind `personName` and a simple Jav
 
 <!--[!code-html[Main](sample/AngularSample/src/AngularSample/Views/Home/Expressions.cshtml )]-->
 
-<!-- literal_block {"xml:space": "preserve", "source": "client-side/angular/sample/AngularSample/src/AngularSample/Views/Home/Expressions.cshtml", "ids": [], "linenos": true, "language": "html", "highlight_args": {"hl_lines": [8, 9, 10], "linenostart": 1}} -->
+[!code-html[Main](../client-side/angular/sample/AngularSample/src/AngularSample/Views/Home/Expressions.cshtml?highlight=8,9,10)]
 
 ````html
 
@@ -250,7 +250,7 @@ Repeating in AngularJS is done via a primitive directive called `ng-repeat`. The
 
 <!--[!code-html[Main](sample/AngularSample/src/AngularSample/Views/Home/Repeaters.cshtml )]-->
 
-<!-- literal_block {"xml:space": "preserve", "source": "client-side/angular/sample/AngularSample/src/AngularSample/Views/Home/Repeaters.cshtml", "ids": [], "linenos": true, "language": "html", "highlight_args": {"hl_lines": [8, 10, 11], "linenostart": 1}} -->
+[!code-html[Main](../client-side/angular/sample/AngularSample/src/AngularSample/Views/Home/Repeaters.cshtml?highlight=8,10,11)]
 
 ````html
 
@@ -282,7 +282,7 @@ Here is an example that repeats over an array of objects. The `ng-init` directiv
 
 <!--[!code-html[Main](sample/AngularSample/src/AngularSample/Views/Home/Repeaters2.cshtml )]-->
 
-<!-- literal_block {"xml:space": "preserve", "source": "client-side/angular/sample/AngularSample/src/AngularSample/Views/Home/Repeaters2.cshtml", "ids": [], "linenos": true, "language": "html", "highlight_args": {"hl_lines": [8, 9, 10, 11, 13, 14], "linenostart": 1}} -->
+[!code-html[Main](../client-side/angular/sample/AngularSample/src/AngularSample/Views/Home/Repeaters2.cshtml?highlight=8,9,10,11,13,14)]
 
 ````html
 
@@ -326,7 +326,7 @@ Below is a sample that shows `$index`, `$even`, `$odd`, `$first`, and `$last` in
 
 <!--[!code-html[Main](sample/AngularSample/src/AngularSample/Views/Home/Repeaters3.cshtml )]-->
 
-<!-- literal_block {"xml:space": "preserve", "source": "client-side/angular/sample/AngularSample/src/AngularSample/Views/Home/Repeaters3.cshtml", "ids": [], "linenos": true, "language": "html", "highlight_args": {"hl_lines": [14, 15, 16, 17, 18], "linenostart": 1}} -->
+[!code-html[Main](../client-side/angular/sample/AngularSample/src/AngularSample/Views/Home/Repeaters3.cshtml?highlight=14,15,16,17,18)]
 
 ````html
 
@@ -372,7 +372,7 @@ Below is a simple example showing how to set properties on `$scope` within a sep
 
 <!--[!code-html[Main](sample/AngularSample/src/AngularSample/wwwroot/app/scope.js )]-->
 
-<!-- literal_block {"xml:space": "preserve", "source": "client-side/angular/sample/AngularSample/src/AngularSample/wwwroot/app/scope.js", "ids": [], "linenos": true, "language": "html", "highlight_args": {"hl_lines": [2, 3], "linenostart": 1}} -->
+[!code-html[Main](../client-side/angular/sample/AngularSample/src/AngularSample/wwwroot/app/scope.js?highlight=2,3)]
 
 ````html
 
@@ -388,7 +388,7 @@ What happens when a particular property is not found by the view? The view defin
 
 <!--[!code-html[Main](sample/AngularSample/src/AngularSample/Views/Home/Scope.cshtml )]-->
 
-<!-- literal_block {"xml:space": "preserve", "source": "client-side/angular/sample/AngularSample/src/AngularSample/Views/Home/Scope.cshtml", "ids": [], "linenos": true, "language": "html", "highlight_args": {"hl_lines": [9, 10, 14], "linenostart": 1}} -->
+[!code-html[Main](../client-side/angular/sample/AngularSample/src/AngularSample/Views/Home/Scope.cshtml?highlight=9,10,14)]
 
 ````html
 
@@ -440,7 +440,7 @@ Below is a snippet of code that registers a new controller. The `personApp` vari
 
 <!--[!code-javascript[Main](sample/AngularSample/src/AngularSample/wwwroot/app/controllers.js )]-->
 
-<!-- literal_block {"xml:space": "preserve", "source": "client-side/angular/sample/AngularSample/src/AngularSample/wwwroot/app/controllers.js", "ids": [], "linenos": true, "language": "javascript", "highlight_args": {"hl_lines": [2, 5], "linenostart": 1}} -->
+[!code-javascript[Main](../client-side/angular/sample/AngularSample/src/AngularSample/wwwroot/app/controllers.js?highlight=2,5)]
 
 ````javascript
 
@@ -459,7 +459,7 @@ The view using the `ng-controller` directive assigns the controller name:
 
 <!--[!code-html[Main](sample/AngularSample/src/AngularSample/Views/Home/Controllers.cshtml )]-->
 
-<!-- literal_block {"xml:space": "preserve", "source": "client-side/angular/sample/AngularSample/src/AngularSample/Views/Home/Controllers.cshtml", "ids": [], "linenos": true, "language": "html", "highlight_args": {"hl_lines": [8, 14], "linenostart": 1}} -->
+[!code-html[Main](../client-side/angular/sample/AngularSample/src/AngularSample/Views/Home/Controllers.cshtml?highlight=8,14)]
 
 ````html
 
@@ -495,7 +495,7 @@ Below is a snippet of code that registers a new component. The `personApp` varia
 
 <!--[!code-javascript[Main](sample/AngularSample/src/AngularSample/wwwroot/app/components.js )]-->
 
-<!-- literal_block {"xml:space": "preserve", "source": "client-side/angular/sample/AngularSample/src/AngularSample/wwwroot/app/components.js", "ids": [], "linenos": true, "language": "javascript", "highlight_args": {"hl_lines": [2, 5, 13], "linenostart": 1}} -->
+[!code-javascript[Main](../client-side/angular/sample/AngularSample/src/AngularSample/wwwroot/app/components.js?highlight=2,5,13)]
 
 ````javascript
 
@@ -524,7 +524,7 @@ The view where we are displaying the custom HTML element.
 
 <!--[!code-html[Main](sample/AngularSample/src/AngularSample/Views/Home/Components.cshtml )]-->
 
-<!-- literal_block {"xml:space": "preserve", "source": "client-side/angular/sample/AngularSample/src/AngularSample/Views/Home/Components.cshtml", "ids": [], "linenos": true, "language": "html", "highlight_args": {"hl_lines": [8], "linenostart": 1}} -->
+[!code-html[Main](../client-side/angular/sample/AngularSample/src/AngularSample/Views/Home/Components.cshtml?highlight=8)]
 
 ````html
 
@@ -547,7 +547,7 @@ The associated template used by component:
 
 <!--[!code-html[Main](sample/AngularSample/src/AngularSample/wwwroot/app/partials/personcomponent.html )]-->
 
-<!-- literal_block {"xml:space": "preserve", "source": "client-side/angular/sample/AngularSample/src/AngularSample/wwwroot/app/partials/personcomponent.html", "ids": [], "linenos": true, "language": "html", "highlight_args": {"hl_lines": [2, 3], "linenostart": 1}} -->
+[!code-html[Main](../client-side/angular/sample/AngularSample/src/AngularSample/wwwroot/app/partials/personcomponent.html?highlight=2,3)]
 
 ````html
 
@@ -569,7 +569,7 @@ Below is an example that shows how to use factories in AngularJS:
 
 <!--[!code-javascript[Main](sample/AngularSample/src/AngularSample/wwwroot/app/simpleFactory.js )]-->
 
-<!-- literal_block {"xml:space": "preserve", "source": "client-side/angular/sample/AngularSample/src/AngularSample/wwwroot/app/simpleFactory.js", "ids": [], "linenos": true, "language": "javascript", "highlight_args": {"hl_lines": [1], "linenostart": 1}} -->
+[!code-javascript[Main](../client-side/angular/sample/AngularSample/src/AngularSample/wwwroot/app/simpleFactory.js?highlight=1)]
 
 ````javascript
 
@@ -601,7 +601,7 @@ Below is an end-to-end example using services in AngularJS to interact with an A
 
 <!--[!code-html[Main](sample/AngularSample/src/AngularSample/Views/People/Index.cshtml )]-->
 
-<!-- literal_block {"xml:space": "preserve", "source": "client-side/angular/sample/AngularSample/src/AngularSample/Views/People/Index.cshtml", "ids": [], "linenos": true, "language": "html", "highlight_args": {"hl_lines": [5, 8, 10, 17, 18, 19], "linenostart": 1}} -->
+[!code-html[Main](../client-side/angular/sample/AngularSample/src/AngularSample/Views/People/Index.cshtml?highlight=5,8,10,17,18,19)]
 
 ````html
 
@@ -634,7 +634,7 @@ The `personApp.js` file is used to register the `PersonsApp` module; and, the sy
 
 <!--[!code-javascript[Main](sample/AngularSample/src/AngularSample/wwwroot/app/personApp.js )]-->
 
-<!-- literal_block {"xml:space": "preserve", "source": "client-side/angular/sample/AngularSample/src/AngularSample/wwwroot/app/personApp.js", "ids": [], "linenos": true, "language": "javascript", "highlight_args": {"hl_lines": [3], "linenostart": 1}} -->
+[!code-javascript[Main](../client-side/angular/sample/AngularSample/src/AngularSample/wwwroot/app/personApp.js?highlight=3)]
 
 ````javascript
 
@@ -648,7 +648,7 @@ Let's take a look at `personFactory.js`, below. We are calling the module’s `f
 
 <!--[!code-javascript[Main](sample/AngularSample/src/AngularSample/wwwroot/app/personFactory.js )]-->
 
-<!-- literal_block {"xml:space": "preserve", "source": "client-side/angular/sample/AngularSample/src/AngularSample/wwwroot/app/personFactory.js", "ids": [], "linenos": true, "language": "javascript", "highlight_args": {"hl_lines": [6, 7, 12], "linenostart": 1}} -->
+[!code-javascript[Main](../client-side/angular/sample/AngularSample/src/AngularSample/wwwroot/app/personFactory.js?highlight=6,7,12)]
 
 ````javascript
 
@@ -680,7 +680,7 @@ In `personController.js`, we are calling the module’s `controller` method to c
 
 <!--[!code-javascript[Main](sample/AngularSample/src/AngularSample/wwwroot/app/personController.js )]-->
 
-<!-- literal_block {"xml:space": "preserve", "source": "client-side/angular/sample/AngularSample/src/AngularSample/wwwroot/app/personController.js", "ids": [], "linenos": true, "language": "javascript", "highlight_args": {"hl_lines": [6, 7, 13], "linenostart": 1}} -->
+[!code-javascript[Main](../client-side/angular/sample/AngularSample/src/AngularSample/wwwroot/app/personController.js?highlight=6,7,13)]
 
 ````javascript
 
@@ -728,7 +728,7 @@ The `Person` controller returns a JSON-formatted list of `Person` objects:
 
 <!--[!code-csharp[Main](sample/AngularSample/src/AngularSample/Controllers/Api/PersonController.cs )]-->
 
-<!-- literal_block {"xml:space": "preserve", "source": "client-side/angular/sample/AngularSample/src/AngularSample/Controllers/Api/PersonController.cs", "ids": [], "linenos": true, "language": "csharp", "highlight_args": {"hl_lines": [9, 10, 19], "linenostart": 1}} -->
+[!code-csharp[Main](../client-side/angular/sample/AngularSample/src/AngularSample/Controllers/Api/PersonController.cs?highlight=9,10,19)]
 
 ````csharp
 
@@ -779,7 +779,7 @@ Now let's take the Person App we have been building and add navigation to it. Fi
 
 <!--[!code-html[Main](sample/AngularSample/src/AngularSample/Views/People/Spa.cshtml )]-->
 
-<!-- literal_block {"xml:space": "preserve", "source": "client-side/angular/sample/AngularSample/src/AngularSample/Views/People/Spa.cshtml", "ids": [], "linenos": true, "language": "html", "highlight_args": {"hl_lines": [6, 11, 12, 13, 14, 15, 16], "linenostart": 1}} -->
+[!code-html[Main](../client-side/angular/sample/AngularSample/src/AngularSample/Views/People/Spa.cshtml?highlight=6,11,12,13,14,15,16)]
 
 ````html
 
@@ -818,7 +818,7 @@ The `personRoutes.js` file, below, defines routes based on the route provider. L
 
 <!--[!code-javascript[Main](sample/AngularSample/src/AngularSample/wwwroot/app/personRoutes.js )]-->
 
-<!-- literal_block {"xml:space": "preserve", "source": "client-side/angular/sample/AngularSample/src/AngularSample/wwwroot/app/personRoutes.js", "ids": [], "linenos": true, "language": "javascript", "highlight_args": {"hl_lines": [4, 5, 6, 7, 8, 9, 10, 11, 13], "linenostart": 1}} -->
+[!code-javascript[Main](../client-side/angular/sample/AngularSample/src/AngularSample/wwwroot/app/personRoutes.js?highlight=4,5,6,7,8,9,10,11,13)]
 
 ````javascript
 
@@ -844,7 +844,7 @@ The `personlist.html` file is a partial view containing only the HTML needed to 
 
 <!--[!code-html[Main](sample/AngularSample/src/AngularSample/wwwroot/app/partials/personlist.html )]-->
 
-<!-- literal_block {"xml:space": "preserve", "source": "client-side/angular/sample/AngularSample/src/AngularSample/wwwroot/app/partials/personlist.html", "ids": [], "linenos": true, "language": "html", "highlight_args": {"hl_lines": [3], "linenostart": 1}} -->
+[!code-html[Main](../client-side/angular/sample/AngularSample/src/AngularSample/wwwroot/app/partials/personlist.html?highlight=3)]
 
 ````html
 
@@ -858,7 +858,7 @@ The controller is defined by using the module's `controller` function in `person
 
 <!--[!code-javascript[Main](sample/AngularSample/src/AngularSample/wwwroot/app/personListController.js )]-->
 
-<!-- literal_block {"xml:space": "preserve", "source": "client-side/angular/sample/AngularSample/src/AngularSample/wwwroot/app/personListController.js", "ids": [], "linenos": true, "language": "javascript", "highlight_args": {"hl_lines": [1], "linenostart": 1}} -->
+[!code-javascript[Main](../client-side/angular/sample/AngularSample/src/AngularSample/wwwroot/app/personListController.js?highlight=1)]
 
 ````javascript
 
@@ -910,7 +910,7 @@ Let's look at how the `ng-click` event is wired up. Create a new JavaScript file
 
 <!--[!code-javascript[Main](sample/AngularSample/src/AngularSample/wwwroot/app/eventHandlerController.js )]-->
 
-<!-- literal_block {"xml:space": "preserve", "source": "client-side/angular/sample/AngularSample/src/AngularSample/wwwroot/app/eventHandlerController.js", "ids": [], "linenos": true, "language": "javascript", "highlight_args": {"hl_lines": [5, 6, 7], "linenostart": 1}} -->
+[!code-javascript[Main](../client-side/angular/sample/AngularSample/src/AngularSample/wwwroot/app/eventHandlerController.js?highlight=5,6,7)]
 
 ````javascript
 
@@ -930,7 +930,7 @@ The view below binds a controller function to an AngularJS event. Line 9 has a b
 
 <!--[!code-html[Main](sample/AngularSample/src/AngularSample/Views/People/Events.cshtml )]-->
 
-<!-- literal_block {"xml:space": "preserve", "source": "client-side/angular/sample/AngularSample/src/AngularSample/Views/People/Events.cshtml", "ids": [], "linenos": true, "language": "html", "highlight_args": {"hl_lines": [9], "linenostart": 1}} -->
+[!code-html[Main](../client-side/angular/sample/AngularSample/src/AngularSample/Views/People/Events.cshtml?highlight=9)]
 
 ````html
 

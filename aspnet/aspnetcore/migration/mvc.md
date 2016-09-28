@@ -56,7 +56,7 @@ Open the *project.json* file.
 
 * Open the *Startup.cs* file and change the code to match the following:
 
-<!-- literal_block {"xml:space": "preserve", "source": "migration/mvc/samples/WebApp1/src/WebApp1/Startup.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [7, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24], "linenostart": 1}} -->
+[!code-c#[Main](../migration/mvc/samples/WebApp1/src/WebApp1/Startup.cs?highlight=7,13,14,15,16,17,18,19,20,21,22,23,24)]
 
 ````c#
 
@@ -168,7 +168,7 @@ In the new project, we'll add support for Bootstrap (and other client-side libra
 
 * Add a [Bower](http://bower.io/) configuration file named *bower.json* to the project root (Right-click on the project, and then **Add > New Item > Bower Configuration File**). Add [Bootstrap](http://getbootstrap.com/) and [jQuery](https://jquery.com/) to the file ^[1]: (see the highlighted lines below).
 
-<!-- literal_block {"xml:space": "preserve", "source": "migration/mvc/samples/WebApp1/src/WebApp1/bower.json", "ids": [], "linenos": false, "language": "json", "highlight_args": {"hl_lines": [5, 6], "linenostart": 1}} -->
+[!code-json[Main](../migration/mvc/samples/WebApp1/src/WebApp1/bower.json?highlight=5,6)]
 
 ````json
 
@@ -352,7 +352,7 @@ The replacement script tags:
 
 The updated _Layout.cshtml file is shown below:
 
-<!-- literal_block {"xml:space": "preserve", "source": "migration/mvc/samples/WebApp1/src/WebApp1/Views/Shared/_Layout.cshtml", "ids": [], "linenos": false, "language": "html", "highlight_args": {"hl_lines": [7, 26, 38, 39], "linenostart": 1}} -->
+[!code-html[Main](../migration/mvc/samples/WebApp1/src/WebApp1/Views/Shared/_Layout.cshtml?highlight=7,26,38,39)]
 
 ````html
 
@@ -414,7 +414,7 @@ The ASP.NET MVC starter web template utilized the ASP.NET Web Optimization for b
 
 There are many problems that can cause a HTTP 500 error message that contain no information on the source of the problem. For example, if the *Views/_ViewImports.cshtml* file contains a namespace that doesn't exist in your project, you'll get a HTTP 500 error. To get a detailed error message, add the following code:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {"hl_lines": [3, 4, 5, 6]}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [3, 4, 5, 6]}} -->
 
 ````c#
 
