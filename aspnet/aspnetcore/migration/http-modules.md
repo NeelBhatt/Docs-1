@@ -75,7 +75,7 @@ Note how in the image above, the authentication middleware short-circuited the r
 
 An existing HTTP module will look similar to this:
 
-[!code-c#[Main](../migration/http-modules/sample/Asp.Net4/Asp.Net4/Modules/MyModule.cs?highlight=6,8,24,31)]
+[!code-csharp[Main](../migration/http-modules/sample/Asp.Net4/Asp.Net4/Modules/MyModule.cs?highlight=6,8,24,31)]
 
 ````c#
 
@@ -120,7 +120,7 @@ As shown in the [Middleware](../fundamentals/middleware.md) page, an ASP.NET Cor
 
 <a name=http-modules-usemiddleware></a>
 
-[!code-c#[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/MyMiddleware.cs?highlight=9,13,20,24,28,30,32)]
+[!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/MyMiddleware.cs?highlight=9,13,20,24,28,30,32)]
 
 ````c#
 
@@ -170,7 +170,7 @@ The *MyMiddlewareExtensions* helper class makes it easier to configure your midd
 
 Your module might terminate a request, for example if the user is not authorized:
 
-[!code-c#[Main](../migration/http-modules/sample/Asp.Net4/Asp.Net4/Modules/MyTerminatingModule.cs?highlight=9,10,11,12,13)]
+[!code-csharp[Main](../migration/http-modules/sample/Asp.Net4/Asp.Net4/Modules/MyTerminatingModule.cs?highlight=9,10,11,12,13)]
 
 ````c#
 
@@ -193,7 +193,7 @@ Your module might terminate a request, for example if the user is not authorized
 
 A middleware handles this by simply not calling `Invoke` on the next middleware in the pipeline. Keep in mind that this does not fully terminate the request, because previous middlewares will still be invoked when the response makes its way back through the pipeline.
 
-[!code-c#[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/MyTerminatingMiddleware.cs?highlight=7,8)]
+[!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/MyTerminatingMiddleware.cs?highlight=7,8)]
 
 ````c#
 
@@ -234,7 +234,7 @@ HTTP modules are typically added to the request pipeline using *Web.config*:
 
 Convert this by [adding your new middleware](../fundamentals/middleware.html#creating-a-middleware-pipeline-with-iapplicationbuilder) to the request pipeline in your `Startup` class:
 
-[!code-c#[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Startup.cs?highlight=12)]
+[!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Startup.cs?highlight=12)]
 
 ````c#
 
@@ -268,7 +268,7 @@ If ordering becomes a problem, you could split your module into multiple middlew
 
 An HTTP handler looks something like this:
 
-[!code-c#[Main](../migration/http-modules/sample/Asp.Net4/Asp.Net4/HttpHandlers/ReportHandler.cs?highlight=5,7,13,14,15,16)]
+[!code-csharp[Main](../migration/http-modules/sample/Asp.Net4/Asp.Net4/HttpHandlers/ReportHandler.cs?highlight=5,7,13,14,15,16)]
 
 ````c#
 
@@ -298,7 +298,7 @@ An HTTP handler looks something like this:
 
 In your ASP.NET Core project, you would translate this to a middleware similar to this:
 
-[!code-c#[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/ReportHandlerMiddleware.cs?highlight=7,9,13,20,21,22,23,29,31,33)]
+[!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/ReportHandlerMiddleware.cs?highlight=7,9,13,20,21,22,23,29,31,33)]
 
 ````c#
 
@@ -366,7 +366,7 @@ You could convert this by adding your new handler middleware to the request pipe
 
 One solution is to branch the pipeline for requests with a given extension, using the `MapWhen` extension method. You do this in the same `Configure` method where you add the other middleware:
 
-[!code-c#[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Startup.cs?highlight=12,13,14,15,16,17)]
+[!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Startup.cs?highlight=12,13,14,15,16,17)]
 
 ````c#
 
@@ -452,7 +452,7 @@ The new [configuration system](../fundamentals/configuration.md) gives you these
 
          1. If you're using *appsettings.json*, add it to the configuration builder in the `Startup` constructor:
 
-         [!code-c#[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Startup.cs?highlight=7)]
+         [!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Startup.cs?highlight=7)]
 
          ````c#
 
@@ -473,7 +473,7 @@ The new [configuration system](../fundamentals/configuration.md) gives you these
 
          2. Configure the options service:
 
-         [!code-c#[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Startup.cs?highlight=5)]
+         [!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Startup.cs?highlight=5)]
 
          ````c#
 
@@ -491,7 +491,7 @@ The new [configuration system](../fundamentals/configuration.md) gives you these
 
          3. Associate your options with your options class:
 
-         [!code-c#[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Startup.cs?highlight=7,8)]
+         [!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Startup.cs?highlight=7,8)]
 
          ````c#
 
@@ -512,7 +512,7 @@ The new [configuration system](../fundamentals/configuration.md) gives you these
 
 4. Inject the options into your middleware constructor. This is similar to injecting options into a controller.
 
-      [!code-c#[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/MyMiddlewareWithParams.cs?highlight=7,10,13,19,24)]
+      [!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/MyMiddlewareWithParams.cs?highlight=7,10,13,19,24)]
 
       ````c#
 
@@ -582,7 +582,7 @@ The solution is to get the options objects with the actual options values in you
 
 2. Retrieve options values. The `Get` method on the `Configuration` property lets you retrieve options values:
 
-      [!code-c#[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Startup.cs?highlight=12,13,14,15,16)]
+      [!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Startup.cs?highlight=12,13,14,15,16)]
 
       ````c#
 
@@ -613,7 +613,7 @@ The solution is to get the options objects with the actual options values in you
 
 3. Pass options values to middleware. The `Use...` extension method (which adds your middleware to the pipeline) is a logical place to pass in the option values:
 
-      [!code-c#[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Startup.cs?highlight=18,19,20,21,22)]
+      [!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Startup.cs?highlight=18,19,20,21,22)]
 
       ````c#
 
@@ -647,7 +647,7 @@ The solution is to get the options objects with the actual options values in you
 
 4. Enable middleware to take an options parameter. Provide an overload of the `Use...` extension method (that takes the options parameter and passes it to `UseMiddleware`). When `UseMiddleware` is called with parameters, it passes the parameters to your middleware constructor when it instantiates the middleware object.
 
-      [!code-c#[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/MyMiddlewareWithParams.cs?highlight=17,18,19,20,21,22)]
+      [!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/MyMiddlewareWithParams.cs?highlight=17,18,19,20,21,22)]
 
       ````c#
 

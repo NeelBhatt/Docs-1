@@ -13,7 +13,7 @@ When you use EF Code First to automatically create a database, Code First adds a
 
 Open the *Models/Movie.cs* file and add a `Rating` property:
 
-[!code-c#[Main](../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Models/MovieDateRating.cs?highlight=11)]
+[!code-csharp[Main](../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Models/MovieDateRating.cs?highlight=11)]
 
 ````c#
 
@@ -112,7 +112,7 @@ For this tutorial, we'll use Code First Migrations.
 
 Update the `SeedData` class so that it provides a value for the new column. A sample change is shown below, but you'll want to make this change for each `new Movie`.
 
-[!code-c#[Main](../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Models/SeedDataRating.cs?highlight=6)]
+[!code-csharp[Main](../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Models/SeedDataRating.cs?highlight=6)]
 
 ````c#
 

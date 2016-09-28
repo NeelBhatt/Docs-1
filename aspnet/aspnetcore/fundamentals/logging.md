@@ -44,7 +44,7 @@ In your real world applications, you will want to add logging based on applicati
 
 The logic for the API is contained within the *TodoController*, which uses [Dependency Injection](dependency-injection.md) to request the services it requires via its constructor. Ideally, classes should follow this example and use their constructor to [define their dependencies explicitly](http://deviq.com/explicit-dependencies-principle/) as parameters. Rather than requesting an *ILoggerFactory* and creating an instance of *ILogger* explicitly, *TodoController* demonstrates another way to work with loggers in your application - you can request an *ILogger<T>* (where *T* is the class requesting the logger).
 
-[!code-c#[Main](../fundamentals/logging/sample/src/TodoApi/Controllers/TodoController.cs?highlight=5,8,11,17)]
+[!code-csharp[Main](../fundamentals/logging/sample/src/TodoApi/Controllers/TodoController.cs?highlight=5,8,11,17)]
 
 ````c#
 
@@ -126,7 +126,7 @@ Exception error
 
 In the `TodoController` example, event id constants are defined for each event, and log statements are configured at the appropriate verbosity level based on the success of the operation. In this case, successful operations log as `Information` and not found results are logged as `Warning` (error handling is not shown).
 
-[!code-c#[Main](../fundamentals/logging/sample/src/TodoApi/Controllers/TodoController.cs?highlight=4,12,16)]
+[!code-csharp[Main](../fundamentals/logging/sample/src/TodoApi/Controllers/TodoController.cs?highlight=4,12,16)]
 
 ````c#
 
@@ -172,7 +172,7 @@ Scopes are not required, and should be used sparingly, if at all. They're best u
 
 To configure logging in your ASP.NET Core application, you should resolve `ILoggerFactory` in the `Configure` method of your `Startup` class. ASP.NET Core will automatically provide an instance of `ILoggerFactory` using [Dependency Injection](dependency-injection.md) when you add a parameter of this type to the `Configure` method.
 
-[!code-c#[Main](../fundamentals/logging/sample/src/TodoApi/Startup.cs?highlight=25)]
+[!code-csharp[Main](../fundamentals/logging/sample/src/TodoApi/Startup.cs?highlight=25)]
 
 ````c#
 
@@ -248,7 +248,7 @@ The `sourceSwitch` is configured to use `SourceLevels.Warning`, so only `Warning
 
 The API action below logs a warning when the specified `id` is not found:
 
-[!code-c#[Main](../fundamentals/logging/sample/src/TodoApi/Controllers/TodoController.cs?highlight=8)]
+[!code-csharp[Main](../fundamentals/logging/sample/src/TodoApi/Controllers/TodoController.cs?highlight=8)]
 
 ````c#
 

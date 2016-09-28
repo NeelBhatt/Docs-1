@@ -206,7 +206,7 @@ Generates the following:
 
 You can also navigate to child properties using the property path of the view model. Consider a more complex model class that contains a child `Address` property.
 
-[!code-c#[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/AddressViewModel.cs?highlight=1,2,3,4)]
+[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/AddressViewModel.cs?highlight=1,2,3,4)]
 
 ````c#
 
@@ -217,7 +217,7 @@ You can also navigate to child properties using the property path of the view mo
 
    ````
 
-[!code-c#[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/RegisterAddressViewModel.cs?highlight=8)]
+[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/RegisterAddressViewModel.cs?highlight=8)]
 
 ````c#
 
@@ -261,7 +261,7 @@ The following HTML is generated for `Address.AddressLine1`:
 
 Sample, a model containing an array of `Colors`:
 
-[!code-c#[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/Person.cs?highlight=3)]
+[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/Person.cs?highlight=3)]
 
 ````c#
 
@@ -804,7 +804,7 @@ The [GetEnumSelectList](https://docs.asp.net/projects/api/en/latest/autoapi/Micr
 
 You can decorate your enumerator list with the `Display` attribute to get a richer UI:
 
-[!code-c#[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/CountryEnum.cs?highlight=5,7)]
+[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/CountryEnum.cs?highlight=5,7)]
 
 ````c#
 
@@ -853,7 +853,7 @@ The HTML  [<optgroup>](https://www.w3.org/wiki/HTML/Elements/optgroup) element i
 
 The `CountryViewModelGroup` groups the `SelectListItem` elements into the "North America" and "Europe" groups:
 
-[!code-c#[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/CountryViewModelGroup.cs?highlight=5,6,14,20,26,32,38,44)]
+[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/CountryViewModelGroup.cs?highlight=5,6,14,20,26,32,38,44)]
 
 ````c#
 
@@ -944,7 +944,7 @@ The generated HTML:
 
 The Select Tag Helper  will automatically generate the [multiple = "multiple"](https://www.w3.org/TR/html-markup/select.html#select.attrs.multiple)  attribute if the property specified in the `asp-for` attribute is an `IEnumerable`. For example, given the following model:
 
-[!code-c#[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/CountryViewModelIEnumerable.cs?highlight=6)]
+[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/CountryViewModelIEnumerable.cs?highlight=6)]
 
 ````c#
 

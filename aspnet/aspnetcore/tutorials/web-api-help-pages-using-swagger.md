@@ -225,7 +225,7 @@ Configure Swagger to use the generated XML file.
 > [!NOTE]
 > For Linux or non-Windows operating systems, file names and paths can be case sensitive. So `ToDoApi.XML` would be found on Windows but not CentOS for example.
 
-[!code-c#[Main](../tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Startup.cs?highlight=29,32)]
+[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Startup.cs?highlight=29,32)]
 
 ````c#
 
@@ -285,7 +285,7 @@ In the code above, ApplicationBasePath gets the base path of the app, which is n
 
 Adding the triple slash comments to the method enhances the Swagger UI by adding the description to the header of the section.
 
-[!code-c#[Main](../tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Controllers/TodoController.cs?highlight=2)]
+[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Controllers/TodoController.cs?highlight=2)]
 
 ````c#
 
@@ -337,7 +337,7 @@ Note that the UI is driven by the generated JSON file, and these comments are al
 
 Here is a more robust example, adding `<remarks />` where the content can be just text or adding the JSON or XML object for further documentation of the method.
 
-[!code-c#[Main](../tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Controllers/TodoController.cs?highlight=4,5,6,7,8,9,10,11,12,13,14)]
+[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Controllers/TodoController.cs?highlight=4,5,6,7,8,9,10,11,12,13,14)]
 
 ````c#
 
@@ -384,7 +384,7 @@ You can decorate the API controller with `System.ComponentModel.DataAnnotations`
 
 Adding the `[Required]` annotation to the `Name` property of the TodoItem class will change the ModelSchema information in the UI. `[Produces("application/json"]`, RegularExpression validators and more will further detail the information delivered in the generated page.  The more metadata that is in the code produces a more desciptive UI or API help page.
 
-[!code-c#[Main](../tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Models/TodoItem.cs?highlight=10)]
+[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Models/TodoItem.cs?highlight=10)]
 
 ````c#
 
@@ -411,7 +411,7 @@ Consuming developers are probably most concerned with what is returned; specific
 
 Take the `Create()` method for example, currently it returns only "201 Created" response by default. That is of course if the item is in fact created, or a "204 No Content" if no data is passed in the POST Body.  However, there is no documentation to know that or any other response. That can be fixed by adding the following piece of code.
 
-[!code-c#[Main](../tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Controllers/TodoController.cs?highlight=17,18,20,21)]
+[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Controllers/TodoController.cs?highlight=17,18,20,21)]
 
 ````c#
 

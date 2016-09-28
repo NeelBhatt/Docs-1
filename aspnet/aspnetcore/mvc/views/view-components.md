@@ -250,7 +250,7 @@ You can also call the view component directly from the controller:
 
 A complex view component might need to specify a non-default view under some conditions. The following code shows how to specify the "PVC" view  from the `InvokeAsync` method. Update the `InvokeAsync` method in the `PriorityListViewComponent` class.
 
-[!code-c#[Main](../../mvc/views/view-components/sample/ViewCompFinal/ViewComponents/PriorityListViewComponentFinal.cs?highlight=4,5,6,7,8,9)]
+[!code-csharp[Main](../../mvc/views/view-components/sample/ViewCompFinal/ViewComponents/PriorityListViewComponentFinal.cs?highlight=4,5,6,7,8,9)]
 
 ````c#
 
@@ -340,7 +340,7 @@ If the PVC view is not rendered, verify you are calling the view component with 
 
 If you want compile time safety you can replace the hard coded view component name with the class name. Create the view component without the "ViewComponent" suffix:
 
-[!code-c#[Main](../../mvc/views/view-components/sample/ViewCompFinal/ViewComponents/PriorityList.cs?highlight=10,14)]
+[!code-csharp[Main](../../mvc/views/view-components/sample/ViewCompFinal/ViewComponents/PriorityList.cs?highlight=10,14)]
 
 ````c#
 

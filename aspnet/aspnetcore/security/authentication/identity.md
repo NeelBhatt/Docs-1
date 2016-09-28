@@ -25,7 +25,7 @@ In this topic, you'll learn how to use ASP.NET Core Identity to add functionalit
 
    The identity services are added to the application in the `ConfigureServices` method in the `Startup` class:
 
-   [!code-c#[Main](../security/authentication/identity/sample/src/ASPNET-IdentityDemo/Startup.cs?highlight=10,11,12)]
+   [!code-csharp[Main](../security/authentication/identity/sample/src/ASPNET-IdentityDemo/Startup.cs?highlight=10,11,12)]
 
    ````c#
 
@@ -55,7 +55,7 @@ In this topic, you'll learn how to use ASP.NET Core Identity to add functionalit
 
    Identity is enabled for the application by calling  `UseIdentity` in the `Configure` method of the `Startup` class. This adds cookie-based authentication to the request pipeline.
 
-   [!code-c#[Main](../security/authentication/identity/sample/src/ASPNET-IdentityDemo/Startup.cs?highlight=22)]
+   [!code-csharp[Main](../security/authentication/identity/sample/src/ASPNET-IdentityDemo/Startup.cs?highlight=22)]
 
    ````c#
 
@@ -104,7 +104,7 @@ In this topic, you'll learn how to use ASP.NET Core Identity to add functionalit
 
    When the user clicks the **Register** link, the `UserManager` and `SignInManager` services are injected into the Controller:
 
-   [!code-c#[Main](../security/authentication/identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?highlight=3,4,11,12,17,18)]
+   [!code-csharp[Main](../security/authentication/identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?highlight=3,4,11,12,17,18)]
 
    ````c#
 
@@ -138,7 +138,7 @@ In this topic, you'll learn how to use ASP.NET Core Identity to add functionalit
 
    Then, the **Register** action creates the user by calling `CreateAsync` function of the `UserManager` object, as shown below:
 
-   [!code-c#[Main](../security/authentication/identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?highlight=9)]
+   [!code-csharp[Main](../security/authentication/identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?highlight=9)]
 
    ````c#
 
@@ -177,7 +177,7 @@ In this topic, you'll learn how to use ASP.NET Core Identity to add functionalit
 
    If the user was successfully created, the user is logged in by the `SignInAsync` method, also contained in the `Register` action. By signing in, the `SignInAsync` method stores a cookie with the user's claims.
 
-   [!code-c#[Main](../security/authentication/identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?highlight=18)]
+   [!code-csharp[Main](../security/authentication/identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?highlight=18)]
 
    ````c#
 
@@ -218,7 +218,7 @@ In this topic, you'll learn how to use ASP.NET Core Identity to add functionalit
 
    As a registered user, you can log in to the web app by clicking the **Log in** link.  When a registered user logs in, the `Login` action of the `AccountController` is called. Then, the **Login** action signs in the user using the `PasswordSignInAsync` method contained in the `Login` action.
 
-   [!code-c#[Main](../security/authentication/identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?highlight=11)]
+   [!code-csharp[Main](../security/authentication/identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?highlight=11)]
 
    ````c#
 
@@ -265,7 +265,7 @@ In this topic, you'll learn how to use ASP.NET Core Identity to add functionalit
 
    Clicking the **Log off** link calls the `LogOff` action in the account controller.
 
-   [!code-c#[Main](../security/authentication/identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?highlight=5)]
+   [!code-csharp[Main](../security/authentication/identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?highlight=5)]
 
    ````c#
 

@@ -15,7 +15,7 @@ This article uses the sample project, *ProductsApp*, created in the article [Get
 
 In *Global.asax.cs*, a call is made to `WebApiConfig.Register`:
 
-[!code-c#[Main](../migration/webapi/sample/ProductsApp/Global.asax.cs?highlight=14)]
+[!code-csharp[Main](../migration/webapi/sample/ProductsApp/Global.asax.cs?highlight=14)]
 
 ````c#
 
@@ -41,7 +41,7 @@ In *Global.asax.cs*, a call is made to `WebApiConfig.Register`:
 
 `WebApiConfig` is defined in *App_Start*, and has just one static `Register` method:
 
-[!code-c#[Main](../migration/webapi/sample/ProductsApp/App_Start/WebApiConfig.cs?highlight=15,16,17,18,19,20)]
+[!code-csharp[Main](../migration/webapi/sample/ProductsApp/App_Start/WebApiConfig.cs?highlight=15,16,17,18,19,20)]
 
 ````c#
 
@@ -76,7 +76,7 @@ This class configures [attribute routing](http://www.asp.net/web-api/overview/we
 
 The *ProductsApp* project includes just one simple controller, which inherits from `ApiController` and exposes two methods:
 
-[!code-c#[Main](../migration/webapi/sample/ProductsApp/Controllers/ProductsController.cs?highlight=19,24)]
+[!code-csharp[Main](../migration/webapi/sample/ProductsApp/Controllers/ProductsController.cs?highlight=19,24)]
 
 ````c#
 
@@ -208,7 +208,7 @@ ASP.NET Core no longer uses *Global.asax*, *web.config*, or *App_Start* folders.
 
 Assuming you want to use attribute routing in your project going forward, no additional configuration is needed. Simply apply the attributes as needed to your controllers and actions, as is done in the sample `ValuesController` class that is included in the Web API starter project:
 
-[!code-c#[Main](../migration/webapi/sample/ProductsCore/Controllers/ValuesController.cs?highlight=9,13,20,27,33,39)]
+[!code-csharp[Main](../migration/webapi/sample/ProductsCore/Controllers/ValuesController.cs?highlight=9,13,20,27,33,39)]
 
 ````c#
 
@@ -302,7 +302,7 @@ Fortunately, these are all very easy to correct:
 
 Once these changes have been made and unused using statements removed, the migrated *ProductsController* class looks like this:
 
-[!code-c#[Main](../migration/webapi/sample/ProductsCore/Controllers/ProductsController.cs?highlight=1,2,6,8,9,27)]
+[!code-csharp[Main](../migration/webapi/sample/ProductsCore/Controllers/ProductsController.cs?highlight=1,2,6,8,9,27)]
 
 ````c#
 

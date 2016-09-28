@@ -31,7 +31,7 @@ ASP.NET Core includes a simple built-in container (represented by the `IServiceP
 
 The `ConfigureServices` method in the `Startup` class is responsible for defining the services the application will use, including platform features like Entity Framework Core and ASP.NET Core MVC. Initially, the `IServiceCollection` provided to `ConfigureServices` has just a handful of services defined. Below is an example of how to add additional services to the container using a number of extension methods like `AddDbContext`, `AddIdentity`, and `AddMvc`.
 
-[!code-c#[Main](../common/samples/WebApplication1/src/WebApplication1/Startup.cs?highlight=5,8,12)]
+[!code-csharp[Main](../common/samples/WebApplication1/src/WebApplication1/Startup.cs?highlight=5,8,12)]
 
 ````c#
 
@@ -83,7 +83,7 @@ The `AddTransient` method is used to map abstract types to concrete services tha
 
 In the sample for this article, there is a simple controller that displays character names, called `CharactersController`. Its `Index` method displays the current list of characters that have been stored in the application, and initializes the collection with a handful of characters if none exist. Note that although this application uses Entity Framework Core and the `ApplicationDbContext` class for its persistence, none of that is apparent in the controller. Instead, the specific data access mechanism has been abstracted behind an interface, `ICharacterRepository`, which follows the [repository pattern](http://deviq.com/repository-pattern/). An instance of `ICharacterRepository` is requested via the constructor and assigned to a private field, which is then used to access characters as necessary.
 
-[!code-c#[Main](../fundamentals/dependency-injection/sample/DependencyInjectionSample/Controllers/CharactersController.cs?highlight=3,5,6,7,8,14,21,23,24,25,26)]
+[!code-csharp[Main](../fundamentals/dependency-injection/sample/DependencyInjectionSample/Controllers/CharactersController.cs?highlight=3,5,6,7,8,14,21,23,24,25,26)]
 
 ````c#
 
@@ -121,7 +121,7 @@ In the sample for this article, there is a simple controller that displays chara
 
 The `ICharacterRepository` simply defines the two methods the controller needs to work with `Character` instances.
 
-[!code-c#[Main](../fundamentals/dependency-injection/sample/DependencyInjectionSample/Interfaces/ICharacterRepository.cs?highlight=8,9)]
+[!code-csharp[Main](../fundamentals/dependency-injection/sample/DependencyInjectionSample/Interfaces/ICharacterRepository.cs?highlight=8,9)]
 
 ````c#
 
@@ -143,7 +143,7 @@ This interface is in turn implemented by a concrete type, `CharacterRepository`,
 > [!NOTE]
 > The way DI is used with the `CharacterRepository` class is a general model you can follow for all of your application services, not just in "repositories" or data access classes.
 
-[!code-c#[Main](../fundamentals/dependency-injection/sample/DependencyInjectionSample/Models/CharacterRepository.cs?highlight=9,11,12,13,14)]
+[!code-csharp[Main](../fundamentals/dependency-injection/sample/DependencyInjectionSample/Models/CharacterRepository.cs?highlight=9,11,12,13,14)]
 
 ````c#
 
@@ -183,7 +183,7 @@ Note that `CharacterRepository` requests an `ApplicationDbContext` in its constr
 
 In this case, both `ICharacterRepository` and in turn `ApplicationDbContext` must be registered with the services container in `ConfigureServices` in `Startup`. `ApplicationDbContext` is configured with the call to the extension method `AddDbContext<T>`. The following code shows the registration of the `CharacterRepository` type.
 
-[!code-c#[Main](../fundamentals/dependency-injection/sample/DependencyInjectionSample/Startup.cs?highlight=2,3,4,10)]
+[!code-csharp[Main](../fundamentals/dependency-injection/sample/DependencyInjectionSample/Startup.cs?highlight=2,3,4,10)]
 
 ````c#
 
@@ -229,7 +229,7 @@ Services can be registered with the container in several ways. We have already s
 
 To demonstrate the difference between these lifetime and registration options, consider a simple interface that represents one or more tasks as an *operation* with a unique identifier, `OperationId`. Depending on how we configure the lifetime for this service, the container will provide either the same or different instances of the service to the requesting class. To make it clear which lifetime is being requested, we will create one type per lifetime option:
 
-[!code-c#[Main](../fundamentals/dependency-injection/sample/DependencyInjectionSample/Interfaces/IOperation.cs?highlight=5,7)]
+[!code-csharp[Main](../fundamentals/dependency-injection/sample/DependencyInjectionSample/Interfaces/IOperation.cs?highlight=5,7)]
 
 ````c#
 

@@ -51,7 +51,7 @@ Views are typically returned from actions as a [ViewResult](http://docs.asp.net/
 
 *HomeController.cs*
 
-[!code-c#[Main](../common/samples/WebApplication1/src/WebApplication1/Controllers/HomeController.cs?highlight=5)]
+[!code-csharp[Main](../common/samples/WebApplication1/src/WebApplication1/Controllers/HomeController.cs?highlight=5)]
 
 ````c#
 

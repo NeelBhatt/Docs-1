@@ -56,7 +56,7 @@ In the code above, the `IStringLocalizer<T>` implementation comes from [Dependen
 
 Use the [IHtmlLocalizer<T>](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Localization/IHtmlLocalizer-TResource/index.html) implementation for resources that contain HTML. `IHtmlLocalizer` HTML encodes arguments that are formatted in the resource string, but not the resource string. In the sample highlighted below, only the value of `name` parameter is HTML encoded.
 
-[!code-c#[Main](../fundamentals/localization/sample/Controllers/BookController.cs?highlight=3,5,20)]
+[!code-csharp[Main](../fundamentals/localization/sample/Controllers/BookController.cs?highlight=3,5,20)]
 
 ````c#
 
@@ -91,7 +91,7 @@ Note:
 
 At the lowest level, you can get `IStringLocalizerFactory` out of [Dependency Injection](dependency-injection.md):
 
-[!code-c#[Main](../fundamentals/localization/sample/Controllers/TestController.cs?highlight=6,7,8,9,10,11)]
+[!code-csharp[Main](../fundamentals/localization/sample/Controllers/TestController.cs?highlight=6,7,8,9,10,11)]
 
 ````c#
 
@@ -292,7 +292,7 @@ Each language and culture combination (other than the default language) requires
 
 Localization is configured in the `ConfigureServices` method:
 
-[!code-c#[Main](../fundamentals/localization/sample/Startup.cs?highlight=4,7,8)]
+[!code-csharp[Main](../fundamentals/localization/sample/Startup.cs?highlight=4,7,8)]
 
 ````c#
 

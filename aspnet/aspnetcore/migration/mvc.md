@@ -56,7 +56,7 @@ Open the *project.json* file.
 
 * Open the *Startup.cs* file and change the code to match the following:
 
-[!code-c#[Main](../migration/mvc/samples/WebApp1/src/WebApp1/Startup.cs?highlight=7,13,14,15,16,17,18,19,20,21,22,23,24)]
+[!code-csharp[Main](../migration/mvc/samples/WebApp1/src/WebApp1/Startup.cs?highlight=7,13,14,15,16,17,18,19,20,21,22,23,24)]
 
 ````c#
 

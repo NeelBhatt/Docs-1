@@ -107,7 +107,7 @@ Open *WebApp/Controllers/MathController.cs*.
 
 We've intentionally introduced a bug in the code.
 
-[!code-c#[Main](../tutorials/dotnet-watch/sample/WebApp/Controllers/MathController.cs?highlight=5)]
+[!code-csharp[Main](../tutorials/dotnet-watch/sample/WebApp/Controllers/MathController.cs?highlight=5)]
 
 ````c#
 

@@ -19,7 +19,7 @@ The host is responsible for application startup and lifetime management. The ser
 
 You create a host using an instance of `WebHostBuilder`. This is typically done in your app's entry point: `public static void Main`, (which in the project templates is located in a *Program.cs* file). A typical *Program.cs*, shown below, demonstrates how to use a `WebHostBuilder` to build a host.
 
-[!code-c#[Main](../common/samples/WebApplication1/src/WebApplication1/Program.cs?highlight=14,15,16,17,18,19,20,21)]
+[!code-csharp[Main](../common/samples/WebApplication1/src/WebApplication1/Program.cs?highlight=14,15,16,17,18,19,20,21)]
 
 ````c#
 

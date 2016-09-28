@@ -49,7 +49,7 @@ ASP.NET Core includes a test host that can be added to integration test projects
 
 Once the Microsoft.AspNetCore.TestHost package is included in the project, you will be able to create and configure a TestServer in your tests. The following test shows how to verify that a request made to the root of a site returns "Hello World!" and should run successfully against the default ASP.NET Core Empty Web template created by Visual Studio.
 
-[!code-c#[Main](../testing/integration-testing/sample/test/PrimeWeb.IntegrationTests/PrimeWebDefaultRequestShould.cs?highlight=6,7)]
+[!code-csharp[Main](../testing/integration-testing/sample/test/PrimeWeb.IntegrationTests/PrimeWebDefaultRequestShould.cs?highlight=6,7)]
 
 ````c#
 
@@ -85,7 +85,7 @@ In the Act portion of the test, a request is made to the `TestServer` instance f
 
 Now we can add a few additional integration tests to confirm that the prime checking functionality works via the web application:
 
-[!code-c#[Main](../testing/integration-testing/sample/test/PrimeWeb.IntegrationTests/PrimeWebCheckPrimeShould.cs?highlight=8,9)]
+[!code-csharp[Main](../testing/integration-testing/sample/test/PrimeWeb.IntegrationTests/PrimeWebCheckPrimeShould.cs?highlight=8,9)]
 
 ````c#
 
@@ -295,7 +295,7 @@ We want to allow the path the middleware uses to be specified as a parameter, so
 
 With this middleware in place and some helpful extension methods created to make configuring it easier, the refactored `Configure` method looks like this:
 
-[!code-c#[Main](../testing/integration-testing/sample/src/PrimeWeb/Startup.cs?highlight=9)]
+[!code-csharp[Main](../testing/integration-testing/sample/src/PrimeWeb/Startup.cs?highlight=9)]
 
 ````c#
 

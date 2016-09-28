@@ -185,7 +185,7 @@ If you're storing more complex objects, you will need to serialize the object to
 
 The associated sample application demonstrates how to work with Session, including storing and retrieving simple types as well as custom objects. In order to see what happens when session expires, the sample has configured sessions to last just 10 seconds:
 
-[!code-c#[Main](../fundamentals/app-state/sample/src/AppState/Startup.cs?highlight=2,6)]
+[!code-csharp[Main](../fundamentals/app-state/sample/src/AppState/Startup.cs?highlight=2,6)]
 
 ````c#
 
@@ -207,7 +207,7 @@ When you first navigate to the web server, it displays a screen indicating that 
 
 This default behavior is produced by the following middleware in *Startup.cs*, which runs when requests are made that do not already have an established session (note the highlighted sections):
 
-[!code-c#[Main](../fundamentals/app-state/sample/src/AppState/Startup.cs?highlight=4,6,8,9,10,11,28,29)]
+[!code-csharp[Main](../fundamentals/app-state/sample/src/AppState/Startup.cs?highlight=4,6,8,9,10,11,28,29)]
 
 ````c#
 
@@ -293,7 +293,7 @@ This default behavior is produced by the following middleware in *Startup.cs*, w
 
 Fetching the current instance of `RequestEntryCollection` is done via the `GetOrCreateEntries` helper method:
 
-[!code-c#[Main](../fundamentals/app-state/sample/src/AppState/Startup.cs?highlight=4,8,9)]
+[!code-csharp[Main](../fundamentals/app-state/sample/src/AppState/Startup.cs?highlight=4,8,9)]
 
 ````c#
 
@@ -357,7 +357,7 @@ Establishing the session is done in the middleware that handles requests to "/se
 
 Requests to this path will get or create a `RequestEntryCollection`, will add the current path to it, and then will store it in session using the helper method `SaveEntries`, shown below:
 
-[!code-c#[Main](../fundamentals/app-state/sample/src/AppState/Startup.cs?highlight=6)]
+[!code-csharp[Main](../fundamentals/app-state/sample/src/AppState/Startup.cs?highlight=6)]
 
 ````c#
 
@@ -375,7 +375,7 @@ Requests to this path will get or create a `RequestEntryCollection`, will add th
 
 The sample includes one more piece of middleware worth mentioning, which is mapped to the "/untracked" path. You can see its configuration here:
 
-[!code-c#[Main](../fundamentals/app-state/sample/src/AppState/Startup.cs?highlight=2,13)]
+[!code-csharp[Main](../fundamentals/app-state/sample/src/AppState/Startup.cs?highlight=2,13)]
 
 ````c#
 

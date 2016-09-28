@@ -24,7 +24,7 @@ The `Configure` method is used to specify how the ASP.NET application will respo
 
 Your `Configure` method must accept an [IApplicationBuilder](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/IApplicationBuilder/index.html) parameter. Additional services, like `IHostingEnvironment` and `ILoggerFactory` may also be specified, in which case these services will be [injected](dependency-injection.md) by the server if they are available. In the following example from the default web site template, you can see several extension methods are used to configure the pipeline with support for [BrowserLink](http://www.asp.net/visual-studio/overview/2013/using-browser-link), error pages, static files, ASP.NET MVC, and Identity.
 
-[!code-c#[Main](../common/samples/WebApplication1/src/WebApplication1/Startup.cs?highlight=8,9,10,14,17,19,23)]
+[!code-csharp[Main](../common/samples/WebApplication1/src/WebApplication1/Startup.cs?highlight=8,9,10,14,17,19,23)]
 
 ````c#
 
@@ -70,7 +70,7 @@ Your `Startup` class can optionally include a `ConfigureServices` method for con
 
 Just as with `Configure`, it is recommended that features that require substantial setup within `ConfigureServices` be wrapped up in extension methods on [IServiceCollection](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/DependencyInjection/IServiceCollection/index.html). You can see in this example from the default web site template that several `Add[Something]` extension methods are used to configure the app to use services from Entity Framework, Identity, and MVC:
 
-[!code-c#[Main](../common/samples/WebApplication1/src/WebApplication1/Startup.cs?highlight=4,7,11)]
+[!code-csharp[Main](../common/samples/WebApplication1/src/WebApplication1/Startup.cs?highlight=4,7,11)]
 
 ````c#
 

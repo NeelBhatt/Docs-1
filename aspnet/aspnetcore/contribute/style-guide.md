@@ -234,7 +234,7 @@ External file references can specify a language, emphasize certain lines, displa
      :linenos:
    ````
 
-[!code-c#[Main](../contribute/style-guide/_static/startup.cs?highlight=19,25,26,27)]
+[!code-csharp[Main](../contribute/style-guide/_static/startup.cs?highlight=19,25,26,27)]
 
 ````c#
 

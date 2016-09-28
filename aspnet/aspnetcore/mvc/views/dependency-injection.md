@@ -18,7 +18,7 @@ The syntax for `@inject`:
 
 An example of `@inject` in action:
 
-[!code-c#[Main](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Views/ToDo/Index.cshtml?highlight=4,5,15,16,17)]
+[!code-csharp[Main](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Views/ToDo/Index.cshtml?highlight=4,5,15,16,17)]
 
 ````c#
 
@@ -62,7 +62,7 @@ An example of `@inject` in action:
 
 This view displays a list of `ToDoItem` instances, along with a summary showing overall statistics. The summary is populated from the injected `StatisticsService`. This service is registered for dependency injection in `ConfigureServices` in *Startup.cs*:
 
-[!code-c#[Main](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Startup.cs?highlight=6,7)]
+[!code-csharp[Main](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Startup.cs?highlight=6,7)]
 
 ````c#
 
@@ -79,7 +79,7 @@ This view displays a list of `ToDoItem` instances, along with a summary showing 
 
 The `StatisticsService` performs some calculations on the set of `ToDoItem` instances, which it accesses via a repository:
 
-[!code-c#[Main](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Model/Services/StatisticsService.cs?highlight=15,20,26)]
+[!code-csharp[Main](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Model/Services/StatisticsService.cs?highlight=15,20,26)]
 
 ````c#
 
@@ -133,7 +133,7 @@ View injection can be useful to populate options in UI elements, such as dropdow
 
 An alternative approach injects services directly into the view to obtain the options. This minimizes the amount of code required by the controller, moving this view element construction logic into the view itself. The controller action to display a profile editing form only needs to pass the form the profile instance:
 
-[!code-c#[Main](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Controllers/ProfileController.cs?highlight=9,19)]
+[!code-csharp[Main](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Controllers/ProfileController.cs?highlight=9,19)]
 
 ````c#
 
@@ -168,7 +168,7 @@ The HTML form used to update these preferences includes dropdown lists for three
 
 These lists are populated by a service that has been injected into the view:
 
-[!code-c#[Main](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Views/Profile/Index.cshtml?highlight=4,16,17,21,22,26,27)]
+[!code-csharp[Main](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Views/Profile/Index.cshtml?highlight=4,16,17,21,22,26,27)]
 
 ````c#
 
@@ -206,7 +206,7 @@ These lists are populated by a service that has been injected into the view:
 
 The `ProfileOptionsService` is a UI-level service designed to provide just the data needed for this form:
 
-[!code-c#[Main](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Model/Services/ProfileOptionsService.cs?highlight=7,13,24)]
+[!code-csharp[Main](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Model/Services/ProfileOptionsService.cs?highlight=7,13,24)]
 
 ````c#
 

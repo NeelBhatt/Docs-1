@@ -65,7 +65,7 @@ In this section we'll set up our Visual Studio project to use SSL and our projec
 
 Add the `[RequireHttps]` attribute to each controller. The `[RequireHttps]` attribute will redirect all HTTP GET requests to HTTPS GET and will reject all HTTP POSTs. A security best practice is to use HTTPS for all requests.
 
-[!code-c#[Main](../../security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/Controllers/HomeController.cs?highlight=9)]
+[!code-csharp[Main](../../security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/Controllers/HomeController.cs?highlight=9)]
 
 ````c#
 
@@ -139,7 +139,7 @@ Add the dependecy `Microsoft.Extensions.Options.ConfigurationExtensions` in the 
 
 Add `AuthMessageSenderOptions` to the service container at the end of the `ConfigureServices` method in the *Startup.cs* file:
 
-[!code-c#[Main](../../security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/Startup.cs?highlight=4)]
+[!code-csharp[Main](../../security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/Startup.cs?highlight=4)]
 
 ````c#
 
@@ -368,7 +368,7 @@ In this section, run the web app and show the account confirmation and password 
 
 With the current templates, once a user completes the registration form, they are logged in (authenticated). You generally want to confirm their email before logging them in. In the section below, we will modify the code to require new users have a confirmed email before they are logged in. Update the `[HttpPost] Login` action in the *AccountController.cs* file with the following highlighted changes.
 
-[!code-c#[Main](../../security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/Controllers/AccountController.cs?highlight=11,12,13,14,15,16,17,18,19,20)]
+[!code-csharp[Main](../../security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/Controllers/AccountController.cs?highlight=11,12,13,14,15,16,17,18,19,20)]
 
 ````c#
 

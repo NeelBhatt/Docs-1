@@ -20,7 +20,7 @@ To return data in a specific format from a controller that inherits from the `Co
 
 Returning JSON-formatted data:
 
-[!code-c#[Main](../mvc/models/formatting/sample/src/ResponseFormattingSample/Controllers/Api/AuthorsController.cs?highlight=3,5)]
+[!code-csharp[Main](../mvc/models/formatting/sample/src/ResponseFormattingSample/Controllers/Api/AuthorsController.cs?highlight=3,5)]
 
 ````c#
 
@@ -41,7 +41,7 @@ Note that the content type of the response is `application/json`, shown both in 
 
 To return plain text formatted data, use `ContentResult` and the `Content` helper:
 
-[!code-c#[Main](../mvc/models/formatting/sample/src/ResponseFormattingSample/Controllers/Api/AuthorsController.cs?highlight=3,5)]
+[!code-csharp[Main](../mvc/models/formatting/sample/src/ResponseFormattingSample/Controllers/Api/AuthorsController.cs?highlight=3,5)]
 
 ````c#
 
@@ -60,7 +60,7 @@ A response from this action:
 
 Note in this case the `Content-Type` returned is `text/plain`. You can also achieve this same behavior using just a string response type:
 
-[!code-c#[Main](../mvc/models/formatting/sample/src/ResponseFormattingSample/Controllers/Api/AuthorsController.cs?highlight=3,5)]
+[!code-csharp[Main](../mvc/models/formatting/sample/src/ResponseFormattingSample/Controllers/Api/AuthorsController.cs?highlight=3,5)]
 
 ````c#
 
@@ -82,7 +82,7 @@ Content negotiation (*conneg* for short) occurs when the client specifies an [Ac
 
 The following action method uses the `Ok` and `NotFound` helper methods:
 
-[!code-c#[Main](../mvc/models/formatting/sample/src/ResponseFormattingSample/Controllers/Api/AuthorsController.cs?highlight=8,10)]
+[!code-csharp[Main](../mvc/models/formatting/sample/src/ResponseFormattingSample/Controllers/Api/AuthorsController.cs?highlight=8,10)]
 
 ````c#
 
@@ -110,7 +110,7 @@ Controller actions can return POCOs (Plain Old CLR Objects), in which case ASP.N
 
 Returning an object type:
 
-[!code-c#[Main](../mvc/models/formatting/sample/src/ResponseFormattingSample/Controllers/Api/AuthorsController.cs?highlight=3)]
+[!code-csharp[Main](../mvc/models/formatting/sample/src/ResponseFormattingSample/Controllers/Api/AuthorsController.cs?highlight=3)]
 
 ````c#
 
@@ -157,7 +157,7 @@ To add support for XML formatting, add the "Microsoft.AspNetCore.Mvc.Formatters.
 
 Add the XmlSerializerFormatters to MVC's configuration in *Startup.cs*:
 
-[!code-c#[Main](../mvc/models/formatting/sample/src/ResponseFormattingSample/Startup.cs?highlight=4)]
+[!code-csharp[Main](../mvc/models/formatting/sample/src/ResponseFormattingSample/Startup.cs?highlight=4)]
 
 ````c#
 

@@ -15,7 +15,7 @@ Static files, such as HTML, CSS, image, and JavaScript, are assets that an ASP.N
 
 Static files are typically located in the `web root` (*<content-root>/wwwroot*) folder. See Content root and Web root in  [Introduction to ASP.NET Core](../intro.md) for more information. You generally set the content root to be the current directory so that your project's `web root` will be found while in development.
 
-[!code-c#[Main](../common/samples/WebApplication1/src/WebApplication1/Program.cs?highlight=5)]
+[!code-csharp[Main](../common/samples/WebApplication1/src/WebApplication1/Program.cs?highlight=5)]
 
 ````c#
 
@@ -41,7 +41,7 @@ Static files can be stored in any folder under the `web root` and accessed with 
 
 In order for static files to be served, you must configure the [Middleware](middleware.md) to add static files to the pipeline. The static file middleware can be configured by adding a dependency on the *Microsoft.AspNetCore.StaticFiles* package to your project and then calling the [UseStaticFiles](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/StaticFileExtensions/index.html.md#Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles.md) extension method from `Startup.Configure`:
 
-[!code-c#[Main](../fundamentals/static-files/sample/StartupStaticFiles.cs?highlight=3)]
+[!code-csharp[Main](../fundamentals/static-files/sample/StartupStaticFiles.cs?highlight=3)]
 
 ````c#
 
@@ -75,7 +75,7 @@ Suppose you have a project hierarchy where the static files you wish to serve ar
 
 For a request to access *test.png*, configure the static files middleware as follows:
 
-[!code-c#[Main](../fundamentals/static-files/sample/StartupTwoStaticFiles.cs?highlight=5,6,7,8,9,10)]
+[!code-csharp[Main](../fundamentals/static-files/sample/StartupTwoStaticFiles.cs?highlight=5,6,7,8,9,10)]
 
 ````c#
 
@@ -153,7 +153,7 @@ See [Considerations](#considerations) on the security risks when enabling browsi
 
 Note the two `app.UseStaticFiles` calls. The first one is required to serve the CSS, images and JavaScript in the *wwwroot* folder, and the second call for directory browsing of the *wwwroot/images* folder using the URL http://<app>/MyImages:
 
-[!code-c#[Main](../fundamentals/static-files/sample/StartupBrowse.cs?highlight=3,5)]
+[!code-csharp[Main](../fundamentals/static-files/sample/StartupBrowse.cs?highlight=3,5)]
 
 ````c#
 
@@ -182,7 +182,7 @@ Note the two `app.UseStaticFiles` calls. The first one is required to serve the 
 
 Setting a default home page gives site visitors a place to start when visiting your site. In order for your Web app to serve a default page without the user having to fully qualify the URI, call the `UseDefaultFiles` extension method from `Startup.Configure` as follows.
 
-[!code-c#[Main](../fundamentals/static-files/sample/StartupEmpty.cs?highlight=3)]
+[!code-csharp[Main](../fundamentals/static-files/sample/StartupEmpty.cs?highlight=3)]
 
 ````c#
 
@@ -263,7 +263,7 @@ See [Considerations](#considerations) on the security risks when enabling browsi
 
 Using the hierarchy example above, you might want to enable static files, default files, and browsing for the `MyStaticFiles` directory. In the following code snippet, that is accomplished with a single call to [FileServerOptions](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/FileServerOptions/index.html.md#Microsoft.AspNetCore.Builder.FileServerOptions.md).
 
-[!code-c#[Main](../fundamentals/static-files/sample/StartupUseFileServer.cs?highlight=5,6,7,8,9,10,11)]
+[!code-csharp[Main](../fundamentals/static-files/sample/StartupUseFileServer.cs?highlight=5,6,7,8,9,10,11)]
 
 ````c#
 
@@ -310,7 +310,7 @@ If no default named files are in the *MyStaticFiles* directory, http://<app>/Sta
 
 The [FileExtensionContentTypeProvider](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/StaticFiles/FileExtensionContentTypeProvider/index.html.md#Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider.md) class contains a  collection that maps file extensions to MIME content types. In the following sample, several file extensions are registered to known MIME types, the ".rtf" is replaced, and ".mp4" is removed.
 
-[!code-c#[Main](../fundamentals/static-files/sample/StartupFileExtensionContentTypeProvider.cs?highlight=3,4,5,6,7,8,9,10,11,12,19)]
+[!code-csharp[Main](../fundamentals/static-files/sample/StartupFileExtensionContentTypeProvider.cs?highlight=3,4,5,6,7,8,9,10,11,12,19)]
 
 ````c#
 

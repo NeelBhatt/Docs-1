@@ -93,7 +93,7 @@ You can configure other actions to take place within the OWIN pipeline.
 
 OWIN-based servers can host ASP.NET applications. One such server is [Nowin](https://github.com/Bobris/Nowin), a .NET OWIN web server. In the sample for this article, I've included a project that references Nowin and uses it to create an `IServer` capable of self-hosting ASP.NET Core.
 
-[!code-c#[Main](../fundamentals/owin/sample/src/NowinSample/NowinServer.cs?highlight=15)]
+[!code-csharp[Main](../fundamentals/owin/sample/src/NowinSample/NowinServer.cs?highlight=15)]
 
 ````c#
 
@@ -184,7 +184,7 @@ OWIN-based servers can host ASP.NET applications. One such server is [Nowin](htt
 
 We'll also add an `IWebHostBuilder` extension to make it easy to add and configure the Nowin server.
 
-[!code-c#[Main](../fundamentals/owin/sample/src/NowinSample/NowinWebHostBuilderExtensions.cs?highlight=11)]
+[!code-csharp[Main](../fundamentals/owin/sample/src/NowinSample/NowinWebHostBuilderExtensions.cs?highlight=11)]
 
 ````c#
 
@@ -220,7 +220,7 @@ We'll also add an `IWebHostBuilder` extension to make it easy to add and configu
 
 With this in place, all that's required to run an ASP.NET application using this custom server to call the extension in *Program.cs*:
 
-[!code-c#[Main](../fundamentals/owin/sample/src/NowinSample/Program.cs?highlight=15)]
+[!code-csharp[Main](../fundamentals/owin/sample/src/NowinSample/Program.cs?highlight=15)]
 
 ````c#
 
@@ -257,7 +257,7 @@ Learn more about ASP.NET [Servers](servers.md).
 
 Another example of how OWIN-based servers' features can be leveraged by ASP.NET Core is access to features like WebSockets. The .NET OWIN web server used in the previous example has support for Web Sockets built in, which can be leveraged by an ASP.NET Core application. The example below shows a simple web app that supports Web Sockets and echoes back everything sent to the server through WebSockets.
 
-[!code-c#[Main](../fundamentals/owin/sample/src/NowinWebSockets/Startup.cs?highlight=7,9,10)]
+[!code-csharp[Main](../fundamentals/owin/sample/src/NowinWebSockets/Startup.cs?highlight=7,9,10)]
 
 ````c#
 
