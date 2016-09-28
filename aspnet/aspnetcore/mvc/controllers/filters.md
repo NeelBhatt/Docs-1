@@ -269,8 +269,6 @@ A `TypeFilter` will instantiate an instance, using services from DI for its depe
 
 Using `ServiceFilter` without registering the filter type in `ConfigureServices`, throws the following exception:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none"} -->
-
 ````none
 
    System.InvalidOperationException: No service for type
@@ -410,8 +408,6 @@ Every controller that inherits from the `Controller` base class includes `OnActi
 > `IOrderedFilter` trumps scope when determining the order in which filters will run. Filters are sorted first by order, then scope is used to break ties. Order defaults to 0 if not set.
 
 To modify the default, scope-based order, you could explicitly set the `Order` property of a class-level or method-level filter. For example, adding `Order=-1` to a method level attribute:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 

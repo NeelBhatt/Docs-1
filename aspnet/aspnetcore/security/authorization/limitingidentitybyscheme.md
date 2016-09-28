@@ -9,8 +9,6 @@ In some scenarios, such as Single Page Applications it is possible to end up wit
 
 Authentication schemes are named when authentication middleware is configured during authentication, for example
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
-
 ````c#
 
    app.UseCookieAuthentication(new CookieAuthenticationOptions()
@@ -36,8 +34,6 @@ In this configuration two authentication middlewares have been added, one for co
 
 As no authentication middleware is configured to automatically run and create an identity you must, at the point of authorization choose which middleware will be used. The simplest way to select the middleware you wish to authorize with is to use the [ActiveAuthenticationSchemes](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizeAttribute/index.html.md#Microsoft.AspNetCore.Authorization.AuthorizeAttribute.ActiveAuthenticationSchemes.md) property. This property accepts a comma delimited list of Authentication Schemes to use. For example;
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
-
 ````c#
 
    [Authorize(ActiveAuthenticationSchemes = "Cookie,Bearer")]
@@ -45,8 +41,6 @@ As no authentication middleware is configured to automatically run and create an
    ````
 
 In the example above both the cookie and bearer middlewares will run and have a chance to create and append an identity for the current user. By specifying a single scheme only the specified middleware will run;
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -58,8 +52,6 @@ In this case only the middleware with the Bearer scheme would run, and any cooki
 ## Selecting the scheme with policies
 
 If you prefer to specify the desired schemes in [policy](policies.md#security-authorization-policies-based.md) you can set the [AuthenticationSchemes](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizationPolicyBuilder/index.html.md#Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder.AuthenticationSchemes.md) collection when adding your policy.
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 

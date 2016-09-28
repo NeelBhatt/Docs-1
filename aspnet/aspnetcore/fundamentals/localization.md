@@ -186,8 +186,6 @@ The [IViewLocalizer](https://docs.asp.net/projects/api/en/latest/autoapi/Microso
 
 The default implementation of `IViewLocalizer` finds the resource file based on the view's file name. There is no option to use a global shared resource file. `ViewLocalizer` implements the localizer using [IHtmlLocalizer](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Localization/IHtmlLocalizer/index.html), so Razor doesn't HTML encode the localized string. You can parameterize resource strings and `IViewLocalizer` will HTML encode the parameters, but not the resource string. Consider the following Razor markup:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML"} -->
-
 ````HTML
 
    @Localizer["<i>Hello</i> <b>{0}!</b>", UserManager.GetUserName(User)]
@@ -407,8 +405,6 @@ The [Accept-Language header](https://www.w3.org/International/questions/qa-accep
 ### Using a custom provider
 
 Suppose you want to let your customers store their language and culture in your databases. You could write a provider to look up these values for the user. The following code shows how to add a custom provider:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 

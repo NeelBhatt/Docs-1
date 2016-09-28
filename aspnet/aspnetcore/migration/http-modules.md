@@ -701,8 +701,6 @@ The solution is to get the options objects with the actual options values in you
 
 You saw earlier that the `Invoke` method in your middleware takes a parameter of type `HttpContext`:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
-
 ````c#
 
    public async Task Invoke(HttpContext context)

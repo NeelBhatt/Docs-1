@@ -125,8 +125,6 @@ Add the user secrets configuration source to the `Startup` method:
 
 You can now access user secrets via the configuration API:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
-
 ````c#
 
    string testConfig = Configuration["MySecret"];

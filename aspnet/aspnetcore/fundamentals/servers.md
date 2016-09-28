@@ -120,8 +120,6 @@ The `Microsoft.AspNetCore.Hosting` command supports server parameters (such as `
 
 The *project.json* file shown above demonstrates how to pass the `server.urls` parameter directly:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "javascript"} -->
-
 ````javascript
 
    "web": "Microsoft.AspNetCore.Kestrel --server.urls http://localhost:5004"
@@ -129,16 +127,12 @@ The *project.json* file shown above demonstrates how to pass the `server.urls` p
 
 Alternately, a  JSON configuration file can be used,
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "javascript"} -->
-
 ````javascript
 
    "kestrel": "Microsoft.AspNetCore.Hosting"
    ````
 
 The `hosting.json` can include the settings the server will use (including the server parameter, as well):
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "json"} -->
 
 ````json
 
@@ -192,8 +186,6 @@ In ASP.NET Core on Windows, the web application is hosted by an external process
 WebListener is a Windows-only HTTP server for ASP.NET Core. It runs directly on the [Http.Sys kernel driver](http://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture), and has very little overhead.
 
 You can add support for WebListener to your ASP.NET application by adding the "Microsoft.AspNetCore.Server.WebListener" dependency in *project.json* and the following command:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "javascript"} -->
 
 ````javascript
 

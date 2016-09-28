@@ -139,8 +139,6 @@ Unlike typical API clients, web browsers tend to supply `Accept` headers that in
 
 If you would prefer your application honor browser accept headers, you can configure this as part of MVC's configuration by setting `RespectBrowserAcceptHeader` to `true` in the `ConfigureServices` method in *Startup.cs*.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
-
 ````c#
 
    services.AddMvc(options =>
@@ -175,8 +173,6 @@ Add the XmlSerializerFormatters to MVC's configuration in *Startup.cs*:
 
 Alternately, you can add just the output formatter:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
-
 ````c#
 
    services.AddMvc(options =>
@@ -186,8 +182,6 @@ Alternately, you can add just the output formatter:
    ````
 
 These two approaches will serialize results using [System.Xml.Serialization.XmlSerializer](https://dotnet.github.io/api/System.Xml.Serialization.XmlSerializer.html). If you prefer, you can use the [System.Runtime.Serialization.DataContractSerializer](https://dotnet.github.io/api/System.Runtime.Serialization.DataContractSerializer.html) by adding its associated formatter:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -213,8 +207,6 @@ In this screenshot, you can see the request sets a header of `Accept: applicatio
 
 If you would like to restrict the response formats for a specific action you can, you can apply the `[Produces]` filter. The `[Produces]` filter specifies the response formats for a specific action (or controller). Like most [Filters](../controllers/filters.md), this can be applied at the action, controller, or global scope.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
-
 ````c#
 
    [Produces("application/json")]
@@ -226,8 +218,6 @@ The `[Produces]` filter will force all actions within the `AuthorsController` to
 ### Special Case Formatters
 
 Some special cases are implemented using built-in formatters. By default, `string` return types will be formatted as *text/plain* (*text/html* if requested via `Accept` header). This behavior can be removed by removing the `TextOutputFormatter`. You remove formatters in the `Configure` method in *Startup.cs* (shown below). Actions that have a model object return type will return a 204 No Content response when returning `null`. This behavior can be removed by removing the `HttpNoContentOutputFormatter`. The following code removes the `TextOutputFormatter` and *HttpNoContentOutputFormatter`*.
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -245,8 +235,6 @@ Without the `HttpNoContentOutputFormatter`, null objects are formatted using the
 ## Response Format URL Mappings
 
 Clients can request a particular format as part of the URL, such as in the query string or part of the path, or by using a format-specific file extension such as .xml or .json. The mapping from request path should be specified in the route the API is using. For example:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 

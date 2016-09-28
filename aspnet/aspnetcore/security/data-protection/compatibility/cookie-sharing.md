@@ -15,8 +15,6 @@ In your configure method use the CookieAuthenticationOptions to set up the data 
 
 If you're using identity:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
-
 ````c#
 
    app.AddIdentity<ApplicationUser, IdentityRole>(options =>
@@ -27,8 +25,6 @@ If you're using identity:
    ````
 
 If you're using cookies directly:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 

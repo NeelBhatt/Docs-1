@@ -18,8 +18,6 @@ To support the scenario of allowing payloads to be unprotected even in the face 
 
 IPersistedDataProtector exposes the following API surface:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
-
 ````c#
 
    DangerousUnprotect(byte[] protectedData, bool ignoreRevocationErrors,

@@ -106,8 +106,6 @@ Minification performs a variety of different code optimizations to reduce the si
 
 Consider the following JavaScript function:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "javascript"} -->
-
 ````javascript
 
    AddAltToImg = function (imageTagAndImageID, imageContext) {
@@ -123,8 +121,6 @@ Consider the following JavaScript function:
    ````
 
 After minification, the function is reduced to the following:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "javascript"} -->
 
 ````javascript
 

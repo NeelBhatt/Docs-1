@@ -13,8 +13,6 @@ ASP.NET Core provides cookie [middleware](../../fundamentals/middleware.md#funda
 
 The first step is adding the cookie middleware to your application. First use nuget to add the `Microsoft.AspNetCore.Authentication.Cookies` package. Then add the following lines to the `Configure` method in your *Startup.cs* file before the `app.UseMvc()` statement;
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
-
 ````c#
 
    app.UseCookieAuthentication(new CookieAuthenticationOptions()
@@ -62,8 +60,6 @@ Under the covers the encryption used is ASP.NET's [Data Protection](../data-prot
 
 To sign out the current user, and delete their cookie call the following inside your controller
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
-
 ````c#
 
    await HttpContext.Authentication.SignOutAsync("MyCookieMiddlewareInstance");
@@ -80,16 +76,12 @@ Consider a back-end user database that may have a LastChanged column. In order t
 
 To implement an override for the `ValidateAsync()` event you must write a method with the following signature;
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
-
 ````c#
 
    Task ValidateAsync(CookieValidatePrincipalContext context);
    ````
 
 ASP.NET Core Identity implements this check as part of its [SecurityStampValidator](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Identity/SecurityStampValidator/index.html). A simple example would look something like as follows;
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -118,8 +110,6 @@ ASP.NET Core Identity implements this check as part of its [SecurityStampValidat
    ````
 
 This would then be wired up during cookie middleware configuration
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -160,8 +150,6 @@ The `CookieAuthenticationOptions` class comes with various configuration options
 You may want to make the cookie expire be remembered over browser sessions. You may also want an absolute expiry to the identity and the cookie transporting it. You can do these things by using the `AuthenticationProperties` parameter on the `HttpContext.Authentication.SignInAsync` method called when [signing in an identity and creating the cookie](xref:security/authentication/cookie#security-authentication-cookie-middleware-creating-a-cookie). The `AuthenticationProperties` class is in the `Microsoft.AspNetCore.Http.Authentication` namespace.
 
 For example;
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 

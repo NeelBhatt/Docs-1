@@ -13,8 +13,6 @@ Role based authorization checks are declarative - the developer embeds them with
 
 For example the following code would limit access to any actions on the `AdministrationController` to users who are a member of the `Administrator` group.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
-
 ````c#
 
    [Authorize(Roles = "Administrator")]
@@ -24,8 +22,6 @@ For example the following code would limit access to any actions on the `Adminis
    ````
 
 You can specify multiple roles as a comma separated list;
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -39,8 +35,6 @@ This controller would be only accessible by users who are members of the `HRMana
 
 If you apply multiple attributes then an accessing user must be a member of all the roles specified; the following sample requires that a user must be a member of both the `PowerUser` and `ControlPanelUser` role.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
-
 ````c#
 
    [Authorize(Roles = "PowerUser")]
@@ -51,8 +45,6 @@ If you apply multiple attributes then an accessing user must be a member of all 
    ````
 
 You can further limit access by applying additional role authorization attributes at the action level;
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -73,8 +65,6 @@ You can further limit access by applying additional role authorization attribute
 In the previous code snippet members of the `Administrator` role or the `PowerUser` role can access the controller and the `SetTime` action, but only members of the `Administrator` role can access the `ShutDown` action.
 
 You can also lock down a controller but allow anonymous, unauthenticated access to individual actions.
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -98,8 +88,6 @@ You can also lock down a controller but allow anonymous, unauthenticated access 
 
 Role requirements can also be expressed using the new Policy syntax, where a developer registers a policy at startup as part of the Authorization service configuration. This normally takes part in `ConfigureServices()` in your *Startup.cs* file.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
-
 ````c#
 
    public void ConfigureServices(IServiceCollection services)
@@ -115,8 +103,6 @@ Role requirements can also be expressed using the new Policy syntax, where a dev
 
 Policies are applied using the [Policy](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizeAttribute/index.html.md#Microsoft.AspNetCore.Authorization.AuthorizeAttribute.Policy.md) property on the [AuthorizeAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizeAttribute/index.html.md#Microsoft.AspNetCore.Authorization.AuthorizeAttribute.md) attribute;
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
-
 ````c#
 
    [Authorize(Policy = "RequireAdministratorRole")]
@@ -127,8 +113,6 @@ Policies are applied using the [Policy](http://docs.asp.net/projects/api/en/late
    ````
 
 If you want to specify multiple allowed roles in a requirement then you can specify them as parameters to the [RequireRole](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizationPolicyBuilder/index.html.md#Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder.RequireRole.md) method;
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 

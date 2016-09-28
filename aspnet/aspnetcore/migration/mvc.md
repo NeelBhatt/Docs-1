@@ -38,8 +38,6 @@ Open the *project.json* file.
 
 * Add the "prepublish" line to the "scripts" section:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "JavaScript"} -->
-
 ````JavaScript
 
    "scripts": {
@@ -114,8 +112,6 @@ The project structure is shown below:
 ![image](mvc/_static/project-structure-controller-view.png)
 
 Replace the contents of the *Views/Home/Index.cshtml* file with the following:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html"} -->
 
 ````html
 
@@ -341,16 +337,12 @@ Open *_Layout.cshtml* file and make the following changes (the completed code is
 
 The replacement CSS link:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html"} -->
-
 ````html
 
    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
    ````
 
 The replacement script tags:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html"} -->
 
 ````html
 

@@ -42,8 +42,6 @@ There might be circumstances where a key will be created with immediate activati
 
 The default key lifetime is 90 days, though this is configurable as in the following example.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
-
 ````c#
 
    services.AddDataProtection()

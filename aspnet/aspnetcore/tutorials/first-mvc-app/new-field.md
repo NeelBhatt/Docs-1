@@ -36,8 +36,6 @@ Build the app (Ctrl+Shift+B).
 
 Because you've added a new field to the `Movie` class, you also need to update the binding white list so this new property will be included. Update the `[Bind]` attribute for `Create` and `Edit` action methods to include the `Rating` property:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
-
 ````c#
 
    [Bind("ID,Title,ReleaseDate,Genre,Price,Rating")]
@@ -133,8 +131,6 @@ Update the `SeedData` class so that it provides a value for the new column. A sa
 > You must stop IIS Express before you run the `dotnet ef` commands.   See [To Stop IIS Express:](adding-model.md#stop-iis-express-reference-label.md)
 
 Build the solution then open a command prompt. Enter the following commands:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "console"} -->
 
 ````console
 

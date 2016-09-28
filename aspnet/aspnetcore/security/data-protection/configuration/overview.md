@@ -11,8 +11,6 @@ When the data protection system is initialized it applies some [default settings
 
 There is an extension method AddDataProtection which returns an IDataProtectionBuilder which itself exposes extension methods that you can chain together to configure various data protection options. For instance, to store keys at a UNC share instead of %LOCALAPPDATA% (the default), configure the system as follows:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
-
 ````c#
 
    public void ConfigureServices(IServiceCollection services)
@@ -30,8 +28,6 @@ There is an extension method AddDataProtection which returns an IDataProtectionB
 
 You can configure the system to protect keys at rest by calling any of the ProtectKeysWith* configuration APIs. Consider the example below, which stores keys at a UNC share and encrypts those keys at rest with a specific X.509 certificate.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
-
 ````c#
 
    public void ConfigureServices(IServiceCollection services)
@@ -45,8 +41,6 @@ You can configure the system to protect keys at rest by calling any of the Prote
 See [key encryption at rest](../implementation/key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest.md) for more examples and for discussion on the built-in key encryption mechanisms.
 
 To configure the system to use a default key lifetime of 14 days instead of 90 days, consider the following example:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -75,8 +69,6 @@ By default the data protection system isolates applications from one another, ev
 <a name=data-protection-configuring-disable-automatic-key-generation></a>
 
 Finally, you may have a scenario where you do not want an application to automatically roll keys as they approach expiration. One example of this might be applications set up in a primary / secondary relationship, where only the primary application is responsible for key management concerns, and all secondary applications simply have a read-only view of the key ring. The secondary applications can be configured to treat the key ring as read-only by configuring the system as below:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -111,8 +103,6 @@ If the data protection system is not provided by an ASP.NET Core host (e.g., if 
 
 The data protection stack allows changing the default algorithm used by newly-generated keys. The simplest way to do this is to call UseCryptographicAlgorithms from the configuration callback, as in the below example.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
-
 ````c#
 
    services.AddDataProtection()
@@ -137,8 +127,6 @@ The developer can manually specify an implementation if desired via a call to Us
 ### Specifying custom managed algorithms
 
 To specify custom managed algorithms, create a ManagedAuthenticatedEncryptionSettings instance that points to the implementation types.
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -167,8 +155,6 @@ Generally the *Type properties must point to concrete, instantiable (via a publi
 
 To specify a custom Windows CNG algorithm using CBC-mode encryption + HMAC validation, create a CngCbcAuthenticatedEncryptionSettings instance that contains the algorithmic information.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
-
 ````c#
 
    services.AddDataProtection()
@@ -191,8 +177,6 @@ To specify a custom Windows CNG algorithm using CBC-mode encryption + HMAC valid
 > The symmetric block cipher algorithm must have a key length of ≥ 128 bits and a block size of ≥ 64 bits, and it must support CBC-mode encryption with PKCS #7 padding. The hash algorithm must have a digest size of >= 128 bits and must support being opened with the BCRYPT_ALG_HANDLE_HMAC_FLAG flag. The *Provider properties can be set to null to use the default provider for the specified algorithm. See the [BCryptOpenAlgorithmProvider](https://msdn.microsoft.com/en-us/library/windows/desktop/aa375479(v=vs.85).aspx) documentation for more information.
 
 To specify a custom Windows CNG algorithm using Galois/Counter Mode encryption + validation, create a CngGcmAuthenticatedEncryptionSettings instance that contains the algorithmic information.
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 

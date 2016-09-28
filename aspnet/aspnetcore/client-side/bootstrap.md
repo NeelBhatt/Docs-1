@@ -40,8 +40,6 @@ You can also install bootstrap using one of several package managers, such as bo
 
 ### Bower
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "console"} -->
-
 ````console
 
    bower install bootstrap
@@ -49,16 +47,12 @@ You can also install bootstrap using one of several package managers, such as bo
 
 ### npm
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "console"} -->
-
 ````console
 
    npm install bootstrap
    ````
 
 ### NuGet
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "console"} -->
 
 ````console
 
@@ -156,8 +150,6 @@ The most basic Bootstrap template looks very much like the _Layout.cshtml file s
 
 The default template uses a set of `<div>` elements to render a top navbar and the main body of the page. If you're using HTML5, you can replace the first `<div>` tag with a `<nav>` tag to get the same effect, but with more precise semantics.  Within this first `<div>` you can see there are several others. First, a `<div>` with a class of "container", and then within that, two more `<div>` elements: "navbar-header" and "navbar-collapse".  The navbar-header div includes a button that will appear when the screen is below a certain minimum width, showing 3 horizontal lines (a so-called "hamburger icon"). The icon is rendered using pure HTML and CSS; no image is required. This is the code that displays the icon, with each of the <span> tags rendering one of the white bars:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html"} -->
-
 ````html
 
    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -188,8 +180,6 @@ Bootstrap sets up the site's basic typography, colors, and link formatting in it
 One of the most popular features of Bootstrap is its grid layout system. Modern web applications should avoid using the `<table>` tag for layout, instead restricting the use of this element to actual tabular data. Instead, columns and rows can be laid out using a series of `<div>` elements and the appropriate CSS classes. There are several advantages to this approach, including the ability to adjust the layout of grids to display vertically on narrow screens, such as on phones.
 
 [Bootstrap's grid layout system](http://getbootstrap.com/css/#grid) is based on twelve columns. This number was chosen because it can be divided evenly into 1, 2, 3, or 4 columns, and column widths can vary to within 1/12th of the vertical width of the screen. To start using the grid layout system, you should begin with a container `<div>` and then add a row `<div>`, as shown here:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html"} -->
 
 ````html
 

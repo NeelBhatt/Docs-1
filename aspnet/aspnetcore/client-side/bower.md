@@ -65,8 +65,6 @@ In Solution Explorer, expand the *wwwroot* node. The *lib* directory should now 
 
 Next, let's add an HTML page to the project. In Solution Explorer, right-click *wwwroot* node and select **Add** > **New Item** > **HTML Page**. Name the page Index.html. Replace the contents of the file with the following:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html"} -->
-
 ````html
 
    <!DOCTYPE html>
@@ -158,8 +156,6 @@ Now that Bower has copied the client support packages needed by the application,
    * Drag jquery.js and bootstrap.js to the end of the `body` element.
 
 Make sure bootstrap.js follows jquery.js, so that jQuery is loaded first.
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html"} -->
 
 ````html
 

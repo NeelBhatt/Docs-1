@@ -80,8 +80,6 @@ Most applications will create routes by calling `MapRoute` or one of the similar
 
 This is an example of a `MapRoute` call used by a typical ASP.NET MVC route definition:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
-
 ````c#
 
    routes.MapRoute(
@@ -97,8 +95,6 @@ See [route-template-reference](#route-template-reference) for a thorough descrip
 
 This example includes a *route constraint*:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
-
 ````c#
 
    routes.MapRoute(
@@ -111,8 +107,6 @@ This template will match a URL path like `/Products/Details/17`, but not `/Produ
 Additional overloads of `MapRoute` accept values for `constraints`, `dataTokens`, and `defaults`. These additional parameters of `MapRoute` are defined as type `object`. The typical usage of these parameters is to pass an anonymously typed object, where the property names of the anonymous type match route parameter names.
 
 The following two examples create equivalent routes:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -131,8 +125,6 @@ The following two examples create equivalent routes:
 
 This example demonstrates a few more features:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
-
 ````c#
 
    routes.MapRoute(
@@ -144,8 +136,6 @@ This example demonstrates a few more features:
 This template will match a URL path like `/Blog/All-About-Routing/Introduction` and will extract the values `{ controller = Blog, action = ReadArticle, article = All-About-Routing/Introduction }`. The default route values for `controller` and `action` are produced by the route even though there are no corresponding route parameters in the template. Default values can be specified in the route template. The `article` route parameter is defined as a *catch-all* by the appearance of an asterix `*` before the route parameter name. Catch-all route parameters capture the remainder of the URL path, and can also match the empty string.
 
 This example adds route constraints and data tokens:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -171,8 +161,6 @@ The `Route` class can also perform URL generation by combining a set of route va
 > To better understand URL generation, imagine what URL you want to generate and then think about how a route template would match that URL. What values would be produced? This is the rough equivalent of how URL generation works in the `Route` class.
 
 This example uses a basic ASP.NET MVC style route:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -370,8 +358,6 @@ Values that are explicitly provided but which don't match anything are added to 
 <!-- Generating links with {controller}/{action}/{id?} template        Ambient Values  Explicit Values  Result  controller="Home"  action="About"  /Home/About  controller="Home"  controller="Order",action="About"  /Order/About  controller="Home",color="Red"  action="About"  /Home/About  controller="Home"  action="About",color="Red"  /Home/About?color=Red -->
 
 If a route has a default value that doesn't correspond to a parameter and that value is explicitly provided, it must match the default value. For example:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 

@@ -40,16 +40,12 @@ Tag Helpers enable server-side code to participate in creating and rendering HTM
 
 Most of the built-in Tag Helpers target existing HTML elements and provide server-side attributes for the element. For example, the `<input>` element used in many of the views in the *Views/Account* folder contains the `asp-for` attribute, which extracts the name of the specified model property into the rendered HTML. The following Razor markup:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html"} -->
-
 ````html
 
    <label asp-for="Email"></label>
    ````
 
 Generates the following HTML:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html"} -->
 
 ````html
 
@@ -103,8 +99,6 @@ If your project contains an `EmailTagHelper` with the default namespace (`Author
 
 To add a Tag Helper to a view using an FQN, you first add the FQN (`AuthoringTagHelpers.TagHelpers.EmailTagHelper`), and then the assembly name (*AuthoringTagHelpers*). Most developers prefer to use the  "*" wildcard syntax. The wildcard syntax allows you to insert the wildcard character "*" as the suffix in an FQN. For example, any of the following directives will bring in the `EmailTagHelper`:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
-
 ````c#
 
    @addTagHelper "AuthoringTagHelpers.TagHelpers.E*, AuthoringTagHelpers"
@@ -126,8 +120,6 @@ You can add a *_ViewImports.cshtml* to any view folder, and the view engine adds
 ### Opting out of individual elements
 
 You can disable a Tag Helper at the element level with the Tag Helper opt-out character ("!"). For example, `Email` validation is disabled in the `<span>` with the Tag Helper opt-out character:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -190,16 +182,12 @@ IntelliSense lists the properties and methods available to the model on the page
 
 Tag Helpers attach to HTML elements in Razor views, while [HTML Helpers](http://stephenwalther.com/archive/2009/03/03/chapter-6-understanding-html-helpers) are invoked as methods interspersed with HTML in Razor views. Consider the following Razor markup, which creates an HTML label with the CSS class "caption":
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html"} -->
-
 ````html
 
    @Html.Label("FirstName", "First Name:", new {@class="caption"})
    ````
 
 The at (`@`) symbol tells Razor this is the start of code. The next two parameters ("FirstName" and "First Name:") are strings, so [IntelliSense](https://msdn.microsoft.com/en-us/library/hcw1s69b.aspx) can't help. The last argument:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html"} -->
 
 ````html
 
@@ -247,8 +235,6 @@ The following code image shows the Form portion of the *Views/Account/Register.c
 ![image](intro/_static/regCS.png)
 
 The Visual Studio editor displays C# code with a grey background. For example, the `AntiForgeryToken` HTML Helper:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html"} -->
 
 ````html
 

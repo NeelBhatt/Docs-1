@@ -40,8 +40,6 @@ It's recommended that in your production environment you reference knockout via 
 
 To include Knockout on a page that will use it, simply add a `<script>` element referencing the file from wherever you will be hosting it (with your application, or via a CDN):
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html"} -->
-
 ````html
 
    <script type="text/javascript" src="knockout-3.3.0.js"></script>
@@ -81,8 +79,6 @@ When viewed in the browser, the content of the <span> element is replaced with t
 ![image](knockout/_static/simple-binding-screenshot.png)
 
 We now have simple one-way binding working. Notice that nowhere in the code did we write JavaScript to assign a value to the span's contents. If we want to manipulate the ViewModel, we can take this a step further and add an HTML input textbox, and bind to its value, like so:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html"} -->
 
 ````html
 
@@ -258,8 +254,6 @@ Notice that this time we're using ViewModel with a capital “V" because we expe
 
 To demonstrate that the observable collection is working, let's add a bit more functionality. We can include the ability to record the results of another game to the ViewModel, and then add a button and some UI to work with this new function.  First, let's create the addResult method:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "javascript"} -->
-
 ````javascript
 
    // add this to ViewModel()
@@ -269,8 +263,6 @@ To demonstrate that the observable collection is working, let's add a bit more f
    ````
 
 Bind this method to a button using the `click` binding:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html"} -->
 
 ````html
 
@@ -282,8 +274,6 @@ Open the page in the browser and click the button a couple of times, resulting i
 ![image](knockout/_static/record-addresult-screenshot.png)
 
 There are a few ways to support adding new records in the UI, typically either inline or in a separate form. We can easily modify the table to use textboxes and dropdownlists so that the whole thing is editable. Just change the `<tr>` element as shown:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html"} -->
 
 ````html
 
@@ -305,8 +295,6 @@ With this change, the entire grid becomes editable:
 If we weren't using Knockout, we could achieve all of this using jQuery, but most likely it would not be nearly as efficient. Knockout tracks which bound data items in the ViewModel correspond to which UI elements, and only updates those elements that need to be added, removed, or updated. It would take significant effort to achieve this ourselves using jQuery or direct DOM manipulation, and even then if we then wanted to display aggregate results (such as a win-loss record) based on the table's data, we would need to once more loop through it and parse the HTML elements.  With Knockout, displaying the win-loss record is trivial. We can perform the calculations within the ViewModel itself, and then display it with a simple text binding and a `<span>`.
 
 To build the win-loss record string, we can use a computed observable. Note that references to observable properties within the ViewModel must be function calls, otherwise they will not retrieve the value of the observable (i.e. `gameResults()` not `gameResults` in the code shown):
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "javascript"} -->
 
 ````javascript
 

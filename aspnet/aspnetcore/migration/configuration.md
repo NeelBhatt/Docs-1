@@ -37,8 +37,6 @@ For this article, we are starting with the partially-migrated ASP.NET Core proje
 
 Note that at this point, the *Startup.cs* file will not compile, as we still need to add the following `using` statement:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
-
 ````c#
 
    using Microsoft.Extensions.Configuration;

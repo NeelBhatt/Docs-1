@@ -190,8 +190,6 @@ The `DataType` attributes only provide hints for the view engine to format the d
 
 The `DisplayFormat` attribute is used to explicitly specify the date format:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
-
 ````c#
 
    [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
@@ -210,8 +208,6 @@ You can use the `DisplayFormat` attribute by itself, but it's generally a good i
 
 > [!NOTE]
 > jQuery validation does not work with the `Range` attribute and `DateTime`. For example, the following code will always display a client side validation error, even when the date is in the specified range:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 

@@ -134,8 +134,6 @@ The sample code (shown below) uses the `SetAbsoluteExpiration` method on `Memory
 
 In addition to setting an absolute expiration, a sliding expiration can be used to keep frequently requested items in the cache:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
-
 ````c#
 
    // keep item in cache as long as it is requested at least
@@ -145,8 +143,6 @@ In addition to setting an absolute expiration, a sliding expiration can be used 
    ````
 
 To avoid having frequently-accessed cache entries growing too stale (because their sliding expiration is constantly reset), you can combine absolute and sliding expirations:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -160,8 +156,6 @@ To avoid having frequently-accessed cache entries growing too stale (because the
 
 By default, an instance of `MemoryCache` will automatically manage the items stored, removing entries when necessary in response to memory pressure in the app. You can influence the way cache entries are managed by setting their [CacheItemPriority](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Memory/CacheItemPriority/index.html) when adding the item to the cache. For instance, if you have an item you want to keep in the cache unless you explicitly remove it, you would use the `NeverRemove` priority option:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
-
 ````c#
 
    // keep item in cache indefinitely unless explicitly removed
@@ -170,8 +164,6 @@ By default, an instance of `MemoryCache` will automatically manage the items sto
    ````
 
 When you do want to explicitly remove an item from the cache, you can do so easily using the `Remove` method:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 

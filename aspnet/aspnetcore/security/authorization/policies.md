@@ -9,8 +9,6 @@ Underneath the covers the [role authorization](roles.md#security-authorization-r
 
 An authorization policy is made up of one or more requirements and registered at application startup as part of the Authorization service configuration, in `ConfigureServices` in the *Startup.cs* file.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
-
 ````c#
 
    public void ConfigureServices(IServiceCollection services)
@@ -28,8 +26,6 @@ An authorization policy is made up of one or more requirements and registered at
 Here you can see an "Over21" policy is created with a single requirement, that of a minimum age, which is passed as a parameter to the requirement.
 
 Policies are applied using the `Authorize` attribute by specifying the policy name, for example;
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -49,8 +45,6 @@ Policies are applied using the `Authorize` attribute by specifying the policy na
 ## Requirements
 
 An authorization requirement is a collection of data parameters that a policy can use to evaluate the current user principal. In our Minimum Age policy the requirement we have a single parameter, the minimum age. A requirement must implement `IAuthorizationRequirement`. This is an empty, marker interface. A parameterized minimum age requirement might be implemented as follows;
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -76,8 +70,6 @@ An authorization handler is responsible for the evaluation of any properties of 
 <a name=security-authorization-handler-example></a>
 
 The minimum age handler might look like this:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -115,8 +107,6 @@ In the code above we first look to see if the current user principal has a date 
 
 Handlers must be registered in the services collection during configuration, for example;
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
-
 ````c#
 
    public void ConfigureServices(IServiceCollection services)
@@ -152,8 +142,6 @@ Regardless of what you call inside your handler all handlers for a requirement w
 ## Why would I want multiple handlers for a requirement?
 
 In cases where you want evaluation to be on an **OR** basis you implement multiple handlers for a single requirement. For example, Microsoft has doors which only open with key cards. If you leave your key card at home the receptionist prints a temporary sticker and opens the door for you. In this scenario you'd have a single requirement, *EnterBuilding*, but multiple handlers, each one examining a single requirement.
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -197,8 +185,6 @@ There may be occasions where fufilling a policy is simple to express in code. It
 
 For example the previous `BadgeEntryHandler` could be rewritten as follows;
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
-
 ````c#
 
    services.AddAuthorization(options =>
@@ -221,8 +207,6 @@ The `Handle` method you must implement in an authorization handler has two param
 For example MVC passes an instance of `Microsoft.AspNetCore.Mvc.Filters.AuthorizationFilterContext` in the resource property which is used to access HttpContext, RouteData and everything else MVC provides.
 
 The use of the `Resource` property is framework specific. Using information in the `Resource` property will limit your authorization policies to particular frameworks. You should cast the `Resource` property using the `as` keyword, and then check the cast has succeed to ensure your code doesn't crash with `InvalidCastExceptions` when run on other frameworks;
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 

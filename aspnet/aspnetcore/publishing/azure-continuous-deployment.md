@@ -199,8 +199,6 @@ After you make changes to your local code, you can republish.
 
 2. In the `Configure` method, modify the `Response.WriteAsync` method so that it appears as follows:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "aspx-cs"} -->
-
 ````aspx-cs
 
    await context.Response.WriteAsync("Hello World! Deploy to Azure.");
@@ -211,8 +209,6 @@ After you make changes to your local code, you can republish.
 4. In **Solution Explorer**, right-click **Solution 'SampleWebAppDemo'** and select **Commit**. The **Team Explorer** will be displayed.
 
 5. Enter a commit message, such as:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none"} -->
 
 ````none
 

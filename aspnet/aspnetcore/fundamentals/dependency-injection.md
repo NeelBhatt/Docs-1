@@ -398,8 +398,6 @@ The built-in services container is meant to serve the basic needs of the framewo
 
 First, add the appropriate container package(s) to the dependencies property in `project.json`:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "javascript"} -->
-
 ````javascript
 
    "dependencies" : {
@@ -432,8 +430,6 @@ Next, configure the container in `ConfigureServices` and return an `IServiceProv
 > When using a third-party DI container, you must change `ConfigureServices` so that it returns `IServiceProvider` instead of `void`.
 
 Finally, configure Autofac as normal in `DefaultModule`:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 

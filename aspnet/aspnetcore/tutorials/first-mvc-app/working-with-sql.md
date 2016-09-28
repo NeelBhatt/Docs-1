@@ -130,8 +130,6 @@ Create a new class named `SeedData` in the *Models* folder. Replace the generate
 
 Notice if there are any movies in the DB, the seed initializer returns.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
-
 ````c#
 
    if (context.Movie.Any())

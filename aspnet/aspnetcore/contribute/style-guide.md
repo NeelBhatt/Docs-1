@@ -25,8 +25,6 @@ Section headings should correspond to the bulleted list of topics set out after 
 
 Subsection headings can be used to organize content within a section. *Headings*, above, is an example of a subsection heading. A subsection heading should appear on its own line, followed by a line of ^^^ characters.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "rst"} -->
-
 ````rst
 
    Title (H1)
@@ -78,8 +76,6 @@ Format specific items using these rules:
 
 Links should use HTTPS when possible. Inline hyperlinks are formatted like this:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "rst"} -->
-
 ````rst
 
    Learn more about `ASP.NET <https://www.asp.net>`_.
@@ -90,8 +86,6 @@ Learn more about [ASP.NET](https://www.asp.net).
 Surround the link text with backticks. Within the backticks, place the target in angle brackets, and ensure there is a space between the end of the link text and the opening angle bracket. Follow the closing backtick with an underscore.
 
 In addition to URLs, documents and document sections can also be linked by name:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "rst"} -->
 
 ````rst
 
@@ -106,8 +100,6 @@ Any element that is rendered as a link should not have any additional formatting
 
 Lists can be started with a `-` or `*` character:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "rst"} -->
-
 ````rst
 
    - This is one item
@@ -115,8 +107,6 @@ Lists can be started with a `-` or `*` character:
    ````
 
 Numbered lists can start with a number, or they can be auto numbered by starting each item with the # character. Please use the # syntax.
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "rst"} -->
 
 ````rst
 
@@ -131,8 +121,6 @@ Numbered lists can start with a number, or they can be auto numbered by starting
 
 Source code is very commonly included in these articles. Images should never be used to display source code. Prefer `literalinclude` for most code samples. Reserve `code-block` for small snippets that are not included in the sample project. A `code-block` can be declared as shown below, including spaces, blank lines, and indentation:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "rst"} -->
-
 ````rst
 
    .. code-block:: c#
@@ -144,8 +132,6 @@ Source code is very commonly included in these articles. Images should never be 
    ````
 
 This results in:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -166,8 +152,6 @@ The code block ends when you begin a new paragraph without indentation. [Sphinx 
 <a name=captions></a>
 
 Line numbers should only be used while editing to assist in find the line numbers to emphasize. Code blocks also support line numbers and emphasizing or highlighting certain lines:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "rst"} -->
 
 ````rst
 
@@ -208,8 +192,6 @@ Images such as screen shots and explanatory figures or diagrams should be placed
 
 To include an image in an article, use the `.. image` directive:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "rst"} -->
-
 ````rst
 
    .. image:: style-guide/_static/asp-net.png
@@ -228,8 +210,6 @@ Images are responsively sized according to the browser viewport when using this 
 
 To add a note callout, like the ones shown in this document, use the `.. note::` directive.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "rst"} -->
-
 ````rst
 
    .. note:: This is a note.
@@ -245,8 +225,6 @@ This results in:
 One nice feature of ReStructuredText is its ability to reference external files. This allows actual sample source files to be referenced from documentation articles, reducing the chances of the documentation content getting out of sync with the actual, working code sample (assuming the code sample works, of course). However, if documentation articles are referencing samples by filename and line number, it is important that the documentation articles be reviewed whenever changes are made to the source code, otherwise these references may be broken or point to the wrong line number. For this reason, it is recommended that samples be specific to individual articles, so that updates to the sample will only affect a single article (at most, an article series could reference a common sample). Samples should therefore be placed in a subfolder named the same as the article file, in a `sample` folder (e.g. `/article-name/sample/`).
 
 External file references can specify a language, emphasize certain lines, display line numbers (recommended), similar to [Source Code](#source-code). Remember that these line number references may need to be updated if the source file is changed.
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "rst"} -->
 
 ````rst
 
@@ -318,8 +296,6 @@ Tables should never render with horizontal scroll bars. Tables can be constructe
 ### UI navigation
 
 When documenting how a user should navigate a series of menus, use the `:menuselection:` directive:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "rst"} -->
 
 ````rst
 

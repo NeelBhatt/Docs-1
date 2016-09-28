@@ -80,8 +80,6 @@ A good scenario in which to set `NoStore` to `true` is error pages. It's unlikel
 
 This will result in the following headers:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "javascript"} -->
-
 ````javascript
 
    Cache-Control: no-store,no-cache
@@ -112,8 +110,6 @@ Below is an example showing the headers produced by setting `Duration` and leavi
    ````
 
 Produces the following headers:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "javascript"} -->
 
 ````javascript
 
@@ -175,8 +171,6 @@ Referencing a cache profile:
 In the above example, a class-level attribute specifies a duration of 30 seconds while a method-level attributes references a cache profile with a duration set to 60 seconds.
 
 The resulting header:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "javascript"} -->
 
 ````javascript
 

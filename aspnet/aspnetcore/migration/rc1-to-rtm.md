@@ -25,8 +25,6 @@ If your app targeted `dnx451` or  `dnxcore50` in the `frameworks` section of *pr
 
 .NET Core apps must add a dependency to the `Microsoft.NETCore.App` package:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none"} -->
-
 ````none
 
    "dependencies": {
@@ -70,8 +68,6 @@ See [.NET Core CLI extensibility model](https://dotnet.github.io/docs/core-conce
 
 IIS publishing is now provided by the `publish-iis` tool in the `Microsoft.AspNetCore.Server.IISIntegration.Tools` package. If you intend to run your app behind IIS, add the `publish-iis` tool to your *project.json*:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "json"} -->
-
 ````json
 
    {
@@ -83,8 +79,6 @@ IIS publishing is now provided by the `publish-iis` tool in the `Microsoft.AspNe
 
 The `publish-iis` tool is commonly used in the `postpublish` script in *project.json*:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "json"} -->
-
 ````json
 
    {
@@ -95,8 +89,6 @@ The `publish-iis` tool is commonly used in the `postpublish` script in *project.
 ### Entity Framework commands
 
 The `ef` tool is now provided in the `Microsoft.EntityFrameworkCore.Tools` package:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "json"} -->
 
 ````json
 
@@ -113,8 +105,6 @@ For more information, see [.NET Core CLI](https://docs.efproject.net/en/latest/c
 
 Razor tooling is now provided in the `Microsoft.AspNetCore.Razor.Tools` package:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "json"} -->
-
 ````json
 
    {
@@ -127,8 +117,6 @@ Razor tooling is now provided in the `Microsoft.AspNetCore.Razor.Tools` package:
 ### SQL cache tool
 
 The `sqlservercache` command, formerly provided by the `Microsoft.Extensions.Caching.SqlConfig` package, has been replaced by the `sql-cache` tool, available through the `Microsoft.Extensions.Caching.SqlConfig.Tools` package:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "json"} -->
 
 ````json
 
@@ -143,8 +131,6 @@ The `sqlservercache` command, formerly provided by the `Microsoft.Extensions.Cac
 
 The `user-secret` command, formerly provided by the `Microsoft.Extensions.SecretManager` package, has been replaced by the `user-secrets` tool, available through the `Microsoft.Extensions.SecretManager.Tools` package:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "json"} -->
-
 ````json
 
    {
@@ -157,8 +143,6 @@ The `user-secret` command, formerly provided by the `Microsoft.Extensions.Secret
 ### File watcher
 
 The `watch` command, formerly provided by the `Microsoft.Dnx.Watcher` package, has been replaced by the `watch` tool, available through the `Microsoft.DotNet.Watcher.Tools` package:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "json"} -->
 
 ````json
 
@@ -174,8 +158,6 @@ For more information on the file watcher, see **Dotnet watch** in  [Tutorials](.
 ## Hosting  ### Creating the web application host
 
 ASP.NET Core 1.0 apps are console apps; you must define an entry point for your app that sets up a web host and runs it. Below is an example from the startup code for one of the Web Application templates in Visual Studio:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -196,8 +178,6 @@ ASP.NET Core 1.0 apps are console apps; you must define an entry point for your 
    ````
 
 You must add the `emitEntryPoint` to the `buildOptions` section of your application's *project.json*:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "json"} -->
 
 ````json
 
@@ -234,16 +214,12 @@ The environment key is set with the `ASPNETCORE_ENVIRONMENT` environment variabl
 
 Dependency injection code that uses `IApplicationEnvironment` must now use [IHostingEnvironment](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/IHostingEnvironment/index.html.md#Microsoft.AspNetCore.Hosting.IHostingEnvironment.md). For example, in your `Startup` class, change:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
-
 ````c#
 
    public Startup(IApplicationEnvironment applicationEnvironment)
    ````
 
 To:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -266,8 +242,6 @@ The following action result types have also been renamed:
 
 To compile views, set the `preserveCompilationContext` option in *project.json* to preserve the compilation context, as shown here:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "json"} -->
-
 ````json
 
    {
@@ -283,16 +257,12 @@ Views now support relative paths.
 
 The Validation Summary Tag Helper `asp-validation-summary` attribute value has changed. Change:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html"} -->
-
 ````html
 
    <div asp-validation-summary="ValidationSummary.All"></div>
    ````
 
 To:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html"} -->
 
 ````html
 
@@ -313,16 +283,12 @@ To:
 
 ASP.NET 5 RC1:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
-
 ````c#
 
    @Component.InvokeAsync("Test", "MyName", 15)
    ````
 
 ASP.NET Core 1.0:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -387,8 +353,6 @@ The signatures for the following methods or properties have changed:
 
 To use Identity in a view, add the following:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
-
 ````c#
 
    @using Microsoft.AspNetCore.Identity
@@ -403,8 +367,6 @@ The package `Microsoft.AspNetCore.IISPlatformHandler` has been replaced by `Micr
 HttpPlatformHandler has been replaced by the [ASP.NET Core Module (ANCM)](../hosting/aspnet-core-module.md). The *web.config* file created by the *Publish to IIS tool* now configures IIS to the ANCM instead of HttpPlatformHandler to reverse-proxy requests.
 
 The ASP.NET Core Module must be configured in *web.config*:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "xml"} -->
 
 ````xml
 
@@ -424,8 +386,6 @@ The *Publish to IIS tool* generates a correct *web.config*. See [Publishing to I
 
 IIS integration middleware is now configured when creating the [Microsoft.AspNetCore.Hosting.WebHostBuilder](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/WebHostBuilder/index.html.md#Microsoft.AspNetCore.Hosting.WebHostBuilder.md), and is no longer called in the `Configure` method of the `Startup` class:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
-
 ````c#
 
    var host = new WebHostBuilder()
@@ -444,8 +404,6 @@ An *applicationhost.config* file created with ASP.NET 5 RC1 will point ASP.NET C
 ## Updating Launch Settings in Visual Studio
 
 Update `launchSettings.json` to remove the web target and add the following:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "json"} -->
 
 ````json
 

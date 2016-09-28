@@ -101,8 +101,6 @@ We'll use the [Options pattern](../../fundamentals/configuration.md#options-conf
 
 Set `SID`, `AuthToken`, and `SendNumber` with the [secret-manager tool](../app-secrets.md). For example:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none"} -->
-
 ````none
 
    C:/WebSMS/src/WebApplication1>dotnet user-secrets set SID abcdefghi
@@ -267,8 +265,6 @@ If you're able to use the Twilio API, but you don't get an SMS message, try the 
 1. Log in to the Twilio site and navigate to the **Logs** > **SMS & MMS Logs** page. You can verify that messages were sent and delivered.
 
 2. Use the following code in a console application to test Twilio:
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
