@@ -69,7 +69,7 @@ If a request includes a non-empty querystring parameter for the variable `throw`
 
 When not in development, it's a good idea to configure an exception handler path using the `UseExceptionHandler` middleware:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -78,7 +78,7 @@ When not in development, it's a good idea to configure an exception handler path
 
 For the action associated with the endpoint, don't explicitly decorate the `IActionResult` with HTTP method attributes, such as `HttpGet`. Using explicit verbs could prevent some requests from reaching the method.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -109,7 +109,7 @@ In this case, you can see the value of the `throw` parameter that was passed to 
 
 By default, your app will not provide a rich status code page for HTTP status codes such as 500 (Internal Server Error) or 404 (Not Found). You can configure the `StatusCodePagesMiddleware` adding this line to the `Configure` method:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -122,7 +122,7 @@ By default, this middleware adds very simple, text-only handlers for common stat
 
 The middleware supports several different extension methods. You can pass it a custom lamdba expression:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -133,7 +133,7 @@ The middleware supports several different extension methods. You can pass it a c
 
 Alternately, you can simply pass it a content type and a format string:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -142,7 +142,7 @@ Alternately, you can simply pass it a content type and a format string:
 
 The middleware can handle redirects (with either relative or absolute URL paths), passing the status code as part of the URL:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -153,7 +153,7 @@ In the above case, the client browser will see a `302 / Found` status and will r
 
 Alternately, the middleware can re-execute the request from a new path format string:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -164,7 +164,7 @@ The `UseStatusCodePagesWithReExecute` method will still return the original stat
 
 If you need to disable status code pages for certain requests, you can do so using the following code:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 

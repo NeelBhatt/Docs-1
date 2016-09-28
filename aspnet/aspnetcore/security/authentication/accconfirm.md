@@ -55,7 +55,7 @@ In this section we'll set up our Visual Studio project to use SSL and our projec
 
 * Add the following code to `ConfigureServices` in `Startup`:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -102,7 +102,7 @@ We'll use the [Options pattern](../../fundamentals/configuration.md#options-conf
 
 Set the `SendGridUser` and `SendGridKey` with the [secret-manager tool](../app-secrets.md). For example:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none"} -->
 
 ````none
 
@@ -127,7 +127,7 @@ On Windows, Secret Manager stores your keys/value pairs in a *secrets.json* file
 
 At this time, the contents of the *secrets.json* file are not encrypted. The *secrets.json* file is shown below (the sensitive keys have been removed.)
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "json", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "json"} -->
 
 ````json
 
@@ -258,7 +258,7 @@ The template already has the code for account confirmation and password recovery
 
 **Note:** We're also preventing a newly registered user from being automatically logged on by commenting out the following line:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 

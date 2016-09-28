@@ -30,7 +30,7 @@ Update the `Index` action method to enable search:
 
 The first line of the `Index` action method creates a [LINQ](http://msdn.microsoft.com/en-us/library/bb397926.aspx) query to select the movies:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -233,7 +233,7 @@ Now when you submit a search, the URL contains the search query string. Searchin
 
 The following markup shows the change to the `form` tag:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html"} -->
 
 ````html
 
@@ -308,7 +308,7 @@ Replace the `Index` method with the following code:
 
 The following code is a `LINQ` query that retrieves all the genres from the database.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -319,7 +319,7 @@ The following code is a `LINQ` query that retrieves all the genres from the data
 
 The `SelectList` of genres is created by projecting the distinct genres (we don't want our select list to have duplicate genres).
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 

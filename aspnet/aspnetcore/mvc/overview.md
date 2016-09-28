@@ -81,7 +81,7 @@ ASP.NET Core MVC is built on top of [ASP.NET Core's routing](../fundamentals/rou
 
 *Convention-based routing* enables you to globally define the URL formats that your application accepts and how each of those formats maps to a specific action method on given controller. When an incoming request is received, the routing engine parses the URL and matches it to one of the defined URL formats, and then calls the associated controller's action method.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -109,7 +109,7 @@ ASP.NET Core MVC is built on top of [ASP.NET Core's routing](../fundamentals/rou
 
 ASP.NET Core MVC [model binding](models/model-binding.md) converts client request data  (form values, route data, query string parameters, HTTP headers) into objects that the controller can handle. As a result, your controller logic doesn't have to do the work of figuring out the incoming request data; it simply has the data as parameters to its action methods.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "C#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "C#"} -->
 
 ````C#
 
@@ -215,7 +215,7 @@ The framework's use of interfaces and dependency injection make it well-suited t
 
 [ASP.NET Core MVC views](views/overview.md) use the the [Razor view engine](views/razor.md) to render views. Razor is a compact, expressive and fluid template markup language for defining views using embedded C# code. Razor is used to dynamically generate web content on the server. You can cleanly mix server code with client side content and code.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "text", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "text"} -->
 
 ````text
 
@@ -234,7 +234,7 @@ Razor views in MVC can be strongly typed based on your model. Controllers can pa
 
 For example, the following view defines a model of type `IEnumerable<Product>`:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html"} -->
 
 ````html
 

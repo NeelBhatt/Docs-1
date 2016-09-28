@@ -36,7 +36,7 @@ Build the app (Ctrl+Shift+B).
 
 Because you've added a new field to the `Movie` class, you also need to update the binding white list so this new property will be included. Update the `[Bind]` attribute for `Create` and `Edit` action methods to include the `Rating` property:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -134,7 +134,7 @@ Update the `SeedData` class so that it provides a value for the new column. A sa
 
 Build the solution then open a command prompt. Enter the following commands:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "console", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "console"} -->
 
 ````console
 

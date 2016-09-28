@@ -76,7 +76,7 @@ You can configure other actions to take place within the OWIN pipeline.
 > [!NOTE]
 > Multiple calls to `UseOwin` is discouraged for performance reasons. OWIN components will operate best if grouped together.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 

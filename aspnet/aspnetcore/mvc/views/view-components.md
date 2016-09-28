@@ -92,7 +92,7 @@ We recommend you name the view file *Default.cshtml* and use the *Views/Shared/C
 
 To use the view component, call `@Component.InvokeAsync("Name of view component", <anonymous type containing parameters>)` from a view. The parameters will be passed to the `InvokeAsync` method.  The `PriorityList` view component developed in the article is invoked from the *Views/Todo/Index.cshtml* view file. In the following, the `InvokeAsync` method is called with two parameters:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML"} -->
 
 ````HTML
 
@@ -172,7 +172,7 @@ Notes on the code:
 
 * The `[ViewComponent]` attribute can change the name used to reference a view component. For example, we could have named the class `XYZ`,  and  applied the  `ViewComponent` attribute:
 
-  <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+  <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
   ````c#
 

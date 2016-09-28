@@ -701,7 +701,7 @@ The solution is to get the options objects with the actual options values in you
 
 You saw earlier that the `Invoke` method in your middleware takes a parameter of type `HttpContext`:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -973,7 +973,7 @@ The solution is to set a callback method that will be called right before writin
 
 The following code sets a callback method called `SetHeaders`:
 
-   <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+   <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
    ````c#
 
@@ -1028,7 +1028,7 @@ The `SetHeaders` callback method would look like this:
 
 Cookies travel to the browser in a *Set-Cookie* response header. As a result, sending cookies requires the same callback as used for sending response headers:
 
-   <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+   <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
    ````c#
 

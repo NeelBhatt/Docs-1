@@ -101,7 +101,7 @@ We'll use the [Options pattern](../../fundamentals/configuration.md#options-conf
 
 Set `SID`, `AuthToken`, and `SendNumber` with the [secret-manager tool](../app-secrets.md). For example:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none"} -->
 
 ````none
 
@@ -268,7 +268,7 @@ If you're able to use the Twilio API, but you don't get an SMS message, try the 
 
 2. Use the following code in a console application to test Twilio:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 

@@ -124,7 +124,7 @@ A layout can optionally reference one or more *sections*, by calling `RenderSect
 
 An example `@section` definition in a view:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html"} -->
 
 ````html
 

@@ -68,7 +68,7 @@ The `HttpContext` abstraction provides support for a simple dictionary collectio
 
 For example, some simple [Middleware](middleware.md) could add something to the `Items` collection:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -82,7 +82,7 @@ For example, some simple [Middleware](middleware.md) could add something to the 
 
 and later in the pipeline, another piece of middleware could access it:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -108,7 +108,7 @@ Once the package is installed, Session must be configured in your application's 
 
 ASP.NET ships with several implementations of `IDistributedCache`, including an in-memory option (to be used during development and testing only). To configure session using this in-memory option add the `Microsoft.Extensions.Caching.Memory` package in your project.json file and then add the following to `ConfigureServices`:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -118,7 +118,7 @@ ASP.NET ships with several implementations of `IDistributedCache`, including an 
 
 Then, add the following to `Configure` **before** `app.UseMVC()` and you're ready to use session in your application code:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -141,7 +141,7 @@ Session uses a cookie to track and disambiguate between requests from different 
 
 These defaults, as well as the default `IdleTimeout` (used on the server independent from the cookie), can be overridden when configuring `Session` by using `SessionOptions` as shown here:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -161,7 +161,7 @@ The `IdleTimeout` is used by the server to determine how long a session can be i
 
 Once session is installed and configured, you refer to it via HttpContext, which exposes a property called `Session` of type [ISession](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Http/ISession/index.html.md#Microsoft.AspNetCore.Http.ISession.md). You can use this interface to get and set values in `Session`, such as `byte[]`.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -181,7 +181,7 @@ Once session is installed and configured, you refer to it via HttpContext, which
 
 Because `Session` is built on top of `IDistributedCache`, you must always serialize the object instances being stored. Thus, the interface works with `byte[]` not simply `object`. However, there are extension methods that make working with simple types such as `String` and `Int32` easier, as well as making it easier to get a byte[] value from session.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 

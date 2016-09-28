@@ -263,7 +263,7 @@ Note the presence of *[controller]* on line 8. Attribute-based routing now suppo
 
 To migrate the Products API controller, we must first copy *ProductsController* to the new project. Then simply include the route attribute on the controller:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -272,7 +272,7 @@ To migrate the Products API controller, we must first copy *ProductsController* 
 
 You also need to add the `[HttpGet]` attribute to the two methods, since they both should be called via HTTP Get. Include the expectation of an "id" parameter in the attribute for `GetProduct()`:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 

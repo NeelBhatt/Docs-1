@@ -39,7 +39,7 @@ Sample:
 
 The Form Tag Helper above generates the following HTML:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML"} -->
 
 ````HTML
 
@@ -84,7 +84,7 @@ The Input Tag Helper binds an HTML [<input>](https://www.w3.org/wiki/HTML/Elemen
 
 Syntax:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML"} -->
 
 ````HTML
 
@@ -105,7 +105,7 @@ The Input Tag Helper:
 
 * Provides strong typing. If the name of the property changes and you don't update the Tag Helper you'll get an error similar to the following:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML"} -->
 
 ````HTML
 
@@ -166,7 +166,7 @@ Sample:
 
 The code above generates the following HTML:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML"} -->
 
 ````HTML
 
@@ -195,7 +195,7 @@ The data annotations applied to the `Email` and `Password` properties generate m
 
 The `asp-for` attribute value is a [ModelExpression](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Rendering/ModelExpression/index.html) and the right hand side of a lambda expression. Therefore, `asp-for="Property1"` becomes `m => m.Property1` in the generated code which is why you don't need to prefix with `Model`. You can use the "@" character to start an inline expression and move before the `m.`:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML"} -->
 
 ````HTML
 
@@ -207,7 +207,7 @@ The `asp-for` attribute value is a [ModelExpression](https://docs.asp.net/projec
 
 Generates the following:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML"} -->
 
 ````HTML
 
@@ -264,7 +264,7 @@ In the view, we bind to `Address.AddressLine1`:
 
 The following HTML is generated for `Address.AddressLine1`:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML"} -->
 
 ````HTML
 
@@ -290,7 +290,7 @@ Sample, a model containing an array of `Colors`:
 
 The action method:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -516,7 +516,7 @@ Sample:
 
 The following HTML is generated for the `<label>` element:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML"} -->
 
 ````HTML
 
@@ -539,7 +539,7 @@ There are two Validation Tag Helpers. The [Validation Message Tag Helper](https:
 
 The [Validation Message Tag Helper](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/TagHelpers/ValidationMessageTagHelper/index.html)  is used with the `asp-validation-for` attribute on a HTML [span](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span) element.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML"} -->
 
 ````HTML
 
@@ -548,7 +548,7 @@ The [Validation Message Tag Helper](https://docs.asp.net/projects/api/en/latest/
 
 The Validation Message Tag Helper will generate the following HTML:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML"} -->
 
 ````HTML
 
@@ -564,7 +564,7 @@ Note:
 
 When a server side validation error occurs (for example when you have custom server side validation or client-side validation is disabled), MVC places that error message as the body of the `<span>` element.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML"} -->
 
 ````HTML
 

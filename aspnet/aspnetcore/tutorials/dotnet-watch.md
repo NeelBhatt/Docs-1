@@ -27,7 +27,7 @@ In a console, open the folder where you downloaded the sample application and ru
 
 The console output will show messages similar to the ones below, indicating that the application is now running and waiting for requests:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "bash", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "bash"} -->
 
 ````bash
 
@@ -71,7 +71,7 @@ We'll fix that.
 
 The console output will show messages similar to the ones below:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "bash", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "bash"} -->
 
 ````bash
 
@@ -89,7 +89,7 @@ Any `dotnet` command can be run with  `dotnet watch`:  For example:
 
 To run `WebApp` using the watcher, run `dotnet watch run` in the `WebApp` folder. The console output will show messages similar to the ones below, indicating that `dotnet watch` is now watching code files:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "bash", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "bash"} -->
 
 ````bash
 
@@ -130,7 +130,7 @@ Fix the code by replacing `a + b` with `a * b`.
 
 Save the file. The console output will show messages similar to the ones below, indicating that `dotnet watch` detected a file change and restarted the application.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "bash", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "bash"} -->
 
 ````bash
 
@@ -162,7 +162,7 @@ The file watcher can run other `dotnet` commands like `test` or `publish`.
 
 If you previously fixed the bug in the `MathController` then you'll see an output similar to the one below, otherwise you'll see a test failure:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "bash", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "bash"} -->
 
 ````bash
 
@@ -189,7 +189,7 @@ Once all the tests run, the watcher will indicate that it's waiting for a file t
 
 `dotnet watch` will detect the file change and rerun the tests. The console output will show messages similar to the one below:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "bash", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "bash"} -->
 
 ````bash
 

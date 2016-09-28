@@ -51,7 +51,7 @@ For more information on the ASP.NET Core Module, including configuration of the 
 
 Include a dependency on the *Microsoft.AspNetCore.Server.IISIntegration* package in the application dependencies. Incorporate IIS Integration middleware into the application by adding the *.UseIISIntegration()* extension method to *WebHostBuilder()*.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp"} -->
 
 ````csharp
 
@@ -69,7 +69,7 @@ Note that code calling *.UseIISIntegration()* does not affect code portability.
 
 To configure *IISIntegration* service options, include a service configuration for *IISOptions* in *ConfigureServices*.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp"} -->
 
 ````csharp
 
@@ -84,7 +84,7 @@ The *publish-iis* tool can be added to any .NET Core application and will config
 
 To include the *publish-iis* tool in your application, add entries to the *tools* and *scripts* sections of *project.json*.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none"} -->
 
 ````none
 

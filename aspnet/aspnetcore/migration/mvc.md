@@ -38,7 +38,7 @@ Open the *project.json* file.
 
 * Add the "prepublish" line to the "scripts" section:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "JavaScript", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "JavaScript"} -->
 
 ````JavaScript
 
@@ -115,7 +115,7 @@ The project structure is shown below:
 
 Replace the contents of the *Views/Home/Index.cshtml* file with the following:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html"} -->
 
 ````html
 
@@ -341,7 +341,7 @@ Open *_Layout.cshtml* file and make the following changes (the completed code is
 
 The replacement CSS link:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html"} -->
 
 ````html
 
@@ -350,7 +350,7 @@ The replacement CSS link:
 
 The replacement script tags:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html"} -->
 
 ````html
 

@@ -38,7 +38,7 @@ Enabling these credentials in your web sites provides a significant advantage be
 
 * Require SSL. Modify the services.AddMvc(); code in `Startup` under `ConfigureServices`:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 

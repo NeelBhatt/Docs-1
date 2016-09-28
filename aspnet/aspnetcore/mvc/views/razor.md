@@ -13,7 +13,7 @@ Razor is a markup syntax for embedding server based code into web pages. The Raz
 
 The default Razor language is HTML. Rendering HTML from Razor is no different than in an HTML file. A Razor file with the following markup:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html"} -->
 
 ````html
 
@@ -30,7 +30,7 @@ Razor supports C# and uses the `@` symbol to transition from HTML to C#. Razor e
 
 HTML containing `@` symbols may need to be escaped with a second `@` symbol. For example:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html"} -->
 
 ````html
 
@@ -39,7 +39,7 @@ HTML containing `@` symbols may need to be escaped with a second `@` symbol. For
 
 would render the following HTML:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html"} -->
 
 ````html
 
@@ -56,7 +56,7 @@ HTML attributes and content containing email addresses don’t treat the `@` sym
 
 Implicit Razor expressions start with `@` followed by C# code. For example:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html"} -->
 
 ````html
 
@@ -66,7 +66,7 @@ Implicit Razor expressions start with `@` followed by C# code. For example:
 
 With the exception of the C# `await` keyword implicit expressions must not contain spaces. For example, you can intermingle spaces as long as the C# statement has a clear ending:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html"} -->
 
 ````html
 
@@ -79,7 +79,7 @@ With the exception of the C# `await` keyword implicit expressions must not conta
 
 Explicit Razor expressions consists of an @ symbol with balanced parenthesis. For example, to render last weeks’ time:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html"} -->
 
 ````html
 
@@ -102,7 +102,7 @@ Implicit expressions generally cannot contain spaces. For example, in the code b
 
 Which renders the following HTML:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html"} -->
 
 ````html
 
@@ -130,7 +130,7 @@ Without the explicit expression, `<p>Age@joe.Age</p>` would be treated as an ema
 
 C# expressions that evaluate to a string are HTML encoded. C# expressions that evaluate to [IHtmlContent](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Html/IHtmlContent/index.html.md#Microsoft.AspNetCore.Html.IHtmlContent.md) are rendered directly through *IHtmlContent.WriteTo*. C# expressions that don't evaluate to *IHtmlContent* are converted to a string (by *ToString*) and encoded before they are rendered. For example, the following Razor markup:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html"} -->
 
 ````html
 
@@ -139,7 +139,7 @@ C# expressions that evaluate to a string are HTML encoded. C# expressions that e
 
 Renders this HTML:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html"} -->
 
 ````html
 
@@ -157,7 +157,7 @@ Which the browser renders as:
 
 The following Razor markup:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html"} -->
 
 ````html
 
@@ -166,7 +166,7 @@ The following Razor markup:
 
 Renders this HTML:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html"} -->
 
 ````html
 
@@ -179,7 +179,7 @@ Renders this HTML:
 
 Razor code blocks start with `@` and are enclosed by `{}`. Unlike expressions, C# code inside code blocks is not rendered. Code blocks and expressions in a Razor page share the same scope and are defined in order (that is, declarations in a code block will be in scope for later code blocks and expressions).
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none"} -->
 
 ````none
 
@@ -192,7 +192,7 @@ Razor code blocks start with `@` and are enclosed by `{}`. Unlike expressions, C
 
 Would render:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html"} -->
 
 ````html
 
@@ -205,7 +205,7 @@ Would render:
 
 The default language in a code block is C#, but you can transition back to HTML. HTML within a code block will transition back into rendering HTML:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none"} -->
 
 ````none
 
@@ -263,7 +263,7 @@ Control structures are an extension of code blocks. All aspects of code blocks (
 
 The `@if` family controls when code runs:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none"} -->
 
 ````none
 
@@ -275,7 +275,7 @@ The `@if` family controls when code runs:
 
 `else` and `else if` don't require the `@` symbol:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none"} -->
 
 ````none
 
@@ -295,7 +295,7 @@ The `@if` family controls when code runs:
 
 You can use a switch statement like this:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none"} -->
 
 ````none
 
@@ -317,7 +317,7 @@ You can use a switch statement like this:
 
 You can render templated HTML with looping control statements. For example, to render a list of people:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none"} -->
 
 ````none
 
@@ -334,7 +334,7 @@ You can use any of the following looping statements:
 
 `@for`
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none"} -->
 
 ````none
 
@@ -348,7 +348,7 @@ You can use any of the following looping statements:
 
 `@foreach`
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none"} -->
 
 ````none
 
@@ -361,7 +361,7 @@ You can use any of the following looping statements:
 
 `@while`
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none"} -->
 
 ````none
 
@@ -378,7 +378,7 @@ You can use any of the following looping statements:
 
 `@do while`
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none"} -->
 
 ````none
 
@@ -397,7 +397,7 @@ You can use any of the following looping statements:
 
 In C# a using statement is used to ensure an object is disposed. In Razor this same mechanism can be used to create [HTML helpers](html-helpers.md) that contain additional content. For instance, we can utilize [🔧 HTML Helpers](html-helpers.md) to render a form tag with the `@using` statement:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none"} -->
 
 ````none
 
@@ -439,7 +439,7 @@ Exception handling is similar to  C#:
 
 Razor has the capability to protect critical sections with lock statements:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none"} -->
 
 ````none
 
@@ -453,7 +453,7 @@ Razor has the capability to protect critical sections with lock statements:
 
 Razor supports C# and HTML comments. The following markup:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none"} -->
 
 ````none
 
@@ -466,7 +466,7 @@ Razor supports C# and HTML comments. The following markup:
 
 Is rendered by the server as:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none"} -->
 
 ````none
 
@@ -475,7 +475,7 @@ Is rendered by the server as:
 
 Razor comments are removed by the server before the page is rendered. Razor uses `@*  *@` to delimit comments. The following code is commented out, so the server will not render any markup:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none"} -->
 
 ````none
 
@@ -510,7 +510,7 @@ Understanding how Razor generates code for a view will make it easier to underst
 
 Generates a class similar to the following:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -548,7 +548,7 @@ The `@using` directive will add the c# `using` directive to the generated razor 
 
 The `@model` directive allows you to specify the type of the model passed to your Razor page. It uses the following syntax:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none"} -->
 
 ````none
 
@@ -557,7 +557,7 @@ The `@model` directive allows you to specify the type of the model passed to you
 
 For example, if you create an ASP.NET Core MVC app with individual user accounts, the *Views/Account/Login.cshtml* Razor view contains the following model declaration:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -566,7 +566,7 @@ For example, if you create an ASP.NET Core MVC app with individual user accounts
 
 In the class example in , the class generated inherits from `RazorPage<dynamic>`. By adding an `@model` you control what’s inherited. For example
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -575,7 +575,7 @@ In the class example in , the class generated inherits from `RazorPage<dynamic>`
 
 Generates the following class
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -584,7 +584,7 @@ Generates the following class
 
 Razor pages expose a `Model` property for accessing the model passed to the page.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html"} -->
 
 ````html
 
@@ -597,7 +597,7 @@ The `@model` directive specified the type of this property (by specifying the `T
 
 The `@inherits` directive gives you full control of the class your Razor page inherits:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none"} -->
 
 ````none
 
@@ -653,7 +653,7 @@ The following strongly typed Razor page
 
 Generates this HTML markup:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none"} -->
 
 ````none
 
@@ -673,7 +673,7 @@ The `@inject` directive enables you to inject a service from your [service conta
 
 The `@functions` directive enables you to add function level content to your Razor page. The syntax is:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none"} -->
 
 ````none
 
@@ -699,7 +699,7 @@ For example:
 
 Generates the following HTML markup:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none"} -->
 
 ````none
 

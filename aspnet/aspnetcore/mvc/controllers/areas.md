@@ -65,7 +65,7 @@ Let's take a look at an example to illustrate how Areas are created and used. Le
 
 When MVC tries to render a view in an Area, by default, it tries to look in the following locations:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "text", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "text"} -->
 
 ````text
 
@@ -78,7 +78,7 @@ These are the default locations which can be changed via the `AreaViewLocationFo
 
 For example, in the below code instead of having the folder name as 'Areas', it has been changed to 'Categories'.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -184,7 +184,7 @@ Browsing to *http://<yourApp>/products*, the `Index` action method of the `HomeC
 
 To publish all views of the areas folder, in the `project.json` file include an entry in the `publishOptions`'s `include` node like below:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "text", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "text"} -->
 
 ````text
 

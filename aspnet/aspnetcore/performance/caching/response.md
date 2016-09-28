@@ -80,7 +80,7 @@ A good scenario in which to set `NoStore` to `true` is error pages. It's unlikel
 
 This will result in the following headers:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "javascript", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "javascript"} -->
 
 ````javascript
 
@@ -113,7 +113,7 @@ Below is an example showing the headers produced by setting `Duration` and leavi
 
 Produces the following headers:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "javascript", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "javascript"} -->
 
 ````javascript
 
@@ -176,7 +176,7 @@ In the above example, a class-level attribute specifies a duration of 30 seconds
 
 The resulting header:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "javascript", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "javascript"} -->
 
 ````javascript
 

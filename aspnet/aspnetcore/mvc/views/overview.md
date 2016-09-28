@@ -164,7 +164,7 @@ In addition to strongly typed views, all views have access to a loosely typed co
 
 Set some values for `ViewData` in an action:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 

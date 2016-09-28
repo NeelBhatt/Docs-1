@@ -13,7 +13,7 @@ Before you start, make sure that you compile against full .NET Framework in your
 
 In your project.json file specify a single target for the full .NET Framework:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none"} -->
 
 ````none
 
@@ -28,7 +28,7 @@ The simplest change is to explicitly get your connection string and setup depend
 
 In your `DbContext` subclass, ensure you have a constructor which takes the connection string as so:
 
-<!-- literal_block {"ids": [], "linenos": true, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": true, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -42,7 +42,7 @@ In your `DbContext` subclass, ensure you have a constructor which takes the conn
 
 In the `Startup` class within `ConfigureServices` add factory method of your context with it's connection string. Context should be resolved once per scope to ensure performance and ensure reliable operation of Entity Framework.
 
-<!-- literal_block {"ids": [], "linenos": true, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": true, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -62,7 +62,7 @@ Code-based configuration is achieved by creating a subclass of `System.Data.Enti
 
 Our config file typically looked like this:
 
-<!-- literal_block {"ids": [], "linenos": true, "xml:space": "preserve", "language": "xml", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": true, "xml:space": "preserve", "language": "xml"} -->
 
 ````xml
 
@@ -80,7 +80,7 @@ Our config file typically looked like this:
 
 The `defaultConnectionFactory` element sets the factory for connections. If this attribute is not set then the default value is `SqlConnectionProvider`. If, on the other hand, value is provided, the given class will be used to create `DbConnection` with its `CreateConnection` method. If the given factory has no default constructor then you must add parameters that are used to construct the object.
 
-<!-- literal_block {"ids": [], "linenos": true, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": true, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 

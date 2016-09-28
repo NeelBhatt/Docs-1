@@ -80,7 +80,7 @@ Most applications will create routes by calling `MapRoute` or one of the similar
 
 This is an example of a `MapRoute` call used by a typical ASP.NET MVC route definition:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -97,7 +97,7 @@ See [route-template-reference](#route-template-reference) for a thorough descrip
 
 This example includes a *route constraint*:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -112,7 +112,7 @@ Additional overloads of `MapRoute` accept values for `constraints`, `dataTokens`
 
 The following two examples create equivalent routes:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -131,7 +131,7 @@ The following two examples create equivalent routes:
 
 This example demonstrates a few more features:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -145,7 +145,7 @@ This template will match a URL path like `/Blog/All-About-Routing/Introduction` 
 
 This example adds route constraints and data tokens:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -172,7 +172,7 @@ The `Route` class can also perform URL generation by combining a set of route va
 
 This example uses a basic ASP.NET MVC style route:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -371,7 +371,7 @@ Values that are explicitly provided but which don't match anything are added to 
 
 If a route has a default value that doesn't correspond to a parameter and that value is explicitly provided, it must match the default value. For example:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 

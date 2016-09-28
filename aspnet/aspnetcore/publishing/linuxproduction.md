@@ -38,7 +38,7 @@ For the purposes of this guide, we are going to use a single instance of Nginx t
 
 ### Install Nginx
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "bash", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "bash"} -->
 
 ````bash
 
@@ -50,7 +50,7 @@ For the purposes of this guide, we are going to use a single instance of Nginx t
 
 We are going to `apt-get` to install Nginx. The installer also creates a System V init script that runs Nginx as daemon on system startup. Since we just installed Nginx for the first time, we can explicitly start it by running
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "bash", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "bash"} -->
 
 ````bash
 
@@ -65,7 +65,7 @@ We will now configure Nginx as a reverse proxy to forward requests to our ASP.NE
 
 We will be modifying the `/etc/nginx/sites-available/default`, so open it up in your favorite text editor and replace the contents with the following.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "nginx", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "nginx"} -->
 
 ````nginx
 
@@ -92,7 +92,7 @@ Nginx will forward requests to your Kestrel server, however unlike IIS on Window
 
 ### Installing supervisor
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "bash", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "bash"} -->
 
 ````bash
 
@@ -110,7 +110,7 @@ To have supervisor monitor our application, we will add a file to the `/etc/supe
 
 /etc/supervisor/conf.d/hellomvc.conf
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "ini", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "ini"} -->
 
 ````ini
 
@@ -130,7 +130,7 @@ To have supervisor monitor our application, we will add a file to the `/etc/supe
 
 Once you are done editing the configuration file, restart the `supervisord` process to change the set of programs controlled by supervisord.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "bash", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "bash"} -->
 
 ````bash
 
@@ -146,7 +146,7 @@ In our case, since we are using supervisor to manage our application, the applic
 
 **Supervisord** logs messages about its own health and its subprocess' state changes to the activity log. The path to the activity log is configured via the `logfile` parameter in the configuration file.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "bash", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "bash"} -->
 
 ````bash
 
@@ -155,7 +155,7 @@ In our case, since we are using supervisor to manage our application, the applic
 
 You can redirect application logs (`STDOUT` and `STERR`) in the program section of your configuration file.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "bash", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "bash"} -->
 
 ````bash
 
@@ -170,7 +170,7 @@ Linux Security Modules (LSM) is a framework that is part of the Linux kernel sin
 
 Close off all external ports that are not in use. Uncomplicated firewall (ufw) provides a frontend for `iptables` by providing a command-line interface for configuring the firewall. Verify that `ufw` is configured to allow traffic on any ports you need.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "bash", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "bash"} -->
 
 ````bash
 
@@ -187,7 +187,7 @@ The default distribution of Nginx doesn't enable SSL. To enable all the security
 
 #### Download the source and install the build dependencies
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "bash", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "bash"} -->
 
 ````bash
 
@@ -204,7 +204,7 @@ The default distribution of Nginx doesn't enable SSL. To enable all the security
 
 Edit *src/http/ngx_http_header_filter_module.c*
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c"} -->
 
 ````c
 
@@ -218,7 +218,7 @@ The PCRE library is required for regular expressions. Regular expressions are us
 
 Consider using a web application firewall like *ModSecurity* to harden your application.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "bash", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "bash"} -->
 
 ````bash
 

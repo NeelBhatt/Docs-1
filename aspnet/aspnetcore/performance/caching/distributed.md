@@ -187,7 +187,7 @@ To use sql-cache tool add SqlConfig.Tools to the tools section of the project.js
 
 Test SqlConfig.Tools by running the following command
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none"} -->
 
 ````none
 
@@ -196,7 +196,7 @@ Test SqlConfig.Tools by running the following command
 
 sql-cache tool  will display usage, options and command help, now you can create tables into sql server, running "sql-cache create" command :
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none"} -->
 
 ````none
 

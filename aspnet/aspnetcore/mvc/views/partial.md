@@ -75,7 +75,7 @@ Because it streams the result directly, `RenderPartial` and `RenderPartialAsync`
 
 When referencing a partial view, you can refer to its location in several ways:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "text", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "text"} -->
 
 ````text
 
@@ -108,7 +108,7 @@ When a partial view is instantiated, it gets a copy of the parent view's `ViewDa
 
 You can pass an instance of `ViewDataDictionary` to the partial view:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -117,7 +117,7 @@ You can pass an instance of `ViewDataDictionary` to the partial view:
 
 You can also pass a model into a partial view. This can be the page's view model, or some portion of it, or a custom object. Simply pass in the model as the second parameter when calling `Partial`/`PartialAsync` or `RenderPartial`/`RenderPartialAsync`:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -126,7 +126,7 @@ You can also pass a model into a partial view. This can be the page's view model
 
 You can pass an instance of `ViewDataDictionary` and a view model to a partial view:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 

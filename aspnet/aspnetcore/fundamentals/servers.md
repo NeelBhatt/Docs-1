@@ -120,7 +120,7 @@ The `Microsoft.AspNetCore.Hosting` command supports server parameters (such as `
 
 The *project.json* file shown above demonstrates how to pass the `server.urls` parameter directly:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "javascript", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "javascript"} -->
 
 ````javascript
 
@@ -129,7 +129,7 @@ The *project.json* file shown above demonstrates how to pass the `server.urls` p
 
 Alternately, a  JSON configuration file can be used,
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "javascript", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "javascript"} -->
 
 ````javascript
 
@@ -138,7 +138,7 @@ Alternately, a  JSON configuration file can be used,
 
 The `hosting.json` can include the settings the server will use (including the server parameter, as well):
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "json", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "json"} -->
 
 ````json
 
@@ -193,7 +193,7 @@ WebListener is a Windows-only HTTP server for ASP.NET Core. It runs directly on 
 
 You can add support for WebListener to your ASP.NET application by adding the "Microsoft.AspNetCore.Server.WebListener" dependency in *project.json* and the following command:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "javascript", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "javascript"} -->
 
 ````javascript
 

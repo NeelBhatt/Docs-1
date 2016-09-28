@@ -17,7 +17,7 @@ We will be using `yo aspnet` to generate the **Web Application Basic** template,
 
 Install the necessary yeoman generators and bower using npm.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "console", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "console"} -->
 
 ````console
 
@@ -26,7 +26,7 @@ Install the necessary yeoman generators and bower using npm.
 
 Run the ASP.NET Core generator
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "console", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "console"} -->
 
 ````console
 
@@ -41,7 +41,7 @@ Run the ASP.NET Core generator
 
 When the generator completes scaffolding the files, it will instruct you to restore, build, and run the application.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "console", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "console"} -->
 
 ````console
 

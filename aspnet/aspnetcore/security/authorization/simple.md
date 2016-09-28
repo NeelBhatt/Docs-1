@@ -9,7 +9,7 @@ Authorization in MVC is controlled through the [AuthorizeAttribute](http://docs.
 
 For example, the following code limits access to the `AccountController` to any authenticated user.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -28,7 +28,7 @@ For example, the following code limits access to the `AccountController` to any 
 
 If you want to apply authorization to an action rather than the controller simply apply the [AuthorizeAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizeAttribute/index.html.md#Microsoft.AspNetCore.Authorization.AuthorizeAttribute.md) attribute to the action itself;
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -49,7 +49,7 @@ Now only authenticated users can access the logout function.
 
 You can also use the [AllowAnonymousAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AllowAnonymousAttribute/index.html.md#Microsoft.AspNetCore.Authorization.AllowAnonymousAttribute.md) attribute to allow access by non-authenticated users to individual actions; for example
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 

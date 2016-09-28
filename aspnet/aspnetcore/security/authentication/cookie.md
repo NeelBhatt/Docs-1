@@ -13,7 +13,7 @@ ASP.NET Core provides cookie [middleware](../../fundamentals/middleware.md#funda
 
 The first step is adding the cookie middleware to your application. First use nuget to add the `Microsoft.AspNetCore.Authentication.Cookies` package. Then add the following lines to the `Configure` method in your *Startup.cs* file before the `app.UseMvc()` statement;
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -47,7 +47,7 @@ The code snippet above configures a few options;
 
 To create a cookie holding your user information you must construct a [ClaimsPrincipal](https://msdn.microsoft.com/en-us/library/system.security.claims.claimsprincipal(v=vs.110).aspx) holding the information you wish to be serialized in the cookie. Once you have a suitable *ClaimsPrincipal* inside your controller method call
 
-   <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+   <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
    ````c#
 
@@ -62,7 +62,7 @@ Under the covers the encryption used is ASP.NET's [Data Protection](../data-prot
 
 To sign out the current user, and delete their cookie call the following inside your controller
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -80,7 +80,7 @@ Consider a back-end user database that may have a LastChanged column. In order t
 
 To implement an override for the `ValidateAsync()` event you must write a method with the following signature;
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -89,7 +89,7 @@ To implement an override for the `ValidateAsync()` event you must write a method
 
 ASP.NET Core Identity implements this check as part of its [SecurityStampValidator](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Identity/SecurityStampValidator/index.html). A simple example would look something like as follows;
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -119,7 +119,7 @@ ASP.NET Core Identity implements this check as part of its [SecurityStampValidat
 
 This would then be wired up during cookie middleware configuration
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -161,7 +161,7 @@ You may want to make the cookie expire be remembered over browser sessions. You 
 
 For example;
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -178,7 +178,7 @@ This code snippet will create an identity and corresponding cookie which will be
 
 <a name=security-authentication-absolute-expiry></a>
 
-<!-- literal_block {"ids": ["security-authentication-absolute-expiry"], "linenos": false, "names": ["security-authentication-absolute-expiry"], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": ["security-authentication-absolute-expiry"], "linenos": false, "names": ["security-authentication-absolute-expiry"], "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 

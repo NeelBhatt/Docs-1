@@ -13,7 +13,7 @@ To get started with Yeoman install [Node.js](https://nodejs.org/en/). The instal
 
 Follow the instructions on [http://yeoman.io/learning/](http://yeoman.io/learning/) to install [yo](https://github.com/yeoman/yo), bower, grunt, and gulp.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "console", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "console"} -->
 
 ````console
 
@@ -25,7 +25,7 @@ Follow the instructions on [http://yeoman.io/learning/](http://yeoman.io/learnin
 
 From the command line, install the ASP.NET generator:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "console", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "console"} -->
 
 ````console
 
@@ -41,7 +41,7 @@ The `–g` flag installs the generator globally, so that it can be used from any
 
 Create a directory for your projects
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "console", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "console"} -->
 
 ````console
 
@@ -51,7 +51,7 @@ Create a directory for your projects
 
 Run the ASP.NET generator for `yo`
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "console", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "console"} -->
 
 ````console
 
@@ -112,7 +112,7 @@ You can prepare and host your web application using the [.NET Core](https://micr
 
 From the command line, change the current directory to the folder containing the project (that is, the folder containing the *project.json* file):
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "console", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "console"} -->
 
 ````console
 
@@ -121,7 +121,7 @@ From the command line, change the current directory to the folder containing the
 
 From the command line, restore the project's NuGet package dependencies:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "console", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "console"} -->
 
 ````console
 
@@ -130,7 +130,7 @@ From the command line, restore the project's NuGet package dependencies:
 
 Run the application:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "console", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "console"} -->
 
 ````console
 
@@ -147,7 +147,7 @@ Open a web browser, and navigate to http://localhost:5000.
 
 You can add new generated files using Yeoman even after the project is created. Use [sub generators](https://www.github.com/omnisharp/generator-aspnet#sub-generators) to add any of the file types that make up your project. For example, to add a new class to your project, enter the `yo aspnet:Class` command followed by the name of the class. Execute the following command from the directory in which the file should be created:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "console", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "console"} -->
 
 ````console
 
@@ -156,7 +156,7 @@ You can add new generated files using Yeoman even after the project is created. 
 
 The result is a file named Person.cs with a class named `Person`:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 

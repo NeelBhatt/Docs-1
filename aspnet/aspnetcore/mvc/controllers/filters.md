@@ -269,7 +269,7 @@ A `TypeFilter` will instantiate an instance, using services from DI for its depe
 
 Using `ServiceFilter` without registering the filter type in `ConfigureServices`, throws the following exception:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none"} -->
 
 ````none
 
@@ -411,7 +411,7 @@ Every controller that inherits from the `Controller` base class includes `OnActi
 
 To modify the default, scope-based order, you could explicitly set the `Order` property of a class-level or method-level filter. For example, adding `Order=-1` to a method level attribute:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 

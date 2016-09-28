@@ -19,7 +19,7 @@ The simplest type of claim policy looks for the presence of a claim and does not
 
 First you need to build and register the policy. This takes place as part of the Authorization service configuration, which normally takes part in `ConfigureServices()` in your *Startup.cs* file.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -38,7 +38,7 @@ In this case the `EmployeeOnly` policy checks for the presence of an `EmployeeNu
 
 You then apply the policy using the [Policy](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizeAttribute/index.html.md#Microsoft.AspNetCore.Authorization.AuthorizeAttribute.Policy.md) property on the [AuthorizeAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizeAttribute/index.html.md#Microsoft.AspNetCore.Authorization.AuthorizeAttribute.md) attribute to specify the policy name;
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -51,7 +51,7 @@ You then apply the policy using the [Policy](http://docs.asp.net/projects/api/en
 
 The [AuthorizeAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizeAttribute/index.html.md#Microsoft.AspNetCore.Authorization.AuthorizeAttribute.md) attribute can be applied to an entire controller, in this instance only identities matching the policy will be allowed access to any Action on the controller.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -66,7 +66,7 @@ The [AuthorizeAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Micr
 
 If you have a controller that is protected by the [AuthorizeAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizeAttribute/index.html.md#Microsoft.AspNetCore.Authorization.AuthorizeAttribute.md) attribute, but want to allow anonymous access to particular actions you apply the [AllowAnonymousAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AllowAnonymousAttribute/index.html.md#Microsoft.AspNetCore.Authorization.AllowAnonymousAttribute.md) attribute;
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -86,7 +86,7 @@ If you have a controller that is protected by the [AuthorizeAttribute](http://do
 
 Most claims come with a value. You can specify a list of allowed values when creating the policy. The following example would only succeed for employees whose employee number was 1, 2, 3, 4 or 5.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -106,7 +106,7 @@ Most claims come with a value. You can specify a list of allowed values when cre
 
 If you apply multiple policies to a controller or action then all policies must pass before access is granted. For example;
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 

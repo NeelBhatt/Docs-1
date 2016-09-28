@@ -31,7 +31,7 @@ You can add Swashbuckle with any of the following approaches:
 
 * From the Package Manager Console:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "bash", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "bash"} -->
 
 ````bash
 
@@ -40,7 +40,7 @@ You can add Swashbuckle with any of the following approaches:
 
 * Add Swashbuckle to *project.json*:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "javascript", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "javascript"} -->
 
 ````javascript
 
@@ -100,7 +100,7 @@ In Visual Studio, press ^F5 to launch the app and navigate to `http://localhost:
 > [!NOTE]
 > Microsoft Edge, Google Chrome and Firefox display JSON documents natively.  There are extensions for Chrome that will format the document for easier reading. *Example below reduced for brevity.*
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "javascript", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "javascript"} -->
 
 ````javascript
 
@@ -187,7 +187,7 @@ Swagger is not only a simple way to represent the API, but has options for docum
 
 The `ConfigureSwaggerGen` method can be used to add information such as the author, license, description.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -494,7 +494,7 @@ Acquire the core *index.html* file used for the Swagger UI page from the [Github
 
 Reference *custom.css* in the *index.html* file.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html"} -->
 
 ````html
 
@@ -532,7 +532,7 @@ The following CSS provides a simple sample of a custom header title to the page.
 
 *index.html body*
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html"} -->
 
 ````html
 

@@ -7,7 +7,7 @@ uid: getting-started
 
 2. Create a new .NET Core project:
 
-   <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "console", "highlight_args": {}} -->
+   <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "console"} -->
 
    ````console
 
@@ -47,7 +47,7 @@ uid: getting-started
 
 4. Restore the packages:
 
-   <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "console", "highlight_args": {}} -->
+   <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "console"} -->
 
    ````console
 
@@ -110,7 +110,7 @@ uid: getting-started
 
 7. Run the app  (the `dotnet run` command will build the app when it's out of date):
 
-   <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "console", "highlight_args": {}} -->
+   <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "console"} -->
 
    ````console
 

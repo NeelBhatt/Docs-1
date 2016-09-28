@@ -366,7 +366,7 @@ Credentials require special handling in a CORS request. By default, the browser 
 
 Using XMLHttpRequest directly:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "js", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "js"} -->
 
 ````js
 
@@ -377,7 +377,7 @@ Using XMLHttpRequest directly:
 
 In jQuery:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "js", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "js"} -->
 
 ````js
 

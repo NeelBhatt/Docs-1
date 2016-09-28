@@ -199,7 +199,7 @@ After you make changes to your local code, you can republish.
 
 2. In the `Configure` method, modify the `Response.WriteAsync` method so that it appears as follows:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "aspx-cs", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "aspx-cs"} -->
 
 ````aspx-cs
 
@@ -212,7 +212,7 @@ After you make changes to your local code, you can republish.
 
 5. Enter a commit message, such as:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none"} -->
 
 ````none
 

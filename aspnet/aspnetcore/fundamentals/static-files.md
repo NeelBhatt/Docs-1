@@ -233,7 +233,7 @@ The following code shows how to change the default file name to *mydefault.html*
 
 The following code enables static files and the default file to be served, but does not allow directory browsing:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -242,7 +242,7 @@ The following code enables static files and the default file to be served, but d
 
 The following code enables static files, default files and  directory browsing:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 

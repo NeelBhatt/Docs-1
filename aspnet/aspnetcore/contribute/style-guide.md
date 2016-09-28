@@ -25,7 +25,7 @@ Section headings should correspond to the bulleted list of topics set out after 
 
 Subsection headings can be used to organize content within a section. *Headings*, above, is an example of a subsection heading. A subsection heading should appear on its own line, followed by a line of ^^^ characters.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "rst", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "rst"} -->
 
 ````rst
 
@@ -78,7 +78,7 @@ Format specific items using these rules:
 
 Links should use HTTPS when possible. Inline hyperlinks are formatted like this:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "rst", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "rst"} -->
 
 ````rst
 
@@ -91,7 +91,7 @@ Surround the link text with backticks. Within the backticks, place the target in
 
 In addition to URLs, documents and document sections can also be linked by name:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "rst", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "rst"} -->
 
 ````rst
 
@@ -106,7 +106,7 @@ Any element that is rendered as a link should not have any additional formatting
 
 Lists can be started with a `-` or `*` character:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "rst", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "rst"} -->
 
 ````rst
 
@@ -116,7 +116,7 @@ Lists can be started with a `-` or `*` character:
 
 Numbered lists can start with a number, or they can be auto numbered by starting each item with the # character. Please use the # syntax.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "rst", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "rst"} -->
 
 ````rst
 
@@ -131,7 +131,7 @@ Numbered lists can start with a number, or they can be auto numbered by starting
 
 Source code is very commonly included in these articles. Images should never be used to display source code. Prefer `literalinclude` for most code samples. Reserve `code-block` for small snippets that are not included in the sample project. A `code-block` can be declared as shown below, including spaces, blank lines, and indentation:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "rst", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "rst"} -->
 
 ````rst
 
@@ -145,7 +145,7 @@ Source code is very commonly included in these articles. Images should never be 
 
 This results in:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#"} -->
 
 ````c#
 
@@ -167,7 +167,7 @@ The code block ends when you begin a new paragraph without indentation. [Sphinx 
 
 Line numbers should only be used while editing to assist in find the line numbers to emphasize. Code blocks also support line numbers and emphasizing or highlighting certain lines:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "rst", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "rst"} -->
 
 ````rst
 
@@ -208,7 +208,7 @@ Images such as screen shots and explanatory figures or diagrams should be placed
 
 To include an image in an article, use the `.. image` directive:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "rst", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "rst"} -->
 
 ````rst
 
@@ -228,7 +228,7 @@ Images are responsively sized according to the browser viewport when using this 
 
 To add a note callout, like the ones shown in this document, use the `.. note::` directive.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "rst", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "rst"} -->
 
 ````rst
 
@@ -246,7 +246,7 @@ One nice feature of ReStructuredText is its ability to reference external files.
 
 External file references can specify a language, emphasize certain lines, display line numbers (recommended), similar to [Source Code](#source-code). Remember that these line number references may need to be updated if the source file is changed.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "rst", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "rst"} -->
 
 ````rst
 
@@ -319,7 +319,7 @@ Tables should never render with horizontal scroll bars. Tables can be constructe
 
 When documenting how a user should navigate a series of menus, use the `:menuselection:` directive:
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "rst", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "rst"} -->
 
 ````rst
 
