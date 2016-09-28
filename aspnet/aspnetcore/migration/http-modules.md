@@ -512,7 +512,7 @@ The new [configuration system](../fundamentals/configuration.md) gives you these
 
 4. Inject the options into your middleware constructor. This is similar to injecting options into a controller.
 
-      [!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/MyMiddlewareWithParams.cs?highlight=7,10,13,19,24)]
+[!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/MyMiddlewareWithParams.cs?highlight=7,10,13,19,24)]
 
       ````csharp
 
@@ -563,7 +563,7 @@ The solution is to get the options objects with the actual options values in you
 
       To add a second set of options to the *appsettings.json* file, simply use a new key to uniquely identify it:
 
-      [!code-json[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/appsettings.json?highlight=2,3,4,5)]
+[!code-json[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/appsettings.json?highlight=2,3,4,5)]
 
       ````json
 
@@ -582,7 +582,7 @@ The solution is to get the options objects with the actual options values in you
 
 2. Retrieve options values. The `Get` method on the `Configuration` property lets you retrieve options values:
 
-      [!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Startup.cs?highlight=12,13,14,15,16)]
+[!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Startup.cs?highlight=12,13,14,15,16)]
 
       ````csharp
 
@@ -611,11 +611,11 @@ The solution is to get the options objects with the actual options values in you
 
          ````
 
-3. Pass options values to middleware. The `Use...` extension method (which adds your middleware to the pipeline) is a logical place to pass in the option values:
+3. Pass options values to middleware. The `Use...` extension method (which adds your middleware to the pipeline) is a logical place to pass in the option values: 
 
-      [!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Startup.cs?highlight=18,19,20,21,22)]
+[!code-csharp[Main](./http-modules/sample/Asp.Net5/src/Asp.Net5/Startup.cs?highlight=18-22)]
 
-      ````csharp
+	````csharp
 
          // ASP.NET 5 Startup class
 
@@ -647,7 +647,7 @@ The solution is to get the options objects with the actual options values in you
 
 4. Enable middleware to take an options parameter. Provide an overload of the `Use...` extension method (that takes the options parameter and passes it to `UseMiddleware`). When `UseMiddleware` is called with parameters, it passes the parameters to your middleware constructor when it instantiates the middleware object.
 
-      [!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/MyMiddlewareWithParams.cs?highlight=17,18,19,20,21,22)]
+[!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/MyMiddlewareWithParams.cs?highlight=17,18,19,20,21,22)]
 
       ````csharp
 
