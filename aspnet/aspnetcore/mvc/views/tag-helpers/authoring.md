@@ -21,7 +21,7 @@ A tag helper is any class that implements the `ITagHelper` interface. However, w
 
 In this section we will write a tag helper that updates an email tag. For example:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
 
 ````html
 
@@ -30,7 +30,7 @@ In this section we will write a tag helper that updates an email tag. For exampl
 
 The server will use our email tag helper to convert that markup into the following:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
 
 ````html
 
@@ -41,7 +41,7 @@ That is, an anchor tag that makes this an email link. You might want to do this 
 
 1. Add the following `EmailTagHelper` class to the *TagHelpers* folder.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1EmailTagHelperCopy.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1EmailTagHelperCopy.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -75,7 +75,7 @@ That is, an anchor tag that makes this an email link. You might want to do this 
 
 * Our class name has a suffix of **TagHelper**, which is *not* required, but it's considered a best practice convention. You could declare the class as:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -84,7 +84,7 @@ That is, an anchor tag that makes this an email link. You might want to do this 
 
 2. To make the `EmailTagHelper` class available to all our Razor views, we will add the `addTagHelper` directive to the *Views/_ViewImports.cshtml* file:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopyEmail.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "html", "highlight_args": {"hl_lines": [2, 3], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopyEmail.cshtml", "ids": [], "linenos": false, "language": "html", "highlight_args": {"hl_lines": [2, 3], "linenostart": 1}} -->
 
 ````html
 
@@ -95,7 +95,7 @@ That is, an anchor tag that makes this an email link. You might want to do this 
 
 The code above uses the wildcard syntax to specify all the tag helpers in our assembly will be available. The first string after `@addTagHelper` specifies the tag helper to load (we are using "*" for all tag helpers), and the second string "AuthoringTagHelpers" specifies the assembly the tag helper is in. Also, note that the second line brings in the ASP.NET Core MVC tag helpers using the wildcard syntax (those helpers are discussed in [Introduction to Tag Helpers](intro.md).) It's the `@addTagHelper` directive that makes the tag helper available to the Razor view. Alternatively, you can provide the fully qualified name (FQN) of a tag helper as shown below:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImports.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "html", "highlight_args": {"hl_lines": [3], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImports.cshtml", "ids": [], "linenos": false, "language": "html", "highlight_args": {"hl_lines": [3], "linenostart": 1}} -->
 
 ````html
 
@@ -109,7 +109,7 @@ To add a tag helper to a view using a FQN, you first add the FQN (`AuthoringTagH
 
 3. Update the markup in the *Views/Home/Contact.cshtml* file with these changes:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Contact.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "html", "highlight_args": {"hl_lines": [15, 16], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Contact.cshtml", "ids": [], "linenos": false, "language": "html", "highlight_args": {"hl_lines": [15, 16], "linenostart": 1}} -->
 
 ````html
 
@@ -144,7 +144,7 @@ In this section, we'll update the `EmailTagHelper` so that it will create a vali
 
 Update the `EmailTagHelper` class with the following:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/EmailTagHelperMailTo.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/EmailTagHelperMailTo.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -179,7 +179,7 @@ Update the `EmailTagHelper` class with the following:
 
 * The highlighted line shows the syntax for adding attributes:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/EmailTagHelperMailTo.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [6], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/EmailTagHelperMailTo.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [6], "linenostart": 1}} -->
 
 ````c#
 
@@ -198,7 +198,7 @@ That approach works for the attribute "href" as long as it doesn't currently exi
 
 3. Update the markup in the *Views/Home/Contact.cshtml* file with these changes:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/ContactCopy.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "html", "highlight_args": {"hl_lines": [15, 16], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/ContactCopy.cshtml", "ids": [], "linenos": false, "language": "html", "highlight_args": {"hl_lines": [15, 16], "linenostart": 1}} -->
 
 ````html
 
@@ -225,7 +225,7 @@ That approach works for the attribute "href" as long as it doesn't currently exi
 
 **Note:** If you were to write the email tag self-closing (`<email mail-to="Rick" />`), the final output would also be self-closing. To enable the ability to write the tag with only a start tag (`<email mail-to="Rick">`) you must decorate the class with the following:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/EmailTagHelperMailVoid.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [1], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/EmailTagHelperMailVoid.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [1], "linenostart": 1}} -->
 
 ````c#
 
@@ -245,7 +245,7 @@ In this section we'll write an asynchronous email helper.
 
 1. Replace the `EmailTagHelper` class with the following code:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/EmailTagHelper.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/EmailTagHelper.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -272,7 +272,7 @@ In this section we'll write an asynchronous email helper.
 
 2. Make the following change to the *Views/Home/Contact.cshtml* file so the tag helper can get the target email.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Contact.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "html", "highlight_args": {"hl_lines": [15, 16], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Contact.cshtml", "ids": [], "linenos": false, "language": "html", "highlight_args": {"hl_lines": [15, 16], "linenostart": 1}} -->
 
 ````html
 
@@ -302,7 +302,7 @@ In this section we'll write an asynchronous email helper.
 
 1. Add the following `BoldTagHelper` class to the *TagHelpers* folder.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/BoldTagHelper.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/BoldTagHelper.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -340,7 +340,7 @@ In this section we'll write an asynchronous email helper.
 
 2. Modify the *About.cshtml* view to contain a `bold` attribute value. The completed code is shown below.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/AboutBoldOnly.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "html", "highlight_args": {"hl_lines": [7], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/AboutBoldOnly.cshtml", "ids": [], "linenos": false, "language": "html", "highlight_args": {"hl_lines": [7], "linenostart": 1}} -->
 
 ````html
 
@@ -365,7 +365,7 @@ The `[HtmlTargetElement]` attribute above only targets HTML markup that provides
 
 Decorating a class with multiple `[HtmlTargetElement]` attributes results in a logical-OR of the targets. For example, using the code below, a bold tag or a bold attribute will match.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/zBoldTagHelperCopy.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [1, 2], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/zBoldTagHelperCopy.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [1, 2], "linenostart": 1}} -->
 
 ````c#
 
@@ -385,7 +385,7 @@ Decorating a class with multiple `[HtmlTargetElement]` attributes results in a l
 
 When multiple attributes are added to the same statement, the runtime treats them as a logical-AND. For example, in the code below, an HTML element must be named "bold" with an attribute named "bold" ( <bold bold /> ) to match.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -394,7 +394,7 @@ When multiple attributes are added to the same statement, the runtime treats the
 
 You can also use the `[HtmlTargetElement]` to change the name of the targeted element. For example if you wanted the `BoldTagHelper` to target `<MyBold>` tags, you would use the following attribute:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -407,7 +407,7 @@ You can also use the `[HtmlTargetElement]` to change the name of the targeted el
 
 2. Add the following `WebsiteContext` class to the *Models* folder:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Models/WebsiteContext.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Models/WebsiteContext.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -427,7 +427,7 @@ You can also use the `[HtmlTargetElement]` to change the name of the targeted el
 
 3. Add the following `WebsiteInformationTagHelper` class to the *TagHelpers* folder.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/WebsiteInformationTagHelper.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "none", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/WebsiteInformationTagHelper.cs", "ids": [], "linenos": false, "language": "none", "highlight_args": {"linenostart": 1}} -->
 
 ````none
 
@@ -461,7 +461,7 @@ You can also use the `[HtmlTargetElement]` to change the name of the targeted el
 
 * We are not explicitly identifying the target element with the `[HtmlTargetElement]` attribute, so the default of `website-information` will be targeted. If you applied the following attribute (note it's not kebab case but matches the class name):
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -470,7 +470,7 @@ You can also use the `[HtmlTargetElement]` to change the name of the targeted el
 
 The lower kebab case tag `<website-information />` would not match. If you want use the `[HtmlTargetElement]` attribute, you would use kebab case as shown below:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -481,7 +481,7 @@ The lower kebab case tag `<website-information />` would not match. If you want 
 
 * The `$` (dollar sign) in the following line uses an [interpolated string](https://msdn.microsoft.com/en-us/library/Dn961160.aspx):
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
 
 ````html
 
@@ -490,7 +490,7 @@ The lower kebab case tag `<website-information />` would not match. If you want 
 
 5. Add the following markup to the *About.cshtml* view. The highlighted markup displays the web site information.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/About.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "html", "highlight_args": {"hl_lines": [1, 12, 13, 14, 15, 16, 17, 18, 19, 20], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/About.cshtml", "ids": [], "linenos": false, "language": "html", "highlight_args": {"hl_lines": [1, 12, 13, 14, 15, 16, 17, 18, 19, 20], "linenostart": 1}} -->
 
 ````html
 
@@ -515,7 +515,7 @@ The lower kebab case tag `<website-information />` would not match. If you want 
 
 **Note:** In the Razor markup shown below:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/About.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "html", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/About.cshtml", "ids": [], "linenos": false, "language": "html", "highlight_args": {"linenostart": 1}} -->
 
 ````html
 
@@ -534,7 +534,7 @@ Razor knows the `info` attribute is a class, not a string, and you want to write
 
 * You can use the following markup with a closing tag and remove the line with `TagMode.StartTagAndEndTag` in the tag helper:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/AboutNotSelfClosing.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "html", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/AboutNotSelfClosing.cshtml", "ids": [], "linenos": false, "language": "html", "highlight_args": {"linenostart": 1}} -->
 
 ````html
 
@@ -552,7 +552,7 @@ The condition tag helper renders output when passed a true value.
 
 1. Add the following `ConditionTagHelper` class to the *TagHelpers* folder.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/ConditionTagHelper.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/ConditionTagHelper.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -579,7 +579,7 @@ The condition tag helper renders output when passed a true value.
 
 2. Replace the contents of the *Views/Home/Index.cshtml* file with the following markup:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Index.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Index.cshtml", "ids": [], "linenos": false, "highlight_args": {"linenostart": 1}} -->
 
 ````
 
@@ -604,7 +604,7 @@ The condition tag helper renders output when passed a true value.
 
 3. Replace the `Index` method in the `Home` controller with the following code:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Controllers/HomeController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Controllers/HomeController.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -625,7 +625,7 @@ The condition tag helper renders output when passed a true value.
 
 **Note:** We use the [nameof](https://msdn.microsoft.com/en-us/library/dn986596.aspx) operator to specify the attribute to target rather than specifying a string as we did with the bold tag helper:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/zConditionTagHelperCopy.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [1, 2, 5], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/zConditionTagHelperCopy.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [1, 2, 5], "linenostart": 1}} -->
 
 ````c#
 
@@ -656,7 +656,7 @@ Because these two helpers are closely related and we may refactor them in the fu
 
 1. Add the following `AutoLinkerHttpTagHelper` class to the *TagHelpers* folder.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinker.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinker.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -681,7 +681,7 @@ Because these two helpers are closely related and we may refactor them in the fu
 
 2. Add the following markup to the end of the *Views/Home/Contact.cshtml* file:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Contact.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "html", "highlight_args": {"hl_lines": [19], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Contact.cshtml", "ids": [], "linenos": false, "language": "html", "highlight_args": {"hl_lines": [19], "linenostart": 1}} -->
 
 ````html
 
@@ -710,7 +710,7 @@ Because these two helpers are closely related and we may refactor them in the fu
 
 4. Update the `AutoLinker` class to include the `AutoLinkerWwwTagHelper` which will convert www text to an anchor tag that also contains the original www text. The updated code is highlighted below:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinker.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinker.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34], "linenostart": 1}} -->
 
 ````c#
 
@@ -747,7 +747,7 @@ Because these two helpers are closely related and we may refactor them in the fu
 
 5. Run the app. Notice the www text is rendered as a link but the HTTP text is not. If you put a break point in both classes, you can see that the HTTP tag helper class runs first. The problem is that the tag helper output is cached, and when the WWW tag helper is run, it overwrites the cached output from the HTTP tag helper. Later in the tutorial we'll see how to control the order that tag helpers run in. We'll fix the code with the following:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinkerCopy.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [5, 6, 10, 21, 22, 26], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinkerCopy.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [5, 6, 10, 21, 22, 26], "linenostart": 1}} -->
 
 ````c#
 
@@ -787,7 +787,7 @@ Because these two helpers are closely related and we may refactor them in the fu
 
 **Note:** In the first edition of the auto-linking tag helpers, we got the content of the target with the following code:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinker.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinker.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -797,7 +797,7 @@ Because these two helpers are closely related and we may refactor them in the fu
 
 That is, we call `GetChildContentAsync` using the `TagHelperOutput` passed into the `ProcessAsync` method. As mentioned previously, because the output is cached, the last tag helper to run wins. We fixed that problem with the following code:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z2AutoLinkerCopy.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z2AutoLinkerCopy.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -810,7 +810,7 @@ The code above checks to see if the content has been modified, and if it has, it
 
 7. Run the app and verify that the two links work as expected. While it might appear our auto linker tag helper is correct and complete, it has a subtle problem. If the WWW tag helper runs first, the www links will not be correct. Update the code by adding the `Order` overload to control the order that the tag runs in. The `Order` property determines the execution order relative to other tag helpers targeting the same element. The default order value is zero and instances with lower values are executed first.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z2AutoLinkerCopy.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [5, 6, 7, 8], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z2AutoLinkerCopy.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [5, 6, 7, 8], "linenostart": 1}} -->
 
 ````c#
 
@@ -837,7 +837,7 @@ The tag-helpers provide several properties to retrieve content.
 
 * If you modify `output.Content`, the TagHelper body will not be executed or rendered unless you call `GetChildContentAsync` as in our auto-linker sample:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinkerCopy.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [5, 6, 10], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinkerCopy.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [5, 6, 10], "linenostart": 1}} -->
 
 ````c#
 

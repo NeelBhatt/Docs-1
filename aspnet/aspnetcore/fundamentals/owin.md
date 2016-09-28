@@ -13,7 +13,7 @@ ASP.NET Core supports the Open Web Interface for .NET (OWIN). OWIN allows web ap
 
 ASP.NET Core's OWIN support is deployed as part of the `Microsoft.AspNetCore.Owin` package. You can import OWIN support into your project by adding this package as a dependency in your *project.json* file:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "fundamentals/owin/sample/src/OwinSample/project.json", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "javascript", "highlight_args": {"hl_lines": [4], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/owin/sample/src/OwinSample/project.json", "ids": [], "linenos": false, "language": "javascript", "highlight_args": {"hl_lines": [4], "linenostart": 1}} -->
 
 ````javascript
 
@@ -27,7 +27,7 @@ ASP.NET Core's OWIN support is deployed as part of the `Microsoft.AspNetCore.Owi
 
 OWIN middleware conforms to the [OWIN specification](http://owin.org/spec/spec/owin-1.0.0.html), which requires a `Func<IDictionary<string, object>, Task>` interface, and specific keys be set (such as `owin.ResponseBody`). The following simple OWIN middleware displays "Hello World":
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "fundamentals/owin/sample/src/OwinSample/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/owin/sample/src/OwinSample/Startup.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -53,7 +53,7 @@ The sample signature returns a `Task` and accepts an `IDictionary<string, object
 
 The following code shows how to add the `OwinHello` middleware (shown above) to the ASP.NET pipeline with the [UseOwin](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/OwinExtensions/index.html.md#Microsoft.AspNetCore.Builder.OwinExtensions.UseOwin.md) extension method.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "fundamentals/owin/sample/src/OwinSample/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/owin/sample/src/OwinSample/Startup.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -76,7 +76,7 @@ You can configure other actions to take place within the OWIN pipeline.
 > [!NOTE]
 > Multiple calls to `UseOwin` is discouraged for performance reasons. OWIN components will operate best if grouped together.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -95,7 +95,7 @@ You can configure other actions to take place within the OWIN pipeline.
 
 OWIN-based servers can host ASP.NET applications. One such server is [Nowin](https://github.com/Bobris/Nowin), a .NET OWIN web server. In the sample for this article, I've included a project that references Nowin and uses it to create an `IServer` capable of self-hosting ASP.NET Core.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "fundamentals/owin/sample/src/NowinSample/NowinServer.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [15], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/owin/sample/src/NowinSample/NowinServer.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [15], "linenostart": 1}} -->
 
 ````c#
 
@@ -186,7 +186,7 @@ OWIN-based servers can host ASP.NET applications. One such server is [Nowin](htt
 
 We'll also add an `IWebHostBuilder` extension to make it easy to add and configure the Nowin server.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "fundamentals/owin/sample/src/NowinSample/NowinWebHostBuilderExtensions.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [11], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/owin/sample/src/NowinSample/NowinWebHostBuilderExtensions.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [11], "linenostart": 1}} -->
 
 ````c#
 
@@ -222,7 +222,7 @@ We'll also add an `IWebHostBuilder` extension to make it easy to add and configu
 
 With this in place, all that's required to run an ASP.NET application using this custom server to call the extension in *Program.cs*:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "fundamentals/owin/sample/src/NowinSample/Program.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [15], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/owin/sample/src/NowinSample/Program.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [15], "linenostart": 1}} -->
 
 ````c#
 
@@ -259,7 +259,7 @@ Learn more about ASP.NET [Servers](servers.md).
 
 Another example of how OWIN-based servers' features can be leveraged by ASP.NET Core is access to features like WebSockets. The .NET OWIN web server used in the previous example has support for Web Sockets built in, which can be leveraged by an ASP.NET Core application. The example below shows a simple web app that supports Web Sockets and echoes back everything sent to the server through WebSockets.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "fundamentals/owin/sample/src/NowinWebSockets/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "language": "c#", "highlight_args": {"hl_lines": [7, 9, 10], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/owin/sample/src/NowinWebSockets/Startup.cs", "ids": [], "linenos": true, "language": "c#", "highlight_args": {"hl_lines": [7, 9, 10], "linenostart": 1}} -->
 
 ````c#
 

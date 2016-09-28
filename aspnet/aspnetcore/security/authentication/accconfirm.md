@@ -55,7 +55,7 @@ In this section we'll set up our Visual Studio project to use SSL and our projec
 
 * Add the following code to `ConfigureServices` in `Startup`:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -67,7 +67,7 @@ In this section we'll set up our Visual Studio project to use SSL and our projec
 
 Add the `[RequireHttps]` attribute to each controller. The `[RequireHttps]` attribute will redirect all HTTP GET requests to HTTPS GET and will reject all HTTP POSTs. A security best practice is to use HTTPS for all requests.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/Controllers/HomeController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [9], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/Controllers/HomeController.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [9], "linenostart": 1}} -->
 
 ````c#
 
@@ -88,7 +88,7 @@ We'll use the [Options pattern](../../fundamentals/configuration.md#options-conf
 
    * Create a class to fetch the secure email key. For this sample, the `AuthMessageSenderOptions` class is created in the *Services/AuthMessageSenderOptions.cs* file.
 
-      <!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/Services/AuthMessageSenderOptions.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+      <!-- literal_block {"xml:space": "preserve", "source": "security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/Services/AuthMessageSenderOptions.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
 
       ````c#
 
@@ -102,7 +102,7 @@ We'll use the [Options pattern](../../fundamentals/configuration.md#options-conf
 
 Set the `SendGridUser` and `SendGridKey` with the [secret-manager tool](../app-secrets.md). For example:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
 
 ````none
 
@@ -112,7 +112,7 @@ Set the `SendGridUser` and `SendGridKey` with the [secret-manager tool](../app-s
 
 On Windows, Secret Manager stores your keys/value pairs in a *secrets.json* file in the %APPDATA%/Microsoft/UserSecrets/<**userSecretsId**> directory. The **userSecretsId** directory can be found in your *project.json* file. For this example, the first few lines of the *project.json* file are shown below:
 
-   <!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/project.json", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "json", "highlight_args": {"hl_lines": [3], "linenostart": 1}} -->
+   <!-- literal_block {"xml:space": "preserve", "source": "security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/project.json", "ids": [], "linenos": false, "language": "json", "highlight_args": {"hl_lines": [3], "linenostart": 1}} -->
 
    ````json
 
@@ -127,7 +127,7 @@ On Windows, Secret Manager stores your keys/value pairs in a *secrets.json* file
 
 At this time, the contents of the *secrets.json* file are not encrypted. The *secrets.json* file is shown below (the sensitive keys have been removed.)
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "json", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "json", "highlight_args": {}} -->
 
 ````json
 
@@ -145,7 +145,7 @@ Add the dependecy `Microsoft.Extensions.Options.ConfigurationExtensions` in the 
 
 Add `AuthMessageSenderOptions` to the service container at the end of the `ConfigureServices` method in the *Startup.cs* file:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [4], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/Startup.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [4], "linenostart": 1}} -->
 
 ````c#
 
@@ -171,7 +171,7 @@ This tutorial shows how to add email notification through [SendGrid](https://sen
 
 * Add code in *Services/MessageServices.cs* similar to the following to configure SendGrid
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/Services/MessageServices.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/Services/MessageServices.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -219,7 +219,7 @@ The template already has the code for account confirmation and password recovery
 
 * Uncomment the code to enable account confirmation.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/Controllers/AccountController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "none", "highlight_args": {"hl_lines": [17, 18, 19, 20, 21], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/Controllers/AccountController.cs", "ids": [], "linenos": false, "language": "none", "highlight_args": {"hl_lines": [17, 18, 19, 20, 21], "linenostart": 1}} -->
 
 ````none
 
@@ -258,7 +258,7 @@ The template already has the code for account confirmation and password recovery
 
 **Note:** We're also preventing a newly registered user from being automatically logged on by commenting out the following line:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -267,7 +267,7 @@ The template already has the code for account confirmation and password recovery
 
 * Enable password recovery by uncommenting the code in the `ForgotPassword` action in the *Controllers/AccountController.cs* file.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/Controllers/AccountController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "none", "highlight_args": {"hl_lines": [17, 18, 19, 20, 21], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/Controllers/AccountController.cs", "ids": [], "linenos": false, "language": "none", "highlight_args": {"hl_lines": [17, 18, 19, 20, 21], "linenostart": 1}} -->
 
 ````none
 
@@ -302,7 +302,7 @@ The template already has the code for account confirmation and password recovery
 
 Uncomment the highlighted `ForgotPassword` from in the *Views/Account/ForgotPassword.cshtml* view file.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/Views/Account/ForgotPassword.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "html", "highlight_args": {"hl_lines": [11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/Views/Account/ForgotPassword.cshtml", "ids": [], "linenos": false, "language": "html", "highlight_args": {"hl_lines": [11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27], "linenostart": 1}} -->
 
 ````html
 
@@ -376,7 +376,7 @@ In this section, run the web app and show the account confirmation and password 
 
 With the current templates, once a user completes the registration form, they are logged in (authenticated). You generally want to confirm their email before logging them in. In the section below, we will modify the code to require new users have a confirmed email before they are logged in. Update the `[HttpPost] Login` action in the *AccountController.cs* file with the following highlighted changes.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/Controllers/AccountController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [11, 12, 13, 14, 15, 16, 17, 18, 19, 20], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/Controllers/AccountController.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [11, 12, 13, 14, 15, 16, 17, 18, 19, 20], "linenostart": 1}} -->
 
 ````c#
 

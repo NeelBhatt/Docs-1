@@ -68,7 +68,7 @@ The `HttpContext` abstraction provides support for a simple dictionary collectio
 
 For example, some simple [Middleware](middleware.md) could add something to the `Items` collection:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -82,7 +82,7 @@ For example, some simple [Middleware](middleware.md) could add something to the 
 
 and later in the pipeline, another piece of middleware could access it:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -108,7 +108,7 @@ Once the package is installed, Session must be configured in your application's 
 
 ASP.NET ships with several implementations of `IDistributedCache`, including an in-memory option (to be used during development and testing only). To configure session using this in-memory option add the `Microsoft.Extensions.Caching.Memory` package in your project.json file and then add the following to `ConfigureServices`:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -118,7 +118,7 @@ ASP.NET ships with several implementations of `IDistributedCache`, including an 
 
 Then, add the following to `Configure` **before** `app.UseMVC()` and you're ready to use session in your application code:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -141,7 +141,7 @@ Session uses a cookie to track and disambiguate between requests from different 
 
 These defaults, as well as the default `IdleTimeout` (used on the server independent from the cookie), can be overridden when configuring `Session` by using `SessionOptions` as shown here:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -161,7 +161,7 @@ The `IdleTimeout` is used by the server to determine how long a session can be i
 
 Once session is installed and configured, you refer to it via HttpContext, which exposes a property called `Session` of type [ISession](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Http/ISession/index.html.md#Microsoft.AspNetCore.Http.ISession.md). You can use this interface to get and set values in `Session`, such as `byte[]`.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -181,7 +181,7 @@ Once session is installed and configured, you refer to it via HttpContext, which
 
 Because `Session` is built on top of `IDistributedCache`, you must always serialize the object instances being stored. Thus, the interface works with `byte[]` not simply `object`. However, there are extension methods that make working with simple types such as `String` and `Int32` easier, as well as making it easier to get a byte[] value from session.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -199,7 +199,7 @@ If you're storing more complex objects, you will need to serialize the object to
 
 The associated sample application demonstrates how to work with Session, including storing and retrieving simple types as well as custom objects. In order to see what happens when session expires, the sample has configured sessions to last just 10 seconds:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "fundamentals/app-state/sample/src/AppState/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "language": "c#", "highlight_args": {"hl_lines": [2, 6], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/app-state/sample/src/AppState/Startup.cs", "ids": [], "linenos": true, "language": "c#", "highlight_args": {"hl_lines": [2, 6], "linenostart": 1}} -->
 
 ````c#
 
@@ -221,7 +221,7 @@ When you first navigate to the web server, it displays a screen indicating that 
 
 This default behavior is produced by the following middleware in *Startup.cs*, which runs when requests are made that do not already have an established session (note the highlighted sections):
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "fundamentals/app-state/sample/src/AppState/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "language": "c#", "highlight_args": {"hl_lines": [4, 6, 8, 9, 10, 11, 28, 29], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/app-state/sample/src/AppState/Startup.cs", "ids": [], "linenos": true, "language": "c#", "highlight_args": {"hl_lines": [4, 6, 8, 9, 10, 11, 28, 29], "linenostart": 1}} -->
 
 ````c#
 
@@ -261,7 +261,7 @@ This default behavior is produced by the following middleware in *Startup.cs*, w
 
 `GetOrCreateEntries` is a helper method that will retrieve a `RequestEntryCollection` instance from `Session` if it exists; otherwise, it creates the empty collection and returns that. The collection holds `RequestEntry` instances, which keep track of the different requests the user has made during the current session, and how many requests they've made for each path.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "fundamentals/app-state/sample/src/AppState/Model/RequestEntry.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/app-state/sample/src/AppState/Model/RequestEntry.cs", "ids": [], "linenos": true, "language": "c#", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -274,7 +274,7 @@ This default behavior is produced by the following middleware in *Startup.cs*, w
 
    ````
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "fundamentals/app-state/sample/src/AppState/Model/RequestEntryCollection.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/app-state/sample/src/AppState/Model/RequestEntryCollection.cs", "ids": [], "linenos": true, "language": "c#", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -307,7 +307,7 @@ This default behavior is produced by the following middleware in *Startup.cs*, w
 
 Fetching the current instance of `RequestEntryCollection` is done via the `GetOrCreateEntries` helper method:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "fundamentals/app-state/sample/src/AppState/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "language": "c#", "highlight_args": {"hl_lines": [4, 8, 9], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/app-state/sample/src/AppState/Startup.cs", "ids": [], "linenos": true, "language": "c#", "highlight_args": {"hl_lines": [4, 8, 9], "linenostart": 1}} -->
 
 ````c#
 
@@ -342,7 +342,7 @@ Refreshing the page results in the count incrementing; returning to the root of 
 
 Establishing the session is done in the middleware that handles requests to "/session":
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "fundamentals/app-state/sample/src/AppState/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "language": "none", "highlight_args": {"hl_lines": [2, 8, 9, 10, 11, 12, 13, 14], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/app-state/sample/src/AppState/Startup.cs", "ids": [], "linenos": true, "language": "none", "highlight_args": {"hl_lines": [2, 8, 9, 10, 11, 12, 13, 14], "linenostart": 1}} -->
 
 ````none
 
@@ -371,7 +371,7 @@ Establishing the session is done in the middleware that handles requests to "/se
 
 Requests to this path will get or create a `RequestEntryCollection`, will add the current path to it, and then will store it in session using the helper method `SaveEntries`, shown below:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "fundamentals/app-state/sample/src/AppState/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "language": "c#", "highlight_args": {"hl_lines": [6], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/app-state/sample/src/AppState/Startup.cs", "ids": [], "linenos": true, "language": "c#", "highlight_args": {"hl_lines": [6], "linenostart": 1}} -->
 
 ````c#
 
@@ -389,7 +389,7 @@ Requests to this path will get or create a `RequestEntryCollection`, will add th
 
 The sample includes one more piece of middleware worth mentioning, which is mapped to the "/untracked" path. You can see its configuration here:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "fundamentals/app-state/sample/src/AppState/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "language": "c#", "highlight_args": {"hl_lines": [2, 13], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/app-state/sample/src/AppState/Startup.cs", "ids": [], "linenos": true, "language": "c#", "highlight_args": {"hl_lines": [2, 13], "linenostart": 1}} -->
 
 ````c#
 

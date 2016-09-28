@@ -40,7 +40,7 @@ Tag Helpers enable server-side code to participate in creating and rendering HTM
 
 Most of the built-in Tag Helpers target existing HTML elements and provide server-side attributes for the element. For example, the `<input>` element used in many of the views in the *Views/Account* folder contains the `asp-for` attribute, which extracts the name of the specified model property into the rendered HTML. The following Razor markup:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
 
 ````html
 
@@ -49,7 +49,7 @@ Most of the built-in Tag Helpers target existing HTML elements and provide serve
 
 Generates the following HTML:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
 
 ````html
 
@@ -68,7 +68,7 @@ Tag Helpers scope is controlled by a combination of `@addTagHelper`, `@removeTag
 
 If you create a new ASP.NET Core web app named *AuthoringTagHelpers* (with no authentication), the following *Views/_ViewImports.cshtml* file will be added to your project:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopy.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "html", "highlight_args": {"hl_lines": [2], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopy.cshtml", "ids": [], "linenos": false, "language": "html", "highlight_args": {"hl_lines": [2], "linenostart": 1}} -->
 
 ````html
 
@@ -81,7 +81,7 @@ The `@addTagHelper` directive makes Tag Helpers available to the view. In this c
 
 To expose all of the Tag Helpers in this project (which creates an assembly named *AuthoringTagHelpers*), you would use the following:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopy.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "html", "highlight_args": {"hl_lines": [3], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopy.cshtml", "ids": [], "linenos": false, "language": "html", "highlight_args": {"hl_lines": [3], "linenostart": 1}} -->
 
 ````html
 
@@ -92,7 +92,7 @@ To expose all of the Tag Helpers in this project (which creates an assembly name
 
 If your project contains an `EmailTagHelper` with the default namespace (`AuthoringTagHelpers.TagHelpers.EmailTagHelper`), you can provide the fully qualified name (FQN) of the Tag Helper:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [3]}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [3]}} -->
 
 ````html
 
@@ -103,7 +103,7 @@ If your project contains an `EmailTagHelper` with the default namespace (`Author
 
 To add a Tag Helper to a view using an FQN, you first add the FQN (`AuthoringTagHelpers.TagHelpers.EmailTagHelper`), and then the assembly name (*AuthoringTagHelpers*). Most developers prefer to use the  "*" wildcard syntax. The wildcard syntax allows you to insert the wildcard character "*" as the suffix in an FQN. For example, any of the following directives will bring in the `EmailTagHelper`:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -127,7 +127,7 @@ You can add a *_ViewImports.cshtml* to any view folder, and the view engine adds
 
 You can disable a Tag Helper at the element level with the Tag Helper opt-out character ("!"). For example, `Email` validation is disabled in the `<span>` with the Tag Helper opt-out character:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -190,7 +190,7 @@ IntelliSense lists the properties and methods available to the model on the page
 
 Tag Helpers attach to HTML elements in Razor views, while [HTML Helpers](http://stephenwalther.com/archive/2009/03/03/chapter-6-understanding-html-helpers) are invoked as methods interspersed with HTML in Razor views. Consider the following Razor markup, which creates an HTML label with the CSS class "caption":
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
 
 ````html
 
@@ -199,7 +199,7 @@ Tag Helpers attach to HTML elements in Razor views, while [HTML Helpers](http://
 
 The at (`@`) symbol tells Razor this is the start of code. The next two parameters ("FirstName" and "First Name:") are strings, so [IntelliSense](https://msdn.microsoft.com/en-us/library/hcw1s69b.aspx) can't help. The last argument:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
 
 ````html
 
@@ -222,7 +222,7 @@ IntelliSense helps you write the entire line. The `LabelTagHelper` also defaults
 
 generates:
 
-   <!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
+   <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
 
    ````html
 
@@ -235,7 +235,7 @@ The  camel-cased to sentence-cased content is not used if you add content to the
 
 generates:
 
-   <!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
+   <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
 
    ````html
 
@@ -248,7 +248,7 @@ The following code image shows the Form portion of the *Views/Account/Register.c
 
 The Visual Studio editor displays C# code with a grey background. For example, the `AntiForgeryToken` HTML Helper:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
 
 ````html
 
@@ -263,7 +263,7 @@ The markup is much cleaner and easier to read, edit, and maintain than the HTML 
 
 Consider the *Email* group:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/tag-helpers/intro/sample/Register.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/intro/sample/Register.cshtml", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 

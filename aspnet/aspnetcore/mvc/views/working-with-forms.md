@@ -28,7 +28,7 @@ The [Form](https://www.w3.org/TR/html401/interact/forms.html) Tag Helper:
 
 Sample:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/working-with-forms/sample/final/Views/Demo/RegisterFormOnly.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "HTML", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/Views/Demo/RegisterFormOnly.cshtml", "ids": [], "linenos": false, "language": "HTML", "highlight_args": {"linenostart": 1}} -->
 
 ````HTML
 
@@ -39,7 +39,7 @@ Sample:
 
 The Form Tag Helper above generates the following HTML:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "HTML", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {}} -->
 
 ````HTML
 
@@ -55,7 +55,7 @@ The MVC runtime generates the `action` attribute value from the Form Tag Helper 
 
 The `asp-route` Tag Helper attribute can also generate markup for the HTML `action` attribute. An app with a [route](../../fundamentals/routing.md)  named `register` could use the following markup for the registration page:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/working-with-forms/sample/final/Views/Demo/RegisterRoute.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "HTML", "highlight_args": {"hl_lines": [4], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/Views/Demo/RegisterRoute.cshtml", "ids": [], "linenos": false, "language": "HTML", "highlight_args": {"hl_lines": [4], "linenostart": 1}} -->
 
 ````HTML
 
@@ -66,7 +66,7 @@ The `asp-route` Tag Helper attribute can also generate markup for the HTML `acti
 
 Many of the views in the *Views/Account* folder (generated when you create a new web app with *Individual User Accounts*) contain the [asp-route-returnurl](http://docs.asp.net/en/latest/mvc/views/working-with-forms.html#the-form-tag-helper) attribute:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "none", "highlight_args": {"hl_lines": [2]}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {"hl_lines": [2]}} -->
 
 ````none
 
@@ -84,7 +84,7 @@ The Input Tag Helper binds an HTML [<input>](https://www.w3.org/wiki/HTML/Elemen
 
 Syntax:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "HTML", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {}} -->
 
 ````HTML
 
@@ -105,7 +105,7 @@ The Input Tag Helper:
 
 * Provides strong typing. If the name of the property changes and you don't update the Tag Helper you'll get an error similar to the following:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "HTML", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {}} -->
 
 ````HTML
 
@@ -129,7 +129,7 @@ The following table shows some common [data annotations](https://msdn.microsoft.
 
 Sample:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/working-with-forms/sample/final/ViewModels/RegisterViewModel.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/ViewModels/RegisterViewModel.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -151,7 +151,7 @@ Sample:
    }
    ````
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/working-with-forms/sample/final/Views/Demo/RegisterInput.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "HTML", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/Views/Demo/RegisterInput.cshtml", "ids": [], "linenos": false, "language": "HTML", "highlight_args": {"linenostart": 1}} -->
 
 ````HTML
 
@@ -166,7 +166,7 @@ Sample:
 
 The code above generates the following HTML:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "HTML", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {}} -->
 
 ````HTML
 
@@ -195,7 +195,7 @@ The data annotations applied to the `Email` and `Password` properties generate m
 
 The `asp-for` attribute value is a [ModelExpression](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Rendering/ModelExpression/index.html) and the right hand side of a lambda expression. Therefore, `asp-for="Property1"` becomes `m => m.Property1` in the generated code which is why you don't need to prefix with `Model`. You can use the "@" character to start an inline expression and move before the `m.`:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "HTML", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {}} -->
 
 ````HTML
 
@@ -207,7 +207,7 @@ The `asp-for` attribute value is a [ModelExpression](https://docs.asp.net/projec
 
 Generates the following:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "HTML", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {}} -->
 
 ````HTML
 
@@ -218,7 +218,7 @@ Generates the following:
 
 You can also navigate to child properties using the property path of the view model. Consider a more complex model class that contains a child `Address` property.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/working-with-forms/sample/final/ViewModels/AddressViewModel.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [1, 2, 3, 4], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/ViewModels/AddressViewModel.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [1, 2, 3, 4], "linenostart": 1}} -->
 
 ````c#
 
@@ -229,7 +229,7 @@ You can also navigate to child properties using the property path of the view mo
 
    ````
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/working-with-forms/sample/final/ViewModels/RegisterAddressViewModel.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [8], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/ViewModels/RegisterAddressViewModel.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [8], "linenostart": 1}} -->
 
 ````c#
 
@@ -248,7 +248,7 @@ You can also navigate to child properties using the property path of the view mo
 
 In the view, we bind to `Address.AddressLine1`:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/working-with-forms/sample/final/Views/Demo/RegisterAddress.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "HTML", "highlight_args": {"hl_lines": [6], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/Views/Demo/RegisterAddress.cshtml", "ids": [], "linenos": false, "language": "HTML", "highlight_args": {"hl_lines": [6], "linenostart": 1}} -->
 
 ````HTML
 
@@ -264,7 +264,7 @@ In the view, we bind to `Address.AddressLine1`:
 
 The following HTML is generated for `Address.AddressLine1`:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "HTML", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {}} -->
 
 ````HTML
 
@@ -275,7 +275,7 @@ The following HTML is generated for `Address.AddressLine1`:
 
 Sample, a model containing an array of `Colors`:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/working-with-forms/sample/final/ViewModels/Person.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [3], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/ViewModels/Person.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [3], "linenostart": 1}} -->
 
 ````c#
 
@@ -290,7 +290,7 @@ Sample, a model containing an array of `Colors`:
 
 The action method:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -303,7 +303,7 @@ The action method:
 
 The following Razor shows how you access a specific `Color` element:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/working-with-forms/sample/final/Views/Demo/EditColor.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "HTML", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/Views/Demo/EditColor.cshtml", "ids": [], "linenos": false, "language": "HTML", "highlight_args": {"linenostart": 1}} -->
 
 ````HTML
 
@@ -322,7 +322,7 @@ The following Razor shows how you access a specific `Color` element:
 
 The *Views/Shared/EditorTemplates/String.cshtml* template:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/working-with-forms/sample/final/Views/Shared/EditorTemplates/String.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "HTML", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/Views/Shared/EditorTemplates/String.cshtml", "ids": [], "linenos": false, "language": "HTML", "highlight_args": {"linenostart": 1}} -->
 
 ````HTML
 
@@ -335,7 +335,7 @@ The *Views/Shared/EditorTemplates/String.cshtml* template:
 
 Sample using `List<T>`:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/working-with-forms/sample/final/ViewModels/ToDoItem.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/ViewModels/ToDoItem.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -349,7 +349,7 @@ Sample using `List<T>`:
 
 The following Razor shows how to iterate over a collection:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/working-with-forms/sample/final/Views/Demo/Edit.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "none", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/Views/Demo/Edit.cshtml", "ids": [], "linenos": false, "language": "none", "highlight_args": {"linenostart": 1}} -->
 
 ````none
 
@@ -374,7 +374,7 @@ The following Razor shows how to iterate over a collection:
 
 The *Views/Shared/EditorTemplates/ToDoItem.cshtml* template:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/working-with-forms/sample/final/Views/Shared/EditorTemplates/ToDoItem.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "HTML", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/Views/Shared/EditorTemplates/ToDoItem.cshtml", "ids": [], "linenos": false, "language": "HTML", "highlight_args": {"linenostart": 1}} -->
 
 ````HTML
 
@@ -418,7 +418,7 @@ The [Textarea Tag Helper](https://docs.asp.net/projects/api/en/latest/autoapi/Mi
 
 Sample:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/working-with-forms/sample/final/ViewModels/DescriptionViewModel.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/ViewModels/DescriptionViewModel.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -435,7 +435,7 @@ Sample:
    }
    ````
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/working-with-forms/sample/final/Views/Demo/RegisterTextArea.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "HTML", "highlight_args": {"hl_lines": [4], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/Views/Demo/RegisterTextArea.cshtml", "ids": [], "linenos": false, "language": "HTML", "highlight_args": {"hl_lines": [4], "linenostart": 1}} -->
 
 ````HTML
 
@@ -449,7 +449,7 @@ Sample:
 
 The following HTML is generated:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "HTML", "highlight_args": {"hl_lines": [2, 3, 4, 5, 6, 7, 8]}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {"hl_lines": [2, 3, 4, 5, 6, 7, 8]}} -->
 
 ````HTML
 
@@ -482,7 +482,7 @@ The [Label Tag Helper](https://docs.asp.net/projects/api/en/latest/autoapi/Micro
 
 Sample:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/working-with-forms/sample/final/ViewModels/SimpleViewModel.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/ViewModels/SimpleViewModel.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -502,7 +502,7 @@ Sample:
 
    ````
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/working-with-forms/sample/final/Views/Demo/RegisterLabel.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "HTML", "highlight_args": {"hl_lines": [4], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/Views/Demo/RegisterLabel.cshtml", "ids": [], "linenos": false, "language": "HTML", "highlight_args": {"hl_lines": [4], "linenostart": 1}} -->
 
 ````HTML
 
@@ -516,7 +516,7 @@ Sample:
 
 The following HTML is generated for the `<label>` element:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "HTML", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {}} -->
 
 ````HTML
 
@@ -539,7 +539,7 @@ There are two Validation Tag Helpers. The [Validation Message Tag Helper](https:
 
 The [Validation Message Tag Helper](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/TagHelpers/ValidationMessageTagHelper/index.html)  is used with the `asp-validation-for` attribute on a HTML [span](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span) element.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "HTML", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {}} -->
 
 ````HTML
 
@@ -548,7 +548,7 @@ The [Validation Message Tag Helper](https://docs.asp.net/projects/api/en/latest/
 
 The Validation Message Tag Helper will generate the following HTML:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "HTML", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {}} -->
 
 ````HTML
 
@@ -564,7 +564,7 @@ Note:
 
 When a server side validation error occurs (for example when you have custom server side validation or client-side validation is disabled), MVC places that error message as the body of the `<span>` element.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "HTML", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {}} -->
 
 ````HTML
 
@@ -586,7 +586,7 @@ The [Validation Summary Tag Helper](https://docs.asp.net/projects/api/en/latest/
 
 In the following example, the data model is decorated with `DataAnnotation` attributes, which generates validation error messages on the `<input>` element.  When a validation error occurs, the Validation Tag Helper displays the error message:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/working-with-forms/sample/final/ViewModels/RegisterViewModel.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/ViewModels/RegisterViewModel.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -608,7 +608,7 @@ In the following example, the data model is decorated with `DataAnnotation` attr
    }
    ````
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/working-with-forms/sample/final/Views/Demo/RegisterValidation.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "HTML", "highlight_args": {"hl_lines": [4, 6, 8], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/Views/Demo/RegisterValidation.cshtml", "ids": [], "linenos": false, "language": "HTML", "highlight_args": {"hl_lines": [4, 6, 8], "linenostart": 1}} -->
 
 ````HTML
 
@@ -627,7 +627,7 @@ In the following example, the data model is decorated with `DataAnnotation` attr
 
 The generated HTML (when the model is valid):
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "HTML", "highlight_args": {"hl_lines": [2, 3, 8, 9, 12, 13]}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {"hl_lines": [2, 3, 8, 9, 12, 13]}} -->
 
 ````HTML
 
@@ -657,7 +657,7 @@ The generated HTML (when the model is valid):
 
 The [Select Tag Helper](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/TagHelpers/SelectTagHelper/index.html) `asp-for` specifies the model property  name for the [select](https://www.w3.org/wiki/HTML/Elements/select) element  and `asp-items` specifies the [option](https://www.w3.org/wiki/HTML/Elements/option) elements.  For example:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/working-with-forms/sample/final/Views/Home/Index.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "HTML", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/Views/Home/Index.cshtml", "ids": [], "linenos": false, "language": "HTML", "highlight_args": {"linenostart": 1}} -->
 
 ````HTML
 
@@ -667,7 +667,7 @@ The [Select Tag Helper](https://docs.asp.net/projects/api/en/latest/autoapi/Micr
 
 Sample:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/working-with-forms/sample/final/ViewModels/CountryViewModel.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/ViewModels/CountryViewModel.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -692,7 +692,7 @@ Sample:
 
 The `Index` method initializes the `CountryViewModel`, sets the selected country and passes it to the `Index` view.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/working-with-forms/sample/final/Controllers/HomeController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/Controllers/HomeController.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -707,7 +707,7 @@ The `Index` method initializes the `CountryViewModel`, sets the selected country
 
 The HTTP POST `Index` method displays the selection:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/working-with-forms/sample/final/Controllers/HomeController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/Controllers/HomeController.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -729,7 +729,7 @@ The HTTP POST `Index` method displays the selection:
 
 The `Index` view:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/working-with-forms/sample/final/Views/Home/Index.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "HTML", "highlight_args": {"hl_lines": [4], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/Views/Home/Index.cshtml", "ids": [], "linenos": false, "language": "HTML", "highlight_args": {"hl_lines": [4], "linenostart": 1}} -->
 
 ````HTML
 
@@ -744,7 +744,7 @@ The `Index` view:
 
 Which generates the following HTML (with "CA" selected):
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "HTML", "highlight_args": {"hl_lines": [2, 3, 4, 5, 6]}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {"hl_lines": [2, 3, 4, 5, 6]}} -->
 
 ````HTML
 
@@ -764,7 +764,7 @@ Note:
 
 The `asp-for` attribute value is a special case and doesn't require a `Model` prefix, the other Tag Helper attributes do (such as `asp-items`)
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/working-with-forms/sample/final/Views/Home/Index.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "HTML", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/Views/Home/Index.cshtml", "ids": [], "linenos": false, "language": "HTML", "highlight_args": {"linenostart": 1}} -->
 
 ````HTML
 
@@ -778,7 +778,7 @@ It's often convenient to use `<select>` with an `enum` property and generate the
 
 Sample:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/working-with-forms/sample/final/ViewModels/CountryEnumViewModel.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/ViewModels/CountryEnumViewModel.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -789,7 +789,7 @@ Sample:
 
    ````
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/working-with-forms/sample/final/ViewModels/CountryEnum.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/ViewModels/CountryEnum.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -811,7 +811,7 @@ Sample:
 
 The [GetEnumSelectList](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Rendering/IHtmlHelper/index.html) method generates a [SelectList](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Rendering/SelectList/index.html) object for an enum.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/working-with-forms/sample/final/Views/Home/IndexEnum.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "HTML", "highlight_args": {"hl_lines": [5], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/Views/Home/IndexEnum.cshtml", "ids": [], "linenos": false, "language": "HTML", "highlight_args": {"hl_lines": [5], "linenostart": 1}} -->
 
 ````HTML
 
@@ -828,7 +828,7 @@ The [GetEnumSelectList](https://docs.asp.net/projects/api/en/latest/autoapi/Micr
 
 You can decorate your enumerator list with the `Display` attribute to get a richer UI:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/working-with-forms/sample/final/ViewModels/CountryEnum.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [5, 7], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/ViewModels/CountryEnum.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [5, 7], "linenostart": 1}} -->
 
 ````c#
 
@@ -852,7 +852,7 @@ You can decorate your enumerator list with the `Display` attribute to get a rich
 
 The following HTML is generated:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "HTML", "highlight_args": {"hl_lines": [4, 5]}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {"hl_lines": [4, 5]}} -->
 
 ````HTML
 
@@ -877,7 +877,7 @@ The HTML  [<optgroup>](https://www.w3.org/wiki/HTML/Elements/optgroup) element i
 
 The `CountryViewModelGroup` groups the `SelectListItem` elements into the "North America" and "Europe" groups:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/working-with-forms/sample/final/ViewModels/CountryViewModelGroup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [5, 6, 14, 20, 26, 32, 38, 44], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/ViewModels/CountryViewModelGroup.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [5, 6, 14, 20, 26, 32, 38, 44], "linenostart": 1}} -->
 
 ````c#
 
@@ -942,7 +942,7 @@ The two groups are shown below:
 
 The generated HTML:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "HTML", "highlight_args": {"hl_lines": [3, 4, 5, 6, 7, 8, 9, 10, 11, 12]}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {"hl_lines": [3, 4, 5, 6, 7, 8, 9, 10, 11, 12]}} -->
 
 ````HTML
 
@@ -968,7 +968,7 @@ The generated HTML:
 
 The Select Tag Helper  will automatically generate the [multiple = "multiple"](https://www.w3.org/TR/html-markup/select.html#select.attrs.multiple)  attribute if the property specified in the `asp-for` attribute is an `IEnumerable`. For example, given the following model:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/working-with-forms/sample/final/ViewModels/CountryViewModelIEnumerable.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [6], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/ViewModels/CountryViewModelIEnumerable.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [6], "linenostart": 1}} -->
 
 ````c#
 
@@ -997,7 +997,7 @@ The Select Tag Helper  will automatically generate the [multiple = "multiple"](h
 
 With the following view:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/working-with-forms/sample/final/Views/Home/IndexMultiSelect.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "HTML", "highlight_args": {"hl_lines": [4], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/Views/Home/IndexMultiSelect.cshtml", "ids": [], "linenos": false, "language": "HTML", "highlight_args": {"hl_lines": [4], "linenostart": 1}} -->
 
 ````HTML
 
@@ -1012,7 +1012,7 @@ With the following view:
 
 Generates the following HTML:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "HTML", "highlight_args": {"hl_lines": [3]}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {"hl_lines": [3]}} -->
 
 ````HTML
 
@@ -1035,7 +1035,7 @@ Generates the following HTML:
 
 To allow for no selection, add a "not specified" option to the select list. If the property is a [value type](https://msdn.microsoft.com/en-us/library/s1ax56ch.aspx), you'll have to make it [nullable](https://msdn.microsoft.com/en-us/library/2cf62fcy.aspx).
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/working-with-forms/sample/final/Views/Home/IndexEmpty.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "HTML", "highlight_args": {"hl_lines": [5], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/Views/Home/IndexEmpty.cshtml", "ids": [], "linenos": false, "language": "HTML", "highlight_args": {"hl_lines": [5], "linenostart": 1}} -->
 
 ````HTML
 
@@ -1052,7 +1052,7 @@ To allow for no selection, add a "not specified" option to the select list. If t
 
 If you find yourself using the "not specified" option in multiple pages, you can create a template to eliminate repeating the HTML:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/working-with-forms/sample/final/Views/Home/IndexEmptyTemplate.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "HTML", "highlight_args": {"hl_lines": [5], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/Views/Home/IndexEmptyTemplate.cshtml", "ids": [], "linenos": false, "language": "HTML", "highlight_args": {"hl_lines": [5], "linenostart": 1}} -->
 
 ````HTML
 
@@ -1067,7 +1067,7 @@ If you find yourself using the "not specified" option in multiple pages, you can
 
 The *Views/Shared/EditorTemplates/CountryViewModel.cshtml* template:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/working-with-forms/sample/final/Views/Shared/EditorTemplates/CountryViewModel.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "HTML", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/Views/Shared/EditorTemplates/CountryViewModel.cshtml", "ids": [], "linenos": false, "language": "HTML", "highlight_args": {"linenostart": 1}} -->
 
 ````HTML
 
@@ -1082,7 +1082,7 @@ The *Views/Shared/EditorTemplates/CountryViewModel.cshtml* template:
 
 Adding HTML [<option>](https://www.w3.org/wiki/HTML/Elements/option) elements is not limited to the *No selection* case. For example, the following view and action method will generate HTML similar to the code above:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/working-with-forms/sample/final/Controllers/HomeController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/Controllers/HomeController.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -1095,7 +1095,7 @@ Adding HTML [<option>](https://www.w3.org/wiki/HTML/Elements/option) elements is
 
    ````
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/working-with-forms/sample/final/Views/Home/IndexOption.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "HTML", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/Views/Home/IndexOption.cshtml", "ids": [], "linenos": false, "language": "HTML", "highlight_args": {"linenostart": 1}} -->
 
 ````HTML
 
@@ -1115,7 +1115,7 @@ Adding HTML [<option>](https://www.w3.org/wiki/HTML/Elements/option) elements is
 
 The correct `<option>` element will be selected ( contain the `selected="selected"` attribute) depending on the current `Country` value.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "HTML", "highlight_args": {"hl_lines": [5]}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {"hl_lines": [5]}} -->
 
 ````HTML
 

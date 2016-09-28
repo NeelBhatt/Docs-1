@@ -25,7 +25,7 @@ In this topic, you'll learn how to use ASP.NET Core Identity to add functionalit
 
    The identity services are added to the application in the `ConfigureServices` method in the `Startup` class:
 
-   <!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "security/authentication/identity/sample/src/ASPNET-IdentityDemo/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [10, 11, 12], "linenostart": 1}} -->
+   <!-- literal_block {"xml:space": "preserve", "source": "security/authentication/identity/sample/src/ASPNET-IdentityDemo/Startup.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [10, 11, 12], "linenostart": 1}} -->
 
    ````c#
 
@@ -55,7 +55,7 @@ In this topic, you'll learn how to use ASP.NET Core Identity to add functionalit
 
    Identity is enabled for the application by calling  `UseIdentity` in the `Configure` method of the `Startup` class. This adds cookie-based authentication to the request pipeline.
 
-   <!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "security/authentication/identity/sample/src/ASPNET-IdentityDemo/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [22], "linenostart": 1}} -->
+   <!-- literal_block {"xml:space": "preserve", "source": "security/authentication/identity/sample/src/ASPNET-IdentityDemo/Startup.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [22], "linenostart": 1}} -->
 
    ````c#
 
@@ -104,7 +104,7 @@ In this topic, you'll learn how to use ASP.NET Core Identity to add functionalit
 
    When the user clicks the **Register** link, the `UserManager` and `SignInManager` services are injected into the Controller:
 
-   <!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "security/authentication/identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [3, 4, 11, 12, 17, 18], "linenostart": 1}} -->
+   <!-- literal_block {"xml:space": "preserve", "source": "security/authentication/identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [3, 4, 11, 12, 17, 18], "linenostart": 1}} -->
 
    ````c#
 
@@ -138,7 +138,7 @@ In this topic, you'll learn how to use ASP.NET Core Identity to add functionalit
 
    Then, the **Register** action creates the user by calling `CreateAsync` function of the `UserManager` object, as shown below:
 
-   <!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "security/authentication/identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [9], "linenostart": 1}} -->
+   <!-- literal_block {"xml:space": "preserve", "source": "security/authentication/identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [9], "linenostart": 1}} -->
 
    ````c#
 
@@ -177,7 +177,7 @@ In this topic, you'll learn how to use ASP.NET Core Identity to add functionalit
 
    If the user was successfully created, the user is logged in by the `SignInAsync` method, also contained in the `Register` action. By signing in, the `SignInAsync` method stores a cookie with the user's claims.
 
-   <!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "security/authentication/identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [18], "linenostart": 1}} -->
+   <!-- literal_block {"xml:space": "preserve", "source": "security/authentication/identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [18], "linenostart": 1}} -->
 
    ````c#
 
@@ -218,7 +218,7 @@ In this topic, you'll learn how to use ASP.NET Core Identity to add functionalit
 
    As a registered user, you can log in to the web app by clicking the **Log in** link.  When a registered user logs in, the `Login` action of the `AccountController` is called. Then, the **Login** action signs in the user using the `PasswordSignInAsync` method contained in the `Login` action.
 
-   <!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "security/authentication/identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [11], "linenostart": 1}} -->
+   <!-- literal_block {"xml:space": "preserve", "source": "security/authentication/identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [11], "linenostart": 1}} -->
 
    ````c#
 
@@ -265,7 +265,7 @@ In this topic, you'll learn how to use ASP.NET Core Identity to add functionalit
 
    Clicking the **Log off** link calls the `LogOff` action in the account controller.
 
-   <!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "security/authentication/identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [5], "linenostart": 1}} -->
+   <!-- literal_block {"xml:space": "preserve", "source": "security/authentication/identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [5], "linenostart": 1}} -->
 
    ````c#
 

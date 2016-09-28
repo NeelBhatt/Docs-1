@@ -31,7 +31,7 @@ ASP.NET Core includes a simple built-in container (represented by the `IServiceP
 
 The `ConfigureServices` method in the `Startup` class is responsible for defining the services the application will use, including platform features like Entity Framework Core and ASP.NET Core MVC. Initially, the `IServiceCollection` provided to `ConfigureServices` has just a handful of services defined. Below is an example of how to add additional services to the container using a number of extension methods like `AddDbContext`, `AddIdentity`, and `AddMvc`.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/common/samples/WebApplication1/src/WebApplication1/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [5, 8, 12], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "/Users/shirhatti/docs/Docs/common/samples/WebApplication1/src/WebApplication1/Startup.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [5, 8, 12], "linenostart": 1}} -->
 
 ````c#
 
@@ -67,7 +67,7 @@ Of course, in addition to configuring the application to take advantage of vario
 
 You can register your own application services as follows. The first generic type represents the type (typically an interface) that will be requested from the container. The second generic type represents the concrete type that will be instantiated by the container and used to fulfill such requests.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/common/samples/WebApplication1/src/WebApplication1/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "/Users/shirhatti/docs/Docs/common/samples/WebApplication1/src/WebApplication1/Startup.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -83,7 +83,7 @@ The `AddTransient` method is used to map abstract types to concrete services tha
 
 In the sample for this article, there is a simple controller that displays character names, called `CharactersController`. Its `Index` method displays the current list of characters that have been stored in the application, and initializes the collection with a handful of characters if none exist. Note that although this application uses Entity Framework Core and the `ApplicationDbContext` class for its persistence, none of that is apparent in the controller. Instead, the specific data access mechanism has been abstracted behind an interface, `ICharacterRepository`, which follows the [repository pattern](http://deviq.com/repository-pattern/). An instance of `ICharacterRepository` is requested via the constructor and assigned to a private field, which is then used to access characters as necessary.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "fundamentals/dependency-injection/sample/DependencyInjectionSample/Controllers/CharactersController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [3, 5, 6, 7, 8, 14, 21, 23, 24, 25, 26], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/dependency-injection/sample/DependencyInjectionSample/Controllers/CharactersController.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [3, 5, 6, 7, 8, 14, 21, 23, 24, 25, 26], "linenostart": 1}} -->
 
 ````c#
 
@@ -121,7 +121,7 @@ In the sample for this article, there is a simple controller that displays chara
 
 The `ICharacterRepository` simply defines the two methods the controller needs to work with `Character` instances.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "fundamentals/dependency-injection/sample/DependencyInjectionSample/Interfaces/ICharacterRepository.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [8, 9], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/dependency-injection/sample/DependencyInjectionSample/Interfaces/ICharacterRepository.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [8, 9], "linenostart": 1}} -->
 
 ````c#
 
@@ -143,7 +143,7 @@ This interface is in turn implemented by a concrete type, `CharacterRepository`,
 > [!NOTE]
 > The way DI is used with the `CharacterRepository` class is a general model you can follow for all of your application services, not just in "repositories" or data access classes.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "fundamentals/dependency-injection/sample/DependencyInjectionSample/Models/CharacterRepository.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [9, 11, 12, 13, 14], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/dependency-injection/sample/DependencyInjectionSample/Models/CharacterRepository.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [9, 11, 12, 13, 14], "linenostart": 1}} -->
 
 ````c#
 
@@ -183,7 +183,7 @@ Note that `CharacterRepository` requests an `ApplicationDbContext` in its constr
 
 In this case, both `ICharacterRepository` and in turn `ApplicationDbContext` must be registered with the services container in `ConfigureServices` in `Startup`. `ApplicationDbContext` is configured with the call to the extension method `AddDbContext<T>`. The following code shows the registration of the `CharacterRepository` type.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "fundamentals/dependency-injection/sample/DependencyInjectionSample/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [2, 3, 4, 10], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/dependency-injection/sample/DependencyInjectionSample/Startup.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [2, 3, 4, 10], "linenostart": 1}} -->
 
 ````c#
 
@@ -229,7 +229,7 @@ Services can be registered with the container in several ways. We have already s
 
 To demonstrate the difference between these lifetime and registration options, consider a simple interface that represents one or more tasks as an *operation* with a unique identifier, `OperationId`. Depending on how we configure the lifetime for this service, the container will provide either the same or different instances of the service to the requesting class. To make it clear which lifetime is being requested, we will create one type per lifetime option:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "fundamentals/dependency-injection/sample/DependencyInjectionSample/Interfaces/IOperation.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [5, 7], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/dependency-injection/sample/DependencyInjectionSample/Interfaces/IOperation.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [5, 7], "linenostart": 1}} -->
 
 ````c#
 
@@ -261,7 +261,7 @@ We implement these interfaces using a single class, `Operation`, that accepts a 
 
 Next, in `ConfigureServices`, each type is added to the container according to its named lifetime:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "fundamentals/dependency-injection/sample/DependencyInjectionSample/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/dependency-injection/sample/DependencyInjectionSample/Startup.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -277,7 +277,7 @@ Next, in `ConfigureServices`, each type is added to the container according to i
 
 Note that the `IOperationSingletonInstance` service is using a specific instance with a known ID of `Guid.Empty` so it will be clear when this type is in use. We have also registered an `OperationService` that depends on each of the other `Operation` types, so that it will be clear within a request whether this service is getting the same instance as the controller, or a new one, for each operation type. All this service does is expose its dependencies as properties, so they can be displayed in the view.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "fundamentals/dependency-injection/sample/DependencyInjectionSample/Services/OperationService.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/dependency-injection/sample/DependencyInjectionSample/Services/OperationService.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -308,7 +308,7 @@ Note that the `IOperationSingletonInstance` service is using a specific instance
 
 To demonstrate the object lifetimes within and between separate individual requests to the application, the sample includes an `OperationsController` that requests each kind of `IOperation` type as well as an `OperationService`. The `Index` action then displays all of the controller's and service's `OperationId` values.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "fundamentals/dependency-injection/sample/DependencyInjectionSample/Controllers/OperationsController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/dependency-injection/sample/DependencyInjectionSample/Controllers/OperationsController.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -398,7 +398,7 @@ The built-in services container is meant to serve the basic needs of the framewo
 
 First, add the appropriate container package(s) to the dependencies property in `project.json`:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "javascript", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "javascript", "highlight_args": {}} -->
 
 ````javascript
 
@@ -410,7 +410,7 @@ First, add the appropriate container package(s) to the dependencies property in 
 
 Next, configure the container in `ConfigureServices` and return an `IServiceProvider`:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {"hl_lines": [1, 11]}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {"hl_lines": [1, 11]}} -->
 
 ````c#
 
@@ -433,7 +433,7 @@ Next, configure the container in `ConfigureServices` and return an `IServiceProv
 
 Finally, configure Autofac as normal in `DefaultModule`:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 

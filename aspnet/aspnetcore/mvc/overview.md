@@ -81,7 +81,7 @@ ASP.NET Core MVC is built on top of [ASP.NET Core's routing](../fundamentals/rou
 
 *Convention-based routing* enables you to globally define the URL formats that your application accepts and how each of those formats maps to a specific action method on given controller. When an incoming request is received, the routing engine parses the URL and matches it to one of the defined URL formats, and then calls the associated controller's action method.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -90,7 +90,7 @@ ASP.NET Core MVC is built on top of [ASP.NET Core's routing](../fundamentals/rou
 
 *Attribute routing* enables you to specify routing information by decorating your controllers and actions with attributes that define your application's routes. This means that your route definitions are placed next to the controller and action with which they're associated.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {"hl_lines": [1, 4]}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {"hl_lines": [1, 4]}} -->
 
 ````c#
 
@@ -109,7 +109,7 @@ ASP.NET Core MVC is built on top of [ASP.NET Core's routing](../fundamentals/rou
 
 ASP.NET Core MVC [model binding](models/model-binding.md) converts client request data  (form values, route data, query string parameters, HTTP headers) into objects that the controller can handle. As a result, your controller logic doesn't have to do the work of figuring out the incoming request data; it simply has the data as parameters to its action methods.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "C#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "C#", "highlight_args": {}} -->
 
 ````C#
 
@@ -120,7 +120,7 @@ ASP.NET Core MVC [model binding](models/model-binding.md) converts client reques
 
 ASP.NET Core MVC supports [validation](models/validation.md) by decorating your model object with data annotation validation attributes. The validation attributes are check on the client side before values are posted to the server, as well as on the server before the controller action is called.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {"hl_lines": [4, 5, 8, 9]}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {"hl_lines": [4, 5, 8, 9]}} -->
 
 ````c#
 
@@ -142,7 +142,7 @@ ASP.NET Core MVC supports [validation](models/validation.md) by decorating your 
 
 A controller action:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {"hl_lines": [3]}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {"hl_lines": [3]}} -->
 
 ````c#
 
@@ -165,7 +165,7 @@ ASP.NET Core has built-in support for [dependency injection (DI)](../fundamental
 
 Your app can also use [dependency injection in view files](views/dependency-injection.md), using the `@inject` directive:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [1]}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [1]}} -->
 
 ````html
 
@@ -185,7 +185,7 @@ Your app can also use [dependency injection in view files](views/dependency-inje
 
 [Filters](controllers/filters.md) help developers encapsulate cross-cutting concerns, like exception handling or authorization. Filters enable running custom pre- and post-processing logic for action methods, and can be configured to run at certain points within the execution pipeline for a given request. Filters can be applied to controllers or actions as attributes (or can be run globally). Several filters (such as `Authorize`) are included in the framework.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/common/samples/WebApplication1/src/WebApplication1/Controllers/AccountController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [1], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "/Users/shirhatti/docs/Docs/common/samples/WebApplication1/src/WebApplication1/Controllers/AccountController.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [1], "linenostart": 1}} -->
 
 ````c#
 
@@ -215,7 +215,7 @@ The framework's use of interfaces and dependency injection make it well-suited t
 
 [ASP.NET Core MVC views](views/overview.md) use the the [Razor view engine](views/razor.md) to render views. Razor is a compact, expressive and fluid template markup language for defining views using embedded C# code. Razor is used to dynamically generate web content on the server. You can cleanly mix server code with client side content and code.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "text", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "text", "highlight_args": {}} -->
 
 ````text
 
@@ -234,7 +234,7 @@ Razor views in MVC can be strongly typed based on your model. Controllers can pa
 
 For example, the following view defines a model of type `IEnumerable<Product>`:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
 
 ````html
 
@@ -253,7 +253,7 @@ For example, the following view defines a model of type `IEnumerable<Product>`:
 
 There are many built-in Tag Helpers for common tasks - such as creating forms, links, loading assets and more - and even more available in public GitHub repositories and as NuGet packages. Tag Helpers are authored in C#, and they target HTML elements based on element name, attribute name, or parent tag. For example, the built-in LinkTagHelper can be used to create a link to the `Login` action of the `AccountsController`:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [3]}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [3]}} -->
 
 ````html
 
@@ -265,7 +265,7 @@ There are many built-in Tag Helpers for common tasks - such as creating forms, l
 
 The `EnvironmentTagHelper` can be used to include different scripts in your views (for example, raw or minified) based on the runtime environment, such as Development, Staring, or Production:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [1, 3, 4, 9]}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [1, 3, 4, 9]}} -->
 
 ````html
 

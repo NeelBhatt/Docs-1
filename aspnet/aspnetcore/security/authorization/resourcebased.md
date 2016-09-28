@@ -11,7 +11,7 @@ Often authorization depends upon the resource being accessed. For example a docu
 
 Authorization is implemented as a service, [IAuthorizationService](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/IAuthorizationService/index.html.md#Microsoft.AspNetCore.Authorization.IAuthorizationService.md), registered in the service collection and available via [dependency injection](../../fundamentals/dependency-injection.md#fundamentals-dependency-injection.md) for Controllers to access.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -28,7 +28,7 @@ Authorization is implemented as a service, [IAuthorizationService](http://docs.a
 
 [IAuthorizationService](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/IAuthorizationService/index.html.md#Microsoft.AspNetCore.Authorization.IAuthorizationService.md) has two methods, one where you pass the resource and the policy name and the other where you pass the resource and a list of requirements to evaluate.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -44,7 +44,7 @@ Authorization is implemented as a service, [IAuthorizationService](http://docs.a
 
 To call the service load your resource within your action then call the [AuthorizeAsync](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/IAuthorizationService/index.html.md#Microsoft.AspNetCore.Authorization.IAuthorizationService.AuthorizeAsync.md) overload you require. For example
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -72,7 +72,7 @@ To call the service load your resource within your action then call the [Authori
 
 Writing a handler for resource based authorization is not that much different to [writing a plain requirements handler](policies.md#security-authorization-policies-based-authorization-handler.md). You create a requirement, and then implement a handler for the requirement, specifying the requirement as before and also the resource type. For example, a handler which might accept a Document resource would look as follows;
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -91,7 +91,7 @@ Writing a handler for resource based authorization is not that much different to
 
 Don't forget you also need to register your handler in the `ConfigureServices` method;
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -102,7 +102,7 @@ Don't forget you also need to register your handler in the `ConfigureServices` m
 
 If you are making decisions based on operations such as read, write, update and delete, you can use the [OperationAuthorizationRequirement](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/Infrastructure/OperationAuthorizationRequirement/index.html.md#Microsoft.AspNetCore.Authorization.Infrastructure.OperationAuthorizationRequirement.md) class in the [Microsoft.AspNetCore.Authorization.Infrastructure](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/Infrastructure/index.html.md#Microsoft.AspNetCore.Authorization.Infrastructure.md) namespace. This prebuilt requirement class enables you to write a single handler which has a parameterized operation name, rather than create individual classes for each operation. To use it provide some operation names:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -121,7 +121,7 @@ If you are making decisions based on operations such as read, write, update and 
 
 Your handler could then be implemented as follows, using a hypothetical `Document` class as the resource;
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -144,7 +144,7 @@ You can see the handler works on [OperationAuthorizationRequirement](http://docs
 
 To call an operational resource handler you need to specify the operation when calling [AuthorizeAsync](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/IAuthorizationService/index.html.md#Microsoft.AspNetCore.Authorization.IAuthorizationService.AuthorizeAsync.md) in your action. For example
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 

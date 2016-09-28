@@ -41,7 +41,7 @@ To grant the IIS worker process access to your application, you will need to mod
 
 You can also do this via the command-line by using **ICACLS** tool.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "names": [], "classes": ["code", "bat"], "xml:space": "preserve"} -->
+<!-- literal_block {"ids": [], "classes": ["code", "bat"], "xml:space": "preserve"} -->
 
 ````
 

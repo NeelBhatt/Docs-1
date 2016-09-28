@@ -38,7 +38,7 @@ If the ASP.NET Core Module fails to launch the backend process or the backend pr
 
 To save logs, you must create the *logs* directory. The ASP.NET Core Module can redirect `stdout` and `stderr` logs to disk by setting the `stdoutLogEnabled` and `stdoutLogFile` attributes of the `aspNetCore` element. Logs are not rotated (unless process recycling/restart occurs). It is the responsibilty of the hoster to limit the disk space the logs consume.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "hosting/aspnet-core-module/sample/web.config", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "xml", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "hosting/aspnet-core-module/sample/web.config", "ids": [], "linenos": false, "language": "xml", "highlight_args": {"linenostart": 1}} -->
 
 ````xml
 
@@ -54,7 +54,7 @@ To save logs, you must create the *logs* directory. The ASP.NET Core Module can 
 
 The ASP.NET Core Module allows you specify environment variables for the process specified in the `processPath` setting by specifying them in `environmentVariables` child attribute to the `aspNetCore` attribute.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "hosting/aspnet-core-module/sample/web.config", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "xml", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "hosting/aspnet-core-module/sample/web.config", "ids": [], "linenos": false, "language": "xml", "highlight_args": {"linenostart": 1}} -->
 
 ````xml
 

@@ -92,7 +92,7 @@ We recommend you name the view file *Default.cshtml* and use the *Views/Shared/C
 
 To use the view component, call `@Component.InvokeAsync("Name of view component", <anonymous type containing parameters>)` from a view. The parameters will be passed to the `InvokeAsync` method.  The `PriorityList` view component developed in the article is invoked from the *Views/Todo/Index.cshtml* view file. In the following, the `InvokeAsync` method is called with two parameters:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "HTML", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {}} -->
 
 ````HTML
 
@@ -105,7 +105,7 @@ View components are typically invoked from a view, but you can invoke them direc
 
 In this example, the view component is called directly from the controller:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/view-components/sample/ViewCompFinal/Controllers/ToDoController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/view-components/sample/ViewCompFinal/Controllers/ToDoController.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -126,7 +126,7 @@ In this example, the view component is called directly from the controller:
 
 Create a *ViewComponents* folder and add the following `PriorityListViewComponent` class.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/view-components/sample/ViewCompFinal/ViewComponents/PriorityListViewComponent1.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/view-components/sample/ViewCompFinal/ViewComponents/PriorityListViewComponent1.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -172,7 +172,7 @@ Notes on the code:
 
 * The `[ViewComponent]` attribute can change the name used to reference a view component. For example, we could have named the class `XYZ`,  and  applied the  `ViewComponent` attribute:
 
-  <!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+  <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
   ````c#
 
@@ -196,7 +196,7 @@ Notes on the code:
 
 3. Create a *Views/Shared/Components/PriorityList/Default.cshtml* Razor view.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/view-components/sample/ViewCompFinal/Views/Shared/Components/PriorityList/Default1.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "html", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/view-components/sample/ViewCompFinal/Views/Shared/Components/PriorityList/Default1.cshtml", "ids": [], "linenos": false, "language": "html", "highlight_args": {"linenostart": 1}} -->
 
 ````html
 
@@ -217,7 +217,7 @@ If the view component was controller specific, you could add it to the controlle
 
 4. Add a `div` containing a call to the priority list component to the bottom of the *Views/Todo/index.cshtml* file:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/view-components/sample/ViewCompFinal/Views/Todo/IndexFirst.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "html", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/view-components/sample/ViewCompFinal/Views/Todo/IndexFirst.cshtml", "ids": [], "linenos": false, "language": "html", "highlight_args": {"linenostart": 1}} -->
 
 ````html
 
@@ -237,7 +237,7 @@ The following image shows the priority items:
 
 You can also call the view component directly from the controller:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/view-components/sample/ViewCompFinal/Controllers/ToDoController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/view-components/sample/ViewCompFinal/Controllers/ToDoController.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"linenostart": 1}} -->
 
 ````c#
 
@@ -252,7 +252,7 @@ You can also call the view component directly from the controller:
 
 A complex view component might need to specify a non-default view under some conditions. The following code shows how to specify the "PVC" view  from the `InvokeAsync` method. Update the `InvokeAsync` method in the `PriorityListViewComponent` class.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/view-components/sample/ViewCompFinal/ViewComponents/PriorityListViewComponentFinal.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [4, 5, 6, 7, 8, 9], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/view-components/sample/ViewCompFinal/ViewComponents/PriorityListViewComponentFinal.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [4, 5, 6, 7, 8, 9], "linenostart": 1}} -->
 
 ````c#
 
@@ -273,7 +273,7 @@ A complex view component might need to specify a non-default view under some con
 
 Copy the *Views/Shared/Components/PriorityList/Default.cshtml* file to a view named *Views/Shared/Components/PriorityList/PVC.cshtml*. Add a heading to indicate the PVC view is being used.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/view-components/sample/ViewCompFinal/Views/Shared/Components/PriorityList/PVC.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "html", "highlight_args": {"hl_lines": [3], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/view-components/sample/ViewCompFinal/Views/Shared/Components/PriorityList/PVC.cshtml", "ids": [], "linenos": false, "language": "html", "highlight_args": {"hl_lines": [3], "linenostart": 1}} -->
 
 ````html
 
@@ -291,7 +291,7 @@ Copy the *Views/Shared/Components/PriorityList/Default.cshtml* file to a view na
 
 Update *Views/TodoList/Index.cshtml*
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/view-components/sample/ViewCompFinal/Views/Todo/IndexFinal.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "html", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/view-components/sample/ViewCompFinal/Views/Todo/IndexFinal.cshtml", "ids": [], "linenos": false, "language": "html", "highlight_args": {"linenostart": 1}} -->
 
 ````html
 
@@ -317,7 +317,7 @@ If the PVC view is not rendered, verify you are calling the view component with 
 
 3. Test the app, you'll get the following error:
 
-   <!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "names": [], "classes": [], "xml:space": "preserve"} -->
+   <!-- literal_block {"ids": [], "xml:space": "preserve"} -->
 
    ````
 
@@ -342,7 +342,7 @@ If the PVC view is not rendered, verify you are calling the view component with 
 
 If you want compile time safety you can replace the hard coded view component name with the class name. Create the view component without the "ViewComponent" suffix:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/view-components/sample/ViewCompFinal/ViewComponents/PriorityList.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [10, 14], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/view-components/sample/ViewCompFinal/ViewComponents/PriorityList.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [10, 14], "linenostart": 1}} -->
 
 ````c#
 
@@ -382,7 +382,7 @@ If you want compile time safety you can replace the hard coded view component na
 
 Add a `using` statement to your Razor view file and use the `nameof` operator:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/view-components/sample/ViewCompFinal/Views/Todo/IndexNameof.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "html", "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/view-components/sample/ViewCompFinal/Views/Todo/IndexNameof.cshtml", "ids": [], "linenos": false, "language": "html", "highlight_args": {"linenostart": 1}} -->
 
 ````html
 

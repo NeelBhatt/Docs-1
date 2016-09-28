@@ -11,7 +11,7 @@ Each instance of EphemeralDataProtectionProvider uses its own unique master key.
 
 The following sample demonstrates instantiating an EphemeralDataProtectionProvider and using it to protect and unprotect data.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
 
 ````none
 

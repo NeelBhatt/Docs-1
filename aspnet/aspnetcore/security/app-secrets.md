@@ -29,7 +29,7 @@ The Secret Manager tool provides a more general mechanism to store sensitive dat
 
 * Add `SecretManager.Tools` to the `tools` section of the *project.json* file and run `dotnet restore`.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "none", "highlight_args": {"hl_lines": [6, 7, 8, 9]}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {"hl_lines": [6, 7, 8, 9]}} -->
 
 ````none
 
@@ -41,7 +41,7 @@ The Secret Manager tool provides a more general mechanism to store sensitive dat
 
 * Test the Secret Manager tool by running the following command:
 
-  <!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "names": [], "classes": [], "xml:space": "preserve"} -->
+  <!-- literal_block {"ids": [], "xml:space": "preserve"} -->
 
   ````
 
@@ -57,7 +57,7 @@ The Secret Manager tool operates on project specific configuration settings that
 
 * Add a `userSecretsId` for your project in its *project.json* file:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "json", "highlight_args": {"hl_lines": [2]}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "json", "highlight_args": {"hl_lines": [2]}} -->
 
 ````json
 
@@ -69,7 +69,7 @@ The Secret Manager tool operates on project specific configuration settings that
 
 * Use the Secret Manager tool to set a secret. For example, in a command window from the project directory enter the following:
 
-  <!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "names": [], "classes": [], "xml:space": "preserve"} -->
+  <!-- literal_block {"ids": [], "xml:space": "preserve"} -->
 
   ````
 
@@ -78,7 +78,7 @@ The Secret Manager tool operates on project specific configuration settings that
 
 You can run the secret manager tool from other directories, but you must use the `--project` option to pass in the path to the *project.json* file:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "names": [], "classes": [], "xml:space": "preserve"} -->
+<!-- literal_block {"ids": [], "xml:space": "preserve"} -->
 
 ````
 
@@ -91,7 +91,7 @@ You can also use the Secret Manager tool to list, remove and clear app secrets.
 
 You access Secret Manager secrets through the configuration system. Add the `Microsoft.Extensions.Configuration.UserSecrets` as a dependency in your *project.json* file and run `dotnet restore`.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "none", "highlight_args": {"hl_lines": [2]}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {"hl_lines": [2]}} -->
 
 ````none
 
@@ -100,7 +100,7 @@ You access Secret Manager secrets through the configuration system. Add the `Mic
 
 Add the user secrets configuration source to the `Startup` method:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/common/samples/WebApplication1/src/WebApplication1/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "none", "highlight_args": {"hl_lines": [11], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "/Users/shirhatti/docs/Docs/common/samples/WebApplication1/src/WebApplication1/Startup.cs", "ids": [], "linenos": false, "language": "none", "highlight_args": {"hl_lines": [11], "linenostart": 1}} -->
 
 ````none
 
@@ -125,7 +125,7 @@ Add the user secrets configuration source to the `Startup` method:
 
 You can now access user secrets via the configuration API:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 

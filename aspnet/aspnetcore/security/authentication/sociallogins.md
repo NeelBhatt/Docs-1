@@ -38,7 +38,7 @@ Enabling these credentials in your web sites provides a significant advantage be
 
 * Require SSL. Modify the services.AddMvc(); code in `Startup` under `ConfigureServices`:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -98,7 +98,7 @@ Follow these steps to add the Facebook AppId and AppSecret to the Secret Manager
 
 * Set the Facebook AppId:
 
-  <!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "names": [], "classes": [], "xml:space": "preserve"} -->
+  <!-- literal_block {"ids": [], "xml:space": "preserve"} -->
 
   ````
 
@@ -107,7 +107,7 @@ Follow these steps to add the Facebook AppId and AppSecret to the Secret Manager
 
 * Set the Facebook AppSecret:
 
-  <!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "names": [], "classes": [], "xml:space": "preserve"} -->
+  <!-- literal_block {"ids": [], "xml:space": "preserve"} -->
 
   ````
 
@@ -116,7 +116,7 @@ Follow these steps to add the Facebook AppId and AppSecret to the Secret Manager
 
 The following code reads the configuration values stored by the [Secret Manager](../app-secrets.md#security-app-secrets.md).
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "/Users/shirhatti/docs/Docs/common/samples/WebApplication1/src/WebApplication1/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "none", "highlight_args": {"hl_lines": [11], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "/Users/shirhatti/docs/Docs/common/samples/WebApplication1/src/WebApplication1/Startup.cs", "ids": [], "linenos": false, "language": "none", "highlight_args": {"hl_lines": [11], "linenostart": 1}} -->
 
 ````none
 
@@ -146,7 +146,7 @@ The following code reads the configuration values stored by the [Secret Manager]
 
 Add the Facebook middleware in the `Configure` method in `Startup`:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "security/authentication/sociallogins/sample/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [21, 22, 23, 24, 25], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "security/authentication/sociallogins/sample/Startup.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [21, 22, 23, 24, 25], "linenostart": 1}} -->
 
 ````c#
 

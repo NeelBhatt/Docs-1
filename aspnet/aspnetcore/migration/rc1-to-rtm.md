@@ -25,7 +25,7 @@ If your app targeted `dnx451` or  `dnxcore50` in the `frameworks` section of *pr
 
 .NET Core apps must add a dependency to the `Microsoft.NETCore.App` package:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
 
 ````none
 
@@ -70,7 +70,7 @@ See [.NET Core CLI extensibility model](https://dotnet.github.io/docs/core-conce
 
 IIS publishing is now provided by the `publish-iis` tool in the `Microsoft.AspNetCore.Server.IISIntegration.Tools` package. If you intend to run your app behind IIS, add the `publish-iis` tool to your *project.json*:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "json", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "json", "highlight_args": {}} -->
 
 ````json
 
@@ -83,7 +83,7 @@ IIS publishing is now provided by the `publish-iis` tool in the `Microsoft.AspNe
 
 The `publish-iis` tool is commonly used in the `postpublish` script in *project.json*:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "json", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "json", "highlight_args": {}} -->
 
 ````json
 
@@ -96,7 +96,7 @@ The `publish-iis` tool is commonly used in the `postpublish` script in *project.
 
 The `ef` tool is now provided in the `Microsoft.EntityFrameworkCore.Tools` package:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "json", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "json", "highlight_args": {}} -->
 
 ````json
 
@@ -113,7 +113,7 @@ For more information, see [.NET Core CLI](https://docs.efproject.net/en/latest/c
 
 Razor tooling is now provided in the `Microsoft.AspNetCore.Razor.Tools` package:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "json", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "json", "highlight_args": {}} -->
 
 ````json
 
@@ -128,7 +128,7 @@ Razor tooling is now provided in the `Microsoft.AspNetCore.Razor.Tools` package:
 
 The `sqlservercache` command, formerly provided by the `Microsoft.Extensions.Caching.SqlConfig` package, has been replaced by the `sql-cache` tool, available through the `Microsoft.Extensions.Caching.SqlConfig.Tools` package:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "json", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "json", "highlight_args": {}} -->
 
 ````json
 
@@ -143,7 +143,7 @@ The `sqlservercache` command, formerly provided by the `Microsoft.Extensions.Cac
 
 The `user-secret` command, formerly provided by the `Microsoft.Extensions.SecretManager` package, has been replaced by the `user-secrets` tool, available through the `Microsoft.Extensions.SecretManager.Tools` package:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "json", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "json", "highlight_args": {}} -->
 
 ````json
 
@@ -158,7 +158,7 @@ The `user-secret` command, formerly provided by the `Microsoft.Extensions.Secret
 
 The `watch` command, formerly provided by the `Microsoft.Dnx.Watcher` package, has been replaced by the `watch` tool, available through the `Microsoft.DotNet.Watcher.Tools` package:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "json", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "json", "highlight_args": {}} -->
 
 ````json
 
@@ -175,7 +175,7 @@ For more information on the file watcher, see **Dotnet watch** in  [Tutorials](.
 
 ASP.NET Core 1.0 apps are console apps; you must define an entry point for your app that sets up a web host and runs it. Below is an example from the startup code for one of the Web Application templates in Visual Studio:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -197,7 +197,7 @@ ASP.NET Core 1.0 apps are console apps; you must define an entry point for your 
 
 You must add the `emitEntryPoint` to the `buildOptions` section of your application's *project.json*:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "json", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "json", "highlight_args": {}} -->
 
 ````json
 
@@ -234,7 +234,7 @@ The environment key is set with the `ASPNETCORE_ENVIRONMENT` environment variabl
 
 Dependency injection code that uses `IApplicationEnvironment` must now use [IHostingEnvironment](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/IHostingEnvironment/index.html.md#Microsoft.AspNetCore.Hosting.IHostingEnvironment.md). For example, in your `Startup` class, change:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -243,7 +243,7 @@ Dependency injection code that uses `IApplicationEnvironment` must now use [IHos
 
 To:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -266,7 +266,7 @@ The following action result types have also been renamed:
 
 To compile views, set the `preserveCompilationContext` option in *project.json* to preserve the compilation context, as shown here:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "json", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "json", "highlight_args": {}} -->
 
 ````json
 
@@ -283,7 +283,7 @@ Views now support relative paths.
 
 The Validation Summary Tag Helper `asp-validation-summary` attribute value has changed. Change:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
 
 ````html
 
@@ -292,7 +292,7 @@ The Validation Summary Tag Helper `asp-validation-summary` attribute value has c
 
 To:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {}} -->
 
 ````html
 
@@ -313,7 +313,7 @@ To:
 
 ASP.NET 5 RC1:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -322,7 +322,7 @@ ASP.NET 5 RC1:
 
 ASP.NET Core 1.0:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -355,7 +355,7 @@ The [IConfigurationSource](http://docs.asp.net/projects/api/en/latest/autoapi/Mi
 
 File-based configuration providers support both relative and absolute paths to configuration files. If you want to specify file paths relative to your application's content root, you must call the [SetBasePath](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Configuration/FileConfigurationExtensions/index.html.md#Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath.md) extension method on [IConfigurationBuilder](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Configuration/IConfigurationBuilder/index.html.md#Microsoft.Extensions.Configuration.IConfigurationBuilder.md):
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {"hl_lines": [4]}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {"hl_lines": [4]}} -->
 
 ````c#
 
@@ -387,7 +387,7 @@ The signatures for the following methods or properties have changed:
 
 To use Identity in a view, add the following:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -404,7 +404,7 @@ HttpPlatformHandler has been replaced by the [ASP.NET Core Module (ANCM)](../hos
 
 The ASP.NET Core Module must be configured in *web.config*:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "xml", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "xml", "highlight_args": {}} -->
 
 ````xml
 
@@ -424,7 +424,7 @@ The *Publish to IIS tool* generates a correct *web.config*. See [Publishing to I
 
 IIS integration middleware is now configured when creating the [Microsoft.AspNetCore.Hosting.WebHostBuilder](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/WebHostBuilder/index.html.md#Microsoft.AspNetCore.Hosting.WebHostBuilder.md), and is no longer called in the `Configure` method of the `Startup` class:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -445,7 +445,7 @@ An *applicationhost.config* file created with ASP.NET 5 RC1 will point ASP.NET C
 
 Update `launchSettings.json` to remove the web target and add the following:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "json", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "json", "highlight_args": {}} -->
 
 ````json
 
@@ -465,7 +465,7 @@ Update `launchSettings.json` to remove the web target and add the following:
 
 You must turn on server garbage collection in *project.json* or *app.config* when running ASP.NET projects on the full .NET Framework:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "json", "highlight_args": {"hl_lines": [4]}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "json", "highlight_args": {"hl_lines": [4]}} -->
 
 ````json
 

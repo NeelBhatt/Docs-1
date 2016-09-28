@@ -18,7 +18,7 @@ The syntax for `@inject`:
 
 An example of `@inject` in action:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/dependency-injection/sample/src/ViewInjectSample/Views/ToDo/Index.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "language": "c#", "highlight_args": {"hl_lines": [4, 5, 15, 16, 17], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/dependency-injection/sample/src/ViewInjectSample/Views/ToDo/Index.cshtml", "ids": [], "linenos": true, "language": "c#", "highlight_args": {"hl_lines": [4, 5, 15, 16, 17], "linenostart": 1}} -->
 
 ````c#
 
@@ -62,7 +62,7 @@ An example of `@inject` in action:
 
 This view displays a list of `ToDoItem` instances, along with a summary showing overall statistics. The summary is populated from the injected `StatisticsService`. This service is registered for dependency injection in `ConfigureServices` in *Startup.cs*:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/dependency-injection/sample/src/ViewInjectSample/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "language": "c#", "highlight_args": {"hl_lines": [6, 7], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/dependency-injection/sample/src/ViewInjectSample/Startup.cs", "ids": [], "linenos": true, "language": "c#", "highlight_args": {"hl_lines": [6, 7], "linenostart": 1}} -->
 
 ````c#
 
@@ -79,7 +79,7 @@ This view displays a list of `ToDoItem` instances, along with a summary showing 
 
 The `StatisticsService` performs some calculations on the set of `ToDoItem` instances, which it accesses via a repository:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/dependency-injection/sample/src/ViewInjectSample/Model/Services/StatisticsService.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "language": "c#", "highlight_args": {"hl_lines": [15, 20, 26], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/dependency-injection/sample/src/ViewInjectSample/Model/Services/StatisticsService.cs", "ids": [], "linenos": true, "language": "c#", "highlight_args": {"hl_lines": [15, 20, 26], "linenostart": 1}} -->
 
 ````c#
 
@@ -133,7 +133,7 @@ View injection can be useful to populate options in UI elements, such as dropdow
 
 An alternative approach injects services directly into the view to obtain the options. This minimizes the amount of code required by the controller, moving this view element construction logic into the view itself. The controller action to display a profile editing form only needs to pass the form the profile instance:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/dependency-injection/sample/src/ViewInjectSample/Controllers/ProfileController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "language": "c#", "highlight_args": {"hl_lines": [9, 19], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/dependency-injection/sample/src/ViewInjectSample/Controllers/ProfileController.cs", "ids": [], "linenos": true, "language": "c#", "highlight_args": {"hl_lines": [9, 19], "linenostart": 1}} -->
 
 ````c#
 
@@ -168,7 +168,7 @@ The HTML form used to update these preferences includes dropdown lists for three
 
 These lists are populated by a service that has been injected into the view:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/dependency-injection/sample/src/ViewInjectSample/Views/Profile/Index.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "language": "c#", "highlight_args": {"hl_lines": [4, 16, 17, 21, 22, 26, 27], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/dependency-injection/sample/src/ViewInjectSample/Views/Profile/Index.cshtml", "ids": [], "linenos": true, "language": "c#", "highlight_args": {"hl_lines": [4, 16, 17, 21, 22, 26, 27], "linenostart": 1}} -->
 
 ````c#
 
@@ -206,7 +206,7 @@ These lists are populated by a service that has been injected into the view:
 
 The `ProfileOptionsService` is a UI-level service designed to provide just the data needed for this form:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/dependency-injection/sample/src/ViewInjectSample/Model/Services/ProfileOptionsService.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "language": "c#", "highlight_args": {"hl_lines": [7, 13, 24], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/dependency-injection/sample/src/ViewInjectSample/Model/Services/ProfileOptionsService.cs", "ids": [], "linenos": true, "language": "c#", "highlight_args": {"hl_lines": [7, 13, 24], "linenostart": 1}} -->
 
 ````c#
 
@@ -253,7 +253,7 @@ In addition to injecting new services, this technique can also be used to overri
 
 As you can see, the default fields include `Html`, `Component`, and `Url` (as well as the `StatsService` that we injected). If for instance you wanted to replace the default HTML Helpers with your own, you could easily do so using `@inject`:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/views/dependency-injection/sample/src/ViewInjectSample/Views/Helper/Index.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": true, "language": "html", "highlight_args": {"hl_lines": [3, 11], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/dependency-injection/sample/src/ViewInjectSample/Views/Helper/Index.cshtml", "ids": [], "linenos": true, "language": "html", "highlight_args": {"hl_lines": [3, 11], "linenostart": 1}} -->
 
 ````html
 

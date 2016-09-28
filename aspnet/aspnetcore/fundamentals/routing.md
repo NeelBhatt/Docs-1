@@ -80,7 +80,7 @@ Most applications will create routes by calling `MapRoute` or one of the similar
 
 This is an example of a `MapRoute` call used by a typical ASP.NET MVC route definition:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -97,7 +97,7 @@ See [route-template-reference](#route-template-reference) for a thorough descrip
 
 This example includes a *route constraint*:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -112,7 +112,7 @@ Additional overloads of `MapRoute` accept values for `constraints`, `dataTokens`
 
 The following two examples create equivalent routes:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -131,7 +131,7 @@ The following two examples create equivalent routes:
 
 This example demonstrates a few more features:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -145,7 +145,7 @@ This template will match a URL path like `/Blog/All-About-Routing/Introduction` 
 
 This example adds route constraints and data tokens:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -172,7 +172,7 @@ The `Route` class can also perform URL generation by combining a set of route va
 
 This example uses a basic ASP.NET MVC style route:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -200,7 +200,7 @@ To use routing middleware, add it to the **dependencies** in *project.json*:
 
 Add routing to the service container in *Startup.cs*:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "fundamentals/routing/sample/RoutingSample/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [3], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/routing/sample/RoutingSample/Startup.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [3], "linenostart": 1}} -->
 
 ````c#
 
@@ -221,7 +221,7 @@ Routes must configured in the `Configure` method in the `Startup` class. The sam
 
 * [UseRouter](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/RoutingBuilderExtensions/index.html.md#Microsoft.AspNetCore.Builder.RoutingBuilderExtensions.UseRouter.md)
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "fundamentals/routing/sample/RoutingSample/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/routing/sample/RoutingSample/Startup.cs", "ids": [], "linenos": false, "highlight_args": {"linenostart": 1}} -->
 
 ````
 
@@ -337,7 +337,7 @@ Value must be no more than 120.  range(min,max)  {age:range(18,120)}  91  Value 
 
 The example below shows how to generate a link to a route given a dictionary of route values and a `RouteCollection`.
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "fundamentals/routing/sample/RoutingSample/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "highlight_args": {"linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/routing/sample/RoutingSample/Startup.cs", "ids": [], "linenos": false, "highlight_args": {"linenostart": 1}} -->
 
 ````
 
@@ -371,7 +371,7 @@ Values that are explicitly provided but which don't match anything are added to 
 
 If a route has a default value that doesn't correspond to a parameter and that value is explicitly provided, it must match the default value. For example:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 

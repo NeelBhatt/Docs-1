@@ -57,7 +57,7 @@ Tap on the menu links (**MvcMovie**, **Home**, **About**). Each page shows the s
 
 Change the contents of the title element. Change the anchor text in the layout template to "MVC Movie" and the controller from `Home` to `Movies` as highlighted below:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "tutorials/first-mvc-app/start-mvc/sample/src/MvcMovie/Views/Shared/_Layout.cshtml", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "HTML", "highlight_args": {"hl_lines": [29, 6], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample/src/MvcMovie/Views/Shared/_Layout.cshtml", "ids": [], "linenos": false, "language": "HTML", "highlight_args": {"hl_lines": [29, 6], "linenostart": 1}} -->
 
 
 [!code-html[Main](start-mvc/sample/src/MvcMovie/Views/Shared/_Layout.html?range=1-47&highlight=6,29)]

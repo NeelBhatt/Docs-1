@@ -17,7 +17,7 @@ We will be using `yo aspnet` to generate the **Web Application Basic** template,
 
 Install the necessary yeoman generators and bower using npm.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "console", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "console", "highlight_args": {}} -->
 
 ````console
 
@@ -26,7 +26,7 @@ Install the necessary yeoman generators and bower using npm.
 
 Run the ASP.NET Core generator
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "console", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "console", "highlight_args": {}} -->
 
 ````console
 
@@ -41,7 +41,7 @@ Run the ASP.NET Core generator
 
 When the generator completes scaffolding the files, it will instruct you to restore, build, and run the application.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "console", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "console", "highlight_args": {}} -->
 
 ````console
 
@@ -106,7 +106,7 @@ More on editor in [Visual Studio Code](https://code.visualstudio.com).
 
 The sample is configured to use [Kestrel](../fundamentals/servers.md#kestrel.md) for the web server. You can see it configured in the *project.json* file, where it is specified as a dependency.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "json", "highlight_args": {"hl_lines": [14]}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "json", "highlight_args": {"hl_lines": [14]}} -->
 
 ````json
 

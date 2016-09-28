@@ -13,7 +13,7 @@ In the previous article we [migrated configuration from an ASP.NET MVC project t
 
 In ASP.NET MVC, authentication and identity features are configured using ASP.NET Identity in Startup.Auth.cs and IdentityConfig.cs, located in the App_Start folder. In ASP.NET Core MVC, these features are configured in *Startup.cs*. Before pulling in the required services and configuring them, we should add the required dependencies to the project. Open *project.json* and add `Microsoft.AspNetCore.Identity.EntityFramework` and `Microsoft.AspNetCore.Authentication.Cookies` to the list of dependencies:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
 
 ````none
 
@@ -26,7 +26,7 @@ In ASP.NET MVC, authentication and identity features are configured using ASP.NE
 
 Now, open Startup.cs and update the ConfigureServices() method to use Entity Framework and Identity services:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -49,7 +49,7 @@ At this point, there are two types referenced in the above code that we haven't 
 
 ApplicationUser.cs:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -65,7 +65,7 @@ ApplicationUser.cs:
 
 ApplicationDbContext.cs:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -101,7 +101,7 @@ The ASP.NET Core MVC Starter Web project doesn't include much customization of u
 
 With these files in place, the Startup.cs file can be made to compile by updating its using statements:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -119,7 +119,7 @@ With identity services configured for the application and data access configured
 
 Update _Layout.cshtml; uncomment the @Html.Partial line:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {}} -->
 
 ````none
 
@@ -134,7 +134,7 @@ Now, add a new MVC View Page called _LoginPartial to the Views/Shared folder:
 
 Update _LoginPartial.cshtml with the following code (replace all of its contents):
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 

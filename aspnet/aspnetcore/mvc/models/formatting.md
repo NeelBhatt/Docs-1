@@ -20,7 +20,7 @@ To return data in a specific format from a controller that inherits from the `Co
 
 Returning JSON-formatted data:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/models/formatting/sample/src/ResponseFormattingSample/Controllers/Api/AuthorsController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [3, 5], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/models/formatting/sample/src/ResponseFormattingSample/Controllers/Api/AuthorsController.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [3, 5], "linenostart": 1}} -->
 
 ````c#
 
@@ -41,7 +41,7 @@ Note that the content type of the response is `application/json`, shown both in 
 
 To return plain text formatted data, use `ContentResult` and the `Content` helper:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/models/formatting/sample/src/ResponseFormattingSample/Controllers/Api/AuthorsController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [3, 5], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/models/formatting/sample/src/ResponseFormattingSample/Controllers/Api/AuthorsController.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [3, 5], "linenostart": 1}} -->
 
 ````c#
 
@@ -60,7 +60,7 @@ A response from this action:
 
 Note in this case the `Content-Type` returned is `text/plain`. You can also achieve this same behavior using just a string response type:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/models/formatting/sample/src/ResponseFormattingSample/Controllers/Api/AuthorsController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [3, 5], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/models/formatting/sample/src/ResponseFormattingSample/Controllers/Api/AuthorsController.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [3, 5], "linenostart": 1}} -->
 
 ````c#
 
@@ -82,7 +82,7 @@ Content negotiation (*conneg* for short) occurs when the client specifies an [Ac
 
 The following action method uses the `Ok` and `NotFound` helper methods:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/models/formatting/sample/src/ResponseFormattingSample/Controllers/Api/AuthorsController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [8, 10], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/models/formatting/sample/src/ResponseFormattingSample/Controllers/Api/AuthorsController.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [8, 10], "linenostart": 1}} -->
 
 ````c#
 
@@ -110,7 +110,7 @@ Controller actions can return POCOs (Plain Old CLR Objects), in which case ASP.N
 
 Returning an object type:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/models/formatting/sample/src/ResponseFormattingSample/Controllers/Api/AuthorsController.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [3], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/models/formatting/sample/src/ResponseFormattingSample/Controllers/Api/AuthorsController.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [3], "linenostart": 1}} -->
 
 ````c#
 
@@ -139,7 +139,7 @@ Unlike typical API clients, web browsers tend to supply `Accept` headers that in
 
 If you would prefer your application honor browser accept headers, you can configure this as part of MVC's configuration by setting `RespectBrowserAcceptHeader` to `true` in the `ConfigureServices` method in *Startup.cs*.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -159,7 +159,7 @@ To add support for XML formatting, add the "Microsoft.AspNetCore.Mvc.Formatters.
 
 Add the XmlSerializerFormatters to MVC's configuration in *Startup.cs*:
 
-<!-- literal_block {"xml:space": "preserve", "backrefs": [], "source": "mvc/models/formatting/sample/src/ResponseFormattingSample/Startup.cs", "ids": [], "dupnames": [], "names": [], "classes": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [4], "linenostart": 1}} -->
+<!-- literal_block {"xml:space": "preserve", "source": "mvc/models/formatting/sample/src/ResponseFormattingSample/Startup.cs", "ids": [], "linenos": false, "language": "c#", "highlight_args": {"hl_lines": [4], "linenostart": 1}} -->
 
 ````c#
 
@@ -175,7 +175,7 @@ Add the XmlSerializerFormatters to MVC's configuration in *Startup.cs*:
 
 Alternately, you can add just the output formatter:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -187,7 +187,7 @@ Alternately, you can add just the output formatter:
 
 These two approaches will serialize results using [System.Xml.Serialization.XmlSerializer](https://dotnet.github.io/api/System.Xml.Serialization.XmlSerializer.html). If you prefer, you can use the [System.Runtime.Serialization.DataContractSerializer](https://dotnet.github.io/api/System.Runtime.Serialization.DataContractSerializer.html) by adding its associated formatter:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -213,7 +213,7 @@ In this screenshot, you can see the request sets a header of `Accept: applicatio
 
 If you would like to restrict the response formats for a specific action you can, you can apply the `[Produces]` filter. The `[Produces]` filter specifies the response formats for a specific action (or controller). Like most [Filters](../controllers/filters.md), this can be applied at the action, controller, or global scope.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -227,7 +227,7 @@ The `[Produces]` filter will force all actions within the `AuthorsController` to
 
 Some special cases are implemented using built-in formatters. By default, `string` return types will be formatted as *text/plain* (*text/html* if requested via `Accept` header). This behavior can be removed by removing the `TextOutputFormatter`. You remove formatters in the `Configure` method in *Startup.cs* (shown below). Actions that have a model object return type will return a 204 No Content response when returning `null`. This behavior can be removed by removing the `HttpNoContentOutputFormatter`. The following code removes the `TextOutputFormatter` and *HttpNoContentOutputFormatter`*.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 
@@ -246,7 +246,7 @@ Without the `HttpNoContentOutputFormatter`, null objects are formatted using the
 
 Clients can request a particular format as part of the URL, such as in the query string or part of the path, or by using a format-specific file extension such as .xml or .json. The mapping from request path should be specified in the route the API is using. For example:
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "c#", "highlight_args": {}} -->
 
 ````c#
 

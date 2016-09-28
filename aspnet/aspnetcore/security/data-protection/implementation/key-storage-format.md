@@ -11,7 +11,7 @@ Objects are stored at rest in XML representation. The default directory for key 
 
 Keys exist as top-level objects in the key repository. By convention keys have the filename **key-{guid}.xml**, where {guid} is the id of the key. Each such file contains a single key. The format of the file is as follows.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "xml", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "xml", "highlight_args": {}} -->
 
 ````xml
 
@@ -65,7 +65,7 @@ Revocations exist as top-level objects in the key repository. By convention revo
 
 For revocations of individual keys, the file contents will be as below.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "xml", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "xml", "highlight_args": {}} -->
 
 ````xml
 
@@ -79,7 +79,7 @@ For revocations of individual keys, the file contents will be as below.
 
 In this case, only the specified key is revoked. If the key id is "*", however, as in the below example, all keys whose creation date is prior to the specified revocation date are revoked.
 
-<!-- literal_block {"backrefs": [], "ids": [], "dupnames": [], "linenos": false, "names": [], "classes": [], "xml:space": "preserve", "language": "xml", "highlight_args": {}} -->
+<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "xml", "highlight_args": {}} -->
 
 ````xml
 
