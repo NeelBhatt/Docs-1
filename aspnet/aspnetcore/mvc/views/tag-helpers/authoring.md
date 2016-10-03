@@ -474,28 +474,7 @@ The lower kebab case tag `<website-information />` would not match. If you want 
 
 5. Add the following markup to the *About.cshtml* view. The highlighted markup displays the web site information.
 
-[!code-html[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/About.cshtml?highlight=1,12,13,14,15,16,17,18,19,20)]
-
-````html
-
-   @using AuthoringTagHelpers.Models
-   @{
-       ViewData["Title"] = "About";
-   }
-   <h2>@ViewData["Title"].</h2>
-   <h3>@ViewData["Message"]</h3>
-
-   <p bold>Use this area to provide additional information.</p>
-
-   <bold> Is this bold?</bold>
-
-   <h3> web site info </h3>
-   <website-information info="new WebsiteContext {
-                                       Version = new Version(1, 3),
-                                       CopyrightYear = 1638,
-                                       Approved = true,
-                                       TagsToShow = 131 }" />
-   ````
+[!code-html[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/About.cshtml?highlight=1,12-)]
 
 **Note:** In the Razor markup shown below:
 
