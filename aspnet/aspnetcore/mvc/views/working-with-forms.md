@@ -53,14 +53,7 @@ The MVC runtime generates the `action` attribute value from the Form Tag Helper 
 
 The `asp-route` Tag Helper attribute can also generate markup for the HTML `action` attribute. An app with a [route](../../fundamentals/routing.md)  named `register` could use the following markup for the registration page:
 
-[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterRoute.cshtml?highlight=4)]
-
-````HTML
-
-   <form asp-route="register" method="post">
-       <!-- Input and Submit elements -->
-   </form>
-   ````
+[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterRoute.cshtml)]
 
 Many of the views in the *Views/Account* folder (generated when you create a new web app with *Individual User Accounts*) contain the [asp-route-returnurl](http://docs.asp.net/en/latest/mvc/views/working-with-forms.html#the-form-tag-helper) attribute:
 
