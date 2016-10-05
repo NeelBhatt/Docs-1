@@ -47,7 +47,7 @@ Run `npm install` to install the specified packages. Visual Studio will automati
 
 In your *gulpfile.js* import the `gulp-concat` module:
 
-[!code-js[Main](../client-side/bundling-and-minification/samples/WebApplication1/src/WebApplication1/gulpfile.js?highlight=3)]
+[!code-js[Main](bundling-and-minification/samples/WebApplication1/src/WebApplication1/gulpfile.js?highlight=3)]
 
 ````js
 
@@ -61,7 +61,7 @@ In your *gulpfile.js* import the `gulp-concat` module:
 
 Use [globbing](http://www.tldp.org/LDP/abs/html/globbingref.html) patterns to specify the files that you want to bundle and minify:
 
-<!-- literal_block {"xml:space": "preserve", "source": "client-side/bundling-and-minification/samples/WebApplication1/src/WebApplication1/gulpfile.js", "ids": [], "linenos": false, "language": "js", "highlight_args": {"linenostart": 1}} -->
+[!code-js[Main](bundling-and-minification/samples/WebApplication1/src/WebApplication1/gulpfile.js)]
 
 ````js
 
@@ -78,7 +78,7 @@ Use [globbing](http://www.tldp.org/LDP/abs/html/globbingref.html) patterns to sp
 
 You can then define gulp tasks that run `concat` on the desired files and output the result to your webroot:
 
-[!code-js[Main](../client-side/bundling-and-minification/samples/WebApplication1/src/WebApplication1/gulpfile.js?highlight=3,10)]
+[!code-js[Main](bundling-and-minification/samples/WebApplication1/src/WebApplication1/gulpfile.js?highlight=3,10)]
 
 ````js
 
@@ -154,7 +154,7 @@ To minify your JavaScript files you can use the [gulp-uglify](https://www.npmjs.
 
 Import the `gulp-uglify` and `gulp-cssmin` modules in your *gulpfile.js* file:
 
-[!code-js[Main](../client-side/bundling-and-minification/samples/WebApplication1/src/WebApplication1/gulpfile.js?highlight=4,5)]
+[!code-js[Main](bundling-and-minification/samples/WebApplication1/src/WebApplication1/gulpfile.js?highlight=4,5)]
 
 ````js
 
@@ -168,7 +168,7 @@ Import the `gulp-uglify` and `gulp-cssmin` modules in your *gulpfile.js* file:
 
 Add `uglify` to minify your bundled JavaScript files and `cssmin` to minify your bundled CSS files.
 
-[!code-js[Main](../client-side/bundling-and-minification/samples/WebApplication1/src/WebApplication1/gulpfile.js?highlight=4,11)]
+[!code-js[Main](bundling-and-minification/samples/WebApplication1/src/WebApplication1/gulpfile.js?highlight=4,11)]
 
 ````js
 

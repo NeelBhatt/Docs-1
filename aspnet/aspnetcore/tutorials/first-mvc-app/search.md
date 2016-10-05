@@ -9,7 +9,7 @@ In this section you'll add search capability to the `Index` action method that l
 
 Update the `Index` action method to enable search:
 
-<!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs)]
 
 ````csharp
 
@@ -240,7 +240,7 @@ The following markup shows the change to the `form` tag:
 
 Add the following `MovieGenreViewModel` class to the *Models* folder:
 
-<!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Models/MovieGenreViewModel.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](start-mvc/sample2/src/MvcMovie/Models/MovieGenreViewModel.cs)]
 
 ````csharp
 
@@ -269,7 +269,7 @@ The movie-genre view model will contain:
 
 Replace the `Index` method with the following code:
 
-<!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs)]
 
 ````csharp
 

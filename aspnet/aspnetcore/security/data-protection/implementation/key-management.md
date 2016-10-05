@@ -64,7 +64,7 @@ Any operation which modifies the key ring (creating a new key explicitly or perf
 
 The sample below demonstrates using the IKeyManager interface to inspect and manipulate the key ring, including revoking existing keys and generating a new key manually.
 
-<!-- literal_block {"xml:space": "preserve", "source": "security/data-protection/implementation/key-management/samples/key-management.cs", "ids": [], "linenos": true, "language": "none", "highlight_args": {"linenostart": 1}} -->
+[!code-none[Main](key-management/samples/key-management.cs)]
 
 ````none
 

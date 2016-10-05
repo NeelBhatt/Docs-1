@@ -65,7 +65,7 @@ In this section we'll set up our Visual Studio project to use SSL and our projec
 
 Add the `[RequireHttps]` attribute to each controller. The `[RequireHttps]` attribute will redirect all HTTP GET requests to HTTPS GET and will reject all HTTP POSTs. A security best practice is to use HTTPS for all requests.
 
-[!code-csharp[Main](../../security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/Controllers/HomeController.cs?highlight=9)]
+[!code-csharp[Main](accconfirm/sample/WebApplication3/src/WebApplication3/Controllers/HomeController.cs?highlight=9)]
 
 ````csharp
 
@@ -86,7 +86,7 @@ We'll use the [Options pattern](../../fundamentals/configuration.md#options-conf
 
    * Create a class to fetch the secure email key. For this sample, the `AuthMessageSenderOptions` class is created in the *Services/AuthMessageSenderOptions.cs* file.
 
-      <!-- literal_block {"xml:space": "preserve", "source": "security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/Services/AuthMessageSenderOptions.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](accconfirm/sample/WebApplication3/src/WebApplication3/Services/AuthMessageSenderOptions.cs)]
 
       ````csharp
 
@@ -108,7 +108,7 @@ Set the `SendGridUser` and `SendGridKey` with the [secret-manager tool](../app-s
 
 On Windows, Secret Manager stores your keys/value pairs in a *secrets.json* file in the %APPDATA%/Microsoft/UserSecrets/<**userSecretsId**> directory. The **userSecretsId** directory can be found in your *project.json* file. For this example, the first few lines of the *project.json* file are shown below:
 
-   [!code-json[Main](../../security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/project.json?highlight=3)]
+[!code-json[Main](../../security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/project.json?highlight=3)]
 
    ````json
 
@@ -165,7 +165,7 @@ This tutorial shows how to add email notification through [SendGrid](https://sen
 
 * Add code in *Services/MessageServices.cs* similar to the following to configure SendGrid
 
-<!-- literal_block {"xml:space": "preserve", "source": "security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/Services/MessageServices.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](accconfirm/sample/WebApplication3/src/WebApplication3/Services/MessageServices.cs)]
 
 ````csharp
 

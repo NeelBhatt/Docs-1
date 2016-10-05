@@ -37,7 +37,7 @@ That is, an anchor tag that makes this an email link. You might want to do this 
 
 1. Add the following `EmailTagHelper` class to the *TagHelpers* folder.
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1EmailTagHelperCopy.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1EmailTagHelperCopy.cs)]
 
 ````csharp
 
@@ -138,7 +138,7 @@ In this section, we'll update the `EmailTagHelper` so that it will create a vali
 
 Update the `EmailTagHelper` class with the following:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/EmailTagHelperMailTo.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/EmailTagHelperMailTo.cs)]
 
 ````csharp
 
@@ -173,7 +173,7 @@ Update the `EmailTagHelper` class with the following:
 
 * The highlighted line shows the syntax for adding attributes:
 
-[!code-csharp[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/EmailTagHelperMailTo.cs?highlight=6)]
+[!code-csharp[Main](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/EmailTagHelperMailTo.cs?highlight=6)]
 
 ````csharp
 
@@ -239,7 +239,7 @@ In this section we'll write an asynchronous email helper.
 
 1. Replace the `EmailTagHelper` class with the following code:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/EmailTagHelper.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/EmailTagHelper.cs)]
 
 ````csharp
 
@@ -296,7 +296,7 @@ In this section we'll write an asynchronous email helper.
 
 1. Add the following `BoldTagHelper` class to the *TagHelpers* folder.
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/BoldTagHelper.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/BoldTagHelper.cs)]
 
 ````csharp
 
@@ -397,7 +397,7 @@ You can also use the `[HtmlTargetElement]` to change the name of the targeted el
 
 2. Add the following `WebsiteContext` class to the *Models* folder:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Models/WebsiteContext.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Models/WebsiteContext.cs)]
 
 ````csharp
 
@@ -417,7 +417,7 @@ You can also use the `[HtmlTargetElement]` to change the name of the targeted el
 
 3. Add the following `WebsiteInformationTagHelper` class to the *TagHelpers* folder.
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/WebsiteInformationTagHelper.cs", "ids": [], "linenos": false, "language": "none", "highlight_args": {"linenostart": 1}} -->
+[!code-none[Main](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/WebsiteInformationTagHelper.cs)]
 
 ````none
 
@@ -474,11 +474,11 @@ The lower kebab case tag `<website-information />` would not match. If you want 
 
 5. Add the following markup to the *About.cshtml* view. The highlighted markup displays the web site information.
 
-[!code-html[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/About.cshtml?highlight=1,12-)]
+[!code-html[Main](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/About.cshtml?highlight=1,12-)]
 
 **Note:** In the Razor markup shown below:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/About.cshtml", "ids": [], "linenos": false, "language": "html", "highlight_args": {"linenostart": 1}} -->
+[!code-html[Main](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/About.cshtml)]
 
 ````html
 
@@ -497,7 +497,7 @@ Razor knows the `info` attribute is a class, not a string, and you want to write
 
 * You can use the following markup with a closing tag and remove the line with `TagMode.StartTagAndEndTag` in the tag helper:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/AboutNotSelfClosing.cshtml", "ids": [], "linenos": false, "language": "html", "highlight_args": {"linenostart": 1}} -->
+[!code-html[Main](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/AboutNotSelfClosing.cshtml)]
 
 ````html
 
@@ -515,7 +515,7 @@ The condition tag helper renders output when passed a true value.
 
 1. Add the following `ConditionTagHelper` class to the *TagHelpers* folder.
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/ConditionTagHelper.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/ConditionTagHelper.cs)]
 
 ````csharp
 
@@ -567,7 +567,7 @@ The condition tag helper renders output when passed a true value.
 
 3. Replace the `Index` method in the `Home` controller with the following code:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Controllers/HomeController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Controllers/HomeController.cs)]
 
 ````csharp
 
@@ -619,7 +619,7 @@ Because these two helpers are closely related and we may refactor them in the fu
 
 1. Add the following `AutoLinkerHttpTagHelper` class to the *TagHelpers* folder.
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinker.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinker.cs)]
 
 ````csharp
 
@@ -673,7 +673,7 @@ Because these two helpers are closely related and we may refactor them in the fu
 
 4. Update the `AutoLinker` class to include the `AutoLinkerWwwTagHelper` which will convert www text to an anchor tag that also contains the original www text. The updated code is highlighted below:
 
-[!code-csharp[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinker.cs?highlight=15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34)]
+[!code-csharp[Main](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinker.cs?highlight=15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34)]
 
 ````csharp
 
@@ -750,7 +750,7 @@ Because these two helpers are closely related and we may refactor them in the fu
 
 **Note:** In the first edition of the auto-linking tag helpers, we got the content of the target with the following code:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinker.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinker.cs)]
 
 ````csharp
 
@@ -760,7 +760,7 @@ Because these two helpers are closely related and we may refactor them in the fu
 
 That is, we call `GetChildContentAsync` using the `TagHelperOutput` passed into the `ProcessAsync` method. As mentioned previously, because the output is cached, the last tag helper to run wins. We fixed that problem with the following code:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z2AutoLinkerCopy.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z2AutoLinkerCopy.cs)]
 
 ````csharp
 
@@ -773,7 +773,7 @@ The code above checks to see if the content has been modified, and if it has, it
 
 7. Run the app and verify that the two links work as expected. While it might appear our auto linker tag helper is correct and complete, it has a subtle problem. If the WWW tag helper runs first, the www links will not be correct. Update the code by adding the `Order` overload to control the order that the tag runs in. The `Order` property determines the execution order relative to other tag helpers targeting the same element. The default order value is zero and instances with lower values are executed first.
 
-[!code-csharp[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z2AutoLinkerCopy.cs?highlight=5,6,7,8)]
+[!code-csharp[Main](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z2AutoLinkerCopy.cs?highlight=5,6,7,8)]
 
 ````csharp
 

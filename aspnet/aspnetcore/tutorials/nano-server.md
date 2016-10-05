@@ -179,7 +179,7 @@ Run the following script in the remote session:
 
 If you published a portable app, .NET Core must be installed on the target machine. Execute the following Powershell script in a remote Powershell session to install the .NET Framework on your Nano Server.
 
-<!-- literal_block {"xml:space": "preserve", "source": "tutorials/nano-server/Download-Dotnet.ps1", "ids": [], "linenos": false, "language": "powershell", "highlight_args": {"linenostart": 1}} -->
+[!code-powershell[Main](nano-server/Download-Dotnet.ps1)]
 
 ````powershell
 

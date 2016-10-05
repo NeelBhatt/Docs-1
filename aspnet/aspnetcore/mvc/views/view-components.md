@@ -103,7 +103,7 @@ View components are typically invoked from a view, but you can invoke them direc
 
 In this example, the view component is called directly from the controller:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/view-components/sample/ViewCompFinal/Controllers/ToDoController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](view-components/sample/ViewCompFinal/Controllers/ToDoController.cs)]
 
 ````csharp
 
@@ -124,7 +124,7 @@ In this example, the view component is called directly from the controller:
 
 Create a *ViewComponents* folder and add the following `PriorityListViewComponent` class.
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/view-components/sample/ViewCompFinal/ViewComponents/PriorityListViewComponent1.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](view-components/sample/ViewCompFinal/ViewComponents/PriorityListViewComponent1.cs)]
 
 ````csharp
 
@@ -194,7 +194,7 @@ Notes on the code:
 
 3. Create a *Views/Shared/Components/PriorityList/Default.cshtml* Razor view.
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/view-components/sample/ViewCompFinal/Views/Shared/Components/PriorityList/Default1.cshtml", "ids": [], "linenos": false, "language": "html", "highlight_args": {"linenostart": 1}} -->
+[!code-html[Main](view-components/sample/ViewCompFinal/Views/Shared/Components/PriorityList/Default1.cshtml)]
 
 ````html
 
@@ -215,7 +215,7 @@ If the view component was controller specific, you could add it to the controlle
 
 4. Add a `div` containing a call to the priority list component to the bottom of the *Views/Todo/index.cshtml* file:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/view-components/sample/ViewCompFinal/Views/Todo/IndexFirst.cshtml", "ids": [], "linenos": false, "language": "html", "highlight_args": {"linenostart": 1}} -->
+[!code-html[Main](view-components/sample/ViewCompFinal/Views/Todo/IndexFirst.cshtml)]
 
 ````html
 
@@ -235,7 +235,7 @@ The following image shows the priority items:
 
 You can also call the view component directly from the controller:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/view-components/sample/ViewCompFinal/Controllers/ToDoController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](view-components/sample/ViewCompFinal/Controllers/ToDoController.cs)]
 
 ````csharp
 
@@ -289,7 +289,7 @@ Copy the *Views/Shared/Components/PriorityList/Default.cshtml* file to a view na
 
 Update *Views/TodoList/Index.cshtml*
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/view-components/sample/ViewCompFinal/Views/Todo/IndexFinal.cshtml", "ids": [], "linenos": false, "language": "html", "highlight_args": {"linenostart": 1}} -->
+[!code-html[Main](view-components/sample/ViewCompFinal/Views/Todo/IndexFinal.cshtml)]
 
 ````html
 
@@ -380,7 +380,7 @@ If you want compile time safety you can replace the hard coded view component na
 
 Add a `using` statement to your Razor view file and use the `nameof` operator:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/view-components/sample/ViewCompFinal/Views/Todo/IndexNameof.cshtml", "ids": [], "linenos": false, "language": "html", "highlight_args": {"linenostart": 1}} -->
+[!code-html[Main](view-components/sample/ViewCompFinal/Views/Todo/IndexNameof.cshtml)]
 
 ````html
 

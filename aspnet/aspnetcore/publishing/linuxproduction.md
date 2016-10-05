@@ -218,7 +218,7 @@ Consider using a web application firewall like *ModSecurity* to harden your appl
 
 Add `/etc/nginx/proxy.conf` configuration file.
 
-<!-- literal_block {"xml:space": "preserve", "source": "publishing/linuxproduction/proxy.conf", "ids": [], "linenos": false, "language": "nginx", "highlight_args": {"linenostart": 1}} -->
+[!code-nginx[Main](linuxproduction/proxy.conf)]
 
 ````nginx
 

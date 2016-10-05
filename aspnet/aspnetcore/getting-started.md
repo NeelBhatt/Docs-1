@@ -54,7 +54,7 @@ uid: getting-started
 
 5. Add a *Startup.cs* file that defines the request handling logic:
 
-   <!-- literal_block {"xml:space": "preserve", "source": "getting-started/sample/aspnetcoreapp/Startup.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+   [!code-csharp[Main](getting-started/sample/aspnetcoreapp/Startup.cs)]
 
    ````csharp
 

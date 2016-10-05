@@ -119,7 +119,7 @@ The *ProductsApp* project includes just one simple controller, which inherits fr
 
 Finally, the model, *Product*, used by the *ProductsApp*, is a simple class:
 
-<!-- literal_block {"xml:space": "preserve", "source": "migration/webapi/sample/ProductsApp/Models/Product.cs", "ids": [], "linenos": true, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](webapi/sample/ProductsApp/Models/Product.cs)]
 
 ````csharp
 

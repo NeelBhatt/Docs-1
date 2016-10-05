@@ -21,7 +21,7 @@ At its simplest, `Configuration` is just a collection of sources, which provide 
 
 You must configure at least one source in order for `Configuration` to function correctly. The following sample shows how to test working with `Configuration` as a key/value store:
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/configuration/sample/src/CodeSnippets/ConfigSummarySnippet.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](configuration/sample/src/CodeSnippets/ConfigSummarySnippet.cs)]
 
 ````csharp
 
@@ -43,7 +43,7 @@ It's not unusual to store configuration values in a hierarchical structure, espe
 
 <a name=config-json></a>
 
-<!-- literal_block {"xml:space": "preserve", "source": "common/samples/WebApplication1/src/WebApplication1/appsettings.json", "ids": ["config-json"], "names": ["config-json"], "linenos": false, "language": "json", "highlight_args": {"linenostart": 1}} -->
+[!code-json[Main](../common/samples/WebApplication1/src/WebApplication1/appsettings.json)]
 
 ````json
 
@@ -78,7 +78,7 @@ Adding support for additional configuration sources is accomplished through exte
 
 <a name=custom-config></a>
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/configuration/sample/src/CustomConfigurationProvider/Program.cs", "ids": ["custom-config"], "names": ["custom-config"], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](configuration/sample/src/CustomConfigurationProvider/Program.cs)]
 
 ````csharp
 
@@ -190,7 +190,7 @@ It's recommended that you create well-factored settings objects that correspond 
 
 A simple `MyOptions` class is shown here:
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/configuration/sample/src/UsingOptions/Models/MyOptions.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](configuration/sample/src/UsingOptions/Models/MyOptions.cs)]
 
 ````csharp
 
@@ -294,7 +294,7 @@ You may wish to store some of your application's settings in a database, and acc
 
 To start off we'll define a simple `ConfigurationValue` entity for storing configuration values in the database:
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/configuration/sample/src/CustomConfigurationProvider/ConfigurationValue.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](configuration/sample/src/CustomConfigurationProvider/ConfigurationValue.cs)]
 
 ````csharp
 
@@ -435,7 +435,7 @@ By convention you can also add an `AddEntityFrameworkConfiguration` extension me
 
 You can see an example of how to use this custom configuration provider in your application in the following example. Create a new [ConfigurationBuilder](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Configuration/ConfigurationBuilder/index.html.md#Microsoft.Extensions.Configuration.ConfigurationBuilder.md) to set up your configuration sources. To add the `EntityFrameworkConfigurationProvider`, you first need to specify the EF data provider and connection string. How should you configure the connection string? Using configuration of course! Add an *appsettings.json* file as a configuration source to bootstrap setting up the `EntityFrameworkConfigurationProvider`. By adding the database settings to an existing configuration with other sources specified, any settings specified in the database will override settings specified in *appsettings.json*:
 
-[!code-csharp[Main](../fundamentals/configuration/sample/src/CustomConfigurationProvider/Program.cs?highlight=21,22,23,24)]
+[!code-csharp[Main](configuration/sample/src/CustomConfigurationProvider/Program.cs?highlight=21,22,23,24)]
 
 ````csharp
 

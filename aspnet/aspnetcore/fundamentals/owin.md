@@ -27,7 +27,7 @@ ASP.NET Core's OWIN support is deployed as part of the `Microsoft.AspNetCore.Owi
 
 OWIN middleware conforms to the [OWIN specification](http://owin.org/spec/spec/owin-1.0.0.html), which requires a `Func<IDictionary<string, object>, Task>` interface, and specific keys be set (such as `owin.ResponseBody`). The following simple OWIN middleware displays "Hello World":
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/owin/sample/src/OwinSample/Startup.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](owin/sample/src/OwinSample/Startup.cs)]
 
 ````csharp
 
@@ -53,7 +53,7 @@ The sample signature returns a `Task` and accepts an `IDictionary<string, object
 
 The following code shows how to add the `OwinHello` middleware (shown above) to the ASP.NET pipeline with the [UseOwin](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/OwinExtensions/index.html.md#Microsoft.AspNetCore.Builder.OwinExtensions.UseOwin.md) extension method.
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/owin/sample/src/OwinSample/Startup.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](owin/sample/src/OwinSample/Startup.cs)]
 
 ````csharp
 

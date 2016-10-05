@@ -495,7 +495,7 @@ The following CSS provides a simple sample of a custom header title to the page.
 
 *custom.css file*
 
-<!-- literal_block {"xml:space": "preserve", "source": "tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/wwwroot/swagger/ui/custom.css", "ids": [], "linenos": false, "language": "css", "highlight_args": {"linenostart": 1}} -->
+[!code-css[Main](web-api-help-pages-using-swagger/sample/src/TodoApi/wwwroot/swagger/ui/custom.css)]
 
 ````css
 

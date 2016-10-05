@@ -67,7 +67,7 @@ Of course, in addition to configuring the application to take advantage of vario
 
 You can register your own application services as follows. The first generic type represents the type (typically an interface) that will be requested from the container. The second generic type represents the concrete type that will be instantiated by the container and used to fulfill such requests.
 
-<!-- literal_block {"xml:space": "preserve", "source": "common/samples/WebApplication1/src/WebApplication1/Startup.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](../common/samples/WebApplication1/src/WebApplication1/Startup.cs)]
 
 ````csharp
 
@@ -183,7 +183,7 @@ Note that `CharacterRepository` requests an `ApplicationDbContext` in its constr
 
 In this case, both `ICharacterRepository` and in turn `ApplicationDbContext` must be registered with the services container in `ConfigureServices` in `Startup`. `ApplicationDbContext` is configured with the call to the extension method `AddDbContext<T>`. The following code shows the registration of the `CharacterRepository` type.
 
-[!code-csharp[Main](../fundamentals/dependency-injection/sample/DependencyInjectionSample/Startup.cs?highlight=2,3,4,10)]
+[!code-csharp[Main](dependency-injection/sample/DependencyInjectionSample/Startup.cs?highlight=2,3,4,10)]
 
 ````csharp
 
@@ -261,7 +261,7 @@ We implement these interfaces using a single class, `Operation`, that accepts a 
 
 Next, in `ConfigureServices`, each type is added to the container according to its named lifetime:
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/dependency-injection/sample/DependencyInjectionSample/Startup.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](dependency-injection/sample/DependencyInjectionSample/Startup.cs)]
 
 ````csharp
 
@@ -277,7 +277,7 @@ Next, in `ConfigureServices`, each type is added to the container according to i
 
 Note that the `IOperationSingletonInstance` service is using a specific instance with a known ID of `Guid.Empty` so it will be clear when this type is in use. We have also registered an `OperationService` that depends on each of the other `Operation` types, so that it will be clear within a request whether this service is getting the same instance as the controller, or a new one, for each operation type. All this service does is expose its dependencies as properties, so they can be displayed in the view.
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/dependency-injection/sample/DependencyInjectionSample/Services/OperationService.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](dependency-injection/sample/DependencyInjectionSample/Services/OperationService.cs)]
 
 ````csharp
 
@@ -308,7 +308,7 @@ Note that the `IOperationSingletonInstance` service is using a specific instance
 
 To demonstrate the object lifetimes within and between separate individual requests to the application, the sample includes an `OperationsController` that requests each kind of `IOperation` type as well as an `OperationService`. The `Index` action then displays all of the controller's and service's `OperationId` values.
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/dependency-injection/sample/DependencyInjectionSample/Controllers/OperationsController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](dependency-injection/sample/DependencyInjectionSample/Controllers/OperationsController.cs)]
 
 ````csharp
 

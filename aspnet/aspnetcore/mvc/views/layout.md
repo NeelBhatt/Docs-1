@@ -167,7 +167,7 @@ The file does not support other Razor features, such as functions and section de
 
 A sample `_ViewImports.cshtml` file:
 
-<!-- literal_block {"xml:space": "preserve", "source": "common/samples/WebApplication1/src/WebApplication1/Views/_ViewImports.cshtml", "ids": [], "linenos": false, "language": "html", "highlight_args": {"linenostart": 1}} -->
+[!code-html[Main](../../common/samples/WebApplication1/src/WebApplication1/Views/_ViewImports.cshtml)]
 
 ````html
 
@@ -206,7 +206,7 @@ If you have code you need to run before every view, this should be placed in the
 
 A sample `_ViewStart.cshtml` file:
 
-<!-- literal_block {"xml:space": "preserve", "source": "common/samples/WebApplication1/src/WebApplication1/Views/_ViewStart.cshtml", "ids": [], "linenos": false, "language": "html", "highlight_args": {"linenostart": 1}} -->
+[!code-html[Main](../../common/samples/WebApplication1/src/WebApplication1/Views/_ViewStart.cshtml)]
 
 ````html
 

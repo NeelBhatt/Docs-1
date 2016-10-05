@@ -57,7 +57,7 @@ ASP.NET Core MVC includes the following features:
 
 * [Model validation](#model-validation)
 
-* [Dependency injection](`</fundamentals/dependency-injection>`.md)
+* [Dependency injection](../fundamentals/dependency-injection.md)
 
 * [Filters](#filters)
 
