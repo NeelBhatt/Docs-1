@@ -706,7 +706,7 @@ Let's take a quick look at the Web API and the model behind it. The `Person` mod
 
 <!--[!code-csharp[Main](sample/AngularSample/src/AngularSample/Models/Person.cs )]-->
 
-<!-- literal_block {"xml:space": "preserve", "source": "client-side/angular/sample/AngularSample/src/AngularSample/Models/Person.cs", "ids": [], "linenos": true, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](angular/sample/AngularSample/src/AngularSample/Models/Person.cs)]
 
 ````csharp
 
@@ -805,7 +805,7 @@ Let's take a look at `personModule.js` file to see how we are instantiating the 
 
 <!--[!code-javascript[Main](sample/AngularSample/src/AngularSample/wwwroot/app/personModule.js )]-->
 
-<!-- literal_block {"xml:space": "preserve", "source": "client-side/angular/sample/AngularSample/src/AngularSample/wwwroot/app/personModule.js", "ids": [], "linenos": true, "language": "javascript", "highlight_args": {"linenostart": 1}} -->
+[!code-javascript[Main](angular/sample/AngularSample/src/AngularSample/wwwroot/app/personModule.js)]
 
 ````javascript
 

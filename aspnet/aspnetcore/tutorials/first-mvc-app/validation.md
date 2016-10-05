@@ -77,7 +77,7 @@ The form data is not sent to the server until there are no client side validatio
 
 You might wonder how the validation UI was generated without any updates to the code in the controller or views. The next listing shows the two `Create` methods.
 
-<!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs)]
 
 ````csharp
 

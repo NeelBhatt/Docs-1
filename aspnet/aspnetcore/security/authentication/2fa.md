@@ -39,7 +39,7 @@ After you create the project, follow the instructions in [Account Confirmation a
 
 * Add code in the *Services/MessageServices.cs* file to enable SMS.
 
-<!-- literal_block {"xml:space": "preserve", "source": "security/authentication/2fa/sample/WebSMS/src/WebSMS/Services/MessageServices.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](2fa/sample/WebSMS/src/WebSMS/Services/MessageServices.cs)]
 
 ````csharp
 
@@ -86,7 +86,7 @@ We'll use the [Options pattern](../../fundamentals/configuration.md#options-conf
 
    * Create a class to fetch the secure SMS key. For this sample, the `AuthMessageSMSSenderOptions` class is created in the *Services/AuthMessageSMSSenderOptions.cs* file.
 
-<!-- literal_block {"xml:space": "preserve", "source": "security/authentication/2fa/sample/WebSMS/src/WebSMS/Services/AuthMessageSMSSenderOptions.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](2fa/sample/WebSMS/src/WebSMS/Services/AuthMessageSMSSenderOptions.cs)]
 
 ````csharp
 
@@ -139,7 +139,7 @@ Add `AuthMessageSMSSenderOptions` to the service container at the end of the `Co
 
    The completed code is shown below:
 
-   <!-- literal_block {"xml:space": "preserve", "source": "security/authentication/2fa/sample/WebSMS/src/WebSMS/Views/Manage/Index.cshtml", "ids": [], "linenos": false, "language": "html", "highlight_args": {"linenostart": 1}} -->
+[!code-html[Main](2fa/sample/WebSMS/src/WebSMS/Views/Manage/Index.cshtml)]
 
    ````html
 

@@ -65,7 +65,7 @@ Middleware and modules are processed in a different order:
 
    * Order of middleware for responses is the reverse from that for requests, while order of modules is the same for requests and responses
 
-   * See [Creating a middleware pipeline with IApplicationBuilder](../fundamentals/middleware.html#creating-a-middleware-pipeline-with-iapplicationbuilder)
+   * See [Creating a middleware pipeline with IApplicationBuilder](../fundamentals/middleware.md#creating-a-middleware-pipeline-with-iapplicationbuilder)
 
 ![image](http-modules/_static/middleware.png)
 
@@ -232,7 +232,7 @@ HTTP modules are typically added to the request pipeline using *Web.config*:
    </configuration>
    ````
 
-Convert this by [adding your new middleware](../fundamentals/middleware.html#creating-a-middleware-pipeline-with-iapplicationbuilder) to the request pipeline in your `Startup` class:
+Convert this by [adding your new middleware](../fundamentals/middleware.md#creating-a-middleware-pipeline-with-iapplicationbuilder) to the request pipeline in your `Startup` class:
 
 [!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Startup.cs?highlight=12)]
 
@@ -413,7 +413,7 @@ The new [configuration system](../fundamentals/configuration.md) gives you these
 
 1. Create a class to hold your middleware options, for example:
 
-      <!-- literal_block {"xml:space": "preserve", "source": "migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/MyMiddlewareWithParams.cs", "ids": [], "linenos": true, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+   [!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/MyMiddlewareWithParams.cs)]
 
       ````csharp
 
@@ -429,7 +429,7 @@ The new [configuration system](../fundamentals/configuration.md) gives you these
 
       The new configuration system allows you to essentially store option values anywhere you want. However, most sites use *appsettings.json*, so we'll take that approach:
 
-      <!-- literal_block {"xml:space": "preserve", "source": "migration/http-modules/sample/Asp.Net5/src/Asp.Net5/appsettings.json", "ids": [], "linenos": true, "language": "json", "highlight_args": {"linenostart": 1}} -->
+[!code-json[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/appsettings.json)]
 
       ````json
 
@@ -452,7 +452,7 @@ The new [configuration system](../fundamentals/configuration.md) gives you these
 
          1. If you're using *appsettings.json*, add it to the configuration builder in the `Startup` constructor:
 
-         [!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Startup.cs?highlight=7)]
+[!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Startup.cs?highlight=7)]
 
          ````csharp
 
@@ -473,7 +473,7 @@ The new [configuration system](../fundamentals/configuration.md) gives you these
 
          2. Configure the options service:
 
-         [!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Startup.cs?highlight=5)]
+[!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Startup.cs?highlight=5)]
 
          ````csharp
 
@@ -491,7 +491,7 @@ The new [configuration system](../fundamentals/configuration.md) gives you these
 
          3. Associate your options with your options class:
 
-         [!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Startup.cs?highlight=7,8)]
+[!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Startup.cs?highlight=7,8)]
 
          ````csharp
 
@@ -680,7 +680,7 @@ The solution is to get the options objects with the actual options values in you
 
       Note how this wraps the options object in an `OptionsWrapper` object. This implements `IOptions`, as expected by the middleware constructor:
 
-      <!-- literal_block {"xml:space": "preserve", "source": "migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/MyMiddlewareWithParams.cs", "ids": [], "linenos": true, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/MyMiddlewareWithParams.cs)]
 
       ````csharp
 
@@ -712,7 +712,7 @@ You saw earlier that the `Invoke` method in your middleware takes a parameter of
 
 **HttpContext.Items** translates to:
 
-   <!-- literal_block {"xml:space": "preserve", "source": "migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs)]
 
    ````csharp
 
@@ -724,7 +724,7 @@ You saw earlier that the `Invoke` method in your middleware takes a parameter of
 
 Gives you a unique id for each request. Very useful to include in your logs.
 
-   <!-- literal_block {"xml:space": "preserve", "source": "migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs)]
 
    ````csharp
 
@@ -736,7 +736,7 @@ Gives you a unique id for each request. Very useful to include in your logs.
 
 **HttpContext.Request.HttpMethod** translates to:
 
-   <!-- literal_block {"xml:space": "preserve", "source": "migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs)]
 
    ````csharp
 
@@ -746,7 +746,7 @@ Gives you a unique id for each request. Very useful to include in your logs.
 
 **HttpContext.Request.QueryString** translates to:
 
-   <!-- literal_block {"xml:space": "preserve", "source": "migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs)]
 
    ````csharp
 
@@ -766,7 +766,7 @@ Gives you a unique id for each request. Very useful to include in your logs.
 
 **HttpContext.Request.Url and HttpContext.Request.RawUrl** translate to:
 
-   <!-- literal_block {"xml:space": "preserve", "source": "migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs)]
 
    ````csharp
 
@@ -777,7 +777,7 @@ Gives you a unique id for each request. Very useful to include in your logs.
 
 **HttpContext.Request.IsSecureConnection** translates to:
 
-   <!-- literal_block {"xml:space": "preserve", "source": "migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs)]
 
    ````csharp
 
@@ -787,7 +787,7 @@ Gives you a unique id for each request. Very useful to include in your logs.
 
 **HttpContext.Request.UserHostAddress** translates to:
 
-   <!-- literal_block {"xml:space": "preserve", "source": "migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs)]
 
    ````csharp
 
@@ -797,7 +797,7 @@ Gives you a unique id for each request. Very useful to include in your logs.
 
 **HttpContext.Request.Cookies** translates to:
 
-   <!-- literal_block {"xml:space": "preserve", "source": "migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs)]
 
    ````csharp
 
@@ -809,7 +809,7 @@ Gives you a unique id for each request. Very useful to include in your logs.
 
 **HttpContext.Request.Headers** translates to:
 
-   <!-- literal_block {"xml:space": "preserve", "source": "migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs)]
 
    ````csharp
 
@@ -834,7 +834,7 @@ Gives you a unique id for each request. Very useful to include in your logs.
 
 **HttpContext.Request.UserAgent** translates to:
 
-   <!-- literal_block {"xml:space": "preserve", "source": "migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs)]
 
    ````csharp
 
@@ -844,7 +844,7 @@ Gives you a unique id for each request. Very useful to include in your logs.
 
 **HttpContext.Request.UrlReferrer** translates to:
 
-   <!-- literal_block {"xml:space": "preserve", "source": "migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs)]
 
    ````csharp
 
@@ -854,7 +854,7 @@ Gives you a unique id for each request. Very useful to include in your logs.
 
 **HttpContext.Request.ContentType** translates to:
 
-   <!-- literal_block {"xml:space": "preserve", "source": "migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs)]
 
    ````csharp
 
@@ -871,7 +871,7 @@ Gives you a unique id for each request. Very useful to include in your logs.
 
 **HttpContext.Request.Form** translates to:
 
-   <!-- literal_block {"xml:space": "preserve", "source": "migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs)]
 
    ````csharp
 
@@ -893,7 +893,7 @@ Caution: Read form values only if the content sub type is *x-www-form-urlencoded
 
 **HttpContext.Request.InputStream** translates to:
 
-   <!-- literal_block {"xml:space": "preserve", "source": "migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs)]
 
    ````csharp
 
@@ -916,7 +916,7 @@ RouteData is not available in middleware in RC1.
 
 **HttpContext.Response.Status and HttpContext.Response.StatusDescription** translate to:
 
-   <!-- literal_block {"xml:space": "preserve", "source": "migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs)]
 
    ````csharp
 
@@ -927,7 +927,7 @@ RouteData is not available in middleware in RC1.
 
 **HttpContext.Response.ContentEncoding and HttpContext.Response.ContentType** translate to:
 
-   <!-- literal_block {"xml:space": "preserve", "source": "migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs)]
 
    ````csharp
 
@@ -940,7 +940,7 @@ RouteData is not available in middleware in RC1.
 
 **HttpContext.Response.ContentType** on its own also translates to:
 
-   <!-- literal_block {"xml:space": "preserve", "source": "migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs)]
 
    ````csharp
 
@@ -950,7 +950,7 @@ RouteData is not available in middleware in RC1.
 
 **HttpContext.Response.Output** translates to:
 
-   <!-- literal_block {"xml:space": "preserve", "source": "migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs)]
 
    ````csharp
 
@@ -961,7 +961,7 @@ RouteData is not available in middleware in RC1.
 
 **HttpContext.Response.TransmitFile**
 
-Serving up a file is discussed [here](../fundamentals/request-features.html#middleware-and-request-features).
+Serving up a file is discussed [here](../fundamentals/request-features.md#middleware-and-request-features).
 
 **HttpContext.Response.Headers**
 
@@ -982,7 +982,7 @@ The following code sets a callback method called `SetHeaders`:
 
 The `SetHeaders` callback method would look like this:
 
-   <!-- literal_block {"xml:space": "preserve", "source": "migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs)]
 
    ````csharp
 
@@ -1037,7 +1037,7 @@ Cookies travel to the browser in a *Set-Cookie* response header. As a result, se
 
 The `SetCookies` callback method would look like the following:
 
-   <!-- literal_block {"xml:space": "preserve", "source": "migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs)]
 
    ````csharp
 

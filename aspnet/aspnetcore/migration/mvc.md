@@ -203,7 +203,7 @@ If you created the optional *FullAspNetCore* project (a new ASP.NET Core web app
 
 Navigate to *gulpfile.js* from the new ASP.NET Core web app with Individual User Accounts and add the add *gulpfile.js* file. Alternatively, right-click the web app project and choose **Add > New Item**. Select **Gulp Configuration File**, and name the file *gulpfile.js*. The *gulpfile.js* file:
 
-<!-- literal_block {"xml:space": "preserve", "source": "migration/mvc/samples/WebApp1/src/WebApp1/gulpfile.js", "ids": [], "linenos": false, "language": "javascript", "highlight_args": {"linenostart": 1}} -->
+[!code-javascript[Main](mvc/samples/WebApp1/src/WebApp1/gulpfile.js)]
 
 ````javascript
 
@@ -288,7 +288,7 @@ Right-click the web app project, choose **Add > Existing Item**, and add the *pa
 
 The *package.json* file ^[1]:
 
-<!-- literal_block {"xml:space": "preserve", "source": "migration/mvc/samples/WebApp1/src/WebApp1/package.json", "ids": [], "linenos": false, "language": "json", "highlight_args": {"linenostart": 1}} -->
+[!code-json[Main](mvc/samples/WebApp1/src/WebApp1/package.json)]
 
 ````json
 

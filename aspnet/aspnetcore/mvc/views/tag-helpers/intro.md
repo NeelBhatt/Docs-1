@@ -247,7 +247,7 @@ The markup is much cleaner and easier to read, edit, and maintain than the HTML 
 
 Consider the *Email* group:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/intro/sample/Register.cshtml", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](intro/sample/Register.cshtml)]
 
 ````csharp
 

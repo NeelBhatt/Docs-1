@@ -15,7 +15,7 @@ ASP.NET Core has built-in support for logging, and allows developers to easily l
 
 Adding logging to a component in your application is done by requesting either an `ILoggerFactory` or an `ILogger<T>` via [Dependency Injection](dependency-injection.md). If an `ILoggerFactory` is requested, a logger must be created using its `CreateLogger` method. The following example shows how to do this:
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/logging/sample/src/TodoApi/Startup.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](logging/sample/src/TodoApi/Startup.cs)]
 
 ````csharp
 
@@ -32,7 +32,7 @@ You may see more than one log statement per web request you make in your browser
 
 The call to the log method can utilize a format string with named placeholders (like *{path}*). These placeholders are populated in the order in which they appear by the args values passed into the method call. Some logging providers will store these names along with their mapped values in a dictionary that can later be queried. In the example below, the request path is passed in as a named placeholder:
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/logging/sample/src/TodoApi/Startup.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](logging/sample/src/TodoApi/Startup.cs)]
 
 ````csharp
 
@@ -172,7 +172,7 @@ Scopes are not required, and should be used sparingly, if at all. They're best u
 
 To configure logging in your ASP.NET Core application, you should resolve `ILoggerFactory` in the `Configure` method of your `Startup` class. ASP.NET Core will automatically provide an instance of `ILoggerFactory` using [Dependency Injection](dependency-injection.md) when you add a parameter of this type to the `Configure` method.
 
-[!code-csharp[Main](../fundamentals/logging/sample/src/TodoApi/Startup.cs?highlight=25)]
+[!code-csharp[Main](logging/sample/src/TodoApi/Startup.cs?highlight=25)]
 
 ````csharp
 
@@ -191,7 +191,7 @@ Each logger provides its own set of extension methods to `ILoggerFactory`. The c
 
 A LoggerFactory instance can optionally be configured with custom `FilterLoggerSettings`. The example below configures custom log levels for different scopes, limiting system and Microsoft built-in logging to warnings while allowing the app to log at debug level by default. The `WithFilter` method returns a new `ILoggerFactory` that will filter the log messages passed to all logger providers registered with it. It does not affect any other `ILoggerFactory` instances, including the original `ILoggerFactory` instance.
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/logging/sample/src/TodoApi/Startup.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](logging/sample/src/TodoApi/Startup.cs)]
 
 ````csharp
 
@@ -232,7 +232,7 @@ First, be sure to add the `Microsoft.Extensions.Logging.TraceSource` package to 
 
 The following example demonstrates how to configure a `TraceSourceLogger` instance for an application, logging only `Warning` or higher priority messages. Each call to `AddTraceSource` takes a `TraceListener`. The call configures a `TextWriterTraceListener` to write to the console window. This log output will be in addition to the console logger that was already added to this sample, but its behavior is slightly different.
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/logging/sample/src/TodoApi/Startup.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](logging/sample/src/TodoApi/Startup.cs)]
 
 ````csharp
 

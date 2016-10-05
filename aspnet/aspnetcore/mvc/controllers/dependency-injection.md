@@ -19,7 +19,7 @@ Dependency injection is a technique that follows the [Dependency Inversion Princ
 
 ASP.NET Core's built-in support for constructor-based dependency injection extends to MVC controllers. By simply adding a service type to your controller as a constructor parameter, ASP.NET Core will attempt to resolve that type using its built in service container. Services are typically, but not always, defined using interfaces. For example, if your application has business logic that depends on the current time, you can inject a service that retrieves the time (rather than hard-coding it), which would allow your tests to pass in implementations that use a set time.
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/controllers/dependency-injection/sample/src/ControllerDI/Interfaces/IDateTime.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](dependency-injection/sample/src/ControllerDI/Interfaces/IDateTime.cs)]
 
 ````csharp
 
@@ -37,7 +37,7 @@ ASP.NET Core's built-in support for constructor-based dependency injection exten
 
 Implementing an interface like this one so that it uses the system clock at runtime is trivial:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/controllers/dependency-injection/sample/src/ControllerDI/Services/SystemDateTime.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](dependency-injection/sample/src/ControllerDI/Services/SystemDateTime.cs)]
 
 ````csharp
 
@@ -172,7 +172,7 @@ Accessing application or configuration settings from within a controller is a co
 
 To work with the options pattern, you need to create a class that represents the options, such as this one:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/controllers/dependency-injection/sample/src/ControllerDI/Model/SampleWebSettings.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](dependency-injection/sample/src/ControllerDI/Model/SampleWebSettings.cs)]
 
 ````csharp
 

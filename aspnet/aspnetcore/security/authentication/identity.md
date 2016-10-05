@@ -218,7 +218,7 @@ In this topic, you'll learn how to use ASP.NET Core Identity to add functionalit
 
    As a registered user, you can log in to the web app by clicking the **Log in** link.  When a registered user logs in, the `Login` action of the `AccountController` is called. Then, the **Login** action signs in the user using the `PasswordSignInAsync` method contained in the `Login` action.
 
-   [!code-csharp[Main](./identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?highlight=11)]
+[!code-csharp[Main](./identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?highlight=11)]
 
    ````csharp
 

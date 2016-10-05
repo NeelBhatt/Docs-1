@@ -17,7 +17,7 @@ The *web.config* file has also been replaced in ASP.NET Core. Configuration itse
 
 For this article, we are starting with the partially-migrated ASP.NET Core project from [the previous article](mvc.md). To setup configuration, add the following constructor and property to the *Startup.cs* file located in the root of the project:
 
-<!-- literal_block {"xml:space": "preserve", "source": "migration/configuration/samples/WebApp1/src/WebApp1/Startup.cs", "ids": [], "linenos": true, "language": "none", "highlight_args": {"linenostart": 1}} -->
+[!code-none[Main](configuration/samples/WebApp1/src/WebApp1/Startup.cs)]
 
 ````none
 

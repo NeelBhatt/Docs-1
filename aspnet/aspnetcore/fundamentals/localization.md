@@ -24,7 +24,7 @@ App localization involves the following:
 Introduced in ASP.NET Core, [IStringLocalizer](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Localization/IStringLocalizer/index.html.md#Microsoft.Extensions.Localization.IStringLocalizer.md) and [IStringLocalizer<T>](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Localization/IStringLocalizer-T/index.html.md#Microsoft.Extensions.Localization.IStringLocalizer<T>.md) were architected to improve productivity when developing localized apps. `IStringLocalizer` uses the [ResourceManager](https://msdn.microsoft.com/en-us/library/system.resources.resourcemanager(v=vs.110).aspx) and [ResourceReader](https://msdn.microsoft.com/en-us/library/system.resources.resourcereader(v=vs.110).aspx) to provide culture-specific resources at run time. The simple interface has an indexer and an `IEnumerable` for returning localized strings. `IStringLocalizer` doesn't require you to store the default language strings in a resource file. You can develop an app
 targeted for localization and not need to create resource files early in development. The code below shows how to wrap the string "About Title" for localization.
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/localization/sample/Controllers/AboutController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](localization/sample/Controllers/AboutController.cs)]
 
 ````csharp
 
@@ -120,7 +120,7 @@ The code above demonstrates each of the two factory create methods.
 
 You can partition your localized strings by controller, area, or have just one container. In the sample app, a dummy class named `SharedResource` is used for shared resources.
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/localization/sample/Resources/SharedResource.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](localization/sample/Resources/SharedResource.cs)]
 
 ````csharp
 
@@ -137,7 +137,7 @@ You can partition your localized strings by controller, area, or have just one c
 
 Some developers use the `Startup` class to contain global or shared strings.  In the sample below, the `InfoController` and the `SharedResource` localizers are used:
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/localization/sample/Controllers/InfoController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](localization/sample/Controllers/InfoController.cs)]
 
 ````csharp
 
@@ -166,7 +166,7 @@ Some developers use the `Startup` class to contain global or shared strings.  In
 
 The [IViewLocalizer](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Localization/IViewLocalizer/index.html) service provides localized strings for a [view](http://docs.asp.net/projects/mvc/en/latest/views/index.html). The [ViewLocalizer](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Localization/ViewLocalizer/index.html) class implements this interface and finds the resource location from the view file path. The following code shows how to use the default implementation of `IViewLocalizer`:
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/localization/sample/Views/Home/About.cshtml", "ids": [], "linenos": false, "language": "HTML", "highlight_args": {"linenostart": 1}} -->
+[!code-HTML[Main](localization/sample/Views/Home/About.cshtml)]
 
 ````HTML
 
@@ -228,7 +228,7 @@ DataAnnotations error messages are localized with [IStringLocalizer<T>](https://
 
 * Resources/ViewModels/Account/RegisterViewModel.fr.resx
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/localization/sample/ViewModels/Account/RegisterViewModel.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](localization/sample/ViewModels/Account/RegisterViewModel.cs)]
 
 ````csharp
 
@@ -292,7 +292,7 @@ Each language and culture combination (other than the default language) requires
 
 Localization is configured in the `ConfigureServices` method:
 
-[!code-csharp[Main](../fundamentals/localization/sample/Startup.cs?highlight=4,7,8)]
+[!code-csharp[Main](localization/sample/Startup.cs?highlight=4,7,8)]
 
 ````csharp
 
@@ -318,7 +318,7 @@ Localization is configured in the `ConfigureServices` method:
 
 The current culture on a request is set in the localization [Middleware](middleware.md). The localization middleware is enabled in the `Configure` method of *Startup.cs* file.
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/localization/sample/Startup.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](localization/sample/Startup.cs)]
 
 ````csharp
 
@@ -452,7 +452,7 @@ If you remove the ".fr" culture designator AND you have the culture set to Frenc
 
 This sample **Localization.StarterWeb** project on [GitHub](https://github.com/aspnet/entropy) contains UI to set the `Culture`. The *Views/Shared/_SelectLanguagePartial.cshtml* file allows you to select the culture from the list of supported cultures:
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/localization/sample/Views/Shared/_SelectLanguagePartial.cshtml", "ids": [], "linenos": false, "language": "none", "highlight_args": {"linenostart": 1}} -->
+[!code-none[Main](localization/sample/Views/Shared/_SelectLanguagePartial.cshtml)]
 
 ````none
 
@@ -486,7 +486,7 @@ This sample **Localization.StarterWeb** project on [GitHub](https://github.com/a
 
 The *Views/Shared/_SelectLanguagePartial.cshtml* file is added to the `footer` section of the layout file so it will be available to all views:
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/localization/sample/Views/Shared/_Layout.cshtml", "ids": [], "linenos": false, "language": "HTML", "highlight_args": {"linenostart": 1}} -->
+[!code-HTML[Main](localization/sample/Views/Shared/_Layout.cshtml)]
 
 ````HTML
 
@@ -509,7 +509,7 @@ The *Views/Shared/_SelectLanguagePartial.cshtml* file is added to the `footer` s
 
 The `SetLanguage` method sets the culture cookie.
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/localization/sample/Controllers/HomeController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](localization/sample/Controllers/HomeController.cs)]
 
 ````csharp
 

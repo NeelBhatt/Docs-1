@@ -45,7 +45,7 @@ With ASP.NET Core you gain the following foundational improvements:
 
 An ASP.NET Core app is simply a console app that creates a web server in its `Main` method:
 
-<!-- literal_block {"xml:space": "preserve", "source": "getting-started/sample/aspnetcoreapp/Program.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](getting-started/sample/aspnetcoreapp/Program.cs)]
 
 ````csharp
 

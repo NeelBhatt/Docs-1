@@ -107,7 +107,7 @@ The static file module provides **no** authorization checks. Any files served by
 
 Directory browsing allows the user of your web app to see a list of directories and files within a specified directory. Directory browsing is disabled by default for security reasons (see [Considerations](#considerations)). To enable directory browsing, call the [UseDirectoryBrowser](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/DirectoryBrowserExtensions/index.html.md#Microsoft.AspNetCore.Builder.DirectoryBrowserExtensions.UseDirectoryBrowser.md) extension method from  `Startup.Configure`:
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/static-files/sample/StartupBrowse.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](static-files/sample/StartupBrowse.cs)]
 
 ````csharp
 
@@ -134,7 +134,7 @@ Directory browsing allows the user of your web app to see a list of directories 
 
 And add required services by calling [AddDirectoryBrowser](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/DependencyInjection/DirectoryBrowserServiceExtensions/index.html.md#Microsoft.Extensions.DependencyInjection.DirectoryBrowserServiceExtensions.AddDirectoryBrowser.md) extension method from  `Startup.ConfigureServices`:
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/static-files/sample/StartupBrowse.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](static-files/sample/StartupBrowse.cs)]
 
 ````csharp
 
@@ -153,7 +153,7 @@ See [Considerations](#considerations) on the security risks when enabling browsi
 
 Note the two `app.UseStaticFiles` calls. The first one is required to serve the CSS, images and JavaScript in the *wwwroot* folder, and the second call for directory browsing of the *wwwroot/images* folder using the URL http://<app>/MyImages:
 
-[!code-csharp[Main](../fundamentals/static-files/sample/StartupBrowse.cs?highlight=3,5)]
+[!code-csharp[Main](static-files/sample/StartupBrowse.cs?highlight=3,5)]
 
 ````csharp
 
@@ -211,7 +211,7 @@ The first file found from the list will be served as if the request was the full
 
 The following code shows how to change the default file name to *mydefault.html*.
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/static-files/sample/StartupDefault.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](static-files/sample/StartupDefault.cs)]
 
 ````csharp
 
@@ -263,7 +263,7 @@ See [Considerations](#considerations) on the security risks when enabling browsi
 
 Using the hierarchy example above, you might want to enable static files, default files, and browsing for the `MyStaticFiles` directory. In the following code snippet, that is accomplished with a single call to [FileServerOptions](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/FileServerOptions/index.html.md#Microsoft.AspNetCore.Builder.FileServerOptions.md).
 
-[!code-csharp[Main](../fundamentals/static-files/sample/StartupUseFileServer.cs?highlight=5,6,7,8,9,10,11)]
+[!code-csharp[Main](static-files/sample/StartupUseFileServer.cs?highlight=5,6,7,8,9,10,11)]
 
 ````csharp
 
@@ -284,7 +284,7 @@ Using the hierarchy example above, you might want to enable static files, defaul
 
 If `enableDirectoryBrowsing` is set to `true` you are required to call [AddDirectoryBrowser](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/DependencyInjection/DirectoryBrowserServiceExtensions/index.html.md#Microsoft.Extensions.DependencyInjection.DirectoryBrowserServiceExtensions.AddDirectoryBrowser.md) extension method from  `Startup.ConfigureServices`:
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/static-files/sample/StartupUseFileServer.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](static-files/sample/StartupUseFileServer.cs)]
 
 ````csharp
 
@@ -353,7 +353,7 @@ The ASP.NET static file middleware understands almost 400 known file content typ
 
 The following code enables serving unknown types and will render the unknown file as an image.
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/static-files/sample/StartupServeUnknownFileTypes.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](static-files/sample/StartupServeUnknownFileTypes.cs)]
 
 ````csharp
 

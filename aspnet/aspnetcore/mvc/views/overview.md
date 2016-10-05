@@ -27,7 +27,7 @@ Views that are specific to a controller are created in the *Views/[ControllerNam
 
 A sample view file (*About.cshtml*):
 
-<!-- literal_block {"xml:space": "preserve", "source": "common/samples/WebApplication1/src/WebApplication1/Views/Home/About.cshtml", "ids": [], "linenos": false, "language": "html", "highlight_args": {"linenostart": 1}} -->
+[!code-html[Main](../../common/samples/WebApplication1/src/WebApplication1/Views/Home/About.cshtml)]
 
 ````html
 

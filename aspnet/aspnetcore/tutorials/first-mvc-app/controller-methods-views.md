@@ -122,7 +122,7 @@ Open the `Movies` controller and examine the two `Edit` action methods:
 
 ![image](controller-methods-views/_static/1.png)
 
-<!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs)]
 
 ````csharp
 
@@ -144,7 +144,7 @@ Open the `Movies` controller and examine the two `Edit` action methods:
 
    ````
 
-<!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs)]
 
 ````csharp
 
@@ -228,7 +228,7 @@ The [HttpPostAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Micro
 
 The [ValidateAntiForgeryTokenAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ValidateAntiForgeryTokenAttribute/index.html.md#Microsoft.AspNetCore.Mvc.ValidateAntiForgeryTokenAttribute.md) attribute is used to prevent forgery of a request and is paired up with an anti-forgery token generated in the edit view file (*Views/Movies/Edit.cshtml*). The edit view file generates the anti-forgery token with the [Form Tag Helper](../../mvc/views/working-with-forms.md).
 
-<!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Views/Movies/Edit.cshtml", "ids": [], "linenos": false, "language": "HTML", "highlight_args": {"linenostart": 1}} -->
+[!code-HTML[Main](start-mvc/sample2/src/MvcMovie/Views/Movies/Edit.cshtml)]
 
 ````HTML
 
@@ -240,7 +240,7 @@ The [Form Tag Helper](../../mvc/views/working-with-forms.md) generates a hidden 
 
 The `HttpGet Edit` method takes the movie `ID` parameter, looks up the movie using the Entity Framework `SingleOrDefaultAsync` method, and returns the selected movie to the Edit view. If a movie cannot be found, `NotFound` (HTTP 404) is returned.
 
-<!-- literal_block {"xml:space": "preserve", "source": "tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs)]
 
 ````csharp
 

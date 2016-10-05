@@ -28,7 +28,7 @@ The [Form](https://www.w3.org/TR/html401/interact/forms.html) Tag Helper:
 
 Sample:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/Views/Demo/RegisterFormOnly.cshtml", "ids": [], "linenos": false, "language": "HTML", "highlight_args": {"linenostart": 1}} -->
+[!code-HTML[Main](working-with-forms/sample/final/Views/Demo/RegisterFormOnly.cshtml)]
 
 ````HTML
 
@@ -116,7 +116,7 @@ The following table shows some common [data annotations](https://msdn.microsoft.
 
 Sample:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/ViewModels/RegisterViewModel.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](working-with-forms/sample/final/ViewModels/RegisterViewModel.cs)]
 
 ````csharp
 
@@ -138,7 +138,7 @@ Sample:
    }
    ````
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/Views/Demo/RegisterInput.cshtml", "ids": [], "linenos": false, "language": "HTML", "highlight_args": {"linenostart": 1}} -->
+[!code-HTML[Main](working-with-forms/sample/final/Views/Demo/RegisterInput.cshtml)]
 
 ````HTML
 
@@ -280,7 +280,7 @@ The action method:
 
 The following Razor shows how you access a specific `Color` element:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/Views/Demo/EditColor.cshtml", "ids": [], "linenos": false, "language": "HTML", "highlight_args": {"linenostart": 1}} -->
+[!code-HTML[Main](working-with-forms/sample/final/Views/Demo/EditColor.cshtml)]
 
 ````HTML
 
@@ -299,7 +299,7 @@ The following Razor shows how you access a specific `Color` element:
 
 The *Views/Shared/EditorTemplates/String.cshtml* template:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/Views/Shared/EditorTemplates/String.cshtml", "ids": [], "linenos": false, "language": "HTML", "highlight_args": {"linenostart": 1}} -->
+[!code-HTML[Main](working-with-forms/sample/final/Views/Shared/EditorTemplates/String.cshtml)]
 
 ````HTML
 
@@ -312,7 +312,7 @@ The *Views/Shared/EditorTemplates/String.cshtml* template:
 
 Sample using `List<T>`:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/ViewModels/ToDoItem.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](working-with-forms/sample/final/ViewModels/ToDoItem.cs)]
 
 ````csharp
 
@@ -326,7 +326,7 @@ Sample using `List<T>`:
 
 The following Razor shows how to iterate over a collection:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/Views/Demo/Edit.cshtml", "ids": [], "linenos": false, "language": "none", "highlight_args": {"linenostart": 1}} -->
+[!code-none[Main](working-with-forms/sample/final/Views/Demo/Edit.cshtml)]
 
 ````none
 
@@ -351,7 +351,7 @@ The following Razor shows how to iterate over a collection:
 
 The *Views/Shared/EditorTemplates/ToDoItem.cshtml* template:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/Views/Shared/EditorTemplates/ToDoItem.cshtml", "ids": [], "linenos": false, "language": "HTML", "highlight_args": {"linenostart": 1}} -->
+[!code-HTML[Main](working-with-forms/sample/final/Views/Shared/EditorTemplates/ToDoItem.cshtml)]
 
 ````HTML
 
@@ -395,7 +395,7 @@ The [Textarea Tag Helper](https://docs.asp.net/projects/api/en/latest/autoapi/Mi
 
 Sample:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/ViewModels/DescriptionViewModel.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](working-with-forms/sample/final/ViewModels/DescriptionViewModel.cs)]
 
 ````csharp
 
@@ -459,7 +459,7 @@ The [Label Tag Helper](https://docs.asp.net/projects/api/en/latest/autoapi/Micro
 
 Sample:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/ViewModels/SimpleViewModel.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](working-with-forms/sample/final/ViewModels/SimpleViewModel.cs)]
 
 ````csharp
 
@@ -555,7 +555,7 @@ The [Validation Summary Tag Helper](https://docs.asp.net/projects/api/en/latest/
 
 In the following example, the data model is decorated with `DataAnnotation` attributes, which generates validation error messages on the `<input>` element.  When a validation error occurs, the Validation Tag Helper displays the error message:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/ViewModels/RegisterViewModel.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](working-with-forms/sample/final/ViewModels/RegisterViewModel.cs)]
 
 ````csharp
 
@@ -626,7 +626,7 @@ The generated HTML (when the model is valid):
 
 The [Select Tag Helper](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/TagHelpers/SelectTagHelper/index.html) `asp-for` specifies the model property  name for the [select](https://www.w3.org/wiki/HTML/Elements/select) element  and `asp-items` specifies the [option](https://www.w3.org/wiki/HTML/Elements/option) elements.  For example:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/Views/Home/Index.cshtml", "ids": [], "linenos": false, "language": "HTML", "highlight_args": {"linenostart": 1}} -->
+[!code-HTML[Main](working-with-forms/sample/final/Views/Home/Index.cshtml)]
 
 ````HTML
 
@@ -636,7 +636,7 @@ The [Select Tag Helper](https://docs.asp.net/projects/api/en/latest/autoapi/Micr
 
 Sample:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/ViewModels/CountryViewModel.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](working-with-forms/sample/final/ViewModels/CountryViewModel.cs)]
 
 ````csharp
 
@@ -661,7 +661,7 @@ Sample:
 
 The `Index` method initializes the `CountryViewModel`, sets the selected country and passes it to the `Index` view.
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/Controllers/HomeController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](working-with-forms/sample/final/Controllers/HomeController.cs)]
 
 ````csharp
 
@@ -676,7 +676,7 @@ The `Index` method initializes the `CountryViewModel`, sets the selected country
 
 The HTTP POST `Index` method displays the selection:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/Controllers/HomeController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](working-with-forms/sample/final/Controllers/HomeController.cs)]
 
 ````csharp
 
@@ -698,7 +698,7 @@ The HTTP POST `Index` method displays the selection:
 
 The `Index` view:
 
-[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Home/Index.cshtml?highlight=4)]
+[!code-HTML[Main](working-with-forms/sample/final/Views/Home/Index.cshtml?highlight=4)]
 
 ````HTML
 
@@ -733,7 +733,7 @@ Note:
 
 The `asp-for` attribute value is a special case and doesn't require a `Model` prefix, the other Tag Helper attributes do (such as `asp-items`)
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/Views/Home/Index.cshtml", "ids": [], "linenos": false, "language": "HTML", "highlight_args": {"linenostart": 1}} -->
+[!code-HTML[Main](working-with-forms/sample/final/Views/Home/Index.cshtml)]
 
 ````HTML
 
@@ -747,7 +747,7 @@ It's often convenient to use `<select>` with an `enum` property and generate the
 
 Sample:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/ViewModels/CountryEnumViewModel.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](working-with-forms/sample/final/ViewModels/CountryEnumViewModel.cs)]
 
 ````csharp
 
@@ -758,7 +758,7 @@ Sample:
 
    ````
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/ViewModels/CountryEnum.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](working-with-forms/sample/final/ViewModels/CountryEnum.cs)]
 
 ````csharp
 
@@ -797,7 +797,7 @@ The [GetEnumSelectList](https://docs.asp.net/projects/api/en/latest/autoapi/Micr
 
 You can decorate your enumerator list with the `Display` attribute to get a richer UI:
 
-[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/CountryEnum.cs?highlight=5,7)]
+[!code-csharp[Main](working-with-forms/sample/final/ViewModels/CountryEnum.cs?highlight=5,7)]
 
 ````csharp
 
@@ -1036,7 +1036,7 @@ If you find yourself using the "not specified" option in multiple pages, you can
 
 The *Views/Shared/EditorTemplates/CountryViewModel.cshtml* template:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/Views/Shared/EditorTemplates/CountryViewModel.cshtml", "ids": [], "linenos": false, "language": "HTML", "highlight_args": {"linenostart": 1}} -->
+[!code-HTML[Main](working-with-forms/sample/final/Views/Shared/EditorTemplates/CountryViewModel.cshtml)]
 
 ````HTML
 
@@ -1051,7 +1051,7 @@ The *Views/Shared/EditorTemplates/CountryViewModel.cshtml* template:
 
 Adding HTML [<option>](https://www.w3.org/wiki/HTML/Elements/option) elements is not limited to the *No selection* case. For example, the following view and action method will generate HTML similar to the code above:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/Controllers/HomeController.cs", "ids": [], "linenos": false, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](working-with-forms/sample/final/Controllers/HomeController.cs)]
 
 ````csharp
 
@@ -1064,7 +1064,7 @@ Adding HTML [<option>](https://www.w3.org/wiki/HTML/Elements/option) elements is
 
    ````
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/working-with-forms/sample/final/Views/Home/IndexOption.cshtml", "ids": [], "linenos": false, "language": "HTML", "highlight_args": {"linenostart": 1}} -->
+[!code-HTML[Main](working-with-forms/sample/final/Views/Home/IndexOption.cshtml)]
 
 ````HTML
 

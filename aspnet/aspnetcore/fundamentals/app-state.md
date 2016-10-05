@@ -247,7 +247,7 @@ This default behavior is produced by the following middleware in *Startup.cs*, w
 
 `GetOrCreateEntries` is a helper method that will retrieve a `RequestEntryCollection` instance from `Session` if it exists; otherwise, it creates the empty collection and returns that. The collection holds `RequestEntry` instances, which keep track of the different requests the user has made during the current session, and how many requests they've made for each path.
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/app-state/sample/src/AppState/Model/RequestEntry.cs", "ids": [], "linenos": true, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](app-state/sample/src/AppState/Model/RequestEntry.cs)]
 
 ````csharp
 
@@ -260,7 +260,7 @@ This default behavior is produced by the following middleware in *Startup.cs*, w
 
    ````
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/app-state/sample/src/AppState/Model/RequestEntryCollection.cs", "ids": [], "linenos": true, "language": "csharp", "highlight_args": {"linenostart": 1}} -->
+[!code-csharp[Main](app-state/sample/src/AppState/Model/RequestEntryCollection.cs)]
 
 ````csharp
 
