@@ -18,8 +18,7 @@ In *Global.asax.cs*, a call is made to `WebApiConfig.Register`:
 [!code-csharp[Main](../migration/webapi/sample/ProductsApp/Global.asax.cs?highlight=14)]
 
 ````csharp
-
-   using System;
+using System;
    using System.Collections.Generic;
    using System.Linq;
    using System.Web;
@@ -44,8 +43,7 @@ In *Global.asax.cs*, a call is made to `WebApiConfig.Register`:
 [!code-csharp[Main](../migration/webapi/sample/ProductsApp/App_Start/WebApiConfig.cs?highlight=15,16,17,18,19,20)]
 
 ````csharp
-
-   using System;
+using System;
    using System.Collections.Generic;
    using System.Linq;
    using System.Web.Http;
@@ -79,8 +77,7 @@ The *ProductsApp* project includes just one simple controller, which inherits fr
 [!code-csharp[Main](../migration/webapi/sample/ProductsApp/Controllers/ProductsController.cs?highlight=19,24)]
 
 ````csharp
-
-   using ProductsApp.Models;
+using ProductsApp.Models;
    using System;
    using System.Collections.Generic;
    using System.Linq;
@@ -159,8 +156,7 @@ ASP.NET Core no longer uses *Global.asax*, *web.config*, or *App_Start* folders.
 [!code-none[Main](../migration/webapi/sample/ProductsCore/Startup.cs?highlight=40)]
 
 ````none
-
-   using System;
+using System;
    using System.Collections.Generic;
    using System.Linq;
    using System.Threading.Tasks;
@@ -211,8 +207,7 @@ Assuming you want to use attribute routing in your project going forward, no add
 [!code-csharp[Main](../migration/webapi/sample/ProductsCore/Controllers/ValuesController.cs?highlight=9,13,20,27,33,39)]
 
 ````csharp
-
-   using System;
+using System;
    using System.Collections.Generic;
    using System.Linq;
    using System.Threading.Tasks;
@@ -264,15 +259,13 @@ Note the presence of *[controller]* on line 8. Attribute-based routing now suppo
 To migrate the Products API controller, we must first copy *ProductsController* to the new project. Then simply include the route attribute on the controller:
 
 ````csharp
-
-   [Route("api/[controller]")]
+[Route("api/[controller]")]
    ````
 
 You also need to add the `[HttpGet]` attribute to the two methods, since they both should be called via HTTP Get. Include the expectation of an "id" parameter in the attribute for `GetProduct()`:
 
 ````csharp
-
-   // /api/products
+// /api/products
    [HttpGet]
    ...
 
@@ -305,8 +298,7 @@ Once these changes have been made and unused using statements removed, the migra
 [!code-csharp[Main](../migration/webapi/sample/ProductsCore/Controllers/ProductsController.cs?highlight=1,2,6,8,9,27)]
 
 ````csharp
-
-   using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
    using ProductsCore.Models;
    using System.Collections.Generic;
    using System.Linq;

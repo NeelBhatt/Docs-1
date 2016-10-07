@@ -28,8 +28,7 @@ In a console, open the folder where you downloaded the sample application and ru
 The console output will show messages similar to the ones below, indicating that the application is now running and waiting for requests:
 
 ````bash
-
-   $ dotnet run
+$ dotnet run
    Project WebApp (.NETCoreApp,Version=v1.0) will be compiled because inputs were modified
    Compiling WebApp for .NETCoreApp,Version=v1.0
 
@@ -58,8 +57,7 @@ We'll fix that.
 [!code-javascript[Main](../tutorials/dotnet-watch/sample/WebAppTests/project.json?highlight=2)]
 
 ````javascript
-
-   "tools": {
+"tools": {
      "Microsoft.DotNet.Watcher.Tools": "1.0.0-preview2-final"
    },
 
@@ -70,8 +68,7 @@ We'll fix that.
 The console output will show messages similar to the ones below:
 
 ````bash
-
-   log  : Restoring packages for /Users/user/dev/aspnet/Docs/aspnet/tutorials/dotnet-watch/sample/WebApp/project.json...
+log  : Restoring packages for /Users/user/dev/aspnet/Docs/aspnet/tutorials/dotnet-watch/sample/WebApp/project.json...
    log  : Restoring packages for tool 'Microsoft.DotNet.Watcher.Tools' in /Users/user/dev/aspnet/Docs/aspnet/tutorials/dotnet-watch/sample/WebApp/project.json...
    log  : Installing Microsoft.DotNet.Watcher.Core 1.0.0-preview2-final.
    log  : Installing Microsoft.DotNet.Watcher.Tools 1.0.0-preview2-final.
@@ -86,8 +83,7 @@ Any `dotnet` command can be run with  `dotnet watch`:  For example:
 To run `WebApp` using the watcher, run `dotnet watch run` in the `WebApp` folder. The console output will show messages similar to the ones below, indicating that `dotnet watch` is now watching code files:
 
 ````bash
-
-   user$ dotnet watch run
+user$ dotnet watch run
    [DotNetWatcher] info: Running dotnet with the following arguments: run
    [DotNetWatcher] info: dotnet process id: 39746
    Project WebApp (.NETCoreApp,Version=v1.0) was previously compiled. Skipping compilation.
@@ -110,8 +106,7 @@ We've intentionally introduced a bug in the code.
 [!code-csharp[Main](../tutorials/dotnet-watch/sample/WebApp/Controllers/MathController.cs?highlight=5)]
 
 ````csharp
-
-       public static int Product(int a, int b)
+    public static int Product(int a, int b)
        {
            // We have an intentional bug here
            // + should be *
@@ -125,8 +120,7 @@ Fix the code by replacing `a + b` with `a * b`.
 Save the file. The console output will show messages similar to the ones below, indicating that `dotnet watch` detected a file change and restarted the application.
 
 ````bash
-
-   [DotNetWatcher] info: File changed: /Users/user/dev/aspnet/Docs/aspnet/tutorials/dotnet-watch/sample/WebApp/Controllers/MathController.cs
+[DotNetWatcher] info: File changed: /Users/user/dev/aspnet/Docs/aspnet/tutorials/dotnet-watch/sample/WebApp/Controllers/MathController.cs
    [DotNetWatcher] info: Running dotnet with the following arguments: run
    [DotNetWatcher] info: dotnet process id: 39940
    Project WebApp (.NETCoreApp,Version=v1.0) will be compiled because inputs were modified
@@ -155,8 +149,7 @@ The file watcher can run other `dotnet` commands like `test` or `publish`.
 If you previously fixed the bug in the `MathController` then you'll see an output similar to the one below, otherwise you'll see a test failure:
 
 ````bash
-
-   WebAppTests user$ dotnet watch test
+WebAppTests user$ dotnet watch test
    [DotNetWatcher] info: Running dotnet with the following arguments: test
    [DotNetWatcher] info: dotnet process id: 40193
    Project WebApp (.NETCoreApp,Version=v1.0) was previously compiled. Skipping compilation.
@@ -180,8 +173,7 @@ Once all the tests run, the watcher will indicate that it's waiting for a file t
 `dotnet watch` will detect the file change and rerun the tests. The console output will show messages similar to the one below:
 
 ````bash
-
-   [DotNetWatcher] info: File changed: /Users/user/dev/aspnet/Docs/aspnet/tutorials/dotnet-watch/sample/WebApp/Controllers/MathController.cs
+[DotNetWatcher] info: File changed: /Users/user/dev/aspnet/Docs/aspnet/tutorials/dotnet-watch/sample/WebApp/Controllers/MathController.cs
    [DotNetWatcher] info: Running dotnet with the following arguments: test
    [DotNetWatcher] info: dotnet process id: 40233
    Project WebApp (.NETCoreApp,Version=v1.0) will be compiled because inputs were modified

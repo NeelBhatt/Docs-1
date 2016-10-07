@@ -22,15 +22,13 @@ A tag helper is any class that implements the `ITagHelper` interface. However, w
 In this section we will write a tag helper that updates an email tag. For example:
 
 ````html
-
-   <email>Support</email>
+<email>Support</email>
    ````
 
 The server will use our email tag helper to convert that markup into the following:
 
 ````html
-
-   <a href="mailto:Support@contoso.com">Support@contoso.com</a>
+<a href="mailto:Support@contoso.com">Support@contoso.com</a>
    ````
 
 That is, an anchor tag that makes this an email link. You might want to do this if you are writing a blog engine and need it to send email for marketing, support, and other contacts, all to the same domain.
@@ -72,8 +70,7 @@ That is, an anchor tag that makes this an email link. You might want to do this 
 * Our class name has a suffix of **TagHelper**, which is *not* required, but it's considered a best practice convention. You could declare the class as:
 
 ````csharp
-
-   public class Email : TagHelper
+public class Email : TagHelper
    ````
 
 2. To make the `EmailTagHelper` class available to all our Razor views, we will add the `addTagHelper` directive to the *Views/_ViewImports.cshtml* file:
@@ -81,8 +78,7 @@ That is, an anchor tag that makes this an email link. You might want to do this 
 [!code-html[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopyEmail.cshtml?highlight=2,3)]
 
 ````html
-
-   @using AuthoringTagHelpers
+@using AuthoringTagHelpers
    @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
    @addTagHelper "AuthoringTagHelpers.TagHelpers.EmailTagHelper, AuthoringTagHelpers"
    ````
@@ -92,8 +88,7 @@ The code above uses the wildcard syntax to specify all the tag helpers in our as
 [!code-html[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImports.cshtml?highlight=3)]
 
 ````html
-
-   @using AuthoringTagHelpers
+@using AuthoringTagHelpers
    @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
    @addTagHelper "AuthoringTagHelpers.TagHelpers3.EmailTagHelper, AuthoringTagHelpers"
 
@@ -106,8 +101,7 @@ To add a tag helper to a view using a FQN, you first add the FQN (`AuthoringTagH
 [!code-html[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Contact.cshtml?highlight=15,16)]
 
 ````html
-
-   @{
+@{
        ViewData["Title"] = "Contact";
    }
    <h2>@ViewData["Title"].</h2>
@@ -176,8 +170,7 @@ Update the `EmailTagHelper` class with the following:
 [!code-csharp[Main](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/EmailTagHelperMailTo.cs?highlight=6)]
 
 ````csharp
-
-   public override void Process(TagHelperContext context, TagHelperOutput output)
+public override void Process(TagHelperContext context, TagHelperOutput output)
    {
        output.TagName = "a";    // Replaces <email> with <a> tag
 
@@ -195,8 +188,7 @@ That approach works for the attribute "href" as long as it doesn't currently exi
 [!code-html[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/ContactCopy.cshtml?highlight=15,16)]
 
 ````html
-
-   @{
+@{
        ViewData["Title"] = "Contact Copy";
    }
    <h2>@ViewData["Title"].</h2>
@@ -222,8 +214,7 @@ That approach works for the attribute "href" as long as it doesn't currently exi
 [!code-csharp[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/EmailTagHelperMailVoid.cs?highlight=1)]
 
 ````csharp
-
-   [HtmlTargetElement("email", TagStructure = TagStructure.WithoutEndTag)] 
+[HtmlTargetElement("email", TagStructure = TagStructure.WithoutEndTag)] 
    public class EmailVoidTagHelper : TagHelper
    {
        private const string EmailDomain = "contoso.com";
@@ -242,8 +233,7 @@ In this section we'll write an asynchronous email helper.
 [!code-csharp[Main](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/EmailTagHelper.cs)]
 
 ````csharp
-
-   public class EmailTagHelper : TagHelper
+public class EmailTagHelper : TagHelper
    {
        private const string EmailDomain = "contoso.com";
        public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
@@ -269,8 +259,7 @@ In this section we'll write an asynchronous email helper.
 [!code-html[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Contact.cshtml?highlight=15,16)]
 
 ````html
-
-   @{
+@{
        ViewData["Title"] = "Contact";
    }
    <h2>@ViewData["Title"].</h2>
@@ -299,8 +288,7 @@ In this section we'll write an asynchronous email helper.
 [!code-csharp[Main](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/BoldTagHelper.cs)]
 
 ````csharp
-
-   using Microsoft.AspNetCore.Razor.TagHelpers;
+using Microsoft.AspNetCore.Razor.TagHelpers;
 
    namespace AuthoringTagHelpers.TagHelpers
    {
@@ -337,8 +325,7 @@ In this section we'll write an asynchronous email helper.
 [!code-html[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/AboutBoldOnly.cshtml?highlight=7)]
 
 ````html
-
-   @{
+@{
        ViewData["Title"] = "About";
    }
    <h2>@ViewData["Title"].</h2>
@@ -362,8 +349,7 @@ Decorating a class with multiple `[HtmlTargetElement]` attributes results in a l
 [!code-csharp[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/zBoldTagHelperCopy.cs?highlight=1,2)]
 
 ````csharp
-
-   [HtmlTargetElement("bold")]
+[HtmlTargetElement("bold")]
    [HtmlTargetElement(Attributes = "bold")]
    public class BoldTagHelper : TagHelper
    {
@@ -380,15 +366,13 @@ Decorating a class with multiple `[HtmlTargetElement]` attributes results in a l
 When multiple attributes are added to the same statement, the runtime treats them as a logical-AND. For example, in the code below, an HTML element must be named "bold" with an attribute named "bold" ( <bold bold /> ) to match.
 
 ````csharp
-
-   [HtmlTargetElement("bold", Attributes = "bold")]
+[HtmlTargetElement("bold", Attributes = "bold")]
    ````
 
 You can also use the `[HtmlTargetElement]` to change the name of the targeted element. For example if you wanted the `BoldTagHelper` to target `<MyBold>` tags, you would use the following attribute:
 
 ````csharp
-
-   [HtmlTargetElement("MyBold")]
+[HtmlTargetElement("MyBold")]
    ````
 
 ## Web site information Tag Helper
@@ -400,8 +384,7 @@ You can also use the `[HtmlTargetElement]` to change the name of the targeted el
 [!code-csharp[Main](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Models/WebsiteContext.cs)]
 
 ````csharp
-
-   using System;
+using System;
 
    namespace AuthoringTagHelpers.Models
    {
@@ -420,8 +403,7 @@ You can also use the `[HtmlTargetElement]` to change the name of the targeted el
 [!code-none[Main](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/WebsiteInformationTagHelper.cs)]
 
 ````none
-
-   using System;
+using System;
    using AuthoringTagHelpers.Models;
    using Microsoft.AspNetCore.Razor.TagHelpers;
 
@@ -452,15 +434,13 @@ You can also use the `[HtmlTargetElement]` to change the name of the targeted el
 * We are not explicitly identifying the target element with the `[HtmlTargetElement]` attribute, so the default of `website-information` will be targeted. If you applied the following attribute (note it's not kebab case but matches the class name):
 
 ````csharp
-
-   [HtmlTargetElement("WebsiteInformation")]
+[HtmlTargetElement("WebsiteInformation")]
    ````
 
 The lower kebab case tag `<website-information />` would not match. If you want use the `[HtmlTargetElement]` attribute, you would use kebab case as shown below:
 
 ````csharp
-
-   [HtmlTargetElement("Website-Information")]
+[HtmlTargetElement("Website-Information")]
    ````
 
 * Elements that are self-closing have no content. For this example, the Razor markup will use a self-closing tag, but the tag helper will be creating a [section](http://www.w3.org/TR/html5/sections.html#the-section-element) element (which is not self-closing and we are writing content inside the `section` element). Therefore, we need to set `TagMode` to `StartTagAndEndTag` to write output. Alternatively, you can comment out the line setting `TagMode` and write markup with a closing tag. (Example markup is provided later in this tutorial.)
@@ -468,8 +448,7 @@ The lower kebab case tag `<website-information />` would not match. If you want 
 * The `$` (dollar sign) in the following line uses an [interpolated string](https://msdn.microsoft.com/en-us/library/Dn961160.aspx):
 
 ````html
-
-   $@"<ul><li><strong>Version:</strong> {Info.Version}</li>
+$@"<ul><li><strong>Version:</strong> {Info.Version}</li>
    ````
 
 5. Add the following markup to the *About.cshtml* view. The highlighted markup displays the web site information.
@@ -481,8 +460,7 @@ The lower kebab case tag `<website-information />` would not match. If you want 
 [!code-html[Main](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/About.cshtml)]
 
 ````html
-
-   <website-information info="new WebsiteContext {
+<website-information info="new WebsiteContext {
                                        Version = new Version(1, 3),
                                        CopyrightYear = 1638,
                                        Approved = true,
@@ -500,8 +478,7 @@ Razor knows the `info` attribute is a class, not a string, and you want to write
 [!code-html[Main](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/AboutNotSelfClosing.cshtml)]
 
 ````html
-
-   <website-information info="new WebsiteContext {
+<website-information info="new WebsiteContext {
                                        Version = new Version(1, 3),
                                        CopyrightYear = 1638,
                                        Approved = true,
@@ -518,8 +495,7 @@ The condition tag helper renders output when passed a true value.
 [!code-csharp[Main](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/ConditionTagHelper.cs)]
 
 ````csharp
-
-   using Microsoft.AspNetCore.Razor.TagHelpers;
+using Microsoft.AspNetCore.Razor.TagHelpers;
 
    namespace AuthoringTagHelpers.TagHelpers
    {
@@ -545,8 +521,7 @@ The condition tag helper renders output when passed a true value.
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Index.cshtml", "ids": [], "linenos": false, "highlight_args": {"linenostart": 1}} -->
 
 ````
-
-   @using AuthoringTagHelpers.Models
+@using AuthoringTagHelpers.Models
    @model WebsiteContext
 
    @{
@@ -570,8 +545,7 @@ The condition tag helper renders output when passed a true value.
 [!code-csharp[Main](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Controllers/HomeController.cs)]
 
 ````csharp
-
-     public IActionResult Index(bool approved = false)
+  public IActionResult Index(bool approved = false)
      {
          return View(new WebsiteContext
          {
@@ -591,8 +565,7 @@ The condition tag helper renders output when passed a true value.
 [!code-csharp[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/zConditionTagHelperCopy.cs?highlight=1,2,5)]
 
 ````csharp
-
-   [HtmlTargetElement(Attributes = nameof(Condition))]
+[HtmlTargetElement(Attributes = nameof(Condition))]
     //   [HtmlTargetElement(Attributes = "condition")]
     public class ConditionTagHelper : TagHelper
    {
@@ -622,8 +595,7 @@ Because these two helpers are closely related and we may refactor them in the fu
 [!code-csharp[Main](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinker.cs)]
 
 ````csharp
-
-   [HtmlTargetElement("p")]
+[HtmlTargetElement("p")]
    public class AutoLinkerHttpTagHelper : TagHelper
    {
        public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
@@ -647,8 +619,7 @@ Because these two helpers are closely related and we may refactor them in the fu
 [!code-html[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Contact.cshtml?highlight=19)]
 
 ````html
-
-   @{
+@{
        ViewData["Title"] = "Contact";
    }
    <h2>@ViewData["Title"].</h2>
@@ -676,8 +647,7 @@ Because these two helpers are closely related and we may refactor them in the fu
 [!code-csharp[Main](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinker.cs?highlight=15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34)]
 
 ````csharp
-
-   [HtmlTargetElement("p")]
+[HtmlTargetElement("p")]
    public class AutoLinkerHttpTagHelper : TagHelper
    {
        public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
@@ -713,8 +683,7 @@ Because these two helpers are closely related and we may refactor them in the fu
 [!code-csharp[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinkerCopy.cs?highlight=5,6,10,21,22,26)]
 
 ````csharp
-
-       public class AutoLinkerHttpTagHelper : TagHelper
+    public class AutoLinkerHttpTagHelper : TagHelper
        {
            public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
            {
@@ -753,8 +722,7 @@ Because these two helpers are closely related and we may refactor them in the fu
 [!code-csharp[Main](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinker.cs)]
 
 ````csharp
-
-   var childContent = await output.GetChildContentAsync();
+var childContent = await output.GetChildContentAsync();
 
    ````
 
@@ -763,8 +731,7 @@ That is, we call `GetChildContentAsync` using the `TagHelperOutput` passed into 
 [!code-csharp[Main](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z2AutoLinkerCopy.cs)]
 
 ````csharp
-
-   var childContent = output.Content.IsModified ? output.Content.GetContent() :
+var childContent = output.Content.IsModified ? output.Content.GetContent() :
        (await output.GetChildContentAsync()).GetContent();
 
    ````
@@ -776,8 +743,7 @@ The code above checks to see if the content has been modified, and if it has, it
 [!code-csharp[Main](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z2AutoLinkerCopy.cs?highlight=5,6,7,8)]
 
 ````csharp
-
-   public class AutoLinkerHttpTagHelper : TagHelper
+public class AutoLinkerHttpTagHelper : TagHelper
    {
        // This filter must run before the AutoLinkerWwwTagHelper as it searches and replaces http and 
        // the AutoLinkerWwwTagHelper adds http to the markup.
@@ -803,8 +769,7 @@ The tag-helpers provide several properties to retrieve content.
 [!code-csharp[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinkerCopy.cs?highlight=5,6,10)]
 
 ````csharp
-
-   public class AutoLinkerHttpTagHelper : TagHelper
+public class AutoLinkerHttpTagHelper : TagHelper
    {
        public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
        {

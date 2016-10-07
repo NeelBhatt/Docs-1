@@ -15,7 +15,7 @@ The data protection system automatically manages the lifetime of master keys use
 
 * Revoked - the key is compromised and must not be used for new Protect operations.
 
-Created, active, and expired keys may all be used to unprotect incoming payloads. Revoked keys by default may not be used to unprotect payloads, but the application developer can [override this behavior](../consumer-apis/dangerous-unprotect.md#data-protection-consumer-apis-dangerous-unprotect.md) if necessary.
+Created, active, and expired keys may all be used to unprotect incoming payloads. Revoked keys by default may not be used to unprotect payloads, but the application developer can [override this behavior](../consumer-apis/dangerous-unprotect.md#data-protection-consumer-apis-dangerous-unprotect) if necessary.
 
 >[!WARNING]
 > The developer might be tempted to delete a key from the key ring (e.g., by deleting the corresponding file from the file system). At that point, all data protected by the key is permanently undecipherable, and there is no emergency override like there is with revoked keys. Deleting a key is truly destructive behavior, and consequently the data protection system exposes no first-class API for performing this operation.
@@ -28,7 +28,7 @@ The general heuristic is that the data protection system chooses the key with th
 
 The reason the data protection system generates a new key immediately rather than falling back to a different key is that new key generation should be treated as an implicit expiration of all keys that were activated prior to the new key. The general idea is that new keys may have been configured with different algorithms or encryption-at-rest mechanisms than old keys, and the system should prefer the current configuration over falling back.
 
-There is an exception. If the application developer has [disabled automatic key generation](../configuration/overview.md#data-protection-configuring-disable-automatic-key-generation.md), then the data protection system must choose something as the default key. In this fallback scenario, the system will choose the non-revoked key with the most recent activation date, with preference given to keys that have had time to propagate to other machines in the cluster. The fallback system may end up choosing an expired default key as a result. The fallback system will never choose a revoked key as the default key, and if the key ring is empty or every key has been revoked then the system will produce an error upon initialization.
+There is an exception. If the application developer has [disabled automatic key generation](../configuration/overview.md#data-protection-configuring-disable-automatic-key-generation), then the data protection system must choose something as the default key. In this fallback scenario, the system will choose the non-revoked key with the most recent activation date, with preference given to keys that have had time to propagate to other machines in the cluster. The fallback system may end up choosing an expired default key as a result. The fallback system will never choose a revoked key as the default key, and if the key ring is empty or every key has been revoked then the system will produce an error upon initialization.
 
 <a name=data-protection-implementation-key-management-expiration></a>
 
@@ -43,8 +43,7 @@ There might be circumstances where a key will be created with immediate activati
 The default key lifetime is 90 days, though this is configurable as in the following example.
 
 ````csharp
-
-   services.AddDataProtection()
+services.AddDataProtection()
        // use 14-day lifetime instead of 90-day lifetime
        .SetDefaultKeyLifetime(TimeSpan.FromDays(14));
    ````
@@ -67,8 +66,7 @@ The sample below demonstrates using the IKeyManager interface to inspect and man
 [!code-none[Main](key-management/samples/key-management.cs)]
 
 ````none
-
-   using System;
+using System;
    using System.IO;
    using System.Threading;
    using Microsoft.AspNetCore.DataProtection;
@@ -142,6 +140,6 @@ The sample below demonstrates using the IKeyManager interface to inspect and man
 
 The data protection system has a heuristic whereby it tries to deduce an appropriate key storage location and encryption at rest mechanism automatically. This is also configurable by the app developer. The following documents discuss the in-box implementations of these mechanisms:
 
-* [In-box key storage providers](key-storage-providers.md#data-protection-implementation-key-storage-providers.md)
+* [In-box key storage providers](key-storage-providers.md#data-protection-implementation-key-storage-providers)
 
-* [In-box key encryption at rest providers](key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest-providers.md)
+* [In-box key encryption at rest providers](key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest-providers)

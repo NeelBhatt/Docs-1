@@ -14,8 +14,7 @@ In the previous article we [migrated configuration from an ASP.NET MVC project t
 In ASP.NET MVC, authentication and identity features are configured using ASP.NET Identity in Startup.Auth.cs and IdentityConfig.cs, located in the App_Start folder. In ASP.NET Core MVC, these features are configured in *Startup.cs*. Before pulling in the required services and configuring them, we should add the required dependencies to the project. Open *project.json* and add `Microsoft.AspNetCore.Identity.EntityFramework` and `Microsoft.AspNetCore.Authentication.Cookies` to the list of dependencies:
 
 ````none
-
-   "dependencies": {
+"dependencies": {
      "Microsoft.AspNetCore.Mvc": "1.0.0",
      "Microsoft.AspNetCore.Identity.EntityFramework": "1.0.0",
      "Microsoft.AspNetCore.Security.Cookies": "1.0.0"
@@ -25,8 +24,7 @@ In ASP.NET MVC, authentication and identity features are configured using ASP.NE
 Now, open Startup.cs and update the ConfigureServices() method to use Entity Framework and Identity services:
 
 ````csharp
-
-   public void ConfigureServices(IServiceCollection services)
+public void ConfigureServices(IServiceCollection services)
    {
      // Add EF services to the services container.
      services.AddEntityFramework(Configuration)
@@ -46,8 +44,7 @@ At this point, there are two types referenced in the above code that we haven't 
 ApplicationUser.cs:
 
 ````csharp
-
-   using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
    namespace NewMvc6Project.Models
    {
@@ -60,8 +57,7 @@ ApplicationUser.cs:
 ApplicationDbContext.cs:
 
 ````csharp
-
-   using Microsoft.AspNetCore.Identity.EntityFramework;
+using Microsoft.AspNetCore.Identity.EntityFramework;
    using Microsoft.Data.Entity;
 
    namespace NewMvc6Project.Models
@@ -94,8 +90,7 @@ The ASP.NET Core MVC Starter Web project doesn't include much customization of u
 With these files in place, the Startup.cs file can be made to compile by updating its using statements:
 
 ````csharp
-
-   using Microsoft.Framework.ConfigurationModel;
+using Microsoft.Framework.ConfigurationModel;
    using Microsoft.AspNetCore.Hosting;
    using NewMvc6Project.Models;
    using Microsoft.AspNetCore.Identity;
@@ -105,13 +100,12 @@ Our application is now ready to support authentication and identity services - i
 
 ## Migrate Registration and Login Logic
 
-With identity services configured for the application and data access configured using Entity Framework and SQL Server, we are now ready to add support for registration and login to the application. Recall that [earlier in the migration process](mvc.md#migrate-layout-file.md) we commented out a reference to _LoginPartial in _Layout.cshtml. Now it's time to return to that code, uncomment it, and add in the necessary controllers and views to support login functionality.
+With identity services configured for the application and data access configured using Entity Framework and SQL Server, we are now ready to add support for registration and login to the application. Recall that [earlier in the migration process](mvc.md#migrate-layout-file) we commented out a reference to _LoginPartial in _Layout.cshtml. Now it's time to return to that code, uncomment it, and add in the necessary controllers and views to support login functionality.
 
 Update _Layout.cshtml; uncomment the @Html.Partial line:
 
 ````none
-
-         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+      <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
        </ul>
        @*@Html.Partial("_LoginPartial")*@
      </div>
@@ -123,8 +117,7 @@ Now, add a new MVC View Page called _LoginPartial to the Views/Shared folder:
 Update _LoginPartial.cshtml with the following code (replace all of its contents):
 
 ````csharp
-
-   @inject SignInManager<User> SignInManager
+@inject SignInManager<User> SignInManager
    @inject UserManager<User> UserManager
 
    @if (SignInManager.IsSignedIn(User))

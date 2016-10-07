@@ -10,5 +10,5 @@
 - [Bundling and Minification](bundling-and-minification.md)
 - [🔧 Working with a Content Delivery Network (CDN)](cdn.md)
 - [🔧 Responsive Design for the Mobile Web](responsive-design.md)
-- [TypeScript](https://www.typescriptlang.org/docs/handbook/asp-net-core.html.md)
+- [TypeScript](https://www.typescriptlang.org/docs/handbook/asp-net-core.html)
 - [Building Projects with Yeoman](yeoman.md)

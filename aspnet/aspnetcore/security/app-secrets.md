@@ -32,8 +32,7 @@ The Secret Manager tool provides a more general mechanism to store sensitive dat
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {"hl_lines": [6, 7, 8, 9]}} -->
 
 ````none
-
-   "tools": {
+"tools": {
      "Microsoft.AspNetCore.Razor.Tools": "1.0.0-preview2-final",
      "Microsoft.Extensions.SecretManager.Tools": "1.0.0-preview2-final"
    },
@@ -44,8 +43,7 @@ The Secret Manager tool provides a more general mechanism to store sensitive dat
   <!-- literal_block {"ids": [], "xml:space": "preserve"} -->
 
   ````
-
-     dotnet user-secrets -h
+  dotnet user-secrets -h
      ````
 
 > [!NOTE]
@@ -60,8 +58,7 @@ The Secret Manager tool operates on project specific configuration settings that
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "json", "highlight_args": {"hl_lines": [2]}} -->
 
 ````json
-
-   {
+{
    "userSecretsId": "aspnet-WebApp1-c23d27a4-eb88-4b18-9b77-2a93f3b15119",
 
    "dependencies": {
@@ -72,8 +69,7 @@ The Secret Manager tool operates on project specific configuration settings that
   <!-- literal_block {"ids": [], "xml:space": "preserve"} -->
 
   ````
-
-     dotnet user-secrets set MySecret ValueOfMySecret
+  dotnet user-secrets set MySecret ValueOfMySecret
      ````
 
 You can run the secret manager tool from other directories, but you must use the `--project` option to pass in the path to the *project.json* file:
@@ -81,8 +77,7 @@ You can run the secret manager tool from other directories, but you must use the
 <!-- literal_block {"ids": [], "xml:space": "preserve"} -->
 
 ````
-
-   dotnet user-secrets set MySecret ValueOfMySecret --project c:\work\WebApp1
+dotnet user-secrets set MySecret ValueOfMySecret --project c:\work\WebApp1
    ````
 
 You can also use the Secret Manager tool to list, remove and clear app secrets.
@@ -94,8 +89,7 @@ You access Secret Manager secrets through the configuration system. Add the `Mic
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {"hl_lines": [2]}} -->
 
 ````none
-
-     "Microsoft.Extensions.Configuration.UserSecrets": "1.0.0-rc2-final",
+  "Microsoft.Extensions.Configuration.UserSecrets": "1.0.0-rc2-final",
    ````
 
 Add the user secrets configuration source to the `Startup` method:
@@ -103,8 +97,7 @@ Add the user secrets configuration source to the `Startup` method:
 [!code-none[Main](../common/samples/WebApplication1/src/WebApplication1/Startup.cs?highlight=11)]
 
 ````none
-
-   public Startup(IHostingEnvironment env)
+public Startup(IHostingEnvironment env)
    {
        var builder = new ConfigurationBuilder()
            .SetBasePath(env.ContentRootPath)
@@ -126,8 +119,7 @@ Add the user secrets configuration source to the `Startup` method:
 You can now access user secrets via the configuration API:
 
 ````csharp
-
-   string testConfig = Configuration["MySecret"];
+string testConfig = Configuration["MySecret"];
    ````
 
 ## How the Secret Manager tool works

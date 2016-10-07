@@ -33,7 +33,7 @@ To grant the IIS worker process access to your application, you will need to mod
 
 4. Click the **Locations** and make sure you select your server.
 
-![image](apppool/_static/apppool-adduser.jpg)
+    ![image](apppool/_static/apppool-adduser.jpg)
 
 5. Enter **IIS AppPool\DefaultAppPool** in **Enter the object names to select** textbox.
 
@@ -44,6 +44,5 @@ You can also do this via the command-line by using **ICACLS** tool.
 <!-- literal_block {"ids": [], "classes": ["code", "bat"], "xml:space": "preserve"} -->
 
 ````
-
    ICACLS C:\sites\MyWebApp /grant "IIS AppPool\DefaultAppPool" :F
    ````

@@ -14,8 +14,7 @@ Knockout is deployed as a single JavaScript file, so installing and using it is 
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "json", "highlight_args": {"hl_lines": [5]}} -->
 
 ````json
-
-   {
+{
      "name": "KnockoutDemo",
      "private": true,
      "dependencies": {
@@ -41,8 +40,7 @@ It's recommended that in your production environment you reference knockout via 
 To include Knockout on a page that will use it, simply add a `<script>` element referencing the file from wherever you will be hosting it (with your application, or via a CDN):
 
 ````html
-
-   <script type="text/javascript" src="knockout-3.3.0.js"></script>
+<script type="text/javascript" src="knockout-3.3.0.js"></script>
    ````
 
 ## Observables, ViewModels, and Simple Binding
@@ -54,8 +52,7 @@ As a simple example, consider the page list below. It includes a `<span>` elemen
 <!-- literal_block {"ids": [], "linenos": true, "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [3, 8, 11, 12, 13, 14]}} -->
 
 ````html
-
-   <html>
+<html>
      <head>
        <script type="text/javascript" src="lib/knockout/knockout.js"></script>
      </head>
@@ -81,8 +78,7 @@ When viewed in the browser, the content of the <span> element is replaced with t
 We now have simple one-way binding working. Notice that nowhere in the code did we write JavaScript to assign a value to the span's contents. If we want to manipulate the ViewModel, we can take this a step further and add an HTML input textbox, and bind to its value, like so:
 
 ````html
-
-   <p>
+<p>
      Author Name: <input type="text" data-bind="value: authorName" />
    </p>
    ````
@@ -103,8 +99,7 @@ Our viewModel, after updating it to use ko.observable:
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "javascript", "highlight_args": {"hl_lines": [2]}} -->
 
 ````javascript
-
-   var viewModel = {
+var viewModel = {
      authorName: ko.observable('Steve Smith')
    };
    ko.applyBindings(viewModel);
@@ -117,8 +112,7 @@ First, add the HTML to display the hyperlink, which we'll show in parentheses af
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [4]}} -->
 
 ````html
-
-   <h1>Some Article</h1>
+<h1>Some Article</h1>
    <p>
      By <span data-bind="text: authorName"></span>
      (<a data-bind="attr: { href: twitterUrl}, text: twitterAlias" ></a>)
@@ -130,8 +124,7 @@ Next, update the viewModel to include the twitterUrl and twitterAlias properties
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "javascript", "highlight_args": {"hl_lines": [3, 4, 5, 6]}} -->
 
 ````javascript
-
-   var viewModel = {
+var viewModel = {
      authorName: ko.observable('Steve Smith'),
      twitterAlias: ko.observable('@ardalis'),
      twitterUrl: ko.computed(function() {
@@ -148,8 +141,7 @@ The revised viewModel declaration is shown below. It is now declared as a functi
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "javascript", "highlight_args": {"hl_lines": [6]}} -->
 
 ````javascript
-
-   function viewModel() {
+function viewModel() {
      this.authorName = ko.observable('Steve Smith');
      this.twitterAlias = ko.observable('@ardalis');
 
@@ -171,8 +163,7 @@ First, we add the button, binding to the button's click event, and referencing t
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [4]}} -->
 
 ````html
-
-   <p>
+<p>
      <button data-bind="click: capitalizeTwitterAlias">Capitalize</button>
    </p>
    ````
@@ -182,8 +173,7 @@ Then, add the function to the viewModel, and wire it up to modify the viewModel'
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "javascript", "highlight_args": {"hl_lines": [6]}} -->
 
 ````javascript
-
-   function viewModel() {
+function viewModel() {
      this.authorName = ko.observable('Steve Smith');
      this.twitterAlias = ko.observable('@ardalis');
 
@@ -210,8 +200,7 @@ Knockout includes bindings that can perform conditional and looping operations. 
 <!-- literal_block {"ids": [], "linenos": true, "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [9, 11, 12, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34]}} -->
 
 ````html
-
-   <h1>Record</h1>
+<h1>Record</h1>
    <table>
      <thead>
        <tr>
@@ -255,8 +244,7 @@ Notice that this time we're using ViewModel with a capital “V" because we expe
 To demonstrate that the observable collection is working, let's add a bit more functionality. We can include the ability to record the results of another game to the ViewModel, and then add a button and some UI to work with this new function.  First, let's create the addResult method:
 
 ````javascript
-
-   // add this to ViewModel()
+// add this to ViewModel()
    self.addResult = function() {
      self.gameResults.push(new GameResult("", self.resultChoices[0]));
    }
@@ -265,8 +253,7 @@ To demonstrate that the observable collection is working, let's add a bit more f
 Bind this method to a button using the `click` binding:
 
 ````html
-
-   <button data-bind="click: addResult">Add New Result</button>
+<button data-bind="click: addResult">Add New Result</button>
    ````
 
 Open the page in the browser and click the button a couple of times, resulting in a new table row with each click:
@@ -276,8 +263,7 @@ Open the page in the browser and click the button a couple of times, resulting i
 There are a few ways to support adding new records in the UI, typically either inline or in a separate form. We can easily modify the table to use textboxes and dropdownlists so that the whole thing is editable. Just change the `<tr>` element as shown:
 
 ````html
-
-   <tbody data-bind="foreach: gameResults">
+<tbody data-bind="foreach: gameResults">
      <tr>
        <td><input data-bind="value:opponent" /></td>
        <td><select data-bind="options: $root.resultChoices,
@@ -297,8 +283,7 @@ If we weren't using Knockout, we could achieve all of this using jQuery, but mos
 To build the win-loss record string, we can use a computed observable. Note that references to observable properties within the ViewModel must be function calls, otherwise they will not retrieve the value of the observable (i.e. `gameResults()` not `gameResults` in the code shown):
 
 ````javascript
-
-   self.displayRecord = ko.computed(function () {
+self.displayRecord = ko.computed(function () {
      var wins = self.gameResults().filter(function (value) { return value.result() == "Win"; }).length;
      var losses = self.gameResults().filter(function (value) { return value.result() == "Loss"; }).length;
      var ties = self.gameResults().filter(function (value) { return value.result() == "Tie"; }).length;
@@ -310,8 +295,7 @@ Bind this function to a span within the `<h1>` element at the top of the page:
 
 
    ````html
-
-      <h1>Record <span data-bind="text: displayRecord"></span></h1>
+   <h1>Record <span data-bind="text: displayRecord"></span></h1>
       ````
 
 The result:
@@ -324,8 +308,7 @@ In addition to binding to values, you can also use almost any legal JavaScript e
 
 
    ````html
-
-      <div data-bind="visible: customerValue > 100"></div>
+   <div data-bind="visible: customerValue > 100"></div>
       ````
 
 This `<div>` will only be visible when the customerValue is over 100.
@@ -337,8 +320,7 @@ Knockout has support for templates, so that you can easily separate your UI from
    <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {"hl_lines": [1, 3]}} -->
 
    ````none
-
-      <tbody data-bind="template: { name: 'rowTemplate', foreach: gameResults }">
+   <tbody data-bind="template: { name: 'rowTemplate', foreach: gameResults }">
       </tbody>
       <script type="text/html" id="rowTemplate">
         <tr>

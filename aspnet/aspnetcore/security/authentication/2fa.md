@@ -33,8 +33,7 @@ After you create the project, follow the instructions in [Account Confirmation a
   <!-- literal_block {"ids": [], "xml:space": "preserve"} -->
 
   ````
-
-     Install-Package Twilio
+  Install-Package Twilio
      ````
 
 * Add code in the *Services/MessageServices.cs* file to enable SMS.
@@ -42,8 +41,7 @@ After you create the project, follow the instructions in [Account Confirmation a
 [!code-csharp[Main](2fa/sample/WebSMS/src/WebSMS/Services/MessageServices.cs)]
 
 ````csharp
-
-   public class AuthMessageSender : IEmailSender, ISmsSender
+public class AuthMessageSender : IEmailSender, ISmsSender
    {
        public AuthMessageSender(IOptions<AuthMessageSMSSenderOptions> optionsAccessor)
        {
@@ -78,19 +76,18 @@ After you create the project, follow the instructions in [Account Confirmation a
 > Twilio does not yet support [.NET Core](https://microsoft.com/net/core). To use Twilio from your application you need to either target the full .NET Framework or you can call the Twilio REST API to send SMS messages.
 
 > [!NOTE]
-> You can remove `//` line comment characters from the `System.Diagnostics.Debug.WriteLine(message);` line to test the application when you can't get SMS messages. A better approach to logging is to use the built in [logging](../../fundamentals/logging.md#fundamentals-logging.md).
+> You can remove `//` line comment characters from the `System.Diagnostics.Debug.WriteLine(message);` line to test the application when you can't get SMS messages. A better approach to logging is to use the built in [logging](../../fundamentals/logging.md#fundamentals-logging).
 
 ### Configure the SMS provider key/value
 
-We'll use the [Options pattern](../../fundamentals/configuration.md#options-config-objects.md) to access the user account and key settings. For more information, see [configuration](../../fundamentals/configuration.md#fundamentals-configuration.md).
+We'll use the [Options pattern](../../fundamentals/configuration.md#options-config-objects) to access the user account and key settings. For more information, see [configuration](../../fundamentals/configuration.md#fundamentals-configuration).
 
    * Create a class to fetch the secure SMS key. For this sample, the `AuthMessageSMSSenderOptions` class is created in the *Services/AuthMessageSMSSenderOptions.cs* file.
 
 [!code-csharp[Main](2fa/sample/WebSMS/src/WebSMS/Services/AuthMessageSMSSenderOptions.cs)]
 
 ````csharp
-
-   public class AuthMessageSMSSenderOptions
+public class AuthMessageSMSSenderOptions
    {
        public string SID { get; set; }
        public string AuthToken { get; set; }
@@ -102,8 +99,7 @@ We'll use the [Options pattern](../../fundamentals/configuration.md#options-conf
 Set `SID`, `AuthToken`, and `SendNumber` with the [secret-manager tool](../app-secrets.md). For example:
 
 ````none
-
-   C:/WebSMS/src/WebApplication1>dotnet user-secrets set SID abcdefghi
+C:/WebSMS/src/WebApplication1>dotnet user-secrets set SID abcdefghi
    info: Successfully saved SID = abcdefghi to the secret store.
    ````
 
@@ -114,8 +110,7 @@ Add `AuthMessageSMSSenderOptions` to the service container at the end of the `Co
 [!code-csharp[Main](./2fa/sample/WebSMS/src/WebSMS/Startup.cs?highlight=4)]
 
 ````csharp
-
-       // Register application services.
+    // Register application services.
        services.AddTransient<IEmailSender, AuthMessageSender>();
        services.AddTransient<ISmsSender, AuthMessageSender>();
        services.Configure<AuthMessageSMSSenderOptions>(Configuration);
@@ -142,8 +137,7 @@ Add `AuthMessageSMSSenderOptions` to the service container at the end of the `Co
 [!code-html[Main](2fa/sample/WebSMS/src/WebSMS/Views/Manage/Index.cshtml)]
 
    ````html
-
-      <dt>Phone Number:</dt>
+   <dt>Phone Number:</dt>
       <dd>
           <p>
               Phone Numbers can used as a second factor of verification in two-factor authentication.
@@ -243,8 +237,7 @@ We recommend you use account lockout with 2FA. Once a user logs in (through a lo
 [!code-csharp[Main](./2fa/sample/WebSMS/src/WebSMS/Startup.cs?highlight=1,2,3,4,5)]
 
 ````csharp
-
-       services.Configure<IdentityOptions>(options =>
+    services.Configure<IdentityOptions>(options =>
        {
            options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
            options.Lockout.MaxFailedAccessAttempts = 10;
@@ -267,8 +260,7 @@ If you're able to use the Twilio API, but you don't get an SMS message, try the 
 2. Use the following code in a console application to test Twilio:
 
 ````csharp
-
-   static void Main(string[] args)
+static void Main(string[] args)
    {
      string AccountSid = "";
      string AuthToken = "";

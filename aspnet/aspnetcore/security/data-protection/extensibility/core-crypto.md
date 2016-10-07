@@ -38,8 +38,7 @@ The **IAuthenticatedEncryptorDescriptor** interface represents a type that knows
 Like IAuthenticatedEncryptor, an instance of IAuthenticatedEncryptorDescriptor is assumed to wrap one specific key. This means that for any given IAuthenticatedEncryptorDescriptor instance, any authenticated encryptors created by its CreateEncryptorInstance method should be considered equivalent, as in the below code sample.
 
 ````csharp
-
-   // we have an IAuthenticatedEncryptorDescriptor instance
+// we have an IAuthenticatedEncryptorDescriptor instance
    IAuthenticatedEncryptorDescriptor descriptor = ...;
 
    // get an encryptor instance and perform an authenticated encryption operation
@@ -100,4 +99,4 @@ Think of IAuthenticatedEncryptorConfiguration as the top-level factory. The conf
 
 When CreateNewDescriptor is called, fresh key material is created solely for this call, and a new IAuthenticatedEncryptorDescriptor is produced which wraps this key material and the algorithmic information required to consume the material. The key material could be created in software (and held in memory), it could be created and held within an HSM, and so on. The crucial point is that any two calls to CreateNewDescriptor should never create equivalent IAuthenticatedEncryptorDescriptor instances.
 
-The IAuthenticatedEncryptorConfiguration type serves as the entry point for key creation routines such as [automatic key rolling](../implementation/key-management.md#data-protection-implementation-key-management.md). To change the implementation for all future keys, register a singleton IAuthenticatedEncryptorConfiguration in the service container.
+The IAuthenticatedEncryptorConfiguration type serves as the entry point for key creation routines such as [automatic key rolling](../implementation/key-management.md#data-protection-implementation-key-management). To change the implementation for all future keys, register a singleton IAuthenticatedEncryptorConfiguration in the service container.

@@ -30,8 +30,7 @@ A sample view file (*About.cshtml*):
 [!code-html[Main](../../common/samples/WebApplication1/src/WebApplication1/Views/Home/About.cshtml)]
 
 ````html
-
-   @{
+@{
        ViewData["Title"] = "About";
    }
    <h2>@ViewData["Title"].</h2>
@@ -47,15 +46,14 @@ This view focuses on just the portion of the output for which it is responsible.
 
 ## How do Controllers Specify Views?
 
-Views are typically returned from actions as a [ViewResult](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ViewResult/index.html.md#Microsoft.AspNetCore.Mvc.ViewResult.md). Your action method can create and return a `ViewResult` directly, but more commonly if your controller inherits from [Controller](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Controller/index.html.md#Microsoft.AspNetCore.Mvc.Controller.md), you'll simply use the `View` helper method, as this example demonstrates:
+Views are typically returned from actions as a [`ViewResult`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ViewResult/index.html#Microsoft.AspNetCore.Mvc.ViewResult). Your action method can create and return a `ViewResult` directly, but more commonly if your controller inherits from [`Controller`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Controller/index.html#Microsoft.AspNetCore.Mvc.Controller), you'll simply use the `View` helper method, as this example demonstrates:
 
 *HomeController.cs*
 
 [!code-csharp[Main](../../common/samples/WebApplication1/src/WebApplication1/Controllers/HomeController.cs?highlight=5)]
 
 ````csharp
-
-       public IActionResult About()
+    public IActionResult About()
        {
            ViewData["Message"] = "Your application description page.";
 
@@ -89,7 +87,7 @@ A view file path can be provided, instead of a view name. In this case, the *.cs
 > [Partial views](partial.md) and [view components](view-components.md) use similar (but not identical) discovery mechanisms.
 
 > [!NOTE]
-> You can customize the default convention regarding where views are located within the app by using a custom [IViewLocationExpander](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Razor/IViewLocationExpander/index.html.md#Microsoft.AspNetCore.Mvc.Razor.IViewLocationExpander.md).
+> You can customize the default convention regarding where views are located within the app by using a custom [`IViewLocationExpander`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Razor/IViewLocationExpander/index.html#Microsoft.AspNetCore.Mvc.Razor.IViewLocationExpander).
 
 >[!TIP]
 > View names may be case sensitive depending on the underlying file system. For compatibility across operating systems, always match case between controller and action names and associated view folders and filenames.
@@ -101,8 +99,7 @@ You can pass data to views using several mechanisms. The most robust approach is
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [1]}} -->
 
 ````html
-
-   @model WebApplication1.ViewModels.Address
+@model WebApplication1.ViewModels.Address
    <h2>Contact</h2>
    <address>
        @Model.Street<br />
@@ -117,8 +114,7 @@ Once a model has been specified for a view, the instance sent to the view can be
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [13]}} -->
 
 ````csharp
-
-   public IActionResult Contact()
+public IActionResult Contact()
    {
        ViewData["Message"] = "Your contact page.";
 
@@ -139,8 +135,7 @@ There are no restrictions on the types that can be provided to a view as a model
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [13]}} -->
 
 ````csharp
-
-   namespace WebApplication1.ViewModels
+namespace WebApplication1.ViewModels
    {
        public class Address
        {
@@ -165,8 +160,7 @@ In addition to strongly typed views, all views have access to a loosely typed co
 Set some values for `ViewData` in an action:
 
 ````csharp
-
-   public IActionResult SomeAction()
+public IActionResult SomeAction()
    {
        ViewData["Greeting"] = "Hello";
        ViewData["Address"]  = new Address()
@@ -187,8 +181,7 @@ Work with the data in a view:
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [3, 6]}} -->
 
 ````html
-
-   @{
+@{
        // Requires cast
        var address = ViewData["Address"] as Address;
    }
@@ -207,8 +200,7 @@ The `ViewBag` objects provides dynamic access to the objects stored in `ViewData
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [1, 4, 5, 6]}} -->
 
 ````html
-
-   @ViewBag.Greeting World!
+@ViewBag.Greeting World!
 
    <address>
        @ViewBag.Address.Name<br />
@@ -227,8 +219,7 @@ Views that do not declare a model type but have a model instance passed to them 
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [13, 16, 17, 18]}} -->
 
 ````html
-
-   <address>
+<address>
        @Model.Street<br />
        @Model.City, @Model.State @Model.PostalCode<br />
        <abbr title="Phone">P:</abbr>

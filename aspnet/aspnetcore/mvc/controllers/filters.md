@@ -40,8 +40,7 @@ Synchronous filters define both an On*Stage*Executing and On*Stage*Executed meth
 [!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/SampleActionFilter.cs?highlight=6,8,13)]
 
 ````csharp
-
-   using FiltersSample.Helper;
+using FiltersSample.Helper;
    using Microsoft.AspNetCore.Mvc.Filters;
 
    namespace FiltersSample.Filters
@@ -66,8 +65,7 @@ Asynchronous filters define a single On*Stage*ExecutionAsync method that will su
 [!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/SampleAsyncActionFilter.cs?highlight=6,8,9,10)]
 
 ````csharp
-
-   using System.Threading.Tasks;
+using System.Threading.Tasks;
    using Microsoft.AspNetCore.Mvc.Filters;
 
    namespace FiltersSample.Filters
@@ -98,8 +96,7 @@ Global filters are added in the `ConfigureServices` method in `Startup`, when co
 [!code-csharp[Main](./filters/sample/src/FiltersSample/Startup.cs?highlight=5,6)]
 
 ````csharp
-
-   public void ConfigureServices(IServiceCollection services)
+public void ConfigureServices(IServiceCollection services)
    {
        services.AddMvc(options =>
        {
@@ -114,15 +111,14 @@ Global filters are added in the `ConfigureServices` method in `Startup`, when co
 
 Filters can be added by type, or an instance can be added. If you add an instance, that instance will be used for every request. If you add a type, it will be type-activated, meaning an instance will be created for each request and any constructor dependencies will be populated by DI. Adding a filter by type is equivalent to `filters.Add(new TypeFilterAttribute(typeof(MyFilter)))`.
 
-It's often convenient to implement filter interfaces as *Attributes*. Filter attributes are applied to controllers and action methods. The framework includes built-in attribute-based filters that you can subclass and customize. For example, the following filter inherits from [ResultFilterAttribute](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Filters/ResultFilterAttribute/index.html), and overrides its `OnResultExecuting` method to add a header to the response.
+It's often convenient to implement filter interfaces as *Attributes*. Filter attributes are applied to controllers and action methods. The framework includes built-in attribute-based filters that you can subclass and customize. For example, the following filter inherits from [`ResultFilterAttribute`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Filters/ResultFilterAttribute/index.html), and overrides its `OnResultExecuting` method to add a header to the response.
 
 <a name=add-header-attribute></a>
 
 [!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/AddHeaderAttribute.cs?highlight=5,16)]
 
 ````csharp
-
-   using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.AspNetCore.Mvc.Filters;
 
    namespace FiltersSample.Filters
    {
@@ -152,8 +148,7 @@ Attributes allow filters to accept arguments, as shown in the example above. You
 [!code-csharp[Main](./filters/sample/src/FiltersSample/Controllers/SampleController.cs?highlight=1)]
 
 ````csharp
-
-   [AddHeader("Author", "Steve Smith @ardalis")]
+[AddHeader("Author", "Steve Smith @ardalis")]
    public class SampleController : Controller
    {
        public IActionResult Index()
@@ -172,17 +167,17 @@ Several of the filter interfaces have corresponding attributes that can be used 
 
 Filter attributes:
 
-* [ActionFilterAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Filters/ActionFilterAttribute/index.html.md#Microsoft.AspNetCore.Mvc.Filters.ActionFilterAttribute.md)
+* [`ActionFilterAttribute`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Filters/ActionFilterAttribute/index.html#Microsoft.AspNetCore.Mvc.Filters.ActionFilterAttribute)
 
-* [ExceptionFilterAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Filters/ExceptionFilterAttribute/index.html.md#Microsoft.AspNetCore.Mvc.Filters.ExceptionFilterAttribute.md)
+* [`ExceptionFilterAttribute`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Filters/ExceptionFilterAttribute/index.html#Microsoft.AspNetCore.Mvc.Filters.ExceptionFilterAttribute)
 
-* [ResultFilterAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Filters/ResultFilterAttribute/index.html.md#Microsoft.AspNetCore.Mvc.Filters.ResultFilterAttribute.md)
+* [`ResultFilterAttribute`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Filters/ResultFilterAttribute/index.html#Microsoft.AspNetCore.Mvc.Filters.ResultFilterAttribute)
 
-* [FormatFilterAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/FormatFilterAttribute/index.html.md#Microsoft.AspNetCore.Mvc.FormatFilterAttribute.md)
+* [`FormatFilterAttribute`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/FormatFilterAttribute/index.html#Microsoft.AspNetCore.Mvc.FormatFilterAttribute)
 
-* [ServiceFilterAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ServiceFilterAttribute/index.html.md#Microsoft.AspNetCore.Mvc.ServiceFilterAttribute.md)
+* [`ServiceFilterAttribute`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ServiceFilterAttribute/index.html#Microsoft.AspNetCore.Mvc.ServiceFilterAttribute)
 
-* [TypeFilterAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/TypeFilterAttribute/index.html.md#Microsoft.AspNetCore.Mvc.TypeFilterAttribute.md)
+* [`TypeFilterAttribute`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/TypeFilterAttribute/index.html#Microsoft.AspNetCore.Mvc.TypeFilterAttribute)
 
 ### Cancellation and Short Circuiting
 
@@ -193,8 +188,7 @@ You can short-circuit the filter pipeline at any point by setting the `Result` p
 [!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/ShortCircuitingResourceFilterAttribute.cs?highlight=12,13,14,15)]
 
 ````csharp
-
-   using System;
+using System;
    using Microsoft.AspNetCore.Mvc;
    using Microsoft.AspNetCore.Mvc.Filters;
 
@@ -224,8 +218,7 @@ In the following code, both the `ShortCircuitingResourceFilter` and the `AddHead
 [!code-csharp[Main](./filters/sample/src/FiltersSample/Controllers/SampleController.cs?highlight=1,4)]
 
 ````csharp
-
-   [AddHeader("Author", "Steve Smith @ardalis")]
+[AddHeader("Author", "Steve Smith @ardalis")]
    public class SampleController : Controller
    {
        [ShortCircuitingResourceFilter]
@@ -247,19 +240,18 @@ Filters that are implemented as attributes and added directly to controller clas
 
 However, if your filters have dependencies you need to access from DI, there are several supported approaches. You can apply your filter to a class or action method using
 
-* [ServiceFilterAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ServiceFilterAttribute/index.html.md#Microsoft.AspNetCore.Mvc.ServiceFilterAttribute.md)
+* [`ServiceFilterAttribute`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ServiceFilterAttribute/index.html#Microsoft.AspNetCore.Mvc.ServiceFilterAttribute)
 
-* [TypeFilterAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/TypeFilterAttribute/index.html.md#Microsoft.AspNetCore.Mvc.TypeFilterAttribute.md)
+* [`TypeFilterAttribute`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/TypeFilterAttribute/index.html#Microsoft.AspNetCore.Mvc.TypeFilterAttribute)
 
-* [IFilterFactory](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Filters/IFilterFactory/index.html.md#Microsoft.AspNetCore.Mvc.Filters.IFilterFactory.md) implemented on your attribute
+* [`IFilterFactory`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Filters/IFilterFactory/index.html#Microsoft.AspNetCore.Mvc.Filters.IFilterFactory) implemented on your attribute
 
 A `TypeFilter` will instantiate an instance, using services from DI for its dependencies. A `ServiceFilter` retrieves an instance of the filter from DI. The following example demonstrates using a `ServiceFilter`:
 
 [!code-csharp[Main](../../mvc/controllers/filters/sample/src/FiltersSample/Controllers/HomeController.cs?highlight=1)]
 
 ````csharp
-
-   [ServiceFilter(typeof(AddHeaderFilterWithDi))]
+[ServiceFilter(typeof(AddHeaderFilterWithDi))]
    public IActionResult Index()
    {
        return View();
@@ -270,8 +262,7 @@ A `TypeFilter` will instantiate an instance, using services from DI for its depe
 Using `ServiceFilter` without registering the filter type in `ConfigureServices`, throws the following exception:
 
 ````none
-
-   System.InvalidOperationException: No service for type
+System.InvalidOperationException: No service for type
    'FiltersSample.Filters.AddHeaderFilterWithDI' has been registered.
    ````
 
@@ -280,8 +271,7 @@ To avoid this exception, you must register the `AddHeaderFilterWithDI` type in `
 [!code-csharp[Main](./filters/sample/src/FiltersSample/Startup.cs?highlight=1)]
 
 ````csharp
-
-   services.AddScoped<AddHeaderFilterWithDi>();
+services.AddScoped<AddHeaderFilterWithDi>();
 
    ````
 
@@ -294,8 +284,7 @@ To avoid this exception, you must register the `AddHeaderFilterWithDI` type in `
 [!code-none[Main](../../mvc/controllers/filters/sample/src/FiltersSample/Controllers/HomeController.cs?highlight=1,2)]
 
 ````none
-
-   [TypeFilter(typeof(AddHeaderAttribute),
+[TypeFilter(typeof(AddHeaderAttribute),
        Arguments = new object[] { "Author", "Steve Smith (@ardalis)" })]
    public IActionResult Hi(string name)
    {
@@ -309,8 +298,7 @@ If you have a simple filter that doesn't require any arguments, but which has co
 [!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/SampleActionFilterAttribute.cs?highlight=1,3,7)]
 
 ````csharp
-
-   public class SampleActionFilterAttribute : TypeFilterAttribute
+public class SampleActionFilterAttribute : TypeFilterAttribute
    {
        public SampleActionFilterAttribute():base(typeof(SampleActionFilterImpl))
        {
@@ -353,8 +341,7 @@ You can implement `IFilterFactory` on your own attribute implementations as anot
 [!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/AddHeaderWithFactoryAttribute.cs?highlight=1,4,5,6,7)]
 
 ````csharp
-
-   public class AddHeaderWithFactoryAttribute : Attribute, IFilterFactory
+public class AddHeaderWithFactoryAttribute : Attribute, IFilterFactory
    {
        // Implement IFilterFactory
        public IFilterMetadata CreateInstance(IServiceProvider serviceProvider)
@@ -384,7 +371,7 @@ You can implement `IFilterFactory` on your own attribute implementations as anot
 
 Filters can be applied to action methods or controllers (via attribute) or added to the global filters collection. Scope also generally determines ordering. The filter closest to the action runs first; generally you get overriding behavior without having to explicitly set ordering. This is sometimes referred to as "Russian doll" nesting, as each increase in scope is wrapped around the previous scope, like a [nesting doll](https://en.wikipedia.org/wiki/Matryoshka_doll).
 
-In addition to scope, filters can override their sequence of execution by implementing [IOrderedFilter](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Filters/IOrderedFilter/index.html.md#Microsoft.AspNetCore.Mvc.Filters.IOrderedFilter.md). This interface simply exposes an `int` `Order` property, and filters execute in ascending numeric order based on this property. All of the built-in filters, including `TypeFilterAttribute` and `ServiceFilterAttribute`, implement `IOrderedFilter`, so you can specify the order of filters when you apply the attribute to a class or method. By default, the `Order` property is 0 for all of the built-in filters, so scope is used as a tie-breaker and (unless `Order` is set to a non-zero value) is the determining factor.
+In addition to scope, filters can override their sequence of execution by implementing [`IOrderedFilter`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Filters/IOrderedFilter/index.html#Microsoft.AspNetCore.Mvc.Filters.IOrderedFilter). This interface simply exposes an `int` `Order` property, and filters execute in ascending numeric order based on this property. All of the built-in filters, including `TypeFilterAttribute` and `ServiceFilterAttribute`, implement `IOrderedFilter`, so you can specify the order of filters when you apply the attribute to a class or method. By default, the `Order` property is 0 for all of the built-in filters, so scope is used as a tie-breaker and (unless `Order` is set to a non-zero value) is the determining factor.
 
 Every controller that inherits from the `Controller` base class includes `OnActionExecuting` and `OnActionExecuted` methods. These methods wrap the filters that run for a given action, running first and last. The scope-based order, assuming no `Order` has been set for any filter, is:
 
@@ -410,8 +397,7 @@ Every controller that inherits from the `Controller` base class includes `OnActi
 To modify the default, scope-based order, you could explicitly set the `Order` property of a class-level or method-level filter. For example, adding `Order=-1` to a method level attribute:
 
 ````csharp
-
-   [MyFilter(Name = "Method Level Attribute", Order=-1)]
+[MyFilter(Name = "Method Level Attribute", Order=-1)]
    ````
 
 In this case, a value of less than zero would ensure this filter ran before both the Global and Class level filters (assuming their `Order` property was not set).
@@ -456,8 +442,7 @@ The [short circuiting resource filter](xref:mvc/controllers/filters#short-circui
 [!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/NaiveCacheResourceFilterAttribute.cs?highlight=1,2,11,16,17,27,30)]
 
 ````csharp
-
-   public class NaiveCacheResourceFilterAttribute : Attribute,
+public class NaiveCacheResourceFilterAttribute : Attribute,
        IResourceFilter
    {
        private static readonly Dictionary<string, object> _cache
@@ -501,8 +486,7 @@ Adding this filter to a class or method is shown here:
 [!code-csharp[Main](./filters/sample/src/FiltersSample/Controllers/CachedController.cs?highlight=1,2,6)]
 
 ````csharp
-
-   [TypeFilter(typeof(NaiveCacheResourceFilterAttribute))]
+[TypeFilter(typeof(NaiveCacheResourceFilterAttribute))]
    public class CachedController : Controller
    {
        public IActionResult Index()
@@ -531,7 +515,7 @@ For an `IAsyncActionFilter` the `OnActionExecutionAsync` combines all the possib
 
 *Exception Filters* implement either the `IExceptionFilter` or `IAsyncExceptionFilter` interface.
 
-Exception filters handle unhandled exceptions, including those that occur during controller creation and [model binding](../models/model-binding.md). They are only called when an exception occurs in the pipeline. They can provide a single location to implement common error handling policies within an app. The framework provides an abstract [ExceptionFilterAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Filters/ExceptionFilterAttribute/index.html.md#Microsoft.AspNetCore.Mvc.Filters.ExceptionFilterAttribute.md) that you should be able to subclass for your needs. Exception filters are good for trapping exceptions that occur within MVC actions, but they're not as flexible as error handling middleware. Prefer middleware for the general case, and use filters only where you need to do error handling *differently* based on which MVC action was chosen.
+Exception filters handle unhandled exceptions, including those that occur during controller creation and [`model binding](../models/model-binding.md). They are only called when an exception occurs in the pipeline. They can provide a single location to implement common error handling policies within an app. The framework provides an abstract [ExceptionFilterAttribute`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Filters/ExceptionFilterAttribute/index.html#Microsoft.AspNetCore.Mvc.Filters.ExceptionFilterAttribute) that you should be able to subclass for your needs. Exception filters are good for trapping exceptions that occur within MVC actions, but they're not as flexible as error handling middleware. Prefer middleware for the general case, and use filters only where you need to do error handling *differently* based on which MVC action was chosen.
 
 >[!TIP]
 > One example where you might need a different form of error handling for different actions would be in an app that exposes both API endpoints and actions that return views/HTML. The API endpoints could return error information as JSON, while the view-based actions could return an error page as HTML.
@@ -541,8 +525,7 @@ Exception filters do not have two events (for before and after) - they only impl
 [!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/CustomExceptionFilterAttribute.cs?highlight=33,34)]
 
 ````csharp
-
-   using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Hosting;
    using Microsoft.AspNetCore.Mvc;
    using Microsoft.AspNetCore.Mvc.Filters;
    using Microsoft.AspNetCore.Mvc.ModelBinding;

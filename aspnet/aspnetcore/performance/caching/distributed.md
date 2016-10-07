@@ -11,7 +11,7 @@ Distributed caches can improve the performance and scalability of ASP.NET Core a
 
 ## What is a Distributed Cache
 
-A distributed cache is shared by multiple app servers (see [Caching Basics](memory.md#caching-basics.md)). The information in the cache is not stored in the memory of individual web servers, and the cached data is available to all of the app's servers. This provides several advantages:
+A distributed cache is shared by multiple app servers (see [Caching Basics](memory.md#caching-basics)). The information in the cache is not stored in the memory of individual web servers, and the cached data is available to all of the app's servers. This provides several advantages:
 
 1. Cached data is coherent on all web servers. Users don't see different results depending on which web server handles their request
 
@@ -24,11 +24,11 @@ A distributed cache is shared by multiple app servers (see [Caching Basics](memo
 
 Like any cache, a distributed cache can dramatically improve an app's responsiveness, since typically data can be retrieved from the cache much faster than from a relational database (or web service).
 
-Cache configuration is implementation specific. This article describes how to configure both Redis and SQL Server distributed caches. Regardless of which implementation is selected, the app interacts with the cache using a common [IDistributedCache](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html) interface.
+Cache configuration is implementation specific. This article describes how to configure both Redis and SQL Server distributed caches. Regardless of which implementation is selected, the app interacts with the cache using a common [`IDistributedCache`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html) interface.
 
 ## The IDistributedCache Interface
 
-The [IDistributedCache](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html) interface includes synchronous and asynchronous methods. The interface allows items to be added, retrieved, and removed from the distributed cache implementation. The [IDistributedCache](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html) interface includes the following methods:
+The [`IDistributedCache`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html) interface includes synchronous and asynchronous methods. The interface allows items to be added, retrieved, and removed from the distributed cache implementation. The [`IDistributedCache`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html) interface includes the following methods:
 
 Get, GetAsync
    Takes a string key and retrieves a cached item as a `byte[]` if found in the cache.
@@ -42,24 +42,23 @@ Refresh, RefreshAsync
 Remove, RemoveAsync
    Removes a cache entry based on its key.
 
-To use the [IDistributedCache](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html) interface:
+To use the [`IDistributedCache`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html) interface:
 
    1. Specify the dependencies needed in *project.json*.
 
-   2. Configure the specific implementation of [IDistributedCache](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html) in your `Startup` class's `ConfigureServices` method, and add it to the container there.
+   2. Configure the specific implementation of [`IDistributedCache`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html) in your `Startup` class's `ConfigureServices` method, and add it to the container there.
 
-   3. From the app's [Middleware](../../fundamentals/middleware.md) or MVC controller classes, request an instance of [IDistributedCache](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html) from the constructor. The instance will be provided by [Dependency Injection](../../fundamentals/dependency-injection.md) (DI).
+   3. From the app's [`Middleware](../../fundamentals/middleware.md) or MVC controller classes, request an instance of [IDistributedCache`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html) from the constructor. The instance will be provided by [Dependency Injection](../../fundamentals/dependency-injection.md) (DI).
 
 > [!NOTE]
-> There is no need to use a Singleton or Scoped lifetime for [IDistributedCache](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html) instances (at least for the built-in implementations). You can also create an instance wherever you might need one (instead of using [Dependency Injection](../../fundamentals/dependency-injection.md)), but this can make your code harder to test, and violates the [Explicit Dependencies Principle](http://deviq.com/explicit-dependencies-principle/).
+> There is no need to use a Singleton or Scoped lifetime for [`IDistributedCache`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html) instances (at least for the built-in implementations). You can also create an instance wherever you might need one (instead of using [Dependency Injection](../../fundamentals/dependency-injection.md)), but this can make your code harder to test, and violates the [Explicit Dependencies Principle](http://deviq.com/explicit-dependencies-principle/).
 
-The following example shows how to use an instance of [IDistributedCache](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html) in a simple middleware component:
+The following example shows how to use an instance of [`IDistributedCache`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html) in a simple middleware component:
 
 [!code-csharp[Main](./distributed/sample/src/DistCacheSample/StartTimeHeader.cs?highlight=15,18,21,27,28,29,30,31)]
 
 ````csharp
-
-   using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Builder;
    using Microsoft.AspNetCore.Http;
    using Microsoft.Extensions.Caching.Distributed;
    using System;
@@ -117,8 +116,7 @@ The following code from *Startup.cs* shows the value being set:
 [!code-csharp[Main](./distributed/sample/src/DistCacheSample/Startup.cs?highlight=2,4,5,6)]
 
 ````csharp
-
-           public void Configure(IApplicationBuilder app,
+        public void Configure(IApplicationBuilder app,
                IDistributedCache cache)
            {
                var serverStartTimeString = DateTime.Now.ToString();
@@ -131,21 +129,20 @@ The following code from *Startup.cs* shows the value being set:
    ````
 
 > [!NOTE]
-> Since [IDistributedCache](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html) is configured in the `ConfigureServices` method, it is available to the `Configure` method as a parameter. Adding it as a parameter will allow the configured instance to be provided through DI.
+> Since [`IDistributedCache`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html) is configured in the `ConfigureServices` method, it is available to the `Configure` method as a parameter. Adding it as a parameter will allow the configured instance to be provided through DI.
 
 ## Using a Redis Distributed Cache
 
 [Redis](http://redis.io) is an open source in-memory data store, which is often used as a distributed cache. You can use it locally, and you can configure an [Azure Redis Cache](https://azure.microsoft.com/en-us/services/cache/) for your Azure-hosted ASP.NET Core apps. Your ASP.NET Core app configures the cache implementation using a `RedisDistributedCache` instance.
 
-You configure the Redis implementation in `ConfigureServices` and access it in your app code by requesting an instance of [IDistributedCache](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html) (see the code above).
+You configure the Redis implementation in `ConfigureServices` and access it in your app code by requesting an instance of [`IDistributedCache`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html) (see the code above).
 
 In the sample code, a `RedisCache` implementation is used when the server is configured for a `Staging` environment. Thus the `ConfigureStagingServices` method configures the `RedisCache`:
 
 [!code-csharp[Main](./distributed/sample/src/DistCacheSample/Startup.cs?highlight=8,9,10,11,12,13)]
 
 ````csharp
-
-           /// <summary>
+        /// <summary>
            /// Use Redis Cache in Staging
            /// </summary>
            /// <param name="services"></param>
@@ -174,8 +171,7 @@ To use sql-cache tool add SqlConfig.Tools to the tools section of the project.js
 [!code-csharp[Main](./distributed/sample/src/DistCacheSample/project.json?highlight=6)]
 
 ````csharp
-
-     "tools": {
+  "tools": {
        "Microsoft.AspNetCore.Server.IISIntegration.Tools": {
          "version": "1.0.0-preview2-final",
          "imports": "portable-net45+win8+dnxcore50"
@@ -188,15 +184,13 @@ To use sql-cache tool add SqlConfig.Tools to the tools section of the project.js
 Test SqlConfig.Tools by running the following command
 
 ````none
-
-   C:\DistCacheSample\src\DistCacheSample>dotnet sql-cache create --help
+C:\DistCacheSample\src\DistCacheSample>dotnet sql-cache create --help
    ````
 
 sql-cache tool  will display usage, options and command help, now you can create tables into sql server, running "sql-cache create" command :
 
 ````none
-
-   C:\DistCacheSample\src\DistCacheSample>dotnet sql-cache create "Data Source=(localdb)\v11.0;Initial Catalog=DistCache;Integrated Security=True;" dbo TestCache
+C:\DistCacheSample\src\DistCacheSample>dotnet sql-cache create "Data Source=(localdb)\v11.0;Initial Catalog=DistCache;Integrated Security=True;" dbo TestCache
    info: Microsoft.Extensions.Caching.SqlConfig.Tools.Program[0]
        Table and index were created successfully.
    ````
@@ -205,13 +199,12 @@ The created table have the following schema:
 
 ![image](distributed/_static/SqlServerCacheTable.png)
 
-Like all cache implementations, your app should get and set cache values using an instance of [IDistributedCache](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html), not a `SqlServerCache`. The sample implements `SqlServerCache` in the `Production` environment (so it is configured in `ConfigureProductionServices`).
+Like all cache implementations, your app should get and set cache values using an instance of [`IDistributedCache`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html), not a `SqlServerCache`. The sample implements `SqlServerCache` in the `Production` environment (so it is configured in `ConfigureProductionServices`).
 
 [!code-csharp[Main](./distributed/sample/src/DistCacheSample/Startup.cs?highlight=7,8,9,10,11,12)]
 
 ````csharp
-
-           /// Use SQL Server Cache in Production
+        /// Use SQL Server Cache in Production
            /// </summary>
            /// <param name="services"></param>
            public void ConfigureProductionServices(IServiceCollection services)
@@ -234,7 +227,7 @@ Like all cache implementations, your app should get and set cache values using a
 
 ## Recommendations
 
-When deciding which implementation of [IDistributedCache](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html) is right for your app, choose between Redis and SQL Server based on your existing infrastructure and environment, your performance requirements, and your team's experience. If your team is more comfortable working with Redis, it's an excellent choice. If your team prefers SQL Server, you can be confident in that implementation as well. Note that A traditional caching solution stores data in-memory which allows for fast retrieval of data. You should store commonly used data in a cache and store the entire data in a backend persistent store such as SQL Server or Azure Storage. Redis Cache is a caching solution which gives you high throughput and low latency as compared to SQL Cache. Also, you should avoid using the in-memory implementation (`MemoryCache`) in multi-server environments.
+When deciding which implementation of [`IDistributedCache`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html) is right for your app, choose between Redis and SQL Server based on your existing infrastructure and environment, your performance requirements, and your team's experience. If your team is more comfortable working with Redis, it's an excellent choice. If your team prefers SQL Server, you can be confident in that implementation as well. Note that A traditional caching solution stores data in-memory which allows for fast retrieval of data. You should store commonly used data in a cache and store the entire data in a backend persistent store such as SQL Server or Azure Storage. Redis Cache is a caching solution which gives you high throughput and low latency as compared to SQL Cache. Also, you should avoid using the in-memory implementation (`MemoryCache`) in multi-server environments.
 
 Azure Resources:
 
@@ -243,4 +236,4 @@ Azure Resources:
 * [SQL Database on Azure](https://azure.microsoft.com/en-us/documentation/services/sql-database/)
 
 >[!TIP]
-> The in-memory implementation of [IDistributedCache](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html) should only be used for testing purposes or for applications that are hosted on just one server instance.
+> The in-memory implementation of [`IDistributedCache`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html) should only be used for testing purposes or for applications that are hosted on just one server instance.

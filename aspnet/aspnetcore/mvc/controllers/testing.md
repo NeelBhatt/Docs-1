@@ -46,8 +46,7 @@ To demonstrate unit testing, review the following controller. It displays a list
 [!code-csharp[Main](./testing/sample/TestingControllersSample/src/TestingControllersSample/Controllers/HomeController.cs?highlight=12,16,21,42,43)]
 
 ````csharp
-
-   using System;
+using System;
    using System.ComponentModel.DataAnnotations;
    using System.Linq;
    using System.Threading.Tasks;
@@ -114,8 +113,7 @@ The controller is following the [explicit dependencies principle](http://deviq.c
 [!code-csharp[Main](./testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/HomeControllerTests.cs?highlight=17,18)]
 
 ````csharp
-
-   using System;
+using System;
    using System.Collections.Generic;
    using System.Linq;
    using System.Threading.Tasks;
@@ -221,8 +219,7 @@ The `HTTP POST Index` method (shown below) should verify:
 [!code-csharp[Main](./testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/HomeControllerTests.cs?highlight=1,2,10,11,12,15,16,19,24,25,28)]
 
 ````csharp
-
-           var viewResult = Assert.IsType<ViewResult>(result);
+        var viewResult = Assert.IsType<ViewResult>(result);
            var model = Assert.IsAssignableFrom<IEnumerable<StormSessionViewModel>>(
                viewResult.ViewData.Model);
            Assert.Equal(2, model.Count());
@@ -266,8 +263,7 @@ Another controller in the app displays information related to a particular brain
 [!code-csharp[Main](./testing/sample/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs?highlight=16,20,25,33)]
 
 ````csharp
-
-   using System.Threading.Tasks;
+using System.Threading.Tasks;
    using Microsoft.AspNetCore.Mvc;
    using TestingControllersSample.Core.Interfaces;
    using TestingControllersSample.ViewModels;
@@ -315,8 +311,7 @@ The controller action has three cases to test, one for each `return` statement:
 [!code-csharp[Main](./testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/SessionControllerTests.cs?highlight=16,26,39)]
 
 ````csharp
-
-   using System;
+using System;
    using System.Collections.Generic;
    using System.Linq;
    using System.Threading.Tasks;
@@ -414,8 +409,7 @@ The app exposes functionality as a web API (a list of ideas associated with a br
 [!code-csharp[Main](./testing/sample/TestingControllersSample/src/TestingControllersSample/Api/IdeasController.cs?highlight=20,21,22,27,29,30,31,32,33,34,35,36,39,40,41,45,50,60)]
 
 ````csharp
-
-   using System;
+using System;
    using System.Linq;
    using System.Threading.Tasks;
    using Microsoft.AspNetCore.Mvc;
@@ -494,8 +488,7 @@ The unit tests for the `Create` and `ForSession` API methods:
 [!code-csharp[Main](./testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/ApiIdeasControllerTests.cs?highlight=16,17,26,27,37,38,65,66,76,77)]
 
 ````csharp
-
-   using System;
+using System;
    using System.Collections.Generic;
    using System.Linq;
    using System.Threading.Tasks;
@@ -657,8 +650,7 @@ The `Startup` class:
 [!code-csharp[Main](./testing/sample/TestingControllersSample/src/TestingControllersSample/Startup.cs?highlight=19,20,38,39,47,56)]
 
 ````csharp
-
-   using System;
+using System;
    using System.Linq;
    using System.Threading.Tasks;
    using Microsoft.AspNetCore.Builder;
@@ -741,8 +733,7 @@ You'll see the `GetTestSession` method used frequently in the integration tests 
 Each integration test class configures the `TestServer` that will run the ASP.NET Core app. By default, `TestServer` hosts the web app in the folder where it's running - in this case, the test project folder. Thus, when you attempt to test controller actions that return `ViewResult`, you may see this error:
 
 ````none
-
-   The view 'Index' was not found. The following locations were searched:
+The view 'Index' was not found. The following locations were searched:
    (list of locations)
    ````
 
@@ -751,8 +742,7 @@ To correct this issue, you need to configure the server to use the `ApplicationB
 [!code-csharp[Main](./testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/IntegrationTests/HomeControllerTests.cs?highlight=20,22,23,24,25,26,27,28,29,30,31,32,36,37,42)]
 
 ````csharp
-
-   using System;
+using System;
    using System.Collections.Generic;
    using System.Net;
    using System.Net.Http;
@@ -816,8 +806,7 @@ The following set of tests target the `Create` method in the [IdeasController](x
 [!code-csharp[Main](testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/IntegrationTests/ApiIdeasControllerTests.cs)]
 
 ````csharp
-
-           [Fact]
+        [Fact]
            public async Task CreatePostReturnsBadRequestForMissingNameValue()
            {
                // Arrange

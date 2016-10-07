@@ -12,8 +12,7 @@ Update the `Index` action method to enable search:
 [!code-csharp[Main](start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs)]
 
 ````csharp
-
-   public async Task<IActionResult> Index(string searchString)
+public async Task<IActionResult> Index(string searchString)
    {
        var movies = from m in _context.Movie
                     select m;
@@ -31,8 +30,7 @@ Update the `Index` action method to enable search:
 The first line of the `Index` action method creates a [LINQ](http://msdn.microsoft.com/en-us/library/bb397926.aspx) query to select the movies:
 
 ````csharp
-
-   var movies = from m in _context.Movie
+var movies = from m in _context.Movie
                 select m;
    ````
 
@@ -43,8 +41,7 @@ If the `searchString` parameter contains a string, the movies query is modified 
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [3]}} -->
 
 ````csharp
-
-      if (!String.IsNullOrEmpty(searchString))
+   if (!String.IsNullOrEmpty(searchString))
       {
           movies = movies.Where(s => s.Title.Contains(searchString));
       }
@@ -64,8 +61,7 @@ If you change the signature of the `Index` method to have a parameter named `id`
 [!code-csharp[Main](./start-mvc/sample2/src/MvcMovie/Startup.cs?highlight=5)]
 
 ````csharp
-
-   app.UseMvc(routes =>
+app.UseMvc(routes =>
    {
        routes.MapRoute(
            name: "default",
@@ -91,8 +87,7 @@ The previous `Index` method:
 [!code-csharp[Main](./start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs?highlight=1,8)]
 
 ````csharp
-
-   public async Task<IActionResult> Index(string searchString)
+public async Task<IActionResult> Index(string searchString)
    {
        var movies = from m in _context.Movie
                     select m;
@@ -112,8 +107,7 @@ The updated `Index` method:
 [!code-csharp[Main](./start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs?highlight=1,8)]
 
 ````csharp
-
-   public async Task<IActionResult> Index(string id)
+public async Task<IActionResult> Index(string id)
    {
        var movies = from m in _context.Movie
                     select m;
@@ -137,8 +131,7 @@ However, you can't expect users to modify the URL every time they want to search
 [!code-csharp[Main](./start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs?highlight=1)]
 
 ````csharp
-
-   public async Task<IActionResult> Index(string searchString)
+public async Task<IActionResult> Index(string searchString)
    {
        var movies = from m in _context.Movie
                     select m;
@@ -192,8 +185,7 @@ You could add the following `[HttpPost] Index` method.
 [!code-csharp[Main](./start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs?highlight=1)]
 
 ````csharp
-
-   [HttpPost]
+[HttpPost]
    public string Index(string searchString, bool notUsed)
    {
        return "From [HttpPost]Index: filter on " + searchString;
@@ -232,8 +224,7 @@ Now when you submit a search, the URL contains the search query string. Searchin
 The following markup shows the change to the `form` tag:
 
 ````html
-
-   <form asp-controller="Movies" asp-action="Index" method="get">
+<form asp-controller="Movies" asp-action="Index" method="get">
    ````
 
 ## Adding Search by Genre
@@ -243,8 +234,7 @@ Add the following `MovieGenreViewModel` class to the *Models* folder:
 [!code-csharp[Main](start-mvc/sample2/src/MvcMovie/Models/MovieGenreViewModel.cs)]
 
 ````csharp
-
-   using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc.Rendering;
    using System.Collections.Generic;
 
    namespace MvcMovie.Models
@@ -263,7 +253,7 @@ The movie-genre view model will contain:
 
    * a list of movies
 
-   * a [SelectList](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Rendering/SelectList/index.html) containing the list of genres. This will allow the user to select a genre from the list.
+   * a [`SelectList`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Rendering/SelectList/index.html) containing the list of genres. This will allow the user to select a genre from the list.
 
    * `movieGenre`, which contains the selected genre
 
@@ -272,8 +262,7 @@ Replace the `Index` method with the following code:
 [!code-csharp[Main](start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs)]
 
 ````csharp
-
-   public async Task<IActionResult> Index(string movieGenre, string searchString)
+public async Task<IActionResult> Index(string movieGenre, string searchString)
    {
        // Use LINQ to get list of genres.
        IQueryable<string> genreQuery = from m in _context.Movie
@@ -305,8 +294,7 @@ Replace the `Index` method with the following code:
 The following code is a `LINQ` query that retrieves all the genres from the database.
 
 ````csharp
-
-   IQueryable<string> genreQuery = from m in _context.Movie
+IQueryable<string> genreQuery = from m in _context.Movie
                                    orderby m.Genre
                                    select m.Genre;
    ````
@@ -314,8 +302,7 @@ The following code is a `LINQ` query that retrieves all the genres from the data
 The `SelectList` of genres is created by projecting the distinct genres (we don't want our select list to have duplicate genres).
 
 ````csharp
-
-   movieGenreVM.genres = new SelectList(await genreQuery.Distinct().ToListAsync())
+movieGenreVM.genres = new SelectList(await genreQuery.Distinct().ToListAsync())
    ````
 
 ## Adding search by genre to the Index view
@@ -323,8 +310,7 @@ The `SelectList` of genres is created by projecting the distinct genres (we don'
 [!code-HTML[Main](../../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Views/Movies/IndexFormGenre.cshtml?highlight=1,15,16,17,27,41)]
 
 ````HTML
-
-   @model MovieGenreViewModel
+@model MovieGenreViewModel
 
    @{
        ViewData["Title"] = "Index";

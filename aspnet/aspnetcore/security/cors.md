@@ -41,8 +41,7 @@ Add the CORS services in Startup.cs:
 [!code-csharp[Main](cors/sample/src/CorsExamples/CorsExample1/Startup.cs)]
 
 ````csharp
-
-   public void ConfigureServices(IServiceCollection services)
+public void ConfigureServices(IServiceCollection services)
    {
        services.AddCors();
    }
@@ -58,8 +57,7 @@ You can specify a cross-origin policy when adding the CORS middleware using the 
 [!code-csharp[Main](cors/sample/src/CorsExamples/CorsExample1/Startup.cs?highlight=11,12)]
 
 ````csharp
-
-   public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
    {
        loggerFactory.AddConsole();
 
@@ -87,8 +85,7 @@ Note that CorsPolicyBuilder has a fluent API, so you can chain method calls:
 [!code-csharp[Main](../security/cors/sample/src/CorsExamples/CorsExample3/Startup.cs?highlight=3)]
 
 ````csharp
-
-       app.UseCors(builder =>
+    app.UseCors(builder =>
            builder.WithOrigins("http://example.com")
                   .AllowAnyHeader()
            );
@@ -101,8 +98,7 @@ The second approach is to define one or more named CORS policies, and then selec
 [!code-csharp[Main](cors/sample/src/CorsExamples/CorsExample2/Startup.cs)]
 
 ````csharp
-
-   public void ConfigureServices(IServiceCollection services)
+public void ConfigureServices(IServiceCollection services)
    {
        services.AddCors(options =>
        {
@@ -165,8 +161,7 @@ To specify the CORS policy for a specific controller add the `[EnableCors]` attr
 [!code-csharp[Main](cors/sample/src/CorsExamples/CorsMVC/Controllers/HomeController.cs)]
 
 ````csharp
-
-   [EnableCors("AllowSpecificOrigin")]
+[EnableCors("AllowSpecificOrigin")]
    public class HomeController : Controller
    {
 
@@ -179,8 +174,7 @@ You can enable CORS globally for all controllers by adding the `CorsAuthorizatio
 [!code-csharp[Main](cors/sample/src/CorsExamples/CorsMVC/Startup2.cs)]
 
 ````csharp
-
-   public void ConfigureServices(IServiceCollection services)
+public void ConfigureServices(IServiceCollection services)
    {
        services.AddMvc();
        services.Configure<MvcOptions>(options =>
@@ -200,8 +194,7 @@ To disable CORS for a controller or action, use the `[DisableCors]` attribute.
 [!code-csharp[Main](cors/sample/src/CorsExamples/CorsMVC/Controllers/HomeController.cs)]
 
 ````csharp
-
-       [DisableCors]
+    [DisableCors]
        public IActionResult About()
        {
            return View();
@@ -234,8 +227,7 @@ To allow one or more specific origins:
 [!code-csharp[Main](cors/sample/src/CorsExamples/CorsExample4/Startup.cs)]
 
 ````csharp
-
-   options.AddPolicy("AllowSpecificOrigins",
+options.AddPolicy("AllowSpecificOrigins",
    builder =>
    {
        builder.WithOrigins("http://example.com", "http://www.contoso.com");
@@ -248,8 +240,7 @@ To allow all origins:
 [!code-csharp[Main](cors/sample/src/CorsExamples/CorsExample4/Startup.cs)]
 
 ````csharp
-
-   options.AddPolicy("AllowAllOrigins",
+options.AddPolicy("AllowAllOrigins",
        builder =>
        {
            builder.AllowAnyOrigin();
@@ -266,8 +257,7 @@ To specify which HTTP methods are allowed to access the resource.
 [!code-csharp[Main](cors/sample/src/CorsExamples/CorsExample4/Startup.cs)]
 
 ````csharp
-
-   options.AddPolicy("AllowSpecificMethods",
+options.AddPolicy("AllowSpecificMethods",
        builder =>
        {
            builder.WithOrigins("http://example.com")
@@ -281,8 +271,7 @@ To allow all HTTP methods:
 [!code-csharp[Main](cors/sample/src/CorsExamples/CorsExample4/Startup.cs)]
 
 ````csharp
-
-   options.AddPolicy("AllowAllMethods",
+options.AddPolicy("AllowAllMethods",
        builder =>
        {
            builder.WithOrigins("http://example.com")
@@ -302,8 +291,7 @@ To whitelist specific headers:
 [!code-csharp[Main](cors/sample/src/CorsExamples/CorsExample4/Startup.cs)]
 
 ````csharp
-
-   options.AddPolicy("AllowHeaders",
+options.AddPolicy("AllowHeaders",
        builder =>
        {
            builder.WithOrigins("http://example.com")
@@ -317,8 +305,7 @@ To allow all author request headers:
 [!code-csharp[Main](cors/sample/src/CorsExamples/CorsExample4/Startup.cs)]
 
 ````csharp
-
-   options.AddPolicy("AllowAllHeaders",
+options.AddPolicy("AllowAllHeaders",
        builder =>
        {
            builder.WithOrigins("http://example.com")
@@ -350,8 +337,7 @@ The CORS spec calls these *simple response headers*. To make other headers avail
 [!code-csharp[Main](cors/sample/src/CorsExamples/CorsExample4/Startup.cs)]
 
 ````csharp
-
-   options.AddPolicy("ExposeResponseHeaders",
+options.AddPolicy("ExposeResponseHeaders",
        builder =>
        {
            builder.WithOrigins("http://example.com")
@@ -367,8 +353,7 @@ Credentials require special handling in a CORS request. By default, the browser 
 Using XMLHttpRequest directly:
 
 ````js
-
-   var xhr = new XMLHttpRequest();
+var xhr = new XMLHttpRequest();
    xhr.open('get', 'http://www.example.com/api/test');
    xhr.withCredentials = true;
    ````
@@ -376,8 +361,7 @@ Using XMLHttpRequest directly:
 In jQuery:
 
 ````js
-
-   $.ajax({
+$.ajax({
        type: 'get',
        url: 'http://www.example.com/home',
        xhrFields: {
@@ -390,8 +374,7 @@ In addition, the server must allow the credentials. To allow cross-origin creden
 [!code-csharp[Main](cors/sample/src/CorsExamples/CorsExample4/Startup.cs)]
 
 ````csharp
-
-   options.AddPolicy("AllowCredentials",
+options.AddPolicy("AllowCredentials",
        builder =>
        {
            builder.WithOrigins("http://example.com")
@@ -413,8 +396,7 @@ The Access-Control-Max-Age header specifies how long the response to the preflig
 [!code-csharp[Main](cors/sample/src/CorsExamples/CorsExample4/Startup.cs)]
 
 ````csharp
-
-   options.AddPolicy("SetPreflightExpiration",
+options.AddPolicy("SetPreflightExpiration",
        builder =>
        {
            builder.WithOrigins("http://example.com")
@@ -436,8 +418,7 @@ Here is an example of a cross-origin request. The "Origin" header gives the doma
 <!-- literal_block {"ids": [], "xml:space": "preserve"} -->
 
 ````
-
-   GET http://myservice.azurewebsites.net/api/test HTTP/1.1
+GET http://myservice.azurewebsites.net/api/test HTTP/1.1
    Referer: http://myclient.azurewebsites.net/
    Accept: */*
    Accept-Language: en-US
@@ -452,8 +433,7 @@ If the server allows the request, it sets the Access-Control-Allow-Origin header
 <!-- literal_block {"ids": [], "xml:space": "preserve"} -->
 
 ````
-
-   HTTP/1.1 200 OK
+HTTP/1.1 200 OK
    Cache-Control: no-cache
    Pragma: no-cache
    Content-Type: text/plain; charset=utf-8
@@ -489,8 +469,7 @@ Here is an example of a preflight request:
 <!-- literal_block {"ids": [], "xml:space": "preserve"} -->
 
 ````
-
-   OPTIONS http://myservice.azurewebsites.net/api/test HTTP/1.1
+OPTIONS http://myservice.azurewebsites.net/api/test HTTP/1.1
    Accept: */*
    Origin: http://myclient.azurewebsites.net
    Access-Control-Request-Method: PUT
@@ -512,8 +491,7 @@ Here is an example response, assuming that the server allows the request:
 <!-- literal_block {"ids": [], "xml:space": "preserve"} -->
 
 ````
-
-   HTTP/1.1 200 OK
+HTTP/1.1 200 OK
    Cache-Control: no-cache
    Pragma: no-cache
    Content-Length: 0

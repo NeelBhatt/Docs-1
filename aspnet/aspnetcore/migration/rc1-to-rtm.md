@@ -26,8 +26,7 @@ If your app targeted `dnx451` or  `dnxcore50` in the `frameworks` section of *pr
 .NET Core apps must add a dependency to the `Microsoft.NETCore.App` package:
 
 ````none
-
-   "dependencies": {
+"dependencies": {
      "Microsoft.NETCore.App": {
        "version": "1.0.0",
        "type": "platform"
@@ -69,8 +68,7 @@ See [.NET Core CLI extensibility model](https://dotnet.github.io/docs/core-conce
 IIS publishing is now provided by the `publish-iis` tool in the `Microsoft.AspNetCore.Server.IISIntegration.Tools` package. If you intend to run your app behind IIS, add the `publish-iis` tool to your *project.json*:
 
 ````json
-
-   {
+{
      "tools": {
        "Microsoft.AspNetCore.Server.IISIntegration.Tools": "1.0.0-preview2-final"
      }
@@ -80,8 +78,7 @@ IIS publishing is now provided by the `publish-iis` tool in the `Microsoft.AspNe
 The `publish-iis` tool is commonly used in the `postpublish` script in *project.json*:
 
 ````json
-
-   {
+{
      "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
    }
    ````
@@ -91,8 +88,7 @@ The `publish-iis` tool is commonly used in the `postpublish` script in *project.
 The `ef` tool is now provided in the `Microsoft.EntityFrameworkCore.Tools` package:
 
 ````json
-
-   {
+{
      "tools": {
        "Microsoft.EntityFrameworkCore.Tools": "1.0.0-preview2-final"
      }
@@ -106,8 +102,7 @@ For more information, see [.NET Core CLI](https://docs.efproject.net/en/latest/c
 Razor tooling is now provided in the `Microsoft.AspNetCore.Razor.Tools` package:
 
 ````json
-
-   {
+{
      "tools": {
        "Microsoft.AspNetCore.Razor.Tools": "1.0.0-preview2-final"
      }
@@ -119,8 +114,7 @@ Razor tooling is now provided in the `Microsoft.AspNetCore.Razor.Tools` package:
 The `sqlservercache` command, formerly provided by the `Microsoft.Extensions.Caching.SqlConfig` package, has been replaced by the `sql-cache` tool, available through the `Microsoft.Extensions.Caching.SqlConfig.Tools` package:
 
 ````json
-
-   {
+{
      "tools": {
        "Microsoft.Extensions.Caching.SqlConfig.Tools": "1.0.0-preview2-final"
      }
@@ -132,8 +126,7 @@ The `sqlservercache` command, formerly provided by the `Microsoft.Extensions.Cac
 The `user-secret` command, formerly provided by the `Microsoft.Extensions.SecretManager` package, has been replaced by the `user-secrets` tool, available through the `Microsoft.Extensions.SecretManager.Tools` package:
 
 ````json
-
-   {
+{
      "tools": {
        "Microsoft.Extensions.SecretManager.Tools": "1.0.0-preview2-final"
      }
@@ -145,8 +138,7 @@ The `user-secret` command, formerly provided by the `Microsoft.Extensions.Secret
 The `watch` command, formerly provided by the `Microsoft.Dnx.Watcher` package, has been replaced by the `watch` tool, available through the `Microsoft.DotNet.Watcher.Tools` package:
 
 ````json
-
-   {
+{
      "tools": {
        "Microsoft.DotNet.Watcher.Tools": "1.0.0-preview2-final"
      }
@@ -160,8 +152,7 @@ For more information on the file watcher, see **Dotnet watch** in  [Tutorials](.
 ASP.NET Core 1.0 apps are console apps; you must define an entry point for your app that sets up a web host and runs it. Below is an example from the startup code for one of the Web Application templates in Visual Studio:
 
 ````csharp
-
-   public class Program
+public class Program
    {
        public static void Main(string[] args)
        {
@@ -180,8 +171,7 @@ ASP.NET Core 1.0 apps are console apps; you must define an entry point for your 
 You must add the `emitEntryPoint` to the `buildOptions` section of your application's *project.json*:
 
 ````json
-
-   {
+{
      "buildOptions": {
        "emitEntryPoint": true
      }
@@ -196,34 +186,32 @@ All classes and interfaces prefixed with `WebApplication` have been renamed to s
 
 The application base path is now called the content root.
 
-The web root of your application is no longer specified in your *project.json* file. It is defined when setting up the web host and defaults to `wwwroot`. Call the [UseWebRoot](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/HostingAbstractionsWebHostBuilderExtensions/index.html.md#Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseWebRoot.md) extension method to specify a different web root folder. Alternatively, you can specify the web root folder in configuration and call the [UseConfiguration](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/HostingAbstractionsWebHostBuilderExtensions/index.html.md#Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration.md) extension method.
+The web root of your application is no longer specified in your *project.json* file. It is defined when setting up the web host and defaults to `wwwroot`. Call the [`UseWebRoot`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/HostingAbstractionsWebHostBuilderExtensions/index.html#Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseWebRoot) extension method to specify a different web root folder. Alternatively, you can specify the web root folder in configuration and call the [`UseConfiguration`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/HostingAbstractionsWebHostBuilderExtensions/index.html#Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration) extension method.
 
 ### Server address binding
 
-The server addresses that your application listens on can be specified using the [UseUrls](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/HostingAbstractionsWebHostBuilderExtensions/index.html.md#Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseUrls.md) extension method or through configuration.
+The server addresses that your application listens on can be specified using the [`UseUrls`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/HostingAbstractionsWebHostBuilderExtensions/index.html#Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseUrls) extension method or through configuration.
 
 Specifying only a port number as a binding address is no longer supported. The default binding address is http://localhost:5000
 
 ### Hosting configuration
 
-The `UseDefaultHostingConfiguration` method is no longer available. The only configuration values read by default by [WebHostBuilder](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/WebHostBuilder/index.html.md#Microsoft.AspNetCore.Hosting.WebHostBuilder.md) are those specified in environment variables prefixed with `ASPNETCORE_*`. All other configuration sources must now be added explicitly to an [IConfigurationBuilder](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Configuration/IConfigurationBuilder/index.html.md#Microsoft.Extensions.Configuration.IConfigurationBuilder.md) instance. See [Configuration](../fundamentals/configuration.md) for more information.
+The `UseDefaultHostingConfiguration` method is no longer available. The only configuration values read by default by [`WebHostBuilder`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/WebHostBuilder/index.html#Microsoft.AspNetCore.Hosting.WebHostBuilder) are those specified in environment variables prefixed with `ASPNETCORE_*`. All other configuration sources must now be added explicitly to an [`IConfigurationBuilder`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Configuration/IConfigurationBuilder/index.html#Microsoft.Extensions.Configuration.IConfigurationBuilder) instance. See [Configuration](../fundamentals/configuration.md) for more information.
 
 The environment key is set with the `ASPNETCORE_ENVIRONMENT` environment variable. `ASPNET_ENV` and `Hosting:Environment` are still supported, but generate a deprecated message warning.
 
 ### Hosting service changes
 
-Dependency injection code that uses `IApplicationEnvironment` must now use [IHostingEnvironment](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/IHostingEnvironment/index.html.md#Microsoft.AspNetCore.Hosting.IHostingEnvironment.md). For example, in your `Startup` class, change:
+Dependency injection code that uses `IApplicationEnvironment` must now use [`IHostingEnvironment`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/IHostingEnvironment/index.html#Microsoft.AspNetCore.Hosting.IHostingEnvironment). For example, in your `Startup` class, change:
 
 ````csharp
-
-   public Startup(IApplicationEnvironment applicationEnvironment)
+public Startup(IApplicationEnvironment applicationEnvironment)
    ````
 
 To:
 
 ````csharp
-
-   public Startup(IHostingEnvironment hostingEnvironment)
+public Startup(IHostingEnvironment hostingEnvironment)
    ````
 
 ## Kestrel
@@ -232,7 +220,7 @@ Kestrel configuration has changed. [This GitHub announcement](https://github.com
 
 ### Controller and action results renamed
 
-The following [Controller](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Controller/index.html.md#Microsoft.AspNetCore.Mvc.Controller.md) methods have been renamed and moved to [ControllerBase](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ControllerBase/index.html.md#Microsoft.AspNetCore.Mvc.ControllerBase.md):
+The following [`Controller`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Controller/index.html#Microsoft.AspNetCore.Mvc.Controller) methods have been renamed and moved to [`ControllerBase`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ControllerBase/index.html#Microsoft.AspNetCore.Mvc.ControllerBase):
 
 <!--     ASP.NET 5 RC1  ASP.NET Core 1.0  HttpUnauthorized  Unauthorized  HttpNotFound (and its overloads)  NotFound  HttpBadRequest (and its overloads)  BadRequest -->
 
@@ -243,8 +231,7 @@ The following action result types have also been renamed:
 To compile views, set the `preserveCompilationContext` option in *project.json* to preserve the compilation context, as shown here:
 
 ````json
-
-   {
+{
      "buildOptions": {
        "preserveCompilationContext": true
      }
@@ -258,15 +245,13 @@ Views now support relative paths.
 The Validation Summary Tag Helper `asp-validation-summary` attribute value has changed. Change:
 
 ````html
-
-   <div asp-validation-summary="ValidationSummary.All"></div>
+<div asp-validation-summary="ValidationSummary.All"></div>
    ````
 
 To:
 
 ````html
-
-   <div asp-validation-summary="All"></div>
+<div asp-validation-summary="All"></div>
    ````
 
 ### Changes in ViewComponents
@@ -284,15 +269,13 @@ To:
 ASP.NET 5 RC1:
 
 ````csharp
-
-   @Component.InvokeAsync("Test", "MyName", 15)
+@Component.InvokeAsync("Test", "MyName", 15)
    ````
 
 ASP.NET Core 1.0:
 
 ````csharp
-
-   @Component.InvokeAsync("Test", new { name = "MyName", age = 15 })
+@Component.InvokeAsync("Test", new { name = "MyName", age = 15 })
    @Component.InvokeAsync("Test", new Dictionary<string, object> {
                           ["name"] = "MyName", ["age"] = 15 })
    @Component.InvokeAsync<TestViewComponent>(new { name = "MyName", age = 15})
@@ -302,30 +285,29 @@ ASP.NET Core 1.0:
 
 There are changes that simplify controller discovery:
 
-The new [ControllerAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ControllerAttribute/index.html.md#Microsoft.AspNetCore.Mvc.ControllerAttribute.md) can be used to mark a class (and it's subclasses) as a controller. A class whose name doesn't end in `Controller` and derives from a base class that ends in `Controller` is no longer considered a controller. In this scenario, [ControllerAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ControllerAttribute/index.html.md#Microsoft.AspNetCore.Mvc.ControllerAttribute.md) must be applied to the derived class itself or to the base class.
+The new [`ControllerAttribute`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ControllerAttribute/index.html#Microsoft.AspNetCore.Mvc.ControllerAttribute) can be used to mark a class (and it's subclasses) as a controller. A class whose name doesn't end in `Controller` and derives from a base class that ends in `Controller` is no longer considered a controller. In this scenario, [`ControllerAttribute`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ControllerAttribute/index.html#Microsoft.AspNetCore.Mvc.ControllerAttribute) must be applied to the derived class itself or to the base class.
 
 A type is considered a controller if **all** the following conditions are met:
 
 * The type is a public, concrete, non-open generic class
 
-* [NonControllerAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/NonControllerAttribute/index.html.md#Microsoft.AspNetCore.Mvc.NonControllerAttribute.md) is **not** applied to any type in its hierarchy
+* [`NonControllerAttribute`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/NonControllerAttribute/index.html#Microsoft.AspNetCore.Mvc.NonControllerAttribute) is **not** applied to any type in its hierarchy
 
-* The type name ends with `Controller`, or [ControllerAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ControllerAttribute/index.html.md#Microsoft.AspNetCore.Mvc.ControllerAttribute.md) is applied to the type or one of its ancestors.
+* The type name ends with `Controller`, or [`ControllerAttribute`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ControllerAttribute/index.html#Microsoft.AspNetCore.Mvc.ControllerAttribute) is applied to the type or one of its ancestors.
 
 > [!NOTE]
-> If [NonControllerAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/NonControllerAttribute/index.html.md#Microsoft.AspNetCore.Mvc.NonControllerAttribute.md) is applied anywhere in the type hierarchy, the discovery conventions will never consider that type or its descendants to be a controller. In other words, [NonControllerAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/NonControllerAttribute/index.html.md#Microsoft.AspNetCore.Mvc.NonControllerAttribute.md) takes precedence over [ControllerAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ControllerAttribute/index.html.md#Microsoft.AspNetCore.Mvc.ControllerAttribute.md).
+> If [`NonControllerAttribute`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/NonControllerAttribute/index.html#Microsoft.AspNetCore.Mvc.NonControllerAttribute) is applied anywhere in the type hierarchy, the discovery conventions will never consider that type or its descendants to be a controller. In other words, [`NonControllerAttribute`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/NonControllerAttribute/index.html#Microsoft.AspNetCore.Mvc.NonControllerAttribute) takes precedence over [`ControllerAttribute`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ControllerAttribute/index.html#Microsoft.AspNetCore.Mvc.ControllerAttribute).
 
 ## Configuration
 
-The [IConfigurationSource](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Configuration/IConfigurationSource/index.html.md#Microsoft.Extensions.Configuration.IConfigurationSource.md) interface has been introduced to represent the configuration used to build an [IConfigurationProvider](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Configuration/IConfigurationProvider/index.html.md#Microsoft.Extensions.Configuration.IConfigurationProvider.md). It is no longer possible to access the provider instances from [IConfigurationBuilder](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Configuration/IConfigurationBuilder/index.html.md#Microsoft.Extensions.Configuration.IConfigurationBuilder.md), only the sources. This is intentional, and may cause loss of functionality as you can no longer do things like call `Load` on the provider instances.
+The [`IConfigurationSource`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Configuration/IConfigurationSource/index.html#Microsoft.Extensions.Configuration.IConfigurationSource) interface has been introduced to represent the configuration used to build an [`IConfigurationProvider`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Configuration/IConfigurationProvider/index.html#Microsoft.Extensions.Configuration.IConfigurationProvider). It is no longer possible to access the provider instances from [`IConfigurationBuilder`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Configuration/IConfigurationBuilder/index.html#Microsoft.Extensions.Configuration.IConfigurationBuilder), only the sources. This is intentional, and may cause loss of functionality as you can no longer do things like call `Load` on the provider instances.
 
-File-based configuration providers support both relative and absolute paths to configuration files. If you want to specify file paths relative to your application's content root, you must call the [SetBasePath](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Configuration/FileConfigurationExtensions/index.html.md#Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath.md) extension method on [IConfigurationBuilder](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Configuration/IConfigurationBuilder/index.html.md#Microsoft.Extensions.Configuration.IConfigurationBuilder.md):
+File-based configuration providers support both relative and absolute paths to configuration files. If you want to specify file paths relative to your application's content root, you must call the [`SetBasePath`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Configuration/FileConfigurationExtensions/index.html#Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath) extension method on [`IConfigurationBuilder`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Configuration/IConfigurationBuilder/index.html#Microsoft.Extensions.Configuration.IConfigurationBuilder):
 
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [4]}} -->
 
 ````csharp
-
-   public Startup(IHostingEnvironment env)
+public Startup(IHostingEnvironment env)
    {
        var builder = new ConfigurationBuilder()
            .SetBasePath(env.ContentRootPath)
@@ -335,15 +317,15 @@ File-based configuration providers support both relative and absolute paths to c
 
 ### Automatic reload on change
 
-The `IConfigurationRoot.ReloadOnChanged` extension method is no longer available. File-based configuration providers now provide extension methods to [IConfigurationBuilder](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Configuration/IConfigurationBuilder/index.html.md#Microsoft.Extensions.Configuration.IConfigurationBuilder.md) that allow you to specify whether configuration from those providers should be reloaded when there are changes in their files. See [AddJsonFile](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Configuration/JsonConfigurationExtensions/index.html.md#Microsoft.Extensions.Configuration.JsonConfigurationExtensions.AddJsonFile.md), [AddXmlFile](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Configuration/XmlConfigurationExtensions/index.html.md#Microsoft.Extensions.Configuration.XmlConfigurationExtensions.AddXmlFile.md) and
-[AddIniFile](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Configuration/IniConfigurationExtensions/index.html.md#Microsoft.Extensions.Configuration.IniConfigurationExtensions.AddIniFile.md) for details.
+The `IConfigurationRoot.ReloadOnChanged` extension method is no longer available. File-based configuration providers now provide extension methods to [`IConfigurationBuilder`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Configuration/IConfigurationBuilder/index.html#Microsoft.Extensions.Configuration.IConfigurationBuilder) that allow you to specify whether configuration from those providers should be reloaded when there are changes in their files. See [`AddJsonFile`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Configuration/JsonConfigurationExtensions/index.html#Microsoft.Extensions.Configuration.JsonConfigurationExtensions.AddJsonFile), [`AddXmlFile`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Configuration/XmlConfigurationExtensions/index.html#Microsoft.Extensions.Configuration.XmlConfigurationExtensions.AddXmlFile) and
+[`AddIniFile`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Configuration/IniConfigurationExtensions/index.html#Microsoft.Extensions.Configuration.IniConfigurationExtensions.AddIniFile) for details.
 
 ## Logging
 
-`LogLevel.Verbose` has been renamed to [Trace](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Logging/LogLevel/index.html.md#Microsoft.Extensions.Logging.LogLevel.Trace.md) and is now considered less severe than [Debug](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Logging/LogLevel/index.html.md#Microsoft.Extensions.Logging.LogLevel.Debug.md).
+`LogLevel.Verbose` has been renamed to [`Trace`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Logging/LogLevel/index.html#Microsoft.Extensions.Logging.LogLevel.Trace) and is now considered less severe than [`Debug`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Logging/LogLevel/index.html#Microsoft.Extensions.Logging.LogLevel.Debug).
 
-The `MinimumLevel` property has been removed from [ILoggerFactory](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Logging/ILoggerFactory/index.html.md#Microsoft.Extensions.Logging.ILoggerFactory.md). Each logging provider now provides extension methods to [ILoggerFactory](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Logging/ILoggerFactory/index.html.md#Microsoft.Extensions.Logging.ILoggerFactory.md) that allow specifying a minimum logging level. See [AddConsole](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Logging/ConsoleLoggerExtensions/index.html.md#Microsoft.Extensions.Logging.ConsoleLoggerExtensions.AddConsole.md), [AddDebug](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Logging/DebugLoggerFactoryExtensions/index.html.md#Microsoft.Extensions.Logging.DebugLoggerFactoryExtensions.AddDebug.md), and
-[AddEventLog](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Logging/EventLoggerFactoryExtensions/index.html.md#Microsoft.Extensions.Logging.EventLoggerFactoryExtensions.AddEventLog.md) for details.
+The `MinimumLevel` property has been removed from [`ILoggerFactory`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Logging/ILoggerFactory/index.html#Microsoft.Extensions.Logging.ILoggerFactory). Each logging provider now provides extension methods to [`ILoggerFactory`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Logging/ILoggerFactory/index.html#Microsoft.Extensions.Logging.ILoggerFactory) that allow specifying a minimum logging level. See [`AddConsole`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Logging/ConsoleLoggerExtensions/index.html#Microsoft.Extensions.Logging.ConsoleLoggerExtensions.AddConsole), [`AddDebug`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Logging/DebugLoggerFactoryExtensions/index.html#Microsoft.Extensions.Logging.DebugLoggerFactoryExtensions.AddDebug), and
+[`AddEventLog`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Logging/EventLoggerFactoryExtensions/index.html#Microsoft.Extensions.Logging.EventLoggerFactoryExtensions.AddEventLog) for details.
 
 ## Identity
 
@@ -354,8 +336,7 @@ The signatures for the following methods or properties have changed:
 To use Identity in a view, add the following:
 
 ````csharp
-
-   @using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Identity
    @inject SignInManager<TUser> SignInManager
    @inject UserManager<TUser> UserManager
    ````
@@ -369,8 +350,7 @@ HttpPlatformHandler has been replaced by the [ASP.NET Core Module (ANCM)](../hos
 The ASP.NET Core Module must be configured in *web.config*:
 
 ````xml
-
-   <configuration>
+<configuration>
      <system.webServer>
        <handlers>
          <add name="aspNetCore" path="*" verb="*" modules="AspNetCoreModule" resourceType="Unspecified"/>
@@ -384,11 +364,10 @@ The ASP.NET Core Module must be configured in *web.config*:
 
 The *Publish to IIS tool* generates a correct *web.config*. See [Publishing to IIS](../publishing/iis.md) for more details.
 
-IIS integration middleware is now configured when creating the [Microsoft.AspNetCore.Hosting.WebHostBuilder](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/WebHostBuilder/index.html.md#Microsoft.AspNetCore.Hosting.WebHostBuilder.md), and is no longer called in the `Configure` method of the `Startup` class:
+IIS integration middleware is now configured when creating the [`Microsoft.AspNetCore.Hosting.WebHostBuilder`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/WebHostBuilder/index.html#Microsoft.AspNetCore.Hosting.WebHostBuilder), and is no longer called in the `Configure` method of the `Startup` class:
 
 ````csharp
-
-   var host = new WebHostBuilder()
+var host = new WebHostBuilder()
        .UseIISIntegration()
        .Build();
    ````
@@ -399,15 +378,14 @@ Delete any *<app name> - Web Deploy-publish.ps1* scripts created with Visual Stu
 
 ### applicationhost.config changes
 
-An *applicationhost.config* file created with ASP.NET 5 RC1 will point ASP.NET Core to an invalid [content root](../intro.md#content-root-lbl.md) location. With such a *applicationhost.config* file, ASP.NET Core will be configured with [content root](../intro.md#content-root-lbl.md)/[web root](../intro.md#web-root-lbl.md) as the [content root](../intro.md#content-root-lbl.md) folder and therefore look for *web.config* in `Content root/wwwroot`. The *web.config* file must be in the [content root](../intro.md#content-root-lbl.md) folder. When configured like this, the app will terminate with an HTTP 500 error.
+An *applicationhost.config* file created with ASP.NET 5 RC1 will point ASP.NET Core to an invalid [content root](../intro.md#content-root-lbl) location. With such a *applicationhost.config* file, ASP.NET Core will be configured with [content root](../intro.md#content-root-lbl)/[web root](../intro.md#web-root-lbl) as the [content root](../intro.md#content-root-lbl) folder and therefore look for *web.config* in `Content root/wwwroot`. The *web.config* file must be in the [content root](../intro.md#content-root-lbl) folder. When configured like this, the app will terminate with an HTTP 500 error.
 
 ## Updating Launch Settings in Visual Studio
 
 Update `launchSettings.json` to remove the web target and add the following:
 
 ````json
-
-   {
+{
      "WebApplication1": {
        "commandName": "Project",
        "launchBrowser": true,
@@ -426,8 +404,7 @@ You must turn on server garbage collection in *project.json* or *app.config* whe
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "json", "highlight_args": {"hl_lines": [4]}} -->
 
 ````json
-
-    {
+ {
       "runtimeOptions": {
         "configProperties": {
           "System.GC.Server": true

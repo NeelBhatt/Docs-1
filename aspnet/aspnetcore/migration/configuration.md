@@ -17,30 +17,13 @@ The *web.config* file has also been replaced in ASP.NET Core. Configuration itse
 
 For this article, we are starting with the partially-migrated ASP.NET Core project from [the previous article](mvc.md). To setup configuration, add the following constructor and property to the *Startup.cs* file located in the root of the project:
 
-[!code-none[Main](configuration/samples/WebApp1/src/WebApp1/Startup.cs)]
-
-````none
-
-   public Startup(IHostingEnvironment env)
-   {
-       var builder = new ConfigurationBuilder()
-           .SetBasePath(env.ContentRootPath)
-           .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-           .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-           .AddEnvironmentVariables();
-       Configuration = builder.Build();
-   }
-
-   public IConfigurationRoot Configuration { get; }
-
-   ````
+[!code-none[Main](configuration/samples/WebApp1/src/WebApp1/Startup.cs?range=11-21)]
 
 Note that at this point, the *Startup.cs* file will not compile, as we still need to add the following `using` statement:
 
 ````csharp
-
-   using Microsoft.Extensions.Configuration;
-   ````
+using Microsoft.Extensions.Configuration;
+````
 
 Add an *appsettings.json* file to the root of the project using the appropriate item template:
 
@@ -52,16 +35,6 @@ Our ASP.NET MVC project included the required database connection string in *web
 
 [!code-json[Main](../migration/configuration/samples/WebApp1/src/WebApp1/appsettings.json?highlight=4)]
 
-````json
-
-   {
-   	"Data": {
-   		"DefaultConnection": {
-   			"ConnectionString": "Server=(localdb)\\MSSQLLocalDB;Database=_CHANGE_ME;Trusted_Connection=True;"
-   		}
-   	}
-   }
-   ````
 
 In the highlighted line depicted above, change the name of the database from **_CHANGE_ME** to the name of your database.
 

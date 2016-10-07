@@ -82,8 +82,7 @@ ASP.NET Core MVC is built on top of [ASP.NET Core's routing](../fundamentals/rou
 *Convention-based routing* enables you to globally define the URL formats that your application accepts and how each of those formats maps to a specific action method on given controller. When an incoming request is received, the routing engine parses the URL and matches it to one of the defined URL formats, and then calls the associated controller's action method.
 
 ````csharp
-
-   routes.MapRoute(name: "Default", template: "{controller=Home}/{action=Index}/{id?}");
+routes.MapRoute(name: "Default", template: "{controller=Home}/{action=Index}/{id?}");
    ````
 
 *Attribute routing* enables you to specify routing information by decorating your controllers and actions with attributes that define your application's routes. This means that your route definitions are placed next to the controller and action with which they're associated.
@@ -91,8 +90,7 @@ ASP.NET Core MVC is built on top of [ASP.NET Core's routing](../fundamentals/rou
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [1, 4]}} -->
 
 ````csharp
-
-   [Route("api/[controller]")]
+[Route("api/[controller]")]
    public class ProductsController : Controller
    {
      [HttpGet("{id}")]
@@ -108,8 +106,7 @@ ASP.NET Core MVC is built on top of [ASP.NET Core's routing](../fundamentals/rou
 ASP.NET Core MVC [model binding](models/model-binding.md) converts client request data  (form values, route data, query string parameters, HTTP headers) into objects that the controller can handle. As a result, your controller logic doesn't have to do the work of figuring out the incoming request data; it simply has the data as parameters to its action methods.
 
 ````csharp
-
-   public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null) { ... }
+public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null) { ... }
    ````
 
 ### Model validation
@@ -119,8 +116,7 @@ ASP.NET Core MVC supports [validation](models/validation.md) by decorating your 
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [4, 5, 8, 9]}} -->
 
 ````csharp
-
-   using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
    public class LoginViewModel
    {
        [Required]
@@ -141,8 +137,7 @@ A controller action:
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [3]}} -->
 
 ````csharp
-
-   public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
+public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
    {
        if (ModelState.IsValid)
        {
@@ -164,8 +159,7 @@ Your app can also use [dependency injection in view files](views/dependency-inje
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [1]}} -->
 
 ````html
-
-   @inject SomeService ServiceName
+@inject SomeService ServiceName
    <!DOCTYPE html>
    <html>
    <head>
@@ -184,8 +178,7 @@ Your app can also use [dependency injection in view files](views/dependency-inje
 [!code-csharp[Main](../common/samples/WebApplication1/src/WebApplication1/Controllers/AccountController.cs?highlight=1)]
 
 ````csharp
-
-       [Authorize]
+    [Authorize]
        public class AccountController : Controller
        {
 
@@ -212,8 +205,7 @@ The framework's use of interfaces and dependency injection make it well-suited t
 [ASP.NET Core MVC views](views/overview.md) use the the [Razor view engine](views/razor.md) to render views. Razor is a compact, expressive and fluid template markup language for defining views using embedded C# code. Razor is used to dynamically generate web content on the server. You can cleanly mix server code with client side content and code.
 
 ````text
-
-   <ul>
+<ul>
      @for (int i = 0; i < 5; i++) {
        <li>List item @i</li>
      }
@@ -229,8 +221,7 @@ Razor views in MVC can be strongly typed based on your model. Controllers can pa
 For example, the following view defines a model of type `IEnumerable<Product>`:
 
 ````html
-
-   @model IEnumerable<Product>
+@model IEnumerable<Product>
    <ul>
        @foreach (Product p in Model)
        {
@@ -248,8 +239,7 @@ There are many built-in Tag Helpers for common tasks - such as creating forms, l
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [3]}} -->
 
 ````html
-
-   <p>
+<p>
        Thank you for confirming your email.
        Please <a asp-controller="Account" asp-action="Login">Click here to Log in</a>.
    </p>
@@ -260,8 +250,7 @@ The `EnvironmentTagHelper` can be used to include different scripts in your view
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [1, 3, 4, 9]}} -->
 
 ````html
-
-   <environment names="Development">
+<environment names="Development">
        <script src="~/lib/jquery/dist/jquery.js"></script>
    </environment>
    <environment names="Staging,Production">

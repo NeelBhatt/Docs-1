@@ -52,8 +52,7 @@ For more information on the ASP.NET Core Module, including configuration of the 
 Include a dependency on the *Microsoft.AspNetCore.Server.IISIntegration* package in the application dependencies. Incorporate IIS Integration middleware into the application by adding the *.UseIISIntegration()* extension method to *WebHostBuilder()*.
 
 ````csharp
-
-   var host = new WebHostBuilder()
+var host = new WebHostBuilder()
      .UseKestrel()
      .UseContentRoot(Directory.GetCurrentDirectory())
      .UseIISIntegration()
@@ -68,8 +67,7 @@ Note that code calling *.UseIISIntegration()* does not affect code portability.
 To configure *IISIntegration* service options, include a service configuration for *IISOptions* in *ConfigureServices*.
 
 ````csharp
-
-   services.Configure<IISOptions>(options => {
+services.Configure<IISOptions>(options => {
      ...
    });
    ````
@@ -81,8 +79,7 @@ The *publish-iis* tool can be added to any .NET Core application and will config
 To include the *publish-iis* tool in your application, add entries to the *tools* and *scripts* sections of *project.json*.
 
 ````none
-
-   "tools": {
+"tools": {
      "Microsoft.AspNetCore.Server.IISIntegration.Tools": "1.0.0-preview2-final"
    },
    "scripts": {
@@ -136,7 +133,7 @@ Data Protection keys used by ASP.NET applications are stored in registry hives e
 
 For standalone IIS installations, you may use the [Data Protection Provision-AutoGenKeys.ps1 PowerShell script](https://github.com/aspnet/DataProtection/blob/dev/Provision-AutoGenKeys.ps1) for each application pool used with an ASP.NET Core application. The keys will be persisted in the registry.
 
-In web farm scenarios, an application can be configured to use a UNC path to store its data protection key ring. By default, the data protection keys are not encrypted. You can deploy an x509 certificate to each machine to encrypt the key ring. See [Configuring Data Protection](../security/data-protection/configuration/overview.md#data-protection-configuring.md) for details.
+In web farm scenarios, an application can be configured to use a UNC path to store its data protection key ring. By default, the data protection keys are not encrypted. You can deploy an x509 certificate to each machine to encrypt the key ring. See [Configuring Data Protection](../security/data-protection/configuration/overview.md#data-protection-configuring) for details.
 
 >[!WARNING]
 > Data Protection is used by various ASP.NET middlewares, including those used in authentication. Even if you do not specifically call any Data Protection APIs from your own code you should configure Data Protection with the deployment script or in your own code. If you do not configure data protection when using IIS by default the keys will be held in memory and discarded when your application closes or restarts. This will then, for example, invalidate any cookies written by the cookie authentication and users will have to login again.

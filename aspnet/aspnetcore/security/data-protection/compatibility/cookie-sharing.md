@@ -16,8 +16,7 @@ In your configure method use the CookieAuthenticationOptions to set up the data 
 If you're using identity:
 
 ````csharp
-
-   app.AddIdentity<ApplicationUser, IdentityRole>(options =>
+app.AddIdentity<ApplicationUser, IdentityRole>(options =>
    {
        options.Cookies.ApplicationCookie.AuthenticationScheme = "ApplicationCookie";
        options.Cookies.ApplicationCookie.DataProtectionProvider = DataProtectionProvider.Create(new DirectoryInfo(@"c:\shared-auth-ticket-keys\"));
@@ -27,8 +26,7 @@ If you're using identity:
 If you're using cookies directly:
 
 ````csharp
-
-   app.UseCookieAuthentication(new CookieAuthenticationOptions
+app.UseCookieAuthentication(new CookieAuthenticationOptions
    {
        DataProtectionProvider = DataProtectionProvider.Create(new DirectoryInfo(@"c:\shared-auth-ticket-keys\"))
    });
@@ -41,8 +39,7 @@ Caution: You should consider configuring the DataProtectionProvider such that ke
   <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp"} -->
 
   ````csharp
-
-     app.UseCookieAuthentication(new CookieAuthenticationOptions
+  app.UseCookieAuthentication(new CookieAuthenticationOptions
      {
          DataProtectionProvider = DataProtectionProvider.Create(
              new DirectoryInfo(@"c:\shared-auth-ticket-keys\"),
@@ -71,8 +68,7 @@ To share authentication cookies between your ASP.NET 4.x applications and your A
 
 
    ````csharp
-
-      app.UseCookieAuthentication(new CookieAuthenticationOptions
+   app.UseCookieAuthentication(new CookieAuthenticationOptions
       {
           // ...
       });
@@ -82,8 +78,7 @@ To share authentication cookies between your ASP.NET 4.x applications and your A
 
 
    ````csharp
-
-      app.UseCookieAuthentication(new CookieAuthenticationOptions
+   app.UseCookieAuthentication(new CookieAuthenticationOptions
       {
           AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
           CookieName = ".AspNetCore.Cookies",
@@ -96,8 +91,7 @@ To share authentication cookies between your ASP.NET 4.x applications and your A
                   "Cookies", "v2")))
       });
       ````
-
-   The DirectoryInfo has to point to the same storage location that you pointed your ASP.NET Core application to and should be configured using the same settings.
+The DirectoryInfo has to point to the same storage location that you pointed your ASP.NET Core application to and should be configured using the same settings.
 
 The ASP.NET 4.x and ASP.NET Core applications are now configured to share authentication cookies.
 

@@ -5,11 +5,11 @@ uid: fundamentals/hosting
 
 By [Steve Smith](http://ardalis.com)
 
-To run an ASP.NET Core app, you need to configure and launch a host using [WebHostBuilder](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/WebHostBuilder/index.html).
+To run an ASP.NET Core app, you need to configure and launch a host using [`WebHostBuilder`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/WebHostBuilder/index.html).
 
 ## What is a Host?
 
-ASP.NET Core apps require a *host* in which to execute. A host must implement the [IWebHost](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/IWebHost/index.html.md#Microsoft.AspNetCore.Hosting.IWebHost.md) interface, which exposes collections of features and services, and a `Start` method. The host is typically created using an instance of a [WebHostBuilder](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/WebHostBuilder/index.html.md#Microsoft.AspNetCore.Hosting.WebHostBuilder.md), which builds and returns a  [WebHost](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/Internal/WebHost/index.html.md#Microsoft.AspNetCore.Hosting.Internal.WebHost.md) instance. The `WebHost` references the server that will handle requests. Learn more about [servers](servers.md).
+ASP.NET Core apps require a *host* in which to execute. A host must implement the [`IWebHost`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/IWebHost/index.html#Microsoft.AspNetCore.Hosting.IWebHost) interface, which exposes collections of features and services, and a `Start` method. The host is typically created using an instance of a [`WebHostBuilder`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/WebHostBuilder/index.html#Microsoft.AspNetCore.Hosting.WebHostBuilder), which builds and returns a  [`WebHost`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/Internal/WebHost/index.html#Microsoft.AspNetCore.Hosting.Internal.WebHost) instance. The `WebHost` references the server that will handle requests. Learn more about [servers](servers.md).
 
 ### What is the difference between a host and a server?
 
@@ -22,8 +22,7 @@ You create a host using an instance of `WebHostBuilder`. This is typically done 
 [!code-csharp[Main](../common/samples/WebApplication1/src/WebApplication1/Program.cs?highlight=14,15,16,17,18,19,20,21)]
 
 ````csharp
-
-   using System;
+using System;
    using System.Collections.Generic;
    using System.IO;
    using System.Linq;
@@ -50,7 +49,7 @@ You create a host using an instance of `WebHostBuilder`. This is typically done 
 
    ````
 
-The `WebHostBuilder` is responsible for creating the host that will bootstrap the server for the app. `WebHostBuilder` requires you provide a server that implements [IServer](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/Server/IServer/index.html.md#Microsoft.AspNetCore.Hosting.Server.IServer.md) (`UseKestrel` in the code above). `UseKestrel` specifies the Kestrel server will be used by the app.
+The `WebHostBuilder` is responsible for creating the host that will bootstrap the server for the app. `WebHostBuilder` requires you provide a server that implements [`IServer`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/Server/IServer/index.html#Microsoft.AspNetCore.Hosting.Server.IServer) (`UseKestrel` in the code above). `UseKestrel` specifies the Kestrel server will be used by the app.
 
 The server's *content root* determines where it searches for content files, like MVC View files. The default content root is the folder from which the application is run.
 
@@ -65,8 +64,7 @@ If the app should work with IIS, the `UseIISIntegration` method should be called
 A minimal implementation of configuring a host (and an ASP.NET Core app) would include just a server and configuration of the app's request pipeline:
 
 ````csharp
-
-   var host = new WebHostBuilder()
+var host = new WebHostBuilder()
        .UseKestrel()
        .Configure(app =>
        {
@@ -85,8 +83,7 @@ A minimal implementation of configuring a host (and an ASP.NET Core app) would i
 The `WebHostBuilder` provides methods for setting most of the available configuration values for the host, which can also be set directly using `UseSetting` and associated key. For example, to specify the application name:
 
 ````csharp
-
-   new WebHostBuilder()
+new WebHostBuilder()
        .UseSetting("applicationName", "MyApp")
    ````
 
@@ -99,8 +96,7 @@ Capture Startup Errors `bool`
    Key: `captureStartupErrors`. Defaults to `false`. When `false`, errors during startup result in the host exiting. When `true`, the host will capture any exceptions from the `Startup` class and attempt to start the server. It will display an error page (generic, or detailed, based on the Detailed Errors setting, below) for every request. Set using the `CaptureStartupErrors` method.
 
 ````csharp
-
-   new WebHostBuilder()
+new WebHostBuilder()
        .CaptureStartupErrors(true)
    ````
 
@@ -108,8 +104,7 @@ Content Root `string`
    Key: `contentRoot`. Defaults to the folder where the application assembly resides (for Kestrel; IIS will use the web project root by default). This setting determines where ASP.NET Core will begin searching for content files, such as MVC Views. Also used as the base path for the . Set using the `UseContentRoot` method. Path must exist, or host will fail to start.
 
 ````csharp
-
-   new WebHostBuilder()
+new WebHostBuilder()
        .UseContentRoot("c:\\mywebsite")
    ````
 
@@ -117,8 +112,7 @@ Detailed Errors `bool`
    Key: `detailedErrors`. Defaults to `false`. When `true` (or when Environment is set to "Development"), the app will display details of startup exceptions, instead of just a generic error page. Set using `UseSetting`.
 
 ````csharp
-
-   new WebHostBuilder()
+new WebHostBuilder()
        .UseSetting("detailedErrors", "true")
    ````
 
@@ -134,8 +128,7 @@ Environment `string`
    Key: `environment`. Defaults to "Production". May be set to any value. Framework-defined values include "Development", "Staging", and "Production". Values are not case sensitive. See [Working with Multiple Environments](environments.md). Set using the `UseEnvironment` method.
 
 ````csharp
-
-   new WebHostBuilder()
+new WebHostBuilder()
        .UseEnvironment("Development")
    ````
 
@@ -147,8 +140,7 @@ Server URLs `string`
 Key: `urls`. Set to a semicolon (;) separated list of URL prefixes to which the server should respond. For example, "[http://localhost:123](http://localhost:123)". The domain/host name can be replaced with "*" to indicate the server should listen to requests on any IP address or host using the specified port and protocol (for example, `http://*:5000` or `https://*:5001`). The protocol (`http://` or `https://`) must be included with each URL. The prefixes are interpreted by the configured server; supported formats will vary between servers.
 
 ````csharp
-
-   new WebHostBuilder()
+new WebHostBuilder()
        .UseUrls("http://*:5000;http://localhost:5001;https://hostname:5002")
    ````
 
@@ -157,8 +149,7 @@ Startup Assembly `string`
 Key: `startupAssembly`. Determines the assembly to search for the `Startup` class. Set using the `UseStartup` method. May instead reference specific type using `WebHostBuilder.UseStartup<StartupType>`. If multiple `UseStartup` methods are called, the last one takes precedence.
 
 ````csharp
-
-   new WebHostBuilder()
+new WebHostBuilder()
        .UseStartup("StartupAssemblyName")
    ````
 
@@ -169,8 +160,7 @@ Web Root `string`
 Key: `webroot`. If not specified the default is `(Content Root Path)\wwwroot`, if it exists. If this path doesn't exist, then a no-op file provider is used. Set using `UseWebRoot`.
 
 ````csharp
-
-   new WebHostBuilder()
+new WebHostBuilder()
        .UseWebRoot("public")
    ````
 
@@ -179,8 +169,7 @@ Use [Configuration](configuration.md) to set configuration values to be used by 
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [3, 4, 5, 6, 9]}} -->
 
 ````csharp
-
-   public static void Main(string[] args)
+public static void Main(string[] args)
    {
      var config = new ConfigurationBuilder()
        .AddCommandLine(args)
@@ -203,22 +192,19 @@ Use [Configuration](configuration.md) to set configuration values to be used by 
 In the example above, command line arguments may be passed in to configure the host, or configuration settings may optionally be specified in a *hosting.json* file. To specify the host run on a particular URL, you could pass in the desired value from the command line:
 
 ````none
-
-   dotnet run --urls "http://*:5000"
+dotnet run --urls "http://*:5000"
    ````
 
 The `Run` method starts the web app and blocks the calling thread until the host is shutdown.
 
 ````csharp
-
-   host.Run();
+host.Run();
    ````
 
 You can run the host in a non-blocking manner by calling its `Start` method:
 
 ````csharp
-
-   using (host)
+using (host)
    {
      host.Start();
      Console.ReadLine();
@@ -228,8 +214,7 @@ You can run the host in a non-blocking manner by calling its `Start` method:
 Pass a list of URLs to the `Start` method and it will listen on the URLs specified:
 
 ````csharp
-
-   var urls = new List<string>() {
+var urls = new List<string>() {
      "http://*:5000",
      "http://localhost:5001"
      };
@@ -251,8 +236,7 @@ Pass a list of URLs to the `Start` method and it will listen on the URLs specifi
 You can override any of these environment variable values by specifying configuration (using `UseConfiguration`) or by setting the value explicitly (using `UseUrls` for instance). The host will use whichever option sets the value last. For this reason, `UseIISIntegration` must appear after `UseUrls`, because it replaces the URL with one dynamically provided by IIS. If you want to programmatically set the default URL to one value, but allow it to be overridden with configuration, you could configure the host as follows:
 
 ````csharp
-
-   var config = new ConfigurationBuilder()
+var config = new ConfigurationBuilder()
    .AddCommandLine(args)
    .Build();
 

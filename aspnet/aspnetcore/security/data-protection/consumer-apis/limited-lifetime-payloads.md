@@ -47,8 +47,7 @@ The sample below uses the [non-DI code paths](../configuration/non-di-scenarios.
 [!code-none[Main](limited-lifetime-payloads/samples/limitedlifetimepayloads.cs)]
 
 ````none
-
-   using System;
+using System;
    using System.IO;
    using System.Threading;
    using Microsoft.AspNetCore.DataProtection;

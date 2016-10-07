@@ -31,8 +31,7 @@ launchSettings.json
 [!code-javascript[Main](../fundamentals/environments/sample/src/Environments/Properties/launchSettings.json?highlight=15,22)]
 
 ````javascript
-
-   {
+{
      "iisSettings": {
        "windowsAuthentication": false,
        "anonymousAuthentication": true,
@@ -66,7 +65,7 @@ launchSettings.json
 You can create multiple different launch profiles for various different configurations of your application, including those that require other environment variables.
 
 >[!WARNING]
-> Environment variables stored in *launchSettings.json* are not secured in any way and will be part of the source code repository for your project, if you use one. **Never store credentials or other secret data in this file.** If you need a place to store such data, use the *Secret Manager* tool described in [Safe storage of app secrets during development](../security/app-secrets.md#security-app-secrets.md).
+> Environment variables stored in *launchSettings.json* are not secured in any way and will be part of the source code repository for your project, if you use one. **Never store credentials or other secret data in this file.** If you need a place to store such data, use the *Secret Manager* tool described in [Safe storage of app secrets during development](../security/app-secrets.md#security-app-secrets).
 
 ### Staging
 
@@ -90,8 +89,8 @@ This is by no means meant to be a complete list. It's best to avoid scattering e
 
 ## Determining the environment at runtime
 
-The [IHostingEnvironment](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/IHostingEnvironment/index.html.md#Microsoft.AspNetCore.Hosting.IHostingEnvironment.md) service provides the core abstraction for working with environments. This service is provided by the ASP.NET hosting layer, and can be injected into your startup logic via [Dependency Injection](dependency-injection.md). The ASP.NET Core web site template in Visual Studio uses this approach to load environment-specific configuration files (if present) and to customize the app's error handling settings. In both cases, this behavior is achieved by referring to the currently specified environment by calling [EnvironmentName](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/IHostingEnvironment/index.html.md#Microsoft.AspNetCore.Hosting.IHostingEnvironment.EnvironmentName.md) or
-[IsEnvironment](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/HostingEnvironmentExtensions/index.html.md#Microsoft.AspNetCore.Hosting.HostingEnvironmentExtensions.IsEnvironment.md) on the instance of [IHostingEnvironment](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/IHostingEnvironment/index.html.md#Microsoft.AspNetCore.Hosting.IHostingEnvironment.md) passed into the appropriate method.
+The [`IHostingEnvironment`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/IHostingEnvironment/index.html#Microsoft.AspNetCore.Hosting.IHostingEnvironment) service provides the core abstraction for working with environments. This service is provided by the ASP.NET hosting layer, and can be injected into your startup logic via [`Dependency Injection](dependency-injection.md). The ASP.NET Core web site template in Visual Studio uses this approach to load environment-specific configuration files (if present) and to customize the app's error handling settings. In both cases, this behavior is achieved by referring to the currently specified environment by calling [EnvironmentName`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/IHostingEnvironment/index.html#Microsoft.AspNetCore.Hosting.IHostingEnvironment.EnvironmentName) or
+[`IsEnvironment`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/HostingEnvironmentExtensions/index.html#Microsoft.AspNetCore.Hosting.HostingEnvironmentExtensions.IsEnvironment) on the instance of [`IHostingEnvironment`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/IHostingEnvironment/index.html#Microsoft.AspNetCore.Hosting.IHostingEnvironment) passed into the appropriate method.
 
 > [!NOTE]
 > If you need to check whether the application is running in a particular environment, use `env.IsEnvironment("environmentname")` since it will correctly ignore case (instead of checking if `env.EnvironmentName == "Development"` for example).
@@ -101,8 +100,7 @@ For example, you can use the following code in your Configure method to setup en
 [!code-csharp[Main](environments/sample/src/Environments/Startup.cs)]
 
 ````csharp
-
-   public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+public void Configure(IApplicationBuilder app, IHostingEnvironment env)
    {
        if (env.IsDevelopment())
        {
@@ -125,8 +123,7 @@ You may need to determine which content to send to the client at runtime, depend
 [!code-html[Main](environments/sample/src/Environments/Views/Shared/_Layout.cshtml)]
 
 ````html
-
-   <environment names="Development">
+<environment names="Development">
        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
        <link rel="stylesheet" href="~/css/site.css" />
    </environment>

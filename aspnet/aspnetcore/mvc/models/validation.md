@@ -22,8 +22,7 @@ Below is an annotated `Movie` model from an app that stores information about mo
 [!code-csharp[Main](validation/sample/Movie.cs)]
 
 ````csharp
-
-   public class Movie
+public class Movie
    {
        public int Id { get; set; }
 
@@ -85,8 +84,7 @@ MVC will continue validating fields until reaches the maximum number of errors (
 [!code-csharp[Main](validation/sample/Startup.cs)]
 
 ````csharp
-
-   services.AddMvc(options => options.MaxModelValidationErrors = 50);
+services.AddMvc(options => options.MaxModelValidationErrors = 50);
 
    ````
 
@@ -105,8 +103,7 @@ You may need to run validation manually. To do so, call the `TryValidateModel` m
 [!code-csharp[Main](validation/sample/MoviesController.cs)]
 
 ````csharp
-
-   TryValidateModel(movie);
+TryValidateModel(movie);
 
    ````
 
@@ -119,8 +116,7 @@ In the following sample, a business rule states that users may not set the genre
 [!code-csharp[Main](validation/sample/ClassicMovieAttribute.cs)]
 
 ````csharp
-
-   public class ClassicMovieAttribute : ValidationAttribute, IClientModelValidator
+public class ClassicMovieAttribute : ValidationAttribute, IClientModelValidator
    {
        private int _year;
 
@@ -150,8 +146,7 @@ Alternatively, this same code could be placed in the model by implementing the `
 [!code-csharp[Main](validation/sample/MovieIValidatable.cs)]
 
 ````csharp
-
-   public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
    {
        if (Genre == Genre.Classic && ReleaseDate.Year > _classicYear)
        {
@@ -172,16 +167,14 @@ You must have a view with the proper JavaScript script references in place for c
 [!code-html[Main](validation/sample/Views/Shared/_Layout.cshtml)]
 
 ````html
-
-   <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.min.js"></script>
 
    ````
 
 [!code-html[Main](validation/sample/Views/Shared/_ValidationScriptsPartial.cshtml)]
 
 ````html
-
-   <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
    ````
 
@@ -190,8 +183,7 @@ MVC uses validation attributes in addition to type metadata from model propertie
 [!code-html[Main](validation/sample/Views/Movies/Create.cshtml?highlight=4,5)]
 
 ````html
-
-   <div class="form-group">
+<div class="form-group">
        <label asp-for="ReleaseDate" class="col-md-2 control-label"></label>
        <div class="col-md-10">
            <input asp-for="ReleaseDate" class="form-control" />
@@ -206,8 +198,7 @@ The tag helpers above render the HTML below. Notice that the `data-` attributes 
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [8, 9, 10, 11, 12]}} -->
 
 ````html
-
-   <form action="/movies/Create" method="post">
+<form action="/movies/Create" method="post">
      <div class="form-horizontal">
        <h4>Movie</h4>
        <div class="text-danger"></div>
@@ -236,8 +227,7 @@ You may create client side logic for your custom attribute, and [unobtrusive val
 [!code-csharp[Main](validation/sample/ClassicMovieAttribute.cs)]
 
 ````csharp
-
-   public void AddValidation(ClientModelValidationContext context)
+public void AddValidation(ClientModelValidationContext context)
    {
        if (context == null)
        {
@@ -256,8 +246,7 @@ You may create client side logic for your custom attribute, and [unobtrusive val
 Attributes that implement this interface can add HTML attributes to generated fields. Examining the output for the `ReleaseDate` element reveals HTML that is similar to the previous example, except now there is a `data-val-classicmovie` attribute that was defined in the `AddValidation` method of `IClientModelValidator`.
 
 ````html
-
-   <input class="form-control" type="datetime"
+<input class="form-control" type="datetime"
    data-val="true"
    data-val-classicmovie="Classic movies must have a release year earlier than 1960"
    data-val-classicmovie-year="1960"
@@ -270,8 +259,7 @@ Unobtrusive validation uses the data in the `data-` attributes to display error 
 [!code-javascript[Main](validation/sample/Views/Movies/Create.cshtml)]
 
 ````javascript
-
-   $(function () {
+$(function () {
        jQuery.validator.addMethod('classicmovie',
            function (value, element, params) {
                // Get element value. Classic genre has value '0'.
@@ -308,8 +296,7 @@ You can implement remote validation in a two step process. First, you must annot
 [!code-csharp[Main](validation/sample/User.cs)]
 
 ````csharp
-
-   public class User
+public class User
    {
        [Remote(action: "VerifyEmail", controller: "Users")]
        public string Email { get; set; }
@@ -322,8 +309,7 @@ The second step is putting the validation code in the corresponding action metho
 [!code-none[Main](validation/sample/UsersController.cs)]
 
 ````none
-
-   [AcceptVerbs("Get", "Post")]
+[AcceptVerbs("Get", "Post")]
    public IActionResult VerifyEmail(string email)
    {
        if (!_userRepository.VerifyEmail(email))

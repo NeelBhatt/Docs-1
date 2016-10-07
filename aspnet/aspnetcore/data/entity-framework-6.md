@@ -14,8 +14,7 @@ Before you start, make sure that you compile against full .NET Framework in your
 In your project.json file specify a single target for the full .NET Framework:
 
 ````none
-
-   "frameworks": {
+"frameworks": {
        "net46": {}
    }
    ````
@@ -29,8 +28,7 @@ In your `DbContext` subclass, ensure you have a constructor which takes the conn
 <!-- literal_block {"ids": [], "linenos": true, "xml:space": "preserve", "language": "csharp"} -->
 
 ````csharp
-
-   public class ApplicationDbContext : DbContext
+public class ApplicationDbContext : DbContext
    {
        public ApplicationDbContext(string nameOrConnectionString) : base(nameOrConnectionString)
        {
@@ -43,8 +41,7 @@ In the `Startup` class within `ConfigureServices` add factory method of your con
 <!-- literal_block {"ids": [], "linenos": true, "xml:space": "preserve", "language": "csharp"} -->
 
 ````csharp
-
-   public void ConfigureServices(IServiceCollection services)
+public void ConfigureServices(IServiceCollection services)
    {
        services.AddScoped((_) => new ApplicationDbContext(Configuration["Data:DefaultConnection:ConnectionString"]));
 
@@ -63,8 +60,7 @@ Our config file typically looked like this:
 <!-- literal_block {"ids": [], "linenos": true, "xml:space": "preserve", "language": "xml"} -->
 
 ````xml
-
-   <entityFramework>
+<entityFramework>
        <defaultConnectionFactory type="System.Data.Entity.Infrastructure.LocalDbConnectionFactory, EntityFramework">
            <parameters>
                <parameter value="mssqllocaldb" />
@@ -81,8 +77,7 @@ The `defaultConnectionFactory` element sets the factory for connections. If this
 <!-- literal_block {"ids": [], "linenos": true, "xml:space": "preserve", "language": "csharp"} -->
 
 ````csharp
-
-   [DbConfigurationType(typeof(CodeConfig))] // point to the class that inherit from DbConfiguration
+[DbConfigurationType(typeof(CodeConfig))] // point to the class that inherit from DbConfiguration
    public class ApplicationDbContext : DbContext
    {
        [...]

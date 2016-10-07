@@ -26,8 +26,7 @@ An example `_Layout.cshtml`:
 [!code-html[Main](../../common/samples/WebApplication1/src/WebApplication1/Views/Shared/_Layout.cshtml?highlight=42,66)]
 
 ````html
-
-   <!DOCTYPE html>
+<!DOCTYPE html>
    <html>
    <head>
        <meta charset="utf-8" />
@@ -105,8 +104,7 @@ Razor views have a `Layout` property. Individual views specify a layout by setti
 [!code-html[Main](../../common/samples/WebApplication1/src/WebApplication1/Views/_ViewStart.cshtml?highlight=2)]
 
 ````html
-
-   @{
+@{
        Layout = "_Layout";
    }
 
@@ -125,8 +123,7 @@ A layout can optionally reference one or more *sections*, by calling `RenderSect
 An example `@section` definition in a view:
 
 ````html
-
-   @section Scripts {
+@section Scripts {
      <script type="text/javascript" src="/scripts/main.js"></script>
    }
    ````
@@ -139,7 +136,7 @@ Sections defined in a view are available only in its immediate layout page. They
 
 By default, the body and all sections in a content page must all be rendered by the layout page. The Razor view engine enforces this by tracking whether the body and each section have been rendered.
 
-To instruct the view engine to ignore the body or sections, call the [IgnoreBody](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Razor/RazorPage/index.html.md#Microsoft.AspNetCore.Mvc.Razor.RazorPage.IgnoreBody.md) and [IgnoreSection](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Razor/RazorPage/index.html.md#Microsoft.AspNetCore.Mvc.Razor.RazorPage.IgnoreSection.md) methods.
+To instruct the view engine to ignore the body or sections, call the [`IgnoreBody`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Razor/RazorPage/index.html#Microsoft.AspNetCore.Mvc.Razor.RazorPage.IgnoreBody) and [`IgnoreSection`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Razor/RazorPage/index.html#Microsoft.AspNetCore.Mvc.Razor.RazorPage.IgnoreSection) methods.
 
 The body and every section in a Razor page must be either rendered or ignored.
 
@@ -170,8 +167,7 @@ A sample `_ViewImports.cshtml` file:
 [!code-html[Main](../../common/samples/WebApplication1/src/WebApplication1/Views/_ViewImports.cshtml)]
 
 ````html
-
-   @using WebApplication1
+@using WebApplication1
    @using WebApplication1.Models
    @using WebApplication1.Models.AccountViewModels
    @using WebApplication1.Models.ManageViewModels
@@ -209,8 +205,7 @@ A sample `_ViewStart.cshtml` file:
 [!code-html[Main](../../common/samples/WebApplication1/src/WebApplication1/Views/_ViewStart.cshtml)]
 
 ````html
-
-   @{
+@{
        Layout = "_Layout";
    }
 

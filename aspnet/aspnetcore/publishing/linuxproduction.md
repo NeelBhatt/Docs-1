@@ -39,8 +39,7 @@ For the purposes of this guide, we are going to use a single instance of Nginx t
 ### Install Nginx
 
 ````bash
-
-   sudo apt-get install nginx
+sudo apt-get install nginx
    ````
 
 > [!NOTE]
@@ -49,8 +48,7 @@ For the purposes of this guide, we are going to use a single instance of Nginx t
 We are going to `apt-get` to install Nginx. The installer also creates a System V init script that runs Nginx as daemon on system startup. Since we just installed Nginx for the first time, we can explicitly start it by running
 
 ````bash
-
-   sudo service nginx start
+sudo service nginx start
    ````
 
 At this point you should be able to navigate to your browser and see the default landing page for Nginx.
@@ -62,8 +60,7 @@ We will now configure Nginx as a reverse proxy to forward requests to our ASP.NE
 We will be modifying the `/etc/nginx/sites-available/default`, so open it up in your favorite text editor and replace the contents with the following.
 
 ````nginx
-
-   server {
+server {
        listen 80;
        location / {
            proxy_pass http://localhost:5000;
@@ -87,8 +84,7 @@ Nginx will forward requests to your Kestrel server, however unlike IIS on Window
 ### Installing supervisor
 
 ````bash
-
-   sudo apt-get install supervisor
+sudo apt-get install supervisor
    ````
 
 > [!NOTE]
@@ -103,8 +99,7 @@ To have supervisor monitor our application, we will add a file to the `/etc/supe
 /etc/supervisor/conf.d/hellomvc.conf
 
 ````ini
-
-   [program:hellomvc]
+[program:hellomvc]
    command=/usr/bin/dotnet /var/aspnetcore/HelloMVC/HelloMVC.dll
    directory=/var/aspnetcore/HelloMVC/
    autostart=true
@@ -121,8 +116,7 @@ To have supervisor monitor our application, we will add a file to the `/etc/supe
 Once you are done editing the configuration file, restart the `supervisord` process to change the set of programs controlled by supervisord.
 
 ````bash
-
-   sudo service supervisor stop
+sudo service supervisor stop
    sudo service supervisor start
    ````
 
@@ -135,15 +129,13 @@ In our case, since we are using supervisor to manage our application, the applic
 **Supervisord** logs messages about its own health and its subprocess' state changes to the activity log. The path to the activity log is configured via the `logfile` parameter in the configuration file.
 
 ````bash
-
-   sudo tail -f /var/log/supervisor/supervisord.log
+sudo tail -f /var/log/supervisor/supervisord.log
    ````
 
 You can redirect application logs (`STDOUT` and `STERR`) in the program section of your configuration file.
 
 ````bash
-
-   tail -f /var/log/hellomvc.out.log
+tail -f /var/log/hellomvc.out.log
    ````
 
 ## Securing our application  ### Enable `AppArmor`
@@ -155,8 +147,7 @@ Linux Security Modules (LSM) is a framework that is part of the Linux kernel sin
 Close off all external ports that are not in use. Uncomplicated firewall (ufw) provides a frontend for `iptables` by providing a command-line interface for configuring the firewall. Verify that `ufw` is configured to allow traffic on any ports you need.
 
 ````bash
-
-   sudo apt-get install ufw
+sudo apt-get install ufw
    sudo ufw enable
 
    sudo ufw allow 80/tcp
@@ -170,8 +161,7 @@ The default distribution of Nginx doesn't enable SSL. To enable all the security
 #### Download the source and install the build dependencies
 
 ````bash
-
-   # Install the build dependencies
+# Install the build dependencies
    sudo apt-get update
    sudo apt-get install build-essential zlib1g-dev libpcre3-dev libssl-dev libxslt1-dev libxml2-dev libgd2-xpm-dev libgeoip-dev libgoogle-perftools-dev libperl-dev
 
@@ -185,8 +175,7 @@ The default distribution of Nginx doesn't enable SSL. To enable all the security
 Edit *src/http/ngx_http_header_filter_module.c*
 
 ````c
-
-   static char ngx_http_server_string[] = "Server: Your Web Server" CRLF;
+static char ngx_http_server_string[] = "Server: Your Web Server" CRLF;
    static char ngx_http_server_full_string[] = "Server: Your Web Server" CRLF;
    ````
 
@@ -197,8 +186,7 @@ The PCRE library is required for regular expressions. Regular expressions are us
 Consider using a web application firewall like *ModSecurity* to harden your application.
 
 ````bash
-
-   ./configure
+./configure
    --with-pcre=../pcre-8.38
    --with-zlib=../zlib-1.2.8
    --with-http_ssl_module
@@ -221,8 +209,7 @@ Add `/etc/nginx/proxy.conf` configuration file.
 [!code-nginx[Main](linuxproduction/proxy.conf)]
 
 ````nginx
-
-   proxy_redirect 			off;
+proxy_redirect 			off;
    proxy_set_header 		Host 			$host;
    proxy_set_header		X-Real-IP 		$remote_addr;
    proxy_set_header		X-Forwarded-For	$proxy_add_x_forwarded_for;
@@ -240,8 +227,7 @@ Edit `/etc/nginx/nginx.conf` configuration file. The example contains both http 
 [!code-nginx[Main](../publishing/linuxproduction/nginx.conf?highlight=2)]
 
 ````nginx
-
-   http {
+http {
        include    /etc/nginx/proxy.conf;
        limit_req_zone $binary_remote_addr zone=one:10m rate=5r/s;
        server_tokens off;

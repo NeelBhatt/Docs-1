@@ -18,13 +18,12 @@ Adding logging to a component in your application is done by requesting either a
 [!code-csharp[Main](logging/sample/src/TodoApi/Startup.cs)]
 
 ````csharp
-
-   var logger = loggerFactory.CreateLogger("Catchall Endpoint");
+var logger = loggerFactory.CreateLogger("Catchall Endpoint");
    logger.LogInformation("No endpoint found for request {path}", context.Request.Path);
 
    ````
 
-When a logger is created, a category name must be provided. The category name specifies the source of the logging events. By convention this string is hierarchical, with categories separated by dot (`.`) characters. Some logging providers have filtering support that leverages this convention, making it easier to locate logging output of interest. In this article's sample application, logging is configured to use the built-in [ConsoleLogger](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Logging/Console/ConsoleLogger/index.html) (see [Configuring Logging in your Application](#configuring-logging-in-your-application) below). To see the console logger in action, run the sample application using the `dotnet run` command, and make a request to configured URL (`localhost:5000`). You should see output similar to the following:
+When a logger is created, a category name must be provided. The category name specifies the source of the logging events. By convention this string is hierarchical, with categories separated by dot (`.`) characters. Some logging providers have filtering support that leverages this convention, making it easier to locate logging output of interest. In this article's sample application, logging is configured to use the built-in [`ConsoleLogger`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Logging/Console/ConsoleLogger/index.html) (see [Configuring Logging in your Application](#configuring-logging-in-your-application) below). To see the console logger in action, run the sample application using the `dotnet run` command, and make a request to configured URL (`localhost:5000`). You should see output similar to the following:
 
 ![image](logging/_static/console-logger-output.png)
 
@@ -35,8 +34,7 @@ The call to the log method can utilize a format string with named placeholders (
 [!code-csharp[Main](logging/sample/src/TodoApi/Startup.cs)]
 
 ````csharp
-
-   logger.LogInformation("No endpoint found for request {path}", context.Request.Path);
+logger.LogInformation("No endpoint found for request {path}", context.Request.Path);
 
    ````
 
@@ -47,8 +45,7 @@ The logic for the API is contained within the *TodoController*, which uses [Depe
 [!code-csharp[Main](../fundamentals/logging/sample/src/TodoApi/Controllers/TodoController.cs?highlight=5,8,11,17)]
 
 ````csharp
-
-   [Route("api/[controller]")]
+[Route("api/[controller]")]
    public class TodoController : Controller
    {
        private readonly ITodoRepository _todoRepository;
@@ -79,7 +76,7 @@ As we have just seen, your application can request an instance of `ILogger<T>` a
 
 ### Logging Verbosity Levels
 
-When adding logging statements to your application, you must specify a [LogLevel](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Logging/LogLevel/index.html). The LogLevel allows you to control the verbosity of the logging output from your application, as well as the ability to pipe different kinds of log messages to different loggers. For example, you may wish to log debug messages to a local file, but log errors to the machine's event log or a database.
+When adding logging statements to your application, you must specify a [`LogLevel`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Logging/LogLevel/index.html). The LogLevel allows you to control the verbosity of the logging output from your application, as well as the ability to pipe different kinds of log messages to different loggers. For example, you may wish to log debug messages to a local file, but log errors to the machine's event log or a database.
 
 ASP.NET Core defines six levels of logging verbosity, ordered by increasing importance or severity:
 
@@ -101,7 +98,7 @@ Error
 Critical
    A critical log level should be reserved for unrecoverable application or system crashes, or catastrophic failure that requires immediate attention. Examples: data loss scenarios, out of disk space
 
-The `Logging` package provides [helper extension methods](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Logging/LoggerExtensions/index.html) for each `LogLevel` value, allowing you to call, for example, `LogInformation`, rather than the more verbose `Log(LogLevel.Information, ...)` method. Each of the `LogLevel`-specific extension methods has several overloads, allowing you to pass in some or all of the following parameters:
+The `Logging` package provides [`helper extension methods`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Logging/LoggerExtensions/index.html) for each `LogLevel` value, allowing you to call, for example, `LogInformation`, rather than the more verbose `Log(LogLevel.Information, ...)` method. Each of the `LogLevel`-specific extension methods has several overloads, allowing you to pass in some or all of the following parameters:
 
 string data
    The message to log.
@@ -129,8 +126,7 @@ In the `TodoController` example, event id constants are defined for each event, 
 [!code-csharp[Main](../fundamentals/logging/sample/src/TodoApi/Controllers/TodoController.cs?highlight=4,12,16)]
 
 ````csharp
-
-   [HttpGet]
+[HttpGet]
    public IEnumerable<TodoItem> GetAll()
    {
        _logger.LogInformation(LoggingEvents.LIST_ITEMS, "Listing all items");
@@ -175,8 +171,7 @@ To configure logging in your ASP.NET Core application, you should resolve `ILogg
 [!code-csharp[Main](logging/sample/src/TodoApi/Startup.cs?highlight=25)]
 
 ````csharp
-
-       public void Configure(IApplicationBuilder app,
+    public void Configure(IApplicationBuilder app,
            IHostingEnvironment env,
            ILoggerFactory loggerFactory)
 
@@ -194,8 +189,7 @@ A LoggerFactory instance can optionally be configured with custom `FilterLoggerS
 [!code-csharp[Main](logging/sample/src/TodoApi/Startup.cs)]
 
 ````csharp
-
-   loggerFactory
+loggerFactory
        .WithFilter(new FilterLoggerSettings
        {
            { "Microsoft", LogLevel.Warning },
@@ -215,8 +209,7 @@ First, be sure to add the `Microsoft.Extensions.Logging.TraceSource` package to 
 [!code-javascript[Main](../fundamentals/logging/sample/src/TodoApi/project.json?highlight=7,10)]
 
 ````javascript
-
-     "Microsoft.AspNetCore.Mvc": "1.0.0",
+  "Microsoft.AspNetCore.Mvc": "1.0.0",
      "Microsoft.AspNetCore.Server.Kestrel": "1.0.0",
      "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0",
      "Microsoft.AspNetCore.StaticFiles": "1.0.0",
@@ -235,8 +228,7 @@ The following example demonstrates how to configure a `TraceSourceLogger` instan
 [!code-csharp[Main](logging/sample/src/TodoApi/Startup.cs)]
 
 ````csharp
-
-   // add Trace Source logging
+// add Trace Source logging
    var testSwitch = new SourceSwitch("sourceSwitch", "Logging Sample");
    testSwitch.Level = SourceLevels.Warning;
    loggerFactory.AddTraceSource(testSwitch,
@@ -251,8 +243,7 @@ The API action below logs a warning when the specified `id` is not found:
 [!code-csharp[Main](../fundamentals/logging/sample/src/TodoApi/Controllers/TodoController.cs?highlight=8)]
 
 ````csharp
-
-   [HttpGet("{id}", Name = "GetTodo")]
+[HttpGet("{id}", Name = "GetTodo")]
    public IActionResult GetById(string id)
    {
        _logger.LogInformation(LoggingEvents.GET_ITEM, "Getting item {0}", id);

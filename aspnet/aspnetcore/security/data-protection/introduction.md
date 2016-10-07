@@ -61,6 +61,6 @@ The data protection stack consists of five packages.
 
 * Microsoft.AspNetCore.DataProtection.Extensions contains additional APIs which developers might find useful but which don't belong in the core package. For instance, this package contains a simple "instantiate the system pointing at a specific key storage directory with no dependency injection setup" API (more info). It also contains extension methods for limiting the lifetime of protected payloads (more info).
 
-* Microsoft.AspNetCore.DataProtection.SystemWeb can be installed into an existing ASP.NET 4.x application to redirect its <machineKey> operations to instead use the new data protection stack. See [compatibility](compatibility/replacing-machinekey.md#compatibility-replacing-machinekey.md) for more information.
+* Microsoft.AspNetCore.DataProtection.SystemWeb can be installed into an existing ASP.NET 4.x application to redirect its <machineKey> operations to instead use the new data protection stack. See [compatibility](compatibility/replacing-machinekey.md#compatibility-replacing-machinekey) for more information.
 
 * Microsoft.AspNetCore.Cryptography.KeyDerivation provides an implementation of the PBKDF2 password hashing routine and can be used by systems which need to handle user passwords securely. See [Password Hashing](consumer-apis/password-hashing.md) for more information.

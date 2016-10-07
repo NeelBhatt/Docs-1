@@ -38,7 +38,7 @@ View Components are intended anywhere you have reusable rendering logic that is 
 
 * A login panel that would be rendered on every page and show either the links to log out or log in, depending on the log in state of the user
 
-A [view component](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ViewComponent/index.html) consists of two parts, the class (typically derived from  `ViewComponent`) and the result it returns (typically a view). Like controllers, a view component can be a POCO, but most developers will want to take advantage of the methods and properties available by deriving from `ViewComponent`.
+A [`view component`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ViewComponent/index.html) consists of two parts, the class (typically derived from  `ViewComponent`) and the result it returns (typically a view). Like controllers, a view component can be a POCO, but most developers will want to take advantage of the methods and properties available by deriving from `ViewComponent`.
 
 ## Creating a view component
 
@@ -54,7 +54,7 @@ A view component class can be created by any of the following:
 
 * Creating a class where the name ends with the suffix *ViewComponent*
 
-Like controllers, view components must be public, non-nested, and non-abstract classes. The view component name is the class name with the "ViewComponent" suffix removed. It can also be explicitly specified using the [ViewComponentAttribute.Name](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ViewComponentAttribute/index.html#prop-Microsoft.AspNetCore.Mvc.ViewComponentAttribute.Name) property.
+Like controllers, view components must be public, non-nested, and non-abstract classes. The view component name is the class name with the "ViewComponent" suffix removed. It can also be explicitly specified using the [`ViewComponentAttribute.Name`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ViewComponentAttribute/index.html#prop-Microsoft.AspNetCore.Mvc.ViewComponentAttribute.Name) property.
 
 A view component class:
 
@@ -64,11 +64,11 @@ A view component class:
 
 ### View component methods
 
-A view component defines its logic in an `InvokeAsync` method that returns an [IViewComponentResult](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/IViewComponentResult/index.html). Parameters come directly from invocation of the view component, not from model binding. A view component never directly handles a request. Typically a view component initializes a model and passes it to a view by calling the [View](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ViewComponent/index.html) method. In summary, view component methods:
+A view component defines its logic in an `InvokeAsync` method that returns an [`IViewComponentResult`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/IViewComponentResult/index.html). Parameters come directly from invocation of the view component, not from model binding. A view component never directly handles a request. Typically a view component initializes a model and passes it to a view by calling the [`View`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ViewComponent/index.html) method. In summary, view component methods:
 
 * Define an *InvokeAsync`* method that returns an `IViewComponentResult`
 
-* Typically initializes a model and passes it to a view by calling the [ViewComponent](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ViewComponent/index.html)  [View](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ViewResult/index.html) method
+* Typically initializes a model and passes it to a view by calling the [`ViewComponent`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ViewComponent/index.html)  [`View`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ViewResult/index.html) method
 
 * Parameters come from the calling method, not HTTP, there is no model binding
 
@@ -93,21 +93,19 @@ We recommend you name the view file *Default.cshtml* and use the *Views/Shared/C
 To use the view component, call `@Component.InvokeAsync("Name of view component", <anonymous type containing parameters>)` from a view. The parameters will be passed to the `InvokeAsync` method.  The `PriorityList` view component developed in the article is invoked from the *Views/Todo/Index.cshtml* view file. In the following, the `InvokeAsync` method is called with two parameters:
 
 ````HTML
-
-   @await Component.InvokeAsync("PriorityList", new { maxPriority = 2, isDone = false })
+@await Component.InvokeAsync("PriorityList", new { maxPriority = 2, isDone = false })
    ````
 
 ### Invoking a view component directly from a controller
 
-View components are typically invoked from a view, but you can invoke them directly from a controller method. While view components do not define endpoints like controllers, you can easily implement a controller action that returns the content of a [ViewComponentResult](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ViewComponentResult/index.html).
+View components are typically invoked from a view, but you can invoke them directly from a controller method. While view components do not define endpoints like controllers, you can easily implement a controller action that returns the content of a [`ViewComponentResult`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ViewComponentResult/index.html).
 
 In this example, the view component is called directly from the controller:
 
 [!code-csharp[Main](view-components/sample/ViewCompFinal/Controllers/ToDoController.cs)]
 
 ````csharp
-
-     public IActionResult IndexVC()
+  public IActionResult IndexVC()
      {
          return ViewComponent("PriorityList", new { maxPriority = 3, isDone = false });
      }
@@ -127,8 +125,7 @@ Create a *ViewComponents* folder and add the following `PriorityListViewComponen
 [!code-csharp[Main](view-components/sample/ViewCompFinal/ViewComponents/PriorityListViewComponent1.cs)]
 
 ````csharp
-
-   using Microsoft.AspNet.Mvc;
+using Microsoft.AspNet.Mvc;
    using Microsoft.Data.Entity;
    using System.Collections.Generic;
    using System.Linq;
@@ -173,8 +170,7 @@ Notes on the code:
   <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp"} -->
 
   ````csharp
-
-     [ViewComponent(Name = "PriorityList")]
+  [ViewComponent(Name = "PriorityList")]
      public class XYZ : ViewComponent
      ````
 
@@ -197,8 +193,7 @@ Notes on the code:
 [!code-html[Main](view-components/sample/ViewCompFinal/Views/Shared/Components/PriorityList/Default1.cshtml)]
 
 ````html
-
-   @model IEnumerable<ViewComponentSample.Models.TodoItem>
+@model IEnumerable<ViewComponentSample.Models.TodoItem>
 
    <h3>Priority Items</h3>
    <ul>
@@ -218,8 +213,7 @@ If the view component was controller specific, you could add it to the controlle
 [!code-html[Main](view-components/sample/ViewCompFinal/Views/Todo/IndexFirst.cshtml)]
 
 ````html
-
-       }
+    }
    </table>
    <div >
        @await Component.InvokeAsync("PriorityList", new { maxPriority = 2, isDone = false })
@@ -238,8 +232,7 @@ You can also call the view component directly from the controller:
 [!code-csharp[Main](view-components/sample/ViewCompFinal/Controllers/ToDoController.cs)]
 
 ````csharp
-
-     public IActionResult IndexVC()
+  public IActionResult IndexVC()
      {
          return ViewComponent("PriorityList", new { maxPriority = 3, isDone = false });
      }
@@ -253,8 +246,7 @@ A complex view component might need to specify a non-default view under some con
 [!code-csharp[Main](../../mvc/views/view-components/sample/ViewCompFinal/ViewComponents/PriorityListViewComponentFinal.cs?highlight=4,5,6,7,8,9)]
 
 ````csharp
-
-   public async Task<IViewComponentResult> InvokeAsync(
+public async Task<IViewComponentResult> InvokeAsync(
        int maxPriority, bool isDone)
    {
        string MyView = "Default";
@@ -274,8 +266,7 @@ Copy the *Views/Shared/Components/PriorityList/Default.cshtml* file to a view na
 [!code-html[Main](../../mvc/views/view-components/sample/ViewCompFinal/Views/Shared/Components/PriorityList/PVC.cshtml?highlight=3)]
 
 ````html
-
-   @model IEnumerable<ViewComponentSample.Models.TodoItem>
+@model IEnumerable<ViewComponentSample.Models.TodoItem>
 
    <h2> PVC Named Priority Component View</h2>
    <h4>@ViewBag.PriorityMessage</h4>
@@ -292,8 +283,7 @@ Update *Views/TodoList/Index.cshtml*
 [!code-html[Main](view-components/sample/ViewCompFinal/Views/Todo/IndexFinal.cshtml)]
 
 ````html
-
-   </table>
+</table>
 
    <div>
        @await Component.InvokeAsync("PriorityList", new { maxPriority = 4, isDone = true })
@@ -318,8 +308,7 @@ If the PVC view is not rendered, verify you are calling the view component with 
    <!-- literal_block {"ids": [], "xml:space": "preserve"} -->
 
    ````
-
-      An unhandled exception occurred while processing the request.
+   An unhandled exception occurred while processing the request.
 
       InvalidOperationException: The view 'Components/PriorityList/Default'
          was not found. The following locations were searched:
@@ -343,8 +332,7 @@ If you want compile time safety you can replace the hard coded view component na
 [!code-csharp[Main](../../mvc/views/view-components/sample/ViewCompFinal/ViewComponents/PriorityList.cs?highlight=10,14)]
 
 ````csharp
-
-   using Microsoft.AspNet.Mvc;
+using Microsoft.AspNet.Mvc;
    using Microsoft.Data.Entity;
    using System.Collections.Generic;
    using System.Linq;
@@ -383,8 +371,7 @@ Add a `using` statement to your Razor view file and use the `nameof` operator:
 [!code-html[Main](view-components/sample/ViewCompFinal/Views/Todo/IndexNameof.cshtml)]
 
 ````html
-
-   @using ViewComponentSample.Models
+@using ViewComponentSample.Models
    @using ViewComponentSample.ViewComponents
    @model IEnumerable<TodoItem>
 
@@ -404,4 +391,4 @@ Add a `using` statement to your Razor view file and use the `nameof` operator:
 
 * [Dependency injection into views](dependency-injection.md)
 
-* [ViewComponent](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ViewComponent/index.html)
+* [`ViewComponent`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ViewComponent/index.html)

@@ -66,7 +66,8 @@ The following steps will guide you through creating a web app in the Azure Porta
 
 
 
-   Note: The **App Service Name** name needs to be unique. The portal will enforce this rule when you attempt to enter the name. After you enter a different value, you'll need to substitute that value for each occurrence of **SampleWebAppDemo** that you see in this tutorial.
+>[!NOTE]
+>The **App Service Name** name needs to be unique. The portal will enforce this rule when you attempt to enter the name. After you enter a different value, you'll need to substitute that value for each occurrence of **SampleWebAppDemo** that you see in this tutorial.
 
    Also in the **Web App** blade, select an existing **App Service Plan/Location** or create a new one. If you create a new plan, select the pricing tier, location, and other options. For more information on App Service plans, [Azure App Service plans in-depth overview](https://azure.microsoft.com/en-us/documentation/articles/azure-web-sites-web-hosting-plans-in-depth-overview/).
 
@@ -134,7 +135,8 @@ In this section, you will create a local Git repository using Visual Studio and 
 
 
 
-   Note: As an alternative, you can specify the remote repository from the **Command Window** by opening the **Command Window**, changing to your project directory, and entering the command. For example:`git remote add Azure-SampleApp https://me@sampleapp.scm.azurewebsites.net:443/SampleApp.git`
+>[!NOTE]
+>As an alternative, you can specify the remote repository from the **Command Window** by opening the **Command Window**, changing to your project directory, and entering the command. For example:`git remote add Azure-SampleApp https://me@sampleapp.scm.azurewebsites.net:443/SampleApp.git`
 
 6. Select the **Home** (home icon) > **Settings** > **Global Settings**. Make sure you have your name and your email address set. You may also need to select **Update**.
 
@@ -146,7 +148,8 @@ In this section, you will create a local Git repository using Visual Studio and 
 
 
 
-   Note: As an alternative, you can commit your changes from the **Command Window** by opening the **Command Window**, changing to your project directory, and entering the git commands. For example:`git add .``git commit -am "Initial Push #1"`
+>[!NOTE]
+>As an alternative, you can commit your changes from the **Command Window** by opening the **Command Window**, changing to your project directory, and entering the git commands. For example:`git add .``git commit -am "Initial Push #1"`
 
 9. Select **Home** > **Sync** > **Actions** > **Open Command Prompt**. The command prompt will open to your project directory.
 
@@ -156,7 +159,8 @@ In this section, you will create a local Git repository using Visual Studio and 
 
 11. Enter your Azure **deployment credentials** password that you created earlier in Azure.
 
-   Note: Your password will not be visible as you enter it.
+>[!NOTE]
+>Your password will not be visible as you enter it.
 
 This command will start the process of pushing your local project files to Azure. The output from the above command ends with a message that deployment was successful.
 
@@ -200,8 +204,7 @@ After you make changes to your local code, you can republish.
 2. In the `Configure` method, modify the `Response.WriteAsync` method so that it appears as follows:
 
 ````aspx-cs
-
-   await context.Response.WriteAsync("Hello World! Deploy to Azure.");
+await context.Response.WriteAsync("Hello World! Deploy to Azure.");
    ````
 
 3. Save changes to *Startup.cs*.
@@ -211,15 +214,15 @@ After you make changes to your local code, you can republish.
 5. Enter a commit message, such as:
 
 ````none
-
-   Update #2
+Update #2
    ````
 
 6. Press the **Commit** button to commit the project changes.
 
 7. Select **Home** > **Sync** > **Actions** > **Push**.
 
-   Note: As an alternative, you can push your changes from the **Command Window** by opening the **Command Window**, changing to your project directory, and entering a git command. For example:`git push -u Azure-SampleApp master`
+>[!NOTE]
+>As an alternative, you can push your changes from the **Command Window** by opening the **Command Window**, changing to your project directory, and entering a git command. For example:`git push -u Azure-SampleApp master`
 
 ## View the updated web app in Azure
 

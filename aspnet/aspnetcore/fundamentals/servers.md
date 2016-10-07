@@ -33,8 +33,7 @@ project.json (truncated)
 [!code-json[Main](../fundamentals/servers/sample/ServersDemo/src/ServersDemo/project.json?highlight=12,13)]
 
 ````json
-
-   {
+{
      "webroot": "wwwroot",
      "version": "1.0.0-*",
 
@@ -61,8 +60,7 @@ program.cs
 [!code-csharp[Main](../fundamentals/servers/sample/ServersDemo/src/ServersDemo/Program.cs?highlight=32,33,34,35,36,37,38,39,40)]
 
 ````csharp
-
-   using System;
+using System;
    using System.Threading.Tasks;
    using Microsoft.AspNet.Hosting;
    using Microsoft.Extensions.Configuration;
@@ -121,22 +119,19 @@ The `Microsoft.AspNetCore.Hosting` command supports server parameters (such as `
 The *project.json* file shown above demonstrates how to pass the `server.urls` parameter directly:
 
 ````javascript
-
-   "web": "Microsoft.AspNetCore.Kestrel --server.urls http://localhost:5004"
+"web": "Microsoft.AspNetCore.Kestrel --server.urls http://localhost:5004"
    ````
 
 Alternately, a  JSON configuration file can be used,
 
 ````javascript
-
-   "kestrel": "Microsoft.AspNetCore.Hosting"
+"kestrel": "Microsoft.AspNetCore.Hosting"
    ````
 
 The `hosting.json` can include the settings the server will use (including the server parameter, as well):
 
 ````json
-
-   {
+{
      "server": "Microsoft.AspNetCore.Server.Kestrel",
      "server.urls": "http://localhost:5004/"
    }
@@ -144,13 +139,12 @@ The `hosting.json` can include the settings the server will use (including the s
 
 ### Programmatic configuration
 
-The server hosting the application can be referenced programmatically via the [IApplicationBuilder](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/IApplicationBuilder/index.html) interface, available in the `Configure` method in `Startup`. [IApplicationBuilder](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/IApplicationBuilder/index.html) exposes Server Features of type [IFeatureCollection](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Http/Features/IFeatureCollection/index.html). `IServerAddressesFeature` only expose a `Addresses` property, but different server implementations may expose additional functionality. For instance, WebListener exposes `AuthenticationManager` that can be used to configure the server's authentication:
+The server hosting the application can be referenced programmatically via the [`IApplicationBuilder`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/IApplicationBuilder/index.html) interface, available in the `Configure` method in `Startup`. [`IApplicationBuilder`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/IApplicationBuilder/index.html) exposes Server Features of type [`IFeatureCollection`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Http/Features/IFeatureCollection/index.html). `IServerAddressesFeature` only expose a `Addresses` property, but different server implementations may expose additional functionality. For instance, WebListener exposes `AuthenticationManager` that can be used to configure the server's authentication:
 
 [!code-csharp[Main](../fundamentals/servers/sample/ServersDemo/src/ServersDemo/Startup.cs?highlight=3,6,7,10,15)]
 
 ````csharp
-
-   public void Configure(IApplicationBuilder app, IApplicationLifetime lifetime, ILoggerFactory loggerFactory)
+public void Configure(IApplicationBuilder app, IApplicationLifetime lifetime, ILoggerFactory loggerFactory)
    {
        var webListenerInfo = app.ServerFeatures.Get<WebListener>();
        if (webListenerInfo != null)
@@ -188,8 +182,7 @@ WebListener is a Windows-only HTTP server for ASP.NET Core. It runs directly on 
 You can add support for WebListener to your ASP.NET application by adding the "Microsoft.AspNetCore.Server.WebListener" dependency in *project.json* and the following command:
 
 ````javascript
-
-   "web": "Microsoft.AspNetCore.Hosting --server Microsoft.AspNetCore.Server.WebListener --server.urls http://localhost:5000"
+"web": "Microsoft.AspNetCore.Hosting --server Microsoft.AspNetCore.Server.WebListener --server.urls http://localhost:5000"
    ````
 
 > [!NOTE]
@@ -212,7 +205,7 @@ If you intend to deploy your application on a Windows server, you should run IIS
 
 ## Custom Servers
 
-You can create your own server in which to host ASP.NET apps, or use other open source servers. When implementing your own server, you're free to implement just the feature interfaces your application needs, though at a minimum you must support [IHttpRequestFeature](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Http/Features/IHttpRequestFeature/index.html) and [IHttpResponseFeature](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Http/Features/IHttpResponseFeature/index.html).
+You can create your own server in which to host ASP.NET apps, or use other open source servers. When implementing your own server, you're free to implement just the feature interfaces your application needs, though at a minimum you must support [`IHttpRequestFeature`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Http/Features/IHttpRequestFeature/index.html) and [`IHttpResponseFeature`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Http/Features/IHttpResponseFeature/index.html).
 
 Since Kestrel is open source, it makes an excellent starting point if you need to implement your own custom server. Like all of ASP.NET Core, you're welcome to [contribute](https://github.com/aspnet/KestrelHttpServer/blob/dev/CONTRIBUTING.md) any improvements you make back to the project.
 

@@ -11,7 +11,7 @@ Most systems which support cryptographic agility do so by including some identif
 
 Stepping back, we decided that we were approaching the problem from the wrong direction. An OID tells you what the algorithm is, but we don't actually care about this. If we need to use a single entropic value securely in two different algorithms, it's not necessary for us to know what the algorithms actually are. What we actually care about is how they behave. Any decent symmetric block cipher algorithm is also a strong pseudorandom permutation (PRP): fix the inputs (key, chaining mode, IV, plaintext) and the ciphertext output will with overwhelming probability be distinct from any other symmetric block cipher algorithm given the same inputs. Similarly, any decent keyed hash function is also a strong pseudorandom function (PRF), and given a fixed input set its output will overwhelmingly be distinct from any other keyed hash function.
 
-We use this concept of strong PRPs and PRFs to build up a context header. This context header essentially acts as a stable thumbprint over the algorithms in use for any given operation, and it provides the cryptographic agility needed by the data protection system. This header is reproducible and is used later as part of the [subkey derivation process](subkeyderivation.md#data-protection-implementation-subkey-derivation.md). There are two different ways to build the context header depending on the modes of operation of the underlying algorithms.
+We use this concept of strong PRPs and PRFs to build up a context header. This context header essentially acts as a stable thumbprint over the algorithms in use for any given operation, and it provides the cryptographic agility needed by the data protection system. This header is reproducible and is used later as part of the [subkey derivation process](subkeyderivation.md#data-protection-implementation-subkey-derivation). There are two different ways to build the context header depending on the modes of operation of the underlying algorithms.
 
 ## CBC-mode encryption + HMAC authentication
 
@@ -48,8 +48,7 @@ First, let ( K_E || K_H ) = SP800_108_CTR(prf = HMACSHA512, key = "", label = ""
 <!-- literal_block {"ids": [], "xml:space": "preserve"} -->
 
 ````
-
-   5B B6 C9 83 13 78 22 1D 8E 10 73 CA CF 65 8E B0
+5B B6 C9 83 13 78 22 1D 8E 10 73 CA CF 65 8E B0
    61 62 42 71 CB 83 21 DD A0 4A 05 00 5B AB C0 A2
    49 6F A5 61 E3 E2 49 87 AA 63 55 CD 74 0A DA C4
    B7 92 3D BF 59 90 00 A9
@@ -68,8 +67,7 @@ This produces the full context header below:
 <!-- literal_block {"ids": [], "xml:space": "preserve"} -->
 
 ````
-
-   00 00 00 00 00 18 00 00 00 10 00 00 00 20 00 00
+00 00 00 00 00 18 00 00 00 10 00 00 00 20 00 00
    00 20 F4 74 B1 87 2B 3B 53 E4 72 1D E1 9C 08 41
    DB 6F D4 79 11 84 B9 96 09 2E E1 20 2F 36 E8 60
    8F A8 FB D9 8A BD FF 54 02 F2 64 B1 D7 21 15 36
@@ -102,8 +100,7 @@ First, let ( K_E || K_H ) = SP800_108_CTR(prf = HMACSHA512, key = "", label = ""
 <!-- literal_block {"ids": [], "xml:space": "preserve"} -->
 
 ````
-
-   A2 19 60 2F 83 A9 13 EA B0 61 3A 39 B8 A6 7E 22
+A2 19 60 2F 83 A9 13 EA B0 61 3A 39 B8 A6 7E 22
    61 D9 F8 6C 10 51 E2 BB DC 4A 00 D7 03 A2 48 3E
    D1 F7 5A 34 EB 28 3E D7 D4 67 B4 64
    ````
@@ -121,8 +118,7 @@ This produces the full context header which is a thumbprint of the authenticated
 <!-- literal_block {"ids": [], "xml:space": "preserve"} -->
 
 ````
-
-   00 00 00 00 00 18 00 00 00 08 00 00 00 14 00 00
+00 00 00 00 00 18 00 00 00 08 00 00 00 14 00 00
    00 14 AB B1 00 F8 1E 53 E1 0E 76 EB 18 9B 35 CF
    03 46 1D DF 87 7C D9 F4 B1 B4 D6 3A 75 55
    ````
@@ -178,8 +174,7 @@ This produces the full context header below:
 <!-- literal_block {"ids": [], "xml:space": "preserve"} -->
 
 ````
-
-   00 01 00 00 00 20 00 00 00 0C 00 00 00 10 00 00
+00 01 00 00 00 20 00 00 00 0C 00 00 00 10 00 00
    00 10 E7 DC CE 66 DF 85 5A 32 3A 6B B7 BD 7A 59
    BE 45
    ````

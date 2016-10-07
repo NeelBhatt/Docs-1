@@ -48,8 +48,7 @@ An ASP.NET Core app is simply a console app that creates a web server in its `Ma
 [!code-csharp[Main](getting-started/sample/aspnetcoreapp/Program.cs)]
 
 ````csharp
-
-   using System;
+using System;
    using Microsoft.AspNetCore.Hosting;
 
    namespace aspnetcoreapp
@@ -70,7 +69,7 @@ An ASP.NET Core app is simply a console app that creates a web server in its `Ma
 
    ````
 
-`Main` uses [WebHostBuilder](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/WebHostBuilder/index.html.md#Microsoft.AspNetCore.Hosting.WebHostBuilder.md), which follows the builder pattern, to create a web application host. The builder has methods that define the web server (for example `UseKestrel`) and the startup class (`UseStartup`). In the example above, the Kestrel web server is used, but other web servers can be specified. We'll show more about `UseStartup` in the next section. `WebHostBuilder` provides many optional methods including `UseIISIntegration` for hosting in IIS and IIS Express and `UseContentRoot` for specifying the root content directory. The `Build` and `Run` methods build the `IWebHost` that will host the app and start it listening for incoming HTTP requests.
+`Main` uses [`WebHostBuilder`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/WebHostBuilder/index.html#Microsoft.AspNetCore.Hosting.WebHostBuilder), which follows the builder pattern, to create a web application host. The builder has methods that define the web server (for example `UseKestrel`) and the startup class (`UseStartup`). In the example above, the Kestrel web server is used, but other web servers can be specified. We'll show more about `UseStartup` in the next section. `WebHostBuilder` provides many optional methods including `UseIISIntegration` for hosting in IIS and IIS Express and `UseContentRoot` for specifying the root content directory. The `Build` and `Run` methods build the `IWebHost` that will host the app and start it listening for incoming HTTP requests.
 
 ## Startup
 
@@ -79,8 +78,7 @@ The `UseStartup` method on `WebHostBuilder` specifies the `Startup` class for yo
 [!code-csharp[Main](./getting-started/sample/aspnetcoreapp/Program.cs?highlight=7)]
 
 ````csharp
-
-   public class Program
+public class Program
    {
        public static void Main(string[] args)
        {
@@ -98,8 +96,7 @@ The `UseStartup` method on `WebHostBuilder` specifies the `Startup` class for yo
 The `Startup` class is where you define the request handling pipeline and where any services needed by the app are configured. The `Startup` class must be public and contain the following methods:
 
 ````csharp
-
-   public class Startup
+public class Startup
    {
        public void ConfigureServices(IServiceCollection services)
        {
@@ -139,7 +136,7 @@ You can use any [OWIN](http://owin.org)-based middleware with ASP.NET Core. See 
 
 ## Servers
 
-The ASP.NET Core hosting model does not directly listen for requests; rather it relies on an HTTP [server](fundamentals/servers.md) implementation to forward the request to the application. The forwarded request is wrapped as a set of feature interfaces that the application then composes into an `HttpContext`.  ASP.NET Core includes a managed cross-platform web server, called [Kestrel](fundamentals/servers.md#kestrel.md), that you would typically run behind a production web server like [IIS](https://iis.net) or [nginx](http://nginx.org).
+The ASP.NET Core hosting model does not directly listen for requests; rather it relies on an HTTP [server](fundamentals/servers.md) implementation to forward the request to the application. The forwarded request is wrapped as a set of feature interfaces that the application then composes into an `HttpContext`.  ASP.NET Core includes a managed cross-platform web server, called [Kestrel](fundamentals/servers.md#kestrel), that you would typically run behind a production web server like [IIS](https://iis.net) or [nginx](http://nginx.org).
 
 <a name=content-root-lbl></a>
 

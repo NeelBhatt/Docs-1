@@ -46,14 +46,14 @@ Let’s add support for photo albums by installing the [Fotorama](http://fotoram
 
 1. Save the bower.json file.
 
-   Note: Visual Studio watches the bower.json file for changes. Upon saving, the *bower install* command is executed. See the Output window's "Bower/npm" view for the exact command which was executed.
+>[!NOTE]
+>Visual Studio watches the bower.json file for changes. Upon saving, the *bower install* command is executed. See the Output window's "Bower/npm" view for the exact command which was executed.
 
 Now that the installation step has been completed, expand the twisty to the left of bower.json, and locate the .bowerrc file. Open it, and notice that the `directory` property is set to "wwwroot/lib". This setting indicates the location at which Bower will install the package assets.
 
 
    ````json
-
-      {
+   {
         "directory": "wwwroot/lib"
       }
       ````
@@ -65,8 +65,7 @@ In Solution Explorer, expand the *wwwroot* node. The *lib* directory should now 
 Next, let's add an HTML page to the project. In Solution Explorer, right-click *wwwroot* node and select **Add** > **New Item** > **HTML Page**. Name the page Index.html. Replace the contents of the file with the following:
 
 ````html
-
-   <!DOCTYPE html>
+<!DOCTYPE html>
    <html>
    <head>
      <meta charset="utf-8" />
@@ -118,14 +117,14 @@ The first step is to define the packages your application needs and to download 
 
    * Bower Configuration File – bower.json
 
-   Note: The Bower Configuration File item template also adds a .bowerrc file.
+>[!NOTE]
+>The Bower Configuration File item template also adds a .bowerrc file.
 
 1. Open bower.json, and add jquery and bootstrap to the `dependencies` section. As an alternative to the manual file editing, the "Manage Bower Packages" UI may be used. The resulting bower.json file should look like the example here. The versions will change over time, so use the latest stable build version from the drop-down list.
 
 
    ````json
-
-      {
+   {
         "name": "ASP.NET",
         "private": true,
         "dependencies": {
@@ -156,8 +155,7 @@ Now that Bower has copied the client support packages needed by the application,
 Make sure bootstrap.js follows jquery.js, so that jQuery is loaded first.
 
 ````html
-
-   <!DOCTYPE html>
+<!DOCTYPE html>
    <html>
    <head>
      <meta charset="utf-8" />
@@ -180,8 +178,7 @@ Add jQuery and Bootstrap components to the page to verify that the web applicati
 
 
    ````html
-
-      <div class="jumbotron">
+   <div class="jumbotron">
         <h1>Using the jumbotron style</h1>
         <p><a class="btn btn-primary btn-lg" role="button">
            Stateful button</a></p>
@@ -192,8 +189,7 @@ Add jQuery and Bootstrap components to the page to verify that the web applicati
 
 
    ````html
-
-      <script>
+   <script>
         $(".btn").click(function() {
           $(this).text('loading')
             .delay(1000)
@@ -209,11 +205,11 @@ Add jQuery and Bootstrap components to the page to verify that the web applicati
 
 
    ````csharp
-
-      app.UseStaticFiles();
+   app.UseStaticFiles();
       ````
 
-   Note: Be sure to install the `Microsoft.AspNetCore.StaticFiles` NuGet package. Without it, the `UseStaticFiles` extension method will not resolve.
+>[!NOTE]
+>Be sure to install the `Microsoft.AspNetCore.StaticFiles` NuGet package. Without it, the `UseStaticFiles` extension method will not resolve.
 
 1. With the Index.html file opened, press `Ctrl+Shift+W` to view the page in the browser. Verify that the jumbotron styling is applied, the jQuery code responds when the button is clicked, and that the Bootstrap button changes state.
 

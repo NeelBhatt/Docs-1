@@ -39,7 +39,7 @@ In addition to installing the HttpPlatformHandler, you’ll need to install the 
 
 To persist Data Protection keys you must create registry hives for each application pool to store the keys. You should use the [Provisioning PowerShell script](https://github.com/aspnet/DataProtection/blob/dev/Provision-AutoGenKeys.ps1) for each application pool you will be hosting ASP.NET Core applications under.
 
-For web farm scenarios developers can configure their applications to use a UNC path to store the data protection key ring. By default this does not encrypt the key ring. You can deploy an x509 certificate to each machine and use that to encrypt the keyring. See the [configuration APIs](../security/data-protection/configuration/overview.md#data-protection-configuring.md) for more details.
+For web farm scenarios developers can configure their applications to use a UNC path to store the data protection key ring. By default this does not encrypt the key ring. You can deploy an x509 certificate to each machine and use that to encrypt the keyring. See the [configuration APIs](../security/data-protection/configuration/overview.md#data-protection-configuring) for more details.
 
 >[!WARNING]
 > Data Protection is used by various ASP.NET middlewares, including those used in authentication. Even if you do not specifically call any Data Protection APIs from your own code you should configure Data Protection with the deployment script or in your own code. If you do not configure data protection when using IIS by default the keys will be held in memory and discarded when your application closes or restarts. This will then, for example, invalidate any cookies written by the cookie authentication and users will have to login again.
