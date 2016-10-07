@@ -54,12 +54,12 @@ Becomes:
 
 ## Hosting
 
-The `UseServer` is no longer available for [IWebHostBuilder](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/IWebHostBuilder/index.html.md#Microsoft.AspNetCore.Hosting.IWebHostBuilder.md). You must now use [UseKestrel](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/WebHostBuilderKestrelExtensions/index.html.md#Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel.md) or [UseWebListener](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/WebHostBuilderWebListenerExtensions/index.html.md#Microsoft.AspNetCore.Hosting.WebHostBuilderWebListenerExtensions.UseWebListener.md).
+The `UseServer` is no longer available for [IWebHostBuilder](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/IWebHostBuilder/index.html.md#Microsoft.AspNetCore.Hosting.IWebHostBuilder). You must now use [UseKestrel](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/WebHostBuilderKestrelExtensions/index.html.md#Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel) or [UseWebListener](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/WebHostBuilderWebListenerExtensions/index.html.md#Microsoft.AspNetCore.Hosting.WebHostBuilderWebListenerExtensions.UseWebListener).
 
 ## ASP.NET MVC Core
 
-The `HtmlEncodedString` class has been replaced by [HtmlString](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Html/HtmlString/index.html.md#Microsoft.AspNetCore.Html.HtmlString.md) (contained in the  `Microsoft.AspNetCore.Html.Abstractions` package).
+The `HtmlEncodedString` class has been replaced by [HtmlString](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Html/HtmlString/index.html.md#Microsoft.AspNetCore.Html.HtmlString) (contained in the  `Microsoft.AspNetCore.Html.Abstractions` package).
 
 ## Security
 
-The [AuthorizationHandler<TRequirement>](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizationHandler-TRequirement/index.html.md#Microsoft.AspNetCore.Authorization.AuthorizationHandler<TRequirement>.md) class now only contains an asynchronous interface.
+The [AuthorizationHandler<TRequirement>](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizationHandler-TRequirement/index.html.md#Microsoft.AspNetCore.Authorization.AuthorizationHandler<TRequirement>) class now only contains an asynchronous interface.

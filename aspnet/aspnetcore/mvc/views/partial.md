@@ -30,7 +30,7 @@ If you have a complex page made up of several logical pieces, it can be helpful 
 
 ## Declaring Partial Views
 
-Partial views are created like any other view: you create a *.cshtml* file within the *Views* folder. There is no semantic difference between a partial view and a regular view - they are just rendered differently. You can have a view that is returned directly from a controller's [ViewResult](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ViewResult/index.html.md#Microsoft.AspNetCore.Mvc.ViewResult.md), and the same view can be used as a partial view. The main difference between how a view and a partial view are rendered is that partial views do not run *_ViewStart.cshtml* (while views do - learn more about *_ViewStart.cshtml* in [Layout](layout.md)).
+Partial views are created like any other view: you create a *.cshtml* file within the *Views* folder. There is no semantic difference between a partial view and a regular view - they are just rendered differently. You can have a view that is returned directly from a controller's [ViewResult](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ViewResult/index.html.md#Microsoft.AspNetCore.Mvc.ViewResult), and the same view can be used as a partial view. The main difference between how a view and a partial view are rendered is that partial views do not run *_ViewStart.cshtml* (while views do - learn more about *_ViewStart.cshtml* in [Layout](layout.md)).
 
 ## Referencing a Partial View
 
@@ -44,7 +44,7 @@ From within a view page, there are several ways in which you can render a partia
 
    ````
 
-The [PartialAsync](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Rendering/IHtmlHelper/index.html.md#Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper.PartialAsync.md) method is available for partial views containing asynchronous code (although code in views is generally discouraged):
+The [PartialAsync](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Rendering/IHtmlHelper/index.html.md#Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper.PartialAsync) method is available for partial views containing asynchronous code (although code in views is generally discouraged):
 
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/views/partial/sample/src/PartialViewsSample/Views/Home/About.cshtml", "ids": [], "linenos": false, "highlight_args": {"linenostart": 1}} -->
 
@@ -54,7 +54,7 @@ The [PartialAsync](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/
 
    ````
 
-You can render a partial view with [RenderPartial](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Rendering/HtmlHelperPartialExtensions/index.html.md#Microsoft.AspNetCore.Mvc.Rendering.HtmlHelperPartialExtensions.RenderPartial.md). This method doesn't return a result; it streams the rendered output directly to the response. Because it doesn't return a result, it must be called within a Razor code block (you can also call `RenderPartialAsync` if necessary):
+You can render a partial view with [RenderPartial](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Rendering/HtmlHelperPartialExtensions/index.html.md#Microsoft.AspNetCore.Mvc.Rendering.HtmlHelperPartialExtensions.RenderPartial). This method doesn't return a result; it streams the rendered output directly to the response. Because it doesn't return a result, it must be called within a Razor code block (you can also call `RenderPartialAsync` if necessary):
 
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/views/partial/sample/src/PartialViewsSample/Views/Home/About.cshtml", "ids": [], "linenos": false, "highlight_args": {"linenostart": 1}} -->
 

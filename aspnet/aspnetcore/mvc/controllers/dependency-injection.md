@@ -147,7 +147,7 @@ ASP.NET Core's built-in dependency injection supports having only a single const
    Microsoft.Extensions.DependencyInjection.ActivatorUtilities.FindApplicableConstructor(Type instanceType, Type[] argumentTypes, ConstructorInfo& matchingConstructor, Nullable`1[]& parameterMap)
    ````
 
-As the error message states, you can correct this problem having just a single constructor. You can also [replace the default dependency injection support with a third party implementation](../../fundamentals/dependency-injection.md#replacing-the-default-services-container.md), many of which support multiple constructors.
+As the error message states, you can correct this problem having just a single constructor. You can also [replace the default dependency injection support with a third party implementation](../../fundamentals/dependency-injection.md#replacing-the-default-services-container), many of which support multiple constructors.
 
 ## Action Injection with FromServices
 

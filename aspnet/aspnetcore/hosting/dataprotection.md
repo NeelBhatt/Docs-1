@@ -21,4 +21,4 @@ To automatically persist keys for an application hosted in IIS, you must create 
 
 ## Machine Wide Policy
 
-The data protection system has limited support for setting default [machine-wide policy](../security/data-protection/configuration/machine-wide-policy.md#data-protection-configuration-machinewidepolicy.md) for all applications that consume the data protection APIs. See the [data protection](../security/data-protection/index.md) documentation for more details.
+The data protection system has limited support for setting default [machine-wide policy](../security/data-protection/configuration/machine-wide-policy.md#data-protection-configuration-machinewidepolicy) for all applications that consume the data protection APIs. See the [data protection](../security/data-protection/index.md) documentation for more details.

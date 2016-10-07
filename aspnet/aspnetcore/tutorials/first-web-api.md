@@ -144,7 +144,7 @@ Later in the tutorial I'll show how you can view the HTTP response using [Postma
 
 ### Routing and URL paths
 
-The `[HttpGet]` attribute ([HttpGetAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/HttpGetAttribute/index.html.md#Microsoft.AspNetCore.Mvc.HttpGetAttribute.md)) specifies an HTTP GET method. The URL path for each method is constructed as follows:
+The `[HttpGet]` attribute ([HttpGetAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/HttpGetAttribute/index.html.md#Microsoft.AspNetCore.Mvc.HttpGetAttribute)) specifies an HTTP GET method. The URL path for each method is constructed as follows:
 
 * Take the template string in the controller’s route attribute,  `[Route("api/[controller]")]`
 
@@ -172,7 +172,7 @@ In contrast, the `GetById` method returns the more general `IActionResult` type,
 
 * If no item matches the requested ID, the method returns a 404 error.  This is done by returning `NotFound`.
 
-* Otherwise, the method returns 200 with a JSON response body. This is done by returning an [ObjectResult](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ObjectResult/index.html.md#Microsoft.AspNetCore.Mvc.ObjectResult.md)
+* Otherwise, the method returns 200 with a JSON response body. This is done by returning an [ObjectResult](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ObjectResult/index.html.md#Microsoft.AspNetCore.Mvc.ObjectResult)
 
   
 ### Launch the app

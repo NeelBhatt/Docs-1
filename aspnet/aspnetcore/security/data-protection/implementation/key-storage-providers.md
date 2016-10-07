@@ -5,10 +5,10 @@ uid: security/data-protection/implementation/key-storage-providers
 
 # Key Storage Providers
 
-By default the data protection system [employs a heuristic](../configuration/default-settings.md#data-protection-default-settings.md) to determine where cryptographic key material should be persisted. The developer can override the heuristic and manually specify the location.
+By default the data protection system [employs a heuristic](../configuration/default-settings.md#data-protection-default-settings) to determine where cryptographic key material should be persisted. The developer can override the heuristic and manually specify the location.
 
 > [!NOTE]
-> If you specify an explicit key persistence location, the data protection system will deregister the default key encryption at rest mechanism that the heuristic provided, so keys will no longer be encrypted at rest. It is recommended that you additionally [specify an explicit key encryption mechanism](key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest-providers.md) for production applications.
+> If you specify an explicit key persistence location, the data protection system will deregister the default key encryption at rest mechanism that the heuristic provided, so keys will no longer be encrypted at rest. It is recommended that you additionally [specify an explicit key encryption mechanism](key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest-providers) for production applications.
 
 The data protection system ships with two in-box key storage providers.
 
@@ -23,7 +23,7 @@ We anticipate that the majority of applications will use a file system-based key
        .PersistKeysToFileSystem(new DirectoryInfo(@"c:\temp-keys\"));
    ````
 
-The DirectoryInfo can point to a directory on the local machine, or it can point to a folder on a network share. If pointing to a directory on the local machine (and the scenario is that only applications on the local machine will need to use this repository), consider using [Windows DPAPI](key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest.md) to encrypt the keys at rest. Otherwise consider using an [X.509 certificate](key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest.md) to encrypt keys at rest.
+The DirectoryInfo can point to a directory on the local machine, or it can point to a folder on a network share. If pointing to a directory on the local machine (and the scenario is that only applications on the local machine will need to use this repository), consider using [Windows DPAPI](key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest) to encrypt the keys at rest. Otherwise consider using an [X.509 certificate](key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest) to encrypt keys at rest.
 
 ## Registry
 
@@ -36,7 +36,7 @@ Sometimes the application might not have write access to the file system. Consid
        .PersistKeysToRegistry(Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Sample\keys"));
    ````
 
-If you use the system registry as a persistence mechanism, consider using [Windows DPAPI](key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest.md) to encrypt the keys at rest.
+If you use the system registry as a persistence mechanism, consider using [Windows DPAPI](key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest) to encrypt the keys at rest.
 
 ## Custom key repository
 

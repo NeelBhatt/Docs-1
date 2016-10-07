@@ -47,7 +47,7 @@ This view focuses on just the portion of the output for which it is responsible.
 
 ## How do Controllers Specify Views?
 
-Views are typically returned from actions as a [ViewResult](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ViewResult/index.html.md#Microsoft.AspNetCore.Mvc.ViewResult.md). Your action method can create and return a `ViewResult` directly, but more commonly if your controller inherits from [Controller](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Controller/index.html.md#Microsoft.AspNetCore.Mvc.Controller.md), you'll simply use the `View` helper method, as this example demonstrates:
+Views are typically returned from actions as a [ViewResult](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ViewResult/index.html.md#Microsoft.AspNetCore.Mvc.ViewResult). Your action method can create and return a `ViewResult` directly, but more commonly if your controller inherits from [Controller](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Controller/index.html.md#Microsoft.AspNetCore.Mvc.Controller), you'll simply use the `View` helper method, as this example demonstrates:
 
 *HomeController.cs*
 
@@ -89,7 +89,7 @@ A view file path can be provided, instead of a view name. In this case, the *.cs
 > [Partial views](partial.md) and [view components](view-components.md) use similar (but not identical) discovery mechanisms.
 
 > [!NOTE]
-> You can customize the default convention regarding where views are located within the app by using a custom [IViewLocationExpander](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Razor/IViewLocationExpander/index.html.md#Microsoft.AspNetCore.Mvc.Razor.IViewLocationExpander.md).
+> You can customize the default convention regarding where views are located within the app by using a custom [IViewLocationExpander](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Razor/IViewLocationExpander/index.html.md#Microsoft.AspNetCore.Mvc.Razor.IViewLocationExpander).
 
 >[!TIP]
 > View names may be case sensitive depending on the underlying file system. For compatibility across operating systems, always match case between controller and action names and associated view folders and filenames.

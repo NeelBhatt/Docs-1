@@ -5,7 +5,7 @@ uid: security/authentication/cookie
 
 # Using Cookie Middleware without ASP.NET Core Identity
 
-ASP.NET Core provides cookie [middleware](../../fundamentals/middleware.md#fundamentals-middleware.md) which serializes a user principal into an encrypted cookie and then, on subsequent requests, validates the cookie, recreates the principal and assigns it to the `User` property on `HttpContext`. If you want to provide your own login screens and user databases you can use the cookie middleware as a standalone feature.
+ASP.NET Core provides cookie [middleware](../../fundamentals/middleware.md#fundamentals-middleware) which serializes a user principal into an encrypted cookie and then, on subsequent requests, validates the cookie, recreates the principal and assigns it to the `User` property on `HttpContext`. If you want to provide your own login screens and user databases you can use the cookie middleware as a standalone feature.
 
 <a name=security-authentication-cookie-middleware-configuring></a>
 
@@ -27,11 +27,11 @@ The first step is adding the cookie middleware to your application. First use nu
 
 The code snippet above configures a few options;
 
-* AuthenticationScheme - this is a value by which the middleware is known. This is useful when there are multiple instances of middleware and you want to [limit authorization to one instance](../authorization/limitingidentitybyscheme.md#security-authorization-limiting-by-scheme.md).
+* AuthenticationScheme - this is a value by which the middleware is known. This is useful when there are multiple instances of middleware and you want to [limit authorization to one instance](../authorization/limitingidentitybyscheme.md#security-authorization-limiting-by-scheme).
 
 * LoginPath - this is the relative path requests will be redirected to when a user attempts to access a resource but has not been authenticated.
 
-* AccessDeniedPath - this is the relative path requests will be redirected to when a user attempts to access a resource but does not pass any [authorization policies](../authorization/policies.md#security-authorization-policies-based.md) for that resource.
+* AccessDeniedPath - this is the relative path requests will be redirected to when a user attempts to access a resource but does not pass any [authorization policies](../authorization/policies.md#security-authorization-policies-based) for that resource.
 
 * AutomaticAuthenticate - this flag indicates that the middleware should run on every request and attempt to validate and reconstruct any serialized principal it created.
 
@@ -53,7 +53,7 @@ To create a cookie holding your user information you must construct a [ClaimsPri
 
 This will create an encrypted cookie and add it to the current response. The `AuthenticationScheme` specified during [configuration](xref:security/authentication/cookie#security-authentication-cookie-middleware-configuring) must also be used when calling `SignInAsync`.
 
-Under the covers the encryption used is ASP.NET's [Data Protection](../data-protection/using-data-protection.md#security-data-protection-getting-started.md) system. If you are hosting on multiple machines, load balancing or using a web farm then you will need to [configure](../data-protection/configuration/overview.md#data-protection-configuring.md) data protection to use the same key ring and application identifier.
+Under the covers the encryption used is ASP.NET's [Data Protection](../data-protection/using-data-protection.md#security-data-protection-getting-started) system. If you are hosting on multiple machines, load balancing or using a web farm then you will need to [configure](../data-protection/configuration/overview.md#data-protection-configuring) data protection to use the same key ring and application identifier.
 
 ## Signing out
 

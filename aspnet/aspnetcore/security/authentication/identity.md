@@ -320,10 +320,10 @@ For additional information and guidance on migrating your existing identity stor
 
 ## Next Steps
 
-* [Migrating Authentication and Identity](../../migration/identity.md#migration-identity.md)
+* [Migrating Authentication and Identity](../../migration/identity.md#migration-identity)
 
-* [Account Confirmation and Password Recovery](accconfirm.md#security-authentication-account-confirmation.md)
+* [Account Confirmation and Password Recovery](accconfirm.md#security-authentication-account-confirmation)
 
-* [Two-factor authentication with SMS](2fa.md#security-authentication-2fa.md)
+* [Two-factor authentication with SMS](2fa.md#security-authentication-2fa)
 
-* [Enabling authentication using Facebook, Google and other external providers](sociallogins.md#security-authentication-social-logins.md)
+* [Enabling authentication using Facebook, Google and other external providers](sociallogins.md#security-authentication-social-logins)

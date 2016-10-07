@@ -9,7 +9,7 @@ To run an ASP.NET Core app, you need to configure and launch a host using [WebHo
 
 ## What is a Host?
 
-ASP.NET Core apps require a *host* in which to execute. A host must implement the [IWebHost](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/IWebHost/index.html.md#Microsoft.AspNetCore.Hosting.IWebHost.md) interface, which exposes collections of features and services, and a `Start` method. The host is typically created using an instance of a [WebHostBuilder](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/WebHostBuilder/index.html.md#Microsoft.AspNetCore.Hosting.WebHostBuilder.md), which builds and returns a  [WebHost](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/Internal/WebHost/index.html.md#Microsoft.AspNetCore.Hosting.Internal.WebHost.md) instance. The `WebHost` references the server that will handle requests. Learn more about [servers](servers.md).
+ASP.NET Core apps require a *host* in which to execute. A host must implement the [IWebHost](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/IWebHost/index.html.md#Microsoft.AspNetCore.Hosting.IWebHost) interface, which exposes collections of features and services, and a `Start` method. The host is typically created using an instance of a [WebHostBuilder](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/WebHostBuilder/index.html.md#Microsoft.AspNetCore.Hosting.WebHostBuilder), which builds and returns a  [WebHost](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/Internal/WebHost/index.html.md#Microsoft.AspNetCore.Hosting.Internal.WebHost) instance. The `WebHost` references the server that will handle requests. Learn more about [servers](servers.md).
 
 ### What is the difference between a host and a server?
 
@@ -50,7 +50,7 @@ You create a host using an instance of `WebHostBuilder`. This is typically done 
 
    ````
 
-The `WebHostBuilder` is responsible for creating the host that will bootstrap the server for the app. `WebHostBuilder` requires you provide a server that implements [IServer](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/Server/IServer/index.html.md#Microsoft.AspNetCore.Hosting.Server.IServer.md) (`UseKestrel` in the code above). `UseKestrel` specifies the Kestrel server will be used by the app.
+The `WebHostBuilder` is responsible for creating the host that will bootstrap the server for the app. `WebHostBuilder` requires you provide a server that implements [IServer](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/Server/IServer/index.html.md#Microsoft.AspNetCore.Hosting.Server.IServer) (`UseKestrel` in the code above). `UseKestrel` specifies the Kestrel server will be used by the app.
 
 The server's *content root* determines where it searches for content files, like MVC View files. The default content root is the folder from which the application is run.
 

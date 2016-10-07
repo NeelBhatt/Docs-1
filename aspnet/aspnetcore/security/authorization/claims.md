@@ -34,7 +34,7 @@ First you need to build and register the policy. This takes place as part of the
 
 In this case the `EmployeeOnly` policy checks for the presence of an `EmployeeNumber` claim on the current identity.
 
-You then apply the policy using the [Policy](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizeAttribute/index.html.md#Microsoft.AspNetCore.Authorization.AuthorizeAttribute.Policy.md) property on the [AuthorizeAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizeAttribute/index.html.md#Microsoft.AspNetCore.Authorization.AuthorizeAttribute.md) attribute to specify the policy name;
+You then apply the policy using the [Policy](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizeAttribute/index.html.md#Microsoft.AspNetCore.Authorization.AuthorizeAttribute.Policy) property on the [AuthorizeAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizeAttribute/index.html.md#Microsoft.AspNetCore.Authorization.AuthorizeAttribute) attribute to specify the policy name;
 
 ````csharp
 
@@ -45,7 +45,7 @@ You then apply the policy using the [Policy](http://docs.asp.net/projects/api/en
    }
    ````
 
-The [AuthorizeAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizeAttribute/index.html.md#Microsoft.AspNetCore.Authorization.AuthorizeAttribute.md) attribute can be applied to an entire controller, in this instance only identities matching the policy will be allowed access to any Action on the controller.
+The [AuthorizeAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizeAttribute/index.html.md#Microsoft.AspNetCore.Authorization.AuthorizeAttribute) attribute can be applied to an entire controller, in this instance only identities matching the policy will be allowed access to any Action on the controller.
 
 ````csharp
 
@@ -58,7 +58,7 @@ The [AuthorizeAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Micr
    }
    ````
 
-If you have a controller that is protected by the [AuthorizeAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizeAttribute/index.html.md#Microsoft.AspNetCore.Authorization.AuthorizeAttribute.md) attribute, but want to allow anonymous access to particular actions you apply the [AllowAnonymousAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AllowAnonymousAttribute/index.html.md#Microsoft.AspNetCore.Authorization.AllowAnonymousAttribute.md) attribute;
+If you have a controller that is protected by the [AuthorizeAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizeAttribute/index.html.md#Microsoft.AspNetCore.Authorization.AuthorizeAttribute) attribute, but want to allow anonymous access to particular actions you apply the [AllowAnonymousAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AllowAnonymousAttribute/index.html.md#Microsoft.AspNetCore.Authorization.AllowAnonymousAttribute) attribute;
 
 ````csharp
 
@@ -114,4 +114,4 @@ If you apply multiple policies to a controller or action then all policies must 
 
 In the above example any identity which fulfills the `EmployeeOnly` policy can access the `Payslip` action as that policy is enforced on the controller. However in order to call the `UpdateSalary` action the identity must fulfill *both* the `EmployeeOnly` policy and the `HumanResources` policy.
 
-If you want more complicated policies, such as taking a date of birth claim, calculating an age from it then checking the age is 21 or older then you need to write [custom policy handlers](policies.md#security-authorization-policies-based.md).
+If you want more complicated policies, such as taking a date of birth claim, calculating an age from it then checking the age is 21 or older then you need to write [custom policy handlers](policies.md#security-authorization-policies-based).

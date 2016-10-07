@@ -8,7 +8,7 @@ uid: migration/http-modules
 
 By [Matt Perdeck](http://www.linkedin.com/in/mattperdeck)
 
-This article shows how to migrate existing ASP.NET [HTTP modules and handlers](https://msdn.microsoft.com/en-us/library/bb398986.aspx) to ASP.NET Core [middleware](../fundamentals/middleware.md#fundamentals-middleware.md).
+This article shows how to migrate existing ASP.NET [HTTP modules and handlers](https://msdn.microsoft.com/en-us/library/bb398986.aspx) to ASP.NET Core [middleware](../fundamentals/middleware.md#fundamentals-middleware).
 
 ## Handlers and modules revisited
 
@@ -51,7 +51,7 @@ Middleware are simpler than HTTP modules and handlers:
 
    * Middleware are configured using code rather than in *Web.config*
 
-   * [Pipeline branching](../fundamentals/middleware.md#middleware-run-map-use.md) lets you send requests to specific middleware, based on not only the URL but also on request headers, query strings, etc.
+   * [Pipeline branching](../fundamentals/middleware.md#middleware-run-map-use) lets you send requests to specific middleware, based on not only the URL but also on request headers, query strings, etc.
 
 Middleware are very similar to modules:
    * Invoked in principle for every request
@@ -162,7 +162,7 @@ As shown in the [Middleware](../fundamentals/middleware.md) page, an ASP.NET Cor
 
    ````
 
-The above middleware template was taken from the section on [writing middleware](../fundamentals/middleware.md#middleware-writing-middleware.md).
+The above middleware template was taken from the section on [writing middleware](../fundamentals/middleware.md#middleware-writing-middleware).
 
 The *MyMiddlewareExtensions* helper class makes it easier to configure your middleware in your `Startup` class. The `UseMyMiddleware` method adds your middleware class to the request pipeline. Services required by the middleware get injected in the middleware's constructor.
 
@@ -409,7 +409,7 @@ The new [configuration system](../fundamentals/configuration.md) gives you these
 
 * Directly inject the options into the middleware, as shown in the [next section](xref:migration/http-modules#loading-middleware-options-through-direct-injection).
 
-* Use the [options pattern](../fundamentals/configuration.md#options-config-objects.md):
+* Use the [options pattern](../fundamentals/configuration.md#options-config-objects):
 
 1. Create a class to hold your middleware options, for example:
 

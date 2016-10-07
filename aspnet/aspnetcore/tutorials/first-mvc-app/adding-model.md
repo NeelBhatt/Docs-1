@@ -48,7 +48,7 @@ In the **New ASP.NET Core Web Application - MvcMovie** dialog:
 
 ![image](adding-model/_static/indiv.png)
 
-Follow the instructions in [Change the title and menu link in the layout file](adding-view.md#change-title-link-reference-label.md) so you can tap the **MvcMovie** link to invoke the Movie controller. We'll scaffold the movies controller in this tutorial.
+Follow the instructions in [Change the title and menu link in the layout file](adding-view.md#change-title-link-reference-label) so you can tap the **MvcMovie** link to invoke the Movie controller. We'll scaffold the movies controller in this tutorial.
 
 ### Adding data model classes
 

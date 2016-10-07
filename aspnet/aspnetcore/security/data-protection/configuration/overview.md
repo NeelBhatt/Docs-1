@@ -5,7 +5,7 @@ uid: security/data-protection/configuration/overview
 
 # Configuring Data Protection
 
-When the data protection system is initialized it applies some [default settings](default-settings.md#data-protection-default-settings.md) based on the operational environment. These settings are generally good for applications running on a single machine. There are some cases where a developer may want to change these (perhaps because his application is spread across multiple machines or for compliance reasons), and for these scenarios the data protection system offers a rich configuration API.
+When the data protection system is initialized it applies some [default settings](default-settings.md#data-protection-default-settings) based on the operational environment. These settings are generally good for applications running on a single machine. There are some cases where a developer may want to change these (perhaps because his application is spread across multiple machines or for compliance reasons), and for these scenarios the data protection system offers a rich configuration API.
 
 <a name=data-protection-configuration-callback></a>
 
@@ -38,7 +38,7 @@ You can configure the system to protect keys at rest by calling any of the Prote
      }
    ````
 
-See [key encryption at rest](../implementation/key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest.md) for more examples and for discussion on the built-in key encryption mechanisms.
+See [key encryption at rest](../implementation/key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest) for more examples and for discussion on the built-in key encryption mechanisms.
 
 To configure the system to use a default key lifetime of 14 days instead of 90 days, consider the following example:
 

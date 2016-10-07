@@ -123,7 +123,7 @@ Run the application:
    dotnet run
    ````
 
-The cross-platform [Kestrel](../fundamentals/servers.md#kestrel.md) web server will begin listening on port 5000.
+The cross-platform [Kestrel](../fundamentals/servers.md#kestrel) web server will begin listening on port 5000.
 
 Open a web browser, and navigate to http://localhost:5000.
 

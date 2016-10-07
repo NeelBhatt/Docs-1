@@ -251,7 +251,7 @@ Example of how a web.config might look like if `dotnet.exe` was **not** on the p
    </configuration>
    ````
 
-Run the following commands in the remote session to create a new site in IIS for the published app. This script uses the `DefaultAppPool` for simplicity. For more considerations on running under an application pool, see [Application Pools](../hosting/apppool.md#apppool.md).
+Run the following commands in the remote session to create a new site in IIS for the published app. This script uses the `DefaultAppPool` for simplicity. For more considerations on running under an application pool, see [Application Pools](../hosting/apppool.md#apppool).
 
 <!-- literal_block {"ids": [], "classes": ["code", "powershell"], "xml:space": "preserve"} -->
 
@@ -271,4 +271,4 @@ If your Nano Server Technical Preview 5 build is updated or serviced, please mak
 
 ## Running the Application
 
-The published web app should be accessible in browser at `http://<nanoserver-ip-address>:8000`. If you have set up logging as described in [Log creation and redirection](../hosting/aspnet-core-module.md#log-redirection.md), you should be able to view your logs at *C:\PublishedApps\AspNetCoreSampleForNano\logs*.
+The published web app should be accessible in browser at `http://<nanoserver-ip-address>:8000`. If you have set up logging as described in [Log creation and redirection](../hosting/aspnet-core-module.md#log-redirection), you should be able to view your logs at *C:\PublishedApps\AspNetCoreSampleForNano\logs*.

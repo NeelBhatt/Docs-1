@@ -112,7 +112,7 @@ Follow these steps to add the Facebook AppId and AppSecret to the Secret Manager
      dotnet user-secrets set Authentication:Facebook:AppSecret <app-secret>
      ````
 
-The following code reads the configuration values stored by the [Secret Manager](../app-secrets.md#security-app-secrets.md).
+The following code reads the configuration values stored by the [Secret Manager](../app-secrets.md#security-app-secrets).
 
 [!code-none[Main](../../common/samples/WebApplication1/src/WebApplication1/Startup.cs?highlight=11)]
 

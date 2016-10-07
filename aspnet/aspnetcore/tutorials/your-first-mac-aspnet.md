@@ -98,7 +98,7 @@ More on editor in [Visual Studio Code](https://code.visualstudio.com).
 
 ## Running Locally Using Kestrel
 
-The sample is configured to use [Kestrel](../fundamentals/servers.md#kestrel.md) for the web server. You can see it configured in the *project.json* file, where it is specified as a dependency.
+The sample is configured to use [Kestrel](../fundamentals/servers.md#kestrel) for the web server. You can see it configured in the *project.json* file, where it is specified as a dependency.
 
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "json", "highlight_args": {"hl_lines": [14]}} -->
 

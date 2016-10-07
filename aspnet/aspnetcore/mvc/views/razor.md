@@ -114,7 +114,7 @@ Without the explicit expression, `<p>Age@joe.Age</p>` would be treated as an ema
 
 ## Expression encoding
 
-C# expressions that evaluate to a string are HTML encoded. C# expressions that evaluate to [IHtmlContent](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Html/IHtmlContent/index.html.md#Microsoft.AspNetCore.Html.IHtmlContent.md) are rendered directly through *IHtmlContent.WriteTo*. C# expressions that don't evaluate to *IHtmlContent* are converted to a string (by *ToString*) and encoded before they are rendered. For example, the following Razor markup:
+C# expressions that evaluate to a string are HTML encoded. C# expressions that evaluate to [IHtmlContent](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Html/IHtmlContent/index.html.md#Microsoft.AspNetCore.Html.IHtmlContent) are rendered directly through *IHtmlContent.WriteTo*. C# expressions that don't evaluate to *IHtmlContent* are converted to a string (by *ToString*) and encoded before they are rendered. For example, the following Razor markup:
 
 ````html
 
@@ -132,7 +132,7 @@ Which the browser renders as:
 
 `<span>Hello World</span>`
 
-[HtmlHelper](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ViewFeatures/HtmlHelper/index.html.md#Microsoft.AspNetCore.Mvc.ViewFeatures.HtmlHelper.md) [Raw](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ViewFeatures/HtmlHelper/index.html.md#Microsoft.AspNetCore.Mvc.ViewFeatures.HtmlHelper.Raw.md) output is not encoded but rendered as HTML markup.
+[HtmlHelper](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ViewFeatures/HtmlHelper/index.html.md#Microsoft.AspNetCore.Mvc.ViewFeatures.HtmlHelper) [Raw](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ViewFeatures/HtmlHelper/index.html.md#Microsoft.AspNetCore.Mvc.ViewFeatures.HtmlHelper.Raw) output is not encoded but rendered as HTML markup.
 
 >[!WARNING]
 > Using `HtmlHelper.Raw` on unsanitized user input is a security risk. User input might contain malicious JavaScript or other exploits. Sanitizing user input is difficult, avoid using `HtmlHelper.Raw` on user input.
@@ -525,7 +525,7 @@ Razor pages expose a `Model` property for accessing the model passed to the page
    <div>The Login Email: @Model.Email</div>
    ````
 
-The `@model` directive specified the type of this property (by specifying the `T` in `RazorPage<T>` that the generated class for your page derives from). If you don't specify the `@model` directive the `Model` property will be of type `dynamic`. The value of the model is passed from the controller to the view. See [Strongly typed models and the @model keyword](../../tutorials/first-mvc-app/adding-model.md#strongly-typed-models-keyword-label.md) for more information.
+The `@model` directive specified the type of this property (by specifying the `T` in `RazorPage<T>` that the generated class for your page derives from). If you don't specify the `@model` directive the `Model` property will be of type `dynamic`. The value of the model is passed from the controller to the view. See [Strongly typed models and the @model keyword](../../tutorials/first-mvc-app/adding-model.md#strongly-typed-models-keyword-label) for more information.
 
 ### `@inherits`
 
@@ -662,17 +662,17 @@ The generated Razor C# looks like:
 
 ### `@section`
 
-The `@section` directive is used in conjunction with the [layout page](layout.md) to enable views to render content in different parts of the rendered HTML page. See [Sections](layout.md#layout-sections-label.md) for more information.
+The `@section` directive is used in conjunction with the [layout page](layout.md) to enable views to render content in different parts of the rendered HTML page. See [Sections](layout.md#layout-sections-label) for more information.
 
 ## TagHelpers
 
 The following [Tag Helpers](tag-helpers/index.md) directives are detailed in the links provided.
 
-* [@addTagHelper](tag-helpers/intro.md#add-helper-label.md)
+* [@addTagHelper](tag-helpers/intro.md#add-helper-label)
 
-* [@removeTagHelper](tag-helpers/intro.md#remove-razor-directives-label.md)
+* [@removeTagHelper](tag-helpers/intro.md#remove-razor-directives-label)
 
-* [@tagHelperPrefix](tag-helpers/intro.md#prefix-razor-directives-label.md)
+* [@tagHelperPrefix](tag-helpers/intro.md#prefix-razor-directives-label)
 
 <a name=razor-reserved-keywords-label></a>
 
@@ -759,7 +759,7 @@ Add the following class to your ASP.NET Core MVC project:
 
    ````
 
-Override the [ICompilationService](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Razor/Compilation/ICompilationService/index.html.md#Microsoft.AspNetCore.Mvc.Razor.Compilation.ICompilationService.md) added by MVC with the above class;
+Override the [ICompilationService](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Razor/Compilation/ICompilationService/index.html.md#Microsoft.AspNetCore.Mvc.Razor.Compilation.ICompilationService) added by MVC with the above class;
 
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/views/razor/sample/Startup.cs", "ids": [], "linenos": false, "highlight_args": {"hl_lines": [4], "linenostart": 1}} -->
 
