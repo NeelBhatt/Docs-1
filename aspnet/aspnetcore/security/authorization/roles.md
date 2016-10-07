@@ -15,19 +15,19 @@ For example the following code would limit access to any actions on the `Adminis
 
 ````csharp
 [Authorize(Roles = "Administrator")]
-   public class AdministrationController : Controller
-   {
-   }
-   ````
+public class AdministrationController : Controller
+{
+}
+````
 
 You can specify multiple roles as a comma separated list;
 
 ````csharp
 [Authorize(Roles = "HRManager,Finance")]
-   public class SalaryController : Controller
-   {
-   }
-   ````
+public class SalaryController : Controller
+{
+}
+````
 
 This controller would be only accessible by users who are members of the `HRManager` role or the `Finance` role.
 
@@ -35,28 +35,28 @@ If you apply multiple attributes then an accessing user must be a member of all 
 
 ````csharp
 [Authorize(Roles = "PowerUser")]
-   [Authorize(Roles = "ControlPanelUser")]
-   public class ControlPanelController : Controller
-   {
-   }
-   ````
+[Authorize(Roles = "ControlPanelUser")]
+public class ControlPanelController : Controller
+{
+}
+````
 
 You can further limit access by applying additional role authorization attributes at the action level;
 
 ````csharp
 [Authorize(Roles = "Administrator, PowerUser")]
-   public class ControlPanelController : Controller
-   {
-       public ActionResult SetTime()
-       {
-       }
+public class ControlPanelController : Controller
+{
+    public ActionResult SetTime()
+    {
+    }
 
-       [Authorize(Roles = "Administrator")]
-       public ActionResult ShutDown()
-       {
-       }
-   }
-   ````
+    [Authorize(Roles = "Administrator")]
+    public ActionResult ShutDown()
+    {
+    }
+}
+````
 
 In the previous code snippet members of the `Administrator` role or the `PowerUser` role can access the controller and the `SetTime` action, but only members of the `Administrator` role can access the `ShutDown` action.
 
@@ -64,18 +64,18 @@ You can also lock down a controller but allow anonymous, unauthenticated access 
 
 ````csharp
 [Authorize]
-   public class ControlPanelController : Controller
-   {
-       public ActionResult SetTime()
-       {
-       }
+public class ControlPanelController : Controller
+{
+    public ActionResult SetTime()
+    {
+    }
 
-       [AllowAnonymous]
-       public ActionResult Login()
-       {
-       }
-   }
-   ````
+    [AllowAnonymous]
+    public ActionResult Login()
+    {
+    }
+}
+````
 
 <a name=security-authorization-role-policy></a>
 
@@ -85,31 +85,31 @@ Role requirements can also be expressed using the new Policy syntax, where a dev
 
 ````csharp
 public void ConfigureServices(IServiceCollection services)
-   {
-       services.AddMvc();
+{
+    services.AddMvc();
 
-       services.AddAuthorization(options =>
-       {
-           options.AddPolicy("RequireAdministratorRole", policy => policy.RequireRole("Administrator"));
-       });
-   }
-   ````
+    services.AddAuthorization(options =>
+    {
+        options.AddPolicy("RequireAdministratorRole", policy => policy.RequireRole("Administrator"));
+    });
+}
+````
 
 Policies are applied using the [`Policy`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizeAttribute/index.html#Microsoft.AspNetCore.Authorization.AuthorizeAttribute.Policy) property on the [`AuthorizeAttribute`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizeAttribute/index.html#Microsoft.AspNetCore.Authorization.AuthorizeAttribute) attribute;
 
 ````csharp
 [Authorize(Policy = "RequireAdministratorRole")]
-   public IActionResult Shutdown()
-   {
-       return View();
-   }
-   ````
+public IActionResult Shutdown()
+{
+    return View();
+}
+````
 
 If you want to specify multiple allowed roles in a requirement then you can specify them as parameters to the [`RequireRole`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizationPolicyBuilder/index.html#Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder.RequireRole) method;
 
 ````csharp
 options.AddPolicy("ElevatedRights", policy =>
-                     policy.RequireRole("Administrator", "PowerUser", "BackupAdministrator"));
-   ````
+                  policy.RequireRole("Administrator", "PowerUser", "BackupAdministrator"));
+````
 
 This example authorizes users who belong to the `Administrator`, `PowerUser` or `BackupAdministrator` roles.
