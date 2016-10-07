@@ -3,7 +3,9 @@ uid: security/data-protection/configuration/default-settings
 ---
 <a name=data-protection-default-settings></a>
 
-# Default Settings  ## Key Management
+# Default Settings
+
+## Key Management
 
 The system tries to detect its operational environment and provide good zero-configuration behavioral defaults. The heuristic used is as follows.
 
