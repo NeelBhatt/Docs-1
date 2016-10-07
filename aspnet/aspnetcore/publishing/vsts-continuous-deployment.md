@@ -32,47 +32,47 @@ This tutorial assumes you already have the following:
 
 2. Use a Command Line build step to restore packages.
 
-   * Click **Add build step...** and choose **Utility** > **Command Line** > **Add**
+    * Click **Add build step...** and choose **Utility** > **Command Line** > **Add**
 
-   * Set the arguments for the build step as:
+    * Set the arguments for the build step as:
 
         * Tool: `dotnet`
 
         * Arguments: `restore`
 
-![image](vsts-continuous-deployment/_static/dotnet-restore.png)
+    ![image](vsts-continuous-deployment/_static/dotnet-restore.png)
 
 3. Use another Command Line build step to publish the project.
 
-   * Click **Add build step...** and choose **Utility** > **Command Line** > **Add**
+    * Click **Add build step...** and choose **Utility** > **Command Line** > **Add**
 
-   * Set the arguments for the build step as:
+    * Set the arguments for the build step as:
 
         * Tool: `dotnet`
 
         * Arguments: `publish src/WebApplication --configuration $(BuildConfiguration) --output $(PublishOutput)`
 
-   * Replace src/WebApplication to the path of your app to be deployed as appropriate
+    * Replace src/WebApplication to the path of your app to be deployed as appropriate
 
-   ![image](vsts-continuous-deployment/_static/dotnet-publish.png)
+    ![image](vsts-continuous-deployment/_static/dotnet-publish.png)
 
 4. Compress the published output so it can be deployed to Azure App Service. We will use the [Trackyon Advantage](https://marketplace.visualstudio.com/items?itemName=Trackyon.trackyonadvantage) task we installed to zip the contents of our published output for deployment.
 
-   * Click **Add build step...** and choose **Utility** > **Trackyon Zip** > **Add**
+    * Click **Add build step...** and choose **Utility** > **Trackyon Zip** > **Add**
 
-   * Set the arguments for the zip build step as:
+    * Set the arguments for the zip build step as:
 
         * Folder to Zip: `$(PublishOutput)`
 
         * Path to final Zip file: `$(DeployPackage)`
 
-![image](vsts-continuous-deployment/_static/compress-publish-output.png)
+    ![image](vsts-continuous-deployment/_static/compress-publish-output.png)
 
 5. Use the Azure Web App Deployment build step to publish the compressed publish output to your Azure Web App. The Web Deploy Package will be the output of the contents compressed in step 4. In this case, we re-use the variable for it's path we setup earlier.
 
-   * Click **Add build step...** and choose **Deploy** > **Azure Web App Deployment** > **Add**
+    * Click **Add build step...** and choose **Deploy** > **Azure Web App Deployment** > **Add**
 
-   * Set the arguments for the deployment step as:
+    * Set the arguments for the deployment step as:
 
         * Azure Subscription: *<your configured azure connection>*
 
