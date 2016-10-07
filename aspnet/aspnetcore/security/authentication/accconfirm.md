@@ -159,7 +159,8 @@ This tutorial shows how to add email notification through [SendGrid](https://sen
 
    `Install-Package SendGrid.NetCore -Pre`
 
-   Note: SendGrid.NetCore package is a prerelease version , to install it is necessary to use -Pre option on Install-Package.
+>[!NOTE]
+>SendGrid.NetCore package is a prerelease version , to install it is necessary to use -Pre option on Install-Package.
 
 * Follow the instructions [Create a SendGrid account](https://azure.microsoft.com/en-us/documentation/articles/sendgrid-dotnet-how-to-send-email/#create-a-sendgrid-account) to register for a free SendGrid account.
 

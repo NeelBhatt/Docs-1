@@ -28,7 +28,8 @@ Authentication schemes are named when authentication middleware is configured du
 
 In this configuration two authentication middlewares have been added, one for cookies and one for bearer.
 
-   Note: When adding multiple authentication middleware you should ensure that no middleware is configured to run automatically. You do this by setting the `AutomaticAuthenticate` options property to false. If you fail to do this filtering by scheme will not work.
+>[!NOTE]
+>When adding multiple authentication middleware you should ensure that no middleware is configured to run automatically. You do this by setting the `AutomaticAuthenticate` options property to false. If you fail to do this filtering by scheme will not work.
 
 ## Selecting the scheme with the Authorize attribute
 
