@@ -13,7 +13,7 @@ You can configure ASP.NET Core Identity to use a SQL Server database to store us
 
 In this topic, you'll learn how to use ASP.NET Core Identity to add functionality to register, log in, and log out a user. You can follow along step by step or just read the details. For more detailed instructions about creating apps using ASP.NET Core Identity, see the Next Steps section at the end of this article.
 
-1. Create an ASP.NET Core Web Application project in Visual Studio with Individual User Accounts.
+1.  Create an ASP.NET Core Web Application project in Visual Studio with Individual User Accounts.
 
     In Visual Studio, select **File** -> **New** -> **Project**. Then, select the **ASP.NET Web Application** from the **New Project** dialog box. Continue by selecting an ASP.NET Core **Web Application** with **Individual User Accounts** as the authentication method.
     
@@ -30,27 +30,27 @@ In this topic, you'll learn how to use ASP.NET Core Identity to add functionalit
     
     ````csharp
     
-       // This method gets called by the runtime. Use this method to add services to the container.
-       public void ConfigureServices(IServiceCollection services)
-       {
-           // Add framework services.
-           services.AddEntityFramework()
-               .AddSqlServer()
-               .AddDbContext<ApplicationDbContext>(options =>
-                   options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
+    // This method gets called by the runtime. Use this method to add services to the container.
+    public void ConfigureServices(IServiceCollection services)
+    {
+        // Add framework services.
+        services.AddEntityFramework()
+            .AddSqlServer()
+            .AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
     
-           services.AddIdentity<ApplicationUser, IdentityRole>()
-               .AddEntityFrameworkStores<ApplicationDbContext>()
-               .AddDefaultTokenProviders();
+        services.AddIdentity<ApplicationUser, IdentityRole>()
+            .AddEntityFrameworkStores<ApplicationDbContext>()
+            .AddDefaultTokenProviders();
     
-           services.AddMvc();
+        services.AddMvc();
     
-           // Add application services.
-           services.AddTransient<IEmailSender, AuthMessageSender>();
-           services.AddTransient<ISmsSender, AuthMessageSender>();
-       }
+        // Add application services.
+        services.AddTransient<IEmailSender, AuthMessageSender>();
+        services.AddTransient<ISmsSender, AuthMessageSender>();
+    }
     
-       ````
+    ````
     
     These services are then made available to the application through [dependency injection](../../fundamentals/dependency-injection.md).
     
@@ -60,44 +60,44 @@ In this topic, you'll learn how to use ASP.NET Core Identity to add functionalit
     
     ````csharp
     
-       // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-       public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
-       {
-           loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-           loggerFactory.AddDebug();
+    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+    public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+    {
+        loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+        loggerFactory.AddDebug();
     
-           if (env.IsDevelopment())
-           {
-               app.UseBrowserLink();
-               app.UseDeveloperExceptionPage();
-               app.UseDatabaseErrorPage();
-           }
-           else
-           {
-               app.UseExceptionHandler("/Home/Error");
-           }
+        if (env.IsDevelopment())
+        {
+            app.UseBrowserLink();
+            app.UseDeveloperExceptionPage();
+            app.UseDatabaseErrorPage();
+        }
+        else
+        {
+            app.UseExceptionHandler("/Home/Error");
+        }
     
-           app.UseIISPlatformHandler(options => options.AuthenticationDescriptions.Clear());
+        app.UseIISPlatformHandler(options => options.AuthenticationDescriptions.Clear());
     
-           app.UseStaticFiles();
+        app.UseStaticFiles();
     
-           app.UseIdentity();
+        app.UseIdentity();
     
-           // To configure external authentication please see http://go.microsoft.com/fwlink/?LinkID=532715
+        // To configure external authentication please see http://go.microsoft.com/fwlink/?LinkID=532715
     
-           app.UseMvc(routes =>
-           {
-               routes.MapRoute(
-                   name: "default",
-                   template: "{controller=Home}/{action=Index}/{id?}");
-           });
-       }
+        app.UseMvc(routes =>
+        {
+            routes.MapRoute(
+                name: "default",
+                template: "{controller=Home}/{action=Index}/{id?}");
+        });
+    }
     
-       ````
+    ````
     
     For more information about the application start up process, see [Application Startup](../../fundamentals/startup.md).
     
-2. Creating a user.
+2.  Creating a user.
 
    Launch the application from Visual Studio (**Debug** -> **Start Debugging**) and then click on the **Register** link in the browser to create a user. The following image shows the Register page which collects the user name and password.
 
@@ -174,95 +174,95 @@ In this topic, you'll learn how to use ASP.NET Core Identity to add functionalit
 
       ````
 
-3. Log in.
+3.  Log in.
+    
+    If the user was successfully created, the user is logged in by the `SignInAsync` method, also contained in the `Register` action. By signing in, the `SignInAsync` method stores a cookie with the user's claims.
+    
+    [!code-csharp[Main](./identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?highlight=18)]
+    
+    ````csharp
+    
+       [HttpPost]
+       [AllowAnonymous]
+       [ValidateAntiForgeryToken]
+       public async Task<IActionResult> Register(RegisterViewModel model)
+       {
+           if (ModelState.IsValid)
+           {
+               var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+               var result = await _userManager.CreateAsync(user, model.Password);
+               if (result.Succeeded)
+               {
+                   // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
+                   // Send an email with this link
+                   //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                   //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
+                   //await _emailSender.SendEmailAsync(model.Email, "Confirm your account",
+                   //    "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
+                   await _signInManager.SignInAsync(user, isPersistent: false);
+                   _logger.LogInformation(3, "User created a new account with password.");
+                   return RedirectToAction(nameof(HomeController.Index), "Home");
+               }
+               AddErrors(result);
+           }
+    
+           // If we got this far, something failed, redisplay form
+           return View(model);
+       }
+    
+    
+       ````
+    
+    The above `SignInAsync` method calls the below `SignInAsync` task, which is contained in the `SignInManager` class.
+    
+    If needed, you can access the user's identity details inside a controller action. For instance, by setting a breakpoint inside the `HomeController.Index` action method, you can view the `User.claims` details. By having the user signed-in, you can make authorization decisions. For more information, see [Authorization](../authorization/index.md).
+    
+    As a registered user, you can log in to the web app by clicking the **Log in** link.  When a registered user logs in, the `Login` action of the `AccountController` is called. Then, the **Login** action signs in the user using the `PasswordSignInAsync` method contained in the `Login` action.
 
-   If the user was successfully created, the user is logged in by the `SignInAsync` method, also contained in the `Register` action. By signing in, the `SignInAsync` method stores a cookie with the user's claims.
+    [!code-csharp[Main](./identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?highlight=11)]
 
-   [!code-csharp[Main](./identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?highlight=18)]
+    ````csharp
+    
+    [HttpPost]
+    [AllowAnonymous]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
+    {
+        ViewData["ReturnUrl"] = returnUrl;
+        if (ModelState.IsValid)
+        {
+            // This doesn't count login failures towards account lockout
+            // To enable password failures to trigger account lockout, set lockoutOnFailure: true
+            var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
+            if (result.Succeeded)
+            {
+                _logger.LogInformation(1, "User logged in.");
+                return RedirectToLocal(returnUrl);
+            }
+            if (result.RequiresTwoFactor)
+            {
+                return RedirectToAction(nameof(SendCode), new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+            }
+            if (result.IsLockedOut)
+            {
+                _logger.LogWarning(2, "User account locked out.");
+                return View("Lockout");
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                return View(model);
+            }
+        }
+    
+        // If we got this far, something failed, redisplay form
+        return View(model);
+    }
+    
+    
+    ````
 
-   ````csharp
-
-      [HttpPost]
-      [AllowAnonymous]
-      [ValidateAntiForgeryToken]
-      public async Task<IActionResult> Register(RegisterViewModel model)
-      {
-          if (ModelState.IsValid)
-          {
-              var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-              var result = await _userManager.CreateAsync(user, model.Password);
-              if (result.Succeeded)
-              {
-                  // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
-                  // Send an email with this link
-                  //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                  //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
-                  //await _emailSender.SendEmailAsync(model.Email, "Confirm your account",
-                  //    "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
-                  await _signInManager.SignInAsync(user, isPersistent: false);
-                  _logger.LogInformation(3, "User created a new account with password.");
-                  return RedirectToAction(nameof(HomeController.Index), "Home");
-              }
-              AddErrors(result);
-          }
-
-          // If we got this far, something failed, redisplay form
-          return View(model);
-      }
-
-
-      ````
-
-   The above `SignInAsync` method calls the below `SignInAsync` task, which is contained in the `SignInManager` class.
-
-   If needed, you can access the user's identity details inside a controller action. For instance, by setting a breakpoint inside the `HomeController.Index` action method, you can view the `User.claims` details. By having the user signed-in, you can make authorization decisions. For more information, see [Authorization](../authorization/index.md).
-
-   As a registered user, you can log in to the web app by clicking the **Log in** link.  When a registered user logs in, the `Login` action of the `AccountController` is called. Then, the **Login** action signs in the user using the `PasswordSignInAsync` method contained in the `Login` action.
-
-[!code-csharp[Main](./identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?highlight=11)]
-
-   ````csharp
-
-      [HttpPost]
-      [AllowAnonymous]
-      [ValidateAntiForgeryToken]
-      public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
-      {
-          ViewData["ReturnUrl"] = returnUrl;
-          if (ModelState.IsValid)
-          {
-              // This doesn't count login failures towards account lockout
-              // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-              var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
-              if (result.Succeeded)
-              {
-                  _logger.LogInformation(1, "User logged in.");
-                  return RedirectToLocal(returnUrl);
-              }
-              if (result.RequiresTwoFactor)
-              {
-                  return RedirectToAction(nameof(SendCode), new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-              }
-              if (result.IsLockedOut)
-              {
-                  _logger.LogWarning(2, "User account locked out.");
-                  return View("Lockout");
-              }
-              else
-              {
-                  ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                  return View(model);
-              }
-          }
-
-          // If we got this far, something failed, redisplay form
-          return View(model);
-      }
-
-
-      ````
-
-4. Log off.
+4.  Log off.
 
    Clicking the **Log off** link calls the `LogOff` action in the account controller.
 
@@ -283,7 +283,7 @@ In this topic, you'll learn how to use ASP.NET Core Identity to add functionalit
 
    The code above shows the `SignInManager.SignOutAsync` method. The `SignOutAsync` method clears the users claims stored in a cookie.
 
-5. View the database.
+5.  View the database.
 
    After stopping the application, view the user database from Visual Studio by selecting **View** -> **SQL Server Object Explorer**. Then, expand the following within the **SQL Server Object Explorer**:
 
