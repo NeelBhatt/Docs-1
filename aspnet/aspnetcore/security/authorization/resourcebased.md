@@ -9,7 +9,7 @@ Often authorization depends upon the resource being accessed. For example a docu
 
 ## Authorizing within your code
 
-Authorization is implemented as a service, [IAuthorizationService](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/IAuthorizationService/index.html.md#Microsoft.AspNetCore.Authorization.IAuthorizationService), registered in the service collection and available via [dependency injection](../../fundamentals/dependency-injection.md#fundamentals-dependency-injection) for Controllers to access.
+Authorization is implemented as a service, [IAuthorizationService](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/IAuthorizationService/index.html#Microsoft.AspNetCore.Authorization.IAuthorizationService), registered in the service collection and available via [dependency injection](../../fundamentals/dependency-injection.md#fundamentals-dependency-injection) for Controllers to access.
 
 ````csharp
 
@@ -24,7 +24,7 @@ Authorization is implemented as a service, [IAuthorizationService](http://docs.a
    }
    ````
 
-[IAuthorizationService](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/IAuthorizationService/index.html.md#Microsoft.AspNetCore.Authorization.IAuthorizationService) has two methods, one where you pass the resource and the policy name and the other where you pass the resource and a list of requirements to evaluate.
+[IAuthorizationService](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/IAuthorizationService/index.html#Microsoft.AspNetCore.Authorization.IAuthorizationService) has two methods, one where you pass the resource and the policy name and the other where you pass the resource and a list of requirements to evaluate.
 
 ````csharp
 
@@ -38,7 +38,7 @@ Authorization is implemented as a service, [IAuthorizationService](http://docs.a
 
 <a name=security-authorization-resource-based-imperative></a>
 
-To call the service load your resource within your action then call the [AuthorizeAsync](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/IAuthorizationService/index.html.md#Microsoft.AspNetCore.Authorization.IAuthorizationService.AuthorizeAsync) overload you require. For example
+To call the service load your resource within your action then call the [AuthorizeAsync](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/IAuthorizationService/index.html#Microsoft.AspNetCore.Authorization.IAuthorizationService.AuthorizeAsync) overload you require. For example
 
 ````csharp
 
@@ -90,7 +90,7 @@ Don't forget you also need to register your handler in the `ConfigureServices` m
 
 ### Operational Requirements
 
-If you are making decisions based on operations such as read, write, update and delete, you can use the [OperationAuthorizationRequirement](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/Infrastructure/OperationAuthorizationRequirement/index.html.md#Microsoft.AspNetCore.Authorization.Infrastructure.OperationAuthorizationRequirement) class in the [Microsoft.AspNetCore.Authorization.Infrastructure](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/Infrastructure/index.html.md#Microsoft.AspNetCore.Authorization.Infrastructure) namespace. This prebuilt requirement class enables you to write a single handler which has a parameterized operation name, rather than create individual classes for each operation. To use it provide some operation names:
+If you are making decisions based on operations such as read, write, update and delete, you can use the [OperationAuthorizationRequirement](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/Infrastructure/OperationAuthorizationRequirement/index.html#Microsoft.AspNetCore.Authorization.Infrastructure.OperationAuthorizationRequirement) class in the [Microsoft.AspNetCore.Authorization.Infrastructure](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/Infrastructure/index.html#Microsoft.AspNetCore.Authorization.Infrastructure) namespace. This prebuilt requirement class enables you to write a single handler which has a parameterized operation name, rather than create individual classes for each operation. To use it provide some operation names:
 
 ````csharp
 
@@ -126,9 +126,9 @@ Your handler could then be implemented as follows, using a hypothetical `Documen
    }
    ````
 
-You can see the handler works on [OperationAuthorizationRequirement](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/Infrastructure/OperationAuthorizationRequirement/index.html.md#Microsoft.AspNetCore.Authorization.Infrastructure.OperationAuthorizationRequirement). The code inside the handler must take the Name property of the supplied requirement into account when making its evaluations.
+You can see the handler works on [OperationAuthorizationRequirement](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/Infrastructure/OperationAuthorizationRequirement/index.html#Microsoft.AspNetCore.Authorization.Infrastructure.OperationAuthorizationRequirement). The code inside the handler must take the Name property of the supplied requirement into account when making its evaluations.
 
-To call an operational resource handler you need to specify the operation when calling [AuthorizeAsync](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/IAuthorizationService/index.html.md#Microsoft.AspNetCore.Authorization.IAuthorizationService.AuthorizeAsync) in your action. For example
+To call an operational resource handler you need to specify the operation when calling [AuthorizeAsync](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/IAuthorizationService/index.html#Microsoft.AspNetCore.Authorization.IAuthorizationService.AuthorizeAsync) in your action. For example
 
 ````csharp
 
@@ -142,4 +142,4 @@ To call an operational resource handler you need to specify the operation when c
    }
    ````
 
-This example checks if the User is able to perform the Read operation for the current `document` instance. If authorization succeeds the view for the document will be returned. If authorization fails returning [ChallengeResult](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ChallengeResult/index.html.md#Microsoft.AspNetCore.Mvc.ChallengeResult) will inform any authentication middleware authorization has failed and the middleware can take the appropriate response, for example returning a 401 or 403 status code, or redirecting the user to a login page for interactive browser clients.
+This example checks if the User is able to perform the Read operation for the current `document` instance. If authorization succeeds the view for the document will be returned. If authorization fails returning [ChallengeResult](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ChallengeResult/index.html#Microsoft.AspNetCore.Mvc.ChallengeResult) will inform any authentication middleware authorization has failed and the middleware can take the appropriate response, for example returning a 401 or 403 status code, or redirecting the user to a login page for interactive browser clients.

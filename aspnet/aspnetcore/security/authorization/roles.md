@@ -101,7 +101,7 @@ Role requirements can also be expressed using the new Policy syntax, where a dev
    }
    ````
 
-Policies are applied using the [Policy](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizeAttribute/index.html.md#Microsoft.AspNetCore.Authorization.AuthorizeAttribute.Policy) property on the [AuthorizeAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizeAttribute/index.html.md#Microsoft.AspNetCore.Authorization.AuthorizeAttribute) attribute;
+Policies are applied using the [Policy](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizeAttribute/index.html#Microsoft.AspNetCore.Authorization.AuthorizeAttribute.Policy) property on the [AuthorizeAttribute](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizeAttribute/index.html#Microsoft.AspNetCore.Authorization.AuthorizeAttribute) attribute;
 
 ````csharp
 
@@ -112,7 +112,7 @@ Policies are applied using the [Policy](http://docs.asp.net/projects/api/en/late
    }
    ````
 
-If you want to specify multiple allowed roles in a requirement then you can specify them as parameters to the [RequireRole](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizationPolicyBuilder/index.html.md#Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder.RequireRole) method;
+If you want to specify multiple allowed roles in a requirement then you can specify them as parameters to the [RequireRole](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizationPolicyBuilder/index.html#Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder.RequireRole) method;
 
 ````csharp
 
