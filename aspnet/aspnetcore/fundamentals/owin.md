@@ -51,7 +51,7 @@ OWIN middleware conforms to the [OWIN specification](http://owin.org/spec/spec/o
 
 The sample signature returns a `Task` and accepts an `IDictionary<string, object>` as required by OWIN.
 
-The following code shows how to add the `OwinHello` middleware (shown above) to the ASP.NET pipeline with the [UseOwin](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/OwinExtensions/index.html#Microsoft.AspNetCore.Builder.OwinExtensions.UseOwin) extension method.
+The following code shows how to add the `OwinHello` middleware (shown above) to the ASP.NET pipeline with the [`UseOwin`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/OwinExtensions/index.html#Microsoft.AspNetCore.Builder.OwinExtensions.UseOwin) extension method.
 
 [!code-csharp[Main](owin/sample/src/OwinSample/Startup.cs)]
 
