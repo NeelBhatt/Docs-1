@@ -15,88 +15,88 @@ In this topic, you'll learn how to use ASP.NET Core Identity to add functionalit
 
 1. Create an ASP.NET Core Web Application project in Visual Studio with Individual User Accounts.
 
-   In Visual Studio, select **File** -> **New** -> **Project**. Then, select the **ASP.NET Web Application** from the **New Project** dialog box. Continue by selecting an ASP.NET Core **Web Application** with **Individual User Accounts** as the authentication method.
+    In Visual Studio, select **File** -> **New** -> **Project**. Then, select the **ASP.NET Web Application** from the **New Project** dialog box. Continue by selecting an ASP.NET Core **Web Application** with **Individual User Accounts** as the authentication method.
+    
+    ![image](identity/_static/01-mvc.png)
+    
+    The created project contains the `Microsoft.AspNetCore.Identity.EntityFrameworkCore` package, which will persist the identity data and schema to SQL Server using [Entity Framework Core](https://docs.efproject.net).
 
-   ![image](identity/_static/01-mvc.png)
+    >[!NOTE]
+    >In Visual Studio, you can view NuGet packages details by selecting **Tools** -> **NuGet Package Manager** -> **Manage NuGet Packages for Solution**. You also see a list of packages in the dependencies section of the *project.json* file within your project.
 
-   The created project contains the `Microsoft.AspNetCore.Identity.EntityFrameworkCore` package, which will persist the identity data and schema to SQL Server using [Entity Framework Core](https://docs.efproject.net).
-
->[!NOTE]
->In Visual Studio, you can view NuGet packages details by selecting **Tools** -> **NuGet Package Manager** -> **Manage NuGet Packages for Solution**. You also see a list of packages in the dependencies section of the *project.json* file within your project.
-
-   The identity services are added to the application in the `ConfigureServices` method in the `Startup` class:
-
-   [!code-csharp[Main](./identity/sample/src/ASPNET-IdentityDemo/Startup.cs?highlight=10,11,12)]
-
-   ````csharp
-
-      // This method gets called by the runtime. Use this method to add services to the container.
-      public void ConfigureServices(IServiceCollection services)
-      {
-          // Add framework services.
-          services.AddEntityFramework()
-              .AddSqlServer()
-              .AddDbContext<ApplicationDbContext>(options =>
-                  options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
-
-          services.AddIdentity<ApplicationUser, IdentityRole>()
-              .AddEntityFrameworkStores<ApplicationDbContext>()
-              .AddDefaultTokenProviders();
-
-          services.AddMvc();
-
-          // Add application services.
-          services.AddTransient<IEmailSender, AuthMessageSender>();
-          services.AddTransient<ISmsSender, AuthMessageSender>();
-      }
-
-      ````
-
-   These services are then made available to the application through [dependency injection](../../fundamentals/dependency-injection.md).
-
-   Identity is enabled for the application by calling  `UseIdentity` in the `Configure` method of the `Startup` class. This adds cookie-based authentication to the request pipeline.
-
-   [!code-csharp[Main](./identity/sample/src/ASPNET-IdentityDemo/Startup.cs?highlight=22)]
-
-   ````csharp
-
-      // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-      public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
-      {
-          loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-          loggerFactory.AddDebug();
-
-          if (env.IsDevelopment())
-          {
-              app.UseBrowserLink();
-              app.UseDeveloperExceptionPage();
-              app.UseDatabaseErrorPage();
-          }
-          else
-          {
-              app.UseExceptionHandler("/Home/Error");
-          }
-
-          app.UseIISPlatformHandler(options => options.AuthenticationDescriptions.Clear());
-
-          app.UseStaticFiles();
-
-          app.UseIdentity();
-
-          // To configure external authentication please see http://go.microsoft.com/fwlink/?LinkID=532715
-
-          app.UseMvc(routes =>
-          {
-              routes.MapRoute(
-                  name: "default",
-                  template: "{controller=Home}/{action=Index}/{id?}");
-          });
-      }
-
-      ````
-
-   For more information about the application start up process, see [Application Startup](../../fundamentals/startup.md).
-
+    The identity services are added to the application in the `ConfigureServices` method in the `Startup` class:
+    
+    [!code-csharp[Main](./identity/sample/src/ASPNET-IdentityDemo/Startup.cs?highlight=10,11,12)]
+    
+    ````csharp
+    
+       // This method gets called by the runtime. Use this method to add services to the container.
+       public void ConfigureServices(IServiceCollection services)
+       {
+           // Add framework services.
+           services.AddEntityFramework()
+               .AddSqlServer()
+               .AddDbContext<ApplicationDbContext>(options =>
+                   options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
+    
+           services.AddIdentity<ApplicationUser, IdentityRole>()
+               .AddEntityFrameworkStores<ApplicationDbContext>()
+               .AddDefaultTokenProviders();
+    
+           services.AddMvc();
+    
+           // Add application services.
+           services.AddTransient<IEmailSender, AuthMessageSender>();
+           services.AddTransient<ISmsSender, AuthMessageSender>();
+       }
+    
+       ````
+    
+    These services are then made available to the application through [dependency injection](../../fundamentals/dependency-injection.md).
+    
+    Identity is enabled for the application by calling  `UseIdentity` in the `Configure` method of the `Startup` class. This adds cookie-based authentication to the request pipeline.
+    
+    [!code-csharp[Main](./identity/sample/src/ASPNET-IdentityDemo/Startup.cs?highlight=22)]
+    
+    ````csharp
+    
+       // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+       public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+       {
+           loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+           loggerFactory.AddDebug();
+    
+           if (env.IsDevelopment())
+           {
+               app.UseBrowserLink();
+               app.UseDeveloperExceptionPage();
+               app.UseDatabaseErrorPage();
+           }
+           else
+           {
+               app.UseExceptionHandler("/Home/Error");
+           }
+    
+           app.UseIISPlatformHandler(options => options.AuthenticationDescriptions.Clear());
+    
+           app.UseStaticFiles();
+    
+           app.UseIdentity();
+    
+           // To configure external authentication please see http://go.microsoft.com/fwlink/?LinkID=532715
+    
+           app.UseMvc(routes =>
+           {
+               routes.MapRoute(
+                   name: "default",
+                   template: "{controller=Home}/{action=Index}/{id?}");
+           });
+       }
+    
+       ````
+    
+    For more information about the application start up process, see [Application Startup](../../fundamentals/startup.md).
+    
 2. Creating a user.
 
    Launch the application from Visual Studio (**Debug** -> **Start Debugging**) and then click on the **Register** link in the browser to create a user. The following image shows the Register page which collects the user name and password.
