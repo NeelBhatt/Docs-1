@@ -81,8 +81,7 @@ Most applications will create routes by calling `MapRoute` or one of the similar
 This is an example of a `MapRoute` call used by a typical ASP.NET MVC route definition:
 
 ````csharp
-
-   routes.MapRoute(
+routes.MapRoute(
        name: "default",
        template: "{controller=Home}/{action=Index}/{id?}");
    ````
@@ -96,8 +95,7 @@ See [route-template-reference](#route-template-reference) for a thorough descrip
 This example includes a *route constraint*:
 
 ````csharp
-
-   routes.MapRoute(
+routes.MapRoute(
        name: "default",
        template: "{controller=Home}/{action=Index}/{id:int}");
    ````
@@ -109,8 +107,7 @@ Additional overloads of `MapRoute` accept values for `constraints`, `dataTokens`
 The following two examples create equivalent routes:
 
 ````csharp
-
-   routes.MapRoute(
+routes.MapRoute(
        name: "default_route",
        template: "{controller}/{action}/{id?}",
        defaults: new { controller = "Home", action = "Index" });
@@ -126,8 +123,7 @@ The following two examples create equivalent routes:
 This example demonstrates a few more features:
 
 ````csharp
-
-   routes.MapRoute(
+routes.MapRoute(
      name: "blog",
      template: "Blog/{*article}",
      defaults: new { controller = "Blog", action = "ReadArticle" });
@@ -138,8 +134,7 @@ This template will match a URL path like `/Blog/All-About-Routing/Introduction` 
 This example adds route constraints and data tokens:
 
 ````csharp
-
-   routes.MapRoute(
+routes.MapRoute(
        name: "us_english_products",
        template: "en-US/Products/{id}",
        defaults: new { controller = "Products", action = "Details" },
@@ -163,8 +158,7 @@ The `Route` class can also perform URL generation by combining a set of route va
 This example uses a basic ASP.NET MVC style route:
 
 ````csharp
-
-   routes.MapRoute(
+routes.MapRoute(
        name: "default",
        template: "{controller=Home}/{action=Index}/{id?}");
    ````
@@ -191,8 +185,7 @@ Add routing to the service container in *Startup.cs*:
 [!code-csharp[Main](../fundamentals/routing/sample/RoutingSample/Startup.cs?highlight=3)]
 
 ````csharp
-
-   public void ConfigureServices(IServiceCollection services)
+public void ConfigureServices(IServiceCollection services)
    {
        services.AddRouting();
    }
@@ -212,8 +205,7 @@ Routes must configured in the `Configure` method in the `Startup` class. The sam
 <!-- literal_block {"xml:space": "preserve", "source": "fundamentals/routing/sample/RoutingSample/Startup.cs", "ids": [], "linenos": false, "highlight_args": {"linenostart": 1}} -->
 
 ````
-
-   public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
+public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
    {
        var trackPackageRouteHandler = new RouteHandler(context =>
        {
@@ -328,8 +320,7 @@ The example below shows how to generate a link to a route given a dictionary of 
 <!-- literal_block {"xml:space": "preserve", "source": "fundamentals/routing/sample/RoutingSample/Startup.cs", "ids": [], "linenos": false, "highlight_args": {"linenostart": 1}} -->
 
 ````
-
-   app.Run(async (context) =>
+app.Run(async (context) =>
    {
        var dictionary = new RouteValueDictionary
        {
@@ -360,8 +351,7 @@ Values that are explicitly provided but which don't match anything are added to 
 If a route has a default value that doesn't correspond to a parameter and that value is explicitly provided, it must match the default value. For example:
 
 ````csharp
-
-   routes.MapRoute("blog_route", "blog/{*slug}",
+routes.MapRoute("blog_route", "blog/{*slug}",
      defaults: new { controller = "Blog", action = "ReadPost" });
    ````
 

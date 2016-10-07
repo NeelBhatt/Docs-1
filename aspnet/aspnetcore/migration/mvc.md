@@ -39,8 +39,7 @@ Open the *project.json* file.
 * Add the "prepublish" line to the "scripts" section:
 
 ````JavaScript
-
-   "scripts": {
+"scripts": {
       "prepublish": [ "npm install", "bower install", "gulp clean", "gulp min" ],
           "postpublish": [ "dotnet publish-iis
             --publish-folder %publish:OutputPath%
@@ -114,8 +113,7 @@ The project structure is shown below:
 Replace the contents of the *Views/Home/Index.cshtml* file with the following:
 
 ````html
-
-   <h1>Hello world!</h1>
+<h1>Hello world!</h1>
    ````
 
 Run the app.
@@ -171,8 +169,7 @@ In the new project, we'll add support for Bootstrap (and other client-side libra
 [!code-json[Main](../migration/mvc/samples/WebApp1/src/WebApp1/bower.json?highlight=5,6)]
 
 ````json
-
-   {
+{
      "name": "asp.net",
      "private": true,
      "dependencies": {
@@ -206,8 +203,7 @@ Navigate to *gulpfile.js* from the new ASP.NET Core web app with Individual User
 [!code-javascript[Main](mvc/samples/WebApp1/src/WebApp1/gulpfile.js)]
 
 ````javascript
-
-   /// <binding Clean='clean' />
+/// <binding Clean='clean' />
    "use strict";
 
    var gulp = require("gulp"),
@@ -291,8 +287,7 @@ The *package.json* file ^[1]:
 [!code-json[Main](mvc/samples/WebApp1/src/WebApp1/package.json)]
 
 ````json
-
-   {
+{
      "name": "asp.net",
      "version": "0.0.0",
      "private": true,
@@ -338,15 +333,13 @@ Open *_Layout.cshtml* file and make the following changes (the completed code is
 The replacement CSS link:
 
 ````html
-
-   <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
    ````
 
 The replacement script tags:
 
 ````html
-
-   <script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
    ````
 
@@ -355,8 +348,7 @@ The updated _Layout.cshtml file is shown below:
 [!code-html[Main](../migration/mvc/samples/WebApp1/src/WebApp1/Views/Shared/_Layout.cshtml?highlight=7,26,38,39)]
 
 ````html
-
-   <!DOCTYPE html>
+<!DOCTYPE html>
    <html>
    <head>
        <meta charset="utf-8" />
@@ -417,8 +409,7 @@ There are many problems that can cause a HTTP 500 error message that contain no 
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [3, 4, 5, 6]}} -->
 
 ````csharp
-
-    public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
     {
         if (env.IsDevelopment())
         {

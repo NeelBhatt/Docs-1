@@ -31,8 +31,7 @@ launchSettings.json
 [!code-javascript[Main](../fundamentals/environments/sample/src/Environments/Properties/launchSettings.json?highlight=15,22)]
 
 ````javascript
-
-   {
+{
      "iisSettings": {
        "windowsAuthentication": false,
        "anonymousAuthentication": true,
@@ -101,8 +100,7 @@ For example, you can use the following code in your Configure method to setup en
 [!code-csharp[Main](environments/sample/src/Environments/Startup.cs)]
 
 ````csharp
-
-   public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+public void Configure(IApplicationBuilder app, IHostingEnvironment env)
    {
        if (env.IsDevelopment())
        {
@@ -125,8 +123,7 @@ You may need to determine which content to send to the client at runtime, depend
 [!code-html[Main](environments/sample/src/Environments/Views/Shared/_Layout.cshtml)]
 
 ````html
-
-   <environment names="Development">
+<environment names="Development">
        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
        <link rel="stylesheet" href="~/css/site.css" />
    </environment>

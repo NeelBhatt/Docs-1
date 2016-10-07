@@ -27,8 +27,7 @@ Your `Configure` method must accept an [`IApplicationBuilder`](https://docs.asp.
 [!code-csharp[Main](../common/samples/WebApplication1/src/WebApplication1/Startup.cs?highlight=8,9,10,14,17,19,23)]
 
 ````csharp
-
-   public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
    {
        loggerFactory.AddConsole(Configuration.GetSection("Logging"));
        loggerFactory.AddDebug();
@@ -73,8 +72,7 @@ Just as with `Configure`, it is recommended that features that require substanti
 [!code-csharp[Main](../common/samples/WebApplication1/src/WebApplication1/Startup.cs?highlight=4,7,11)]
 
 ````csharp
-
-   public void ConfigureServices(IServiceCollection services)
+public void ConfigureServices(IServiceCollection services)
    {
        // Add framework services.
        services.AddDbContext<ApplicationDbContext>(options =>

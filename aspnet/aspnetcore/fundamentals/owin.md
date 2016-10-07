@@ -16,8 +16,7 @@ ASP.NET Core's OWIN support is deployed as part of the `Microsoft.AspNetCore.Owi
 [!code-javascript[Main](../fundamentals/owin/sample/src/OwinSample/project.json?highlight=4)]
 
 ````javascript
-
-     "dependencies": {
+  "dependencies": {
        "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0",
        "Microsoft.AspNetCore.Server.Kestrel": "1.0.0",
        "Microsoft.AspNetCore.Owin": "1.0.0"
@@ -30,8 +29,7 @@ OWIN middleware conforms to the [OWIN specification](http://owin.org/spec/spec/o
 [!code-csharp[Main](owin/sample/src/OwinSample/Startup.cs)]
 
 ````csharp
-
-   public Task OwinHello(IDictionary<string, object> environment)
+public Task OwinHello(IDictionary<string, object> environment)
    {
        string responseText = "Hello World via OWIN";
        byte[] responseBytes = Encoding.UTF8.GetBytes(responseText);
@@ -56,8 +54,7 @@ The following code shows how to add the `OwinHello` middleware (shown above) to 
 [!code-csharp[Main](owin/sample/src/OwinSample/Startup.cs)]
 
 ````csharp
-
-   public void Configure(IApplicationBuilder app)
+public void Configure(IApplicationBuilder app)
    {
        app.UseOwin(pipeline =>
        {
@@ -77,8 +74,7 @@ You can configure other actions to take place within the OWIN pipeline.
 > Multiple calls to `UseOwin` is discouraged for performance reasons. OWIN components will operate best if grouped together.
 
 ````csharp
-
-   app.UseOwin(pipeline =>
+app.UseOwin(pipeline =>
    {
        pipeline(next =>
        {
@@ -96,8 +92,7 @@ OWIN-based servers can host ASP.NET applications. One such server is [Nowin](htt
 [!code-csharp[Main](../fundamentals/owin/sample/src/NowinSample/NowinServer.cs?highlight=15)]
 
 ````csharp
-
-   using System;
+using System;
    using System.Collections.Generic;
    using System.Linq;
    using System.Net;
@@ -187,8 +182,7 @@ We'll also add an `IWebHostBuilder` extension to make it easy to add and configu
 [!code-csharp[Main](../fundamentals/owin/sample/src/NowinSample/NowinWebHostBuilderExtensions.cs?highlight=11)]
 
 ````csharp
-
-   using System;
+using System;
    using Microsoft.AspNetCore.Hosting.Server;
    using Microsoft.Extensions.DependencyInjection;
    using Nowin;
@@ -223,8 +217,7 @@ With this in place, all that's required to run an ASP.NET application using this
 [!code-csharp[Main](../fundamentals/owin/sample/src/NowinSample/Program.cs?highlight=15)]
 
 ````csharp
-
-   using System;
+using System;
    using System.Collections.Generic;
    using System.IO;
    using System.Linq;
@@ -260,8 +253,7 @@ Another example of how OWIN-based servers' features can be leveraged by ASP.NET 
 [!code-csharp[Main](../fundamentals/owin/sample/src/NowinWebSockets/Startup.cs?highlight=7,9,10)]
 
 ````csharp
-
-       public class Startup
+    public class Startup
        {
            public void Configure(IApplicationBuilder app)
            {

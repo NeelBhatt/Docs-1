@@ -37,8 +37,7 @@ The following sample demonstrates three concepts:
 [!code-none[Main](../using-data-protection/samples/protectunprotect.cs?highlight=26,34,35,36,37,38,39,40)]
 
 ````none
-
-   using System;
+using System;
    using Microsoft.AspNetCore.DataProtection;
    using Microsoft.Extensions.DependencyInjection;
 
@@ -97,8 +96,7 @@ The package Microsoft.AspNetCore.DataProtection.Abstractions contains an extensi
 [!code-none[Main](./overview/samples/getdataprotector.cs?highlight=15)]
 
 ````none
-
-   using System;
+using System;
    using Microsoft.AspNetCore.DataProtection;
    using Microsoft.Extensions.DependencyInjection;
     

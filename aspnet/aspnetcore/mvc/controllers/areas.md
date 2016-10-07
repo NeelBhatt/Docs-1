@@ -66,8 +66,7 @@ Let's take a look at an example to illustrate how Areas are created and used. Le
 When MVC tries to render a view in an Area, by default, it tries to look in the following locations:
 
 ````text
-
-   /Areas/<Area-Name>/Views/<Controller-Name>/<Action-Name>.cshtml
+/Areas/<Area-Name>/Views/<Controller-Name>/<Action-Name>.cshtml
    /Areas/<Area-Name>/Views/Shared/<Action-Name>.cshtml
    /Views/Shared/<Action-Name>.cshtml
    ````
@@ -77,8 +76,7 @@ These are the default locations which can be changed via the `AreaViewLocationFo
 For example, in the below code instead of having the folder name as 'Areas', it has been changed to 'Categories'.
 
 ````csharp
-
-   services.Configure<RazorViewEngineOptions>(options =>
+services.Configure<RazorViewEngineOptions>(options =>
    {
        options.AreaViewLocationFormats.Clear();
        options.AreaViewLocationFormats.Add("/Categories/{2}/Views/{1}/{0}.cshtml");
@@ -94,8 +92,7 @@ Once you've defined the folder hierarchy, you need to tell MVC that each control
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [4]}} -->
 
 ````csharp
-
-   ...
+...
    namespace MyStore.Areas.Products.Controllers
    {
        [Area("Products")]
@@ -121,8 +118,7 @@ Set up a route definition that works with your newly created areas. The [🔧 Ro
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [4, 5, 6]}} -->
 
 ````csharp
-
-   ...
+...
    app.UseMvc(routes =>
    {
      routes.MapRoute(name: "areaRoute",
@@ -181,8 +177,7 @@ Browsing to *http://<yourApp>/products*, the `Index` action method of the `HomeC
 To publish all views of the areas folder, in the `project.json` file include an entry in the `publishOptions`'s `include` node like below:
 
 ````text
-
-   "publishOptions": {
+"publishOptions": {
      "include": [
        "Areas/**/*.cshtml",
        ....

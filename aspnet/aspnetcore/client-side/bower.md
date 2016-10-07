@@ -53,8 +53,7 @@ Now that the installation step has been completed, expand the twisty to the left
 
 
    ````json
-
-      {
+   {
         "directory": "wwwroot/lib"
       }
       ````
@@ -66,8 +65,7 @@ In Solution Explorer, expand the *wwwroot* node. The *lib* directory should now 
 Next, let's add an HTML page to the project. In Solution Explorer, right-click *wwwroot* node and select **Add** > **New Item** > **HTML Page**. Name the page Index.html. Replace the contents of the file with the following:
 
 ````html
-
-   <!DOCTYPE html>
+<!DOCTYPE html>
    <html>
    <head>
      <meta charset="utf-8" />
@@ -126,8 +124,7 @@ The first step is to define the packages your application needs and to download 
 
 
    ````json
-
-      {
+   {
         "name": "ASP.NET",
         "private": true,
         "dependencies": {
@@ -158,8 +155,7 @@ Now that Bower has copied the client support packages needed by the application,
 Make sure bootstrap.js follows jquery.js, so that jQuery is loaded first.
 
 ````html
-
-   <!DOCTYPE html>
+<!DOCTYPE html>
    <html>
    <head>
      <meta charset="utf-8" />
@@ -182,8 +178,7 @@ Add jQuery and Bootstrap components to the page to verify that the web applicati
 
 
    ````html
-
-      <div class="jumbotron">
+   <div class="jumbotron">
         <h1>Using the jumbotron style</h1>
         <p><a class="btn btn-primary btn-lg" role="button">
            Stateful button</a></p>
@@ -194,8 +189,7 @@ Add jQuery and Bootstrap components to the page to verify that the web applicati
 
 
    ````html
-
-      <script>
+   <script>
         $(".btn").click(function() {
           $(this).text('loading')
             .delay(1000)
@@ -211,8 +205,7 @@ Add jQuery and Bootstrap components to the page to verify that the web applicati
 
 
    ````csharp
-
-      app.UseStaticFiles();
+   app.UseStaticFiles();
       ````
 
 >[!NOTE]

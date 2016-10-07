@@ -37,8 +37,7 @@ To use an in memory cache in your ASP.NET application, add the following depende
 <!-- literal_block {"xml:space": "preserve", "source": "performance/caching/memory/sample/src/CachingSample/project.json", "ids": [], "linenos": true, "highlight_args": {"hl_lines": [4], "linenostart": 1}} -->
 
 ````
-
-     "dependencies": {
+  "dependencies": {
        "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0-rc2-final",
        "Microsoft.AspNetCore.Server.Kestrel": "1.0.0-rc2-final",
        "Microsoft.Extensions.Caching.Memory": "1.0.0-rc2-final",
@@ -53,8 +52,7 @@ Caching in ASP.NET Core is a *service* that should be referenced from your appli
 <!-- literal_block {"xml:space": "preserve", "source": "performance/caching/memory/sample/src/CachingSample/Startup.cs", "ids": [], "linenos": true, "highlight_args": {"hl_lines": [3], "linenostart": 1}} -->
 
 ````
-
-   public void ConfigureServices(IServiceCollection services)
+public void ConfigureServices(IServiceCollection services)
    {
        services.AddMemoryCache();
 
@@ -66,8 +64,7 @@ You utilize caching in your app by requesting an instance of `IMemoryCache` in y
 <!-- literal_block {"xml:space": "preserve", "source": "performance/caching/memory/sample/src/CachingSample/Middleware/GreetingMiddleware.cs", "ids": [], "linenos": true, "highlight_args": {"hl_lines": [2, 7], "linenostart": 1}} -->
 
 ````
-
-   public GreetingMiddleware(RequestDelegate next,
+public GreetingMiddleware(RequestDelegate next,
        IMemoryCache memoryCache,
        ILogger<GreetingMiddleware> logger,
        IGreetingService greetingService)
@@ -99,8 +96,7 @@ The sample code (shown below) uses the `SetAbsoluteExpiration` method on `Memory
 <!-- literal_block {"xml:space": "preserve", "source": "performance/caching/memory/sample/src/CachingSample/Middleware/GreetingMiddleware.cs", "ids": [], "linenos": true, "highlight_args": {"hl_lines": [7, 10, 16, 17, 18], "linenostart": 1}} -->
 
 ````
-
-   public Task Invoke(HttpContext httpContext)
+public Task Invoke(HttpContext httpContext)
    {
        string cacheKey = "GreetingMiddleware-Invoke";
        string greeting;
@@ -135,8 +131,7 @@ The sample code (shown below) uses the `SetAbsoluteExpiration` method on `Memory
 In addition to setting an absolute expiration, a sliding expiration can be used to keep frequently requested items in the cache:
 
 ````csharp
-
-   // keep item in cache as long as it is requested at least
+// keep item in cache as long as it is requested at least
    // once every 5 minutes
    new MemoryCacheEntryOptions()
      .SetSlidingExpiration(TimeSpan.FromMinutes(5))
@@ -145,8 +140,7 @@ In addition to setting an absolute expiration, a sliding expiration can be used 
 To avoid having frequently-accessed cache entries growing too stale (because their sliding expiration is constantly reset), you can combine absolute and sliding expirations:
 
 ````csharp
-
-   // keep item in cache as long as it is requested at least
+// keep item in cache as long as it is requested at least
    // once every 5 minutes...
    // but in any case make sure to refresh it every hour
    new MemoryCacheEntryOptions()
@@ -157,8 +151,7 @@ To avoid having frequently-accessed cache entries growing too stale (because the
 By default, an instance of `MemoryCache` will automatically manage the items stored, removing entries when necessary in response to memory pressure in the app. You can influence the way cache entries are managed by setting their [`CacheItemPriority`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Memory/CacheItemPriority/index.html) when adding the item to the cache. For instance, if you have an item you want to keep in the cache unless you explicitly remove it, you would use the `NeverRemove` priority option:
 
 ````csharp
-
-   // keep item in cache indefinitely unless explicitly removed
+// keep item in cache indefinitely unless explicitly removed
    new MemoryCacheEntryOptions()
      .SetPriority(CacheItemPriority.NeverRemove))
    ````
@@ -166,8 +159,7 @@ By default, an instance of `MemoryCache` will automatically manage the items sto
 When you do want to explicitly remove an item from the cache, you can do so easily using the `Remove` method:
 
 ````csharp
-
-   cache.Remove(cacheKey);
+cache.Remove(cacheKey);
    ````
 
 ## Cache Dependencies and Callbacks
@@ -177,8 +169,7 @@ You can configure cache entries to depend on other cache entries, the file syste
 <!-- literal_block {"xml:space": "preserve", "source": "performance/caching/memory/sample/test/CachingSample.Tests/MemoryCacheTests.cs", "ids": [], "linenos": true, "highlight_args": {"hl_lines": [6, 7, 8, 9, 10, 11, 18], "linenostart": 1}} -->
 
 ````
-
-   {
+{
        var pause = new ManualResetEvent(false);
 
        _memoryCache.Set(_cacheKey, _cacheItem,
@@ -231,8 +222,7 @@ You can specify that one or more cache entries depend on a `CancellationTokenSou
 <!-- literal_block {"xml:space": "preserve", "source": "performance/caching/memory/sample/test/CachingSample.Tests/MemoryCacheTests.cs", "ids": [], "linenos": true, "highlight_args": {"hl_lines": [7, 16, 21], "linenostart": 1}} -->
 
 ````
-
-   public void CancellationTokenFiresCallback()
+public void CancellationTokenFiresCallback()
    {
        var cts = new CancellationTokenSource();
        var pause = new ManualResetEvent(false);
@@ -264,8 +254,7 @@ Cache entries will inherit triggers and timeouts from other entries accessed whi
 <!-- literal_block {"xml:space": "preserve", "source": "performance/caching/memory/sample/test/CachingSample.Tests/MemoryCacheTests.cs", "ids": [], "linenos": true, "highlight_args": {"hl_lines": [7, 11, 13, 23, 24], "linenostart": 1}} -->
 
 ````
-
-   [Fact]
+[Fact]
    public void CacheEntryDependencies()
    {
        var cts = new CancellationTokenSource();

@@ -16,8 +16,7 @@ Open the *Models/Movie.cs* file and add a `Rating` property:
 [!code-csharp[Main](./start-mvc/sample2/src/MvcMovie/Models/MovieDateRating.cs?highlight=11)]
 
 ````csharp
-
-   public class Movie
+public class Movie
    {
        public int ID { get; set; }
        public string Title { get; set; }
@@ -37,8 +36,7 @@ Build the app (Ctrl+Shift+B).
 Because you've added a new field to the `Movie` class, you also need to update the binding white list so this new property will be included. Update the `[Bind]` attribute for `Create` and `Edit` action methods to include the `Rating` property:
 
 ````csharp
-
-   [Bind("ID,Title,ReleaseDate,Genre,Price,Rating")]
+[Bind("ID,Title,ReleaseDate,Genre,Price,Rating")]
    ````
 
 You also need to update the view templates in order to display, create and edit the new `Rating` property in the browser view.
@@ -48,8 +46,7 @@ Edit the */Views/Movies/Index.cshtml* file and add a `Rating` field:
 [!code-HTML[Main](../../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Views/Movies/IndexGenreRating.cshtml?highlight=16,37)]
 
 ````HTML
-
-   <table class="table">
+<table class="table">
        <tr>
            <th>
                @Html.DisplayNameFor(model => model.movies[0].Genre)
@@ -115,8 +112,7 @@ Update the `SeedData` class so that it provides a value for the new column. A sa
 [!code-csharp[Main](./start-mvc/sample2/src/MvcMovie/Models/SeedDataRating.cs?highlight=6)]
 
 ````csharp
-
-        new Movie
+     new Movie
         {
             Title = "When Harry Met Sally",
             ReleaseDate = DateTime.Parse("1989-1-11"),
@@ -133,8 +129,7 @@ Update the `SeedData` class so that it provides a value for the new column. A sa
 Build the solution then open a command prompt. Enter the following commands:
 
 ````console
-
-   dotnet ef migrations add Rating
+dotnet ef migrations add Rating
    dotnet ef database update
    ````
 

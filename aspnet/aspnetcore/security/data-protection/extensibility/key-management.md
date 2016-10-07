@@ -136,8 +136,7 @@ The following sample code demonstrates creating and registering an IKeyEscrowSin
 [!code-none[Main](key-management/samples/key-management-extensibility.cs)]
 
 ````none
-
-   using System;
+using System;
    using System.IO;
    using System.Xml.Linq;
    using Microsoft.AspNetCore.DataProtection;

@@ -27,8 +27,7 @@ Bundling can be accomplished using the [gulp-concat](https://www.npmjs.com/packa
 [!code-json[Main](../client-side/bundling-and-minification/samples/WebApplication1/src/WebApplication1/package.json?highlight=7)]
 
 ````json
-
-   {
+{
      "name": "asp.net",
      "version": "0.0.0",
      "private": true,
@@ -50,8 +49,7 @@ In your *gulpfile.js* import the `gulp-concat` module:
 [!code-js[Main](bundling-and-minification/samples/WebApplication1/src/WebApplication1/gulpfile.js?highlight=3)]
 
 ````js
-
-   var gulp = require("gulp"),
+var gulp = require("gulp"),
        rimraf = require("rimraf"),
        concat = require("gulp-concat"),
        cssmin = require("gulp-cssmin"),
@@ -64,8 +62,7 @@ Use [globbing](http://www.tldp.org/LDP/abs/html/globbingref.html) patterns to sp
 [!code-js[Main](bundling-and-minification/samples/WebApplication1/src/WebApplication1/gulpfile.js)]
 
 ````js
-
-   var paths = {
+var paths = {
        js: webroot + "js/**/*.js",
        minJs: webroot + "js/**/*.min.js",
        css: webroot + "css/**/*.css",
@@ -81,8 +78,7 @@ You can then define gulp tasks that run `concat` on the desired files and output
 [!code-js[Main](bundling-and-minification/samples/WebApplication1/src/WebApplication1/gulpfile.js?highlight=3,10)]
 
 ````js
-
-   gulp.task("min:js", function () {
+gulp.task("min:js", function () {
        return gulp.src([paths.js, "!" + paths.minJs], { base: "." })
            .pipe(concat(paths.concatJsDest))
            .pipe(uglify())
@@ -107,8 +103,7 @@ Minification performs a variety of different code optimizations to reduce the si
 Consider the following JavaScript function:
 
 ````javascript
-
-   AddAltToImg = function (imageTagAndImageID, imageContext) {
+AddAltToImg = function (imageTagAndImageID, imageContext) {
      ///<signature>
      ///<summary> Adds an alt tab to the image
      // </summary>
@@ -123,8 +118,7 @@ Consider the following JavaScript function:
 After minification, the function is reduced to the following:
 
 ````javascript
-
-   AddAltToImg=function(t,a){var r=$(t,a);r.attr("alt",r.attr("id").replace(/ID/,""))};
+AddAltToImg=function(t,a){var r=$(t,a);r.attr("alt",r.attr("id").replace(/ID/,""))};
    ````
 
 In addition to removing the comments and unnecessary whitespace, the following parameters and variable names were renamed (shortened) as follows:
@@ -136,8 +130,7 @@ To minify your JavaScript files you can use the [gulp-uglify](https://www.npmjs.
 [!code-json[Main](../client-side/bundling-and-minification/samples/WebApplication1/src/WebApplication1/package.json?highlight=8,9)]
 
 ````json
-
-   {
+{
      "name": "asp.net",
      "version": "0.0.0",
      "private": true,
@@ -157,8 +150,7 @@ Import the `gulp-uglify` and `gulp-cssmin` modules in your *gulpfile.js* file:
 [!code-js[Main](bundling-and-minification/samples/WebApplication1/src/WebApplication1/gulpfile.js?highlight=4,5)]
 
 ````js
-
-   var gulp = require("gulp"),
+var gulp = require("gulp"),
        rimraf = require("rimraf"),
        concat = require("gulp-concat"),
        cssmin = require("gulp-cssmin"),
@@ -171,8 +163,7 @@ Add `uglify` to minify your bundled JavaScript files and `cssmin` to minify your
 [!code-js[Main](bundling-and-minification/samples/WebApplication1/src/WebApplication1/gulpfile.js?highlight=4,11)]
 
 ````js
-
-   gulp.task("min:js", function () {
+gulp.task("min:js", function () {
        return gulp.src([paths.js, "!" + paths.minJs], { base: "." })
            .pipe(concat(paths.concatJsDest))
            .pipe(uglify())
@@ -214,8 +205,7 @@ The following environment tag will render the unprocessed CSS files when running
 [!code-html[Main](../client-side/bundling-and-minification/samples/WebApplication1/src/WebApplication1/Views/Shared/_Layout.cshtml?highlight=3)]
 
 ````html
-
-   <environment names="Development">
+<environment names="Development">
        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
        <link rel="stylesheet" href="~/css/site.css" />
    </environment>
@@ -227,8 +217,7 @@ This environment tag will render the bundled and minified CSS files only when ru
 [!code-html[Main](../client-side/bundling-and-minification/samples/WebApplication1/src/WebApplication1/Views/Shared/_Layout.cshtml?highlight=5)]
 
 ````html
-
-   <environment names="Staging,Production">
+<environment names="Staging,Production">
        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />

@@ -21,8 +21,7 @@ An example of `@inject` in action:
 [!code-csharp[Main](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Views/ToDo/Index.cshtml?highlight=4,5,15,16,17)]
 
 ````csharp
-
-   @using System.Threading.Tasks
+@using System.Threading.Tasks
    @using ViewInjectSample.Model
    @using ViewInjectSample.Model.Services
    @model IEnumerable<ToDoItem>
@@ -65,8 +64,7 @@ This view displays a list of `ToDoItem` instances, along with a summary showing 
 [!code-csharp[Main](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Startup.cs?highlight=6,7)]
 
 ````csharp
-
-   // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
+// For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
    public void ConfigureServices(IServiceCollection services)
    {
        services.AddMvc();
@@ -82,8 +80,7 @@ The `StatisticsService` performs some calculations on the set of `ToDoItem` inst
 [!code-csharp[Main](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Model/Services/StatisticsService.cs?highlight=15,20,26)]
 
 ````csharp
-
-   using System.Linq;
+using System.Linq;
    using ViewInjectSample.Interfaces;
 
    namespace ViewInjectSample.Model.Services
@@ -136,8 +133,7 @@ An alternative approach injects services directly into the view to obtain the op
 [!code-csharp[Main](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Controllers/ProfileController.cs?highlight=9,19)]
 
 ````csharp
-
-   using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
    using ViewInjectSample.Model;
 
    namespace ViewInjectSample.Controllers
@@ -171,8 +167,7 @@ These lists are populated by a service that has been injected into the view:
 [!code-csharp[Main](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Views/Profile/Index.cshtml?highlight=4,16,17,21,22,26,27)]
 
 ````csharp
-
-   @using System.Threading.Tasks
+@using System.Threading.Tasks
    @using ViewInjectSample.Model.Services
    @model ViewInjectSample.Model.Profile
    @inject ProfileOptionsService Options
@@ -209,8 +204,7 @@ The `ProfileOptionsService` is a UI-level service designed to provide just the d
 [!code-csharp[Main](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Model/Services/ProfileOptionsService.cs?highlight=7,13,24)]
 
 ````csharp
-
-   using System.Collections.Generic;
+using System.Collections.Generic;
 
    namespace ViewInjectSample.Model.Services
    {
@@ -256,8 +250,7 @@ As you can see, the default fields include `Html`, `Component`, and `Url` (as we
 [!code-html[Main](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Views/Helper/Index.cshtml?highlight=3,11)]
 
 ````html
-
-   @using System.Threading.Tasks
+@using System.Threading.Tasks
    @using ViewInjectSample.Helpers
    @inject MyHtmlHelper Html
    <!DOCTYPE html>

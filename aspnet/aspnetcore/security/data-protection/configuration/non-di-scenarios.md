@@ -12,8 +12,7 @@ For example:
 [!code-none[Main](non-di-scenarios/_static/nodisample1.cs)]
 
 ````none
-
-   using System;
+using System;
    using System.IO;
    using Microsoft.AspNetCore.DataProtection;
 
@@ -62,8 +61,7 @@ The application developer can address both of these if desired. The DataProtecti
 [!code-none[Main](non-di-scenarios/_static/nodisample2.cs)]
 
 ````none
-
-   using System;
+using System;
    using System.IO;
    using Microsoft.AspNetCore.DataProtection;
 

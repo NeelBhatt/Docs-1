@@ -92,8 +92,7 @@ You'll make them slightly different so you can see which bit of code changes whi
 
 
 ````HTML
-
-   @{
+@{
        ViewData["Title"] = "Movie List";
    }
 
@@ -106,8 +105,7 @@ You'll make them slightly different so you can see which bit of code changes whi
 
 
 ````HTML
-
-   <title>@ViewData["Title"] - Movie App</title>
+<title>@ViewData["Title"] - Movie App</title>
    ````
 
 Save your change and refresh the page. Notice that the browser title, the primary heading, and the secondary headings have changed. (If you don't see changes in the browser, you might be viewing cached content. Press Ctrl+F5 in your browser to force the response from the server to be loaded.) The browser title is created with `ViewData["Title"]` we set in the *Index.cshtml* view template and the additional "- Movie App" added in the layout file.

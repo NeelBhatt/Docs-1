@@ -52,8 +52,7 @@ For more information on the ASP.NET Core Module, including configuration of the 
 Include a dependency on the *Microsoft.AspNetCore.Server.IISIntegration* package in the application dependencies. Incorporate IIS Integration middleware into the application by adding the *.UseIISIntegration()* extension method to *WebHostBuilder()*.
 
 ````csharp
-
-   var host = new WebHostBuilder()
+var host = new WebHostBuilder()
      .UseKestrel()
      .UseContentRoot(Directory.GetCurrentDirectory())
      .UseIISIntegration()
@@ -68,8 +67,7 @@ Note that code calling *.UseIISIntegration()* does not affect code portability.
 To configure *IISIntegration* service options, include a service configuration for *IISOptions* in *ConfigureServices*.
 
 ````csharp
-
-   services.Configure<IISOptions>(options => {
+services.Configure<IISOptions>(options => {
      ...
    });
    ````
@@ -81,8 +79,7 @@ The *publish-iis* tool can be added to any .NET Core application and will config
 To include the *publish-iis* tool in your application, add entries to the *tools* and *scripts* sections of *project.json*.
 
 ````none
-
-   "tools": {
+"tools": {
      "Microsoft.AspNetCore.Server.IISIntegration.Tools": "1.0.0-preview2-final"
    },
    "scripts": {

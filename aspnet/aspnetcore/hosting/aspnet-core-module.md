@@ -41,8 +41,7 @@ To save logs, you must create the *logs* directory. The ASP.NET Core Module can 
 [!code-xml[Main](aspnet-core-module/sample/web.config)]
 
 ````xml
-
-       <aspNetCore processPath="dotnet"
+    <aspNetCore processPath="dotnet"
                arguments=".\MyApp.dll"
                stdoutLogEnabled="true"
                stdoutLogFile=".\logs\stdout">
@@ -57,8 +56,7 @@ The ASP.NET Core Module allows you specify environment variables for the process
 [!code-xml[Main](aspnet-core-module/sample/web.config)]
 
 ````xml
-
-       <aspNetCore processPath="dotnet"
+    <aspNetCore processPath="dotnet"
                arguments=".\MyApp.dll"
                stdoutLogEnabled="true"
                stdoutLogFile=".\logs\stdout">

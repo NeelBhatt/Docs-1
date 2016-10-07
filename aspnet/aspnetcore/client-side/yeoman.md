@@ -14,8 +14,7 @@ To get started with Yeoman install [Node.js](https://nodejs.org/en/). The instal
 Follow the instructions on [http://yeoman.io/learning/](http://yeoman.io/learning/) to install [yo](https://github.com/yeoman/yo), bower, grunt, and gulp.
 
 ````console
-
-   npm install -g yo bower
+npm install -g yo bower
    ````
 
 > [!NOTE]
@@ -24,8 +23,7 @@ Follow the instructions on [http://yeoman.io/learning/](http://yeoman.io/learnin
 From the command line, install the ASP.NET generator:
 
 ````console
-
-   npm install -g generator-aspnet
+npm install -g generator-aspnet
    ````
 
 > [!NOTE]
@@ -38,16 +36,14 @@ The `–g` flag installs the generator globally, so that it can be used from any
 Create a directory for your projects
 
 ````console
-
-   mkdir src
+mkdir src
    cd src
    ````
 
 Run the ASP.NET generator for `yo`
 
 ````console
-
-   yo aspnet
+yo aspnet
    ````
 
 The generator displays a menu. Arrow down to the **Empty Web Application** project and tap **Enter**:
@@ -105,22 +101,19 @@ You can prepare and host your web application using the [.NET Core](https://micr
 From the command line, change the current directory to the folder containing the project (that is, the folder containing the *project.json* file):
 
 ````console
-
-   cd src\MyWebApp
+cd src\MyWebApp
    ````
 
 From the command line, restore the project's NuGet package dependencies:
 
 ````console
-
-   dotnet restore
+dotnet restore
    ````
 
 Run the application:
 
 ````console
-
-   dotnet run
+dotnet run
    ````
 
 The cross-platform [Kestrel](../fundamentals/servers.md#kestrel) web server will begin listening on port 5000.
@@ -134,15 +127,13 @@ Open a web browser, and navigate to http://localhost:5000.
 You can add new generated files using Yeoman even after the project is created. Use [sub generators](https://www.github.com/omnisharp/generator-aspnet#sub-generators) to add any of the file types that make up your project. For example, to add a new class to your project, enter the `yo aspnet:Class` command followed by the name of the class. Execute the following command from the directory in which the file should be created:
 
 ````console
-
-   yo aspnet:Class Person
+yo aspnet:Class Person
    ````
 
 The result is a file named Person.cs with a class named `Person`:
 
 ````csharp
-
-   using System;
+using System;
    using System.Collections.Generic;
    using System.Linq;
    using System.Threading.Tasks;

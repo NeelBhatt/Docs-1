@@ -18,8 +18,7 @@ Static files are typically located in the `web root` (*<content-root>/wwwroot*) 
 [!code-csharp[Main](../common/samples/WebApplication1/src/WebApplication1/Program.cs?highlight=5)]
 
 ````csharp
-
-   public static void Main(string[] args)
+public static void Main(string[] args)
    {
        var host = new WebHostBuilder()
            .UseKestrel()
@@ -44,8 +43,7 @@ In order for static files to be served, you must configure the [`Middleware](mid
 [!code-csharp[Main](../fundamentals/static-files/sample/StartupStaticFiles.cs?highlight=3)]
 
 ````csharp
-
-   public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
    {
        app.UseStaticFiles();
    }
@@ -78,8 +76,7 @@ For a request to access *test.png*, configure the static files middleware as fol
 [!code-csharp[Main](../fundamentals/static-files/sample/StartupTwoStaticFiles.cs?highlight=5,6,7,8,9,10)]
 
 ````csharp
-
-   public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
    {
        app.UseStaticFiles();
 
@@ -110,8 +107,7 @@ Directory browsing allows the user of your web app to see a list of directories 
 [!code-csharp[Main](static-files/sample/StartupBrowse.cs)]
 
 ````csharp
-
-   public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
    {
        app.UseStaticFiles(); // For the wwwroot folder
 
@@ -137,8 +133,7 @@ And add required services by calling [`AddDirectoryBrowser`](http://docs.asp.net
 [!code-csharp[Main](static-files/sample/StartupBrowse.cs)]
 
 ````csharp
-
-   public void ConfigureServices(IServiceCollection services)
+public void ConfigureServices(IServiceCollection services)
    {
        services.AddDirectoryBrowser();
    }
@@ -156,8 +151,7 @@ Note the two `app.UseStaticFiles` calls. The first one is required to serve the 
 [!code-csharp[Main](static-files/sample/StartupBrowse.cs?highlight=3,5)]
 
 ````csharp
-
-   public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
    {
        app.UseStaticFiles(); // For the wwwroot folder
 
@@ -185,8 +179,7 @@ Setting a default home page gives site visitors a place to start when visiting y
 [!code-csharp[Main](../fundamentals/static-files/sample/StartupEmpty.cs?highlight=3)]
 
 ````csharp
-
-   public void Configure(IApplicationBuilder app)
+public void Configure(IApplicationBuilder app)
    {
        app.UseDefaultFiles();
        app.UseStaticFiles();
@@ -214,8 +207,7 @@ The following code shows how to change the default file name to *mydefault.html*
 [!code-csharp[Main](static-files/sample/StartupDefault.cs)]
 
 ````csharp
-
-   public void Configure(IApplicationBuilder app)
+public void Configure(IApplicationBuilder app)
    {
        // Serve my app-specific default file, if present.
        DefaultFilesOptions options = new DefaultFilesOptions();
@@ -234,15 +226,13 @@ The following code shows how to change the default file name to *mydefault.html*
 The following code enables static files and the default file to be served, but does not allow directory browsing:
 
 ````csharp
-
-   app.UseFileServer();
+app.UseFileServer();
    ````
 
 The following code enables static files, default files and  directory browsing:
 
 ````csharp
-
-   app.UseFileServer(enableDirectoryBrowsing: true);
+app.UseFileServer(enableDirectoryBrowsing: true);
    ````
 
 See [`Considerations](#considerations) on the security risks when enabling browsing. As with `UseStaticFiles`, `UseDefaultFiles`, and `UseDirectoryBrowser`, if you wish to serve files that exist outside the `web root`, you instantiate and configure an [FileServerOptions`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/FileServerOptions/index.html#Microsoft.AspNetCore.Builder.FileServerOptions) object that you pass as a parameter to `UseFileServer`. For example, given the following directory hierarchy in your Web app:
@@ -266,8 +256,7 @@ Using the hierarchy example above, you might want to enable static files, defaul
 [!code-csharp[Main](static-files/sample/StartupUseFileServer.cs?highlight=5,6,7,8,9,10,11)]
 
 ````csharp
-
-   public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
    {
        app.UseStaticFiles();
 
@@ -287,8 +276,7 @@ If `enableDirectoryBrowsing` is set to `true` you are required to call [`AddDire
 [!code-csharp[Main](static-files/sample/StartupUseFileServer.cs)]
 
 ````csharp
-
-   public void ConfigureServices(IServiceCollection services)
+public void ConfigureServices(IServiceCollection services)
    {
        services.AddDirectoryBrowser();
    }
@@ -313,8 +301,7 @@ The [`FileExtensionContentTypeProvider`](http://docs.asp.net/projects/api/en/lat
 [!code-csharp[Main](../fundamentals/static-files/sample/StartupFileExtensionContentTypeProvider.cs?highlight=3,4,5,6,7,8,9,10,11,12,19)]
 
 ````csharp
-
-   public void Configure(IApplicationBuilder app)
+public void Configure(IApplicationBuilder app)
    {
        // Set up custom content types -associating file extension to MIME type
        var provider = new FileExtensionContentTypeProvider();
@@ -356,8 +343,7 @@ The following code enables serving unknown types and will render the unknown fil
 [!code-csharp[Main](static-files/sample/StartupServeUnknownFileTypes.cs)]
 
 ````csharp
-
-   public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
    {
        app.UseStaticFiles(new StaticFileOptions
        {

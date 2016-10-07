@@ -18,8 +18,7 @@ Adding logging to a component in your application is done by requesting either a
 [!code-csharp[Main](logging/sample/src/TodoApi/Startup.cs)]
 
 ````csharp
-
-   var logger = loggerFactory.CreateLogger("Catchall Endpoint");
+var logger = loggerFactory.CreateLogger("Catchall Endpoint");
    logger.LogInformation("No endpoint found for request {path}", context.Request.Path);
 
    ````
@@ -35,8 +34,7 @@ The call to the log method can utilize a format string with named placeholders (
 [!code-csharp[Main](logging/sample/src/TodoApi/Startup.cs)]
 
 ````csharp
-
-   logger.LogInformation("No endpoint found for request {path}", context.Request.Path);
+logger.LogInformation("No endpoint found for request {path}", context.Request.Path);
 
    ````
 
@@ -47,8 +45,7 @@ The logic for the API is contained within the *TodoController*, which uses [Depe
 [!code-csharp[Main](../fundamentals/logging/sample/src/TodoApi/Controllers/TodoController.cs?highlight=5,8,11,17)]
 
 ````csharp
-
-   [Route("api/[controller]")]
+[Route("api/[controller]")]
    public class TodoController : Controller
    {
        private readonly ITodoRepository _todoRepository;
@@ -129,8 +126,7 @@ In the `TodoController` example, event id constants are defined for each event, 
 [!code-csharp[Main](../fundamentals/logging/sample/src/TodoApi/Controllers/TodoController.cs?highlight=4,12,16)]
 
 ````csharp
-
-   [HttpGet]
+[HttpGet]
    public IEnumerable<TodoItem> GetAll()
    {
        _logger.LogInformation(LoggingEvents.LIST_ITEMS, "Listing all items");
@@ -175,8 +171,7 @@ To configure logging in your ASP.NET Core application, you should resolve `ILogg
 [!code-csharp[Main](logging/sample/src/TodoApi/Startup.cs?highlight=25)]
 
 ````csharp
-
-       public void Configure(IApplicationBuilder app,
+    public void Configure(IApplicationBuilder app,
            IHostingEnvironment env,
            ILoggerFactory loggerFactory)
 
@@ -194,8 +189,7 @@ A LoggerFactory instance can optionally be configured with custom `FilterLoggerS
 [!code-csharp[Main](logging/sample/src/TodoApi/Startup.cs)]
 
 ````csharp
-
-   loggerFactory
+loggerFactory
        .WithFilter(new FilterLoggerSettings
        {
            { "Microsoft", LogLevel.Warning },
@@ -215,8 +209,7 @@ First, be sure to add the `Microsoft.Extensions.Logging.TraceSource` package to 
 [!code-javascript[Main](../fundamentals/logging/sample/src/TodoApi/project.json?highlight=7,10)]
 
 ````javascript
-
-     "Microsoft.AspNetCore.Mvc": "1.0.0",
+  "Microsoft.AspNetCore.Mvc": "1.0.0",
      "Microsoft.AspNetCore.Server.Kestrel": "1.0.0",
      "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0",
      "Microsoft.AspNetCore.StaticFiles": "1.0.0",
@@ -235,8 +228,7 @@ The following example demonstrates how to configure a `TraceSourceLogger` instan
 [!code-csharp[Main](logging/sample/src/TodoApi/Startup.cs)]
 
 ````csharp
-
-   // add Trace Source logging
+// add Trace Source logging
    var testSwitch = new SourceSwitch("sourceSwitch", "Logging Sample");
    testSwitch.Level = SourceLevels.Warning;
    loggerFactory.AddTraceSource(testSwitch,
@@ -251,8 +243,7 @@ The API action below logs a warning when the specified `id` is not found:
 [!code-csharp[Main](../fundamentals/logging/sample/src/TodoApi/Controllers/TodoController.cs?highlight=8)]
 
 ````csharp
-
-   [HttpGet("{id}", Name = "GetTodo")]
+[HttpGet("{id}", Name = "GetTodo")]
    public IActionResult GetById(string id)
    {
        _logger.LogInformation(LoggingEvents.GET_ITEM, "Getting item {0}", id);

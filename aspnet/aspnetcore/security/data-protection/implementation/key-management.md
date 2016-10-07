@@ -43,8 +43,7 @@ There might be circumstances where a key will be created with immediate activati
 The default key lifetime is 90 days, though this is configurable as in the following example.
 
 ````csharp
-
-   services.AddDataProtection()
+services.AddDataProtection()
        // use 14-day lifetime instead of 90-day lifetime
        .SetDefaultKeyLifetime(TimeSpan.FromDays(14));
    ````
@@ -67,8 +66,7 @@ The sample below demonstrates using the IKeyManager interface to inspect and man
 [!code-none[Main](key-management/samples/key-management.cs)]
 
 ````none
-
-   using System;
+using System;
    using System.IO;
    using System.Threading;
    using Microsoft.AspNetCore.DataProtection;

@@ -33,8 +33,7 @@ project.json (truncated)
 [!code-json[Main](../fundamentals/servers/sample/ServersDemo/src/ServersDemo/project.json?highlight=12,13)]
 
 ````json
-
-   {
+{
      "webroot": "wwwroot",
      "version": "1.0.0-*",
 
@@ -61,8 +60,7 @@ program.cs
 [!code-csharp[Main](../fundamentals/servers/sample/ServersDemo/src/ServersDemo/Program.cs?highlight=32,33,34,35,36,37,38,39,40)]
 
 ````csharp
-
-   using System;
+using System;
    using System.Threading.Tasks;
    using Microsoft.AspNet.Hosting;
    using Microsoft.Extensions.Configuration;
@@ -121,22 +119,19 @@ The `Microsoft.AspNetCore.Hosting` command supports server parameters (such as `
 The *project.json* file shown above demonstrates how to pass the `server.urls` parameter directly:
 
 ````javascript
-
-   "web": "Microsoft.AspNetCore.Kestrel --server.urls http://localhost:5004"
+"web": "Microsoft.AspNetCore.Kestrel --server.urls http://localhost:5004"
    ````
 
 Alternately, a  JSON configuration file can be used,
 
 ````javascript
-
-   "kestrel": "Microsoft.AspNetCore.Hosting"
+"kestrel": "Microsoft.AspNetCore.Hosting"
    ````
 
 The `hosting.json` can include the settings the server will use (including the server parameter, as well):
 
 ````json
-
-   {
+{
      "server": "Microsoft.AspNetCore.Server.Kestrel",
      "server.urls": "http://localhost:5004/"
    }
@@ -149,8 +144,7 @@ The server hosting the application can be referenced programmatically via the [`
 [!code-csharp[Main](../fundamentals/servers/sample/ServersDemo/src/ServersDemo/Startup.cs?highlight=3,6,7,10,15)]
 
 ````csharp
-
-   public void Configure(IApplicationBuilder app, IApplicationLifetime lifetime, ILoggerFactory loggerFactory)
+public void Configure(IApplicationBuilder app, IApplicationLifetime lifetime, ILoggerFactory loggerFactory)
    {
        var webListenerInfo = app.ServerFeatures.Get<WebListener>();
        if (webListenerInfo != null)
@@ -188,8 +182,7 @@ WebListener is a Windows-only HTTP server for ASP.NET Core. It runs directly on 
 You can add support for WebListener to your ASP.NET application by adding the "Microsoft.AspNetCore.Server.WebListener" dependency in *project.json* and the following command:
 
 ````javascript
-
-   "web": "Microsoft.AspNetCore.Hosting --server Microsoft.AspNetCore.Server.WebListener --server.urls http://localhost:5000"
+"web": "Microsoft.AspNetCore.Hosting --server Microsoft.AspNetCore.Server.WebListener --server.urls http://localhost:5000"
    ````
 
 > [!NOTE]

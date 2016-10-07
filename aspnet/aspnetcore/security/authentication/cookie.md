@@ -14,8 +14,7 @@ ASP.NET Core provides cookie [middleware](../../fundamentals/middleware.md#funda
 The first step is adding the cookie middleware to your application. First use nuget to add the `Microsoft.AspNetCore.Authentication.Cookies` package. Then add the following lines to the `Configure` method in your *Startup.cs* file before the `app.UseMvc()` statement;
 
 ````csharp
-
-   app.UseCookieAuthentication(new CookieAuthenticationOptions()
+app.UseCookieAuthentication(new CookieAuthenticationOptions()
    {
        AuthenticationScheme = "MyCookieMiddlewareInstance",
        LoginPath = new PathString("/Account/Unauthorized/"),
@@ -47,8 +46,7 @@ To create a cookie holding your user information you must construct a [ClaimsPri
 
 
    ````csharp
-
-      await HttpContext.Authentication.SignInAsync("MyCookieMiddlewareInstance", principal);
+   await HttpContext.Authentication.SignInAsync("MyCookieMiddlewareInstance", principal);
       ````
 
 This will create an encrypted cookie and add it to the current response. The `AuthenticationScheme` specified during [configuration](xref:security/authentication/cookie#security-authentication-cookie-middleware-configuring) must also be used when calling `SignInAsync`.
@@ -60,8 +58,7 @@ Under the covers the encryption used is ASP.NET's [Data Protection](../data-prot
 To sign out the current user, and delete their cookie call the following inside your controller
 
 ````csharp
-
-   await HttpContext.Authentication.SignOutAsync("MyCookieMiddlewareInstance");
+await HttpContext.Authentication.SignOutAsync("MyCookieMiddlewareInstance");
    ````
 
 ## Reacting to back-end changes
@@ -76,15 +73,13 @@ Consider a back-end user database that may have a LastChanged column. In order t
 To implement an override for the `ValidateAsync()` event you must write a method with the following signature;
 
 ````csharp
-
-   Task ValidateAsync(CookieValidatePrincipalContext context);
+Task ValidateAsync(CookieValidatePrincipalContext context);
    ````
 
 ASP.NET Core Identity implements this check as part of its [`SecurityStampValidator`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Identity/SecurityStampValidator/index.html). A simple example would look something like as follows;
 
 ````csharp
-
-   public static class LastChangedValidator
+public static class LastChangedValidator
    {
        public static async Task ValidateAsync(CookieValidatePrincipalContext context)
        {
@@ -111,8 +106,7 @@ ASP.NET Core Identity implements this check as part of its [`SecurityStampValida
 This would then be wired up during cookie middleware configuration
 
 ````csharp
-
-   app.UseCookieAuthentication(options =>
+app.UseCookieAuthentication(options =>
    {
        options.Events = new CookieAuthenticationEvents
        {
@@ -151,8 +145,7 @@ You may want to make the cookie expire be remembered over browser sessions. You 
 For example;
 
 ````csharp
-
-   await HttpContext.Authentication.SignInAsync(
+await HttpContext.Authentication.SignInAsync(
        "MyCookieMiddlewareInstance",
        principal,
        new AuthenticationProperties
@@ -168,8 +161,7 @@ This code snippet will create an identity and corresponding cookie which will be
 <!-- literal_block {"ids": ["security-authentication-absolute-expiry"], "linenos": false, "names": ["security-authentication-absolute-expiry"], "xml:space": "preserve", "language": "csharp"} -->
 
 ````csharp
-
-   await HttpContext.Authentication.SignInAsync(
+await HttpContext.Authentication.SignInAsync(
        "MyCookieMiddlewareInstance",
        principal,
        new AuthenticationProperties

@@ -69,8 +69,7 @@ A good scenario in which to set `NoStore` to `true` is error pages. It's unlikel
 [!code-csharp[Main](./response/sample/src/ResponseCacheSample/Controllers/HomeController.cs?highlight=1)]
 
 ````csharp
-
-   [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
+[ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
    public IActionResult Error()
    {
        return View();
@@ -81,8 +80,7 @@ A good scenario in which to set `NoStore` to `true` is error pages. It's unlikel
 This will result in the following headers:
 
 ````javascript
-
-   Cache-Control: no-store,no-cache
+Cache-Control: no-store,no-cache
    Pragma: no-cache
    ````
 
@@ -98,8 +96,7 @@ Below is an example showing the headers produced by setting `Duration` and leavi
 [!code-csharp[Main](./response/sample/src/ResponseCacheSample/Controllers/HomeController.cs?highlight=1)]
 
 ````csharp
-
-   [ResponseCache(Duration = 60)]
+[ResponseCache(Duration = 60)]
    public IActionResult Contact()
    {
        ViewData["Message"] = "Your contact page.";
@@ -112,8 +109,7 @@ Below is an example showing the headers produced by setting `Duration` and leavi
 Produces the following headers:
 
 ````javascript
-
-   Cache-Control: public,max-age=60
+Cache-Control: public,max-age=60
    ````
 
 ### Cache Profiles
@@ -125,8 +121,7 @@ Setting up a cache profile:
 [!code-csharp[Main](./response/sample/src/ResponseCacheSample/Startup.cs?highlight=5,6,7,8,9,10,11,12,13,14,15)]
 
 ````csharp
-
-   public void ConfigureServices(IServiceCollection services)
+public void ConfigureServices(IServiceCollection services)
    {
        services.AddMvc(options =>
        {
@@ -152,8 +147,7 @@ Referencing a cache profile:
 [!code-csharp[Main](./response/sample/src/ResponseCacheSample/Controllers/HomeController.cs?highlight=1,4)]
 
 ````csharp
-
-   [ResponseCache(Duration = 30)]
+[ResponseCache(Duration = 30)]
    public class HomeController : Controller
    {
        [ResponseCache(CacheProfileName = "Default")]
@@ -173,6 +167,5 @@ In the above example, a class-level attribute specifies a duration of 30 seconds
 The resulting header:
 
 ````javascript
-
-   Cache-Control: public,max-age=60
+Cache-Control: public,max-age=60
    ````

@@ -17,8 +17,7 @@ The data protection system ships with two in-box key storage providers.
 We anticipate that the majority of applications will use a file system-based key repository. To configure this, call the PersistKeysToFileSystem configuration routine as demonstrated below, providing a DirectoryInfo pointing to the repository where keys should be stored.
 
 ````csharp
-
-   sc.AddDataProtection()
+sc.AddDataProtection()
        // persist keys to a specific directory
        .PersistKeysToFileSystem(new DirectoryInfo(@"c:\temp-keys\"));
    ````

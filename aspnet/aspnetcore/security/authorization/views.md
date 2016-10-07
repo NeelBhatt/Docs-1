@@ -10,8 +10,7 @@ Often a developer will want to show, hide or otherwise modify a UI based on the 
 Once you have injected the authorization service you use it by calling the [`AuthorizeAsync`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/IAuthorizationService/index.html#Microsoft.AspNetCore.Authorization.IAuthorizationService.AuthorizeAsync) method in exactly the same way as you would check during [resource based authorization](resourcebased.md#security-authorization-resource-based-imperative).
 
 ````csharp
-
-   @if (await AuthorizationService.AuthorizeAsync(User, "PolicyName"))
+@if (await AuthorizationService.AuthorizeAsync(User, "PolicyName"))
    {
        <p>This paragraph is displayed because you fulfilled PolicyName.</p>
    }
@@ -20,8 +19,7 @@ Once you have injected the authorization service you use it by calling the [`Aut
 In some cases the resource will be your view model, and you can call [`AuthorizeAsync`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/IAuthorizationService/index.html#Microsoft.AspNetCore.Authorization.IAuthorizationService.AuthorizeAsync) in exactly the same way as you would check during [resource based authorization](resourcebased.md#security-authorization-resource-based-imperative);
 
 ````csharp
-
-   @if (await AuthorizationService.AuthorizeAsync(User, Model, Operations.Edit))
+@if (await AuthorizationService.AuthorizeAsync(User, Model, Operations.Edit))
    {
        <p><a class="btn btn-default" role="button"
            href="@Url.Action("Edit", "Document", new { id = Model.Id })">Edit</a></p>

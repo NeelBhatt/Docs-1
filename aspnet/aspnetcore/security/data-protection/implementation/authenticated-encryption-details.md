@@ -24,8 +24,7 @@ A sample protected payload is illustrated below.
 <!-- literal_block {"xml:space": "preserve", "source": "security/data-protection/implementation/authenticated-encryption-details/_static/protectedpayload.txt", "ids": [], "linenos": true, "highlight_args": {"linenostart": 1}} -->
 
 ````
-
-   09 F0 C9 F0 80 9C 81 0C 19 66 19 40 95 36 53 F8
+09 F0 C9 F0 80 9C 81 0C 19 66 19 40 95 36 53 F8
    AA FF EE 57 57 2F 40 4C 3F 7F CC 9D CC D9 32 3E
    84 17 99 16 EC BA 1F 4A A1 18 45 1F 2D 13 7A 28
    79 6B 86 9C F8 B7 84 F9 26 31 FC B1 86 0A F1 56

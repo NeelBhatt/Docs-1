@@ -96,8 +96,7 @@ This approach makes it easier to unit test your controllers. Unit tests should i
 In order to inject the repository into the controller, we need to register it with the DI container. Open the *Startup.cs* file. Add the following using directive:
 
 ````csharp
-
-   using TodoApi.Models;
+using TodoApi.Models;
    ````
 
 In the `ConfigureServices` method, add the highlighted code:
@@ -130,8 +129,7 @@ These methods implement the two GET methods:
 Here is an example HTTP response for the `GetAll` method:
 
 ````
-
-   HTTP/1.1 200 OK
+HTTP/1.1 200 OK
    Content-Type: application/json; charset=utf-8
    Server: Microsoft-IIS/10.0
    Date: Thu, 18 Jun 2015 20:51:10 GMT
@@ -155,8 +153,7 @@ The `[`HttpGet]` attribute ([HttpGetAttribute`](http://docs.asp.net/projects/api
 In the `GetById` method:
 
 ````csharp
-
-   [HttpGet("{id}", Name = "GetTodo")]
+[HttpGet("{id}", Name = "GetTodo")]
    public IActionResult GetById(string id)
    ````
 
@@ -214,8 +211,7 @@ Tap the Headers tab and copy the **Location** header:
 You can use the Location header URI to access the resource you just created. Recall the `GetById` method created the `"GetTodo"` named route:
 
 ````csharp
-
-   [HttpGet("{id}", Name = "GetTodo")]
+[HttpGet("{id}", Name = "GetTodo")]
    public IActionResult GetById(string id)
    ````
 

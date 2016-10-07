@@ -194,8 +194,7 @@ Open the *Controllers/MoviesController.cs* file and examine the generated `Index
 .. comment :: start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs -->
 
 ````csharp
-
-   public class MoviesController : Controller
+public class MoviesController : Controller
    {
        private readonly ApplicationDbContext _context;
 
@@ -242,8 +241,7 @@ You could also pass in the `id` with a query string as follows:
 If a Movie is found, an instance of the `Movie` model is passed to the `Details` view:
 
 ````csharp
-
-   return View(movie);
+return View(movie);
    ````
 
 Examine the contents of the *Views/Movies/Details.cshtml* file:
@@ -253,8 +251,7 @@ Examine the contents of the *Views/Movies/Details.cshtml* file:
 By including a `@model` statement at the top of the view file, you can specify the type of object that the view expects. When you created the movie controller, Visual Studio automatically included the following `@model` statement at the top of the *Details.cshtml* file:
 
 ````HTML
-
-   @model MvcMovie.Models.Movie
+@model MvcMovie.Models.Movie
    ````
 
 This `@model` directive allows you to access the movie that the controller passed to the view by using a `Model` object that's strongly typed. For example, in the *Details.cshtml* view, the code passes each movie field to the `DisplayNameFor` and `DisplayFor` HTML Helpers with the strongly typed `Model` object. The `Create` and `Edit` methods and views also pass a `Movie` model object.

@@ -12,8 +12,7 @@ Often authorization depends upon the resource being accessed. For example a docu
 Authorization is implemented as a service, [`IAuthorizationService`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/IAuthorizationService/index.html#Microsoft.AspNetCore.Authorization.IAuthorizationService), registered in the service collection and available via [dependency injection](../../fundamentals/dependency-injection.md#fundamentals-dependency-injection) for Controllers to access.
 
 ````csharp
-
-   public class DocumentController : Controller
+public class DocumentController : Controller
    {
        IAuthorizationService _authorizationService;
 
@@ -27,8 +26,7 @@ Authorization is implemented as a service, [`IAuthorizationService`](http://docs
 [`IAuthorizationService`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/IAuthorizationService/index.html#Microsoft.AspNetCore.Authorization.IAuthorizationService) has two methods, one where you pass the resource and the policy name and the other where you pass the resource and a list of requirements to evaluate.
 
 ````csharp
-
-   Task<bool> AuthorizeAsync(ClaimsPrincipal user,
+Task<bool> AuthorizeAsync(ClaimsPrincipal user,
                              object resource,
                              IEnumerable<IAuthorizationRequirement> requirements);
    Task<bool> AuthorizeAsync(ClaimsPrincipal user,
@@ -41,8 +39,7 @@ Authorization is implemented as a service, [`IAuthorizationService`](http://docs
 To call the service load your resource within your action then call the [`AuthorizeAsync`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/IAuthorizationService/index.html#Microsoft.AspNetCore.Authorization.IAuthorizationService.AuthorizeAsync) overload you require. For example
 
 ````csharp
-
-   public async Task<IActionResult> Edit(Guid documentId)
+public async Task<IActionResult> Edit(Guid documentId)
    {
        Document document = documentRepository.Find(documentId);
 
@@ -67,8 +64,7 @@ To call the service load your resource within your action then call the [`Author
 Writing a handler for resource based authorization is not that much different to [writing a plain requirements handler](policies.md#security-authorization-policies-based-authorization-handler). You create a requirement, and then implement a handler for the requirement, specifying the requirement as before and also the resource type. For example, a handler which might accept a Document resource would look as follows;
 
 ````csharp
-
-   public class DocumentAuthorizationHandler : AuthorizationHandler<MyRequirement, Document>
+public class DocumentAuthorizationHandler : AuthorizationHandler<MyRequirement, Document>
    {
        public override Task HandleRequirementAsync(AuthorizationHandlerContext context,
                                                    MyRequirement requirement,
@@ -84,8 +80,7 @@ Writing a handler for resource based authorization is not that much different to
 Don't forget you also need to register your handler in the `ConfigureServices` method;
 
 ````csharp
-
-   services.AddSingleton<IAuthorizationHandler, DocumentAuthorizationHandler>();
+services.AddSingleton<IAuthorizationHandler, DocumentAuthorizationHandler>();
    ````
 
 ### Operational Requirements
@@ -93,8 +88,7 @@ Don't forget you also need to register your handler in the `ConfigureServices` m
 If you are making decisions based on operations such as read, write, update and delete, you can use the [`OperationAuthorizationRequirement`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/Infrastructure/OperationAuthorizationRequirement/index.html#Microsoft.AspNetCore.Authorization.Infrastructure.OperationAuthorizationRequirement) class in the [`Microsoft.AspNetCore.Authorization.Infrastructure`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/Infrastructure/index.html#Microsoft.AspNetCore.Authorization.Infrastructure) namespace. This prebuilt requirement class enables you to write a single handler which has a parameterized operation name, rather than create individual classes for each operation. To use it provide some operation names:
 
 ````csharp
-
-   public static class Operations
+public static class Operations
    {
        public static OperationAuthorizationRequirement Create =
            new OperationAuthorizationRequirement { Name = "Create" };
@@ -110,8 +104,7 @@ If you are making decisions based on operations such as read, write, update and 
 Your handler could then be implemented as follows, using a hypothetical `Document` class as the resource;
 
 ````csharp
-
-   public class DocumentAuthorizationHandler :
+public class DocumentAuthorizationHandler :
        AuthorizationHandler<OperationAuthorizationRequirement, Document>
    {
        public override Task HandleRequirementAsync(AuthorizationHandlerContext context,
@@ -131,8 +124,7 @@ You can see the handler works on [`OperationAuthorizationRequirement`](http://do
 To call an operational resource handler you need to specify the operation when calling [`AuthorizeAsync`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/IAuthorizationService/index.html#Microsoft.AspNetCore.Authorization.IAuthorizationService.AuthorizeAsync) in your action. For example
 
 ````csharp
-
-   if (await authorizationService.AuthorizeAsync(User, document, Operations.Read))
+if (await authorizationService.AuthorizeAsync(User, document, Operations.Read))
    {
        return View(document);
    }

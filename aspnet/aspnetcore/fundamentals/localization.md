@@ -27,8 +27,7 @@ targeted for localization and not need to create resource files early in develop
 [!code-csharp[Main](localization/sample/Controllers/AboutController.cs)]
 
 ````csharp
-
-   using Microsoft.AspNet.Mvc;
+using Microsoft.AspNet.Mvc;
    using Microsoft.Extensions.Localization;
 
    namespace Localization.StarterWeb.Controllers
@@ -59,8 +58,7 @@ Use the [`IHtmlLocalizer<T>`](https://docs.asp.net/projects/api/en/latest/autoap
 [!code-csharp[Main](../fundamentals/localization/sample/Controllers/BookController.cs?highlight=3,5,20)]
 
 ````csharp
-
-   using System;
+using System;
    using Microsoft.AspNet.Http;
    using Microsoft.AspNet.Localization;
    using Microsoft.AspNet.Mvc;
@@ -94,8 +92,7 @@ At the lowest level, you can get `IStringLocalizerFactory` out of [Dependency In
 [!code-csharp[Main](../fundamentals/localization/sample/Controllers/TestController.cs?highlight=6,7,8,9,10,11)]
 
 ````csharp
-
-    public class TestController : Controller
+ public class TestController : Controller
     {
         private readonly IStringLocalizer _localizer;
         private readonly IStringLocalizer _localizer2;
@@ -123,8 +120,7 @@ You can partition your localized strings by controller, area, or have just one c
 [!code-csharp[Main](localization/sample/Resources/SharedResource.cs)]
 
 ````csharp
-
-   // Dummy class to group shared resources
+// Dummy class to group shared resources
 
    namespace Localization.StarterWeb
    {
@@ -140,8 +136,7 @@ Some developers use the `Startup` class to contain global or shared strings.  In
 [!code-csharp[Main](localization/sample/Controllers/InfoController.cs)]
 
 ````csharp
-
-    public class InfoController : Controller
+ public class InfoController : Controller
     {
         private readonly IStringLocalizer<InfoController> _localizer;
         private readonly IStringLocalizer<SharedResource> _sharedLocalizer;
@@ -169,8 +164,7 @@ The [`IViewLocalizer`](https://docs.asp.net/projects/api/en/latest/autoapi/Micro
 [!code-HTML[Main](localization/sample/Views/Home/About.cshtml)]
 
 ````HTML
-
-   @using Microsoft.AspNet.Mvc.Localization
+@using Microsoft.AspNet.Mvc.Localization
 
    @inject IViewLocalizer Localizer
 
@@ -187,8 +181,7 @@ The [`IViewLocalizer`](https://docs.asp.net/projects/api/en/latest/autoapi/Micro
 The default implementation of `IViewLocalizer` finds the resource file based on the view's file name. There is no option to use a global shared resource file. `ViewLocalizer` implements the localizer using [`IHtmlLocalizer`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Localization/IHtmlLocalizer/index.html), so Razor doesn't HTML encode the localized string. You can parameterize resource strings and `IViewLocalizer` will HTML encode the parameters, but not the resource string. Consider the following Razor markup:
 
 ````HTML
-
-   @Localizer["<i>Hello</i> <b>{0}!</b>", UserManager.GetUserName(User)]
+@Localizer["<i>Hello</i> <b>{0}!</b>", UserManager.GetUserName(User)]
    ````
 
 A French resource file could contain the following:
@@ -205,8 +198,7 @@ To use a shared resource file in a view, inject [`IHtmlLocalizer<T>`](https://do
 [!code-HTML[Main](../fundamentals/localization/sample/Views/Test/About.cshtml?highlight=5,12)]
 
 ````HTML
-
-   @using Microsoft.AspNet.Mvc.Localization
+@using Microsoft.AspNet.Mvc.Localization
    @using Localization.StarterWeb.Services
 
    @inject IViewLocalizer Localizer
@@ -231,8 +223,7 @@ DataAnnotations error messages are localized with [`IStringLocalizer<T>`](https:
 [!code-csharp[Main](localization/sample/ViewModels/Account/RegisterViewModel.cs)]
 
 ````csharp
-
-    public class RegisterViewModel
+ public class RegisterViewModel
     {
         [Required(ErrorMessage = "The Email field is required.")]
         [EmailAddress(ErrorMessage = "The Email field is not a valid e-mail address.")]
@@ -295,8 +286,7 @@ Localization is configured in the `ConfigureServices` method:
 [!code-csharp[Main](localization/sample/Startup.cs?highlight=4,7,8)]
 
 ````csharp
-
-     public void ConfigureServices(IServiceCollection services)
+  public void ConfigureServices(IServiceCollection services)
      {
 
          services.AddLocalization(options => options.ResourcesPath = "Resources");
@@ -321,8 +311,7 @@ The current culture on a request is set in the localization [Middleware](middlew
 [!code-csharp[Main](localization/sample/Startup.cs)]
 
 ````csharp
-
-     public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+  public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
 
          var supportedCultures = new[]
          {
@@ -407,8 +396,7 @@ The [Accept-Language header](https://www.w3.org/International/questions/qa-accep
 Suppose you want to let your customers store their language and culture in your databases. You could write a provider to look up these values for the user. The following code shows how to add a custom provider:
 
 ````csharp
-
-   services.Configure<RequestLocalizationOptions>(options =>
+services.Configure<RequestLocalizationOptions>(options =>
    {
        var supportedCultures = new[]
        {
@@ -455,8 +443,7 @@ This sample **Localization.StarterWeb** project on [GitHub](https://github.com/a
 [!code-none[Main](localization/sample/Views/Shared/_SelectLanguagePartial.cshtml)]
 
 ````none
-
-   @using Microsoft.AspNet.Builder
+@using Microsoft.AspNet.Builder
    @using Microsoft.AspNet.Http.Features
    @using Microsoft.AspNet.Localization
    @using Microsoft.AspNet.Mvc.Localization
@@ -489,8 +476,7 @@ The *Views/Shared/_SelectLanguagePartial.cshtml* file is added to the `footer` s
 [!code-HTML[Main](localization/sample/Views/Shared/_Layout.cshtml)]
 
 ````HTML
-
-     <div class="container body-content">
+  <div class="container body-content">
          @RenderBody()
          <hr />
          <footer>
@@ -512,8 +498,7 @@ The `SetLanguage` method sets the culture cookie.
 [!code-csharp[Main](localization/sample/Controllers/HomeController.cs)]
 
 ````csharp
-
-     [HttpPost]
+  [HttpPost]
      public IActionResult SetLanguage(string culture, string returnUrl)
      {
          Response.Cookies.Append(

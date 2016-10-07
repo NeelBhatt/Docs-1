@@ -24,8 +24,7 @@ You must configure at least one source in order for `Configuration` to function 
 [!code-csharp[Main](configuration/sample/src/CodeSnippets/ConfigSummarySnippet.cs)]
 
 ````csharp
-
-   var builder = new ConfigurationBuilder();
+var builder = new ConfigurationBuilder();
    builder.AddInMemoryCollection();
    var config = builder.Build();
    config["somekey"] = "somevalue";
@@ -46,8 +45,7 @@ It's not unusual to store configuration values in a hierarchical structure, espe
 [!code-json[Main](../common/samples/WebApplication1/src/WebApplication1/appsettings.json)]
 
 ````json
-
-   {
+{
      "ConnectionStrings": {
        "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=aspnet-WebApplication1-26e8893e-d7c0-4fc6-8aab-29b59971d622;Trusted_Connection=True;MultipleActiveResultSets=true"
      },
@@ -81,8 +79,7 @@ Adding support for additional configuration sources is accomplished through exte
 [!code-csharp[Main](configuration/sample/src/CustomConfigurationProvider/Program.cs)]
 
 ````csharp
-
-   // work with with a builder using multiple calls
+// work with with a builder using multiple calls
    var builder = new ConfigurationBuilder();
    builder.SetBasePath(Directory.GetCurrentDirectory());
    builder.AddJsonFile("appsettings.json");
@@ -109,8 +106,7 @@ It can be useful to have environment-specific configuration files. This can be a
 [!code-none[Main](../common/samples/WebApplication1/src/WebApplication1/Startup.cs?highlight=6)]
 
 ````none
-
-   public Startup(IHostingEnvironment env)
+public Startup(IHostingEnvironment env)
    {
        var builder = new ConfigurationBuilder()
            .SetBasePath(env.ContentRootPath)
@@ -141,8 +137,7 @@ One way to leverage the order precedence of `Configuration` is to specify defaul
 [!code-none[Main](../fundamentals/configuration/sample/src/ConfigConsole/Program.cs?highlight=22,25)]
 
 ````none
-
-   using System;
+using System;
    using System.Collections.Generic;
    using System.Linq;
    using Microsoft.Extensions.Configuration;
@@ -193,8 +188,7 @@ A simple `MyOptions` class is shown here:
 [!code-csharp[Main](configuration/sample/src/UsingOptions/Models/MyOptions.cs)]
 
 ````csharp
-
-   public class MyOptions
+public class MyOptions
    {
        public string Option1 { get; set; }
        public int Option2 { get; set; }
@@ -207,8 +201,7 @@ Options can be injected into your application using the [`IOptions<TOptions>`](h
 [!code-csharp[Main](../fundamentals/configuration/sample/src/UsingOptions/Controllers/HomeController.cs?highlight=3,5,8)]
 
 ````csharp
-
-   public class HomeController : Controller
+public class HomeController : Controller
    {
        private readonly IOptions<MyOptions> _optionsAccessor;
 
@@ -231,8 +224,7 @@ To setup the [`IOptions<TOptions>`](http://docs.asp.net/projects/api/en/latest/a
 [!code-csharp[Main](../fundamentals/configuration/sample/src/UsingOptions/Startup.cs?highlight=4)]
 
 ````csharp
-
-   public void ConfigureServices(IServiceCollection services)
+public void ConfigureServices(IServiceCollection services)
    {
        // Setup options with DI
        services.AddOptions();
@@ -251,8 +243,7 @@ You configure options using the [`Configure<TOptions>`](http://docs.asp.net/proj
 [!code-csharp[Main](../fundamentals/configuration/sample/src/UsingOptions/Startup.cs?highlight=7,10,11,12,13,16)]
 
 ````csharp
-
-   public void ConfigureServices(IServiceCollection services)
+public void ConfigureServices(IServiceCollection services)
    {
        // Setup options with DI
        services.AddOptions();
@@ -297,8 +288,7 @@ To start off we'll define a simple `ConfigurationValue` entity for storing confi
 [!code-csharp[Main](configuration/sample/src/CustomConfigurationProvider/ConfigurationValue.cs)]
 
 ````csharp
-
-   public class ConfigurationValue
+public class ConfigurationValue
    {
        public string Id { get; set; }
        public string Value { get; set; }
@@ -311,8 +301,7 @@ You need a `ConfigurationContext` to store and access the configured values usin
 [!code-csharp[Main](../fundamentals/configuration/sample/src/CustomConfigurationProvider/ConfigurationContext.cs?highlight=7)]
 
 ````csharp
-
-   public class ConfigurationContext : DbContext
+public class ConfigurationContext : DbContext
    {
        public ConfigurationContext(DbContextOptions options) : base(options)
        {
@@ -328,8 +317,7 @@ Create an `EntityFrameworkConfigurationSource` that inherits from [`IConfigurati
 [!code-csharp[Main](../fundamentals/configuration/sample/src/CustomConfigurationProvider/EntityFrameworkConfigurationSource.cs?highlight=7,16,17,18,19)]
 
 ````csharp
-
-   using System;
+using System;
    using Microsoft.EntityFrameworkCore;
    using Microsoft.Extensions.Configuration;
 
@@ -357,8 +345,7 @@ Next, create the custom configuration provider by inheriting from [`Configuratio
 [!code-csharp[Main](../fundamentals/configuration/sample/src/CustomConfigurationProvider/EntityFrameworkConfigurationProvider.cs?highlight=9,18,19,20,21,22,23,24,25,26,27,28,29,30,37,38)]
 
 ````csharp
-
-   using System;
+using System;
    using System.Collections.Generic;
    using System.Linq;
    using Microsoft.EntityFrameworkCore;
@@ -415,8 +402,7 @@ By convention you can also add an `AddEntityFrameworkConfiguration` extension me
 [!code-csharp[Main](../fundamentals/configuration/sample/src/CustomConfigurationProvider/EntityFrameworkExtensions.cs?highlight=9)]
 
 ````csharp
-
-   using System;
+using System;
    using Microsoft.EntityFrameworkCore;
    using Microsoft.Extensions.Configuration;
 
@@ -438,8 +424,7 @@ You can see an example of how to use this custom configuration provider in your 
 [!code-csharp[Main](configuration/sample/src/CustomConfigurationProvider/Program.cs?highlight=21,22,23,24)]
 
 ````csharp
-
-   using System;
+using System;
    using System.IO;
    using Microsoft.EntityFrameworkCore;
    using Microsoft.Extensions.Configuration;

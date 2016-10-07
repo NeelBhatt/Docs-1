@@ -23,8 +23,7 @@ Returning JSON-formatted data:
 [!code-csharp[Main](./formatting/sample/src/ResponseFormattingSample/Controllers/Api/AuthorsController.cs?highlight=3,5)]
 
 ````csharp
-
-   // GET: api/authors
+// GET: api/authors
    [HttpGet]
    public JsonResult Get()
    {
@@ -44,8 +43,7 @@ To return plain text formatted data, use `ContentResult` and the `Content` helpe
 [!code-csharp[Main](./formatting/sample/src/ResponseFormattingSample/Controllers/Api/AuthorsController.cs?highlight=3,5)]
 
 ````csharp
-
-   // GET api/authors/about
+// GET api/authors/about
    [HttpGet("About")]
    public ContentResult About()
    {
@@ -63,8 +61,7 @@ Note in this case the `Content-Type` returned is `text/plain`. You can also achi
 [!code-csharp[Main](./formatting/sample/src/ResponseFormattingSample/Controllers/Api/AuthorsController.cs?highlight=3,5)]
 
 ````csharp
-
-   // GET api/authors/version
+// GET api/authors/version
    [HttpGet("version")]
    public string Version()
    {
@@ -85,8 +82,7 @@ The following action method uses the `Ok` and `NotFound` helper methods:
 [!code-csharp[Main](./formatting/sample/src/ResponseFormattingSample/Controllers/Api/AuthorsController.cs?highlight=8,10)]
 
 ````csharp
-
-   // GET: api/authors/search?namelike=th
+// GET: api/authors/search?namelike=th
    [HttpGet("Search")]
    public IActionResult Search(string namelike)
    {
@@ -113,8 +109,7 @@ Returning an object type:
 [!code-csharp[Main](./formatting/sample/src/ResponseFormattingSample/Controllers/Api/AuthorsController.cs?highlight=3)]
 
 ````csharp
-
-   // GET api/authors/ardalis
+// GET api/authors/ardalis
    [HttpGet("{alias}")]
    public Author Get(string alias)
    {
@@ -140,8 +135,7 @@ Unlike typical API clients, web browsers tend to supply `Accept` headers that in
 If you would prefer your application honor browser accept headers, you can configure this as part of MVC's configuration by setting `RespectBrowserAcceptHeader` to `true` in the `ConfigureServices` method in *Startup.cs*.
 
 ````csharp
-
-   services.AddMvc(options =>
+services.AddMvc(options =>
    {
      options.RespectBrowserAcceptHeader = true; // false by default
    }
@@ -160,8 +154,7 @@ Add the XmlSerializerFormatters to MVC's configuration in *Startup.cs*:
 [!code-csharp[Main](./formatting/sample/src/ResponseFormattingSample/Startup.cs?highlight=4)]
 
 ````csharp
-
-   public void ConfigureServices(IServiceCollection services)
+public void ConfigureServices(IServiceCollection services)
    {
        services.AddMvc()
            .AddXmlSerializerFormatters();
@@ -174,8 +167,7 @@ Add the XmlSerializerFormatters to MVC's configuration in *Startup.cs*:
 Alternately, you can add just the output formatter:
 
 ````csharp
-
-   services.AddMvc(options =>
+services.AddMvc(options =>
    {
      options.OutputFormatters.Add(new XmlSerializerOutputFormatter());
    });
@@ -184,8 +176,7 @@ Alternately, you can add just the output formatter:
 These two approaches will serialize results using [System.Xml.Serialization.XmlSerializer](https://dotnet.github.io/api/System.Xml.Serialization.XmlSerializer.html). If you prefer, you can use the [System.Runtime.Serialization.DataContractSerializer](https://dotnet.github.io/api/System.Runtime.Serialization.DataContractSerializer.html) by adding its associated formatter:
 
 ````csharp
-
-   services.AddMvc(options =>
+services.AddMvc(options =>
    {
      options.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter());
    });
@@ -208,8 +199,7 @@ In this screenshot, you can see the request sets a header of `Accept: applicatio
 If you would like to restrict the response formats for a specific action you can, you can apply the `[Produces]` filter. The `[Produces]` filter specifies the response formats for a specific action (or controller). Like most [Filters](../controllers/filters.md), this can be applied at the action, controller, or global scope.
 
 ````csharp
-
-   [Produces("application/json")]
+[Produces("application/json")]
    public class AuthorsController
    ````
 
@@ -220,8 +210,7 @@ The `[Produces]` filter will force all actions within the `AuthorsController` to
 Some special cases are implemented using built-in formatters. By default, `string` return types will be formatted as *text/plain* (*text/html* if requested via `Accept` header). This behavior can be removed by removing the `TextOutputFormatter`. You remove formatters in the `Configure` method in *Startup.cs* (shown below). Actions that have a model object return type will return a 204 No Content response when returning `null`. This behavior can be removed by removing the `HttpNoContentOutputFormatter`. The following code removes the `TextOutputFormatter` and *HttpNoContentOutputFormatter`*.
 
 ````csharp
-
-   services.AddMvc(options =>
+services.AddMvc(options =>
    {
      options.OutputFormatters.RemoveType<TextOutputFormatter>();
      options.OutputFormatters.RemoveType<HttpNoContentOutputFormatter>();
@@ -237,8 +226,7 @@ Without the `HttpNoContentOutputFormatter`, null objects are formatted using the
 Clients can request a particular format as part of the URL, such as in the query string or part of the path, or by using a format-specific file extension such as .xml or .json. The mapping from request path should be specified in the route the API is using. For example:
 
 ````csharp
-
-   [FormatFilter]
+[FormatFilter]
    public class ProductsController
    {
      [Route("[controller]/[action]/{id}.{format?}")]

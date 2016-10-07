@@ -24,8 +24,7 @@ Update the `Movie` class to take advantage of the built-in `Required`, `StringLe
 [!code-none[Main](../../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Models/MovieDateRatingDA.cs?highlight=5,12,13,14,17,18,21,22)]
 
 ````none
-
-   public class Movie
+public class Movie
    {
        public int ID { get; set; }
 
@@ -80,8 +79,7 @@ You might wonder how the validation UI was generated without any updates to the 
 [!code-csharp[Main](start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs)]
 
 ````csharp
-
-   public IActionResult Create()
+public IActionResult Create()
    {
        return View();
    }
@@ -128,8 +126,7 @@ Below is portion of the *Create.cshtml* view template that you scaffolded earlie
 [!code-HTML[Main](../../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Views/Movies/CreateRatingBrevity.cshtml?highlight=9,10,17,18,13)]
 
 ````HTML
-
-   <form asp-action="Create">
+<form asp-action="Create">
        <div class="form-horizontal">
            <h4>Movie</h4>
            <hr />
@@ -172,8 +169,7 @@ Open the *Movie.cs* file and examine the `Movie` class. The `System.ComponentMod
 [!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Models/MovieDateRatingDA.cs?highlight=2,6)]
 
 ````csharp
-
-   [Display(Name = "Release Date")]
+[Display(Name = "Release Date")]
    [DataType(DataType.Date)]
    public DateTime ReleaseDate { get; set; }
 
@@ -191,8 +187,7 @@ The `DataType` attributes only provide hints for the view engine to format the d
 The `DisplayFormat` attribute is used to explicitly specify the date format:
 
 ````csharp
-
-   [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
    public DateTime ReleaseDate { get; set; }
    ````
 
@@ -210,8 +205,7 @@ You can use the `DisplayFormat` attribute by itself, but it's generally a good i
 > jQuery validation does not work with the `Range` attribute and `DateTime`. For example, the following code will always display a client side validation error, even when the date is in the specified range:
 
 ````csharp
-
-   [Range(typeof(DateTime), "1/1/1966", "1/1/2020")]
+[Range(typeof(DateTime), "1/1/1966", "1/1/2020")]
    ````
 
 You will need to disable jQuery date validation to use the `Range` attribute with `DateTime`. It's generally not a good practice to compile hard dates in your models, so using the `Range` attribute and `DateTime` is discouraged.
@@ -221,8 +215,7 @@ The following code shows combining attributes on one line:
 [!code-none[Main](../../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Models/MovieDateRatingDAmult.cs?highlight=5,8,11,14,17)]
 
 ````none
-
-   public class Movie
+public class Movie
    {
        public int ID { get; set; }
 

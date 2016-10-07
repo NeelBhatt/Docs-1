@@ -108,8 +108,7 @@ In this topic, you'll learn how to use ASP.NET Core Identity to add functionalit
    [!code-csharp[Main](./identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?highlight=3,4,11,12,17,18)]
 
    ````csharp
-
-          public class AccountController : Controller
+       public class AccountController : Controller
           {
               private readonly UserManager<ApplicationUser> _userManager;
               private readonly SignInManager<ApplicationUser> _signInManager;
@@ -136,14 +135,12 @@ In this topic, you'll learn how to use ASP.NET Core Identity to add functionalit
               // GET: /Account/Login
 
       ````
-
-   Then, the **Register** action creates the user by calling `CreateAsync` function of the `UserManager` object, as shown below:
+Then, the **Register** action creates the user by calling `CreateAsync` function of the `UserManager` object, as shown below:
 
    [!code-csharp[Main](./identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?highlight=9)]
 
    ````csharp
-
-      [HttpPost]
+   [HttpPost]
       [AllowAnonymous]
       [ValidateAntiForgeryToken]
       public async Task<IActionResult> Register(RegisterViewModel model)
@@ -269,8 +266,7 @@ In this topic, you'll learn how to use ASP.NET Core Identity to add functionalit
    [!code-csharp[Main](./identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?highlight=5)]
 
    ````csharp
-
-      [HttpPost]
+   [HttpPost]
       [ValidateAntiForgeryToken]
       public async Task<IActionResult> LogOff()
       {
@@ -280,8 +276,7 @@ In this topic, you'll learn how to use ASP.NET Core Identity to add functionalit
       }
 
       ````
-
-   The code above shows the `SignInManager.SignOutAsync` method. The `SignOutAsync` method clears the users claims stored in a cookie.
+The code above shows the `SignInManager.SignOutAsync` method. The `SignOutAsync` method clears the users claims stored in a cookie.
 
 5.  View the database.
 

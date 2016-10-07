@@ -45,8 +45,7 @@ Next, add a `<script>` reference to the bottom of the `<body>` section of your H
 [!code-html[Main](../client-side/angular/sample/AngularSample/src/AngularSample/Views/Shared/_Layout.cshtml?highlight=4)]
 
 ````html
-
-           <environment names="Development">
+        <environment names="Development">
                <script src="~/lib/jquery/dist/jquery.js"></script>
                <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
                <script src="~/lib/angular/angular.js"></script>
@@ -61,8 +60,7 @@ It's recommended that production applications utilize CDNs for common libraries 
 [!code-html[Main](../client-side/angular/sample/AngularSample/src/AngularSample/Views/Shared/_Layout.cshtml?highlight=10&range=53-67)]
 
 ````html
-
-           <environment names="Staging,Production">
+        <environment names="Staging,Production">
                <script src="//ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"
                        asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
                        asp-fallback-test="window.jQuery">
@@ -101,8 +99,7 @@ One of the primitive directives used in all AngularJS applications is the `ng-ap
 [!code-html[Main](../client-side/angular/sample/AngularSample/src/AngularSample/Views/Home/Directives.cshtml?highlight=5,7)]
 
 ````html
-
-   @{
+@{
        Layout = "";
    }
    <html>
@@ -151,8 +148,7 @@ Create either an HTML file or a controller action with an accompanying view name
 [!code-html[Main](../client-side/angular/sample/AngularSample/src/AngularSample/Views/Home/Databinding.cshtml?highlight=8,9,10)]
 
 ````html
-
-   @{
+@{
        Layout = "";
    }
    <html>
@@ -184,8 +180,7 @@ Add another view to demonstrate templates, and add the following to it:
 [!code-html[Main](../client-side/angular/sample/AngularSample/src/AngularSample/Views/Home/Templates.cshtml?highlight=8,9,10)]
 
 ````html
-
-   @{
+@{
        Layout = "";
    }
    <html>
@@ -220,8 +215,7 @@ The AngularJS expressions in the sample below bind `personName` and a simple Jav
 [!code-html[Main](../client-side/angular/sample/AngularSample/src/AngularSample/Views/Home/Expressions.cshtml?highlight=8,9,10)]
 
 ````html
-
-   @{
+@{
        Layout = "";
    }
    <html>
@@ -251,8 +245,7 @@ Repeating in AngularJS is done via a primitive directive called `ng-repeat`. The
 [!code-html[Main](../client-side/angular/sample/AngularSample/src/AngularSample/Views/Home/Repeaters.cshtml?highlight=8,10,11)]
 
 ````html
-
-   @{
+@{
        Layout = "";
    }
    <html>
@@ -283,8 +276,7 @@ Here is an example that repeats over an array of objects. The `ng-init` directiv
 [!code-html[Main](../client-side/angular/sample/AngularSample/src/AngularSample/Views/Home/Repeaters2.cshtml?highlight=8,9,10,11,13,14)]
 
 ````html
-
-   @{
+@{
        Layout = "";
    }
    <html>
@@ -327,8 +319,7 @@ Below is a sample that shows `$index`, `$even`, `$odd`, `$first`, and `$last` in
 [!code-html[Main](../client-side/angular/sample/AngularSample/src/AngularSample/Views/Home/Repeaters3.cshtml?highlight=14,15,16,17,18)]
 
 ````html
-
-   @{
+@{
        Layout = "";
    }
    <html>
@@ -373,8 +364,7 @@ Below is a simple example showing how to set properties on `$scope` within a sep
 [!code-html[Main](../client-side/angular/sample/AngularSample/src/AngularSample/wwwroot/app/scope.js?highlight=2,3)]
 
 ````html
-
-   var personApp = angular.module('personApp', []);
+var personApp = angular.module('personApp', []);
    personApp.controller('personController', ['$scope', function ($scope) {
        $scope.name = 'Mary Jane';
    }]);
@@ -389,8 +379,7 @@ What happens when a particular property is not found by the view? The view defin
 [!code-html[Main](../client-side/angular/sample/AngularSample/src/AngularSample/Views/Home/Scope.cshtml?highlight=9,10,14)]
 
 ````html
-
-   @{
+@{
        Layout = "";
    }
    <html>
@@ -419,15 +408,13 @@ A [module](https://docs.angularjs.org/guide/module) in AngularJS is a collection
 Below is a snippet of code that shows how to create a new module in AngularJS. The first parameter is the name of the module. The second parameter defines dependencies on other modules. Later in this article, we will be showing how to pass these dependencies to an `angular.module()` method call.
 
 ````javascript
-
-   var personApp = angular.module('personApp', []);
+var personApp = angular.module('personApp', []);
    ````
 
 Use the `ng-app` directive to represent an AngularJS module on the page. To use a module, assign the name of the module, `personApp` in this example, to the `ng-app` directive in our template.
 
 ````html
-
-   <body ng-app="personApp">
+<body ng-app="personApp">
    ````
 
 ### Controllers
@@ -441,8 +428,7 @@ Below is a snippet of code that registers a new controller. The `personApp` vari
 [!code-javascript[Main](../client-side/angular/sample/AngularSample/src/AngularSample/wwwroot/app/controllers.js?highlight=2,5)]
 
 ````javascript
-
-   // module
+// module
    var personApp = angular.module('personApp', []);
 
    // controller
@@ -460,8 +446,7 @@ The view using the `ng-controller` directive assigns the controller name:
 [!code-html[Main](../client-side/angular/sample/AngularSample/src/AngularSample/Views/Home/Controllers.cshtml?highlight=8,14)]
 
 ````html
-
-   @{
+@{
        Layout = "";
    }
    <html>
@@ -496,8 +481,7 @@ Below is a snippet of code that registers a new component. The `personApp` varia
 [!code-javascript[Main](../client-side/angular/sample/AngularSample/src/AngularSample/wwwroot/app/components.js?highlight=2,5,13)]
 
 ````javascript
-
-   // module
+// module
    var personApp = angular.module('personApp', []);
 
    // controller
@@ -525,8 +509,7 @@ The view where we are displaying the custom HTML element.
 [!code-html[Main](../client-side/angular/sample/AngularSample/src/AngularSample/Views/Home/Components.cshtml?highlight=8)]
 
 ````html
-
-   @{
+@{
        Layout = "";
    }
    <html>
@@ -548,8 +531,7 @@ The associated template used by component:
 [!code-html[Main](../client-side/angular/sample/AngularSample/src/AngularSample/wwwroot/app/partials/personcomponent.html?highlight=2,3)]
 
 ````html
-
-   <div>
+<div>
        <strong>First Name:</strong> {{vm.firstName}} <br />
        <strong>Last Name:</strong> {{vm.lastName}}
    </div>
@@ -570,8 +552,7 @@ Below is an example that shows how to use factories in AngularJS:
 [!code-javascript[Main](../client-side/angular/sample/AngularSample/src/AngularSample/wwwroot/app/simpleFactory.js?highlight=1)]
 
 ````javascript
-
-   personApp.factory('personFactory', function () {
+personApp.factory('personFactory', function () {
        function getName() {
            return "Mary Jane";
        }
@@ -587,8 +568,7 @@ Below is an example that shows how to use factories in AngularJS:
 To call this factory from the controller, pass `personFactory` as a parameter to the `controller` function:
 
 ````javascript
-
-   personApp.controller('personController', function($scope,personFactory) {
+personApp.controller('personController', function($scope,personFactory) {
      $scope.name = personFactory.getName();
    });
    ````
@@ -602,8 +582,7 @@ Below is an end-to-end example using services in AngularJS to interact with an A
 [!code-html[Main](../client-side/angular/sample/AngularSample/src/AngularSample/Views/People/Index.cshtml?highlight=5,8,10,17,18,19)]
 
 ````html
-
-   @{
+@{
        Layout = "";
    }
    <html>
@@ -635,8 +614,7 @@ The `personApp.js` file is used to register the `PersonsApp` module; and, the sy
 [!code-javascript[Main](../client-side/angular/sample/AngularSample/src/AngularSample/wwwroot/app/personApp.js?highlight=3)]
 
 ````javascript
-
-   (function () {
+(function () {
        'use strict';
        var app = angular.module('PersonsApp', []);
    })();
@@ -649,8 +627,7 @@ Let's take a look at `personFactory.js`, below. We are calling the module’s `f
 [!code-javascript[Main](../client-side/angular/sample/AngularSample/src/AngularSample/wwwroot/app/personFactory.js?highlight=6,7,12)]
 
 ````javascript
-
-   (function () {
+(function () {
        'use strict';
 
        var serviceId = 'personFactory';
@@ -681,8 +658,7 @@ In `personController.js`, we are calling the module’s `controller` method to c
 [!code-javascript[Main](../client-side/angular/sample/AngularSample/src/AngularSample/wwwroot/app/personController.js?highlight=6,7,13)]
 
 ````javascript
-
-   (function () {
+(function () {
        'use strict';
 
        var controllerId = 'personController';
@@ -709,8 +685,7 @@ Let's take a quick look at the Web API and the model behind it. The `Person` mod
 [!code-csharp[Main](angular/sample/AngularSample/src/AngularSample/Models/Person.cs)]
 
 ````csharp
-
-   namespace AngularSample.Models
+namespace AngularSample.Models
    {
        public class Person
        {
@@ -729,8 +704,7 @@ The `Person` controller returns a JSON-formatted list of `Person` objects:
 [!code-csharp[Main](../client-side/angular/sample/AngularSample/src/AngularSample/Controllers/Api/PersonController.cs?highlight=9,10,19)]
 
 ````csharp
-
-   using AngularSample.Models;
+using AngularSample.Models;
    using Microsoft.AspNet.Mvc;
    using System.Collections.Generic;
 
@@ -780,8 +754,7 @@ Now let's take the Person App we have been building and add navigation to it. Fi
 [!code-html[Main](../client-side/angular/sample/AngularSample/src/AngularSample/Views/People/Spa.cshtml?highlight=6,11,12,13,14,15,16)]
 
 ````html
-
-   @{
+@{
        Layout = "";
    }
    <html>
@@ -808,8 +781,7 @@ Let's take a look at `personModule.js` file to see how we are instantiating the 
 [!code-javascript[Main](angular/sample/AngularSample/src/AngularSample/wwwroot/app/personModule.js)]
 
 ````javascript
-
-   var personApp = angular.module('personApp', ['ngRoute']);
+var personApp = angular.module('personApp', ['ngRoute']);
    ````
 
 The `personRoutes.js` file, below, defines routes based on the route provider. Lines 4-7 define navigation by effectively saying, when a URL with `/persons` is requested, use a template called `partials/personlist` by working through `personListController`. Lines 8-11 indicate a detail page with a route parameter of `personId`. If the URL doesn't match one of the patterns, Angular defaults to the `/persons` view.
@@ -819,8 +791,7 @@ The `personRoutes.js` file, below, defines routes based on the route provider. L
 [!code-javascript[Main](../client-side/angular/sample/AngularSample/src/AngularSample/wwwroot/app/personRoutes.js?highlight=4,5,6,7,8,9,10,11,13)]
 
 ````javascript
-
-   personApp.config(['$routeProvider',
+personApp.config(['$routeProvider',
        function ($routeProvider) {
            $routeProvider.
                when('/persons', {
@@ -845,8 +816,7 @@ The `personlist.html` file is a partial view containing only the HTML needed to 
 [!code-html[Main](../client-side/angular/sample/AngularSample/src/AngularSample/wwwroot/app/partials/personlist.html?highlight=3)]
 
 ````html
-
-   <div>
+<div>
        <h1>PERSONS PAGE</h1>
        <span ng-bind="message"/>
    </div>
@@ -859,8 +829,7 @@ The controller is defined by using the module's `controller` function in `person
 [!code-javascript[Main](../client-side/angular/sample/AngularSample/src/AngularSample/wwwroot/app/personListController.js?highlight=1)]
 
 ````javascript
-
-   personApp.controller('personListController', function ($scope) {
+personApp.controller('personListController', function ($scope) {
        $scope.message = "You are on the Persons List Page.";
    })
    ````
@@ -911,8 +880,7 @@ Let's look at how the `ng-click` event is wired up. Create a new JavaScript file
 [!code-javascript[Main](../client-side/angular/sample/AngularSample/src/AngularSample/wwwroot/app/eventHandlerController.js?highlight=5,6,7)]
 
 ````javascript
-
-   personApp.controller('eventHandlerController', function ($scope) {
+personApp.controller('eventHandlerController', function ($scope) {
        $scope.firstName = 'Mary';
        $scope.lastName = 'Jane';
 
@@ -931,8 +899,7 @@ The view below binds a controller function to an AngularJS event. Line 9 has a b
 [!code-html[Main](../client-side/angular/sample/AngularSample/src/AngularSample/Views/People/Events.cshtml?highlight=9)]
 
 ````html
-
-   @{
+@{
        Layout = "";
    }
    <html>

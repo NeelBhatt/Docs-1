@@ -39,8 +39,7 @@ From within a view page, there are several ways in which you can render a partia
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/views/partial/sample/src/PartialViewsSample/Views/Home/About.cshtml", "ids": [], "linenos": false, "highlight_args": {"linenostart": 1}} -->
 
 ````
-
-   @Html.Partial("AuthorPartial")
+@Html.Partial("AuthorPartial")
 
    ````
 
@@ -49,8 +48,7 @@ The [`PartialAsync`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsof
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/views/partial/sample/src/PartialViewsSample/Views/Home/About.cshtml", "ids": [], "linenos": false, "highlight_args": {"linenostart": 1}} -->
 
 ````
-
-   @await Html.PartialAsync("AuthorPartial")
+@await Html.PartialAsync("AuthorPartial")
 
    ````
 
@@ -59,8 +57,7 @@ You can render a partial view with [`RenderPartial`](http://docs.asp.net/project
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/views/partial/sample/src/PartialViewsSample/Views/Home/About.cshtml", "ids": [], "linenos": false, "highlight_args": {"linenostart": 1}} -->
 
 ````
-
-   @{
+@{
        Html.RenderPartial("AuthorPartial");
    }
 
@@ -76,8 +73,7 @@ Because it streams the result directly, `RenderPartial` and `RenderPartialAsync`
 When referencing a partial view, you can refer to its location in several ways:
 
 ````text
-
-   // Uses a view in current folder with this name
+// Uses a view in current folder with this name
    // If none is found, searches the Shared folder
    @Html.Partial("ViewName")
 
@@ -107,22 +103,19 @@ When a partial view is instantiated, it gets a copy of the parent view's `ViewDa
 You can pass an instance of `ViewDataDictionary` to the partial view:
 
 ````csharp
-
-   @Html.Partial("PartialName", customViewData)
+@Html.Partial("PartialName", customViewData)
    ````
 
 You can also pass a model into a partial view. This can be the page's view model, or some portion of it, or a custom object. Simply pass in the model as the second parameter when calling `Partial`/`PartialAsync` or `RenderPartial`/`RenderPartialAsync`:
 
 ````csharp
-
-   @Html.Partial("PartialName", viewModel)
+@Html.Partial("PartialName", viewModel)
    ````
 
 You can pass an instance of `ViewDataDictionary` and a view model to a partial view:
 
 ````csharp
-
-   @Html.Partial("PartialName", viewModel, customViewData)
+@Html.Partial("PartialName", viewModel, customViewData)
    ````
 
 ### An Example
@@ -132,8 +125,7 @@ The following view specifies a view model of type `Article`. `Article` has an `A
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/views/partial/sample/src/PartialViewsSample/Views/Articles/Read.cshtml", "ids": [], "linenos": false, "highlight_args": {"hl_lines": [2, 5, 10], "linenostart": 1}} -->
 
 ````
-
-   @using PartialViewsSample.ViewModels
+@using PartialViewsSample.ViewModels
    @model Article
 
    <h2>@Model.Title</h2>
@@ -152,8 +144,7 @@ The *AuthorPartial* (which in this case is in the */Views/Shared* folder):
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/views/partial/sample/src/PartialViewsSample/Views/Shared/AuthorPartial.cshtml", "ids": [], "linenos": false, "highlight_args": {"hl_lines": [1], "linenostart": 1}} -->
 
 ````
-
-   @model string
+@model string
    <div>
        <h3>@Model</h3>
        This partial view came from /Views/Shared/AuthorPartial.cshtml.<br/>
@@ -166,8 +157,7 @@ The *ArticleSection* partial:
 <!-- literal_block {"xml:space": "preserve", "source": "mvc/views/partial/sample/src/PartialViewsSample/Views/Articles/ArticleSection.cshtml", "ids": [], "linenos": false, "highlight_args": {"hl_lines": [2], "linenostart": 1}} -->
 
 ````
-
-   @using PartialViewsSample.ViewModels
+@using PartialViewsSample.ViewModels
    @model ArticleSection
 
    <h3>@Model.Title</h3>

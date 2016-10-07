@@ -20,8 +20,7 @@ Adding Bootstrap to an ASP.NET Core project is simply a matter of adding it to `
 [!code-json[Main](../common/samples/WebApplication1/src/WebApplication1/bower.json?highlight=5)]
 
 ````json
-
-   {
+{
      "name": "asp.net",
      "private": true,
      "dependencies": {
@@ -41,22 +40,19 @@ You can also install bootstrap using one of several package managers, such as bo
 ### Bower
 
 ````console
-
-   bower install bootstrap
+bower install bootstrap
    ````
 
 ### npm
 
 ````console
-
-   npm install bootstrap
+npm install bootstrap
    ````
 
 ### NuGet
 
 ````console
-
-   Install-Package bootstrap
+Install-Package bootstrap
    ````
 
 > [!NOTE]
@@ -67,8 +63,7 @@ If you're referencing your own local versions of Bootstrap, you'll need to refer
 [!code-html[Main](../common/samples/WebApplication1/src/WebApplication1/Views/Shared/_Layout.cshtml?highlight=9,13,51,59)]
 
 ````html
-
-   <!DOCTYPE html>
+<!DOCTYPE html>
    <html>
    <head>
        <meta charset="utf-8" />
@@ -151,8 +146,7 @@ The most basic Bootstrap template looks very much like the _Layout.cshtml file s
 The default template uses a set of `<div>` elements to render a top navbar and the main body of the page. If you're using HTML5, you can replace the first `<div>` tag with a `<nav>` tag to get the same effect, but with more precise semantics.  Within this first `<div>` you can see there are several others. First, a `<div>` with a class of "container", and then within that, two more `<div>` elements: "navbar-header" and "navbar-collapse".  The navbar-header div includes a button that will appear when the screen is below a certain minimum width, showing 3 horizontal lines (a so-called "hamburger icon"). The icon is rendered using pure HTML and CSS; no image is required. This is the code that displays the icon, with each of the <span> tags rendering one of the white bars:
 
 ````html
-
-   <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
      <span class="icon-bar"></span>
      <span class="icon-bar"></span>
      <span class="icon-bar"></span>
@@ -182,8 +176,7 @@ One of the most popular features of Bootstrap is its grid layout system. Modern 
 [Bootstrap's grid layout system](http://getbootstrap.com/css/#grid) is based on twelve columns. This number was chosen because it can be divided evenly into 1, 2, 3, or 4 columns, and column widths can vary to within 1/12th of the vertical width of the screen. To start using the grid layout system, you should begin with a container `<div>` and then add a row `<div>`, as shown here:
 
 ````html
-
-   <div class="container">
+<div class="container">
      <div class="row">
 
      </div>

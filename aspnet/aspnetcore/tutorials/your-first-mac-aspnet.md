@@ -18,15 +18,13 @@ We will be using `yo aspnet` to generate the **Web Application Basic** template,
 Install the necessary yeoman generators and bower using npm.
 
 ````console
-
-   npm install -g yo generator-aspnet bower
+npm install -g yo generator-aspnet bower
    ````
 
 Run the ASP.NET Core generator
 
 ````console
-
-   yo aspnet
+yo aspnet
    ````
 
 * Select **Web Application Basic [without Membership and Authorization]** and tap Enter
@@ -38,8 +36,7 @@ Run the ASP.NET Core generator
 When the generator completes scaffolding the files, it will instruct you to restore, build, and run the application.
 
 ````console
-
-   Your project is now created, you can use the following commands to get going
+Your project is now created, you can use the following commands to get going
        cd "MyFirstApp"
        dotnet restore
        dotnet build (optional, build will also happen with it's run)
@@ -103,8 +100,7 @@ The sample is configured to use [Kestrel](../fundamentals/servers.md#kestrel) fo
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "json", "highlight_args": {"hl_lines": [14]}} -->
 
 ````json
-
-   {
+{
      "dependencies": {
        "Microsoft.NETCore.App": {
          "version": "1.0.0",

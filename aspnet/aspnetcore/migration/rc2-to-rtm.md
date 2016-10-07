@@ -16,8 +16,7 @@ Install the new tools from [https://dot.net/core](https://dot.net/core) and foll
 Update the global.json to
 
 ````javascript
-
-   {
+{
      "projects": [ "src", "test" ],
      "sdk": {
          "version": "1.0.0-preview2-003121"
@@ -30,8 +29,7 @@ Update the global.json to
 For the tools we ship, you no longer need to use `imports` in *project.json*. For example:
 
 ````json
-
-   {
+{
      "tools": {
        "Microsoft.AspNetCore.Server.IISIntegration.Tools": {
          "version": "1.0.0-preview1-final",
@@ -44,8 +42,7 @@ For the tools we ship, you no longer need to use `imports` in *project.json*. Fo
 Becomes:
 
 ````json
-
-   {
+{
      "tools": {
        "Microsoft.AspNetCore.Server.IISIntegration.Tools": "1.0.0-preview2-final"
      }

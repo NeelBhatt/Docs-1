@@ -14,8 +14,7 @@ Languages that are compiled into other languages, in order to improve the experi
 As a quick example of how preprocessors can improve readability and maintainability of style information, consider this CSS:
 
 ````css
-
-   .header {
+.header {
       color: black;
       font-weight: bold;
       font-size: 18px;
@@ -35,8 +34,7 @@ Using Less, this can be rewritten to eliminate all of the duplication, using a m
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "css", "highlight_args": {"hl_lines": [9]}} -->
 
 ````css
-
-   .header {
+.header {
       color: black;
       font-weight: bold;
       font-size: 18px;
@@ -56,8 +54,7 @@ Visual Studio adds a great deal of built-in support for Less and Sass. You can a
 The Less CSS pre-processor runs using Node.js. You can quickly install it using the Node Package Manager (NPM), with:
 
 ````console
-
-   npm install -g less
+npm install -g less
    ````
 
 If you're using Visual Studio, you can get started with Less by adding one or more Less files to your project, and then configuring Gulp (or Grunt) to process them at compile-time. Add a Styles folder to your project, and then add a new Less file called main.less to this folder.
@@ -73,8 +70,7 @@ Now we can add some basic styling to the file, which will be compiled into CSS a
 Modify main.less to include the following content, which creates a simple color palette from a single base color.
 
 ````none
-
-   @base: #663333;
+@base: #663333;
    @background: spin(@base, 180);
    @lighter: lighten(spin(@base, 5), 10%);
    @lighter2: lighten(spin(@base, 10), 20%);
@@ -100,8 +96,7 @@ If you don't already have one in your project, add a new Gulp configuration file
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "javascript", "highlight_args": {"hl_lines": [3]}} -->
 
 ````javascript
-
-   "devDependencies": {
+"devDependencies": {
        "gulp": "3.8.11",
        "gulp-less": "3.0.2",
        "rimraf": "2.3.2"
@@ -115,8 +110,7 @@ Now open gulpfile.js. Add a variable at the top to represent less:
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "javascript", "highlight_args": {"hl_lines": [4]}} -->
 
 ````javascript
-
-   var gulp = require("gulp"),
+var gulp = require("gulp"),
              rimraf = require("rimraf"),
              fs = require("fs"),
              less = require("gulp-less");
@@ -125,15 +119,13 @@ Now open gulpfile.js. Add a variable at the top to represent less:
 add another variable to allow you to access project properties:
 
 ````javascript
-
-   var project = require('./project.json');
+var project = require('./project.json');
    ````
 
 Next, add a task to run less, using the syntax shown here:
 
 ````javascript
-
-   gulp.task("less", function () {
+gulp.task("less", function () {
      return gulp.src('Styles/main.less')
        .pipe(less())
        .pipe(gulp.dest(project.webroot + '/css'));
@@ -151,8 +143,7 @@ Now refresh your Solution Explorer and inspect the contents of the wwwroot/css f
 Open main.css and you should see something like the following:
 
 ````css
-
-   body {
+body {
      background-color: #336666;
    }
    .baseColor {
@@ -175,8 +166,7 @@ Open main.css and you should see something like the following:
 Add a simple HTML page to the wwwroot folder and reference main.css to see the color palette in action.
 
 ````html
-
-   <!DOCTYPE html>
+<!DOCTYPE html>
    <html>
    <head>
      <meta charset="utf-8" />
@@ -202,8 +192,7 @@ You can see that the 180 degree spin on `@base` used to produce `@background` re
 Less also provides support for nested rules, as well as nested media queries. For example, defining nested hierarchies like menus can result in verbose CSS rules like these:
 
 ````css
-
-   nav {
+nav {
      height: 40px;
      width: 100%;
    }
@@ -233,8 +222,7 @@ Ideally all of the related style rules will be placed together within the CSS fi
 Defining these same rules using Less looks like this:
 
 ````none
-
-   nav {
+nav {
      height: 40px;
      width: 100%;
      li {
@@ -258,8 +246,7 @@ The `&` syntax is a Less selector feature, with & representing the current selec
 Media queries, extremely useful in creating responsive designs, can also contribute heavily to repetition and complexity in CSS. Less allows media queries to be nested within classes, so that the entire class definition doesn't need to be repeated within different top-level `@media` elements. For example, this CSS for a responsive menu:
 
 ````css
-
-   .navigation {
+.navigation {
      margin-top: 30%;
      width: 100%;
    }
@@ -279,8 +266,7 @@ Media queries, extremely useful in creating responsive designs, can also contrib
 This can be better defined in Less as:
 
 ````none
-
-   .navigation {
+.navigation {
      margin-top: 30%;
      width: 100%;
      @media screen and (min-width: 40em) {
@@ -300,8 +286,7 @@ CSS files, especially for large sites (and especially if media queries are being
 *Mixins* can accept parameters, and Less supports conditional logic in the form of mixin guards, which provide a declarative way to define when certain mixins take effect. A common use for mixin guards is to adjust colors based on how light or dark the source color is. Given a mixin that accepts a parameter for color, a mixin guard can be used to modify the mixin based on that color:
 
 ````css
-
-   .box (@color) when (lightness(@color) >= 50%) {
+.box (@color) when (lightness(@color) >= 50%) {
      background-color: #000;
    }
    .box (@color) when (lightness(@color) < 50%) {
@@ -319,8 +304,7 @@ CSS files, especially for large sites (and especially if media queries are being
 Given our current `@base` value of `#663333`, this Less script will produce the following CSS:
 
 ````css
-
-   .feature {
+.feature {
      background-color: #FFF;
      color: #663333;
    }
@@ -335,15 +319,13 @@ Sass is similar to Less, providing support for many of the same features, but wi
 To install Sass, typically you would first install Ruby (pre-installed on Mac), and then run:
 
 ````console
-
-   gem install sass
+gem install sass
    ````
 
 However, assuming you're running Visual Studio, you can get started with Sass in much the same way as you would with Less. Open package.json and add the "gulp-sass" package to `devDependencies`:
 
 ````javascript
-
-   "devDependencies": {
+"devDependencies": {
      "gulp": "3.8.11",
      "gulp-less": "3.0.2",
      "gulp-sass": "1.3.3",
@@ -354,8 +336,7 @@ However, assuming you're running Visual Studio, you can get started with Sass in
 Next, modify gulpfile.js to add a sass variable and a task to compile your Sass files and place the results in the wwwroot folder:
 
 ````javascript
-
-   var gulp = require("gulp"),
+var gulp = require("gulp"),
      rimraf = require("rimraf"),
      fs = require("fs"),
      less = require("gulp-less"),
@@ -377,8 +358,7 @@ Now you can add the Sass file main2.scss to the Styles folder in the root of the
 Open main2.scss and add the following:
 
 ````none
-
-   $base: #CC0000;
+$base: #CC0000;
    body {
      background-color: $base;
    }
@@ -387,23 +367,20 @@ Open main2.scss and add the following:
 Save all of your files. Now in Task Runner Explorer, you should see a sass task. Run it, refresh solution explorer, and look in the /wwwroot/css folder. There should be a main2.css file, with these contents:
 
 ````css
-
-   body {
+body {
      background-color: #CC0000; }
    ````
 
 Sass supports nesting in much the same was that Less does, providing similar benefits. Files can be split up by function and included using the `@import` directive:
 
 ````css
-
-   @import 'anotherfile';
+@import 'anotherfile';
    ````
 
 Sass supports mixins as well, using the `@mixin` keyword to define them and @include to include them, as in this example from [sass-lang.com](http://sass-lang.com):
 
 ````css
-
-   @mixin border-radius($radius) {
+@mixin border-radius($radius) {
      -webkit-border-radius: $radius;
       -moz-border-radius: $radius;
        -ms-border-radius: $radius;
@@ -418,8 +395,7 @@ In addition to mixins, Sass also supports the concept of inheritance, allowing o
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "css", "highlight_args": {"hl_lines": [8, 13]}} -->
 
 ````css
-
-   @mixin alert {
+@mixin alert {
      border: 1px solid black;
      padding: 5px;
      color: #333333;
@@ -443,8 +419,7 @@ Examine the output in main2.css after running the sass task in Task Runner Explo
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "css", "highlight_args": {"hl_lines": [2, 3, 4, 9, 10, 11]}} -->
 
 ````css
-
-   .success {
+.success {
      border: 1px solid black;
      padding: 5px;
      color: #333333;
@@ -468,8 +443,7 @@ Now replace the alert mixin with a `.alert` class, and change `@include` to `@ex
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "css", "highlight_args": {"hl_lines": [8, 13]}} -->
 
 ````css
-
-   .alert {
+.alert {
      border: 1px solid black;
      padding: 5px;
      color: #333333;
@@ -491,8 +465,7 @@ Now replace the alert mixin with a `.alert` class, and change `@include` to `@ex
 Run Sass once more, and examine the resulting CSS:
 
 ````css
-
-   .alert, .success, .error {
+.alert, .success, .error {
      border: 1px solid black;
      padding: 5px;
      color: #333333; }
@@ -521,8 +494,7 @@ In addition to CSS pre-compilers, another great resource for styling modern web 
 The easiest way to get started with Font Awesome is to add a reference to it, using its public content delivery network (CDN) location:
 
 ````html
-
-   <link rel="stylesheet"
+<link rel="stylesheet"
    href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
    ````
 
@@ -531,8 +503,7 @@ Of course, you can also quickly add it to your Visual Studio project by adding i
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "javascript", "highlight_args": {"hl_lines": [11]}} -->
 
 ````javascript
-
-   {
+{
      "name": "ASP.NET",
      "private": true,
      "dependencies": {
@@ -552,8 +523,7 @@ Then, to get the stylesheet added to the wwwroot folder, modify gulpfile.js as f
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "javascript", "highlight_args": {"hl_lines": [10]}} -->
 
 ````javascript
-
-   gulp.task("copy", ["clean"], function () {
+gulp.task("copy", ["clean"], function () {
      var bower = {
        "angular": "angular/angular*.{js,map}",
        "bootstrap": "bootstrap/dist/**/*.{js,map,css,ttf,svg,woff,eot}",
@@ -579,8 +549,7 @@ Once you have a reference to it on a page, you can add icons to your application
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "html", "highlight_args": {"hl_lines": [6, 9, 10, 11]}} -->
 
 ````html
-
-   <!DOCTYPE html>
+<!DOCTYPE html>
    <html>
    <head>
      <meta charset="utf-8" />

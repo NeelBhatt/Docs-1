@@ -69,8 +69,7 @@ The `HttpContext` abstraction provides support for a simple dictionary collectio
 For example, some simple [Middleware](middleware.md) could add something to the `Items` collection:
 
 ````csharp
-
-   app.Use(async (context, next) =>
+app.Use(async (context, next) =>
    {
        // perform some verification
        context.Items["isVerified"] = true;
@@ -81,8 +80,7 @@ For example, some simple [Middleware](middleware.md) could add something to the 
 and later in the pipeline, another piece of middleware could access it:
 
 ````csharp
-
-   app.Run(async (context) =>
+app.Run(async (context) =>
    {
        await context.Response.WriteAsync("Verified request? " + context.Items["isVerified"]);
    });
@@ -105,16 +103,14 @@ Once the package is installed, Session must be configured in your application's 
 ASP.NET ships with several implementations of `IDistributedCache`, including an in-memory option (to be used during development and testing only). To configure session using this in-memory option add the `Microsoft.Extensions.Caching.Memory` package in your project.json file and then add the following to `ConfigureServices`:
 
 ````csharp
-
-   services.AddDistributedMemoryCache();
+services.AddDistributedMemoryCache();
    services.AddSession();
    ````
 
 Then, add the following to `Configure` **before** `app.UseMVC()` and you're ready to use session in your application code:
 
 ````csharp
-
-   app.UseSession();
+app.UseSession();
    ````
 
 You can reference Session from `HttpContext` once it is installed and configured.
@@ -134,8 +130,7 @@ Session uses a cookie to track and disambiguate between requests from different 
 These defaults, as well as the default `IdleTimeout` (used on the server independent from the cookie), can be overridden when configuring `Session` by using `SessionOptions` as shown here:
 
 ````csharp
-
-   services.AddSession(options =>
+services.AddSession(options =>
    {
      options.CookieName = ".AdventureWorks.Session";
      options.IdleTimeout = TimeSpan.FromSeconds(10);
@@ -152,8 +147,7 @@ The `IdleTimeout` is used by the server to determine how long a session can be i
 Once session is installed and configured, you refer to it via HttpContext, which exposes a property called `Session` of type [`ISession`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Http/ISession/index.html#Microsoft.AspNetCore.Http.ISession). You can use this interface to get and set values in `Session`, such as `byte[]`.
 
 ````csharp
-
-   public interface ISession
+public interface ISession
    {
        bool IsAvailable { get; }
        string Id { get; }
@@ -170,8 +164,7 @@ Once session is installed and configured, you refer to it via HttpContext, which
 Because `Session` is built on top of `IDistributedCache`, you must always serialize the object instances being stored. Thus, the interface works with `byte[]` not simply `object`. However, there are extension methods that make working with simple types such as `String` and `Int32` easier, as well as making it easier to get a byte[] value from session.
 
 ````csharp
-
-   // session extension usage examples
+// session extension usage examples
    context.Session.SetInt32("key1", 123);
    int? val = context.Session.GetInt32("key1");
    context.Session.SetString("key2", "value");
@@ -188,8 +181,7 @@ The associated sample application demonstrates how to work with Session, includi
 [!code-csharp[Main](../fundamentals/app-state/sample/src/AppState/Startup.cs?highlight=2,6)]
 
 ````csharp
-
-   {
+{
        services.AddDistributedMemoryCache();
 
        services.AddSession(options =>
@@ -210,8 +202,7 @@ This default behavior is produced by the following middleware in *Startup.cs*, w
 [!code-csharp[Main](../fundamentals/app-state/sample/src/AppState/Startup.cs?highlight=4,6,8,9,10,11,28,29)]
 
 ````csharp
-
-   // main catchall middleware
+// main catchall middleware
    app.Run(async context =>
    {
        RequestEntryCollection collection = GetOrCreateEntries(context);
@@ -250,8 +241,7 @@ This default behavior is produced by the following middleware in *Startup.cs*, w
 [!code-csharp[Main](app-state/sample/src/AppState/Model/RequestEntry.cs)]
 
 ````csharp
-
-   public class RequestEntry
+public class RequestEntry
    {
        public string Path { get; set; }
        public int Count { get; set; }
@@ -296,8 +286,7 @@ Fetching the current instance of `RequestEntryCollection` is done via the `GetOr
 [!code-csharp[Main](../fundamentals/app-state/sample/src/AppState/Startup.cs?highlight=4,8,9)]
 
 ````csharp
-
-   private RequestEntryCollection GetOrCreateEntries(HttpContext context)
+private RequestEntryCollection GetOrCreateEntries(HttpContext context)
    {
        RequestEntryCollection collection = null;
        byte[] requestEntriesBytes = context.Session.Get("RequestEntries");
@@ -331,8 +320,7 @@ Establishing the session is done in the middleware that handles requests to "/se
 [!code-none[Main](../fundamentals/app-state/sample/src/AppState/Startup.cs?highlight=2,8,9,10,11,12,13,14)]
 
 ````none
-
-   // establish session
+// establish session
    app.Map("/session", subApp =>
    {
        subApp.Run(async context =>
@@ -360,8 +348,7 @@ Requests to this path will get or create a `RequestEntryCollection`, will add th
 [!code-csharp[Main](../fundamentals/app-state/sample/src/AppState/Startup.cs?highlight=6)]
 
 ````csharp
-
-   private void SaveEntries(HttpContext context, RequestEntryCollection collection)
+private void SaveEntries(HttpContext context, RequestEntryCollection collection)
    {
        string json = JsonConvert.SerializeObject(collection);
        byte[] serializedResult = System.Text.Encoding.UTF8.GetBytes(json);
@@ -378,8 +365,7 @@ The sample includes one more piece of middleware worth mentioning, which is mapp
 [!code-csharp[Main](../fundamentals/app-state/sample/src/AppState/Startup.cs?highlight=2,13)]
 
 ````csharp
-
-   // example middleware that does not reference session at all and is configured before app.UseSession()
+// example middleware that does not reference session at all and is configured before app.UseSession()
    app.Map("/untracked", subApp =>
    {
        subApp.Run(async context =>

@@ -56,8 +56,7 @@ In this section we'll set up our Visual Studio project to use SSL and our projec
 * Add the following code to `ConfigureServices` in `Startup`:
 
 ````csharp
-
-   services.Configure<MvcOptions>(options =>
+services.Configure<MvcOptions>(options =>
    {
        options.Filters.Add(new RequireHttpsAttribute ());
    });
@@ -68,8 +67,7 @@ Add the `[RequireHttps]` attribute to each controller. The `[RequireHttps]` attr
 [!code-csharp[Main](accconfirm/sample/WebApplication3/src/WebApplication3/Controllers/HomeController.cs?highlight=9)]
 
 ````csharp
-
-   [RequireHttps]
+[RequireHttps]
    public class HomeController : Controller
 
    ````
@@ -89,8 +87,7 @@ We'll use the [Options pattern](../../fundamentals/configuration.md#options-conf
 [!code-csharp[Main](accconfirm/sample/WebApplication3/src/WebApplication3/Services/AuthMessageSenderOptions.cs)]
 
       ````csharp
-
-         public class AuthMessageSenderOptions
+      public class AuthMessageSenderOptions
          {
              public string SendGridUser { get; set; }
              public string SendGridKey { get; set; }
@@ -101,8 +98,7 @@ We'll use the [Options pattern](../../fundamentals/configuration.md#options-conf
 Set the `SendGridUser` and `SendGridKey` with the [secret-manager tool](../app-secrets.md). For example:
 
 ````none
-
-   C:\WebApplication3\src\WebApplication3>dotnet user-secrets set SendGridUser RickAndMSFT
+C:\WebApplication3\src\WebApplication3>dotnet user-secrets set SendGridUser RickAndMSFT
    info: Successfully saved SendGridUser = RickAndMSFT to the secret store.
    ````
 
@@ -111,8 +107,7 @@ On Windows, Secret Manager stores your keys/value pairs in a *secrets.json* file
 [!code-json[Main](../../security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/project.json?highlight=3)]
 
    ````json
-
-      {
+   {
         "webroot": "wwwroot",
         "userSecretsId": "aspnet-WebApplication3-f1645c1b-3962-4e7f-99b2-4fb292b6dade",
         "version": "1.0.0-*",
@@ -124,8 +119,7 @@ On Windows, Secret Manager stores your keys/value pairs in a *secrets.json* file
 At this time, the contents of the *secrets.json* file are not encrypted. The *secrets.json* file is shown below (the sensitive keys have been removed.)
 
 ````json
-
-   {
+{
      "SendGridUser": "RickAndMSFT",
      "SendGridKey": "",
      "Authentication:Facebook:AppId": "",
@@ -142,8 +136,7 @@ Add `AuthMessageSenderOptions` to the service container at the end of the `Confi
 [!code-csharp[Main](../../security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/Startup.cs?highlight=4)]
 
 ````csharp
-
-       // Add application services.
+    // Add application services.
        services.AddTransient<IEmailSender, AuthMessageSender>();
        services.AddTransient<ISmsSender, AuthMessageSender>();
        services.Configure<AuthMessageSenderOptions>(Configuration);
@@ -169,8 +162,7 @@ This tutorial shows how to add email notification through [SendGrid](https://sen
 [!code-csharp[Main](accconfirm/sample/WebApplication3/src/WebApplication3/Services/MessageServices.cs)]
 
 ````csharp
-
-   public class AuthMessageSender : IEmailSender, ISmsSender
+public class AuthMessageSender : IEmailSender, ISmsSender
    {
        public AuthMessageSender(IOptions<AuthMessageSenderOptions> optionsAccessor)
        {
@@ -217,8 +209,7 @@ The template already has the code for account confirmation and password recovery
 [!code-none[Main](../../security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/Controllers/AccountController.cs?highlight=17,18,19,20,21)]
 
 ````none
-
-   [HttpPost]
+[HttpPost]
    [AllowAnonymous]
    [ValidateAntiForgeryToken]
    public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
@@ -254,8 +245,7 @@ The template already has the code for account confirmation and password recovery
 **Note:** We're also preventing a newly registered user from being automatically logged on by commenting out the following line:
 
 ````csharp
-
-   //await _signInManager.SignInAsync(user, isPersistent: false);
+//await _signInManager.SignInAsync(user, isPersistent: false);
    ````
 
 * Enable password recovery by uncommenting the code in the `ForgotPassword` action in the *Controllers/AccountController.cs* file.
@@ -263,8 +253,7 @@ The template already has the code for account confirmation and password recovery
 [!code-none[Main](../../security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/Controllers/AccountController.cs?highlight=17,18,19,20,21)]
 
 ````none
-
-   [HttpPost]
+[HttpPost]
    [AllowAnonymous]
    [ValidateAntiForgeryToken]
    public async Task<IActionResult> ForgotPassword(ForgotPasswordViewModel model)
@@ -298,8 +287,7 @@ Uncomment the highlighted `ForgotPassword` from in the *Views/Account/ForgotPass
 [!code-html[Main](../../security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/Views/Account/ForgotPassword.cshtml?highlight=11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27)]
 
 ````html
-
-   @model ForgotPasswordViewModel
+@model ForgotPasswordViewModel
    @{
        ViewData["Title"] = "Forgot your password?";
    }

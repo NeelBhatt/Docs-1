@@ -10,8 +10,7 @@ Authorization in MVC is controlled through the [`AuthorizeAttribute`](http://doc
 For example, the following code limits access to the `AccountController` to any authenticated user.
 
 ````csharp
-
-   [Authorize]
+[Authorize]
    public class AccountController : Controller
    {
        public ActionResult Login()
@@ -27,8 +26,7 @@ For example, the following code limits access to the `AccountController` to any 
 If you want to apply authorization to an action rather than the controller simply apply the [`AuthorizeAttribute`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizeAttribute/index.html#Microsoft.AspNetCore.Authorization.AuthorizeAttribute) attribute to the action itself;
 
 ````csharp
-
-   public class AccountController : Controller
+public class AccountController : Controller
    {
        public ActionResult Login()
        {
@@ -46,8 +44,7 @@ Now only authenticated users can access the logout function.
 You can also use the [`AllowAnonymousAttribute`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AllowAnonymousAttribute/index.html#Microsoft.AspNetCore.Authorization.AllowAnonymousAttribute) attribute to allow access by non-authenticated users to individual actions; for example
 
 ````csharp
-
-   [Authorize]
+[Authorize]
    public class AccountController : Controller
    {
        [AllowAnonymous]

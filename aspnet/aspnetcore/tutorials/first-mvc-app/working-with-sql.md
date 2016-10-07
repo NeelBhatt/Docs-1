@@ -10,8 +10,7 @@ The `ApplicationDbContext` class handles the task of connecting to the database 
 [!code-csharp[Main](start-mvc/sample2/src/MvcMovie/Startup.cs)]
 
 ````csharp
-
-   public void ConfigureServices(IServiceCollection services)
+public void ConfigureServices(IServiceCollection services)
    {
        // Add framework services.
        services.AddDbContext<ApplicationDbContext>(options =>
@@ -24,8 +23,7 @@ The ASP.NET Core [Configuration](../../fundamentals/configuration.md) system rea
 [!code-javascript[Main](../../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/appsettings.json?highlight=3)]
 
 ````javascript
-
-   {
+{
      "ConnectionStrings": {
        "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=aspnet-MvcMovie-4ae3798a;Trusted_Connection=True;MultipleActiveResultSets=true"
      },
@@ -65,8 +63,7 @@ Create a new class named `SeedData` in the *Models* folder. Replace the generate
 [!code-csharp[Main](start-mvc/sample2/src/MvcMovie/Models/SeedData.cs)]
 
 ````csharp
-
-   using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
    using Microsoft.Extensions.DependencyInjection;
    using MvcMovie.Data;
    using System;
@@ -131,8 +128,7 @@ Create a new class named `SeedData` in the *Models* folder. Replace the generate
 Notice if there are any movies in the DB, the seed initializer returns.
 
 ````csharp
-
-   if (context.Movie.Any())
+if (context.Movie.Any())
    {
        return;   // DB has been seeded.
    }
@@ -143,8 +139,7 @@ Add the seed initializer to the end of the `Configure` method in the *Startup.cs
 <!-- literal_block {"xml:space": "preserve", "source": "start-mvc/sample2/src/MvcMovie/Startup.cs", "ids": [], "linenos": false, "highlight_args": {"hl_lines": [9], "linenostart": 1}} -->
 
 ````
-
-       app.UseMvc(routes =>
+    app.UseMvc(routes =>
        {
            routes.MapRoute(
                name: "default",

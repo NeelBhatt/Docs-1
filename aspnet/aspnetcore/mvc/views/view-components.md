@@ -93,8 +93,7 @@ We recommend you name the view file *Default.cshtml* and use the *Views/Shared/C
 To use the view component, call `@Component.InvokeAsync("Name of view component", <anonymous type containing parameters>)` from a view. The parameters will be passed to the `InvokeAsync` method.  The `PriorityList` view component developed in the article is invoked from the *Views/Todo/Index.cshtml* view file. In the following, the `InvokeAsync` method is called with two parameters:
 
 ````HTML
-
-   @await Component.InvokeAsync("PriorityList", new { maxPriority = 2, isDone = false })
+@await Component.InvokeAsync("PriorityList", new { maxPriority = 2, isDone = false })
    ````
 
 ### Invoking a view component directly from a controller
@@ -106,8 +105,7 @@ In this example, the view component is called directly from the controller:
 [!code-csharp[Main](view-components/sample/ViewCompFinal/Controllers/ToDoController.cs)]
 
 ````csharp
-
-     public IActionResult IndexVC()
+  public IActionResult IndexVC()
      {
          return ViewComponent("PriorityList", new { maxPriority = 3, isDone = false });
      }
@@ -127,8 +125,7 @@ Create a *ViewComponents* folder and add the following `PriorityListViewComponen
 [!code-csharp[Main](view-components/sample/ViewCompFinal/ViewComponents/PriorityListViewComponent1.cs)]
 
 ````csharp
-
-   using Microsoft.AspNet.Mvc;
+using Microsoft.AspNet.Mvc;
    using Microsoft.Data.Entity;
    using System.Collections.Generic;
    using System.Linq;
@@ -173,8 +170,7 @@ Notes on the code:
   <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp"} -->
 
   ````csharp
-
-     [ViewComponent(Name = "PriorityList")]
+  [ViewComponent(Name = "PriorityList")]
      public class XYZ : ViewComponent
      ````
 
@@ -197,8 +193,7 @@ Notes on the code:
 [!code-html[Main](view-components/sample/ViewCompFinal/Views/Shared/Components/PriorityList/Default1.cshtml)]
 
 ````html
-
-   @model IEnumerable<ViewComponentSample.Models.TodoItem>
+@model IEnumerable<ViewComponentSample.Models.TodoItem>
 
    <h3>Priority Items</h3>
    <ul>
@@ -218,8 +213,7 @@ If the view component was controller specific, you could add it to the controlle
 [!code-html[Main](view-components/sample/ViewCompFinal/Views/Todo/IndexFirst.cshtml)]
 
 ````html
-
-       }
+    }
    </table>
    <div >
        @await Component.InvokeAsync("PriorityList", new { maxPriority = 2, isDone = false })
@@ -238,8 +232,7 @@ You can also call the view component directly from the controller:
 [!code-csharp[Main](view-components/sample/ViewCompFinal/Controllers/ToDoController.cs)]
 
 ````csharp
-
-     public IActionResult IndexVC()
+  public IActionResult IndexVC()
      {
          return ViewComponent("PriorityList", new { maxPriority = 3, isDone = false });
      }
@@ -253,8 +246,7 @@ A complex view component might need to specify a non-default view under some con
 [!code-csharp[Main](../../mvc/views/view-components/sample/ViewCompFinal/ViewComponents/PriorityListViewComponentFinal.cs?highlight=4,5,6,7,8,9)]
 
 ````csharp
-
-   public async Task<IViewComponentResult> InvokeAsync(
+public async Task<IViewComponentResult> InvokeAsync(
        int maxPriority, bool isDone)
    {
        string MyView = "Default";
@@ -274,8 +266,7 @@ Copy the *Views/Shared/Components/PriorityList/Default.cshtml* file to a view na
 [!code-html[Main](../../mvc/views/view-components/sample/ViewCompFinal/Views/Shared/Components/PriorityList/PVC.cshtml?highlight=3)]
 
 ````html
-
-   @model IEnumerable<ViewComponentSample.Models.TodoItem>
+@model IEnumerable<ViewComponentSample.Models.TodoItem>
 
    <h2> PVC Named Priority Component View</h2>
    <h4>@ViewBag.PriorityMessage</h4>
@@ -292,8 +283,7 @@ Update *Views/TodoList/Index.cshtml*
 [!code-html[Main](view-components/sample/ViewCompFinal/Views/Todo/IndexFinal.cshtml)]
 
 ````html
-
-   </table>
+</table>
 
    <div>
        @await Component.InvokeAsync("PriorityList", new { maxPriority = 4, isDone = true })
@@ -318,8 +308,7 @@ If the PVC view is not rendered, verify you are calling the view component with 
    <!-- literal_block {"ids": [], "xml:space": "preserve"} -->
 
    ````
-
-      An unhandled exception occurred while processing the request.
+   An unhandled exception occurred while processing the request.
 
       InvalidOperationException: The view 'Components/PriorityList/Default'
          was not found. The following locations were searched:
@@ -343,8 +332,7 @@ If you want compile time safety you can replace the hard coded view component na
 [!code-csharp[Main](../../mvc/views/view-components/sample/ViewCompFinal/ViewComponents/PriorityList.cs?highlight=10,14)]
 
 ````csharp
-
-   using Microsoft.AspNet.Mvc;
+using Microsoft.AspNet.Mvc;
    using Microsoft.Data.Entity;
    using System.Collections.Generic;
    using System.Linq;
@@ -383,8 +371,7 @@ Add a `using` statement to your Razor view file and use the `nameof` operator:
 [!code-html[Main](view-components/sample/ViewCompFinal/Views/Todo/IndexNameof.cshtml)]
 
 ````html
-
-   @using ViewComponentSample.Models
+@using ViewComponentSample.Models
    @using ViewComponentSample.ViewComponents
    @model IEnumerable<TodoItem>
 

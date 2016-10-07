@@ -204,8 +204,7 @@ After you make changes to your local code, you can republish.
 2. In the `Configure` method, modify the `Response.WriteAsync` method so that it appears as follows:
 
 ````aspx-cs
-
-   await context.Response.WriteAsync("Hello World! Deploy to Azure.");
+await context.Response.WriteAsync("Hello World! Deploy to Azure.");
    ````
 
 3. Save changes to *Startup.cs*.
@@ -215,8 +214,7 @@ After you make changes to your local code, you can republish.
 5. Enter a commit message, such as:
 
 ````none
-
-   Update #2
+Update #2
    ````
 
 6. Press the **Commit** button to commit the project changes.

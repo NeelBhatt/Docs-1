@@ -37,8 +37,7 @@ ASP.NET Core includes a test host that can be added to integration test projects
 [!code-javascript[Main](../testing/integration-testing/sample/test/PrimeWeb.IntegrationTests/project.json?highlight=5)]
 
 ````javascript
-
-   "dependencies": {
+"dependencies": {
      "PrimeWeb": "1.0.0",
      "xunit": "2.1.0",
      "dotnet-test-xunit": "1.0.0-rc2-build10025",
@@ -52,8 +51,7 @@ Once the Microsoft.AspNetCore.TestHost package is included in the project, you w
 [!code-csharp[Main](../testing/integration-testing/sample/test/PrimeWeb.IntegrationTests/PrimeWebDefaultRequestShould.cs?highlight=6,7)]
 
 ````csharp
-
-   private readonly TestServer _server;
+private readonly TestServer _server;
    private readonly HttpClient _client;
    public PrimeWebDefaultRequestShould()
    {
@@ -88,8 +86,7 @@ Now we can add a few additional integration tests to confirm that the prime chec
 [!code-csharp[Main](../testing/integration-testing/sample/test/PrimeWeb.IntegrationTests/PrimeWebCheckPrimeShould.cs?highlight=8,9)]
 
 ````csharp
-
-   public class PrimeWebCheckPrimeShould
+public class PrimeWebCheckPrimeShould
    {
        private readonly TestServer _server;
        private readonly HttpClient _client;
@@ -166,8 +163,7 @@ Refactoring is the process of changing an application's code to improve its desi
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]}} -->
 
 ````csharp
-
-     public void Configure(IApplicationBuilder app,
+  public void Configure(IApplicationBuilder app,
          IHostingEnvironment env)
      {
          if (env.IsDevelopment())
@@ -220,8 +216,7 @@ We want to allow the path the middleware uses to be specified as a parameter, so
 [!code-none[Main](../testing/integration-testing/sample/src/PrimeWeb/Middleware/PrimeCheckerMiddleware.cs?highlight=39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63)]
 
 ````none
-
-   using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Builder;
    using Microsoft.AspNetCore.Http;
    using PrimeWeb.Services;
    using System;
@@ -298,8 +293,7 @@ With this middleware in place and some helpful extension methods created to make
 [!code-csharp[Main](../testing/integration-testing/sample/src/PrimeWeb/Startup.cs?highlight=9)]
 
 ````csharp
-
-   public void Configure(IApplicationBuilder app,
+public void Configure(IApplicationBuilder app,
        IHostingEnvironment env)
    {
        if (env.IsDevelopment())

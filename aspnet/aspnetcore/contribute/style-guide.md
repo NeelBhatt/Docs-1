@@ -26,8 +26,7 @@ Section headings should correspond to the bulleted list of topics set out after 
 Subsection headings can be used to organize content within a section. *Headings*, above, is an example of a subsection heading. A subsection heading should appear on its own line, followed by a line of ^^^ characters.
 
 ````rst
-
-   Title (H1)
+Title (H1)
    ==========
 
    Section heading (H2)
@@ -77,8 +76,7 @@ Format specific items using these rules:
 Links should use HTTPS when possible. Inline hyperlinks are formatted like this:
 
 ````rst
-
-   Learn more about `ASP.NET <https://www.asp.net>`_.
+Learn more about `ASP.NET <https://www.asp.net>`_.
    ````
 
 Learn more about [ASP.NET](https://www.asp.net).
@@ -88,8 +86,7 @@ Surround the link text with backticks. Within the backticks, place the target in
 In addition to URLs, documents and document sections can also be linked by name:
 
 ````rst
-
-   For example, here is a link to the `Inline Markup`_ section, above.
+For example, here is a link to the `Inline Markup`_ section, above.
    ````
 
 For example, here is a link to the [Inline Markup](#inline-markup) section, above.
@@ -101,16 +98,14 @@ Any element that is rendered as a link should not have any additional formatting
 Lists can be started with a `-` or `*` character:
 
 ````rst
-
-   - This is one item
+- This is one item
    - This is a second item
    ````
 
 Numbered lists can start with a number, or they can be auto numbered by starting each item with the # character. Please use the # syntax.
 
 ````rst
-
-   1. Numbered list item one.(don't use numbers)
+1. Numbered list item one.(don't use numbers)
    2. Numbered list item two.(don't use numbers)
 
    #. Auto-numbered one.
@@ -122,8 +117,7 @@ Numbered lists can start with a number, or they can be auto numbered by starting
 Source code is very commonly included in these articles. Images should never be used to display source code. Prefer `literalinclude` for most code samples. Reserve `code-block` for small snippets that are not included in the sample project. A `code-block` can be declared as shown below, including spaces, blank lines, and indentation:
 
 ````rst
-
-   .. code-block:: c#
+.. code-block:: c#
 
    public void Foo()
    {
@@ -134,8 +128,7 @@ Source code is very commonly included in these articles. Images should never be 
 This results in:
 
 ````csharp
-
-   public void Foo()
+public void Foo()
    {
      // Foo all the things!
    }
@@ -154,8 +147,7 @@ The code block ends when you begin a new paragraph without indentation. [Sphinx 
 Line numbers should only be used while editing to assist in find the line numbers to emphasize. Code blocks also support line numbers and emphasizing or highlighting certain lines:
 
 ````rst
-
-   .. code-block:: c#
+.. code-block:: c#
      :linenos:
      :emphasize-lines: 3
 
@@ -170,8 +162,7 @@ This results in:
 <!-- literal_block {"ids": [], "linenos": true, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [3]}} -->
 
 ````csharp
-
-   public void Foo()
+public void Foo()
    {
      // Foo all the things!
    }
@@ -193,8 +184,7 @@ Images such as screen shots and explanatory figures or diagrams should be placed
 To include an image in an article, use the `.. image` directive:
 
 ````rst
-
-   .. image:: style-guide/_static/asp-net.png
+.. image:: style-guide/_static/asp-net.png
    ````
 
 > [!NOTE]
@@ -211,8 +201,7 @@ Images are responsively sized according to the browser viewport when using this 
 To add a note callout, like the ones shown in this document, use the `.. note::` directive.
 
 ````rst
-
-   .. note:: This is a note.
+.. note:: This is a note.
    ````
 
 This results in:
@@ -227,8 +216,7 @@ One nice feature of ReStructuredText is its ability to reference external files.
 External file references can specify a language, emphasize certain lines, display line numbers (recommended), similar to [Source Code](#source-code). Remember that these line number references may need to be updated if the source file is changed.
 
 ````rst
-
-   .. literalinclude:: style-guide/_static/startup.cs
+.. literalinclude:: style-guide/_static/startup.cs
      :language: c#
      :emphasize-lines: 19,25-27
      :linenos:
@@ -237,8 +225,7 @@ External file references can specify a language, emphasize certain lines, displa
 [!code-csharp[Main](../contribute/style-guide/_static/startup.cs?highlight=19,25,26,27)]
 
 ````csharp
-
-   using System;
+using System;
    using Microsoft.AspNet.Builder;
    using Microsoft.AspNet.Hosting;
    using Microsoft.AspNet.Http;
@@ -276,8 +263,7 @@ You can also include just a section of a larger file, if desired:
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "rst", "highlight_args": {"hl_lines": [3]}} -->
 
 ````rst
-
-   .. literalinclude:: style-guide/_static/startup.cs
+.. literalinclude:: style-guide/_static/startup.cs
      :language: c#
      :lines: 1,4,20-
      :linenos:
@@ -298,8 +284,7 @@ Tables should never render with horizontal scroll bars. Tables can be constructe
 When documenting how a user should navigate a series of menus, use the `:menuselection:` directive:
 
 ````rst
-
-   :menuselection:`Windows --> Views --> Other...`
+:menuselection:`Windows --> Views --> Other...`
    ````
 
 This will result in Windows ‣ Views ‣ Other....

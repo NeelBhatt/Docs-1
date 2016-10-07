@@ -39,8 +39,7 @@ You can see an example of setting up the request pipeline in the default web sit
 [!code-csharp[Main](../common/samples/WebApplication1/src/WebApplication1/Startup.cs?highlight=8,9,10,14,17,19,23)]
 
 ````csharp
-
-   public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
    {
        loggerFactory.AddConsole(Configuration.GetSection("Logging"));
        loggerFactory.AddDebug();
@@ -90,8 +89,7 @@ The simplest possible ASP.NET application sets up a single request delegate that
 [!code-csharp[Main](middleware/sample/src/MiddlewareSample/Startup.cs)]
 
 ````csharp
-
-   app.Run(async context =>
+app.Run(async context =>
    {
        await context.Response.WriteAsync("Hello, World!");
    });
@@ -124,8 +122,7 @@ You chain multiple request delegates together; the `next` parameter represents t
 [!code-csharp[Main](middleware/sample/src/MiddlewareSample/Startup.cs?highlight=5,8,14)]
 
 ````csharp
-
-   public void ConfigureLogInline(IApplicationBuilder app, ILoggerFactory loggerfactory)
+public void ConfigureLogInline(IApplicationBuilder app, ILoggerFactory loggerfactory)
    {
        loggerfactory.AddConsole(minLevel: LogLevel.Information);
        var logger = loggerfactory.CreateLogger(_environment);
@@ -163,8 +160,7 @@ You configure the HTTP pipeline using [`Run`](https://docs.asp.net/projects/api/
 [!code-csharp[Main](middleware/sample/src/MiddlewareSample/Startup.cs?highlight=3,11)]
 
 ````csharp
-
-   public void ConfigureEnvironmentOne(IApplicationBuilder app)
+public void ConfigureEnvironmentOne(IApplicationBuilder app)
    {
        app.Run(async context =>
        {
@@ -190,8 +186,7 @@ We've already seen several examples of how to build a request pipeline with `Use
 [!code-csharp[Main](middleware/sample/src/MiddlewareSample/Startup.cs?highlight=11)]
 
 ````csharp
-
-   private static void HandleMapTest(IApplicationBuilder app)
+private static void HandleMapTest(IApplicationBuilder app)
    {
        app.Run(async context =>
        {
@@ -215,8 +210,7 @@ In addition to path-based mapping, the `MapWhen` method supports predicate-based
 [!code-csharp[Main](middleware/sample/src/MiddlewareSample/Startup.cs?highlight=5,11,12,13)]
 
 ````csharp
-
-   private static void HandleBranch(IApplicationBuilder app)
+private static void HandleBranch(IApplicationBuilder app)
    {
        app.Run(async context =>
        {
@@ -243,8 +237,7 @@ Using the configuration shown above, any request that includes a query string va
 You can also nest Maps:
 
 ````javascript
-
-   app.Map("/level1", level1App => {
+app.Map("/level1", level1App => {
        level1App.Map("/level2a", level2AApp => {
            // "/level1/level2a"
            //...
@@ -275,8 +268,7 @@ RequestLoggerMiddleware.cs
 [!code-csharp[Main](../fundamentals/middleware/sample/src/MiddlewareSample/RequestLoggerMiddleware.cs?highlight=12,18)]
 
 ````csharp
-
-   using System.Threading.Tasks;
+using System.Threading.Tasks;
    using Microsoft.AspNetCore.Http;
    using Microsoft.Extensions.Logging;
 
@@ -310,8 +302,7 @@ RequestLoggerExtensions.cs
 [!code-csharp[Main](../fundamentals/middleware/sample/src/MiddlewareSample/RequestLoggerExtensions.cs?highlight=5)]
 
 ````csharp
-
-   public static class RequestLoggerExtensions
+public static class RequestLoggerExtensions
    {
        public static IApplicationBuilder UseRequestLogger(this IApplicationBuilder builder)
        {
@@ -326,8 +317,7 @@ Using the extension method and associated middleware class, the `Configure` meth
 [!code-csharp[Main](middleware/sample/src/MiddlewareSample/Startup.cs?highlight=6)]
 
 ````csharp
-
-   public void ConfigureLogMiddleware(IApplicationBuilder app,
+public void ConfigureLogMiddleware(IApplicationBuilder app,
        ILoggerFactory loggerfactory)
    {
        loggerfactory.AddConsole(minLevel: LogLevel.Information);

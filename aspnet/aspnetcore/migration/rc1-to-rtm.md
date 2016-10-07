@@ -26,8 +26,7 @@ If your app targeted `dnx451` or  `dnxcore50` in the `frameworks` section of *pr
 .NET Core apps must add a dependency to the `Microsoft.NETCore.App` package:
 
 ````none
-
-   "dependencies": {
+"dependencies": {
      "Microsoft.NETCore.App": {
        "version": "1.0.0",
        "type": "platform"
@@ -69,8 +68,7 @@ See [.NET Core CLI extensibility model](https://dotnet.github.io/docs/core-conce
 IIS publishing is now provided by the `publish-iis` tool in the `Microsoft.AspNetCore.Server.IISIntegration.Tools` package. If you intend to run your app behind IIS, add the `publish-iis` tool to your *project.json*:
 
 ````json
-
-   {
+{
      "tools": {
        "Microsoft.AspNetCore.Server.IISIntegration.Tools": "1.0.0-preview2-final"
      }
@@ -80,8 +78,7 @@ IIS publishing is now provided by the `publish-iis` tool in the `Microsoft.AspNe
 The `publish-iis` tool is commonly used in the `postpublish` script in *project.json*:
 
 ````json
-
-   {
+{
      "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
    }
    ````
@@ -91,8 +88,7 @@ The `publish-iis` tool is commonly used in the `postpublish` script in *project.
 The `ef` tool is now provided in the `Microsoft.EntityFrameworkCore.Tools` package:
 
 ````json
-
-   {
+{
      "tools": {
        "Microsoft.EntityFrameworkCore.Tools": "1.0.0-preview2-final"
      }
@@ -106,8 +102,7 @@ For more information, see [.NET Core CLI](https://docs.efproject.net/en/latest/c
 Razor tooling is now provided in the `Microsoft.AspNetCore.Razor.Tools` package:
 
 ````json
-
-   {
+{
      "tools": {
        "Microsoft.AspNetCore.Razor.Tools": "1.0.0-preview2-final"
      }
@@ -119,8 +114,7 @@ Razor tooling is now provided in the `Microsoft.AspNetCore.Razor.Tools` package:
 The `sqlservercache` command, formerly provided by the `Microsoft.Extensions.Caching.SqlConfig` package, has been replaced by the `sql-cache` tool, available through the `Microsoft.Extensions.Caching.SqlConfig.Tools` package:
 
 ````json
-
-   {
+{
      "tools": {
        "Microsoft.Extensions.Caching.SqlConfig.Tools": "1.0.0-preview2-final"
      }
@@ -132,8 +126,7 @@ The `sqlservercache` command, formerly provided by the `Microsoft.Extensions.Cac
 The `user-secret` command, formerly provided by the `Microsoft.Extensions.SecretManager` package, has been replaced by the `user-secrets` tool, available through the `Microsoft.Extensions.SecretManager.Tools` package:
 
 ````json
-
-   {
+{
      "tools": {
        "Microsoft.Extensions.SecretManager.Tools": "1.0.0-preview2-final"
      }
@@ -145,8 +138,7 @@ The `user-secret` command, formerly provided by the `Microsoft.Extensions.Secret
 The `watch` command, formerly provided by the `Microsoft.Dnx.Watcher` package, has been replaced by the `watch` tool, available through the `Microsoft.DotNet.Watcher.Tools` package:
 
 ````json
-
-   {
+{
      "tools": {
        "Microsoft.DotNet.Watcher.Tools": "1.0.0-preview2-final"
      }
@@ -160,8 +152,7 @@ For more information on the file watcher, see **Dotnet watch** in  [Tutorials](.
 ASP.NET Core 1.0 apps are console apps; you must define an entry point for your app that sets up a web host and runs it. Below is an example from the startup code for one of the Web Application templates in Visual Studio:
 
 ````csharp
-
-   public class Program
+public class Program
    {
        public static void Main(string[] args)
        {
@@ -180,8 +171,7 @@ ASP.NET Core 1.0 apps are console apps; you must define an entry point for your 
 You must add the `emitEntryPoint` to the `buildOptions` section of your application's *project.json*:
 
 ````json
-
-   {
+{
      "buildOptions": {
        "emitEntryPoint": true
      }
@@ -215,15 +205,13 @@ The environment key is set with the `ASPNETCORE_ENVIRONMENT` environment variabl
 Dependency injection code that uses `IApplicationEnvironment` must now use [`IHostingEnvironment`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/IHostingEnvironment/index.html#Microsoft.AspNetCore.Hosting.IHostingEnvironment). For example, in your `Startup` class, change:
 
 ````csharp
-
-   public Startup(IApplicationEnvironment applicationEnvironment)
+public Startup(IApplicationEnvironment applicationEnvironment)
    ````
 
 To:
 
 ````csharp
-
-   public Startup(IHostingEnvironment hostingEnvironment)
+public Startup(IHostingEnvironment hostingEnvironment)
    ````
 
 ## Kestrel
@@ -243,8 +231,7 @@ The following action result types have also been renamed:
 To compile views, set the `preserveCompilationContext` option in *project.json* to preserve the compilation context, as shown here:
 
 ````json
-
-   {
+{
      "buildOptions": {
        "preserveCompilationContext": true
      }
@@ -258,15 +245,13 @@ Views now support relative paths.
 The Validation Summary Tag Helper `asp-validation-summary` attribute value has changed. Change:
 
 ````html
-
-   <div asp-validation-summary="ValidationSummary.All"></div>
+<div asp-validation-summary="ValidationSummary.All"></div>
    ````
 
 To:
 
 ````html
-
-   <div asp-validation-summary="All"></div>
+<div asp-validation-summary="All"></div>
    ````
 
 ### Changes in ViewComponents
@@ -284,15 +269,13 @@ To:
 ASP.NET 5 RC1:
 
 ````csharp
-
-   @Component.InvokeAsync("Test", "MyName", 15)
+@Component.InvokeAsync("Test", "MyName", 15)
    ````
 
 ASP.NET Core 1.0:
 
 ````csharp
-
-   @Component.InvokeAsync("Test", new { name = "MyName", age = 15 })
+@Component.InvokeAsync("Test", new { name = "MyName", age = 15 })
    @Component.InvokeAsync("Test", new Dictionary<string, object> {
                           ["name"] = "MyName", ["age"] = 15 })
    @Component.InvokeAsync<TestViewComponent>(new { name = "MyName", age = 15})
@@ -324,8 +307,7 @@ File-based configuration providers support both relative and absolute paths to c
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [4]}} -->
 
 ````csharp
-
-   public Startup(IHostingEnvironment env)
+public Startup(IHostingEnvironment env)
    {
        var builder = new ConfigurationBuilder()
            .SetBasePath(env.ContentRootPath)
@@ -354,8 +336,7 @@ The signatures for the following methods or properties have changed:
 To use Identity in a view, add the following:
 
 ````csharp
-
-   @using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Identity
    @inject SignInManager<TUser> SignInManager
    @inject UserManager<TUser> UserManager
    ````
@@ -369,8 +350,7 @@ HttpPlatformHandler has been replaced by the [ASP.NET Core Module (ANCM)](../hos
 The ASP.NET Core Module must be configured in *web.config*:
 
 ````xml
-
-   <configuration>
+<configuration>
      <system.webServer>
        <handlers>
          <add name="aspNetCore" path="*" verb="*" modules="AspNetCoreModule" resourceType="Unspecified"/>
@@ -387,8 +367,7 @@ The *Publish to IIS tool* generates a correct *web.config*. See [Publishing to I
 IIS integration middleware is now configured when creating the [`Microsoft.AspNetCore.Hosting.WebHostBuilder`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/WebHostBuilder/index.html#Microsoft.AspNetCore.Hosting.WebHostBuilder), and is no longer called in the `Configure` method of the `Startup` class:
 
 ````csharp
-
-   var host = new WebHostBuilder()
+var host = new WebHostBuilder()
        .UseIISIntegration()
        .Build();
    ````
@@ -406,8 +385,7 @@ An *applicationhost.config* file created with ASP.NET 5 RC1 will point ASP.NET C
 Update `launchSettings.json` to remove the web target and add the following:
 
 ````json
-
-   {
+{
      "WebApplication1": {
        "commandName": "Project",
        "launchBrowser": true,
@@ -426,8 +404,7 @@ You must turn on server garbage collection in *project.json* or *app.config* whe
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "json", "highlight_args": {"hl_lines": [4]}} -->
 
 ````json
-
-    {
+ {
       "runtimeOptions": {
         "configProperties": {
           "System.GC.Server": true

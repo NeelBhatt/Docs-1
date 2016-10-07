@@ -58,8 +58,7 @@ The following example shows how to use an instance of [`IDistributedCache`](http
 [!code-csharp[Main](./distributed/sample/src/DistCacheSample/StartTimeHeader.cs?highlight=15,18,21,27,28,29,30,31)]
 
 ````csharp
-
-   using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Builder;
    using Microsoft.AspNetCore.Http;
    using Microsoft.Extensions.Caching.Distributed;
    using System;
@@ -117,8 +116,7 @@ The following code from *Startup.cs* shows the value being set:
 [!code-csharp[Main](./distributed/sample/src/DistCacheSample/Startup.cs?highlight=2,4,5,6)]
 
 ````csharp
-
-           public void Configure(IApplicationBuilder app,
+        public void Configure(IApplicationBuilder app,
                IDistributedCache cache)
            {
                var serverStartTimeString = DateTime.Now.ToString();
@@ -144,8 +142,7 @@ In the sample code, a `RedisCache` implementation is used when the server is con
 [!code-csharp[Main](./distributed/sample/src/DistCacheSample/Startup.cs?highlight=8,9,10,11,12,13)]
 
 ````csharp
-
-           /// <summary>
+        /// <summary>
            /// Use Redis Cache in Staging
            /// </summary>
            /// <param name="services"></param>
@@ -174,8 +171,7 @@ To use sql-cache tool add SqlConfig.Tools to the tools section of the project.js
 [!code-csharp[Main](./distributed/sample/src/DistCacheSample/project.json?highlight=6)]
 
 ````csharp
-
-     "tools": {
+  "tools": {
        "Microsoft.AspNetCore.Server.IISIntegration.Tools": {
          "version": "1.0.0-preview2-final",
          "imports": "portable-net45+win8+dnxcore50"
@@ -188,15 +184,13 @@ To use sql-cache tool add SqlConfig.Tools to the tools section of the project.js
 Test SqlConfig.Tools by running the following command
 
 ````none
-
-   C:\DistCacheSample\src\DistCacheSample>dotnet sql-cache create --help
+C:\DistCacheSample\src\DistCacheSample>dotnet sql-cache create --help
    ````
 
 sql-cache tool  will display usage, options and command help, now you can create tables into sql server, running "sql-cache create" command :
 
 ````none
-
-   C:\DistCacheSample\src\DistCacheSample>dotnet sql-cache create "Data Source=(localdb)\v11.0;Initial Catalog=DistCache;Integrated Security=True;" dbo TestCache
+C:\DistCacheSample\src\DistCacheSample>dotnet sql-cache create "Data Source=(localdb)\v11.0;Initial Catalog=DistCache;Integrated Security=True;" dbo TestCache
    info: Microsoft.Extensions.Caching.SqlConfig.Tools.Program[0]
        Table and index were created successfully.
    ````
@@ -210,8 +204,7 @@ Like all cache implementations, your app should get and set cache values using a
 [!code-csharp[Main](./distributed/sample/src/DistCacheSample/Startup.cs?highlight=7,8,9,10,11,12)]
 
 ````csharp
-
-           /// Use SQL Server Cache in Production
+        /// Use SQL Server Cache in Production
            /// </summary>
            /// <param name="services"></param>
            public void ConfigureProductionServices(IServiceCollection services)

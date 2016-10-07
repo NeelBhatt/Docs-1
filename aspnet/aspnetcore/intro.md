@@ -48,8 +48,7 @@ An ASP.NET Core app is simply a console app that creates a web server in its `Ma
 [!code-csharp[Main](getting-started/sample/aspnetcoreapp/Program.cs)]
 
 ````csharp
-
-   using System;
+using System;
    using Microsoft.AspNetCore.Hosting;
 
    namespace aspnetcoreapp
@@ -79,8 +78,7 @@ The `UseStartup` method on `WebHostBuilder` specifies the `Startup` class for yo
 [!code-csharp[Main](./getting-started/sample/aspnetcoreapp/Program.cs?highlight=7)]
 
 ````csharp
-
-   public class Program
+public class Program
    {
        public static void Main(string[] args)
        {
@@ -98,8 +96,7 @@ The `UseStartup` method on `WebHostBuilder` specifies the `Startup` class for yo
 The `Startup` class is where you define the request handling pipeline and where any services needed by the app are configured. The `Startup` class must be public and contain the following methods:
 
 ````csharp
-
-   public class Startup
+public class Startup
    {
        public void ConfigureServices(IServiceCollection services)
        {

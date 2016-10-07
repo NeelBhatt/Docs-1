@@ -39,8 +39,7 @@ Open an elevated PowerShell window to add your remote Nano Server instance to yo
 <!-- literal_block {"ids": [], "classes": ["code", "ps1"], "xml:space": "preserve"} -->
 
 ````
-
-   $nanoServerIpAddress = "10.83.181.14"
+$nanoServerIpAddress = "10.83.181.14"
    Set-Item WSMan:\localhost\Client\TrustedHosts "$nanoServerIpAddress" -Concatenate -Force
    ````
 
@@ -51,8 +50,7 @@ Once you have added your Nano Server instance to your `TrustedHosts`, you can co
 <!-- literal_block {"ids": [], "classes": ["code", "ps1"], "xml:space": "preserve"} -->
 
 ````
-
-   $nanoServerSession = New-PSSession -ComputerName $nanoServerIpAddress -Credential ~\Administrator
+$nanoServerSession = New-PSSession -ComputerName $nanoServerIpAddress -Credential ~\Administrator
    Enter-PSSession $nanoServerSession
    ````
 
@@ -65,8 +63,7 @@ Create a file share on the Nano server so that the published application can be 
 <!-- literal_block {"ids": [], "classes": ["code", "ps1"], "xml:space": "preserve"} -->
 
 ````
-
-   mkdir C:\PublishedApps\AspNetCoreSampleForNano
+mkdir C:\PublishedApps\AspNetCoreSampleForNano
    netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=yes
    net share AspNetCoreSampleForNano=c:\PublishedApps\AspNetCoreSampleForNano /GRANT:EVERYONE`,FULL
    ````
@@ -80,8 +77,7 @@ Run the following commands in the remote session to open up a port in the firewa
 <!-- literal_block {"ids": [], "classes": ["code", "ps1"], "xml:space": "preserve"} -->
 
 ````
-
-   New-NetFirewallRule -Name "AspNet5 IIS" -DisplayName "Allow HTTP on TCP/8000" -Protocol TCP -LocalPort 8000 -Action Allow -Enabled True
+New-NetFirewallRule -Name "AspNet5 IIS" -DisplayName "Allow HTTP on TCP/8000" -Protocol TCP -LocalPort 8000 -Action Allow -Enabled True
    ````
 
 ## Installing IIS
@@ -93,8 +89,7 @@ Run the following commands in the PowerShell session that was created earlier:
 <!-- literal_block {"ids": [], "classes": ["code", "ps1"], "xml:space": "preserve"} -->
 
 ````
-
-   Install-PackageProvider NanoServerPackage
+Install-PackageProvider NanoServerPackage
    Import-PackageProvider NanoServerPackage
    Install-NanoServerPackage -Name Microsoft-NanoServer-Storage-Package
    Install-NanoServerPackage -Name Microsoft-NanoServer-IIS-Package
@@ -114,8 +109,7 @@ On a regular (not Nano) machine run the following copy commands:
 <!-- literal_block {"ids": [], "classes": ["code", "ps1"], "xml:space": "preserve"} -->
 
 ````
-
-   copy C:\windows\system32\inetsrv\aspnetcore.dll ``\\<nanoserver-ip-address>\AspNetCoreSampleForNano``
+copy C:\windows\system32\inetsrv\aspnetcore.dll ``\\<nanoserver-ip-address>\AspNetCoreSampleForNano``
    copy C:\windows\system32\inetsrv\config\schema\aspnetcore_schema.xml ``\\<nanoserver-ip-address>\AspNetCoreSampleForNano``
    ````
 
@@ -124,8 +118,7 @@ On a Nano machine, you will need to copy the following files from the file share
 <!-- literal_block {"ids": [], "classes": ["code", "ps1"], "xml:space": "preserve"} -->
 
 ````
-
-   copy C:\PublishedApps\AspNetCoreSampleForNano\aspnetcore.dll C:\windows\system32\inetsrv\
+copy C:\PublishedApps\AspNetCoreSampleForNano\aspnetcore.dll C:\windows\system32\inetsrv\
    copy C:\PublishedApps\AspNetCoreSampleForNano\aspnetcore_schema.xml C:\windows\system32\inetsrv\config\schema\
    ````
 
@@ -134,8 +127,7 @@ Run the following script in the remote session:
 <!-- literal_block {"xml:space": "preserve", "source": "tutorials/nano-server/enable-ancm.ps1", "ids": [], "linenos": false, "highlight_args": {"linenostart": 1}} -->
 
 ````
-
-   # Backup existing applicationHost.config
+# Backup existing applicationHost.config
    copy C:\Windows\System32\inetsrv\config\applicationHost.config C:\Windows\System32\inetsrv\config\applicationHost_BeforeInstallingANCM.config
 
    Import-Module IISAdministration
@@ -182,8 +174,7 @@ If you published a portable app, .NET Core must be installed on the target machi
 [!code-powershell[Main](nano-server/Download-Dotnet.ps1)]
 
 ````powershell
-
-   $SourcePath = "https://go.microsoft.com/fwlink/?LinkID=809115"
+$SourcePath = "https://go.microsoft.com/fwlink/?LinkID=809115"
    $DestinationPath = "C:\dotnet"
 
    $EditionId = (Get-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion' -Name 'EditionID').EditionId
@@ -239,8 +230,7 @@ Example of how a web.config might look like if `dotnet.exe` was **not** on the p
 <!-- literal_block {"ids": [], "classes": ["code", "xml"], "xml:space": "preserve"} -->
 
 ````
-
-   <?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
    <configuration>
      <system.webServer>
        <handlers>
@@ -256,8 +246,7 @@ Run the following commands in the remote session to create a new site in IIS for
 <!-- literal_block {"ids": [], "classes": ["code", "powershell"], "xml:space": "preserve"} -->
 
 ````
-
-   Import-module IISAdministration
+Import-module IISAdministration
    New-IISSite -Name "AspNetCore" -PhysicalPath c:\PublishedApps\AspNetCoreSampleForNano -BindingInformation "*:8000:"
    ````
 
