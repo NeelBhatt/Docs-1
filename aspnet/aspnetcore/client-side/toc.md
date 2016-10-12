@@ -6,7 +6,6 @@
 # [Using Angular for Single Page Applications (SPAs)](angular.md)
 # [Styling Applications with Less, Sass, and Font Awesome](less-sass-fa.md)
 # [Bundling and Minification](bundling-and-minification.md)
-# [🔧 Working with a Content Delivery Network (CDN)](cdn.md)
-# [🔧 Responsive Design for the Mobile Web](responsive-design.md)
+# [?? Working with a Content Delivery Network (CDN)](cdn.md)
 # [TypeScript](https://www.typescriptlang.org/docs/handbook/asp-net-core.html)
 # [Building Projects with Yeoman](yeoman.md)

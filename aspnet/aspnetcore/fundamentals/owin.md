@@ -303,6 +303,15 @@ This [sample](https://github.com/aspnet/Docs/tree/master/aspnet/fundamentals/owi
 
 ![image](owin/_static/websocket-test.png)
 
+## OWIN environment
+
+You can construct a OWIN environment using the ``HttpContext``.
+
+```
+  var environment = new OwinEnvironment(HttpContext);
+  var features = new OwinFeatureCollection(environment);
+```
+
 ## OWIN keys
 
 OWIN depends on an `IDictionary<string,object>` object to communicate information throughout an HTTP Request/Response exchange. ASP.NET Core implements the keys listed below. See the [primary specification, extensions](http://owin.org/#spec), and [OWIN Key Guidelines and Common Keys](http://owin.org/spec/spec/CommonKeys.html).
