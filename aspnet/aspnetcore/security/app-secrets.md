@@ -27,16 +27,7 @@ The Secret Manager tool provides a more general mechanism to store sensitive dat
 
 ### Installing the Secret Manager tool
 
-* Add `SecretManager.Tools` to the `tools` section of the *project.json* file and run `dotnet restore`.
-
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "none", "highlight_args": {"hl_lines": [6, 7, 8, 9]}} -->
-
-````none
-"tools": {
-     "Microsoft.AspNetCore.Razor.Tools": "1.0.0-preview2-final",
-     "Microsoft.Extensions.SecretManager.Tools": "1.0.0-preview2-final"
-   },
-   ````
+* Add ``Microsoft.Extensions.SecretManager.Tools`` to the ``tools`` section of the *project.json* file and run ``dotnet restore``. 
 
 * Test the Secret Manager tool by running the following command:
 
