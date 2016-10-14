@@ -97,25 +97,7 @@ More on editor in [Visual Studio Code](https://code.visualstudio.com).
 
 The sample is configured to use [Kestrel](../fundamentals/servers.md#kestrel) for the web server. You can see it configured in the *project.json* file, where it is specified as a dependency.
 
-<!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "json", "highlight_args": {"hl_lines": [14]}} -->
-
-````json
-{
-     "dependencies": {
-       "Microsoft.NETCore.App": {
-         "version": "1.0.0",
-         "type": "platform"
-       },
-       "Microsoft.AspNetCore.Diagnostics": "1.0.0",
-       "Microsoft.AspNetCore.Mvc": "1.0.0",
-       "Microsoft.AspNetCore.Razor.Tools": {
-         "version": "1.0.0-preview2-final",
-         "type": "build"
-       },
-       "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0",
-       "Microsoft.AspNetCore.Server.Kestrel": "1.0.0",
-       "Microsoft.AspNetCore.StaticFiles": "1.0.0",
-   ````
+  `"Microsoft.AspNetCore.Server.Kestrel":`
 
 ### Using Visual Studio Code Debugger
 
