@@ -76,3 +76,6 @@ The default template gives you working **Home, Contact, About, Register** and **
 ![image](start-mvc/_static/2.png)
 
 In the next part of this tutorial, we'll learn about MVC and start writing some code.
+
+>[!div class="step-by-step"]
+[**Adding a controller** &rarr;](.\adding-controller.md)  

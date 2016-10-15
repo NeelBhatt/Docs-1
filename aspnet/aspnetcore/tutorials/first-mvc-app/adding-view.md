@@ -157,3 +157,5 @@ Data is taken from the URL and passed to the controller using the [MVC model bin
 In the sample above, we used the `ViewData` dictionary to pass data from the controller to a view. Later in the tutorial, we will use a view model to pass data from a controller to a view. The view model approach to passing data is generally much preferred over the `ViewData` dictionary approach.
 
 Well, that was a kind of an "M" for model, but not the database kind. Let's take what we've learned and create a database of movies.
+
+>[&larr; **Previous**](.\adding-controller.md)     [**Next** &rarr;](.\adding-model.md)  

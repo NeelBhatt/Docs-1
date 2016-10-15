@@ -435,3 +435,5 @@ All the `HttpGet` methods in the movie controller follow a similar pattern. They
 * [Select Tag Helper](../../mvc/views/working-with-forms.md)
 
 * [Validation Tag Helper](../../mvc/views/working-with-forms.md)
+
+>[&larr; **Previous**](.\working-with-sql.md)     [**Next** &rarr;](.\search.md)  
