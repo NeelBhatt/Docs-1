@@ -85,27 +85,27 @@ How to customize publishing In the previous section we saw the visualization of 
 
 The image above shows the three main extension points, you’re most likely to use is #3.
 
-   1. Customize the call to `dotnet publish`
+1.  Customize the call to `dotnet publish`
 
-Most developers will not need to customize this extension point. Visual Studio starts the publish process by calling an MSBuild target. This target will take care of initializing the environment and calling `dotnet publish` to layout the files. If you need to customize that call in a way that is not enabled by the publish dialog then you can use MSBuild elements in either the project file (.xproj file) or the publish profile (.pubxml file). We won’t get into details of how to do that here as it’s an advanced scenario that few will need to extend.
+    Most developers will not need to customize this extension point. Visual Studio starts the publish process by calling an MSBuild target. This target will take care of initializing the environment and calling `dotnet publish` to layout the files. If you need to customize that call in a way that is not enabled by the publish dialog then you can use MSBuild elements in either the project file (.xproj file) or the publish profile (.pubxml file). We won’t get into details of how to do that here as it’s an advanced scenario that few will need to extend.
 
-   2. Customize `dotnet publish`
+2.  Customize `dotnet publish`
 
-As stated previously `dotnet publish` is a command line utility that can be used to help publish your ASP.NET Core application. This is a cross platform command line utility (that is, you can use it on Windows, Mac or Linux) and does not require Visual Studio. If you are working on a team in which some developers are not using Visual Studio, then you may want to script building and publishing. When `dotnet publish` is executed it can be configured to execute custom commands before or after execution. The commands will be listed in project.json in the scripts section.
+    As stated previously `dotnet publish` is a command line utility that can be used to help publish your ASP.NET Core application. This is a cross platform command line utility (that is, you can use it on Windows, Mac or Linux) and does not require Visual Studio. If you are working on a team in which some developers are not using Visual Studio, then you may want to script building and publishing. When `dotnet publish` is executed it can be configured to execute custom commands before or after execution. The commands will be listed in project.json in the scripts section.
+    
+    The supported scripts for publish are prepublish and postpublish. The ASP.NET Core Web Application template uses the prepublish step by default. The relevant snippet from *project.json* is shown below.
+    
+    ````javascript
+    "scripts": {
+      "prepublish": [ "npm install", "bower install", "gulp clean", "gulp min" ]
+    }
+    ````
+    
+    Here multiple comma separated calls are declared.
+    
+    When Visual Studio is used the prepublish and postpublish steps are executed as a part of the call to `dotnet publish`. The postpublish script from *project.json* is executed before the files are published to the remote destination because that takes place immediately after `dotnet publish` completes.  In the next step we cover customizing the PowerShell script to control what happens to the files after they reach the target destination.
 
-The supported scripts for publish are prepublish and postpublish. The ASP.NET Core Web Application template uses the prepublish step by default. The relevant snippet from *project.json* is shown below.
-
-````javascript
-"scripts": {
-     "prepublish": [ "npm install", "bower install", "gulp clean", "gulp min" ]
-   }
-   ````
-
-Here multiple comma separated calls are declared.
-
-When Visual Studio is used the prepublish and postpublish steps are executed as a part of the call to `dotnet publish`. The postpublish script from *project.json* is executed before the files are published to the remote destination because that takes place immediately after `dotnet publish` completes.  In the next step we cover customizing the PowerShell script to control what happens to the files after they reach the target destination.
-
-   3. Customize the publish profile PowerShell Script
+3.  Customize the publish profile PowerShell Script
 
 After creating a publish profile in Visual Studio the PowerShell script `Properties\PublishProfiles\ProfileName.ps1` is created. The script does the following:
 

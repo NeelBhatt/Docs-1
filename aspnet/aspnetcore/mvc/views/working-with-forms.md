@@ -18,7 +18,7 @@ In many cases, [HTML Helpers](html-helpers.md) provide an alternative approach t
 
 The [Form](https://www.w3.org/TR/html401/interact/forms.html) Tag Helper:
 
-* Generates the HTML [<FORM>](https://www.w3.org/TR/html401/interact/forms.html) `action` attribute value for a MVC controller action or named route
+* Generates the HTML [\<FORM>](https://www.w3.org/TR/html401/interact/forms.html) `action` attribute value for a MVC controller action or named route
 
 * Generates a hidden [Request Verification Token](http://www.asp.net/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages) to prevent cross-site request forgery (when used with the `[ValidateAntiForgeryToken]` attribute in the HTTP Post action method)
 
@@ -29,12 +29,6 @@ The [Form](https://www.w3.org/TR/html401/interact/forms.html) Tag Helper:
 Sample:
 
 [!code-HTML[Main](working-with-forms/sample/final/Views/Demo/RegisterFormOnly.cshtml)]
-
-````HTML
-<form asp-controller="Demo" asp-action="Register" method="post">
-       <!-- Input and Submit elements -->
-   </form>
-   ````
 
 The Form Tag Helper above generates the following HTML:
 
@@ -63,12 +57,12 @@ Many of the views in the *Views/Account* folder (generated when you create a new
      method="post" class="form-horizontal" role="form">
    ````
 
-Note:
-   With the built in templates, `returnUrl` is only populated automatically when you try to access an authorized resource but are not authenticated or authorized. When you attempt an unauthorized access, the security middleware redirects you to the login page with the `returnUrl` set.
+>[!NOTE]
+>With the built in templates, `returnUrl` is only populated automatically when you try to access an authorized resource but are not authenticated or authorized. When you attempt an unauthorized access, the security middleware redirects you to the login page with the `returnUrl` set.
 
 ## The Input Tag Helper
 
-The Input Tag Helper binds an HTML [<input>](https://www.w3.org/wiki/HTML/Elements/input) element to a model expression in your razor view.
+The Input Tag Helper binds an HTML [\<input>](https://www.w3.org/wiki/HTML/Elements/input) element to a model expression in your razor view.
 
 Syntax:
 
@@ -92,57 +86,46 @@ The Input Tag Helper:
 
 ````HTML
 An error occurred during the compilation of a resource required to process
-   this request. Please review the following specific error details and modify
-   your source code appropriately.
+this request. Please review the following specific error details and modify
+your source code appropriately.
 
-   Type expected
-    'RegisterViewModel' does not contain a definition for 'Email' and no
-    extension method 'Email' accepting a first argument of type 'RegisterViewModel'
-    could be found (are you missing a using directive or an assembly reference?)
-   ````
+Type expected
+ 'RegisterViewModel' does not contain a definition for 'Email' and no
+ extension method 'Email' accepting a first argument of type 'RegisterViewModel'
+ could be found (are you missing a using directive or an assembly reference?)
+````
 
 The `Input` Tag Helper sets the HTML `type` attribute based on the .NET type. The following table lists some common .NET types and generated HTML type (not every .NET type is listed).
 
-<!--     .NET type  Input Type  Bool  type="checkbox"  String  type="text"  DateTime  type="datetime"  Byte  type="number"  Int  type="number"  Single, Double  type="number" -->
+|.NET type|Input Type|
+|---|---|
+|Bool|type=”checkbox”|
+|String|type=”text”|
+|DateTime|type=”datetime”|
+|Byte|type=”number”|
+|Int|type=”number”|
+|Single, Double|type=”number”|
+
 
 The following table shows some common [data annotations](https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx) attributes that the input tag helper will map to specific input types (not every validation attribute is listed):
 
-<!--     Attribute  Input Type  [EmailAddress]  type="email"  [Url]  type="url"  [HiddenInput]  type="hidden"  [Phone]  type="tel"  [DataType(DataType.Password)]  type="password"  [DataType(DataType.Date)]  type="date"  [DataType(DataType.Time)]  type="time" -->
+
+|Attribute|Input Type|
+|---|---|
+|[EmailAddress]|type=”email”|
+|[Url]|type=”url”|
+|[HiddenInput]|type=”hidden”|
+|[Phone]|type=”tel”|
+|[DataType(DataType.Password)]|	type=”password”|
+|[DataType(DataType.Date)]|	type=”date”|
+|[DataType(DataType.Time)]|	type=”time”|
+
 
 Sample:
 
 [!code-csharp[Main](working-with-forms/sample/final/ViewModels/RegisterViewModel.cs)]
 
-````csharp
-using System.ComponentModel.DataAnnotations;
-
-   namespace FormsTagHelper.ViewModels
-   {
-       public class RegisterViewModel
-       {
-           [Required]
-           [EmailAddress]
-           [Display(Name = "Email Address")]
-           public string Email { get; set; }
-
-           [Required]
-           [DataType(DataType.Password)]
-           public string Password { get; set; }
-       }
-   }
-   ````
-
 [!code-HTML[Main](working-with-forms/sample/final/Views/Demo/RegisterInput.cshtml)]
-
-````HTML
-@model RegisterViewModel
-
-   <form asp-controller="Demo" asp-action="RegisterInput" method="post">
-       Email:  <input asp-for="Email" /> <br />
-       Password: <input asp-for="Password" /><br />
-       <button type="submit">Register</button>
-   </form>
-   ````
 
 The code above generates the following HTML:
 
@@ -189,46 +172,13 @@ Generates the following:
 
 You can also navigate to child properties using the property path of the view model. Consider a more complex model class that contains a child `Address` property.
 
-[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/AddressViewModel.cs?highlight=1,2,3,4)]
+[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/AddressViewModel.cs?highlight=1,2,3,4&range=5-8)]
 
-````csharp
- public class AddressViewModel
-    {
-        public string AddressLine1 { get; set; }
-    }
-
-   ````
-
-[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/RegisterAddressViewModel.cs?highlight=8)]
-
-````csharp
- public class RegisterAddressViewModel
-    {
-        public string Email { get; set; }
-
-        [DataType(DataType.Password)]
-        public string Password { get; set; }
-
-        public AddressViewModel Address { get; set; }
-    }
-
-
-   ````
+[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/RegisterAddressViewModel.cs?highlight=8&range=5-13)]
 
 In the view, we bind to `Address.AddressLine1`:
 
 [!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterAddress.cshtml?highlight=6)]
-
-````HTML
-@model RegisterAddressViewModel
-
-   <form asp-controller="Demo" asp-action="RegisterAddress" method="post">
-       Email:  <input asp-for="Email" /> <br />
-       Password: <input asp-for="Password" /><br />
-       Address: <input asp-for="Address.AddressLine1" /><br />
-       <button type="submit">Register</button>
-   </form>
-   ````
 
 The following HTML is generated for `Address.AddressLine1`:
 
@@ -240,17 +190,7 @@ The following HTML is generated for `Address.AddressLine1`:
 
 Sample, a model containing an array of `Colors`:
 
-[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/Person.cs?highlight=3)]
-
-````csharp
- public class Person
-    {
-        public List<string> Colors { get; set; }
-
-        public int Age { get; set; }
-    }
-
-   ````
+[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/Person.cs?highlight=3&range=5-10)]
 
 The action method:
 
@@ -266,107 +206,36 @@ The following Razor shows how you access a specific `Color` element:
 
 [!code-HTML[Main](working-with-forms/sample/final/Views/Demo/EditColor.cshtml)]
 
-````HTML
-@model Person
-   @{
-       var index = (int)ViewData["index"];
-   }
-
-   <form asp-controller="ToDo" asp-action="Edit" method="post">
-       @Html.EditorFor(m => m.Colors[index])
-       <label asp-for="Age"></label>
-       <input asp-for="Age" /><br />
-       <button type="submit">Post</button>
-   </form>
-   ````
-
 The *Views/Shared/EditorTemplates/String.cshtml* template:
 
 [!code-HTML[Main](working-with-forms/sample/final/Views/Shared/EditorTemplates/String.cshtml)]
 
-````HTML
-@model string
-
-   <label asp-for="@Model"></label>
-   <input asp-for="@Model" /> <br />
-
-   ````
-
 Sample using `List<T>`:
 
-[!code-csharp[Main](working-with-forms/sample/final/ViewModels/ToDoItem.cs)]
-
-````csharp
- public class ToDoItem
-    {
-        public string Name { get; set; }
-
-        public bool IsDone { get; set; }
-
-   ````
+[!code-csharp[Main](working-with-forms/sample/final/ViewModels/ToDoItem.cs?range=3-8)]
 
 The following Razor shows how to iterate over a collection:
 
 [!code-none[Main](working-with-forms/sample/final/Views/Demo/Edit.cshtml)]
 
-````none
-@model List<ToDoItem>
-
-   <form asp-controller="ToDo" asp-action="Edit" method="post">
-       <table>
-           <tr> <th>Name</th> <th>Is Done</th> </tr>
-
-           @for (int i = 0; i < Model.Count; i++)
-           {
-               <tr>
-                   @Html.EditorFor(model => model[i])
-               </tr>
-           }
-
-       </table>
-       <button type="submit">Save</button>
-   </form>
-
-   ````
-
 The *Views/Shared/EditorTemplates/ToDoItem.cshtml* template:
 
 [!code-HTML[Main](working-with-forms/sample/final/Views/Shared/EditorTemplates/ToDoItem.cshtml)]
 
-````HTML
-@model ToDoItem
 
-   <td>
-       <label asp-for="@Model.Name"></label>
-       @Html.DisplayFor(model => model.Name)
-   </td>
-   <td>
-       <input asp-for="@Model.IsDone" />
-   </td>
+>[!NOTE]
+>Always use `for` (and *not* `foreach`) to iterate over a list. Evaluating an indexer in a LINQ expression can be expensive and should be minimized.
 
-   @*
-       This template replaces the following Razor which evaluates the indexer three times.
-       <td>
-            <label asp-for="@Model[i].Name"></label>
-            @Html.DisplayFor(model => model[i].Name)
-        </td>
-        <td>
-            <input asp-for="@Model[i].IsDone" />
-        </td>
-   *@
-   ````
+&nbsp;
 
-Note:
-   Always use `for` (and *not* `foreach`) to iterate over a list. Evaluating an indexer in a LINQ expression can be expensive and should be minimized.
-
-Note:
-   The commented sample code above shows how you would replace the lambda expression with the `@` operator to access each `ToDoItem` in the list.
+>[!NOTE]
+>The commented sample code above shows how you would replace the lambda expression with the `@` operator to access each `ToDoItem` in the list.
 
 ## The Textarea Tag Helper
 
 The [`Textarea Tag Helper`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/TagHelpers/TextAreaTagHelper/index.html) tag helper is  similar to the Input Tag Helper.
 
-* Generates the `id` and `name` attributes, and the data validation attributes from the model for a [<textarea>](http://www.w3.org/wiki/HTML/Elements/textarea) element.
+* Generates the `id` and `name` attributes, and the data validation attributes from the model for a [\<textarea>](http://www.w3.org/wiki/HTML/Elements/textarea) element.
 
 * Provides strong typing.
 
@@ -376,30 +245,7 @@ Sample:
 
 [!code-csharp[Main](working-with-forms/sample/final/ViewModels/DescriptionViewModel.cs)]
 
-````csharp
-using System.ComponentModel.DataAnnotations;
-
-   namespace FormsTagHelper.ViewModels
-   {
-       public class DescriptionViewModel
-       {
-           [MinLength(5)]
-           [MaxLength(1024)]
-           public string Description { get; set; }
-       }
-   }
-   ````
-
 [!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterTextArea.cshtml?highlight=4)]
-
-````HTML
-@model DescriptionViewModel
-
-   <form asp-controller="Demo" asp-action="RegisterTextArea" method="post">
-       <textarea asp-for="Description"></textarea>
-       <button type="submit">Test</button>
-   </form>
-   ````
 
 The following HTML is generated:
 
@@ -407,17 +253,17 @@ The following HTML is generated:
 
 ````HTML
 <form method="post" action="/Demo/RegisterTextArea">
-     <textarea data-val="true"
-      data-val-maxlength="The field Description must be a string or array type with a maximum length of &#x27;1024&#x27;."
-      data-val-maxlength-max="1024"
-      data-val-minlength="The field Description must be a string or array type with a minimum length of &#x27;5&#x27;."
-      data-val-minlength-min="5"
-      id="Description" name="Description">
-     </textarea>
-     <button type="submit">Test</button>
-     <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>" />
-   </form>
-   ````
+  <textarea data-val="true"
+   data-val-maxlength="The field Description must be a string or array type with a maximum length of &#x27;1024&#x27;."
+   data-val-maxlength-max="1024"
+   data-val-minlength="The field Description must be a string or array type with a minimum length of &#x27;5&#x27;."
+   data-val-minlength-min="5"
+   id="Description" name="Description">
+  </textarea>
+  <button type="submit">Test</button>
+  <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>" />
+</form>
+````
 
 ## The Label Tag Helper
 
@@ -437,33 +283,7 @@ Sample:
 
 [!code-csharp[Main](working-with-forms/sample/final/ViewModels/SimpleViewModel.cs)]
 
-````csharp
-using System.ComponentModel.DataAnnotations;
-
-   namespace FormsTagHelper.ViewModels
-   {
-       public class SimpleViewModel
-       {
-           [Required]
-           [EmailAddress]
-           [Display(Name = "Email Address")]
-           public string Email { get; set; }
-       }
-   }
-
-
-   ````
-
 [!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterLabel.cshtml?highlight=4)]
-
-````HTML
-@model SimpleViewModel
-
-   <form asp-controller="Demo" asp-action="RegisterLabel" method="post">
-       <label asp-for="Email"></label>
-       <input asp-for="Email" /> <br />
-   </form>
-   ````
 
 The following HTML is generated for the `<label>` element:
 
@@ -495,23 +315,23 @@ The Validation Message Tag Helper will generate the following HTML:
 
 ````HTML
 <span class="field-validation-valid"
-     data-valmsg-for="Email"
-     data-valmsg-replace="true"></span>
-   ````
+  data-valmsg-for="Email"
+  data-valmsg-replace="true"></span>
+````
 
 You generally use the [`Validation Message Tag Helper`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/TagHelpers/ValidationMessageTagHelper/index.html)  after an `Input` Tag Helper for the same property. Doing so displays any validation error messages near the input that caused the error.
 
-Note:
-   You must have a view with the correct JavaScript and [jQuery](https://jquery.com/) script references in place for client side validation. See [Model Validation](../models/validation.md) for more information.
+> [!NOTE]
+> You must have a view with the correct JavaScript and [jQuery](https://jquery.com/) script references in place for client side validation. See [Model Validation](../models/validation.md) for more information.
 
 When a server side validation error occurs (for example when you have custom server side validation or client-side validation is disabled), MVC places that error message as the body of the `<span>` element.
 
 ````HTML
 <span class="field-validation-error" data-valmsg-for="Email"
-               data-valmsg-replace="true">
-      The Email Address field is required.
-   </span>
-   ````
+            data-valmsg-replace="true">
+   The Email Address field is required.
+</span>
+````
 
 ### The Validation Summary Tag Helper
 
@@ -527,40 +347,7 @@ In the following example, the data model is decorated with `DataAnnotation` attr
 
 [!code-csharp[Main](working-with-forms/sample/final/ViewModels/RegisterViewModel.cs)]
 
-````csharp
-using System.ComponentModel.DataAnnotations;
-
-   namespace FormsTagHelper.ViewModels
-   {
-       public class RegisterViewModel
-       {
-           [Required]
-           [EmailAddress]
-           [Display(Name = "Email Address")]
-           public string Email { get; set; }
-
-           [Required]
-           [DataType(DataType.Password)]
-           public string Password { get; set; }
-       }
-   }
-   ````
-
-[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterValidation.cshtml?highlight=4,6,8)]
-
-````HTML
-@model RegisterViewModel
-
-   <form asp-controller="Demo" asp-action="RegisterValidation" method="post">
-       <div asp-validation-summary="ValidationSummary.ModelOnly"></div>
-       Email:  <input asp-for="Email" /> <br />
-       <span asp-validation-for="Email"></span><br />
-       Password: <input asp-for="Password" /><br />
-       <span asp-validation-for="Password"></span><br />
-       <button type="submit">Register</button>
-   </form>
-
-   ````
+[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterValidation.cshtml?highlight=4,6,8&range=1-10)]
 
 The generated HTML (when the model is valid):
 
@@ -568,22 +355,22 @@ The generated HTML (when the model is valid):
 
 ````HTML
 <form action="/DemoReg/Register" method="post">
-     <div class="validation-summary-valid" data-valmsg-summary="true">
-     <ul><li style="display:none"></li></ul></div>
-     Email:  <input name="Email" id="Email" type="email" value=""
-      data-val-required="The Email field is required."
-      data-val-email="The Email field is not a valid e-mail address."
-      data-val="true"> <br>
-     <span class="field-validation-valid" data-valmsg-replace="true"
-      data-valmsg-for="Email"></span><br>
-     Password: <input name="Password" id="Password" type="password"
-      data-val-required="The Password field is required." data-val="true"><br>
-     <span class="field-validation-valid" data-valmsg-replace="true"
-      data-valmsg-for="Password"></span><br>
-     <button type="submit">Register</button>
-     <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>" />
-   </form>
-   ````
+  <div class="validation-summary-valid" data-valmsg-summary="true">
+  <ul><li style="display:none"></li></ul></div>
+  Email:  <input name="Email" id="Email" type="email" value=""
+   data-val-required="The Email field is required."
+   data-val-email="The Email field is not a valid e-mail address."
+   data-val="true"> <br>
+  <span class="field-validation-valid" data-valmsg-replace="true"
+   data-valmsg-for="Email"></span><br>
+  Password: <input name="Password" id="Password" type="password"
+   data-val-required="The Password field is required." data-val="true"><br>
+  <span class="field-validation-valid" data-valmsg-replace="true"
+   data-valmsg-for="Password"></span><br>
+  <button type="submit">Register</button>
+  <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>" />
+</form>
+````
 
 ## The Select Tag Helper
 
@@ -593,85 +380,23 @@ The generated HTML (when the model is valid):
 
 The [`Select Tag Helper`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/TagHelpers/SelectTagHelper/index.html) `asp-for` specifies the model property  name for the [select](https://www.w3.org/wiki/HTML/Elements/select) element  and `asp-items` specifies the [option](https://www.w3.org/wiki/HTML/Elements/option) elements.  For example:
 
-[!code-HTML[Main](working-with-forms/sample/final/Views/Home/Index.cshtml)]
-
-````HTML
- <select asp-for="Country" asp-items="Model.Countries"></select> 
-
-   ````
+[!code-HTML[Main](working-with-forms/sample/final/Views/Home/Index.cshtml?range=4)]
 
 Sample:
 
 [!code-csharp[Main](working-with-forms/sample/final/ViewModels/CountryViewModel.cs)]
 
-````csharp
-using Microsoft.AspNetCore.Mvc.Rendering;
-   using System.Collections.Generic;
-
-   namespace FormsTagHelper.ViewModels
-   {
-       public class CountryViewModel
-       {
-           public string Country { get; set; }
-
-           public List<SelectListItem> Countries { get; } = new List<SelectListItem>
-           {
-               new SelectListItem { Value = "MX", Text = "Mexico" },
-               new SelectListItem { Value = "CA", Text = "Canada" },
-               new SelectListItem { Value = "US", Text = "USA"  },
-           };
-       }
-   }
-   ````
-
 The `Index` method initializes the `CountryViewModel`, sets the selected country and passes it to the `Index` view.
 
-[!code-csharp[Main](working-with-forms/sample/final/Controllers/HomeController.cs)]
-
-````csharp
-  public IActionResult Index()
-     {
-         var model = new CountryViewModel();
-         model.Country = "CA";
-         return View(model);
-     }
-
-   ````
+[!code-csharp[Main](working-with-forms/sample/final/Controllers/HomeController.cs?range=114-119)]
 
 The HTTP POST `Index` method displays the selection:
 
-[!code-csharp[Main](working-with-forms/sample/final/Controllers/HomeController.cs)]
-
-````csharp
-  [HttpPost]
-     [ValidateAntiForgeryToken]
-     public IActionResult Index(CountryViewModel model)
-     {
-         if (ModelState.IsValid)
-         {
-             var msg = model.Country +  " selected";
-             return RedirectToAction("IndexSuccess", new { message = msg});
-         }
-
-         // If we got this far, something failed; redisplay form.
-         return View(model);
-     }
-
-   ````
+[!code-csharp[Main](working-with-forms/sample/final/Controllers/HomeController.cs?range=15-27)]
 
 The `Index` view:
 
 [!code-HTML[Main](working-with-forms/sample/final/Views/Home/Index.cshtml?highlight=4)]
-
-````HTML
-@model CountryViewModel
-
-   <form asp-controller="Home" asp-action="Index" method="post">
-       <select asp-for="Country" asp-items="Model.Countries"></select> 
-       <br /><button type="submit">Register</button>
-   </form>
-
-   ````
 
 Which generates the following HTML (with "CA" selected):
 
@@ -689,17 +414,12 @@ Which generates the following HTML (with "CA" selected):
    </form>
    ````
 
-Note:
-   We do not recommend using `ViewBag` or `ViewData` with the Select Tag Helper. A view model is more robust at providing MVC metadata and generally less problematic.
+> [!NOTE]
+> We do not recommend using `ViewBag` or `ViewData` with the Select Tag Helper. A view model is more robust at providing MVC metadata and generally less problematic.
 
 The `asp-for` attribute value is a special case and doesn't require a `Model` prefix, the other Tag Helper attributes do (such as `asp-items`)
 
-[!code-HTML[Main](working-with-forms/sample/final/Views/Home/Index.cshtml)]
-
-````HTML
- <select asp-for="Country" asp-items="Model.Countries"></select> 
-
-   ````
+[!code-HTML[Main](working-with-forms/sample/final/Views/Home/Index.cshtml?range=4)]
 
 ### Enum binding
 
@@ -707,73 +427,17 @@ It's often convenient to use `<select>` with an `enum` property and generate the
 
 Sample:
 
-[!code-csharp[Main](working-with-forms/sample/final/ViewModels/CountryEnumViewModel.cs)]
-
-````csharp
- public class CountryEnumViewModel
-    {
-        public CountryEnum EnumCountry { get; set; }
-    }
-
-   ````
+[!code-csharp[Main](working-with-forms/sample/final/ViewModels/CountryEnumViewModel.cs?range=3-7)]
 
 [!code-csharp[Main](working-with-forms/sample/final/ViewModels/CountryEnum.cs)]
-
-````csharp
-using System.ComponentModel.DataAnnotations;
-
-   namespace FormsTagHelper.ViewModels
-   {
-       {
-           Mexico,
-           [Display(Name = "United States of America")]
-           USA,
-           Canada,
-           France,
-           Germany,
-           Spain
-       }
-   }
-   ````
 
 The [`GetEnumSelectList`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Rendering/IHtmlHelper/index.html) method generates a [`SelectList`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Rendering/SelectList/index.html) object for an enum.
 
 [!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Home/IndexEnum.cshtml?highlight=5)]
 
-````HTML
-@model CountryEnumViewModel
-
-   <form asp-controller="Home" asp-action="IndexEnum" method="post">
-       <select asp-for="EnumCountry" 
-               asp-items="Html.GetEnumSelectList<CountryEnum>()"> >
-       </select> 
-       <br /><button type="submit">Register</button>
-   </form>
-
-   ````
-
 You can decorate your enumerator list with the `Display` attribute to get a richer UI:
 
 [!code-csharp[Main](working-with-forms/sample/final/ViewModels/CountryEnum.cs?highlight=5,7)]
-
-````csharp
-using System.ComponentModel.DataAnnotations;
-
-   namespace FormsTagHelper.ViewModels
-   {
-       public enum CountryEnum
-       {
-           [Display(Name = "United Mexican States")]
-           Mexico,
-           [Display(Name = "United States of America")]
-           USA,
-           Canada,
-           France,
-           Germany,
-           Spain
-       }
-   }
-   ````
 
 The following HTML is generated:
 
@@ -797,67 +461,11 @@ The following HTML is generated:
 
 ### Option Group
 
-The HTML  [`<optgroup>](https://www.w3.org/wiki/HTML/Elements/optgroup) element is generated when the view model contains one or more [SelectListGroup`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Rendering/SelectListGroup/index.html) objects.
+The HTML  [\<optgroup>](https://www.w3.org/wiki/HTML/Elements/optgroup) element is generated when the view model contains one or more [SelectListGroup`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Rendering/SelectListGroup/index.html) objects.
 
 The `CountryViewModelGroup` groups the `SelectListItem` elements into the "North America" and "Europe" groups:
 
-[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/CountryViewModelGroup.cs?highlight=5,6,14,20,26,32,38,44)]
-
-````csharp
- public class CountryViewModelGroup
-    {
-        public CountryViewModelGroup()
-        {
-            var NorthAmericaGroup = new SelectListGroup { Name = "North America" };
-            var EuropeGroup = new SelectListGroup { Name = "Europe" };
-
-            Countries = new List<SelectListItem>
-            {
-                new SelectListItem
-                {
-                    Value = "MEX",
-                    Text = "Mexico",
-                    Group = NorthAmericaGroup
-                },
-                new SelectListItem
-                {
-                    Value = "CAN",
-                    Text = "Canada",
-                    Group = NorthAmericaGroup
-                },
-                new SelectListItem
-                {
-                    Value = "US",
-                    Text = "USA",
-                    Group = NorthAmericaGroup
-                },
-                new SelectListItem
-                {
-                    Value = "FR",
-                    Text = "France",
-                    Group = EuropeGroup
-                },
-                new SelectListItem
-                {
-                    Value = "ES",
-                    Text = "Spain",
-                    Group = EuropeGroup
-                },
-                new SelectListItem
-                {
-                    Value = "DE",
-                    Text = "Germany",
-                    Group = EuropeGroup
-                }
-          };
-        }
-
-        public string Country { get; set; }
-
-        public List<SelectListItem> Countries { get; }
-    }
-
-   ````
+[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/CountryViewModelGroup.cs?highlight=5,6,14,20,26,32,38,44&range=6-56)]
 
 The two groups are shown below:
 
@@ -868,23 +476,23 @@ The generated HTML:
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "HTML", "highlight_args": {"hl_lines": [3, 4, 5, 6, 7, 8, 9, 10, 11, 12]}} -->
 
 ````HTML
-  <form method="post" action="/Home/IndexGroup">
-         <select id="Country" name="Country">
-             <optgroup label="North America">
-                 <option value="MEX">Mexico</option>
-                 <option value="CAN">Canada</option>
-                 <option value="US">USA</option>
-             </optgroup>
-             <optgroup label="Europe">
-                 <option value="FR">France</option>
-                 <option value="ES">Spain</option>
-                 <option value="DE">Germany</option>
-             </optgroup>
-         </select>
-         <br /><button type="submit">Register</button>
-         <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>" />
-    </form>
-   ````
+ <form method="post" action="/Home/IndexGroup">
+      <select id="Country" name="Country">
+          <optgroup label="North America">
+              <option value="MEX">Mexico</option>
+              <option value="CAN">Canada</option>
+              <option value="US">USA</option>
+          </optgroup>
+          <optgroup label="Europe">
+              <option value="FR">France</option>
+              <option value="ES">Spain</option>
+              <option value="DE">Germany</option>
+          </optgroup>
+      </select>
+      <br /><button type="submit">Register</button>
+      <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>" />
+ </form>
+````
 
 ### Multiple select
 
@@ -892,43 +500,9 @@ The Select Tag Helper  will automatically generate the [multiple = "multiple"](h
 
 [!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/CountryViewModelIEnumerable.cs?highlight=6)]
 
-````csharp
-using Microsoft.AspNetCore.Mvc.Rendering;
-   using System.Collections.Generic;
-
-   namespace FormsTagHelper.ViewModels
-   {
-       public class CountryViewModelIEnumerable
-       {
-           public IEnumerable<string> CountryCodes { get; set; }
-
-           public List<SelectListItem> Countries { get; } = new List<SelectListItem>
-           {
-               new SelectListItem { Value = "MX", Text = "Mexico" },
-               new SelectListItem { Value = "CA", Text = "Canada" },
-               new SelectListItem { Value = "US", Text = "USA"    },
-               new SelectListItem { Value = "FR", Text = "France" },
-               new SelectListItem { Value = "ES", Text = "Spain"  },
-               new SelectListItem { Value = "DE", Text = "Germany"}
-            };
-       }
-   }
-
-   ````
-
 With the following view:
 
 [!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Home/IndexMultiSelect.cshtml?highlight=4)]
-
-````HTML
-@model CountryViewModelIEnumerable
-
-   <form asp-controller="Home" asp-action="IndexMultiSelect" method="post">
-       <select asp-for="CountryCodes" asp-items="Model.Countries"></select> 
-       <br /><button type="submit">Register</button>
-   </form>
-
-   ````
 
 Generates the following HTML:
 
@@ -936,96 +510,35 @@ Generates the following HTML:
 
 ````HTML
 <form method="post" action="/Home/IndexMultiSelect">
-       <select id="CountryCodes"
-       multiple="multiple"
-       name="CountryCodes"><option value="MX">Mexico</option>
-   <option value="CA">Canada</option>
-   <option value="US">USA</option>
-   <option value="FR">France</option>
-   <option value="ES">Spain</option>
-   <option value="DE">Germany</option>
-   </select>
-       <br /><button type="submit">Register</button>
-     <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>" />
-   </form>
-   ````
+    <select id="CountryCodes"
+    multiple="multiple"
+    name="CountryCodes"><option value="MX">Mexico</option>
+<option value="CA">Canada</option>
+<option value="US">USA</option>
+<option value="FR">France</option>
+<option value="ES">Spain</option>
+<option value="DE">Germany</option>
+</select>
+    <br /><button type="submit">Register</button>
+  <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>" />
+</form>
+````
 
 ### No selection
-
-To allow for no selection, add a "not specified" option to the select list. If the property is a [value type](https://msdn.microsoft.com/en-us/library/s1ax56ch.aspx), you'll have to make it [nullable](https://msdn.microsoft.com/en-us/library/2cf62fcy.aspx).
-
-[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Home/IndexEmpty.cshtml?highlight=5)]
-
-````HTML
-@model CountryViewModel
-
-   <form asp-controller="Home" asp-action="IndexEmpty" method="post">
-       <select asp-for="Country" asp-items="Model.Countries">
-           <option value="">&lt;none&gt;</option>
-       </select> 
-       <br /><button type="submit">Register</button>
-   </form>
-
-   ````
 
 If you find yourself using the "not specified" option in multiple pages, you can create a template to eliminate repeating the HTML:
 
 [!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Home/IndexEmptyTemplate.cshtml?highlight=5)]
 
-````HTML
-@model CountryViewModel
-
-   <form asp-controller="Home" asp-action="IndexEmpty" method="post">
-       @Html.EditorForModel()
-       <br /><button type="submit">Register</button>
-   </form>
-
-   ````
-
 The *Views/Shared/EditorTemplates/CountryViewModel.cshtml* template:
 
 [!code-HTML[Main](working-with-forms/sample/final/Views/Shared/EditorTemplates/CountryViewModel.cshtml)]
 
-````HTML
-@model CountryViewModel
+Adding HTML [\<option>](https://www.w3.org/wiki/HTML/Elements/option) elements is not limited to the *No selection* case. For example, the following view and action method will generate HTML similar to the code above:
 
-   <select asp-for="Country" asp-items="Model.Countries">
-       <option value="">--none--</option>
-   </select>
-
-
-   ````
-
-Adding HTML [<option>](https://www.w3.org/wiki/HTML/Elements/option) elements is not limited to the *No selection* case. For example, the following view and action method will generate HTML similar to the code above:
-
-[!code-csharp[Main](working-with-forms/sample/final/Controllers/HomeController.cs)]
-
-````csharp
-  public IActionResult IndexOption(int id)
-     {
-         var model = new CountryViewModel();
-         model.Country = "CA";
-         return View(model);
-     }
-
-   ````
+[!code-csharp[Main](working-with-forms/sample/final/Controllers/HomeController.cs?range=114-119)]
 
 [!code-HTML[Main](working-with-forms/sample/final/Views/Home/IndexOption.cshtml)]
-
-````HTML
-@model CountryViewModel
-
-   <form asp-controller="Home" asp-action="IndexEmpty" method="post">
-       <select asp-for="Country">
-           <option value="">&lt;none&gt;</option>
-           <option value="MX">Mexico</option>
-           <option value="CA">Canada</option>
-           <option value="US">USA</option>
-       </select> 
-       <br /><button type="submit">Register</button>
-   </form>
-
-   ````
 
 The correct `<option>` element will be selected ( contain the `selected="selected"` attribute) depending on the current `Country` value.
 
@@ -1033,16 +546,16 @@ The correct `<option>` element will be selected ( contain the `selected="selecte
 
 ````HTML
  <form method="post" action="/Home/IndexEmpty">
-        <select id="Country" name="Country">
-            <option value="">&lt;none&gt;</option>
-            <option value="MX">Mexico</option>
-            <option value="CA" selected="selected">Canada</option>
-            <option value="US">USA</option>
-        </select>
-        <br /><button type="submit">Register</button>
-     <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>" />
-   </form>
-   ````
+      <select id="Country" name="Country">
+          <option value="">&lt;none&gt;</option>
+          <option value="MX">Mexico</option>
+          <option value="CA" selected="selected">Canada</option>
+          <option value="US">USA</option>
+      </select>
+      <br /><button type="submit">Register</button>
+   <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>" />
+ </form>
+ ````
 
 ## Additional Resources
 

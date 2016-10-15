@@ -46,20 +46,25 @@ Actions can return anything, but frequently will return an instance of `IActionR
 
 Although not required, most developers will want to have their controllers inherit from the base `Controller` class. Doing so provides controllers with access to many properties and helpful methods, including the following helper methods designed to assist in returning various responses:
 
-[View](../views/index.md)
-   Returns a view that uses a model to render HTML. Example: `return View(customer);`
+**[View](../views/index.md)**
 
-HTTP Status Code
-   Return an HTTP status code. Example: `return BadRequest();`
+Returns a view that uses a model to render HTML. Example: `return View(customer);`
 
-Formatted Response
-   Return `Json` or similar to format an object in a specific manner. Example: `return Json(customer);`
+**HTTP Status Code**
 
-Content negotiated response
-   Instead of returning an object directly, an action can return a content negotiated response (using `Ok`, `Created`, `CreatedAtRoute` or `CreatedAtAction`). Examples: `return Ok();` or `return CreatedAtRoute("routename",values,newobject");`
+Return an HTTP status code. Example: `return BadRequest();`
 
-Redirect
-   Returns a redirect to another action or destination (using `Redirect`, `LocalRedirect`, `RedirectToAction` or `RedirectToRoute`). Example: `return RedirectToAction("Complete", new {id = 123});`
+**Formatted Response**
+
+Return `Json` or similar to format an object in a specific manner. Example: `return Json(customer);`
+
+**Content negotiated response**
+
+Instead of returning an object directly, an action can return a content negotiated response (using `Ok`, `Created`, `CreatedAtRoute` or `CreatedAtAction`). Examples: `return Ok();` or `return CreatedAtRoute("routename",values,newobject");`
+
+**Redirect**
+
+Returns a redirect to another action or destination (using `Redirect`, `LocalRedirect`, `RedirectToAction` or `RedirectToRoute`). Example: `return RedirectToAction("Complete", new {id = 123});`
 
 In addition to the methods above, an action can also simply return an object. In this case, the object will be formatted based on the client's request. Learn more about [Formatting Response Data](../models/formatting.md)
 
