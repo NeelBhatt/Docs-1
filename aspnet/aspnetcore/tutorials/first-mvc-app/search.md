@@ -378,3 +378,5 @@ movieGenreVM.genres = new SelectList(await genreQuery.Distinct().ToListAsync())
    ````
 
 Test the app by searching by genre, by movie title, and by both.
+
+>[&larr; **Previous**](.\controller-methods-views.md)     [**Next** &rarr;](.\new-field.md)  

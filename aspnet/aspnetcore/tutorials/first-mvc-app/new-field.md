@@ -138,3 +138,5 @@ The `migrations add` command tells the migration framework to examine the curren
 If you delete all the records in the DB, the initialize will seed the DB and include the `Rating` field. You can do this with the delete links in the browser or from SSOX.
 
 Run the app and verify you can create/edit/display movies with a `Rating` field. You should also add the `Rating` field to the `Edit`, `Details`, and `Delete` view templates.
+
+>[&larr; **Previous**](.\search.md)     [**Next** &rarr;](.\validation.md)  

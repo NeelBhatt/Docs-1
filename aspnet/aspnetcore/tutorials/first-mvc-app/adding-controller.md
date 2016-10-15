@@ -90,3 +90,5 @@ This time the third URL segment  matched the route parameter `id`. The `Welcome`
 [!code-csharp[Main](start-mvc/sample2/src/MvcMovie/Startup.cs?name=snippet_1)]
 
 In these examples the controller has been doing the "VC" portion  of MVC - that is, the view and controller work. The controller is returning HTML  directly. Generally you don't want controllers returning HTML directly, since  that becomes very cumbersome to code and maintain. Instead we'll typically use a separate Razor view template file to help generate the HTML response. We'll do that in the next tutorial.
+
+>[&larr; **Previous**](.\start-mvc.md)     [**Next** &rarr;](.\adding-view.md)  
