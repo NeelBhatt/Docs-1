@@ -62,9 +62,7 @@ When you create a publish profile in Visual Studio for an ASP.NET Core project a
 In the above snippet some functions have been removed for readability. Those functions are used to bootstrap the script in the case that it’s executed from a machine which doesn’t have Visual Studio installed. The script contains the following important elements:
 
    1. Script parameters
-
    2. Publish module version
-
    3. Call to Publish-AspNet
 
 The parameters of the script define the contract between Visual Studio and the PowerShell script. You should not change the declared parameters because Visual Studio depends on those. You can add additional parameters, but they must be added at the end.

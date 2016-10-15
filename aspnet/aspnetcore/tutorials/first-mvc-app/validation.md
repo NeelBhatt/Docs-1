@@ -248,3 +248,5 @@ In the next part of the series, we'll review the application and make some impro
 * [Introduction to Tag Helpers](../../mvc/views/tag-helpers/intro.md)
 
 * [Authoring Tag Helpers](../../mvc/views/tag-helpers/authoring.md)
+
+>[&larr; **Previous**](.\new-field.md)     [**Next** &rarr;](.\details.md)  

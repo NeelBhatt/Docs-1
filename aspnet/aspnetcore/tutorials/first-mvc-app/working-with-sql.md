@@ -185,3 +185,5 @@ Test the app
 The app shows the seeded data.
 
 ![image](working-with-sql/_static/m55.png)
+
+>[&larr; **Previous**](.\adding-model.md)     [**Next** &rarr;](.\controller-methods-views.md)  

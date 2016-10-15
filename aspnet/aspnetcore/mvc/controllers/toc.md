@@ -1,5 +1,5 @@
 # [Controllers, Actions, and Action Results](actions.md)
-# [🔧 Routing to Controller Actions](routing.md)
+# [Routing to Controller Actions](routing.md)
 # [Filters](filters.md)
 # [Dependency Injection and Controllers](dependency-injection.md)
 # [Testing Controller Logic](testing.md)

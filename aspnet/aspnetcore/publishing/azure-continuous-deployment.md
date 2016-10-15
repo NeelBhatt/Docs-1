@@ -52,11 +52,9 @@ This tutorial assumes you have already installed the following:
 
 The following steps will guide you through creating a web app in the Azure Portal.
 
-1.  Log in to the [Azure Portal](https://portal.azure.com).
-
-2.  Click **NEW** at the top left of the Portal.
-
-3.  Click **Web + Mobile** > **Web App**.
+1. Log in to the [Azure Portal](https://portal.azure.com)
+2. TAP **NEW** at the top left of the Portal
+3. TAP **Web + Mobile** > **Web App**
 
     ![image](azure-continuous-deployment/_static/05-azure-newwebapp.png)
 
