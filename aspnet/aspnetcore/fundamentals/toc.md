@@ -6,7 +6,7 @@
 # [Globalization and localization](localization.md)
 # [Configuration](configuration.md)
 # [Logging](logging.md)
-# [🔧 File Providers](file-providers.md)
+# [File Providers](file-providers.md)
 # [Dependency Injection](dependency-injection.md)
 # [Working with Multiple Environments](environments.md)
 # [Hosting](hosting.md)
