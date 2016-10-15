@@ -329,40 +329,93 @@ You can construct a OWIN environment using the `HttpContext`.
 
 OWIN depends on an `IDictionary<string,object>` object to communicate information throughout an HTTP Request/Response exchange. ASP.NET Core implements the keys listed below. See the [primary specification, extensions](http://owin.org/#spec), and [OWIN Key Guidelines and Common Keys](http://owin.org/spec/spec/CommonKeys.html).
 
-  ### Request Data (OWIN v1.0.0)
+### Request Data (OWIN v1.0.0)
 
-<!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- table -->
+| Key               | Value (type) | Description |
+| ----------------- | ------------ | ----------- |
+| owin.RequestScheme | `String` |  |
+| owin.RequestMethod  | `String` | |    
+| owin.RequestPathBase  | `String` | |    
+| owin.RequestPath | `String` | |     
+| owin.RequestQueryString  | `String` | |    
+| owin.RequestProtocol  | `String` | |    
+| owin.RequestHeaders | `IDictionary<string,string[]>`  | |
+| owin.RequestBody | `Stream`  | |
 
-  ### Request Data (OWIN v1.1.0)
+### Request Data (OWIN v1.1.0)
 
-<!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- table -->
+| Key               | Value (type) | Description |
+| ----------------- | ------------ | ----------- |
+| owin.RequestId | `String` | Optional |
 
-  ### Response Data (OWIN v1.0.0)
+### Response Data (OWIN v1.0.0)
 
-<!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- table -->
+| Key               | Value (type) | Description |
+| ----------------- | ------------ | ----------- |
+| owin.ResponseStatusCode | `int` | Optional |
+| owin.ResponseReasonPhrase | `String` | Optional |
+| owin.ResponseHeaders | `IDictionary<string,string[]>`  | |
+| owin.ResponseBody | `Stream`  | |
 
-  ### Other Data (OWIN v1.0.0)
 
-<!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- table -->
+### Other Data (OWIN v1.0.0)
 
-  ### Common Keys
+| Key               | Value (type) | Description |
+| ----------------- | ------------ | ----------- |
+| owin.CallCancelled | `CancellationToken` |  |
+| owin.Version  | `String` | |   
 
-<!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- table -->
 
-  ### SendFiles v0.3.0
+### Common Keys
 
-<!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- table -->
+| Key               | Value (type) | Description |
+| ----------------- | ------------ | ----------- |
+| ssl.ClientCertificate | `X509Certificate` |  |
+| ssl.LoadClientCertAsync  | `Func<Task>` | |    
+| server.RemoteIpAddress  | `String` | |    
+| server.RemotePort | `String` | |     
+| server.LocalIpAddress  | `String` | |    
+| server.LocalPort  | `String` | |    
+| server.IsLocal  | `bool` | |    
+| server.OnSendingHeaders  | `Action<Action<object>,object>` | |
 
-  ### Opaque v0.3.0
 
-<!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- table -->
+### SendFiles v0.3.0
 
-  ### WebSocket v0.3.0
+| Key               | Value (type) | Description |
+| ----------------- | ------------ | ----------- |
+| sendfile.SendAsync | See [delegate signature](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm) | Per Request |
 
-<!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- Skip node --><!-- table -->
 
-  ## Additional Resources
+### Opaque v0.3.0
+
+| Key               | Value (type) | Description |
+| ----------------- | ------------ | ----------- |
+| opaque.Version | `String` |  |
+| opaque.Upgrade | `OpaqueUpgrade` | See [delegate signature](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm) |
+| opaque.Stream | `Stream` |  |
+| opaque.CallCancelled | `CancellationToken` |  |
+
+
+### WebSocket v0.3.0
+
+| Key               | Value (type) | Description |
+| ----------------- | ------------ | ----------- |
+| websocket.Version | `String` |  |
+| websocket.Accept | `WebSocketAccept` | See [delegate signature](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm) |
+| websocket.AcceptAlt |  | Non-spec |
+| websocket.SubProtocol | `String` | See [RFC6455 Section 4.2.2](https://tools.ietf.org/html/rfc6455#section-4.2.2) Step 5.5 |
+| websocket.SendAsync | `WebSocketSendAsync` | See [delegate signature](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)  |
+| websocket.ReceiveAsync | `WebSocketReceiveAsync` | See [delegate signature](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)  |
+| websocket.CloseAsync | `WebSocketCloseAsync` | See [delegate signature](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)  |
+| websocket.CallCancelled | `CancellationToken` |  |
+| websocket.ClientCloseStatus | `int` | Optional |
+| websocket.ClientCloseDescription | `String` | Optional |
+
+
+## Additional Resources
 
 * [Middleware](middleware.md)
 
 * [Servers](servers.md)
+
