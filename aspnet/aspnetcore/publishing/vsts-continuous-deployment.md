@@ -30,6 +30,12 @@ This tutorial assumes you already have the following:
 
    ![image](vsts-continuous-deployment/_static/setup-build-variables.png)
 
+> [!NOTE]
+> If you are using hosted build agents to build your ASP.NET Core application, the host will try to cache packages. As the hosted servers won't retain the cache, you can skip this step and reduce restore times by adding another variable here:  
+   
+ * Name: `DOTNET_SKIP_FIRST_TIME_EXPERIENCE`  
+ * Value: `true`  
+
 2. Use a Command Line build step to restore packages.
 
     * Click **Add build step...** and choose **Utility** > **Command Line** > **Add**
