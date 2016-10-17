@@ -19,37 +19,7 @@ Validation attributes are a way to configure model validation so it's similar co
 
 Below is an annotated `Movie` model from an app that stores information about movies and TV shows. Most of the properties are required and several string properties have length requirements. Additionally, there is a numeric range restriction in place for the `Price` property from 0 to $999.99, along with a custom validation attribute.
 
-[!code-csharp[Main](validation/sample/Movie.cs)]
-
-````csharp
-public class Movie
-   {
-       public int Id { get; set; }
-
-       [Required]
-       [StringLength(100)]
-       public string Title { get; set; }
-
-       [Required]
-       [ClassicMovie(1960)]
-       [DataType(DataType.Date)]
-       public DateTime ReleaseDate { get; set; }
-
-       [Required]
-       [StringLength(1000)]
-       public string Description { get; set; }
-
-       [Required]
-       [Range(0, 999.99)]
-       public decimal Price { get; set; }
-
-       [Required]
-       public Genre Genre { get; set; }
-
-       public bool Preorder { get; set; }
-   }
-
-   ````
+[!code-csharp[Main](validation/sample/Movie.cs?range=6-31)]
 
 Simply reading through the model reveals the rules about data for this app, making it easier to maintain the code. Below are several popular built-in validation attributes:
 
@@ -81,12 +51,7 @@ Model state represents validation errors in submitted HTML form values.
 
 MVC will continue validating fields until reaches the maximum number of errors (200 by default). You can configure this number by inserting the following code into the `ConfigureServices` method in the `Startup.cs` file:
 
-[!code-csharp[Main](validation/sample/Startup.cs)]
-
-````csharp
-services.AddMvc(options => options.MaxModelValidationErrors = 50);
-
-   ````
+[!code-csharp[Main](validation/sample/Startup.cs?range=27)]
 
 ## Handling Model State Errors
 
@@ -100,12 +65,7 @@ After model binding and validation are complete, you may want to repeat parts of
 
 You may need to run validation manually. To do so, call the `TryValidateModel` method, as shown here:
 
-[!code-csharp[Main](validation/sample/MoviesController.cs)]
-
-````csharp
-TryValidateModel(movie);
-
-   ````
+[!code-csharp[Main](validation/sample/MoviesController.cs?range=52)]
 
 ## Custom validation
 
@@ -113,50 +73,13 @@ Validation attributes work for most validation needs. However, some validation r
 
 In the following sample, a business rule states that users may not set the genre to *Classic* for a movie released after 1960. The `[ClassicMovie]` attribute checks the genre first, and if it is a classic, then it checks the release date to see that it is later than 1960. If it is released after 1960, validation fails. The attribute accepts an integer parameter representing the year that you can use to validate data. You can capture the value of the parameter in the attribute's constructor, as shown here:
 
-[!code-csharp[Main](validation/sample/ClassicMovieAttribute.cs)]
-
-````csharp
-public class ClassicMovieAttribute : ValidationAttribute, IClientModelValidator
-   {
-       private int _year;
-
-       public ClassicMovieAttribute(int Year)
-       {
-           _year = Year;
-       }
-
-       protected override ValidationResult IsValid(object value, ValidationContext validationContext)
-       {
-           Movie movie = (Movie)validationContext.ObjectInstance;
-
-           if (movie.Genre == Genre.Classic && movie.ReleaseDate.Year > _year)
-           {
-               return new ValidationResult(GetErrorMessage());
-           }
-
-           return ValidationResult.Success;
-       }
-
-   ````
+[!code-csharp[Main](validation/sample/ClassicMovieAttribute.cs?range=9-28)]
 
 The `movie` variable above represents a `Movie` object that contains the data from the form submission to validate. In this case, the validation code checks the date and genre in the `IsValid` method of the `ClassicMovieAttribute` class as per the rules. Upon successful validation `IsValid` returns a `ValidationResult.Success` code, and when validation fails, a `ValidationResult` with an error message. When a user modifies the `Genre` field and submits the form, the `IsValid` method of the `ClassicMovieAttribute` will verify whether the movie is a classic. Like any built-in attribute, apply the `ClassicMovieAttribute` to a property such as `ReleaseDate` to ensure validation happens, as shown in the previous code sample. Since the example works only with `Movie` types, a better option is to use `IValidatableObject` as shown in the following paragraph.
 
 Alternatively, this same code could be placed in the model by implementing the `Validate` method on the `IValidatableObject` interface. While custom validation attributes work well for validating individual properties, implementing `IValidatableObject` can be used to implement class-level validation as seen here.
 
-[!code-csharp[Main](validation/sample/MovieIValidatable.cs)]
-
-````csharp
-public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-   {
-       if (Genre == Genre.Classic && ReleaseDate.Year > _classicYear)
-       {
-           yield return new ValidationResult(
-               "Classic movies must have a release year earlier than " + _classicYear,
-               new[] { "ReleaseDate" });
-       }
-   }
-
-   ````
+[!code-csharp[Main](validation/sample/MovieIValidatable.cs?range=33-41)]
 
 ## Client side validation
 
@@ -164,34 +87,13 @@ Client side validation is a great convenience for users. It saves time they woul
 
 You must have a view with the proper JavaScript script references in place for client side validation to work as you see here.
 
-[!code-html[Main](validation/sample/Views/Shared/_Layout.cshtml)]
-
-````html
-<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.min.js"></script>
-
-   ````
+[!code-html[Main](validation/sample/Views/Shared/_Layout.cshtml?range=37)]
 
 [!code-html[Main](validation/sample/Views/Shared/_ValidationScriptsPartial.cshtml)]
 
-````html
-<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
-   <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
-   ````
-
 MVC uses validation attributes in addition to type metadata from model properties to validate data and display any error messages using JavaScript. When you use MVC to render form elements from a model using [Tag Helpers](https://docs.asp.net/en/latest/mvc/views/tag-helpers/index.html) or [HTML helpers](https://docs.asp.net/en/latest/mvc/views/html-helpers.html) it will add HTML 5 [data- attributes](http://w3c.github.io/html/dom.html#embedding-custom-non-visible-data-with-the-data-attributes) in the form elements that need validation, as shown below. MVC generates the `data-` attributes for both built-in and custom attributes. You can display validation errors on the client using the relevant tag helpers as shown here:
 
-[!code-html[Main](validation/sample/Views/Movies/Create.cshtml?highlight=4,5)]
-
-````html
-<div class="form-group">
-       <label asp-for="ReleaseDate" class="col-md-2 control-label"></label>
-       <div class="col-md-10">
-           <input asp-for="ReleaseDate" class="form-control" />
-           <span asp-validation-for="ReleaseDate" class="text-danger"></span>
-       </div>
-   </div>
-
-   ````
+[!code-html[Main](validation/sample/Views/Movies/Create.cshtml?highlight=4,5&range=19-25)]
 
 The tag helpers above render the HTML below. Notice that the `data-` attributes in the HTML output correspond to the validation attributes for the `ReleaseDate` property. The `data-val-required` attribute below contains an error message to display if the user doesn't fill in the release date field, and that message displays in the accompanying `<span>` element.
 
@@ -199,22 +101,22 @@ The tag helpers above render the HTML below. Notice that the `data-` attributes 
 
 ````html
 <form action="/movies/Create" method="post">
-     <div class="form-horizontal">
-       <h4>Movie</h4>
-       <div class="text-danger"></div>
-       <div class="form-group">
-         <label class="col-md-2 control-label" for="ReleaseDate">ReleaseDate</label>
-         <div class="col-md-10">
-           <input class="form-control" type="datetime"
-           data-val="true" data-val-required="The ReleaseDate field is required."
-           id="ReleaseDate" name="ReleaseDate" value="" />
-           <span class="text-danger field-validation-valid"
-           data-valmsg-for="ReleaseDate" data-valmsg-replace="true"></span>
-         </div>
-       </div>
-       </div>
-   </form>
-   ````
+  <div class="form-horizontal">
+    <h4>Movie</h4>
+    <div class="text-danger"></div>
+    <div class="form-group">
+      <label class="col-md-2 control-label" for="ReleaseDate">ReleaseDate</label>
+      <div class="col-md-10">
+        <input class="form-control" type="datetime"
+        data-val="true" data-val-required="The ReleaseDate field is required."
+        id="ReleaseDate" name="ReleaseDate" value="" />
+        <span class="text-danger field-validation-valid"
+        data-valmsg-for="ReleaseDate" data-valmsg-replace="true"></span>
+      </div>
+    </div>
+    </div>
+</form>
+````
 
 Client-side validation prevents submission until the form is valid. The Submit button runs JavaScript that either submits the form or displays error messages.
 
@@ -224,66 +126,22 @@ MVC determines type attribute values based on the .NET data type of a property, 
 
 You may create client side logic for your custom attribute, and [unobtrusive validation](http://jqueryvalidation.org/documentation/) will execute it on the client for you automatically as part of validation. The first step is to control what data- attributes are added by implementing the `IClientModelValidator` interface as shown here:
 
-[!code-csharp[Main](validation/sample/ClassicMovieAttribute.cs)]
-
-````csharp
-public void AddValidation(ClientModelValidationContext context)
-   {
-       if (context == null)
-       {
-           throw new ArgumentNullException(nameof(context));
-       }
-
-       MergeAttribute(context.Attributes, "data-val", "true");
-       MergeAttribute(context.Attributes, "data-val-classicmovie", GetErrorMessage());
-
-       var year = _year.ToString(CultureInfo.InvariantCulture);
-       MergeAttribute(context.Attributes, "data-val-classicmovie-year", year);
-   }
-
-   ````
+[!code-csharp[Main](validation/sample/ClassicMovieAttribute.cs?range=30-42)]
 
 Attributes that implement this interface can add HTML attributes to generated fields. Examining the output for the `ReleaseDate` element reveals HTML that is similar to the previous example, except now there is a `data-val-classicmovie` attribute that was defined in the `AddValidation` method of `IClientModelValidator`.
 
 ````html
 <input class="form-control" type="datetime"
-   data-val="true"
-   data-val-classicmovie="Classic movies must have a release year earlier than 1960"
-   data-val-classicmovie-year="1960"
-   data-val-required="The ReleaseDate field is required."
-   id="ReleaseDate" name="ReleaseDate" value="" />
-   ````
+data-val="true"
+data-val-classicmovie="Classic movies must have a release year earlier than 1960"
+data-val-classicmovie-year="1960"
+data-val-required="The ReleaseDate field is required."
+id="ReleaseDate" name="ReleaseDate" value="" />
+````
 
 Unobtrusive validation uses the data in the `data-` attributes to display error messages. However, jQuery doesn't know about rules or messages until you add them to jQuery's `validator` object. This is shown in the example below that adds a method named `classicmovie` containing custom client validation code to the jQuery `validator` object.
 
-[!code-javascript[Main](validation/sample/Views/Movies/Create.cshtml)]
-
-````javascript
-$(function () {
-       jQuery.validator.addMethod('classicmovie',
-           function (value, element, params) {
-               // Get element value. Classic genre has value '0'.
-               var genre = $(params[0]).val(),
-                   year = params[1],
-                   date = new Date(value);
-               if (genre && genre.length > 0 && genre[0] === '0') {
-                   // Since this is a classic movie, invalid if release date is after given year.
-                   return date.getFullYear() <= year;
-               }
-
-               return true;
-           });
-
-       jQuery.validator.unobtrusive.adapters.add('classicmovie',
-           [ 'element', 'year' ],
-           function (options) {
-               var element = $(options.form).find('select#Genre')[0];
-               options.rules['classicmovie'] = [element, parseInt(options.params['year'])];
-               options.messages['classicmovie'] = options.message;
-           });
-   }(jQuery));
-
-   ````
+[!code-javascript[Main](validation/sample/Views/Movies/Create.cshtml?range=71-93)]
 
 Now jQuery has the information to execute the custom JavaScript validation as well as the error message to display if that validation code returns false.
 
@@ -293,33 +151,10 @@ Remote validation is a great feature to use when you need to validate data on th
 
 You can implement remote validation in a two step process. First, you must annotate your model with the `[Remote]` attribute. The `[Remote]` attribute accepts multiple overloads you can use to direct client side JavaScript to the appropriate code to call. The example points to the `VerifyEmail` action method of the `Users` controller.
 
-[!code-csharp[Main](validation/sample/User.cs)]
-
-````csharp
-public class User
-   {
-       [Remote(action: "VerifyEmail", controller: "Users")]
-       public string Email { get; set; }
-   }
-
-   ````
+[!code-csharp[Main](validation/sample/User.cs?range=5-9)]
 
 The second step is putting the validation code in the corresponding action method as defined in the `[Remote]` attribute. It returns a `JsonResult` that the client side can use to proceed or pause and display an error if needed.
 
-[!code-none[Main](validation/sample/UsersController.cs)]
-
-````none
-[AcceptVerbs("Get", "Post")]
-   public IActionResult VerifyEmail(string email)
-   {
-       if (!_userRepository.VerifyEmail(email))
-       {
-           return Json(data: $"Email {email} is already in use.");
-       }
-
-       return Json(data: true);
-   }
-
-   ````
+[!code-none[Main](validation/sample/UsersController.cs?range=19-28)]
 
 Now when users enter an email, JavaScript in the view makes a remote call to see if that email has been taken, and if so, then displays the error message. Otherwise, the user can submit the form as usual.
