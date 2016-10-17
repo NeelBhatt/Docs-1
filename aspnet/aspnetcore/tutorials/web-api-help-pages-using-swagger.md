@@ -219,79 +219,13 @@ Configure Swagger to use the generated XML file.
 > [!NOTE]
 > For Linux or non-Windows operating systems, file names and paths can be case sensitive. So `ToDoApi.XML` would be found on Windows but not CentOS for example.
 
-[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Startup.cs?highlight=29,32)]
-
-````csharp
-// This method gets called by the runtime. Use this method to add services to the container.
-   public void ConfigureServices(IServiceCollection services)
-   {
-       // Add framework services.
-       services.AddMvc();
-
-       services.AddLogging();
-
-       // Add our repository type.
-       services.AddSingleton<ITodoRepository, TodoRepository>();
-
-       // Inject an implementation of ISwaggerProvider with defaulted settings applied.
-       services.AddSwaggerGen();
-
-       // Add the detail information for the API.
-       services.ConfigureSwaggerGen(options =>
-       {
-           options.SingleApiVersion(new Info
-           {
-               Version = "v1",
-               Title = "ToDo API",
-               Description = "A simple example ASP.NET Core Web API",
-               TermsOfService = "None",
-               Contact = new Contact { Name = "Shayne Boyer", Email = "", Url = "http://twitter.com/spboyer"},
-               License = new License { Name = "Use under LICX", Url = "http://url.com" }
-           });
-
-           //Determine base path for the application.
-           var basePath = PlatformServices.Default.Application.ApplicationBasePath;
-
-           //Set the comments path for the swagger json and ui.
-           options.IncludeXmlComments(basePath + "\\TodoApi.xml");
-       });
-   }
-
-   // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-   public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
-   {
-       app.UseStaticFiles();
-
-       app.UseMvcWithDefaultRoute();
-
-       // Enable middleware to serve generated Swagger as a JSON endpoint.
-       app.UseSwagger();
-
-       // Enable middleware to serve swagger-ui assets (HTML, JS, CSS etc.)
-       app.UseSwaggerUi();
-       
-   }
-
-   ````
+[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Startup.cs?name=snippet_Configure&highlight=29,32)]
 
 In the code above, ApplicationBasePath gets the base path of the app, which is needed to set the full path to the XML comments. `TodoApi.xml` only works for this example, the name of the generated XML comments file is based on the name of your application.
 
 Adding the triple slash comments to the method enhances the Swagger UI by adding the description to the header of the section.
 
-[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Controllers/TodoController.cs?highlight=2)]
-
-````csharp
-/// <summary>
-   /// Deletes a specific TodoItem.
-   /// </summary>
-   /// <param name="id"></param>
-   [HttpDelete("{id}")]
-   public void Delete(string id)
-   {
-       TodoItems.Remove(id);
-   }
-
-   ````
+[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Controllers/TodoController.cs?name=Delete_Method&highlight=2)]
 
 ![image](web-api-help-pages-using-swagger/_static/triple-slash-comments.png)
 
@@ -328,41 +262,7 @@ Note that the UI is driven by the generated JSON file, and these comments are al
 
 Here is a more robust example, adding `<remarks />` where the content can be just text or adding the JSON or XML object for further documentation of the method.
 
-[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Controllers/TodoController.cs?highlight=4,5,6,7,8,9,10,11,12,13,14)]
-
-````csharp
-/// <summary>
-   /// Creates a TodoItem.
-   /// </summary>
-   /// <remarks>
-   /// Note that the key is a GUID and not an integer.
-   ///  
-   ///     POST /Todo
-   ///     {
-   ///        "key": "0e7ad584-7788-4ab1-95a6-ca0a5b444cbb",
-   ///        "name": "Item1",
-   ///        "isComplete": true
-   ///     }
-   /// 
-   /// </remarks>
-   /// <param name="item"></param>
-   /// <returns>New Created Todo Item</returns>
-   /// <response code="201">Returns the newly created item</response>
-   /// <response code="400">If the item is null</response>
-   [HttpPost]
-   [ProducesResponseType(typeof(TodoItem), 201)]
-   [ProducesResponseType(typeof(TodoItem), 400)]
-   public IActionResult Create([FromBody, Required] TodoItem item)
-   {
-       if (item == null)
-       {
-           return BadRequest();
-       }
-       TodoItems.Add(item);
-       return CreatedAtRoute("GetTodo", new { id = item.Key }, item);
-   }
-
-   ````
+[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Controllers/TodoController.cs?name=Create_Method&highlight=4-14)]
 
 Notice the enhancement of the UI with these additional comments.
 
@@ -376,23 +276,6 @@ Adding the `[Required]` annotation to the `Name` property of the `TodoItem` clas
 
 [!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Models/TodoItem.cs?highlight=10)]
 
-````csharp
-using System;
-   using System.ComponentModel;
-   using System.ComponentModel.DataAnnotations;
-
-   namespace TodoApi.Models
-   {
-       public class TodoItem
-       {
-           public string Key { get; set; }
-           [Required]
-           public string Name { get; set; }
-           [DefaultValue(false)]
-           public bool IsComplete { get; set; }
-       }
-   }
-   ````
 
 ### Describing Response Types
 
@@ -400,41 +283,7 @@ Consuming developers are probably most concerned with what is returned; specific
 
 Take the `Create()` method for example, currently it returns only "201 Created" response by default. That is of course if the item is in fact created, or a "204 No Content" if no data is passed in the POST Body.  However, there is no documentation to know that or any other response. That can be fixed by adding the following piece of code.
 
-[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Controllers/TodoController.cs?highlight=17,18,20,21)]
-
-````csharp
-/// <summary>
-   /// Creates a TodoItem.
-   /// </summary>
-   /// <remarks>
-   /// Note that the key is a GUID and not an integer.
-   ///  
-   ///     POST /Todo
-   ///     {
-   ///        "key": "0e7ad584-7788-4ab1-95a6-ca0a5b444cbb",
-   ///        "name": "Item1",
-   ///        "isComplete": true
-   ///     }
-   /// 
-   /// </remarks>
-   /// <param name="item"></param>
-   /// <returns>New Created Todo Item</returns>
-   /// <response code="201">Returns the newly created item</response>
-   /// <response code="400">If the item is null</response>
-   [HttpPost]
-   [ProducesResponseType(typeof(TodoItem), 201)]
-   [ProducesResponseType(typeof(TodoItem), 400)]
-   public IActionResult Create([FromBody, Required] TodoItem item)
-   {
-       if (item == null)
-       {
-           return BadRequest();
-       }
-       TodoItems.Add(item);
-       return CreatedAtRoute("GetTodo", new { id = item.Key }, item);
-   }
-
-   ````
+[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Controllers/TodoController.cs?name=Create_Method&highlight=17,18,20,21)]
 
 ![image](web-api-help-pages-using-swagger/_static/data-annotations-response-types.png)
 
@@ -454,6 +303,7 @@ Enable static files middleware.
 // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
    public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
    {
+       // Enable static files middleware.
        app.UseStaticFiles();
 
        app.UseMvcWithDefaultRoute();
@@ -463,7 +313,6 @@ Enable static files middleware.
 
        // Enable middleware to serve swagger-ui assets (HTML, JS, CSS etc.)
        app.UseSwaggerUi();
-
    }
    ````
 
@@ -482,29 +331,6 @@ The following CSS provides a simple sample of a custom header title to the page.
 *custom.css file*
 
 [!code-css[Main](web-api-help-pages-using-swagger/sample/src/TodoApi/wwwroot/swagger/ui/custom.css)]
-
-````css
-
-
-   .swagger-section #header
-   {
-       border-bottom: 1px solid #000000;
-       font-style: normal;
-       font-weight: 400;
-       font-family: "Segoe UI Light","Segoe WP Light","Segoe UI","Segoe WP",Tahoma,Arial,sans-serif;
-       background-color: black;
-   }
-
-   .swagger-section #header h1
-   {
-       text-align: center;
-       font-size: 20px;
-       color: white;
-   }
-
-
-
-   ````
 
 *index.html body*
 
