@@ -21,7 +21,10 @@ See the following resources for a list of some of the most significant changes, 
 
 If your app targeted `dnx451` or  `dnxcore50` in the `frameworks` section of *project.json*, you must make the following changes:
 
-<!--     DNX  .NET Core  dnx451  net451  dnxcore50  netcoreapp1.0 -->
+|DNX|.NET Core|
+|---|---|
+|`dnx451`|`net451`|
+|`dnxcore50`|`netcoreapp1.0`|
 
 .NET Core apps must add a dependency to the `Microsoft.NETCore.App` package:
 
@@ -49,13 +52,24 @@ If your app targeted `dnx451` or  `dnxcore50` in the `frameworks` section of *pr
 
 Namespace and package name changes:
 
-<!--     ASP.NET 5 RC1  ASP.NET Core 1.0  Microsoft.AspNet.*  Microsoft.AspNetCore.*  EntityFramework.*  Microsoft.EntityFrameworkCore.*  Microsoft.Data.Entity.*  Microsoft.EntityFrameworkCore.* -->
+|ASP.NET 5 RC1|ASP.NET Core 1.0|
+|---|---|
+|`Microsoft.AspNet.*`|`Microsoft.AspNetCore.*`|
+|`EntityFramework.*`|`Microsoft.EntityFrameworkCore.*`|
+|`Microsoft.Data.Entity.*`|`Microsoft.EntityFrameworkCore.*`|
 
 The `EntityFramework.Commands` package is no longer available. The `ef` command is now available as a tool in the `Microsoft.EntityFrameworkCore.Tools` package.
 
 The following packages have been renamed:
 
-<!--     ASP.NET 5 RC1  ASP.NET Core 1.0  EntityFramework.MicrosoftSqlServer  Microsoft.EntityFrameworkCore.SqlServer  Microsoft.AspNet.Diagnostics.Entity  Microsoft.AspNetCore.Dianostics.EntityFrameworkCore  Microsoft.AspNet.Identity.EntityFramework  Microsoft.AspNetCore.Identity.EntityFrameworkCore  Microsoft.AspNet.Tooling.Razor  Microsoft.AspNetCore.Razor.Tools -->  ## Commands and tools
+|ASP.NET 5 RC1|ASP.NET Core 1.0|
+|---|---|
+|`Microsoft.AspNet.*`|`Microsoft.AspNetCore.*`|
+|`EntityFramework.*`|`Microsoft.EntityFrameworkCore.*`|
+|`Microsoft.Data.Entity.*`|`Microsoft.EntityFrameworkCore.*`|
+|`Microsoft.Data.Entity.*`|`Microsoft.EntityFrameworkCore.*`|
+
+## Commands and tools
 
 The `commands` section of  the *project.json* file is no longer supported. Use `dotnet run` or `dotnet <DLL name>` instead.
 
@@ -69,19 +83,19 @@ IIS publishing is now provided by the `publish-iis` tool in the `Microsoft.AspNe
 
 ````json
 {
-     "tools": {
-       "Microsoft.AspNetCore.Server.IISIntegration.Tools": "1.0.0-preview2-final"
-     }
-   }
-   ````
+  "tools": {
+    "Microsoft.AspNetCore.Server.IISIntegration.Tools": "1.0.0-preview2-final"
+  }
+}
+````
 
 The `publish-iis` tool is commonly used in the `postpublish` script in *project.json*:
 
 ````json
 {
-     "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
-   }
-   ````
+  "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
+}
+````
 
 ### Entity Framework commands
 
@@ -89,11 +103,11 @@ The `ef` tool is now provided in the `Microsoft.EntityFrameworkCore.Tools` packa
 
 ````json
 {
-     "tools": {
-       "Microsoft.EntityFrameworkCore.Tools": "1.0.0-preview2-final"
-     }
-   }
-   ````
+  "tools": {
+    "Microsoft.EntityFrameworkCore.Tools": "1.0.0-preview2-final"
+  }
+}
+````
 
 For more information, see [.NET Core CLI](https://docs.efproject.net/en/latest/cli/dotnet.html).
 
@@ -103,11 +117,11 @@ Razor tooling is now provided in the `Microsoft.AspNetCore.Razor.Tools` package:
 
 ````json
 {
-     "tools": {
-       "Microsoft.AspNetCore.Razor.Tools": "1.0.0-preview2-final"
-     }
-   }
-   ````
+  "tools": {
+    "Microsoft.AspNetCore.Razor.Tools": "1.0.0-preview2-final"
+  }
+}
+````
 
 ### SQL cache tool
 
@@ -115,11 +129,11 @@ The `sqlservercache` command, formerly provided by the `Microsoft.Extensions.Cac
 
 ````json
 {
-     "tools": {
-       "Microsoft.Extensions.Caching.SqlConfig.Tools": "1.0.0-preview2-final"
-     }
-   }
-   ````
+  "tools": {
+    "Microsoft.Extensions.Caching.SqlConfig.Tools": "1.0.0-preview2-final"
+  }
+}
+````
 
 ### User secrets manager
 
@@ -127,11 +141,11 @@ The `user-secret` command, formerly provided by the `Microsoft.Extensions.Secret
 
 ````json
 {
-     "tools": {
-       "Microsoft.Extensions.SecretManager.Tools": "1.0.0-preview2-final"
-     }
-   }
-   ````
+  "tools": {
+    "Microsoft.Extensions.SecretManager.Tools": "1.0.0-preview2-final"
+  }
+}
+````
 
 ### File watcher
 
@@ -139,50 +153,61 @@ The `watch` command, formerly provided by the `Microsoft.Dnx.Watcher` package, h
 
 ````json
 {
-     "tools": {
-       "Microsoft.DotNet.Watcher.Tools": "1.0.0-preview2-final"
-     }
-   }
-   ````
+  "tools": {
+    "Microsoft.DotNet.Watcher.Tools": "1.0.0-preview2-final"
+  }
+}
+````
 
 For more information on the file watcher, see **Dotnet watch** in  [Tutorials](../tutorials/index.md).
 
-## Hosting  ### Creating the web application host
+## Hosting
+
+### Creating the web application host
 
 ASP.NET Core 1.0 apps are console apps; you must define an entry point for your app that sets up a web host and runs it. Below is an example from the startup code for one of the Web Application templates in Visual Studio:
 
 ````csharp
 public class Program
-   {
-       public static void Main(string[] args)
-       {
-           var host = new WebHostBuilder()
-               .UseKestrel()
-               .UseContentRoot(Directory.GetCurrentDirectory())
-               .UseIISIntegration()
-               .UseStartup<Startup>()
-               .Build();
+{
+    public static void Main(string[] args)
+    {
+        var host = new WebHostBuilder()
+            .UseKestrel()
+            .UseContentRoot(Directory.GetCurrentDirectory())
+            .UseIISIntegration()
+            .UseStartup<Startup>()
+            .Build();
 
-           host.Run();
-       }
-   }
-   ````
+        host.Run();
+    }
+}
+````
 
 You must add the `emitEntryPoint` to the `buildOptions` section of your application's *project.json*:
 
 ````json
 {
-     "buildOptions": {
-       "emitEntryPoint": true
-     }
-   }
-   ````
+  "buildOptions": {
+    "emitEntryPoint": true
+  }
+}
+````
 
 ### Class and interface renames
 
 All classes and interfaces prefixed with `WebApplication` have been renamed to start with `WebHost`:
 
-<!--     ASP.NET 5 RC1  ASP.NET Core 1.0  IWebApplicationBuilder  IWebHostBuilder  WebApplicationBuilder  WebHostBuilder  IWebApplication  IWebHost  WebApplication  WebHost  WebApplicationOptions  WebHostOptions  WebApplicationDefaults  WebHostDefaults  WebApplicationService  WebHostService  WebApplicationConfiguration  WebHostConfiguration -->  ### Content root and web root
+|ASP.NET 5 RC1|ASP.NET Core 1.0|
+|---|---|
+|IWebApplicationBuilder|IWebHostBuilder|
+|WebApplicationBuilder|WebHostBuilder|
+|IWebApplication|IWebHost|
+|WebApplication|WebHost|
+|WebApplicationOptions|WebHostOptions|
+|WebApplicationDefaults|WebHostDefaults|
+|WebApplicationService|WebHostService|
+|WebApplicationConfiguration|WebHostConfiguration|
 
 The application base path is now called the content root.
 
@@ -222,21 +247,32 @@ Kestrel configuration has changed. [This GitHub announcement](https://github.com
 
 The following [`Controller`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Controller/index.html#Microsoft.AspNetCore.Mvc.Controller) methods have been renamed and moved to [`ControllerBase`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ControllerBase/index.html#Microsoft.AspNetCore.Mvc.ControllerBase):
 
-<!--     ASP.NET 5 RC1  ASP.NET Core 1.0  HttpUnauthorized  Unauthorized  HttpNotFound (and its overloads)  NotFound  HttpBadRequest (and its overloads)  BadRequest -->
+|ASP.NET 5 RC1|ASP.NET Core 1.0|
+|---|---|
+|HttpUnauthorized|Unauthorized|
+|HttpNotFound (and its overloads)|NotFound|
+|HttpBadRequest (and its overloads)|BadRequest|
 
 The following action result types have also been renamed:
 
-<!--     ASP.NET 5 RC1  ASP.NET Core 1.0  Microsoft.AspNet.Mvc.HttpOkObjectResult  Microsoft.AspNetCore.Mvc.OkObjectResult  Microsoft.AspNet.Mvc.HttpOkResult  Microsoft.AspNetCore.Mvc.OkResult  Microsoft.AspNet.Mvc.HttpNotFoundObjectResult  Microsoft.AspNetCore.Mvc.NotFoundObjectResult  Microsoft.AspNet.Mvc.HttpNotFoundResult  Microsoft.AspNetCore.Mvc.NotFoundResult  Microsoft.AspNet.Mvc.HttpStatusCodeResult  Microsoft.AspNetCore.Mvc.StatusCodeResult  Microsoft.AspNet.Mvc.HttpUnauthorizedResult  Microsoft.AspNetCore.Mvc.UnauthorizedResult -->  ## ASP.NET 5 MVC compile views
+|ASP.NET 5 RC1|ASP.NET Core 1.0|
+|---|---|
+|Microsoft.AspNet.Mvc.HttpOkObjectResult|Microsoft.AspNetCore.Mvc.OkObjectResult|
+|Microsoft.AspNet.Mvc.HttpOkResult|Microsoft.AspNetCore.Mvc.OkResult|
+|Microsoft.AspNet.Mvc.HttpNotFoundObjectResult|Microsoft.AspNetCore.Mvc.NotFoundObjectResult|
+|Microsoft.AspNet.Mvc.HttpNotFoundResult|Microsoft.AspNetCore.Mvc.NotFoundResult|
+
+## ASP.NET 5 MVC compile views
 
 To compile views, set the `preserveCompilationContext` option in *project.json* to preserve the compilation context, as shown here:
 
 ````json
 {
-     "buildOptions": {
-       "preserveCompilationContext": true
-     }
-   }
-   ````
+  "buildOptions": {
+    "preserveCompilationContext": true
+  }
+}
+````
 
 ### Changes in views
 
@@ -276,10 +312,10 @@ ASP.NET Core 1.0:
 
 ````csharp
 @Component.InvokeAsync("Test", new { name = "MyName", age = 15 })
-   @Component.InvokeAsync("Test", new Dictionary<string, object> {
-                          ["name"] = "MyName", ["age"] = 15 })
-   @Component.InvokeAsync<TestViewComponent>(new { name = "MyName", age = 15})
-   ````
+@Component.InvokeAsync("Test", new Dictionary<string, object> {
+                       ["name"] = "MyName", ["age"] = 15 })
+@Component.InvokeAsync<TestViewComponent>(new { name = "MyName", age = 15})
+````
 
 ### Updated controller discovery rules
 
@@ -308,12 +344,12 @@ File-based configuration providers support both relative and absolute paths to c
 
 ````csharp
 public Startup(IHostingEnvironment env)
-   {
-       var builder = new ConfigurationBuilder()
-           .SetBasePath(env.ContentRootPath)
-           .AddJsonFile("appsettings.json");
-   }
-   ````
+{
+    var builder = new ConfigurationBuilder()
+        .SetBasePath(env.ContentRootPath)
+        .AddJsonFile("appsettings.json");
+}
+````
 
 ### Automatic reload on change
 
@@ -331,15 +367,20 @@ The `MinimumLevel` property has been removed from [`ILoggerFactory`](http://docs
 
 The signatures for the following methods or properties have changed:
 
-<!--     ASP.NET 5 RC1  ASP.NET Core 1.0  ExternalLoginInfo.ExternalPrincipal  ExternalLoginInfo.Principal  User.IsSignedIn()  SignInManager.IsSignedIn(User)  UserManager.FindByIdAsync(HttpContext.User.GetUserId())  UserManager.GetUserAsync(HttpContext.User)  User.GetUserId()  UserManager.GetUserId(User) -->
+|ASP.NET 5 RC1|ASP.NET Core 1.0|
+|---|---|
+|ExternalLoginInfo.ExternalPrincipal|ExternalLoginInfo.Principal|
+|User.IsSignedIn()|SignInManager.IsSignedIn(User)|
+|UserManager.FindByIdAsync(HttpContext.User.GetUserId())|UserManager.GetUserAsync(HttpContext.User)|
+|User.GetUserId()|UserManager.GetUserId(User)|
 
 To use Identity in a view, add the following:
 
 ````csharp
 @using Microsoft.AspNetCore.Identity
-   @inject SignInManager<TUser> SignInManager
-   @inject UserManager<TUser> UserManager
-   ````
+@inject SignInManager<TUser> SignInManager
+@inject UserManager<TUser> UserManager
+````
 
 ## Working with IIS
 
@@ -351,16 +392,16 @@ The ASP.NET Core Module must be configured in *web.config*:
 
 ````xml
 <configuration>
-     <system.webServer>
-       <handlers>
-         <add name="aspNetCore" path="*" verb="*" modules="AspNetCoreModule" resourceType="Unspecified"/>
-       </handlers>
-       <aspNetCore processPath="%LAUNCHER_PATH%" arguments="%LAUNCHER_ARGS%"
-                   stdoutLogEnabled="false" stdoutLogFile=".\logs\stdout"
-                   forwardWindowsAuthToken="false"/>
-     </system.webServer>
-   </configuration>
-   ````
+  <system.webServer>
+    <handlers>
+      <add name="aspNetCore" path="*" verb="*" modules="AspNetCoreModule" resourceType="Unspecified"/>
+    </handlers>
+    <aspNetCore processPath="%LAUNCHER_PATH%" arguments="%LAUNCHER_ARGS%"
+                stdoutLogEnabled="false" stdoutLogFile=".\logs\stdout"
+                forwardWindowsAuthToken="false"/>
+  </system.webServer>
+</configuration>
+````
 
 The *Publish to IIS tool* generates a correct *web.config*. See [Publishing to IIS](../publishing/iis.md) for more details.
 
@@ -368,9 +409,9 @@ IIS integration middleware is now configured when creating the [`Microsoft.AspNe
 
 ````csharp
 var host = new WebHostBuilder()
-       .UseIISIntegration()
-       .Build();
-   ````
+    .UseIISIntegration()
+    .Build();
+````
 
 ### Web Deploy changes
 
@@ -386,16 +427,16 @@ Update `launchSettings.json` to remove the web target and add the following:
 
 ````json
 {
-     "WebApplication1": {
-       "commandName": "Project",
-       "launchBrowser": true,
-       "launchUrl": "http://localhost:5000",
-       "environmentVariables": {
-         "ASPNETCORE_ENVIRONMENT": "Development"
-       }
-     }
-   }
-   ````
+  "WebApplication1": {
+    "commandName": "Project",
+    "launchBrowser": true,
+    "launchUrl": "http://localhost:5000",
+    "environmentVariables": {
+      "ASPNETCORE_ENVIRONMENT": "Development"
+    }
+  }
+}
+````
 
 ## Server garbage collection (GC)
 
@@ -405,10 +446,10 @@ You must turn on server garbage collection in *project.json* or *app.config* whe
 
 ````json
  {
-      "runtimeOptions": {
-        "configProperties": {
-          "System.GC.Server": true
-        }
-      }
-    }
-   ````
+   "runtimeOptions": {
+     "configProperties": {
+       "System.GC.Server": true
+     }
+   }
+ }
+````

@@ -36,40 +36,7 @@ You can see an example of setting up the request pipeline in the default web sit
 
 4. MVC
 
-[!code-csharp[Main](../common/samples/WebApplication1/src/WebApplication1/Startup.cs?highlight=8,9,10,14,17,19,23)]
-
-````csharp
-public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
-   {
-       loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-       loggerFactory.AddDebug();
-
-       if (env.IsDevelopment())
-       {
-           app.UseDeveloperExceptionPage();
-           app.UseDatabaseErrorPage();
-           app.UseBrowserLink();
-       }
-       else
-       {
-           app.UseExceptionHandler("/Home/Error");
-       }
-
-       app.UseStaticFiles();
-
-       app.UseIdentity();
-
-       // Add external authentication middleware below. To configure them please see http://go.microsoft.com/fwlink/?LinkID=532715
-
-       app.UseMvc(routes =>
-       {
-           routes.MapRoute(
-               name: "default",
-               template: "{controller=Home}/{action=Index}/{id?}");
-       });
-   }
-
-   ````
+[!code-csharp[Main](../common/samples/WebApplication1/src/WebApplication1/Startup.cs?highlight=8,9,10,14,17,19,23&range=58-86)]
 
 In the code above (in non-development environments), [`UseExceptionHandler`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/ExceptionHandlerExtensions/index.html) is the first middleware added to the pipeline, therefore will catch any exceptions that occur in later calls.
 
@@ -86,60 +53,15 @@ A request that is handled by the static file module will short circuit the pipel
 
 The simplest possible ASP.NET application sets up a single request delegate that handles all requests. In this case, there isn't really a request "pipeline", so much as a single anonymous function that is called in response to every HTTP request.
 
-[!code-csharp[Main](middleware/sample/src/MiddlewareSample/Startup.cs)]
-
-````csharp
-app.Run(async context =>
-   {
-       await context.Response.WriteAsync("Hello, World!");
-   });
-
-   ````
+[!code-csharp[Main](middleware/sample/src/MiddlewareSample/Startup.cs?range=23-26)]
 
 The first `App.Run` delegate terminates the pipeline. In the following example, only the first delegate ("Hello, World!") will run.
 
-[!code-csharp[Main](middleware/sample/src/MiddlewareSample/Startup.cs?highlight=5)]
-
-````csharp
-
-
-   public void Configure(IApplicationBuilder app)
-   {
-       app.Run(async context =>
-       {
-           await context.Response.WriteAsync("Hello, World!");
-       });
-
-       app.Run(async context =>
-       {
-           await context.Response.WriteAsync("Hello, World, Again!");
-       });
-
-   ````
+[!code-csharp[Main](middleware/sample/src/MiddlewareSample/Startup.cs?highlight=5&range=21-31)]
 
 You chain multiple request delegates together; the `next` parameter represents the next delegate in the pipeline. You can terminate (short-circuit) the pipeline by *not* calling the *next* parameter. You can typically perform actions both before and after the next delegate, as this example demonstrates:
 
-[!code-csharp[Main](middleware/sample/src/MiddlewareSample/Startup.cs?highlight=5,8,14)]
-
-````csharp
-public void ConfigureLogInline(IApplicationBuilder app, ILoggerFactory loggerfactory)
-   {
-       loggerfactory.AddConsole(minLevel: LogLevel.Information);
-       var logger = loggerfactory.CreateLogger(_environment);
-       app.Use(async (context, next) =>
-       {
-           logger.LogInformation("Handling request.");
-           await next.Invoke();
-           logger.LogInformation("Finished handling request.");
-       });
-
-       app.Run(async context =>
-       {
-           await context.Response.WriteAsync("Hello from " + _environment);
-       });
-   }
-
-   ````
+[!code-csharp[Main](middleware/sample/src/MiddlewareSample/Startup.cs?highlight=5,8,14&range=34-49)]
 
 >[!WARNING]
 > Avoid modifying `HttpResponse` after invoking next, one of the next components in the pipeline may have written to the response, causing it to be sent to the client.
@@ -157,80 +79,21 @@ In the above example, the call to `await next.Invoke()` will call into the next 
 
 You configure the HTTP pipeline using [`Run`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/RunExtensions/index.html), [`Map`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/MapExtensions/index.html),  and [`Use`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/UseExtensions/index.html). The `Run` method short circuits the pipeline (that is, it will not call a `next` request delegate). Thus, `Run` should only be called at the end of your pipeline. `Run` is a convention, and some middleware components may expose their own Run[Middleware] methods that should only run at the end of the pipeline. The following two middleware are equivalent as the `Use` version doesn't use the `next` parameter:
 
-[!code-csharp[Main](middleware/sample/src/MiddlewareSample/Startup.cs?highlight=3,11)]
-
-````csharp
-public void ConfigureEnvironmentOne(IApplicationBuilder app)
-   {
-       app.Run(async context =>
-       {
-           await context.Response.WriteAsync("Hello from " + _environment);
-       });
-   }
-
-   public void ConfigureEnvironmentTwo(IApplicationBuilder app)
-   {
-       app.Use(async (context, next) =>
-       {
-           await context.Response.WriteAsync("Hello from " + _environment);
-       });
-   }
-
-   ````
+[!code-csharp[Main](middleware/sample/src/MiddlewareSample/Startup.cs?highlight=3,11&range=65-79)]
 
 > [!NOTE]
 > The [`IApplicationBuilder`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/IApplicationBuilder/index.html) interface exposes a single `Use` method, so technically they're not all *extension* methods.
 
 We've already seen several examples of how to build a request pipeline with `Use`. `Map*` extensions are used as a convention for branching the pipeline. The current implementation supports branching based on the request's path, or using a predicate. The `Map` extension method is used to match request delegates based on a request's path. `Map` simply accepts a path and a function that configures a separate middleware pipeline. In the following example, any request with the base path of `/maptest` will be handled by the pipeline configured in the `HandleMapTest` method.
 
-[!code-csharp[Main](middleware/sample/src/MiddlewareSample/Startup.cs?highlight=11)]
-
-````csharp
-private static void HandleMapTest(IApplicationBuilder app)
-   {
-       app.Run(async context =>
-       {
-           await context.Response.WriteAsync("Map Test Successful");
-       });
-   }
-
-   public void ConfigureMapping(IApplicationBuilder app)
-   {
-       app.Map("/maptest", HandleMapTest);
-
-   }
-
-   ````
+[!code-csharp[Main](middleware/sample/src/MiddlewareSample/Startup.cs?highlight=11&range=81-93)]
 
 > [!NOTE]
 > When `Map` is used, the matched path segment(s) are removed from `HttpRequest.Path` and appended to `HttpRequest.PathBase` for each request.
 
 In addition to path-based mapping, the `MapWhen` method supports predicate-based middleware branching, allowing separate pipelines to be constructed in a very flexible fashion. Any predicate of type `Func<HttpContext, bool>` can be used to map requests to a new branch of the pipeline. In the following example, a simple predicate is used to detect the presence of a query string variable `branch`:
 
-[!code-csharp[Main](middleware/sample/src/MiddlewareSample/Startup.cs?highlight=5,11,12,13)]
-
-````csharp
-private static void HandleBranch(IApplicationBuilder app)
-   {
-       app.Run(async context =>
-       {
-           await context.Response.WriteAsync("Branch used.");
-       });
-   }
-
-   public void ConfigureMapWhen(IApplicationBuilder app)
-   {
-       app.MapWhen(context => {
-           return context.Request.Query.ContainsKey("branch");
-       }, HandleBranch);
-
-       app.Run(async context =>
-       {
-           await context.Response.WriteAsync("Hello from " + _environment);
-       });
-   }
-
-   ````
+[!code-csharp[Main](middleware/sample/src/MiddlewareSample/Startup.cs?highlight=5,11,12,13&range=95-113)]
 
 Using the configuration shown above, any request that includes a query string value for `branch` will use the pipeline defined in the `HandleBranch` method (in this case, a response of "Branch used."). All other requests (that do not define a query string value for `branch`) will be handled by the delegate defined on line 17.
 
@@ -253,7 +116,15 @@ app.Map("/level1", level1App => {
 
 ASP.NET ships with the following middleware components:
 
-<!-- Middleware      Middleware  Description  Authentication  Provides authentication support.  CORS  Configures Cross-Origin Resource Sharing.  Routing  Define and constrain request routes.  Session  Provides support for managing user sessions.  Static Files  Provides support for serving static files, and directory browsing. -->
+*Middleware*
+
+|Middleware|Description|
+|---|---|
+|[Authentication](../security/authentication/index.md)|Provides authentication support.|
+|[CORS](../security/cors.md)|Configures Cross-Origin Resource Sharing.|
+|[Routing](routing.md)|Define and constrain request routes.|
+|[Session](app-state.md)|Provides support for managing user sessions.|
+|[Static Files](static-files.md)|Provides support for serving static files, and directory browsing.|
 
 <a name=middleware-writing-middleware></a>
 
@@ -267,70 +138,15 @@ RequestLoggerMiddleware.cs
 
 [!code-csharp[Main](../fundamentals/middleware/sample/src/MiddlewareSample/RequestLoggerMiddleware.cs?highlight=12,18)]
 
-````csharp
-using System.Threading.Tasks;
-   using Microsoft.AspNetCore.Http;
-   using Microsoft.Extensions.Logging;
-
-   namespace MiddlewareSample
-   {
-       public class RequestLoggerMiddleware
-       {
-           private readonly RequestDelegate _next;
-           private readonly ILogger _logger;
-
-           public RequestLoggerMiddleware(RequestDelegate next, ILoggerFactory loggerFactory)
-           {
-               _next = next;
-               _logger = loggerFactory.CreateLogger<RequestLoggerMiddleware>();
-           }
-
-           public async Task Invoke(HttpContext context)
-           {
-               _logger.LogInformation("Handling request: " + context.Request.Path);
-               await _next.Invoke(context);
-               _logger.LogInformation("Finished handling request.");
-           }
-       }
-   }
-   ````
-
 The middleware follows the [`Explicit Dependencies Principle](http://deviq.com/explicit-dependencies-principle/) and exposes all of its dependencies in its constructor. Middleware can take advantage of the [UseMiddleware<T>`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/UseMiddlewareExtensions/index.html#meth-Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.UseMiddleware<TMiddleware>) extension to inject services directly into their constructors, as shown in the example below. Dependency injected services are automatically filled, and the extension takes a `params` array of arguments to be used for non-injected parameters.
 
 RequestLoggerExtensions.cs
 
-[!code-csharp[Main](../fundamentals/middleware/sample/src/MiddlewareSample/RequestLoggerExtensions.cs?highlight=5)]
-
-````csharp
-public static class RequestLoggerExtensions
-   {
-       public static IApplicationBuilder UseRequestLogger(this IApplicationBuilder builder)
-       {
-           return builder.UseMiddleware<RequestLoggerMiddleware>();
-       }
-   }
-
-   ````
+[!code-csharp[Main](../fundamentals/middleware/sample/src/MiddlewareSample/RequestLoggerExtensions.cs?highlight=5&range=5-11)]
 
 Using the extension method and associated middleware class, the `Configure` method becomes very simple and readable.
 
-[!code-csharp[Main](middleware/sample/src/MiddlewareSample/Startup.cs?highlight=6)]
-
-````csharp
-public void ConfigureLogMiddleware(IApplicationBuilder app,
-       ILoggerFactory loggerfactory)
-   {
-       loggerfactory.AddConsole(minLevel: LogLevel.Information);
-
-       app.UseRequestLogger();
-
-       app.Run(async context =>
-       {
-           await context.Response.WriteAsync("Hello from " + _environment);
-       });
-   }
-
-   ````
+[!code-csharp[Main](middleware/sample/src/MiddlewareSample/Startup.cs?highlight=6&range=51-62)]
 
 Although `RequestLoggerMiddleware` requires an `ILoggerFactory` parameter in its constructor, neither the `Startup` class nor the `UseRequestLogger` extension method need to explicitly supply it. Instead, it is automatically provided through dependency injection performed within `UseMiddleware<T>`.
 

@@ -19,20 +19,6 @@ Adding Bootstrap to an ASP.NET Core project is simply a matter of adding it to `
 
 [!code-json[Main](../common/samples/WebApplication1/src/WebApplication1/bower.json?highlight=5)]
 
-````json
-{
-     "name": "asp.net",
-     "private": true,
-     "dependencies": {
-       "bootstrap": "3.3.6",
-       "jquery": "2.2.0",
-       "jquery-validation": "1.14.0",
-       "jquery-validation-unobtrusive": "3.2.6"
-     }
-   }
-
-   ````
-
 This is the recommended way to add Bootstrap to an ASP.NET Core project.
 
 You can also install bootstrap using one of several package managers, such as bower, npm, or NuGet. In each case, the process is essentially the same:
@@ -53,7 +39,7 @@ npm install bootstrap
 
 ````console
 Install-Package bootstrap
-   ````
+````
 
 > [!NOTE]
 > The recommended way to install client-side dependencies like Bootstrap in ASP.NET Core is via Bower (using `bower.json`, as shown above). The use of npm/NuGet are shown to demonstrate how easily Bootstrap can be added to other kinds of web applications, including earlier versions of ASP.NET.
@@ -61,78 +47,6 @@ Install-Package bootstrap
 If you're referencing your own local versions of Bootstrap, you'll need to reference them in any pages that will use it. In production you should reference bootstrap using a CDN. In the default ASP.NET site template, the `_Layout.cshtml` file does so like this:
 
 [!code-html[Main](../common/samples/WebApplication1/src/WebApplication1/Views/Shared/_Layout.cshtml?highlight=9,13,51,59)]
-
-````html
-<!DOCTYPE html>
-   <html>
-   <head>
-       <meta charset="utf-8" />
-       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-       <title>@ViewData["Title"] - WebApplication1</title>
-
-       <environment names="Development">
-           <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-           <link rel="stylesheet" href="~/css/site.css" />
-       </environment>
-       <environment names="Staging,Production">
-           <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
-                 asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-                 asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-           <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-       </environment>
-   </head>
-   <body>
-       <div class="navbar navbar-inverse navbar-fixed-top">
-           <div class="container">
-               <div class="navbar-header">
-                   <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                       <span class="sr-only">Toggle navigation</span>
-                       <span class="icon-bar"></span>
-                       <span class="icon-bar"></span>
-                       <span class="icon-bar"></span>
-                   </button>
-                   <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">WebApplication1</a>
-               </div>
-               <div class="navbar-collapse collapse">
-                   <ul class="nav navbar-nav">
-                       <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                       <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                       <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                   </ul>
-                   @await Html.PartialAsync("_LoginPartial")
-               </div>
-           </div>
-       </div>
-       <div class="container body-content">
-           @RenderBody()
-           <hr />
-           <footer>
-               <p>&copy; 2016 - WebApplication1</p>
-           </footer>
-       </div>
-
-       <environment names="Development">
-           <script src="~/lib/jquery/dist/jquery.js"></script>
-           <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-           <script src="~/js/site.js" asp-append-version="true"></script>
-       </environment>
-       <environment names="Staging,Production">
-           <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
-                   asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                   asp-fallback-test="window.jQuery">
-           </script>
-           <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"
-                   asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                   asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
-           </script>
-           <script src="~/js/site.min.js" asp-append-version="true"></script>
-       </environment>
-
-       @RenderSection("scripts", required: false)
-   </body>
-   </html>
-
-   ````
 
 > [!NOTE]
 > If you're going to be using any of Bootstrap's jQuery plugins, you will also need to reference jQuery.
@@ -185,7 +99,12 @@ One of the most popular features of Bootstrap is its grid layout system. Modern 
 
 Next, add additional `<div>` elements for each column, and specify the number of columns that `<div>` should occupy (out of 12) as part of a CSS class starting with "col-md-". For instance, if you want to simply have two columns of equal size, you would use a class of "col-md-6" for each one. In this case "md" is short for "medium" and refers to standard-sized desktop computer display sizes. There are four different options you can choose from, and each will be used for higher widths unless overridden (so if you want the layout to be fixed regardless of screen width, you can just specify xs classes).
 
-<!--       CSS Class Prefix  Device Tier  Width  col-xs-  Phones  < 768px  col-sm-  Tablets  >= 768px  col-md-  Desktops  >= 992px  col-lg-  Larger Desktop Displays  >= 1200px -->
+|CSS Class Prefix|Device Tier|Width|
+|---|---|---|
+|col-xs-|Phones|< 768px|
+|col-sm-|Tablets|>= 768px|
+|col-md-|Desktops|>= 992px|
+|col-lg-|Larger Desktop Displays|>= 1200px|
 
 When specifying two columns both with "col-md-6" the resulting layout will be two columns at desktop resolutions, but these two columns will stack vertically when rendered on smaller devices (or a narrower browser window on a desktop), allowing users to easily view content without the need to scroll horizontally.
 

@@ -57,20 +57,14 @@ In this section we'll set up our Visual Studio project to use SSL and our projec
 
 ````csharp
 services.Configure<MvcOptions>(options =>
-   {
-       options.Filters.Add(new RequireHttpsAttribute ());
-   });
-   ````
+{
+    options.Filters.Add(new RequireHttpsAttribute ());
+});
+````
 
 Add the `[RequireHttps]` attribute to each controller. The `[RequireHttps]` attribute will redirect all HTTP GET requests to HTTPS GET and will reject all HTTP POSTs. A security best practice is to use HTTPS for all requests.
 
-[!code-csharp[Main](accconfirm/sample/WebApplication3/src/WebApplication3/Controllers/HomeController.cs?highlight=9)]
-
-````csharp
-[RequireHttps]
-   public class HomeController : Controller
-
-   ````
+[!code-csharp[Main](accconfirm/sample/WebApplication3/src/WebApplication3/Controllers/HomeController.cs?range=9-10&highlight=1)]
 
 ## Require email confirmation
 
@@ -84,48 +78,29 @@ We'll use the [Options pattern](../../fundamentals/configuration.md#options-conf
 
    * Create a class to fetch the secure email key. For this sample, the `AuthMessageSenderOptions` class is created in the *Services/AuthMessageSenderOptions.cs* file.
 
-[!code-csharp[Main](accconfirm/sample/WebApplication3/src/WebApplication3/Services/AuthMessageSenderOptions.cs)]
-
-      ````csharp
-      public class AuthMessageSenderOptions
-         {
-             public string SendGridUser { get; set; }
-             public string SendGridKey { get; set; }
-         }
-
-         ````
+[!code-csharp[Main](accconfirm/sample/WebApplication3/src/WebApplication3/Services/AuthMessageSenderOptions.cs?range=8-12)]
 
 Set the `SendGridUser` and `SendGridKey` with the [secret-manager tool](../app-secrets.md). For example:
 
 ````none
 C:\WebApplication3\src\WebApplication3>dotnet user-secrets set SendGridUser RickAndMSFT
-   info: Successfully saved SendGridUser = RickAndMSFT to the secret store.
-   ````
+info: Successfully saved SendGridUser = RickAndMSFT to the secret store.
+````
 
 On Windows, Secret Manager stores your keys/value pairs in a *secrets.json* file in the %APPDATA%/Microsoft/UserSecrets/<**userSecretsId**> directory. The **userSecretsId** directory can be found in your *project.json* file. For this example, the first few lines of the *project.json* file are shown below:
 
-[!code-json[Main](../../security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/project.json?highlight=3)]
-
-   ````json
-   {
-        "webroot": "wwwroot",
-        "userSecretsId": "aspnet-WebApplication3-f1645c1b-3962-4e7f-99b2-4fb292b6dade",
-        "version": "1.0.0-*",
-
-        "dependencies": {
-
-      ````
+[!code-json[Main](../../security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/project.json?highlight=3&range=1-6)]
 
 At this time, the contents of the *secrets.json* file are not encrypted. The *secrets.json* file is shown below (the sensitive keys have been removed.)
 
 ````json
 {
-     "SendGridUser": "RickAndMSFT",
-     "SendGridKey": "",
-     "Authentication:Facebook:AppId": "",
-     "Authentication:Facebook:AppSecret": ""
-   }
-   ````
+  "SendGridUser": "RickAndMSFT",
+  "SendGridKey": "",
+  "Authentication:Facebook:AppId": "",
+  "Authentication:Facebook:AppSecret": ""
+}
+````
 
 ### Configure startup to use `AuthMessageSenderOptions`
 
@@ -133,16 +108,7 @@ Add the dependecy `Microsoft.Extensions.Options.ConfigurationExtensions` in the 
 
 Add `AuthMessageSenderOptions` to the service container at the end of the `ConfigureServices` method in the *Startup.cs* file:
 
-[!code-csharp[Main](../../security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/Startup.cs?highlight=4)]
-
-````csharp
-    // Add application services.
-       services.AddTransient<IEmailSender, AuthMessageSender>();
-       services.AddTransient<ISmsSender, AuthMessageSender>();
-       services.Configure<AuthMessageSenderOptions>(Configuration);
-
-
-   ````
+[!code-csharp[Main](../../security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/Startup.cs?highlight=4&range=58-62)]
 
 ### Configure the `AuthMessageSender` class
 
@@ -150,7 +116,7 @@ This tutorial shows how to add email notification through [SendGrid](https://sen
 
 * Install the SendGrid.NetCore NuGet package. From the Package Manager Console,  enter the following the following command:
 
-   `Install-Package SendGrid.NetCore -Pre`
+    `Install-Package SendGrid.NetCore -Pre`
 
 >[!NOTE]
 >SendGrid.NetCore package is a prerelease version , to install it is necessary to use -Pre option on Install-Package.
@@ -159,167 +125,32 @@ This tutorial shows how to add email notification through [SendGrid](https://sen
 
 * Add code in *Services/MessageServices.cs* similar to the following to configure SendGrid
 
-[!code-csharp[Main](accconfirm/sample/WebApplication3/src/WebApplication3/Services/MessageServices.cs)]
-
-````csharp
-public class AuthMessageSender : IEmailSender, ISmsSender
-   {
-       public AuthMessageSender(IOptions<AuthMessageSenderOptions> optionsAccessor)
-       {
-           Options = optionsAccessor.Value;
-       }
-
-       public AuthMessageSenderOptions Options { get; } //set only via Secret Manager
-
-       public Task SendEmailAsync(string email, string subject, string message)
-       {
-           // Plug in your email service here to send an email.
-           var myMessage = new SendGrid.SendGridMessage();
-           myMessage.AddTo(email);
-           myMessage.From = new System.Net.Mail.MailAddress("Joe@contoso.com", "Joe Smith");
-           myMessage.Subject = subject;
-           myMessage.Text = message;
-           myMessage.Html = message;
-           var credentials = new System.Net.NetworkCredential(
-               Options.SendGridUser,
-               Options.SendGridKey);
-           // Create a Web transport for sending email.
-           var transportWeb = new SendGrid.Web(credentials);
-           return transportWeb.DeliverAsync(myMessage);
-       }
-
-       public Task SendSmsAsync(string number, string message)
-       {
-           // Plug in your SMS service here to send a text message.
-           return Task.FromResult(0);
-       }
-   }
-
-
-   ````
+[!code-csharp[Main](accconfirm/sample/WebApplication3/src/WebApplication3/Services/MessageServices.cs?range=13-53)]
 
 ## Enable account confirmation and password recovery
 
 The template already has the code for account confirmation and password recovery. Follow these steps to enable it:
 
-* Find the `[HttpPost] Register` method in the  *AccountController.cs* file.
+*  Find the `[HttpPost] Register` method in the  *AccountController.cs* file.
 
-* Uncomment the code to enable account confirmation.
+*  Uncomment the code to enable account confirmation.
 
-[!code-none[Main](../../security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/Controllers/AccountController.cs?highlight=17,18,19,20,21)]
+[!code-csharp[Main](accconfirm/sample/WebApplication3/src/WebApplication3/Controllers/AccountController.cs?highlight=17-21&range=113-142)]
 
-````none
-[HttpPost]
-   [AllowAnonymous]
-   [ValidateAntiForgeryToken]
-   public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
-   {
-       ViewData["ReturnUrl"] = returnUrl;
-       if (ModelState.IsValid)
-       {
-           var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-           var result = await _userManager.CreateAsync(user, model.Password);
-           if (result.Succeeded)
-           {
-               // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
-               // Send an email with this link
-               var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-               var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
-               await _emailSender.SendEmailAsync(model.Email, "Confirm your account",
-                   $"Please confirm your account by clicking this link: <a href='{callbackUrl}'>link</a>");
-               //await _signInManager.SignInAsync(user, isPersistent: false);
-               _logger.LogInformation(3, "User created a new account with password.");
-               return RedirectToLocal(returnUrl);
-               
-           }
-           AddErrors(result);
-       }
+> [!NOTE]
+> We're also preventing a newly registered user from being automatically logged on by commenting out the following line:
+>
+> ````csharp
+> //await _signInManager.SignInAsync(user, isPersistent: false);
+> ````
 
-       // If we got this far, something failed, redisplay form
-       return View(model);
-   }
+*  Enable password recovery by uncommenting the code in the `ForgotPassword` action in the *Controllers/AccountController.cs* file.
 
-
-   ````
-
-**Note:** We're also preventing a newly registered user from being automatically logged on by commenting out the following line:
-
-````csharp
-//await _signInManager.SignInAsync(user, isPersistent: false);
-   ````
-
-* Enable password recovery by uncommenting the code in the `ForgotPassword` action in the *Controllers/AccountController.cs* file.
-
-[!code-none[Main](../../security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/Controllers/AccountController.cs?highlight=17,18,19,20,21)]
-
-````none
-[HttpPost]
-   [AllowAnonymous]
-   [ValidateAntiForgeryToken]
-   public async Task<IActionResult> ForgotPassword(ForgotPasswordViewModel model)
-   {
-       if (ModelState.IsValid)
-       {
-           var user = await _userManager.FindByNameAsync(model.Email);
-           if (user == null || !(await _userManager.IsEmailConfirmedAsync(user)))
-           {
-               // Don't reveal that the user does not exist or is not confirmed
-               return View("ForgotPasswordConfirmation");
-           }
-
-           // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
-           // Send an email with this link
-           var code = await _userManager.GeneratePasswordResetTokenAsync(user);
-           var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
-           await _emailSender.SendEmailAsync(model.Email, "Reset Password",
-              $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>");
-           return View("ForgotPasswordConfirmation");
-       }
-
-       // If we got this far, something failed, redisplay form
-       return View(model);
-   }
-
-   ````
+[!code-csharp[Main](accconfirm/sample/WebApplication3/src/WebApplication3/Controllers/AccountController.cs?highlight=17-21&range=272-297)]
 
 Uncomment the highlighted `ForgotPassword` from in the *Views/Account/ForgotPassword.cshtml* view file.
 
-[!code-html[Main](../../security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/Views/Account/ForgotPassword.cshtml?highlight=11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27)]
-
-````html
-@model ForgotPasswordViewModel
-   @{
-       ViewData["Title"] = "Forgot your password?";
-   }
-
-   <h2>@ViewData["Title"]</h2>
-   <p>
-       For more information on how to enable reset password please see this <a href="http://go.microsoft.com/fwlink/?LinkID=532713">article</a>.
-   </p>
-
-   <form asp-controller="Account" asp-action="ForgotPassword" method="post" class="form-horizontal">
-       <h4>Enter your email.</h4>
-       <hr />
-       <div asp-validation-summary="All" class="text-danger"></div>
-       <div class="form-group">
-           <label asp-for="Email" class="col-md-2 control-label"></label>
-           <div class="col-md-10">
-               <input asp-for="Email" class="form-control" />
-               <span asp-validation-for="Email" class="text-danger"></span>
-           </div>
-       </div>
-       <div class="form-group">
-           <div class="col-md-offset-2 col-md-10">
-               <button type="submit" class="btn btn-default">Submit</button>
-           </div>
-       </div>
-   </form>
-
-   @section Scripts {
-       @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
-   }
-
-   ````
+[!code-html[Main](accconfirm/sample/WebApplication3/src/WebApplication3/Views/Account/ForgotPassword.cshtml?highlight=11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27)]
 
 ## Register, confirm email, and reset password
 
@@ -357,58 +188,7 @@ In this section, run the web app and show the account confirmation and password 
 
 With the current templates, once a user completes the registration form, they are logged in (authenticated). You generally want to confirm their email before logging them in. In the section below, we will modify the code to require new users have a confirmed email before they are logged in. Update the `[HttpPost] Login` action in the *AccountController.cs* file with the following highlighted changes.
 
-[!code-csharp[Main](../../security/authentication/accconfirm/sample/WebApplication3/src/WebApplication3/Controllers/AccountController.cs?highlight=11,12,13,14,15,16,17,18,19,20)]
-
-````csharp
-
-
-   //
-   // POST: /Account/Login
-   [HttpPost]
-   [AllowAnonymous]
-   [ValidateAntiForgeryToken]
-   public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
-   {
-       ViewData["ReturnUrl"] = returnUrl;
-       if (ModelState.IsValid)
-       {
-           // Require the user to have a confirmed email before they can log on.
-           var user = await _userManager.FindByNameAsync(model.Email);
-           if (user != null)
-           {
-               if (!await _userManager.IsEmailConfirmedAsync(user))
-               {
-                   ModelState.AddModelError(string.Empty, "You must have a confirmed email to log in.");
-                   return View(model);
-               }
-           }
-
-           // This doesn't count login failures towards account lockout
-           // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-           var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
-           if (result.Succeeded)
-           {
-               _logger.LogInformation(1, "User logged in.");
-               return RedirectToLocal(returnUrl);
-           }
-           if (result.RequiresTwoFactor)
-           {
-               return RedirectToAction(nameof(SendCode), new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-           }
-           if (result.IsLockedOut)
-           {
-               _logger.LogWarning(2, "User account locked out.");
-               return View("Lockout");
-           }
-           else
-           {
-               ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-               return View(model);
-           }
-       }
-
-
-   ````
+[!code-csharp[Main](accconfirm/sample/WebApplication3/src/WebApplication3/Controllers/AccountController.cs?highlight=11-20&range=51-96)]
 
 > [!NOTE]
 > A security best practice is to not use production secrets in test and development. If you publish the app to Azure, you can set the SendGrid secrets as application settings in the Azure Web App portal. The configuration system is setup to read keys from environment variables.
