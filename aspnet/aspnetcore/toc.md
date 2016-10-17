@@ -1,6 +1,6 @@
 # [Introduction](intro.md)
 # [Getting Started](getting-started.md)
-# [Release notes](https://github.com/aspnet/home/releases.md)
+# [Release notes](https://github.com/aspnet/home/releases)
 # [Tutorials](tutorials/toc.md)
 # [Fundamentals](fundamentals/toc.md)
 # [MVC](mvc/toc.md)
