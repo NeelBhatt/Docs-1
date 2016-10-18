@@ -20,7 +20,7 @@ namespace StaticFiles
         // <Services
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        // >Configure
+        #region snippet1
         public void Configure(IApplicationBuilder app)
         {
             // Set up custom content types -associating file extension to MIME type
@@ -49,6 +49,6 @@ namespace StaticFiles
                 RequestPath = new PathString("/MyImages")
             });
         }
-        // <Configure
+        #endregion
     }
 }
