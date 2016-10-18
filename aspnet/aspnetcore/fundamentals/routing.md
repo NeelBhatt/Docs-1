@@ -302,12 +302,12 @@ The following table demonstrates some route constraints and their expected behav
 | constraint | Example | Example Match | Notes |
 | --------   | ------- | ------------- | ----- |
 | `int` | {id:int} | 123 | Matches any integer |
-| bool  {active:bool} | true | Matches `true` or `false` |
+| bool  | {active:bool} | true | Matches `true` or `false` |
 | datetime | {dob:datetime} | 2016-01-01  | Matches a valid DateTime value (in the invariant culture - see options) |
 | decimal | {price:decimal} | 49.99 | Matches a valid decimal value |
 | double  | {weight:double} | 4.234 | Matches a valid double value |
-| float  {weight:float} | 3.14 | Matches a valid float value |
-| guid  | {id:guid} | 7342570B-\<snip> | Matches a valid Guid value |
+| float  | {weight:float} | 3.14 | Matches a valid float value |
+| guid  | {id:guid} | CD2C1638-1638-72D5-1638-DEADBEEF1638 | Matches a valid Guid value |
 | long | {ticks:long} | 123456789 | Matches a valid long value |
 | minlength(value) | {username:minlength(4)} | Rick | String must be at least 4 characters |
 | maxlength(value) | {filename:maxlength(8)} | somefile | String must be no more than 8 characters |
