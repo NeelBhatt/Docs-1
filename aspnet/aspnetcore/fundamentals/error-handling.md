@@ -16,50 +16,13 @@ When errors occur in your ASP.NET app, you can handle them in a variety of ways,
 
 You configure the pipeline for each request in the `Startup` class's `Configure()` method (learn more about [Application Startup](startup.md)). You can add a simple exception page, meant only for use during development, very easily. All that's required is to add a dependency on `Microsoft.AspNetCore.Diagnostics` to the project and then add one line to `Configure()` in `Startup.cs`:
 
-[!code-csharp[Main](../fundamentals/error-handling/sample/src/ErrorHandlingSample/Startup.cs?highlight=6,8)]
-
-````csharp
-public void Configure(IApplicationBuilder app, 
-       IHostingEnvironment env)
-   {
-       app.UseIISPlatformHandler();
-
-       if (env.IsDevelopment())
-       {
-           app.UseDeveloperExceptionPage();
-       }
-
-   ````
+[!code-csharp[Main](../fundamentals/error-handling/sample/src/ErrorHandlingSample/Startup.cs?highlight=6,8&start=21&end=29)]
 
 The above code includes a check to ensure the environment is development before adding the call to `UseDeveloperExceptionPage`. This is a good practice, since you typically do not want to share detailed exception information about your application publicly while it is in production. [Learn more about configuring environments](environments.md).
 
 The sample application includes a simple mechanism for creating an exception:
 
-[!code-csharp[Main](../fundamentals/error-handling/sample/src/ErrorHandlingSample/Startup.cs?highlight=5,6,7,8)]
-
-````csharp
-public static void HomePage(IApplicationBuilder app)
-   {
-       app.Run(async (context) =>
-       {
-           if (context.Request.Query.ContainsKey("throw"))
-           {
-               throw new Exception("Exception triggered!");
-           }
-           var builder = new StringBuilder();
-           builder.AppendLine("<html><body>Hello World!");
-           builder.AppendLine("<ul>");
-           builder.AppendLine("<li><a href=\"/?throw=true\">Throw Exception</a></li>");
-           builder.AppendLine("<li><a href=\"/missingpage\">Missing Page</a></li>");
-           builder.AppendLine("</ul>");
-           builder.AppendLine("</body></html>");
-
-           context.Response.ContentType = "text/html";
-           await context.Response.WriteAsync(builder.ToString());
-       });
-   }
-
-   ````
+[!code-csharp[Main](../fundamentals/error-handling/sample/src/ErrorHandlingSample/Startup.cs?highlight=5,6,7,8&start=58&end=77)]
 
 If a request includes a non-empty querystring parameter for the variable `throw` (e.g. a path of `/?throw=true`), an exception will be thrown. If the environment is set to `Development`, the developer exception page is displayed:
 
