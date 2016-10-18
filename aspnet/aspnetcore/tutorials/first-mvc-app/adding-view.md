@@ -57,10 +57,7 @@ Tap on the menu links (**MvcMovie**, **Home**, **About**). Each page shows the s
 
 Change the contents of the title element. Change the anchor text in the layout template to "MVC Movie" and the controller from `Home` to `Movies` as highlighted below:
 
-[!code-HTML[Main](../../tutorials/first-mvc-app/start-mvc/sample/src/MvcMovie/Views/Shared/_Layout.cshtml?highlight=29,6)]
-
-
-[!code-html[Main](start-mvc/sample/src/MvcMovie/Views/Shared/_Layout.html?range=1-47&highlight=6,29)]
+[!code-html[Main](start-mvc/sample/src/MvcMovie/Views/Shared/_Layout.html?range=4-49&highlight=6,29)]
 
 >[!WARNING]
 > We haven't implemented the `Movies` controller yet, so if you click on that link, you'll get a 404 (Not found) error.
@@ -71,12 +68,10 @@ Examine the *Views/_ViewStart.cshtml* file:
 
 
 ````HTML
-
 @{
     Layout = "_Layout";
 }
-
-   ````
+````
 
 The *Views/_ViewStart.cshtml* file brings in the *Views/Shared/_Layout.cshtml* file to each view. You can use the `Layout` property to set a different layout view, or set it to `null` so no layout file will be used.
 
@@ -93,13 +88,13 @@ You'll make them slightly different so you can see which bit of code changes whi
 
 ````HTML
 @{
-       ViewData["Title"] = "Movie List";
-   }
+    ViewData["Title"] = "Movie List";
+}
 
-   <h2>My Movie List</h2>
+<h2>My Movie List</h2>
 
-   <p>Hello from our View Template!</p>
-   ````
+<p>Hello from our View Template!</p>
+````
 
 `ViewData[`"Title"] = "Movie List";` in the code above sets the `Title` property of the [ViewDataDictionary`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ViewFeatures/ViewDataDictionary/index.html#Microsoft.AspNetCore.Mvc.ViewFeatures.ViewDataDictionary) to "Movie List". The `Title` property is used in the `<title>` HTML element in the layout page:
 
