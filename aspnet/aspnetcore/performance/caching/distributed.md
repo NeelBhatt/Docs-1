@@ -30,17 +30,21 @@ Cache configuration is implementation specific. This article describes how to co
 
 The [`IDistributedCache`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html) interface includes synchronous and asynchronous methods. The interface allows items to be added, retrieved, and removed from the distributed cache implementation. The [`IDistributedCache`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html) interface includes the following methods:
 
-Get, GetAsync
-   Takes a string key and retrieves a cached item as a `byte[]` if found in the cache.
+**Get, GetAsync**
 
-Set, SetAsync
-   Adds an item (as `byte[]`) to the cache using a string key.
+Takes a string key and retrieves a cached item as a `byte[]` if found in the cache.
 
-Refresh, RefreshAsync
-   Refreshes an item in the cache based on its key, resetting its sliding expiration timeout (if any).
+**Set, SetAsync**
 
-Remove, RemoveAsync
-   Removes a cache entry based on its key.
+Adds an item (as `byte[]`) to the cache using a string key.
+
+**Refresh, RefreshAsync**
+
+Refreshes an item in the cache based on its key, resetting its sliding expiration timeout (if any).
+
+**Remove, RemoveAsync**
+
+Removes a cache entry based on its key.
 
 To use the [`IDistributedCache`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html) interface:
 
@@ -57,76 +61,11 @@ The following example shows how to use an instance of [`IDistributedCache`](http
 
 [!code-csharp[Main](./distributed/sample/src/DistCacheSample/StartTimeHeader.cs?highlight=15,18,21,27,28,29,30,31)]
 
-````csharp
-using Microsoft.AspNetCore.Builder;
-   using Microsoft.AspNetCore.Http;
-   using Microsoft.Extensions.Caching.Distributed;
-   using System;
-   using System.Collections.Generic;
-   using System.Linq;
-   using System.Text;
-   using System.Threading.Tasks;
-
-   namespace DistCacheSample
-   {
-       public class StartTimeHeader
-       {
-           private readonly RequestDelegate _next;
-           private readonly IDistributedCache _cache;
-
-           public StartTimeHeader(RequestDelegate next,
-              IDistributedCache cache)
-           {
-               _next = next;
-               _cache = cache;
-           }
-
-           public async Task Invoke(HttpContext httpContext)
-           {
-               string startTimeString = "Not found.";
-               var value = await _cache.GetAsync("lastServerStartTime");
-               if (value != null)
-               {
-                   startTimeString = Encoding.UTF8.GetString(value);
-               }
-
-               httpContext.Response.Headers.Append("Last-Server-Start-Time", startTimeString);
-
-               await _next.Invoke(httpContext);
-           }
-       }
-
-
-       // Extension method used to add the middleware to the HTTP request pipeline.
-       public static class StartTimeHeaderExtensions
-       {
-           public static IApplicationBuilder UseStartTimeHeader(this IApplicationBuilder builder)
-           {
-               return builder.UseMiddleware<StartTimeHeader>();
-           }
-       }
-   }
-
-   ````
-
 In the code above, the cached value is read, but never written. In this sample, the value is only set when a server starts up, and doesn't change. In a multi-server scenario, the most recent server to start will overwrite any previous values that were set by other servers. The `Get` and `Set` methods use the `byte[]` type. Therefore, the string value must be converted using `Encoding.UTF8.GetString` (for `Get`) and `Encoding.UTF8.GetBytes` (for `Set`).
 
 The following code from *Startup.cs* shows the value being set:
 
-[!code-csharp[Main](./distributed/sample/src/DistCacheSample/Startup.cs?highlight=2,4,5,6)]
-
-````csharp
-        public void Configure(IApplicationBuilder app,
-               IDistributedCache cache)
-           {
-               var serverStartTimeString = DateTime.Now.ToString();
-               byte[] val = Encoding.UTF8.GetBytes(serverStartTimeString);
-               cache.Set("lastServerStartTime", val);
-               
-               app.UseStartTimeHeader();
-
-
-   ````
+[!code-csharp[Main](./distributed/sample/src/DistCacheSample/Startup.cs?highlight=2,4,5,6&range=58-66)]
 
 > [!NOTE]
 > Since [`IDistributedCache`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html) is configured in the `ConfigureServices` method, it is available to the `Configure` method as a parameter. Adding it as a parameter will allow the configured instance to be provided through DI.
@@ -139,25 +78,7 @@ You configure the Redis implementation in `ConfigureServices` and access it in y
 
 In the sample code, a `RedisCache` implementation is used when the server is configured for a `Staging` environment. Thus the `ConfigureStagingServices` method configures the `RedisCache`:
 
-[!code-csharp[Main](./distributed/sample/src/DistCacheSample/Startup.cs?highlight=8,9,10,11,12,13)]
-
-````csharp
-        /// <summary>
-           /// Use Redis Cache in Staging
-           /// </summary>
-           /// <param name="services"></param>
-           public void ConfigureStagingServices(IServiceCollection services)
-           {
-
-               services.AddDistributedRedisCache(options =>
-               {
-                   options.Configuration = "localhost";
-                   options.InstanceName = "SampleInstance";
-               });
-           }
-
-
-   ````
+[!code-csharp[Main](./distributed/sample/src/DistCacheSample/Startup.cs?highlight=8,9,10,11,12,13&range=27-40)]
 
 > [!NOTE]
 > To install Redis on your local machine, install the chocolatey package [http://chocolatey.org/packages/redis-64/](http://chocolatey.org/packages/redis-64/) and run `redis-server` from a command prompt.
@@ -168,18 +89,7 @@ The SqlServerCache implementation allows the distributed cache to use a SQL Serv
 
 To use sql-cache tool add SqlConfig.Tools to the tools section of the project.json file and run dotnet restore.
 
-[!code-csharp[Main](./distributed/sample/src/DistCacheSample/project.json?highlight=6)]
-
-````csharp
-  "tools": {
-       "Microsoft.AspNetCore.Server.IISIntegration.Tools": {
-         "version": "1.0.0-preview2-final",
-         "imports": "portable-net45+win8+dnxcore50"
-       },
-       "Microsoft.Extensions.Caching.SqlConfig.Tools": "1.0.0-preview2-final"
-     },
-
-   ````
+[!code-csharp[Main](./distributed/sample/src/DistCacheSample/project.json?highlight=6&range=14-20)]
 
 Test SqlConfig.Tools by running the following command
 
@@ -201,26 +111,7 @@ The created table have the following schema:
 
 Like all cache implementations, your app should get and set cache values using an instance of [`IDistributedCache`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Caching/Distributed/IDistributedCache/index.html), not a `SqlServerCache`. The sample implements `SqlServerCache` in the `Production` environment (so it is configured in `ConfigureProductionServices`).
 
-[!code-csharp[Main](./distributed/sample/src/DistCacheSample/Startup.cs?highlight=7,8,9,10,11,12)]
-
-````csharp
-        /// Use SQL Server Cache in Production
-           /// </summary>
-           /// <param name="services"></param>
-           public void ConfigureProductionServices(IServiceCollection services)
-           {
-             
-               services.AddDistributedSqlServerCache(options =>
-               {
-                   options.ConnectionString = @"Data Source=(localdb)\v11.0;Initial Catalog=DistCache;Integrated Security=True;";
-                   options.SchemaName = "dbo";
-                   options.TableName = "TestCache";
-               });
-               
-           }
-
-
-   ````
+[!code-csharp[Main](./distributed/sample/src/DistCacheSample/Startup.cs?highlight=7,8,9,10,11,12&range=42-56)]
 
 > [!NOTE]
 > The `ConnectionString` (and optionally, `SchemaName` and `TableName`) should typically be stored outside of source control (such as UserSecrets), as they may contain credentials.

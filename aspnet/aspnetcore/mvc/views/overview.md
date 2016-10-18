@@ -29,17 +29,6 @@ A sample view file (*About.cshtml*):
 
 [!code-html[Main](../../common/samples/WebApplication1/src/WebApplication1/Views/Home/About.cshtml)]
 
-````html
-@{
-       ViewData["Title"] = "About";
-   }
-   <h2>@ViewData["Title"].</h2>
-   <h3>@ViewData["Message"]</h3>
-
-   <p>Use this area to provide additional information.</p>
-
-   ````
-
 *Razor* code is denoted by the `@` symbol. C# statements are run within Razor code blocks set off by curly braces (`{` `}`), such as the assignment of "About" to the `ViewData["Title"]` element shown above. Razor can be used to display values within HTML by simply referencing the value with the `@` symbol, as shown within the `<h2>` and `<h3>` elements above.
 
 This view focuses on just the portion of the output for which it is responsible. The rest of the page's layout, and other common aspects of the view, are specified elsewhere. Learn more about [layout and shared view logic](layout.md).
@@ -50,17 +39,7 @@ Views are typically returned from actions as a [`ViewResult`](http://docs.asp.ne
 
 *HomeController.cs*
 
-[!code-csharp[Main](../../common/samples/WebApplication1/src/WebApplication1/Controllers/HomeController.cs?highlight=5)]
-
-````csharp
-    public IActionResult About()
-       {
-           ViewData["Message"] = "Your application description page.";
-
-           return View();
-       }
-
-   ````
+[!code-csharp[Main](../../common/samples/WebApplication1/src/WebApplication1/Controllers/HomeController.cs?highlight=5&range=16-21)]
 
 The `View` helper method has several overloads to make returning views easier for app developers. You can optionally specify a view to return, as well as a model object to pass to the view.
 

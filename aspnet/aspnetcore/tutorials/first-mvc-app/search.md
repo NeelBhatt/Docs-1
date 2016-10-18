@@ -9,30 +9,14 @@ In this section you'll add search capability to the `Index` action method that l
 
 Update the `Index` action method to enable search:
 
-[!code-csharp[Main](start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs)]
-
-````csharp
-public async Task<IActionResult> Index(string searchString)
-   {
-       var movies = from m in _context.Movie
-                    select m;
-
-       if (!String.IsNullOrEmpty(searchString))
-       {
-           movies = movies.Where(s => s.Title.Contains(searchString));
-       }
-
-       return View(await movies.ToListAsync());
-   }
-
-   ````
+[!code-csharp[Main](start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs?range=256-267)]
 
 The first line of the `Index` action method creates a [LINQ](http://msdn.microsoft.com/en-us/library/bb397926.aspx) query to select the movies:
 
 ````csharp
 var movies = from m in _context.Movie
-                select m;
-   ````
+             select m;
+````
 
 The query is *only* defined at this point, it **has not** been run against the database.
 
@@ -41,11 +25,11 @@ If the `searchString` parameter contains a string, the movies query is modified 
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [3]}} -->
 
 ````csharp
-   if (!String.IsNullOrEmpty(searchString))
-      {
-          movies = movies.Where(s => s.Title.Contains(searchString));
-      }
-   ````
+if (!String.IsNullOrEmpty(searchString))
+   {
+       movies = movies.Where(s => s.Title.Contains(searchString));
+   }
+````
 
 The `s => s.Title.Contains()` code above is a [Lambda Expression](http://msdn.microsoft.com/en-us/library/bb397687.aspx). Lambdas are used in method-based [LINQ](http://msdn.microsoft.com/en-us/library/bb397926.aspx) queries as arguments to standard query operator methods such as the [Where](http://msdn.microsoft.com/en-us/library/system.linq.enumerable.where.aspx) method or `Contains` used in the code above. LINQ queries are not executed when they are defined or when they are modified by calling a method such as `Where`, `Contains`  or `OrderBy`. Instead, query execution is deferred, which means that the evaluation of an expression is delayed until its realized value is actually iterated over or the `ToListAsync` method is called. For more information about deferred query execution, see [Query Execution](http://msdn.microsoft.com/en-us/library/bb738633.aspx).
 
@@ -58,17 +42,7 @@ Navigate to `/Movies/Index`. Append a query string such as `?searchString=ghost`
 
 If you change the signature of the `Index` method to have a parameter named `id`, the `id` parameter will match the optional `{id}` placeholder for the default routes set in *Startup.cs*.
 
-[!code-csharp[Main](./start-mvc/sample2/src/MvcMovie/Startup.cs?highlight=5)]
-
-````csharp
-app.UseMvc(routes =>
-   {
-       routes.MapRoute(
-           name: "default",
-           template: "{controller=Home}/{action=Index}/{id?}");
-   });
-
-   ````
+[!code-csharp[Main](./start-mvc/sample2/src/MvcMovie/Startup.cs?highlight=5&name=snippet_1)]
 
 You can quickly rename the `searchString` parameter to `id` with the **rename** command. Right click on `searchString` **> Rename**.
 
@@ -84,43 +58,11 @@ Change the parameter to `id` and all occurrences of `searchString` change to `id
 
 The previous `Index` method:
 
-[!code-csharp[Main](./start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs?highlight=1,8)]
-
-````csharp
-public async Task<IActionResult> Index(string searchString)
-   {
-       var movies = from m in _context.Movie
-                    select m;
-
-       if (!String.IsNullOrEmpty(searchString))
-       {
-           movies = movies.Where(s => s.Title.Contains(searchString));
-       }
-
-       return View(await movies.ToListAsync());
-   }
-
-   ````
+[!code-csharp[Main](./start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs?highlight=1,8&range=256-267)]
 
 The updated `Index` method:
 
-[!code-csharp[Main](./start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs?highlight=1,8)]
-
-````csharp
-public async Task<IActionResult> Index(string id)
-   {
-       var movies = from m in _context.Movie
-                    select m;
-
-       if (!String.IsNullOrEmpty(id))
-       {
-           movies = movies.Where(s => s.Title.Contains(id));
-       }
-
-       return View(await movies.ToListAsync());
-   }
-
-   ````
+[!code-csharp[Main](./start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs?highlight=1,8&range=275-286)]
 
 You can now pass the search title as route data (a URL segment) instead of as a query string value.
 
@@ -128,51 +70,11 @@ You can now pass the search title as route data (a URL segment) instead of as a 
 
 However, you can't expect users to modify the URL every time they want to search for a movie. So now you'll add UI to help them filter movies. If you changed the signature of the `Index` method to test how to pass the route-bound `ID` parameter, change it back so that it takes a parameter named `searchString`:
 
-[!code-csharp[Main](./start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs?highlight=1)]
-
-````csharp
-public async Task<IActionResult> Index(string searchString)
-   {
-       var movies = from m in _context.Movie
-                    select m;
-
-       if (!String.IsNullOrEmpty(searchString))
-       {
-           movies = movies.Where(s => s.Title.Contains(searchString));
-       }
-
-       return View(await movies.ToListAsync());
-   }
-
-   ````
+[!code-csharp[Main](./start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs?highlight=1&range=256-267)]
 
 Open the *Views/Movies/Index.cshtml* file, and add the `<form>` markup highlighted below:
 
-[!code-HTML[Main](../../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Views/Movies/IndexForm1.cshtml?highlight=11,12,13,14,15,16)]
-
-````HTML
-
-
-   @{
-       ViewData["Title"] = "Index";
-   }
-
-   <h2>Index</h2>
-
-   <p>
-       <a asp-action="Create">Create New</a>
-   </p>
-
-   <form asp-controller="Movies" asp-action="Index">
-       <p>
-           Title: <input type="text" name="SearchString">
-           <input type="submit" value="Filter" />
-       </p>
-   </form>
-
-   <table class="table">
-
-   ````
+[!code-HTML[Main](../../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Views/Movies/IndexForm1.cshtml?highlight=11,12,13,14,15,16&range=4-21)]
 
 The HTML `<form>` tag uses the [Form Tag Helper](../../mvc/views/working-with-forms.md), so when you submit the form, the filter string is posted to the `Index` action of the movies controller. Save your changes and then test the filter.
 
@@ -182,16 +84,7 @@ There's no `[HttpPost]` overload of the `Index` method as you might expect. You 
 
 You could add the following `[HttpPost] Index` method.
 
-[!code-csharp[Main](./start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs?highlight=1)]
-
-````csharp
-[HttpPost]
-   public string Index(string searchString, bool notUsed)
-   {
-       return "From [HttpPost]Index: filter on " + searchString;
-   }
-
-   ````
+[!code-csharp[Main](./start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs?highlight=1&range=294-298)]
 
 The `notUsed` parameter is used to create an overload for the `Index` method. We'll talk about that later in the tutorial.
 
@@ -233,22 +126,6 @@ Add the following `MovieGenreViewModel` class to the *Models* folder:
 
 [!code-csharp[Main](start-mvc/sample2/src/MvcMovie/Models/MovieGenreViewModel.cs)]
 
-````csharp
-using Microsoft.AspNetCore.Mvc.Rendering;
-   using System.Collections.Generic;
-
-   namespace MvcMovie.Models
-   {
-       public class MovieGenreViewModel
-       {
-           public List<Movie> movies;
-           public SelectList genres;
-           public string movieGenre { get; set; }
-       }
-   }
-
-   ````
-
 The movie-genre view model will contain:
 
    * a list of movies
@@ -259,37 +136,7 @@ The movie-genre view model will contain:
 
 Replace the `Index` method with the following code:
 
-[!code-csharp[Main](start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs)]
-
-````csharp
-public async Task<IActionResult> Index(string movieGenre, string searchString)
-   {
-       // Use LINQ to get list of genres.
-       IQueryable<string> genreQuery = from m in _context.Movie
-                                       orderby m.Genre
-                                       select m.Genre;
-
-       var movies = from m in _context.Movie
-                    select m;
-
-       if (!String.IsNullOrEmpty(searchString))
-       {
-           movies = movies.Where(s => s.Title.Contains(searchString));
-       }
-
-       if (!String.IsNullOrEmpty(movieGenre))
-       {
-           movies = movies.Where(x => x.Genre == movieGenre);
-       }
-
-       var movieGenreVM = new MovieGenreViewModel();
-       movieGenreVM.genres = new SelectList(await genreQuery.Distinct().ToListAsync());
-       movieGenreVM.movies = await movies.ToListAsync();
-
-       return View(movieGenreVM);
-   }
-
-   ````
+[!code-csharp[Main](start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs?range=306-331)]
 
 The following code is a `LINQ` query that retrieves all the genres from the database.
 
@@ -309,74 +156,6 @@ movieGenreVM.genres = new SelectList(await genreQuery.Distinct().ToListAsync())
 
 [!code-HTML[Main](../../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Views/Movies/IndexFormGenre.cshtml?highlight=1,15,16,17,27,41)]
 
-````HTML
-@model MovieGenreViewModel
-
-   @{
-       ViewData["Title"] = "Index";
-   }
-
-   <h2>Index</h2>
-
-   <p>
-       <a asp-action="Create">Create New</a>
-   </p>
-
-   <form asp-controller="Movies" asp-action="Index" method="get">
-       <p>
-           <select asp-for="movieGenre" asp-items="Model.genres">
-               <option value="">All</option>
-           </select>
-
-           Title: <input type="text" name="SearchString">
-           <input type="submit" value="Filter" />
-       </p>
-   </form>
-
-   <table class="table">
-       <tr>
-           <th>
-               @Html.DisplayNameFor(model => model.movies[0].Genre)
-           </th>
-           <th>
-               @Html.DisplayNameFor(model => model.movies[0].Price)
-           </th>
-           <th>
-               @Html.DisplayNameFor(model => model.movies[0].ReleaseDate)
-           </th>
-           <th>
-               @Html.DisplayNameFor(model => model.movies[0].Title)
-           </th>
-           <th></th>
-       </tr>
-       <tbody>
-           @foreach (var item in Model.movies)
-           {
-               <tr>
-                   <td>
-                       @Html.DisplayFor(modelItem => item.Genre)
-                   </td>
-                   <td>
-                       @Html.DisplayFor(modelItem => item.Price)
-                   </td>
-                   <td>
-                       @Html.DisplayFor(modelItem => item.ReleaseDate)
-                   </td>
-                   <td>
-                       @Html.DisplayFor(modelItem => item.Title)
-                   </td>
-                   <td>
-                       <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                       <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                       <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-                   </td>
-               </tr>
-           }
-       </tbody>
-   </table>
-
-   ````
-
 Test the app by searching by genre, by movie title, and by both.
 
->[&larr; **Previous**](.\controller-methods-views.md)     [**Next** &rarr;](.\new-field.md)  
+[&larr; **Previous**](.\controller-methods-views.md)     [**Next** &rarr;](.\new-field.md)  
