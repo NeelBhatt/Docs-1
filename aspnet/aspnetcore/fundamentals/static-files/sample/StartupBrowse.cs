@@ -11,15 +11,15 @@ namespace StaticFiles
     public class StartupBrowse
     {
         // This method gets called by the runtime. Use this method to add services to the container.
-        // >Services
+        #region snippet2
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDirectoryBrowser();
         }
-        // <Services
+        #endregion
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        // >Configure
+        #region snippet1
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             app.UseStaticFiles(); // For the wwwroot folder
@@ -38,6 +38,6 @@ namespace StaticFiles
                 RequestPath = new PathString("/MyImages")
             });
         }
-        // <Configure
+        #endregion
     }
 }
