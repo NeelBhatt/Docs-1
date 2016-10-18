@@ -138,7 +138,9 @@ You can redirect application logs (`STDOUT` and `STERR`) in the program section 
 tail -f /var/log/hellomvc.out.log
    ````
 
-## Securing our application  ### Enable `AppArmor`
+## Securing our application
+
+### Enable `AppArmor`
 
 Linux Security Modules (LSM) is a framework that is part of the Linux kernel since Linux 2.6 that supports different implementations of security modules. `AppArmor` is a LSM that implements a Mandatory Access Control system which allows you to confine the program to a limited set of resources. Ensure [AppArmor](https://wiki.ubuntu.com/AppArmor) is enabled and properly configured.
 
@@ -208,68 +210,6 @@ Add `/etc/nginx/proxy.conf` configuration file.
 
 [!code-nginx[Main](linuxproduction/proxy.conf)]
 
-````nginx
-proxy_redirect 			off;
-   proxy_set_header 		Host 			$host;
-   proxy_set_header		X-Real-IP 		$remote_addr;
-   proxy_set_header		X-Forwarded-For	$proxy_add_x_forwarded_for;
-   client_max_body_size 	10m;
-   client_body_buffer_size 128k;
-   proxy_connect_timeout 	90;
-   proxy_send_timeout 		90;
-   proxy_read_timeout 		90;
-   proxy_buffers			32 4k;
-
-   ````
-
 Edit `/etc/nginx/nginx.conf` configuration file. The example contains both http and server sections in one configuration file.
 
 [!code-nginx[Main](../publishing/linuxproduction/nginx.conf?highlight=2)]
-
-````nginx
-http {
-       include    /etc/nginx/proxy.conf;
-       limit_req_zone $binary_remote_addr zone=one:10m rate=5r/s;
-       server_tokens off;
-
-       sendfile on;
-       keepalive_timeout 29; # Adjust to the lowest possible value that makes sense for your use case.
-       client_body_timeout 10; client_header_timeout 10; send_timeout 10;
-
-       upstream hellomvc{
-           server localhost:5000;
-       }
-
-       server {
-           listen *:80;
-           add_header Strict-Transport-Security max-age=15768000;
-           return 301 https://$host$request_uri;
-       }
-
-       server {
-           listen *:443    ssl;
-           server_name     example.com;
-           ssl_certificate /etc/ssl/certs/testCert.crt;
-           ssl_certificate_key /etc/ssl/certs/testCert.key;
-           ssl_protocols TLSv1.1 TLSv1.2;
-           ssl_prefer_server_ciphers on;
-           ssl_ciphers "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH";
-           ssl_ecdh_curve secp384r1;
-           ssl_session_cache shared:SSL:10m;
-           ssl_session_tickets off;
-           ssl_stapling on; #ensure your cert is capable
-           ssl_stapling_verify on; #ensure your cert is capable
-
-           add_header Strict-Transport-Security "max-age=63072000; includeSubdomains; preload";
-           add_header X-Frame-Options DENY;
-           add_header X-Content-Type-Options nosniff;
-
-           #Redirects all traffic
-           location / {
-               proxy_pass  http://hellomvc;
-               limit_req   zone=one burst=10;
-           }
-       }
-   }
-
-   ````

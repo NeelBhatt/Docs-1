@@ -60,33 +60,33 @@ Add SwaggerGen to the services collection in the Configure method, and in the Co
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "csharp", "highlight_args": {"hl_lines": [12, 21, 24]}} -->
 
 ````csharp
-  public void ConfigureServices(IServiceCollection services)
-     {
-         // Add framework services.
-         services.AddMvc();
+public void ConfigureServices(IServiceCollection services)
+{
+    // Add framework services.
+    services.AddMvc();
 
-         services.AddLogging();
+    services.AddLogging();
 
-         // Add our repository type
-         services.AddSingleton<ITodoRepository, TodoRepository>();
+    // Add our repository type
+    services.AddSingleton<ITodoRepository, TodoRepository>();
 
-         // Inject an implementation of ISwaggerProvider with defaulted settings applied
-         services.AddSwaggerGen();
-     }
+    // Inject an implementation of ISwaggerProvider with defaulted settings applied
+    services.AddSwaggerGen();
+}
 
-     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-     public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
-     {
-         app.UseMvcWithDefaultRoute();
+// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+{
+    app.UseMvcWithDefaultRoute();
 
-         // Enable middleware to serve generated Swagger as a JSON endpoint
-         app.UseSwagger();
+    // Enable middleware to serve generated Swagger as a JSON endpoint
+    app.UseSwagger();
 
-         // Enable middleware to serve swagger-ui assets (HTML, JS, CSS etc.)
-         app.UseSwaggerUi();
+    // Enable middleware to serve swagger-ui assets (HTML, JS, CSS etc.)
+    app.UseSwaggerUi();
 
-     }
-   ````
+}
+````
 
 In Visual Studio, press ^F5 to launch the app and navigate to `http://localhost:<random_port>/swagger/v1/swagger.json` to see the document generated that describes the endpoints.
 
@@ -208,11 +208,11 @@ Alternatively, you can enable XML comments by setting *"xmlDoc": true* in *proje
 
 ````javascript
 "buildOptions": {
-       "emitEntryPoint": true,
-       "preserveCompilationContext": true,
-       "xmlDoc": true
-   },
-   ````
+    "emitEntryPoint": true,
+    "preserveCompilationContext": true,
+    "xmlDoc": true
+},
+````
 
 Configure Swagger to use the generated XML file.
 
@@ -234,31 +234,31 @@ Note that the UI is driven by the generated JSON file, and these comments are al
 <!-- literal_block {"ids": [], "linenos": false, "xml:space": "preserve", "language": "javascript", "highlight_args": {"hl_lines": [5]}} -->
 
 ````javascript
-  "delete": {
-       "tags": [
-         "Todo"
-       ],
-       "summary": "Deletes a specific TodoItem",
-       "operationId": "ApiTodoByIdDelete",
-       "consumes": [],
-       "produces": [],
-       "parameters": [
-         {
-           "name": "id",
-           "in": "path",
-           "description": "",
-           "required": true,
-           "type": "string"
-         }
-       ],
-       "responses": {
-         "204": {
-           "description": "No Content"
-         }
-       },
-       "deprecated": false
-     }
-   ````
+"delete": {
+  "tags": [
+    "Todo"
+  ],
+  "summary": "Deletes a specific TodoItem",
+  "operationId": "ApiTodoByIdDelete",
+  "consumes": [],
+  "produces": [],
+  "parameters": [
+    {
+      "name": "id",
+      "in": "path",
+      "description": "",
+      "required": true,
+      "type": "string"
+    }
+  ],
+  "responses": {
+    "204": {
+      "description": "No Content"
+    }
+  },
+  "deprecated": false
+}
+````
 
 Here is a more robust example, adding `<remarks />` where the content can be just text or adding the JSON or XML object for further documentation of the method.
 
@@ -324,7 +324,7 @@ Reference *custom.css* in the *index.html* file.
 
 ````html
 <link href='custom.css' media='screen' rel='stylesheet' type='text/css' />
-   ````
+````
 
 The following CSS provides a simple sample of a custom header title to the page.
 
@@ -336,14 +336,14 @@ The following CSS provides a simple sample of a custom header title to the page.
 
 ````html
 <body class="swagger-section">
-      <div id="header">
-       <h1>ToDo API Documentation</h1>
-      </div>
+   <div id="header">
+    <h1>ToDo API Documentation</h1>
+   </div>
 
-      <div id="message-bar" class="swagger-ui-wrap" data-sw-translate>&nbsp;</div>
-      <div id="swagger-ui-container" class="swagger-ui-wrap"></div>
-   </body>
-   ````
+   <div id="message-bar" class="swagger-ui-wrap" data-sw-translate>&nbsp;</div>
+   <div id="swagger-ui-container" class="swagger-ui-wrap"></div>
+</body>
+````
 
 ![image](web-api-help-pages-using-swagger/_static/custom-header.png)
 

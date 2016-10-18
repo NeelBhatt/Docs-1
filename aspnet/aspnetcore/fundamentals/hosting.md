@@ -21,34 +21,6 @@ You create a host using an instance of `WebHostBuilder`. This is typically done 
 
 [!code-csharp[Main](../common/samples/WebApplication1/src/WebApplication1/Program.cs?highlight=14,15,16,17,18,19,20,21)]
 
-````csharp
-using System;
-   using System.Collections.Generic;
-   using System.IO;
-   using System.Linq;
-   using System.Threading.Tasks;
-   using Microsoft.AspNetCore.Hosting;
-
-   namespace WebApplication1
-   {
-       public class Program
-       {
-           public static void Main(string[] args)
-           {
-               var host = new WebHostBuilder()
-                   .UseKestrel()
-                   .UseContentRoot(Directory.GetCurrentDirectory())
-                   .UseIISIntegration()
-                   .UseStartup<Startup>()
-                   .Build();
-
-               host.Run();
-           }
-       }
-   }
-
-   ````
-
 The `WebHostBuilder` is responsible for creating the host that will bootstrap the server for the app. `WebHostBuilder` requires you provide a server that implements [`IServer`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/Server/IServer/index.html#Microsoft.AspNetCore.Hosting.Server.IServer) (`UseKestrel` in the code above). `UseKestrel` specifies the Kestrel server will be used by the app.
 
 The server's *content root* determines where it searches for content files, like MVC View files. The default content root is the folder from which the application is run.
@@ -84,37 +56,41 @@ The `WebHostBuilder` provides methods for setting most of the available configur
 
 ````csharp
 new WebHostBuilder()
-       .UseSetting("applicationName", "MyApp")
+    .UseSetting("applicationName", "MyApp")
    ````
 
 ### Host Configuration Values
 
-Application Name `string`
-   Key: `applicationName`. This configuration setting specifies the value that will be returned from `IHostingEnvironment.ApplicationName`.
+**Application Name** `string`
 
-Capture Startup Errors `bool`
-   Key: `captureStartupErrors`. Defaults to `false`. When `false`, errors during startup result in the host exiting. When `true`, the host will capture any exceptions from the `Startup` class and attempt to start the server. It will display an error page (generic, or detailed, based on the Detailed Errors setting, below) for every request. Set using the `CaptureStartupErrors` method.
+Key: `applicationName`. This configuration setting specifies the value that will be returned from `IHostingEnvironment.ApplicationName`.
 
-````csharp
-new WebHostBuilder()
-       .CaptureStartupErrors(true)
-   ````
+**Capture Startup Errors** `bool`
 
-Content Root `string`
-   Key: `contentRoot`. Defaults to the folder where the application assembly resides (for Kestrel; IIS will use the web project root by default). This setting determines where ASP.NET Core will begin searching for content files, such as MVC Views. Also used as the base path for the . Set using the `UseContentRoot` method. Path must exist, or host will fail to start.
+Key: `captureStartupErrors`. Defaults to `false`. When `false`, errors during startup result in the host exiting. When `true`, the host will capture any exceptions from the `Startup` class and attempt to start the server. It will display an error page (generic, or detailed, based on the Detailed Errors setting, below) for every request. Set using the `CaptureStartupErrors` method.
 
 ````csharp
 new WebHostBuilder()
-       .UseContentRoot("c:\\mywebsite")
+    .CaptureStartupErrors(true)
    ````
 
-Detailed Errors `bool`
-   Key: `detailedErrors`. Defaults to `false`. When `true` (or when Environment is set to "Development"), the app will display details of startup exceptions, instead of just a generic error page. Set using `UseSetting`.
+**Content Root** `string`
+
+Key: `contentRoot`. Defaults to the folder where the application assembly resides (for Kestrel; IIS will use the web project root by default). This setting determines where ASP.NET Core will begin searching for content files, such as MVC Views. Also used as the base path for the . Set using the `UseContentRoot` method. Path must exist, or host will fail to start.
 
 ````csharp
 new WebHostBuilder()
-       .UseSetting("detailedErrors", "true")
+    .UseContentRoot("c:\\mywebsite")
    ````
+
+**Detailed Errors** `bool`
+
+Key: `detailedErrors`. Defaults to `false`. When `true` (or when Environment is set to "Development"), the app will display details of startup exceptions, instead of just a generic error page. Set using `UseSetting`.
+
+````csharp
+new WebHostBuilder()
+    .UseSetting("detailedErrors", "true")
+````
 
 When Detailed Errors is set to `false` and Capture Startup Errors is `true`, a generic error page is displayed in response to every request to the server.
 
@@ -124,45 +100,46 @@ When Detailed Errors is set to `true` and Capture Startup Errors is `true`, a de
 
 ![image](hosting/_static/detailed-error-page.png)
 
-Environment `string`
-   Key: `environment`. Defaults to "Production". May be set to any value. Framework-defined values include "Development", "Staging", and "Production". Values are not case sensitive. See [Working with Multiple Environments](environments.md). Set using the `UseEnvironment` method.
+**Environment** `string`
+
+Key: `environment`. Defaults to "Production". May be set to any value. Framework-defined values include "Development", "Staging", and "Production". Values are not case sensitive. See [Working with Multiple Environments](environments.md). Set using the `UseEnvironment` method.
 
 ````csharp
 new WebHostBuilder()
-       .UseEnvironment("Development")
-   ````
+    .UseEnvironment("Development")
+````
 
 > [!NOTE]
 > By default, the environment is read from the `ASPNETCORE_ENVIRONMENT` environment variable. When using Visual Studio, environment variables may be set in the *launchSettings.json* file.
 
-Server URLs `string`
+**Server URLs `string`**
 
 Key: `urls`. Set to a semicolon (;) separated list of URL prefixes to which the server should respond. For example, "[http://localhost:123](http://localhost:123)". The domain/host name can be replaced with "*" to indicate the server should listen to requests on any IP address or host using the specified port and protocol (for example, `http://*:5000` or `https://*:5001`). The protocol (`http://` or `https://`) must be included with each URL. The prefixes are interpreted by the configured server; supported formats will vary between servers.
 
 ````csharp
 new WebHostBuilder()
-       .UseUrls("http://*:5000;http://localhost:5001;https://hostname:5002")
-   ````
+    .UseUrls("http://*:5000;http://localhost:5001;https://hostname:5002")
+````
 
-Startup Assembly `string`
+**Startup Assembly** `string`
 
 Key: `startupAssembly`. Determines the assembly to search for the `Startup` class. Set using the `UseStartup` method. May instead reference specific type using `WebHostBuilder.UseStartup<StartupType>`. If multiple `UseStartup` methods are called, the last one takes precedence.
 
 ````csharp
 new WebHostBuilder()
-       .UseStartup("StartupAssemblyName")
-   ````
+    .UseStartup("StartupAssemblyName")
+````
 
 <a name=web-root-setting></a>
 
-Web Root `string`
+**Web Root** `string`
 
 Key: `webroot`. If not specified the default is `(Content Root Path)\wwwroot`, if it exists. If this path doesn't exist, then a no-op file provider is used. Set using `UseWebRoot`.
 
 ````csharp
 new WebHostBuilder()
-       .UseWebRoot("public")
-   ````
+    .UseWebRoot("public")
+````
 
 Use [Configuration](configuration.md) to set configuration values to be used by the host. These values may be subsequently overridden. This is specified using `UseConfiguration`.
 

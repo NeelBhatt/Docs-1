@@ -31,29 +31,7 @@ ASP.NET Core includes a simple built-in container (represented by the `IServiceP
 
 The `ConfigureServices` method in the `Startup` class is responsible for defining the services the application will use, including platform features like Entity Framework Core and ASP.NET Core MVC. Initially, the `IServiceCollection` provided to `ConfigureServices` has just a handful of services defined. Below is an example of how to add additional services to the container using a number of extension methods like `AddDbContext`, `AddIdentity`, and `AddMvc`.
 
-[!code-csharp[Main](../common/samples/WebApplication1/src/WebApplication1/Startup.cs?highlight=5,8,12)]
-
-````csharp
-// This method gets called by the runtime. Use this method to add services to the container.
-   public void ConfigureServices(IServiceCollection services)
-   {
-       // Add framework services.
-       services.AddDbContext<ApplicationDbContext>(options =>
-           options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
-       services.AddIdentity<ApplicationUser, IdentityRole>()
-           .AddEntityFrameworkStores<ApplicationDbContext>()
-           .AddDefaultTokenProviders();
-
-       services.AddMvc();
-
-       // Add application services.
-       services.AddTransient<IEmailSender, AuthMessageSender>();
-       services.AddTransient<ISmsSender, AuthMessageSender>();
-   }
-
-
-   ````
+[!code-csharp[Main](../common/samples/WebApplication1/src/WebApplication1/Startup.cs?highlight=5,8,12&range=39-56)]
 
 The features and middleware provided by ASP.NET, such as MVC, follow a convention of using a single Add**Service**extension method to register all of the services required by that feature.
 
@@ -66,13 +44,7 @@ Of course, in addition to configuring the application to take advantage of vario
 
 You can register your own application services as follows. The first generic type represents the type (typically an interface) that will be requested from the container. The second generic type represents the concrete type that will be instantiated by the container and used to fulfill such requests.
 
-[!code-csharp[Main](../common/samples/WebApplication1/src/WebApplication1/Startup.cs)]
-
-````csharp
-services.AddTransient<IEmailSender, AuthMessageSender>();
-   services.AddTransient<ISmsSender, AuthMessageSender>();
-
-   ````
+[!code-csharp[Main](../common/samples/WebApplication1/src/WebApplication1/Startup.cs?range=53-54)]
 
 > [!NOTE]
 > Each `services.Add<service>` call adds (and potentially configures) services. For example, `services.AddMvc()` adds the services MVC requires.
@@ -81,58 +53,11 @@ The `AddTransient` method is used to map abstract types to concrete services tha
 
 In the sample for this article, there is a simple controller that displays character names, called `CharactersController`. Its `Index` method displays the current list of characters that have been stored in the application, and initializes the collection with a handful of characters if none exist. Note that although this application uses Entity Framework Core and the `ApplicationDbContext` class for its persistence, none of that is apparent in the controller. Instead, the specific data access mechanism has been abstracted behind an interface, `ICharacterRepository`, which follows the [repository pattern](http://deviq.com/repository-pattern/). An instance of `ICharacterRepository` is requested via the constructor and assigned to a private field, which is then used to access characters as necessary.
 
-[!code-csharp[Main](../fundamentals/dependency-injection/sample/DependencyInjectionSample/Controllers/CharactersController.cs?highlight=3,5,6,7,8,14,21,23,24,25,26)]
-
-````csharp
-public class CharactersController : Controller
-   {
-       private readonly ICharacterRepository _characterRepository;
-
-       public CharactersController(ICharacterRepository characterRepository)
-       {
-           _characterRepository = characterRepository;
-       }
-
-       // GET: /characters/
-       public IActionResult Index()
-       {
-           PopulateCharactersIfNoneExist();
-           var characters = _characterRepository.ListAll();
-
-           return View(characters);
-       }
-       
-       private void PopulateCharactersIfNoneExist()
-       {
-           if (!_characterRepository.ListAll().Any())
-           {
-               _characterRepository.Add(new Character("Darth Maul"));
-               _characterRepository.Add(new Character("Darth Vader"));
-               _characterRepository.Add(new Character("Yoda"));
-               _characterRepository.Add(new Character("Mace Windu"));
-           }
-       }
-   }
-
-   ````
+[!code-csharp[Main](../fundamentals/dependency-injection/sample/DependencyInjectionSample/Controllers/CharactersController.cs?highlight=3,5,6,7,8,14,21,23,24,25,26&range=8-36)]
 
 The `ICharacterRepository` simply defines the two methods the controller needs to work with `Character` instances.
 
 [!code-csharp[Main](../fundamentals/dependency-injection/sample/DependencyInjectionSample/Interfaces/ICharacterRepository.cs?highlight=8,9)]
-
-````csharp
-using System.Collections.Generic;
-   using DependencyInjectionSample.Models;
-
-   namespace DependencyInjectionSample.Interfaces
-   {
-       public interface ICharacterRepository
-       {
-           IEnumerable<Character> ListAll();
-           void Add(Character character);
-       }
-   }
-   ````
 
 This interface is in turn implemented by a concrete type, `CharacterRepository`, that is used at runtime.
 
@@ -141,36 +66,6 @@ This interface is in turn implemented by a concrete type, `CharacterRepository`,
 
 [!code-csharp[Main](../fundamentals/dependency-injection/sample/DependencyInjectionSample/Models/CharacterRepository.cs?highlight=9,11,12,13,14)]
 
-````csharp
-using System.Collections.Generic;
-   using System.Linq;
-   using DependencyInjectionSample.Interfaces;
-
-   namespace DependencyInjectionSample.Models
-   {
-       public class CharacterRepository : ICharacterRepository
-       {
-           private readonly ApplicationDbContext _dbContext;
-
-           public CharacterRepository(ApplicationDbContext dbContext)
-           {
-               _dbContext = dbContext;
-           }
-
-           public IEnumerable<Character> ListAll()
-           {
-               return _dbContext.Characters.AsEnumerable();
-           }
-
-           public void Add(Character character)
-           {
-               _dbContext.Characters.Add(character);
-               _dbContext.SaveChanges();
-           }
-       }
-   }
-   ````
-
 Note that `CharacterRepository` requests an `ApplicationDbContext` in its constructor. It is not unusual for dependency injection to be used in a chained fashion like this, with each requested dependency in turn requesting its own dependencies. The container is responsible for resolving all of the dependencies in the graph and returning the fully resolved service.
 
 > [!NOTE]
@@ -178,28 +73,7 @@ Note that `CharacterRepository` requests an `ApplicationDbContext` in its constr
 
 In this case, both `ICharacterRepository` and in turn `ApplicationDbContext` must be registered with the services container in `ConfigureServices` in `Startup`. `ApplicationDbContext` is configured with the call to the extension method `AddDbContext<T>`. The following code shows the registration of the `CharacterRepository` type.
 
-[!code-csharp[Main](dependency-injection/sample/DependencyInjectionSample/Startup.cs?highlight=2,3,4,10)]
-
-````csharp
-{
-       services.AddDbContext<ApplicationDbContext>(options =>
-           options.UseInMemoryDatabase()
-       );
-
-       // Add framework services.
-       services.AddMvc();
-
-       // Register application services.
-       services.AddScoped<ICharacterRepository, CharacterRepository>();
-       services.AddTransient<IOperationTransient, Operation>();
-       services.AddScoped<IOperationScoped, Operation>();
-       services.AddSingleton<IOperationSingleton, Operation>();
-       services.AddSingleton<IOperationSingletonInstance>(new Operation(Guid.Empty));
-       services.AddTransient<OperationService, OperationService>();
-   }
-
-
-   ````
+[!code-csharp[Main](dependency-injection/sample/DependencyInjectionSample/Startup.cs?highlight=2,3,4,10&range=17-33)]
 
 Entity Framework contexts should be added to the services container using the `Scoped` lifetime. This is taken care of automatically if you use the helper methods as shown above. Repositories that will make use of Entity Framework should use the same lifetime.
 
@@ -210,14 +84,17 @@ Entity Framework contexts should be added to the services container using the `S
 
 ASP.NET services can be configured with the following lifetimes:
 
-Transient
-   Transient lifetime services are created each time they are requested. This lifetime works best for lightweight, stateless services.
+**Transient**
 
-Scoped
-   Scoped lifetime services are created once per request.
+Transient lifetime services are created each time they are requested. This lifetime works best for lightweight, stateless services.
 
-Singleton
-   Singleton lifetime services are created the first time they are requested (or when `ConfigureServices` is run if you specify an instance there) and then every subsequent request will use the same instance. If your application requires singleton behavior, allowing the services container to manage the service's lifetime is recommended instead of implementing the singleton design pattern and managing your object's lifetime in the class yourself.
+**Scoped**
+
+Scoped lifetime services are created once per request.
+
+**Singleton**
+
+Singleton lifetime services are created the first time they are requested (or when `ConfigureServices` is run if you specify an instance there) and then every subsequent request will use the same instance. If your application requires singleton behavior, allowing the services container to manage the service's lifetime is recommended instead of implementing the singleton design pattern and managing your object's lifetime in the class yourself.
 
 Services can be registered with the container in several ways. We have already seen how to register a service implementation with a given type by specifying the concrete type to use. In addition, a factory can be specified, which will then be used to create the instance on demand. The third approach is to directly specify the instance of the type to use, in which case the container will never attempt to create an instance.
 
@@ -225,125 +102,19 @@ To demonstrate the difference between these lifetime and registration options, c
 
 [!code-csharp[Main](../fundamentals/dependency-injection/sample/DependencyInjectionSample/Interfaces/IOperation.cs?highlight=5,7)]
 
-````csharp
-using System;
-
-   namespace DependencyInjectionSample.Interfaces
-   {
-       public interface IOperation
-       {
-           Guid OperationId { get; }
-       }
-
-       public interface IOperationTransient : IOperation
-       {
-       }
-       public interface IOperationScoped : IOperation
-       {
-       }
-       public interface IOperationSingleton : IOperation
-       {
-       }
-       public interface IOperationSingletonInstance : IOperation
-       {
-       }
-   }
-   ````
-
 We implement these interfaces using a single class, `Operation`, that accepts a `Guid` in its constructor, or uses a new `Guid` if none is provided.
 
 Next, in `ConfigureServices`, each type is added to the container according to its named lifetime:
 
-[!code-csharp[Main](dependency-injection/sample/DependencyInjectionSample/Startup.cs)]
-
-````csharp
-services.AddScoped<ICharacterRepository, CharacterRepository>();
-   services.AddTransient<IOperationTransient, Operation>();
-   services.AddScoped<IOperationScoped, Operation>();
-   services.AddSingleton<IOperationSingleton, Operation>();
-   services.AddSingleton<IOperationSingletonInstance>(new Operation(Guid.Empty));
-   services.AddTransient<OperationService, OperationService>();
-
-
-   ````
+[!code-csharp[Main](dependency-injection/sample/DependencyInjectionSample/Startup.cs?range=26-32)]
 
 Note that the `IOperationSingletonInstance` service is using a specific instance with a known ID of `Guid.Empty` so it will be clear when this type is in use. We have also registered an `OperationService` that depends on each of the other `Operation` types, so that it will be clear within a request whether this service is getting the same instance as the controller, or a new one, for each operation type. All this service does is expose its dependencies as properties, so they can be displayed in the view.
 
 [!code-csharp[Main](dependency-injection/sample/DependencyInjectionSample/Services/OperationService.cs)]
 
-````csharp
-using DependencyInjectionSample.Interfaces;
-
-   namespace DependencyInjectionSample.Services
-   {
-       public class OperationService
-       {
-           public IOperationTransient TransientOperation { get; }
-           public IOperationScoped ScopedOperation { get; }
-           public IOperationSingleton SingletonOperation { get; }
-           public IOperationSingletonInstance SingletonInstanceOperation { get; }
-
-           public OperationService(IOperationTransient transientOperation,
-               IOperationScoped scopedOperation,
-               IOperationSingleton singletonOperation,
-               IOperationSingletonInstance instanceOperation)
-           {
-               TransientOperation = transientOperation;
-               ScopedOperation = scopedOperation;
-               SingletonOperation = singletonOperation;
-               SingletonInstanceOperation = instanceOperation;
-           }
-       }
-   }
-   ````
-
 To demonstrate the object lifetimes within and between separate individual requests to the application, the sample includes an `OperationsController` that requests each kind of `IOperation` type as well as an `OperationService`. The `Index` action then displays all of the controller's and service's `OperationId` values.
 
 [!code-csharp[Main](dependency-injection/sample/DependencyInjectionSample/Controllers/OperationsController.cs)]
-
-````csharp
-using DependencyInjectionSample.Interfaces;
-   using DependencyInjectionSample.Services;
-   using Microsoft.AspNetCore.Mvc;
-
-   namespace DependencyInjectionSample.Controllers
-   {
-       public class OperationsController : Controller
-       {
-           private readonly OperationService _operationService;
-           private readonly IOperationTransient _transientOperation;
-           private readonly IOperationScoped _scopedOperation;
-           private readonly IOperationSingleton _singletonOperation;
-           private readonly IOperationSingletonInstance _singletonInstanceOperation;
-
-           public OperationsController(OperationService operationService,
-               IOperationTransient transientOperation,
-               IOperationScoped scopedOperation,
-               IOperationSingleton singletonOperation,
-               IOperationSingletonInstance singletonInstanceOperation)
-           {
-               _operationService = operationService;
-               _transientOperation = transientOperation;
-               _scopedOperation = scopedOperation;
-               _singletonOperation = singletonOperation;
-               _singletonInstanceOperation = singletonInstanceOperation;
-           }
-
-           public IActionResult Index()
-           {
-               // viewbag contains controller-requested services
-               ViewBag.Transient = _transientOperation;
-               ViewBag.Scoped = _scopedOperation;
-               ViewBag.Singleton = _singletonOperation;
-               ViewBag.SingletonInstance = _singletonInstanceOperation;
-               
-               // operation service has its own requested services
-               ViewBag.Service = _operationService;
-               return View();
-           }
-       }
-   }
-   ````
 
 Now two separate requests are made to this controller action:
 

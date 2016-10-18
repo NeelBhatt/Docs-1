@@ -44,10 +44,9 @@ For CBC-mode encryption + HMAC validation operations, | K_E | is the length of t
 
 Once K_E is generated via the above mechanism, we generate a random initialization vector and run the symmetric block cipher algorithm to encipher the plaintext. The initialization vector and ciphertext are then run through the HMAC routine initialized with the key K_H to produce the MAC. This process and the return value is represented graphically below.
 
-   ![CBC-mode process and return](subkeyderivation/_static/cbcprocess.png)
-   ![image](subkeyderivation/_static/cbcprocess.png)
+![CBC-mode process and return](subkeyderivation/_static/cbcprocess.png)
 
-   output:= keyModifier || iv || E_cbc (K_E,iv,data) || HMAC(K_H, iv || E_cbc (K_E,iv,data))
+*output:= keyModifier || iv || E_cbc (K_E,iv,data) || HMAC(K_H, iv || E_cbc (K_E,iv,data))*
 
 > [!NOTE]
 > The IDataProtector.Protect implementation will [prepend the magic header and key id](authenticated-encryption-details.md#data-protection-implementation-authenticated-encryption-details) to output before returning it to the caller. Because the magic header and key id are implicitly part of [AAD](xref:security/data-protection/implementation/subkeyderivation#data-protection-implementation-subkey-derivation-aad), and because the key modifier is fed as input to the KDF, this means that every single byte of the final returned payload is authenticated by the MAC.
@@ -56,10 +55,9 @@ Once K_E is generated via the above mechanism, we generate a random initializati
 
 Once K_E is generated via the above mechanism, we generate a random 96-bit nonce and run the symmetric block cipher algorithm to encipher the plaintext and produce the 128-bit authentication tag.
 
-   ![GCM-mode process and return](subkeyderivation/_static/galoisprocess.png)
-   ![image](subkeyderivation/_static/galoisprocess.png)
+![GCM-mode process and return](subkeyderivation/_static/galoisprocess.png)
 
-   output := keyModifier || nounce || E_gcm (K_E,nounce,data) || authTag
+*output := keyModifier || nounce || E_gcm (K_E,nounce,data) || authTag*
 
 > [!NOTE]
 > Even though GCM natively supports the concept of AAD, we're still feeding AAD only to the original KDF, opting to pass an empty string into GCM for its AAD parameter. The reason for this is two-fold. First, [to support agility](context-headers.md#data-protection-implementation-context-headers) we never want to use K_M directly as the encryption key. Additionally, GCM imposes very strict uniqueness requirements on its inputs. The probability that the GCM encryption routine is ever invoked on two or more distinct sets of input data with the same (key, nonce) pair must not exceed 2^32. If we fix K_E we cannot perform more than 2^32 encryption operations before we run afoul of the 2^-32 limit. This might seem like a very large number of operations, but a high-traffic web server can go through 4 billion requests in mere days, well within the normal lifetime for these keys. To stay compliant of the 2^-32 probability limit, we continue to use a 128-bit key modifier and 96-bit

@@ -49,14 +49,14 @@ Implicit Razor expressions start with `@` followed by C# code. For example:
 
 ````html
 <p>@DateTime.Now</p>
-   <p>@DateTime.IsLeapYear(2016)</p>
-   ````
+<p>@DateTime.IsLeapYear(2016)</p>
+````
 
 With the exception of the C# `await` keyword implicit expressions must not contain spaces. For example, you can intermingle spaces as long as the C# statement has a clear ending:
 
 ````html
 <p>@await DoSomething("hello", "world")</p>
-   ````
+````
 
 <a name=explicit-razor-expressions></a>
 
@@ -66,21 +66,13 @@ Explicit Razor expressions consists of an @ symbol with balanced parenthesis. Fo
 
 ````html
 <p>Last week this time: @(DateTime.Now - TimeSpan.FromDays(7))</p>
-   ````
+````
 
 Any content within the @() parenthesis is evaluated and rendered to the output.
 
 Implicit expressions generally cannot contain spaces. For example, in the code below, one week is not subtracted from the current time:
 
-[!code-html[Main](razor/sample/Views/Home/Contact.cshtml)]
-
-````html
-
-
-   <p>Last week: @DateTime.Now - TimeSpan.FromDays(7)</p>
-
-
-   ````
+[!code-html[Main](razor/sample/Views/Home/Contact.cshtml?range=20)]
 
 Which renders the following HTML:
 
@@ -94,11 +86,11 @@ You can use an explicit expression to concatenate text with an expression result
 
 ````none
 @{
-       var joe = new Person("Joe", 33);
-    }
+    var joe = new Person("Joe", 33);
+ }
 
-   <p>Age@(joe.Age)</p>
-   ````
+<p>Age@(joe.Age)</p>
+````
 
 Without the explicit expression, `<p>Age@joe.Age</p>` would be treated as an email address and `<p>Age@joe.Age</p>` would be rendered. When written as an explicit expression, `<p>Age33</p>` is rendered.
 
@@ -147,11 +139,11 @@ Razor code blocks start with `@` and are enclosed by `{}`. Unlike expressions, C
 
 ````none
 @{
-       var output = "Hello World";
-   }
+    var output = "Hello World";
+}
 
-   <p>The rendered result: @output</p>
-   ````
+<p>The rendered result: @output</p>
+````
 
 Would render:
 
@@ -167,10 +159,10 @@ The default language in a code block is C#, but you can transition back to HTML.
 
 ````none
 @{
-       var inCSharp = true;
-       <p>Now in HTML, was in C# @inCSharp</p>
-   }
-   ````
+    var inCSharp = true;
+    <p>Now in HTML, was in C# @inCSharp</p>
+}
+````
 
 <a name=explicit-delimited-transition-label></a>
 
@@ -182,11 +174,11 @@ To define a sub-section of a code block that should render HTML, surround the ch
 
 ````none
 @for (var i = 0; i < people.Length; i++)
-   {
-       var person = people[i];
-       <text>Name: @person.Name</text>
-   }
-   ````
+{
+    var person = people[i];
+    <text>Name: @person.Name</text>
+}
+````
 
 You generally use this approach when you want to render HTML that is not surrounded by an HTML tag. Without an HTML or Razor tag, you get a Razor runtime error.
 
@@ -200,11 +192,11 @@ To render the rest of an entire line as HTML inside a code block, use the `@:` s
 
 ````none
 @for (var i = 0; i < people.Length; i++)
-   {
-       var person = people[i];
-       @:Name: @person.Name
-   }
-   ````
+{
+    var person = people[i];
+    @:Name: @person.Name
+}
+````
 
 Without the `@:` in the code above, you'd get a Razor run time error.
 
@@ -220,44 +212,44 @@ The `@if` family controls when code runs:
 
 ````none
 @if (value % 2 == 0)
-   {
-       <p>The value was even</p>
-   }
-   ````
+{
+    <p>The value was even</p>
+}
+````
 
 `else` and `else if` don't require the `@` symbol:
 
 ````none
 @if (value % 2 == 0)
-   {
-       <p>The value was even</p>
-   }
-   else if (value >= 1337)
-   {
-       <p>The value is large.</p>
-   }
-   else
-   {
-       <p>The value was not large and is odd.</p>
-   }
-   ````
+{
+    <p>The value was even</p>
+}
+else if (value >= 1337)
+{
+    <p>The value is large.</p>
+}
+else
+{
+    <p>The value was not large and is odd.</p>
+}
+````
 
 You can use a switch statement like this:
 
 ````none
 @switch (value)
-   {
-       case 1:
-           <p>The value is 1!</p>
-           break;
-       case 1337:
-           <p>Your number is 1337!</p>
-           break;
-       default:
-           <p>Your number was not 1 or 1337.</p>
-           break;
-   }
-   ````
+{
+    case 1:
+        <p>The value is 1!</p>
+        break;
+    case 1337:
+        <p>Your number is 1337!</p>
+        break;
+    default:
+        <p>Your number was not 1 or 1337.</p>
+        break;
+}
+````
 
 ### Looping `@for`, `@foreach`, `@while`, and `@do while`
 
@@ -265,13 +257,13 @@ You can render templated HTML with looping control statements. For example, to r
 
 ````none
 @{
-       var people = new Person[]
-       {
-             new Person("John", 33),
-             new Person("Doe", 41),
-       };
-   }
-   ````
+    var people = new Person[]
+    {
+          new Person("John", 33),
+          new Person("Doe", 41),
+    };
+}
+````
 
 You can use any of the following looping statements:
 
@@ -279,50 +271,50 @@ You can use any of the following looping statements:
 
 ````none
 @for (var i = 0; i < people.Length; i++)
-   {
-       var person = people[i];
-       <p>Name: @person.Name</p>
-       <p>Age: @person.Age</p>
-   }
-   ````
+{
+    var person = people[i];
+    <p>Name: @person.Name</p>
+    <p>Age: @person.Age</p>
+}
+````
 
 `@foreach`
 
 ````none
 @foreach (var person in people)
-   {
-       <p>Name: @person.Name</p>
-       <p>Age: @person.Age</p>
-   }
-   ````
+{
+    <p>Name: @person.Name</p>
+    <p>Age: @person.Age</p>
+}
+````
 
 `@while`
 
 ````none
 @{ var i = 0; }
-   @while (i < people.Length)
-   {
-       var person = people[i];
-       <p>Name: @person.Name</p>
-       <p>Age: @person.Age</p>
+@while (i < people.Length)
+{
+    var person = people[i];
+    <p>Name: @person.Name</p>
+    <p>Age: @person.Age</p>
 
-       i++;
-   }
-   ````
+    i++;
+}
+````
 
 `@do while`
 
 ````none
 @{ var i = 0; }
-   @do
-   {
-       var person = people[i];
-       <p>Name: @person.Name</p>
-       <p>Age: @person.Age</p>
+@do
+{
+    var person = people[i];
+    <p>Name: @person.Name</p>
+    <p>Age: @person.Age</p>
 
-       i++;
-   } while (i < people.Length);
-   ````
+    i++;
+} while (i < people.Length);
+````
 
 ### Compound `@using`
 
@@ -330,14 +322,14 @@ In C# a using statement is used to ensure an object is disposed. In Razor this s
 
 ````none
 @using (Html.BeginForm())
-   {
-       <div>
-           email:
-           <input type="email" id="Email" name="Email" value="" />
-           <button type="submit"> Register </button>
-       </div>
-   }
-   ````
+{
+    <div>
+        email:
+        <input type="email" id="Email" name="Email" value="" />
+        <button type="submit"> Register </button>
+    </div>
+}
+````
 
 You can also perform scope level actions like the above with [Tag Helpers](tag-helpers/index.md).
 
@@ -347,31 +339,16 @@ Exception handling is similar to  C#:
 
 [!code-html[Main](razor/sample/Views/Home/Contact7.cshtml)]
 
-````html
-@try
-   {
-       throw new InvalidOperationException("You did something invalid.");
-   }
-   catch (Exception ex)
-   {
-       <p>The exception message: @ex.Message</p>
-   }
-   finally
-   {
-       <p>The finally statement.</p>
-   }
-   ````
-
 ### `@lock`
 
 Razor has the capability to protect critical sections with lock statements:
 
 ````none
 @lock (SomeLock)
-   {
-       // Do critical section work
-   }
-   ````
+{
+    // Do critical section work
+}
+````
 
 ### Comments
 
@@ -379,29 +356,29 @@ Razor supports C# and HTML comments. The following markup:
 
 ````none
 @{
-       /* C# comment. */
-       // Another C# comment.
-   }
-   <!-- HTML comment -->
-   ````
+    /* C# comment. */
+    // Another C# comment.
+}
+<!-- HTML comment -->
+````
 
 Is rendered by the server as:
 
 ````none
 <!-- HTML comment -->
-   ````
+````
 
 Razor comments are removed by the server before the page is rendered. Razor uses `@*  *@` to delimit comments. The following code is commented out, so the server will not render any markup:
 
 ````none
  @*
-    @{
-        /* C# comment. */
-        // Another C# comment.
-    }
-    <!-- HTML comment -->
-   *@
-   ````
+ @{
+     /* C# comment. */
+     // Another C# comment.
+ }
+ <!-- HTML comment -->
+*@
+````
 
 <a name=razor-directives-label></a>
 
@@ -413,30 +390,21 @@ Understanding how Razor generates code for a view will make it easier to underst
 
 [!code-html[Main](razor/sample/Views/Home/Contact8.cshtml)]
 
-````html
-@{
-       var output = "Hello World";
-   }
-
-   <div>Output: @output</div>
-
-   ````
-
 Generates a class similar to the following:
 
 ````csharp
 public class _Views_Something_cshtml : RazorPage<dynamic>
-   {
-       public override async Task ExecuteAsync()
-       {
-           var output = "Hello World";
+{
+    public override async Task ExecuteAsync()
+    {
+        var output = "Hello World";
 
-           WriteLiteral("/r/n<div>Output: ");
-           Write(output);
-           WriteLiteral("</div>");
-       }
-   }
-   ````
+        WriteLiteral("/r/n<div>Output: ");
+        Write(output);
+        WriteLiteral("</div>");
+    }
+}
+````
 
  explains how to view this generated class.
 
@@ -445,14 +413,6 @@ public class _Views_Something_cshtml : RazorPage<dynamic>
 The `@using` directive will add the c# `using` directive to the generated razor page:
 
 [!code-html[Main](razor/sample/Views/Home/Contact9.cshtml)]
-
-````html
-@using System.IO
-   @{
-       var dir = Directory.GetCurrentDirectory();
-   }
-   <p>@dir</p>
-   ````
 
 ### `@model`
 
@@ -500,51 +460,24 @@ For instance, let’s say we had the following custom Razor page type:
 
 [!code-csharp[Main](razor/sample/Classes/CustomRazorPage.cs)]
 
-````csharp
-using Microsoft.AspNetCore.Mvc.Razor;
-
-   public abstract class CustomRazorPage<TModel> : RazorPage<TModel>
-   {
-       public string CustomText { get; } = "Hello World.";
-   }
-
-   ````
-
 The following Razor would generate `<div>Custom text: Hello World</div>`.
 
 [!code-html[Main](razor/sample/Views/Home/Contact10.cshtml)]
-
-````html
-@inherits CustomRazorPage<TModel>
-
-   <div>Custom text: @CustomText</div>
-   ````
 
 You can't use `@model` and `@inherits` on the same page. You can have `@inherits` in a *_ViewImports.cshtml* file that the Razor page imports. For example, if your Razor view imported the following *_ViewImports.cshtml* file:
 
 [!code-html[Main](razor/sample/Views/_ViewImportsModel.cshtml)]
 
-````html
-@inherits CustomRazorPage<TModel>
-   ````
-
 The following strongly typed Razor page
 
 [!code-html[Main](razor/sample/Views/Home/Login1.cshtml)]
-
-````html
-@inherits CustomRazorPage<TModel>
-
-   <div>The Login Email: @Model.Email</div>
-   <div>Custom text: @CustomText</div>
-   ````
 
 Generates this HTML markup:
 
 ````none
 <div>The Login Email: Rick@contoso.com</div>
-   <div>Custom text: Hello World</div>
-   ````
+<div>Custom text: Hello World</div>
+````
 
 When passed "[Rick@contoso.com](mailto:Rick@contoso.com)" in the model:
 
@@ -566,18 +499,6 @@ For example:
 
 [!code-html[Main](razor/sample/Views/Home/Contact6.cshtml)]
 
-````html
-@functions {
-       public string GetHello()
-       {
-           return "Hello";
-       }
-   }
-
-   <div>From method: @GetHello()</div> 
-
-   ````
-
 Generates the following HTML markup:
 
 ````none
@@ -586,30 +507,7 @@ Generates the following HTML markup:
 
 The generated Razor C# looks like:
 
-[!code-csharp[Main](razor/sample/Classes/Views_Home_Test_cshtml.cs)]
-
-````csharp
-using System.Threading.Tasks;
-   using Microsoft.AspNetCore.Mvc.Razor;
-
-   public class _Views_Home_Test_cshtml : RazorPage<dynamic>
-   {
-       // Functions placed between here 
-       public string GetHello()
-       {
-           return "Hello";
-       }
-       // And here.
-   #pragma warning disable 1998
-       public override async Task ExecuteAsync()
-       {
-           WriteLiteral("\r\n<div>From method: ");
-           Write(GetHello());
-           WriteLiteral("</div>\r\n");
-       }
-   #pragma warning restore 1998
-
-   ````
+[!code-csharp[Main](razor/sample/Classes/Views_Home_Test_cshtml.cs?range=1-19)]
 
 ### `@section`
 
@@ -679,51 +577,12 @@ C# Razor keywords need to be double escaped with `@(@C# Razor Keyword)`, for exa
 
 Add the following class to your ASP.NET Core MVC project:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/razor/sample/Services/CustomCompilationService.cs", "ids": [], "linenos": false, "highlight_args": {"linenostart": 1}} -->
-
-````
-using Microsoft.AspNetCore.Mvc.ApplicationParts;
-   using Microsoft.AspNetCore.Mvc.Razor;
-   using Microsoft.AspNetCore.Mvc.Razor.Compilation;
-   using Microsoft.AspNetCore.Mvc.Razor.Internal;
-   using Microsoft.Extensions.Logging;
-   using Microsoft.Extensions.Options;
-
-   public class CustomCompilationService : DefaultRoslynCompilationService, ICompilationService
-   {
-       public CustomCompilationService(ApplicationPartManager partManager, 
-           IOptions<RazorViewEngineOptions> optionsAccessor, 
-           IRazorViewEngineFileProviderAccessor fileProviderAccessor, 
-           ILoggerFactory loggerFactory) 
-           : base(partManager, optionsAccessor, fileProviderAccessor, loggerFactory)
-       {
-       }
-
-       CompilationResult ICompilationService.Compile(RelativeFileInfo fileInfo, 
-           string compilationContent)
-       {
-           return base.Compile(fileInfo, compilationContent);
-       }
-   }
-
-
-   ````
+[!code-csharp[Main](razor/sample/Services/CustomCompilationService.cs)]
 
 Override the [`ICompilationService`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Razor/Compilation/ICompilationService/index.html#Microsoft.AspNetCore.Mvc.Razor.Compilation.ICompilationService) added by MVC with the above class;
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/razor/sample/Startup.cs", "ids": [], "linenos": false, "highlight_args": {"hl_lines": [4], "linenostart": 1}} -->
-
-````
-public void ConfigureServices(IServiceCollection services)
-   {
-       services.AddMvc();
-       services.AddSingleton<ICompilationService, CustomCompilationService>();
-   }
-
-
-   ````
+[!code-csharp[Main](razor/sample/Startup.cs?highlight=4&range=29-33)]
 
 Set a break point on the `Compile` method of `CustomCompilationService` and view `compilationContent`.
 
 ![Text Visualizer view of compilationContent](razor/_static/tvr.png)
-![image](razor/_static/tvr.png)

@@ -70,21 +70,21 @@ For example, some simple [Middleware](middleware.md) could add something to the 
 
 ````csharp
 app.Use(async (context, next) =>
-   {
-       // perform some verification
-       context.Items["isVerified"] = true;
-       await next.Invoke();
-   });
-   ````
+{
+    // perform some verification
+    context.Items["isVerified"] = true;
+    await next.Invoke();
+});
+````
 
 and later in the pipeline, another piece of middleware could access it:
 
 ````csharp
 app.Run(async (context) =>
-   {
-       await context.Response.WriteAsync("Verified request? " + context.Items["isVerified"]);
-   });
-   ````
+{
+    await context.Response.WriteAsync("Verified request? " + context.Items["isVerified"]);
+});
+````
 
 > [!NOTE]
 > Since keys into `Items` are simple strings, if you are developing middleware that needs to work across many applications, you may wish to prefix your keys with a unique identifier to avoid key collisions (e.g. "MyComponent.isVerified" instead of just "isVerified").
@@ -104,8 +104,8 @@ ASP.NET ships with several implementations of `IDistributedCache`, including an 
 
 ````csharp
 services.AddDistributedMemoryCache();
-   services.AddSession();
-   ````
+services.AddSession();
+````
 
 Then, add the following to `Configure` **before** `app.UseMVC()` and you're ready to use session in your application code:
 
@@ -131,11 +131,11 @@ These defaults, as well as the default `IdleTimeout` (used on the server indepen
 
 ````csharp
 services.AddSession(options =>
-   {
-     options.CookieName = ".AdventureWorks.Session";
-     options.IdleTimeout = TimeSpan.FromSeconds(10);
-   });
-   ````
+{
+  options.CookieName = ".AdventureWorks.Session";
+  options.IdleTimeout = TimeSpan.FromSeconds(10);
+});
+````
 
 The `IdleTimeout` is used by the server to determine how long a session can be idle before its contents are abandoned. Each request made to the site that passes through the Session middleware (regardless of whether Session is read from or written to within that middleware) will reset the timeout. Note that this is independent of the cookie's expiration.
 
@@ -148,29 +148,29 @@ Once session is installed and configured, you refer to it via HttpContext, which
 
 ````csharp
 public interface ISession
-   {
-       bool IsAvailable { get; }
-       string Id { get; }
-       IEnumerable<string> Keys { get; }
-       Task LoadAsync();
-       Task CommitAsync();
-       bool TryGetValue(string key, out byte[] value);
-       void Set(string key, byte[] value);
-       void Remove(string key);
-       void Clear();
-   }
-   ````
+{
+    bool IsAvailable { get; }
+    string Id { get; }
+    IEnumerable<string> Keys { get; }
+    Task LoadAsync();
+    Task CommitAsync();
+    bool TryGetValue(string key, out byte[] value);
+    void Set(string key, byte[] value);
+    void Remove(string key);
+    void Clear();
+}
+````
 
 Because `Session` is built on top of `IDistributedCache`, you must always serialize the object instances being stored. Thus, the interface works with `byte[]` not simply `object`. However, there are extension methods that make working with simple types such as `String` and `Int32` easier, as well as making it easier to get a byte[] value from session.
 
 ````csharp
 // session extension usage examples
-   context.Session.SetInt32("key1", 123);
-   int? val = context.Session.GetInt32("key1");
-   context.Session.SetString("key2", "value");
-   string stringVal = context.Session.GetString("key2");
-   byte[] result = context.Session.Get("key3");
-   ````
+context.Session.SetInt32("key1", 123);
+int? val = context.Session.GetInt32("key1");
+context.Session.SetString("key2", "value");
+string stringVal = context.Session.GetString("key2");
+byte[] result = context.Session.Get("key3");
+````
 
 If you're storing more complex objects, you will need to serialize the object to a `byte[]` in order to store them, and then deserialize them from `byte[]` when retrieving them.
 
@@ -178,132 +178,25 @@ If you're storing more complex objects, you will need to serialize the object to
 
 The associated sample application demonstrates how to work with Session, including storing and retrieving simple types as well as custom objects. In order to see what happens when session expires, the sample has configured sessions to last just 10 seconds:
 
-[!code-csharp[Main](../fundamentals/app-state/sample/src/AppState/Startup.cs?highlight=2,6)]
-
-````csharp
-{
-       services.AddDistributedMemoryCache();
-
-       services.AddSession(options =>
-       {
-           options.IdleTimeout = TimeSpan.FromSeconds(10);
-       });
-   }
-
-
-   ````
+[!code-csharp[Main](../fundamentals/app-state/sample/src/AppState/Startup.cs?highlight=2,6&range=15-23)]
 
 When you first navigate to the web server, it displays a screen indicating that no session has yet been established:
 
 ![image](app-state/_static/no-session-established.png)
 
-This default behavior is produced by the following middleware in *Startup.cs*, which runs when requests are made that do not already have an established session (note the highlighted sections):
+This default behavior is produced by the following middleware in Startup.cs, which runs when requests are made that do not already have an established session (note the highlighted sections):
 
-[!code-csharp[Main](../fundamentals/app-state/sample/src/AppState/Startup.cs?highlight=4,6,8,9,10,11,28,29)]
-
-````csharp
-// main catchall middleware
-   app.Run(async context =>
-   {
-       RequestEntryCollection collection = GetOrCreateEntries(context);
-
-       if (collection.TotalCount() == 0)
-       {
-           await context.Response.WriteAsync("<html><body>");
-           await context.Response.WriteAsync("Your session has not been established.<br>");
-           await context.Response.WriteAsync(DateTime.Now.ToString() + "<br>");
-           await context.Response.WriteAsync("<a href=\"/session\">Establish session</a>.<br>");
-       }
-       else
-       {
-           collection.RecordRequest(context.Request.PathBase + context.Request.Path);
-           SaveEntries(context, collection);
-
-           // Note: it's best to consistently perform all session access before writing anything to response
-           await context.Response.WriteAsync("<html><body>");
-           await context.Response.WriteAsync("Session Established At: " + context.Session.GetString("StartTime") + "<br>");
-           foreach (var entry in collection.Entries)
-           {
-               await context.Response.WriteAsync("Request: " + entry.Path + " was requested " + entry.Count + " times.<br />");
-           }
-
-           await context.Response.WriteAsync("Your session was located, you've visited the site this many times: " + collection.TotalCount() + "<br />");
-       }
-       await context.Response.WriteAsync("<a href=\"/untracked\">Visit untracked part of application</a>.<br>");
-       await context.Response.WriteAsync("</body></html>");
-   });
-
-
-   ````
+[!code-csharp[Main](app-state/sample/src/AppState/Startup.cs?range=77-107&highlight=4,6,8-11,28-29)]
 
 `GetOrCreateEntries` is a helper method that will retrieve a `RequestEntryCollection` instance from `Session` if it exists; otherwise, it creates the empty collection and returns that. The collection holds `RequestEntry` instances, which keep track of the different requests the user has made during the current session, and how many requests they've made for each path.
 
-[!code-csharp[Main](app-state/sample/src/AppState/Model/RequestEntry.cs)]
+[!code-csharp[Main](app-state/sample/src/AppState/Model/RequestEntry.cs?range=3-)]
 
-````csharp
-public class RequestEntry
-   {
-       public string Path { get; set; }
-       public int Count { get; set; }
-   }
-
-
-   ````
-
-[!code-csharp[Main](app-state/sample/src/AppState/Model/RequestEntryCollection.cs)]
-
-````csharp
-
-
-   public class RequestEntryCollection
-   {
-       public List<RequestEntry> Entries { get; set; } = new List<RequestEntry>();
-
-       public void RecordRequest(string requestPath)
-       {
-           var existingEntry = Entries.FirstOrDefault(e => e.Path == requestPath);
-           if (existingEntry != null) { existingEntry.Count++; return; }
-
-           var newEntry = new RequestEntry()
-           {
-               Path = requestPath,
-               Count = 1
-           };
-           Entries.Add(newEntry);
-       }
-
-       public int TotalCount()
-       {
-           return Entries.Sum(e => e.Count);
-       }
-   }
-
-
-   ````
+[!code-csharp[Main](app-state/sample/src/AppState/Model/RequestEntryCollection.cs?range=6-)]
 
 Fetching the current instance of `RequestEntryCollection` is done via the `GetOrCreateEntries` helper method:
 
-[!code-csharp[Main](../fundamentals/app-state/sample/src/AppState/Startup.cs?highlight=4,8,9)]
-
-````csharp
-private RequestEntryCollection GetOrCreateEntries(HttpContext context)
-   {
-       RequestEntryCollection collection = null;
-       byte[] requestEntriesBytes = context.Session.Get("RequestEntries");
-
-       if (requestEntriesBytes != null && requestEntriesBytes.Length > 0)
-       {
-           string json = System.Text.Encoding.UTF8.GetString(requestEntriesBytes);
-           return JsonConvert.DeserializeObject<RequestEntryCollection>(json);
-       }
-       if (collection == null)
-       {
-           collection = new RequestEntryCollection();
-       }
-       return collection;
-   }
-
-   ````
+[!code-csharp[Main](../fundamentals/app-state/sample/src/AppState/Startup.cs?highlight=4,8,9&range=109-124)]
 
 When the entry for the object exists in `Session`, it is retrieved as a `byte[]` type, and then deserialized using a `MemoryStream` and a `BinaryFormatter`, as shown above. If the object isn't in `Session`, the method returns a new instance of the `RequestEntryCollection`.
 
@@ -317,68 +210,16 @@ Refreshing the page results in the count incrementing; returning to the root of 
 
 Establishing the session is done in the middleware that handles requests to "/session":
 
-[!code-none[Main](../fundamentals/app-state/sample/src/AppState/Startup.cs?highlight=2,8,9,10,11,12,13,14)]
-
-````none
-// establish session
-   app.Map("/session", subApp =>
-   {
-       subApp.Run(async context =>
-       {
-           // uncomment the following line and delete session coookie to generate an error due to session access after response has begun
-           // await context.Response.WriteAsync("some content");
-           RequestEntryCollection collection = GetOrCreateEntries(context);
-           collection.RecordRequest(context.Request.PathBase + context.Request.Path);
-           SaveEntries(context, collection);
-           if (context.Session.GetString("StartTime") == null)
-           {
-               context.Session.SetString("StartTime", DateTime.Now.ToString());
-           }
-
-           await context.Response.WriteAsync("<html><body>");
-           await context.Response.WriteAsync($"Counting: You have made {collection.TotalCount()} requests to this application.<br><a href=\"/\">Return</a>");
-           await context.Response.WriteAsync("</body></html>");
-       });
-   });
-
-   ````
+[!code-none[Main](../fundamentals/app-state/sample/src/AppState/Startup.cs?highlight=2,8,9,10,11,12,13,14&range=56-75)]
 
 Requests to this path will get or create a `RequestEntryCollection`, will add the current path to it, and then will store it in session using the helper method `SaveEntries`, shown below:
 
-[!code-csharp[Main](../fundamentals/app-state/sample/src/AppState/Startup.cs?highlight=6)]
-
-````csharp
-private void SaveEntries(HttpContext context, RequestEntryCollection collection)
-   {
-       string json = JsonConvert.SerializeObject(collection);
-       byte[] serializedResult = System.Text.Encoding.UTF8.GetBytes(json);
-
-       context.Session.Set("RequestEntries", serializedResult);
-   }
-
-   ````
+[!code-csharp[Main](../fundamentals/app-state/sample/src/AppState/Startup.cs?highlight=6&range=126-132)]
 
 `SaveEntries` demonstrates how to serialize a custom object into a `byte[]` for storage in `Session` using a `MemoryStream` and a `BinaryFormatter`.
 
 The sample includes one more piece of middleware worth mentioning, which is mapped to the "/untracked" path. You can see its configuration here:
 
-[!code-csharp[Main](../fundamentals/app-state/sample/src/AppState/Startup.cs?highlight=2,13)]
-
-````csharp
-// example middleware that does not reference session at all and is configured before app.UseSession()
-   app.Map("/untracked", subApp =>
-   {
-       subApp.Run(async context =>
-       {
-           await context.Response.WriteAsync("<html><body>");
-           await context.Response.WriteAsync("Requested at: " + DateTime.Now.ToString("hh:mm:ss.ffff") + "<br>");
-           await context.Response.WriteAsync("This part of the application isn't referencing Session...<br><a href=\"/\">Return</a>");
-           await context.Response.WriteAsync("</body></html>");
-       });
-   });
-
-   app.UseSession();
-
-   ````
+[!code-csharp[Main](../fundamentals/app-state/sample/src/AppState/Startup.cs?highlight=2,13&range=42-54)]
 
 Note that this middleware is configured **before** the call to `app.UseSession()` is made (on line 13). Thus, the `Session` feature is not available to this middleware, and requests made to it do not reset the session `IdleTimeout`. You can confirm this behavior in the sample application by refreshing the untracked path several times within 10 seconds, and then return to the application root. You will find that your session has expired, despite no more than 10 seconds having passed between your requests to the application.

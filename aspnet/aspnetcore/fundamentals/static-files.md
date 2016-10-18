@@ -148,8 +148,6 @@ If `enableDirectoryBrowsing` is set to `true` you are required to call [`AddDire
 
 Using the file hierarchy and code above:
 
-<!--     URI  Response  http://<app>/StaticFiles/test.png  MyStaticFiles/test.png  http://<app>/StaticFiles  MyStaticFiles/default.html -->
-
 | URI            |                             Response  |
 | ------- | ------|
 | `http://<app>/StaticFiles/test.png`    |      MyStaticFiles/test.png |

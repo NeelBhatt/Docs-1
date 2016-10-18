@@ -30,7 +30,7 @@ In the code above, the `IStringLocalizer<T>` implementation comes from [Dependen
 
 Use the [`IHtmlLocalizer<T>`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Localization/IHtmlLocalizer-TResource/index.html) implementation for resources that contain HTML. `IHtmlLocalizer` HTML encodes arguments that are formatted in the resource string, but not the resource string. In the sample highlighted below, only the value of `name` parameter is HTML encoded.
 
-[!code-csharp[Main](../fundamentals/localization/sample/Controllers/BookController.cs?highlight=3,5,20&start1&end=23)]
+[!code-csharp[Main](../fundamentals/localization/sample/Controllers/BookController.cs?highlight=3,5,20&start=1&end=23)]
 
 > [!NOTE]
 > You generally want to only localize text and not HTML.
@@ -100,19 +100,19 @@ A resource file is a useful mechanism for separating localizable strings from co
 
 1. In **Solution Explorer**, right click on the folder which will contain the resource file > **Add** > **New Item**.
 
-![image](localization/_static/newi.png)
+    ![image](localization/_static/newi.png)
 
 2. In the **Search installed templates** box, enter "resource" and name the file.
 
-![image](localization/_static/res.png)
+    ![image](localization/_static/res.png)
 
 3. Enter the key value (native string) in the **Name** column and the translated string in the **Value** column.
 
-![image](localization/_static/hola.png)
+    ![image](localization/_static/hola.png)
 
-Visual Studio shows the *Welcome.es.resx* file.
+    Visual Studio shows the *Welcome.es.resx* file.
 
-![image](localization/_static/se.png)
+    ![image](localization/_static/se.png)
 
 ### Generating resource files with Visual Studio
 
@@ -168,7 +168,7 @@ The [`CookieRequestCultureProvider`](http://docs.asp.net/projects/api/en/latest/
 
 The cookie format is `c=%LANGCODE%|uic=%LANGCODE%`, where `c` is `Culture` and `uic` is `UICulture`, for example:
 
-c='en-UK'|uic='en-US'
+    c='en-UK'|uic='en-US'
 
 If you only specify one of culture info and UI culture, the specified culture will be used for both culture info and UI culture.
 
@@ -182,7 +182,7 @@ The [Accept-Language header](https://www.w3.org/International/questions/qa-accep
 
 2. Tap **Languages**.
 
-![image](localization/_static/lang.png)
+    ![image](localization/_static/lang.png)
 
 3. Tap **Set Language Preferences**.
 

@@ -39,50 +39,9 @@ Synchronous filters define both an On*Stage*Executing and On*Stage*Executed meth
 
 [!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/SampleActionFilter.cs?highlight=6,8,13)]
 
-````csharp
-using FiltersSample.Helper;
-   using Microsoft.AspNetCore.Mvc.Filters;
-
-   namespace FiltersSample.Filters
-   {
-       public class SampleActionFilter : IActionFilter
-       {
-           public void OnActionExecuting(ActionExecutingContext context)
-           {
-               // do something before the action executes
-           }
-
-           public void OnActionExecuted(ActionExecutedContext context)
-           {
-               // do something after the action executes
-           }
-       }
-   }
-   ````
-
 Asynchronous filters define a single On*Stage*ExecutionAsync method that will surround execution of the pipeline stage named by Stage. The On*Stage*ExecutionAsync method is provided a *Stage*ExecutionDelegate delegate which will execute the pipeline stage named by Stage when invoked and awaited.
 
 [!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/SampleAsyncActionFilter.cs?highlight=6,8,9,10)]
-
-````csharp
-using System.Threading.Tasks;
-   using Microsoft.AspNetCore.Mvc.Filters;
-
-   namespace FiltersSample.Filters
-   {
-       public class SampleAsyncActionFilter : IAsyncActionFilter
-       {
-           public async Task OnActionExecutionAsync(
-               ActionExecutingContext context,
-               ActionExecutionDelegate next)
-           {
-               // do something before the action executes
-               await next();
-               // do something after the action executes
-           }
-       }
-   }
-   ````
 
 > [!NOTE]
 > You should only implement *either* the synchronous or the async version of a filter interface, not both. If you need to perform async work in the filter, implement the async interface. Otherwise, implement the synchronous interface. The framework will check to see if the filter implements the async interface first, and if so, it will call it. If not, it will call the synchronous interface's method(s). If you were to implement both interfaces on one class, only the async method would be called by the framework. Also, it doesn't matter whether your action is async or not, your filters can be synchronous or async independent of the action.
@@ -93,21 +52,7 @@ Filters can be *scoped* at three different levels. You can add a particular filt
 
 Global filters are added in the `ConfigureServices` method in `Startup`, when configuring MVC:
 
-[!code-csharp[Main](./filters/sample/src/FiltersSample/Startup.cs?highlight=5,6)]
-
-````csharp
-public void ConfigureServices(IServiceCollection services)
-   {
-       services.AddMvc(options =>
-       {
-           options.Filters.Add(typeof(SampleActionFilter)); // by type
-           options.Filters.Add(new SampleGlobalActionFilter()); // an instance
-       });
-
-       services.AddScoped<AddHeaderFilterWithDi>();
-   }
-
-   ````
+[!code-csharp[Main](./filters/sample/src/FiltersSample/Startup.cs?highlight=5,6&range=11-20)]
 
 Filters can be added by type, or an instance can be added. If you add an instance, that instance will be used for every request. If you add a type, it will be type-activated, meaning an instance will be created for each request and any constructor dependencies will be populated by DI. Adding a filter by type is equivalent to `filters.Add(new TypeFilterAttribute(typeof(MyFilter)))`.
 
@@ -117,47 +62,9 @@ It's often convenient to implement filter interfaces as *Attributes*. Filter att
 
 [!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/AddHeaderAttribute.cs?highlight=5,16)]
 
-````csharp
-using Microsoft.AspNetCore.Mvc.Filters;
-
-   namespace FiltersSample.Filters
-   {
-       public class AddHeaderAttribute : ResultFilterAttribute
-       {
-           private readonly string _name;
-           private readonly string _value;
-
-           public AddHeaderAttribute(string name, string value)
-           {
-               _name = name;
-               _value = value;
-           }
-
-           public override void OnResultExecuting(ResultExecutingContext context)
-           {
-               context.HttpContext.Response.Headers.Add(
-                   _name, new string[] { _value });
-               base.OnResultExecuting(context);
-           }
-       }
-   }
-   ````
-
 Attributes allow filters to accept arguments, as shown in the example above. You would add this attribute to a controller or action method and specify the name and value of the HTTP header you wished to add to the response:
 
-[!code-csharp[Main](./filters/sample/src/FiltersSample/Controllers/SampleController.cs?highlight=1)]
-
-````csharp
-[AddHeader("Author", "Steve Smith @ardalis")]
-   public class SampleController : Controller
-   {
-       public IActionResult Index()
-       {
-           return Content("Examine the headers using developer tools.");
-       }
-   }
-
-   ````
+[!code-csharp[Main](./filters/sample/src/FiltersSample/Controllers/SampleController.cs?highlight=1&range=6-12,25)]
 
 The result of the `Index` action is shown below - the response headers are displayed on the bottom right.
 
@@ -187,48 +94,9 @@ You can short-circuit the filter pipeline at any point by setting the `Result` p
 
 [!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/ShortCircuitingResourceFilterAttribute.cs?highlight=12,13,14,15)]
 
-````csharp
-using System;
-   using Microsoft.AspNetCore.Mvc;
-   using Microsoft.AspNetCore.Mvc.Filters;
-
-   namespace FiltersSample.Filters
-   {
-       public class ShortCircuitingResourceFilterAttribute : Attribute,
-               IResourceFilter
-       {
-           public void OnResourceExecuting(ResourceExecutingContext context)
-           {
-               context.Result = new ContentResult()
-               {
-                   Content = "Resource unavailable - header should not be set"
-               };
-           }
-
-           public void OnResourceExecuted(ResourceExecutedContext context)
-           {
-           }
-       }
-   }
-
-   ````
-
 In the following code, both the `ShortCircuitingResourceFilter` and the `AddHeader` filter target the `SomeResource` action method. However, because the `ShortCircuitingResourceFilter` runs first and short-circuits the rest of the pipeline, the `AddHeader` filter never runs for the `SomeResource` action. This behavior would be the same if both filters were applied at the action method level, provided the `ShortCircuitingResourceFilter` ran first (see [Ordering](xref:mvc/controllers/filters#ordering)).
 
-[!code-csharp[Main](./filters/sample/src/FiltersSample/Controllers/SampleController.cs?highlight=1,4)]
-
-````csharp
-[AddHeader("Author", "Steve Smith @ardalis")]
-   public class SampleController : Controller
-   {
-       [ShortCircuitingResourceFilter]
-       public IActionResult SomeResource()
-       {
-           return Content("Successful access to resource - header should be set.");
-       }
-
-
-   ````
+[!code-csharp[Main](./filters/sample/src/FiltersSample/Controllers/SampleController.cs?highlight=1,4&range=6-8,14-19)]
 
 ## Configuring Filters
 
@@ -248,86 +116,30 @@ However, if your filters have dependencies you need to access from DI, there are
 
 A `TypeFilter` will instantiate an instance, using services from DI for its dependencies. A `ServiceFilter` retrieves an instance of the filter from DI. The following example demonstrates using a `ServiceFilter`:
 
-[!code-csharp[Main](../../mvc/controllers/filters/sample/src/FiltersSample/Controllers/HomeController.cs?highlight=1)]
-
-````csharp
-[ServiceFilter(typeof(AddHeaderFilterWithDi))]
-   public IActionResult Index()
-   {
-       return View();
-   }
-
-   ````
+[!code-csharp[Main](../../mvc/controllers/filters/sample/src/FiltersSample/Controllers/HomeController.cs?highlight=1&range=8-12)]
 
 Using `ServiceFilter` without registering the filter type in `ConfigureServices`, throws the following exception:
 
 ````none
 System.InvalidOperationException: No service for type
-   'FiltersSample.Filters.AddHeaderFilterWithDI' has been registered.
-   ````
+'FiltersSample.Filters.AddHeaderFilterWithDI' has been registered.
+````
 
 To avoid this exception, you must register the `AddHeaderFilterWithDI` type in `ConfigureServices`:
 
-[!code-csharp[Main](./filters/sample/src/FiltersSample/Startup.cs?highlight=1)]
-
-````csharp
-services.AddScoped<AddHeaderFilterWithDi>();
-
-   ````
+[!code-csharp[Main](./filters/sample/src/FiltersSample/Startup.cs?highlight=1&range=19)]
 
 `ServiceFilterAttribute` implements `IFilterFactory`, which exposes a single method for creating an `IFilter` instance. In the case of `ServiceFilterAttribute`, the `IFilterFactory` interface's `CreateInstance` method is implemented to load the specified type from the services container (DI).
 
 `TypeFilterAttribute` is very similar to `ServiceFilterAttribute` (and also implements `IFilterFactory`), but its type is not resolved directly from the DI container. Instead, it instantiates the type using a `Microsoft.Extensions.DependencyInjection.ObjectFactory`.
 
-   Because of this difference, types that are referenced using the `TypeFilterAttribute` do not need to be registered with the container first (but they will still have their dependencies fulfilled by the container). Also, `TypeFilterAttribute` can optionally accept constructor arguments for the type in question. The following example demonstrates how to pass arguments to a type using `TypeFilterAttribute`:
+Because of this difference, types that are referenced using the `TypeFilterAttribute` do not need to be registered with the container first (but they will still have their dependencies fulfilled by the container). Also, `TypeFilterAttribute` can optionally accept constructor arguments for the type in question. The following example demonstrates how to pass arguments to a type using `TypeFilterAttribute`:
 
-[!code-none[Main](../../mvc/controllers/filters/sample/src/FiltersSample/Controllers/HomeController.cs?highlight=1,2)]
-
-````none
-[TypeFilter(typeof(AddHeaderAttribute),
-       Arguments = new object[] { "Author", "Steve Smith (@ardalis)" })]
-   public IActionResult Hi(string name)
-   {
-       return Content($"Hi {name}");
-   }
-
-   ````
+[!code-none[Main](../../mvc/controllers/filters/sample/src/FiltersSample/Controllers/HomeController.cs?highlight=1,2&range=20-25)]
 
 If you have a simple filter that doesn't require any arguments, but which has constructor dependencies that need to be filled by DI, you can inherit from `TypeFilterAttribute`, allowing you to use your own named attribute on classes and methods (instead of `[TypeFilter(typeof(FilterType))]`). The following filter shows how this can be implemented:
 
-[!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/SampleActionFilterAttribute.cs?highlight=1,3,7)]
-
-````csharp
-public class SampleActionFilterAttribute : TypeFilterAttribute
-   {
-       public SampleActionFilterAttribute():base(typeof(SampleActionFilterImpl))
-       {
-       }
-
-       private class SampleActionFilterImpl : IActionFilter
-       {
-           private readonly ILogger _logger;
-           public SampleActionFilterImpl(ILoggerFactory loggerFactory)
-           {
-               _logger = loggerFactory.CreateLogger<SampleActionFilterAttribute>();
-           }
-
-           public void OnActionExecuting(ActionExecutingContext context)
-           {
-               _logger.LogInformation("Business action starting...");
-               // perform some business logic work
-
-           }
-
-           public void OnActionExecuted(ActionExecutedContext context)
-           {
-               // perform some business logic work
-               _logger.LogInformation("Business action completed.");
-           }
-       }
-   }
-
-   ````
+[!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/SampleActionFilterAttribute.cs?highlight=1,3,7&range=7-38)]
 
 This filter can be applied to classes or methods using the `[SampleActionFilter]` syntax, instead of having to use `[TypeFilter]` or `[ServiceFilter]`.
 
@@ -338,32 +150,7 @@ This filter can be applied to classes or methods using the `[SampleActionFilter]
 
 You can implement `IFilterFactory` on your own attribute implementations as another approach to creating filters:
 
-[!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/AddHeaderWithFactoryAttribute.cs?highlight=1,4,5,6,7)]
-
-````csharp
-public class AddHeaderWithFactoryAttribute : Attribute, IFilterFactory
-   {
-       // Implement IFilterFactory
-       public IFilterMetadata CreateInstance(IServiceProvider serviceProvider)
-       {
-           return new InternalAddHeaderFilter();
-       }
-
-       private class InternalAddHeaderFilter : IResultFilter
-       {
-           public void OnResultExecuting(ResultExecutingContext context)
-           {
-               context.HttpContext.Response.Headers.Add(
-                   "Internal", new string[] { "Header Added" });
-           }
-
-           public void OnResultExecuted(ResultExecutedContext context)
-           {
-           }
-       }
-
-
-   ````
+[!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/AddHeaderWithFactoryAttribute.cs?highlight=1,4,5,6,7&range=6-26)]
 
 <a name=ordering></a>
 
@@ -439,63 +226,13 @@ Learn more about [Authorization](../../security/authorization/index.md).
 
 The [short circuiting resource filter](xref:mvc/controllers/filters#short-circuiting-resource-filter) shown above is one example of a resource filter. A very naive cache implementation (do not use this in production) that only works with `ContentResult` action results is shown below:
 
-[!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/NaiveCacheResourceFilterAttribute.cs?highlight=1,2,11,16,17,27,30)]
-
-````csharp
-public class NaiveCacheResourceFilterAttribute : Attribute,
-       IResourceFilter
-   {
-       private static readonly Dictionary<string, object> _cache
-                   = new Dictionary<string, object>();
-       private string _cacheKey;
-
-       public void OnResourceExecuting(ResourceExecutingContext context)
-       {
-           _cacheKey = context.HttpContext.Request.Path.ToString();
-           if (_cache.ContainsKey(_cacheKey))
-           {
-               var cachedValue = _cache[_cacheKey] as string;
-               if (cachedValue != null)
-               {
-                   context.Result = new ContentResult()
-                   { Content = cachedValue };
-               }
-           }
-       }
-
-       public void OnResourceExecuted(ResourceExecutedContext context)
-       {
-           if (!String.IsNullOrEmpty(_cacheKey) &&
-               !_cache.ContainsKey(_cacheKey))
-           {
-               var result = context.Result as ContentResult;
-               if (result != null)
-               {
-                   _cache.Add(_cacheKey, result.Content);
-               }
-           }
-       }
-   }
-
-   ````
+[!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/NaiveCacheResourceFilterAttribute.cs?highlight=1,2,11,16,17,27,30&range=8-41)]
 
 In `OnResourceExecuting`, if the result is already in the static dictionary cache, the `Result` property is set on `context`, and the action short-circuits and returns with the cached result. In the `OnResourceExecuted` method, if the current request's key isn't already in use, the current `Result` is stored in the cache, to be used by future requests.
 
 Adding this filter to a class or method is shown here:
 
-[!code-csharp[Main](./filters/sample/src/FiltersSample/Controllers/CachedController.cs?highlight=1,2,6)]
-
-````csharp
-[TypeFilter(typeof(NaiveCacheResourceFilterAttribute))]
-   public class CachedController : Controller
-   {
-       public IActionResult Index()
-       {
-           return Content("This content was generated at " + DateTime.Now);
-       }
-   }
-
-   ````
+[!code-csharp[Main](./filters/sample/src/FiltersSample/Controllers/CachedController.cs?highlight=1,2,6&range=7-14)]
 
 <a name=action-filters></a>
 
@@ -523,46 +260,6 @@ Exception filters handle unhandled exceptions, including those that occur during
 Exception filters do not have two events (for before and after) - they only implement `OnException` (or `OnExceptionAsync`). The `ExceptionContext` provided in the `OnException` parameter includes the `Exception` that occurred. If you set `context.ExceptionHandled` to `true`, the effect is that you've handled the exception, so the request will proceed as if it hadn't occurred (generally returning a 200 OK status). The following filter uses a custom developer error view to display details about exceptions that occur when the application is in development:
 
 [!code-csharp[Main](./filters/sample/src/FiltersSample/Filters/CustomExceptionFilterAttribute.cs?highlight=33,34)]
-
-````csharp
-using Microsoft.AspNetCore.Hosting;
-   using Microsoft.AspNetCore.Mvc;
-   using Microsoft.AspNetCore.Mvc.Filters;
-   using Microsoft.AspNetCore.Mvc.ModelBinding;
-   using Microsoft.AspNetCore.Mvc.ViewFeatures;
-
-   namespace FiltersSample.Filters
-   {
-       public class CustomExceptionFilterAttribute : ExceptionFilterAttribute
-       {
-           private readonly IHostingEnvironment _hostingEnvironment;
-           private readonly IModelMetadataProvider _modelMetadataProvider;
-
-           public CustomExceptionFilterAttribute(
-               IHostingEnvironment hostingEnvironment,
-               IModelMetadataProvider modelMetadataProvider)
-           {
-               _hostingEnvironment = hostingEnvironment;
-               _modelMetadataProvider = modelMetadataProvider;
-           }
-
-           public override void OnException(ExceptionContext context)
-           {
-               if (!_hostingEnvironment.IsDevelopment())
-               {
-                   // do nothing
-                   return;
-               }
-               var result = new ViewResult {ViewName = "CustomError"};
-               result.ViewData = new ViewDataDictionary(_modelMetadataProvider,context.ModelState);
-               result.ViewData.Add("Exception", context.Exception);
-               // TODO: Pass additional detailed data via ViewData
-               context.ExceptionHandled = true; // mark exception as handled
-               context.Result = result;
-           }
-       }
-   }
-   ````
 
 <a name=result-filters></a>
 

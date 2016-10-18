@@ -3,7 +3,9 @@ uid: security/data-protection/implementation/context-headers
 ---
 <a name=data-protection-implementation-context-headers></a>
 
-# Context headers  ## Background and theory
+# Context headers
+
+## Background and theory
 
 In the data protection system, a "key" means an object that can provide authenticated encryption services. Each key is identified by a unique id (a GUID), and it carries with it algorithmic information and entropic material. It is intended that each key carry unique entropy, but the system cannot enforce that, and we also need to account for developers who might change the key ring manually by modifying the algorithmic information of an existing key in the key ring. To achieve our security requirements given these cases the data protection system has a concept of [cryptographic agility](http://research.microsoft.com/apps/pubs/default.aspx?id=121045), which allows securely using a single entropic value across multiple cryptographic algorithms.
 

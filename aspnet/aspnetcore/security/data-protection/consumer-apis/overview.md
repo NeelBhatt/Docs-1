@@ -36,95 +36,9 @@ The following sample demonstrates three concepts:
 
 [!code-none[Main](../using-data-protection/samples/protectunprotect.cs?highlight=26,34,35,36,37,38,39,40)]
 
-````none
-using System;
-   using Microsoft.AspNetCore.DataProtection;
-   using Microsoft.Extensions.DependencyInjection;
-
-   public class Program
-   {
-       public static void Main(string[] args)
-       {
-           // add data protection services
-           var serviceCollection = new ServiceCollection();
-           serviceCollection.AddDataProtection();
-           var services = serviceCollection.BuildServiceProvider();
-
-           // create an instance of MyClass using the service provider
-           var instance = ActivatorUtilities.CreateInstance<MyClass>(services);
-           instance.RunSample();
-       }
-
-       public class MyClass
-       {
-           IDataProtector _protector;
-
-           // the 'provider' parameter is provided by DI
-           public MyClass(IDataProtectionProvider provider)
-           {
-               _protector = provider.CreateProtector("Contoso.MyClass.v1");
-           }
-
-           public void RunSample()
-           {
-               Console.Write("Enter input: ");
-               string input = Console.ReadLine();
-
-               // protect the payload
-               string protectedPayload = _protector.Protect(input);
-               Console.WriteLine($"Protect returned: {protectedPayload}");
-
-               // unprotect the payload
-               string unprotectedPayload = _protector.Unprotect(protectedPayload);
-               Console.WriteLine($"Unprotect returned: {unprotectedPayload}");
-           }
-       }
-   }
-
-   /*
-    * SAMPLE OUTPUT
-    *
-    * Enter input: Hello world!
-    * Protect returned: CfDJ8ICcgQwZZhlAlTZT...OdfH66i1PnGmpCR5e441xQ
-    * Unprotect returned: Hello world!
-    */
-
-   ````
-
 The package Microsoft.AspNetCore.DataProtection.Abstractions contains an extension method IServiceProvider.GetDataProtector as a developer convenience. It encapsulates as a single operation both retrieving an IDataProtectionProvider from the service provider and calling IDataProtectionProvider.CreateProtector. The following sample demonstrates its usage.
 
 [!code-none[Main](./overview/samples/getdataprotector.cs?highlight=15)]
-
-````none
-using System;
-   using Microsoft.AspNetCore.DataProtection;
-   using Microsoft.Extensions.DependencyInjection;
-    
-   public class Program
-   {
-       public static void Main(string[] args)
-       {
-           // add data protection services
-           var serviceCollection = new ServiceCollection();
-           serviceCollection.AddDataProtection();
-           var services = serviceCollection.BuildServiceProvider();
-    
-           // get an IDataProtector from the IServiceProvider
-           var protector = services.GetDataProtector("Contoso.Example.v2");
-           Console.Write("Enter input: ");
-           string input = Console.ReadLine();
-    
-           // protect the payload
-           string protectedPayload = protector.Protect(input);
-           Console.WriteLine($"Protect returned: {protectedPayload}");
-    
-           // unprotect the payload
-           string unprotectedPayload = protector.Unprotect(protectedPayload);
-           Console.WriteLine($"Unprotect returned: {unprotectedPayload}");
-       }
-   }
-
-   ````
 
 >[!TIP]
 > Instances of IDataProtectionProvider and IDataProtector are thread-safe for multiple callers. It is intended that once a component gets a reference to an IDataProtector via a call to CreateProtector, it will use that reference for multiple calls to Protect and Unprotect.A call to Unprotect will throw CryptographicException if the protected payload cannot be verified or deciphered. Some components may wish to ignore errors during unprotect operations; a component which reads authentication cookies might handle this error and treat the request as if it had no cookie at all rather than fail the request outright. Components which want this behavior should specifically catch CryptographicException instead of swallowing all exceptions.

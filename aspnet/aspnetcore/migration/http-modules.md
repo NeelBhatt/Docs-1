@@ -16,14 +16,16 @@ Before proceeding to ASP.NET Core middleware, let's first recap how HTTP modules
 
 ![image](http-modules/_static/moduleshandlers.png)
 
-Handlers are:
+**Handlers are:**
+
    * Classes that implement [IHttpHandler](https://msdn.microsoft.com/en-us/library/system.web.ihttphandler(v=vs.100).aspx)
 
    * Used to handle requests with a given file name or extension, such as *.report*
 
    * [Configured](https://msdn.microsoft.com/en-us/library/46c5ddfy(v=vs.100).aspx) in *Web.config*
 
-Modules are:
+**Modules are:**
+
    * Classes that implement [IHttpModule](https://msdn.microsoft.com/en-us/library/system.web.ihttpmodule(v=vs.100).aspx)
 
    * Invoked for every request
@@ -44,7 +46,8 @@ In addition to modules, you can add handlers for the life cycle events to your *
 
 ## From handlers and modules to middleware
 
-Middleware are simpler than HTTP modules and handlers:
+**Middleware are simpler than HTTP modules and handlers:**
+
    * Modules, handlers, *Global.asax.cs*, *Web.config* (except for IIS configuration) and the application life cycle are gone
 
    * The roles of both modules and handlers have been taken over by middleware
@@ -53,14 +56,16 @@ Middleware are simpler than HTTP modules and handlers:
 
    * [Pipeline branching](../fundamentals/middleware.md#middleware-run-map-use) lets you send requests to specific middleware, based on not only the URL but also on request headers, query strings, etc.
 
-Middleware are very similar to modules:
+**Middleware are very similar to modules:**
+
    * Invoked in principle for every request
 
    * Able to short-circuit a request, by [not passing the request to the next middleware](xref:migration/http-modules#http-modules-shortcircuiting-middleware)
 
    * Able to create their own HTTP response
 
-Middleware and modules are processed in a different order:
+**Middleware and modules are processed in a different order:**
+
    * Order of middleware is based on the order in which they are inserted into the request pipeline, while order of modules is mainly based on [application life cycle](https://msdn.microsoft.com/en-us/library/ms227673(v=vs.100).aspx) events
 
    * Order of middleware for responses is the reverse from that for requests, while order of modules is the same for requests and responses
@@ -77,88 +82,11 @@ An existing HTTP module will look similar to this:
 
 [!code-csharp[Main](../migration/http-modules/sample/Asp.Net4/Asp.Net4/Modules/MyModule.cs?highlight=6,8,24,31)]
 
-````csharp
-// ASP.NET 4 module
-
-   using System;
-   using System.Web;
-
-   namespace MyApp.Modules
-   {
-       public class MyModule : IHttpModule
-       {
-           public void Dispose()
-           {
-           }
-
-           public void Init(HttpApplication application)
-           {
-               application.BeginRequest += (new EventHandler(this.Application_BeginRequest));
-               application.EndRequest += (new EventHandler(this.Application_EndRequest));
-           }
-
-           private void Application_BeginRequest(Object source, EventArgs e)
-           {
-               HttpContext context = ((HttpApplication)source).Context;
-
-               // Do something with context near the beginning of request processing.
-           }
-
-           private void Application_EndRequest(Object source, EventArgs e)
-           {
-               HttpContext context = ((HttpApplication)source).Context;
-
-               // Do something with context near the end of request processing.
-           }
-       }
-   }
-
-   ````
-
 As shown in the [Middleware](../fundamentals/middleware.md) page, an ASP.NET Core middleware is simply a class that exposes an `Invoke` method taking an `HttpContext` and returning a `Task`. Your new middleware will look like this:
 
 <a name=http-modules-usemiddleware></a>
 
 [!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/MyMiddleware.cs?highlight=9,13,20,24,28,30,32)]
-
-````csharp
-// ASP.NET 5 middleware
-
-   using Microsoft.AspNet.Builder;
-   using Microsoft.AspNet.Http;
-   using System.Threading.Tasks;
-
-   namespace MyApp.Middleware
-   {
-       public class MyMiddleware
-       {
-           private readonly RequestDelegate _next;
-
-           public MyMiddleware(RequestDelegate next)
-           {
-               _next = next;
-           }
-
-           public async Task Invoke(HttpContext context)
-           {
-               // Do something with context near the beginning of request processing.
-
-               await _next.Invoke(context);
-
-               // Clean up.
-           }
-       }
-
-       public static class MyMiddlewareExtensions
-       {
-           public static IApplicationBuilder UseMyMiddleware(this IApplicationBuilder builder)
-           {
-               return builder.UseMiddleware<MyMiddleware>();
-           }
-       }
-   }
-
-   ````
 
 The above middleware template was taken from the section on [writing middleware](../fundamentals/middleware.md#middleware-writing-middleware).
 
@@ -168,44 +96,11 @@ The *MyMiddlewareExtensions* helper class makes it easier to configure your midd
 
 Your module might terminate a request, for example if the user is not authorized:
 
-[!code-csharp[Main](../migration/http-modules/sample/Asp.Net4/Asp.Net4/Modules/MyTerminatingModule.cs?highlight=9,10,11,12,13)]
-
-````csharp
-// ASP.NET 4 module that may terminate the request
-
-   private void Application_BeginRequest(Object source, EventArgs e)
-   {
-       HttpContext context = ((HttpApplication)source).Context;
-
-       // Do something with context near the beginning of request processing.
-
-       if (TerminateRequest())
-       {
-           context.Response.End();
-           return;
-       }
-   }
-
-   ````
+[!code-csharp[Main](../migration/http-modules/sample/Asp.Net4/Asp.Net4/Modules/MyTerminatingModule.cs?highlight=9,10,11,12,13&range=18-31)]
 
 A middleware handles this by simply not calling `Invoke` on the next middleware in the pipeline. Keep in mind that this does not fully terminate the request, because previous middlewares will still be invoked when the response makes its way back through the pipeline.
 
-[!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/MyTerminatingMiddleware.cs?highlight=7,8)]
-
-````csharp
-// ASP.NET 5 middleware that may terminate the request
-
-   public async Task Invoke(HttpContext context)
-   {
-       // Do something with context near the beginning of request processing.
-
-       if (!TerminateRequest())
-           await _next.Invoke(context);
-
-       // Clean up.
-   }
-
-   ````
+[!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/MyTerminatingMiddleware.cs?highlight=7,8&range=16-26)]
 
 When you migrate your module's functionality to your new middleware, you may find that your code doesn't compile because the `HttpContext` class has significantly changed in ASP.NET Core. [Later on](#migrating-to-the-new-httpcontext), you'll see how to migrate to the new ASP.NET Core HttpContext.
 
@@ -213,44 +108,11 @@ When you migrate your module's functionality to your new middleware, you may fin
 
 HTTP modules are typically added to the request pipeline using *Web.config*:
 
-[!code-xml[Main](../migration/http-modules/sample/Asp.Net4/Asp.Net4/Web.config?highlight=6)]
-
-````xml
-<?xml version="1.0" encoding="utf-8"?>
-   <!--ASP.NET 4 web.config-->
-   <configuration>
-     <system.webServer>
-       <modules>
-         <add name="MyModule" type="MyApp.Modules.MyModule"/>
-       </modules>
-     </system.webServer>
-   </configuration>
-   ````
+[!code-xml[Main](../migration/http-modules/sample/Asp.Net4/Asp.Net4/Web.config?highlight=6&range=1-3,32-33,36,43,50,101)]
 
 Convert this by [adding your new middleware](../fundamentals/middleware.md#creating-a-middleware-pipeline-with-iapplicationbuilder) to the request pipeline in your `Startup` class:
 
-[!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Startup.cs?highlight=12)]
-
-````csharp
-// ASP.NET 5 Startup class
-
-   namespace Asp.Net5
-   {
-       public class Startup
-       {
-           public void Configure(IApplicationBuilder app, IHostingEnvironment env, 
-               ILoggerFactory loggerFactory)
-           {
-               // ...
-
-               app.UseMyMiddleware();
-
-               // ...
-           }
-       }
-   }
-
-   ````
+[!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Startup.cs?highlight=12&range=1-2,12-15,46-48,54-58,105,109,110)]
 
 The exact spot in the pipeline where you insert your new middleware depends on the event that it handled as a module (`BeginRequest`, `EndRequest`, etc.) and its order in your list of modules in *Web.config*.
 
@@ -262,76 +124,11 @@ If ordering becomes a problem, you could split your module into multiple middlew
 
 An HTTP handler looks something like this:
 
-[!code-csharp[Main](../migration/http-modules/sample/Asp.Net4/Asp.Net4/HttpHandlers/ReportHandler.cs?highlight=5,7,13,14,15,16)]
-
-````csharp
-// ASP.NET 4 handler
-
-   using System.Web;
-
-   namespace MyApp.HttpHandlers
-   {
-       public class MyHandler : IHttpHandler
-       {
-           public bool IsReusable { get { return true; } }
-
-           public void ProcessRequest(HttpContext context)
-           {
-               string response = GenerateResponse(context);
-
-               context.Response.ContentType = GetContentType();
-               context.Response.Output.Write(response);
-           }
-
-           // ...
-       }
-   }
-
-   ````
+[!code-csharp[Main](../migration/http-modules/sample/Asp.Net4/Asp.Net4/HttpHandlers/ReportHandler.cs?highlight=5,7,13,14,15,16&range=1-19,31-32)]
 
 In your ASP.NET Core project, you would translate this to a middleware similar to this:
 
-[!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/ReportHandlerMiddleware.cs?highlight=7,9,13,20,21,22,23,29,31,33)]
-
-````csharp
-// ASP.NET 5 middleware migrated from a handler
-
-   using Microsoft.AspNet.Builder;
-   using Microsoft.AspNet.Http;
-   using System.Threading.Tasks;
-
-   namespace MyApp.Middleware
-   {
-       public class MyHandlerMiddleware
-       {
-
-           // Must have constructor with this signature, otherwise exception at run time
-           public MyHandlerMiddleware(RequestDelegate next)
-           {
-               // This is an HTTP Handler, so no need to store next
-           }
-
-           public async Task Invoke(HttpContext context)
-           {
-               string response = GenerateResponse(context);
-
-               context.Response.ContentType = GetContentType();
-               await context.Response.WriteAsync(response);
-           }
-
-           // ...
-       }
-
-       public static class MyHandlerExtensions
-       {
-           public static IApplicationBuilder UseMyHandler(this IApplicationBuilder builder)
-           {
-               return builder.UseMiddleware<MyHandlerMiddleware>();
-           }
-       }
-   }
-
-   ````
+[!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/ReportHandlerMiddleware.cs?highlight=7,9,13,20,21,22,23,29,31,33&range=1-26,38-47)]
 
 This middleware is very similar to the middleware corresponding to modules. The only real difference is that here there is no call to `_next.Invoke(context)`. That makes sense, because the handler is at the end of the request pipeline, so there will be no next middleware to invoke.
 
@@ -339,49 +136,13 @@ This middleware is very similar to the middleware corresponding to modules. The 
 
 Configuring an HTTP handler is done in *Web.config* and looks something like this:
 
-[!code-xml[Main](../migration/http-modules/sample/Asp.Net4/Asp.Net4/Web.config?highlight=6)]
-
-````xml
-<?xml version="1.0" encoding="utf-8"?>
-   <!--ASP.NET 4 web.config-->
-   <configuration>
-     <system.webServer>
-       <handlers>
-         <add name="MyHandler" verb="*" path="*.report" type="MyApp.HttpHandlers.MyHandler" resourceType="Unspecified" preCondition="integratedMode"/>
-       </handlers>
-     </system.webServer>
-   </configuration>
-   ````
+[!code-xml[Main](../migration/http-modules/sample/Asp.Net4/Asp.Net4/Web.config?highlight=6&range=1-3,32,46-48,50,101)]
 
 You could convert this by adding your new handler middleware to the request pipeline in your `Startup` class, similar to middleware converted from modules. The problem with that approach is that it would send all requests to your new handler middleware. However, you only want requests with a given extension to reach your middleware. That would give you the same functionality you had with your HTTP handler.
 
 One solution is to branch the pipeline for requests with a given extension, using the `MapWhen` extension method. You do this in the same `Configure` method where you add the other middleware:
 
-[!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Startup.cs?highlight=12,13,14,15,16,17)]
-
-````csharp
-// ASP.NET 5 Startup class
-
-   namespace Asp.Net5
-   {
-       public class Startup
-       {
-           public void Configure(IApplicationBuilder app, IHostingEnvironment env, 
-               ILoggerFactory loggerFactory)
-           {
-               // ...
-
-               app.MapWhen(
-                   context => context.Request.Path.ToString().EndsWith(".report"),
-                   appBranch => {
-                       // ... optionally add more middleware to this branch
-                       appBranch.UseMyHandler();
-                   });
-           }
-       }
-   }
-
-   ````
+[!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Startup.cs?highlight=12,13,14,15,16,17&range=1-2,12-15,46-48,54-55,82-87,105,109,110)]
 
 `MapWhen` takes these parameters:
 
@@ -401,133 +162,43 @@ The new [configuration system](../fundamentals/configuration.md) gives you these
 
 * Use the [options pattern](../fundamentals/configuration.md#options-config-objects):
 
-1. Create a class to hold your middleware options, for example:
+1.  Create a class to hold your middleware options, for example:
 
-   [!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/MyMiddlewareWithParams.cs)]
+    [!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/MyMiddlewareWithParams.cs?range=8-12)]
 
-      ````csharp
-      public class MyMiddlewareOptions
-         {
-             public string Param1 { get; set; }
-             public string Param2 { get; set; }
-         }
+2.  Store the option values
 
-         ````
+    The new configuration system allows you to essentially store option values anywhere you want. However, most sites use *appsettings.json*, so we'll take that approach:
 
-2. Store the option values
+    [!code-json[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/appsettings.json?range=1,6-10)]
 
-      The new configuration system allows you to essentially store option values anywhere you want. However, most sites use *appsettings.json*, so we'll take that approach:
-
-[!code-json[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/appsettings.json)]
-
-      ````json
-      {
-           "MyMiddlewareOptionsSection": {
-             "Param1": "Param1Value",
-             "Param2": "Param2Value"
-           }
-         }
-
-         ````
-   *MyMiddlewareOptionsSection* here is simply a section name. It doesn't have to be the same as the name of your options class.
+    *MyMiddlewareOptionsSection* here is simply a section name. It doesn't have to be the same as the name of your options class.
 
 3. Associate the option values with the options class
 
-      The options pattern uses ASP.NET Core's dependency injection framework to associate the options type (such as `MyMiddlewareOptions`) with an `MyMiddlewareOptions` object that has the actual options.
+    The options pattern uses ASP.NET Core's dependency injection framework to associate the options type (such as `MyMiddlewareOptions`) with an `MyMiddlewareOptions` object that has the actual options.
 
-      Update your `Startup` class:
+    Update your `Startup` class:
 
-         1. If you're using *appsettings.json*, add it to the configuration builder in the `Startup` constructor:
+    1.  If you're using *appsettings.json*, add it to the configuration builder in the `Startup` constructor:
 
-[!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Startup.cs?highlight=7)]
+        [!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Startup.cs?highlight=7&range=14-23,106,109)]
 
-         ````csharp
-         public class Startup
-            {
-                public Startup(IHostingEnvironment env)
-                {
-                    // Set up configuration sources.
-                    var builder = new ConfigurationBuilder()
-                        .AddJsonFile("appsettings.json")
-                        .AddEnvironmentVariables();
-                    Configuration = builder.Build();
-                }
+    2.  Configure the options service:
 
-            }
+        [!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Startup.cs?highlight=5&range=14-15,28-29,31-33,43,109)]
 
-            ````
-      2. Configure the options service:
+    3.  Associate your options with your options class:
 
-[!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Startup.cs?highlight=5)]
+        [!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Startup.cs?highlight=7,8&range=14-15,28-29,31-32,36-39,43,109)]
 
-         ````csharp
-         public class Startup
-            {
-                public void ConfigureServices(IServiceCollection services)
-                {
-                    services.AddOptions();
+4.  Inject the options into your middleware constructor. This is similar to injecting options into a controller.
 
-                    // ...
-                }
-            }
+    [!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/MyMiddlewareWithParams.cs?highlight=7,10,13,19,24&range=6-7,24-47)]
 
-            ````
-      3. Associate your options with your options class:
+    The [UseMiddleware](#http-modules-usemiddleware) extension method that adds your middleware to the `IApplicationBuilder` takes care of dependency injection.
 
-[!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Startup.cs?highlight=7,8)]
-
-         ````csharp
-         public class Startup
-            {
-                public void ConfigureServices(IServiceCollection services)
-                {
-                    services.AddOptions();
-
-                    services.Configure<MyMiddlewareOptions>(
-                        Configuration.GetSection("MyMiddlewareOptionsSection"));
-
-                    // ...
-                }
-            }
-
-            ````
-
-4. Inject the options into your middleware constructor. This is similar to injecting options into a controller.
-
-[!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/MyMiddlewareWithParams.cs?highlight=7,10,13,19,24)]
-
-      ````csharp
-      namespace MyApp.Middleware
-         {
-
-             public class MyMiddlewareWithParams
-             {
-                 private readonly RequestDelegate _next;
-                 private readonly MyMiddlewareOptions _myMiddlewareOptions;
-
-                 public MyMiddlewareWithParams(RequestDelegate next,
-                     IOptions<MyMiddlewareOptions> optionsAccessor)
-                 {
-                     _next = next;
-                     _myMiddlewareOptions = optionsAccessor.Value;
-                 }
-
-                 public async Task Invoke(HttpContext context)
-                 {
-                     // Do something with context near the beginning of request processing
-                     // using configuration in _myMiddlewareOptions
-
-                     await _next.Invoke(context);
-
-                     // Do something with context near the end of request processing
-                     // using configuration in _myMiddlewareOptions
-                 }
-             }
-
-         ````
-   The [UseMiddleware](#http-modules-usemiddleware) extension method that adds your middleware to the `IApplicationBuilder` takes care of dependency injection.
-
-      This is not limited to `IOptions` objects. Any other object that your middleware requires can be injected this way.
+    This is not limited to `IOptions` objects. Any other object that your middleware requires can be injected this way.
 
 <a name=loading-middleware-options-through-direct-injection></a>
 
@@ -539,137 +210,27 @@ This breaks down though if you want to use the same middleware twice, with diffe
 
 The solution is to get the options objects with the actual options values in your `Startup` class and pass those directly to each instance of your middleware.
 
-1. Add a second key to *appsettings.json*
+1.  Add a second key to *appsettings.json*
 
-      To add a second set of options to the *appsettings.json* file, simply use a new key to uniquely identify it:
+    To add a second set of options to the *appsettings.json* file, simply use a new key to uniquely identify it:
 
-[!code-json[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/appsettings.json?highlight=2,3,4,5)]
+    [!code-json[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/appsettings.json?highlight=2,3,4,5)]
 
-      ````json
-      {
-           "MyMiddlewareOptionsSection2": {
-             "Param1": "Param1Value2",
-             "Param2": "Param2Value2"
-           },
-           "MyMiddlewareOptionsSection": {
-             "Param1": "Param1Value",
-             "Param2": "Param2Value"
-           }
-         }
+2.  Retrieve options values. The `Get` method on the `Configuration` property lets you retrieve options values:
 
-         ````
+    [!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Startup.cs?highlight=12,13,14,15,16&range=1-2,12-15,46-48,54-55,62-66,67,70,71,105,109,110)]
 
-2. Retrieve options values. The `Get` method on the `Configuration` property lets you retrieve options values:
+3.  Pass options values to middleware. The `Use...` extension method (which adds your middleware to the pipeline) is a logical place to pass in the option values: 
 
-[!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Startup.cs?highlight=12,13,14,15,16)]
+    [!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Startup.cs?highlight=18-22&range=1-2,12-15,46-48,54-55,62-72,105,109,110)]
 
-      ````csharp
-      // ASP.NET 5 Startup class
+4.  Enable middleware to take an options parameter. Provide an overload of the `Use...` extension method (that takes the options parameter and passes it to `UseMiddleware`). When `UseMiddleware` is called with parameters, it passes the parameters to your middleware constructor when it instantiates the middleware object.
 
-         namespace Asp.Net5
-         {
-             public class Startup
-             {
-                 public void Configure(IApplicationBuilder app, IHostingEnvironment env, 
-                     ILoggerFactory loggerFactory)
-                 {
-                     // ...
+    [!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/MyMiddlewareWithParams.cs?highlight=17,18,19,20,21,22&range=1-7,48-64)]
 
-                     var myMiddlewareOptions = 
-                         Configuration.Get<MyMiddlewareOptions>("MyMiddlewareOptionsSection");
+    Note how this wraps the options object in an `OptionsWrapper` object. This implements `IOptions`, as expected by the middleware constructor:
 
-                     var myMiddlewareOptions2 = 
-                         Configuration.Get<MyMiddlewareOptions>("MyMiddlewareOptionsSection2");
-
-                     // ...
-
-                 }
-             }
-         }
-
-         ````
-
-3. Pass options values to middleware. The `Use...` extension method (which adds your middleware to the pipeline) is a logical place to pass in the option values: 
-
-[!code-csharp[Main](./http-modules/sample/Asp.Net5/src/Asp.Net5/Startup.cs?highlight=18-22)]
-
-	````csharp
-      // ASP.NET 5 Startup class
-
-         namespace Asp.Net5
-         {
-             public class Startup
-             {
-                 public void Configure(IApplicationBuilder app, IHostingEnvironment env, 
-                     ILoggerFactory loggerFactory)
-                 {
-                     // ...
-
-                     var myMiddlewareOptions = 
-                         Configuration.Get<MyMiddlewareOptions>("MyMiddlewareOptionsSection");
-
-                     var myMiddlewareOptions2 = 
-                         Configuration.Get<MyMiddlewareOptions>("MyMiddlewareOptionsSection2");
-
-                     app.UseMyMiddlewareWithParams(myMiddlewareOptions);
-
-                     // ...
-
-                     app.UseMyMiddlewareWithParams(myMiddlewareOptions2);
-                 }
-             }
-         }
-
-         ````
-
-4. Enable middleware to take an options parameter. Provide an overload of the `Use...` extension method (that takes the options parameter and passes it to `UseMiddleware`). When `UseMiddleware` is called with parameters, it passes the parameters to your middleware constructor when it instantiates the middleware object.
-
-[!code-csharp[Main](../migration/http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/MyMiddlewareWithParams.cs?highlight=17,18,19,20,21,22)]
-
-      ````csharp
-      using Microsoft.AspNet.Builder;
-         using Microsoft.AspNet.Http;
-         using Microsoft.Extensions.OptionsModel;
-         using System.Threading.Tasks;
-
-         namespace MyApp.Middleware
-         {
-
-             public static class MyMiddlewareWithParamsExtensions
-             {
-                 public static IApplicationBuilder UseMyMiddlewareWithParams(
-                     this IApplicationBuilder builder)
-                 {
-                     return builder.UseMiddleware<MyMiddlewareWithParams>();
-                 }
-
-                 public static IApplicationBuilder UseMyMiddlewareWithParams(
-                     this IApplicationBuilder builder, MyMiddlewareOptions myMiddlewareOptions)
-                 {
-                     return builder.UseMiddleware<MyMiddlewareWithParams>(
-                         new OptionsWrapper<MyMiddlewareOptions>(myMiddlewareOptions));
-                 }
-             }
-         }
-
-         ````
-   Note how this wraps the options object in an `OptionsWrapper` object. This implements `IOptions`, as expected by the middleware constructor:
-
-[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/MyMiddlewareWithParams.cs)]
-
-      ````csharp
-          // Remove this when Microsoft.Extensions.Options becomes available from NuGet
-             public class OptionsWrapper<TOptions> : IOptions<TOptions> where TOptions : class, new()
-             {
-                 public OptionsWrapper(TOptions options)
-                 {
-                     Value = options;
-                 }
-
-                 public TOptions Value { get; }
-             }
-
-         ````
+    [!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/MyMiddlewareWithParams.cs?range=14-23)]
 
 ## Migrating to the new HttpContext
 
@@ -677,7 +238,7 @@ You saw earlier that the `Invoke` method in your middleware takes a parameter of
 
 ````csharp
 public async Task Invoke(HttpContext context)
-   ````
+````
 
 `HttpContext` has significantly changed in ASP.NET Core. This section shows how to translate the most commonly used properties of [`System.Web.HttpContext](https://msdn.microsoft.com/en-us/library/system.web.httpcontext(v=vs.110).aspx) to the new [Microsoft.AspNetCore.Http.HttpContext`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Http/HttpContext/index.html).
 
@@ -685,187 +246,73 @@ public async Task Invoke(HttpContext context)
 
 **HttpContext.Items** translates to:
 
-[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs)]
-
-   ````csharp
-   IDictionary<object, object> items = httpContext.Items;
-
-      ````
+[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs?range=51)]
 
 **Unique request ID (no System.Web.HttpContext counterpart)**
 
 Gives you a unique id for each request. Very useful to include in your logs.
 
-[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs)]
-
-   ````csharp
-   string requestId = httpContext.TraceIdentifier;
-
-      ````
+[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs?range=46)]
 
 ### HttpContext.Request
 
 **HttpContext.Request.HttpMethod** translates to:
 
-[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs)]
-
-   ````csharp
-   string httpMethod = httpContext.Request.Method;
-
-      ````
+[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs?range=59)]
 
 **HttpContext.Request.QueryString** translates to:
 
-[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs)]
-
-   ````csharp
-   IReadableStringCollection queryParameters = httpContext.Request.Query;
-
-      // If no query parameter "key" used, values will have 0 items
-      // If single value used for a key (...?key=v1), values will have 1 item ("v1")
-      // If key has multiple values (...?key=v1&key=v2), values will have 2 items ("v1" and "v2")
-      IList<string> values = queryParameters["key"];
-
-      // If no query parameter "key" used, value will be ""
-      // If single value used for a key (...?key=v1), value will be "v1"
-      // If key has multiple values (...?key=v1&key=v2), value will be "v1,v2"
-      string value = queryParameters["key"].ToString();
-
-      ````
+[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs?range=66-76)]
 
 **HttpContext.Request.Url and HttpContext.Request.RawUrl** translate to:
 
-[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs)]
-
-   ````csharp
-   // using Microsoft.AspNet.Http.Extensions;
-      var url = httpContext.Request.GetDisplayUrl();
-
-      ````
+[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs?range=83-84)]
 
 **HttpContext.Request.IsSecureConnection** translates to:
 
-[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs)]
-
-   ````csharp
-   var isSecureConnection = httpContext.Request.IsHttps;
-
-      ````
+[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs?range=89)]
 
 **HttpContext.Request.UserHostAddress** translates to:
 
-[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs)]
-
-   ````csharp
-   var userHostAddress = httpContext.Connection.RemoteIpAddress?.ToString();
-
-      ````
+[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs?range=96)]
 
 **HttpContext.Request.Cookies** translates to:
 
-[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs)]
-
-   ````csharp
-   IReadableStringCollection cookies = httpContext.Request.Cookies;
-      string unknownCookieValue = cookies["unknownCookie"]; // will be null (no exception)
-      string knownCookieValue = cookies["cookie1name"];     // will be actual value
-
-      ````
+[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs?range=104-106)]
 
 **HttpContext.Request.Headers** translates to:
 
-[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs)]
-
-   ````csharp
-   // using Microsoft.AspNet.Http.Headers;
-      // using Microsoft.Net.Http.Headers;
-
-      IHeaderDictionary headersDictionary = httpContext.Request.Headers;
-
-      // GetTypedHeaders extension method provides strongly typed access to many headers
-      var requestHeaders = httpContext.Request.GetTypedHeaders();
-      CacheControlHeaderValue cacheControlHeaderValue = requestHeaders.CacheControl;
-
-      // For unknown header, unknownheaderValues has zero items and unknownheaderValue is ""
-      IList<string> unknownheaderValues = headersDictionary["unknownheader"];
-      string unknownheaderValue = headersDictionary["unknownheader"].ToString();
-
-      // For known header, knownheaderValues has 1 item and knownheaderValue is the value
-      IList<string> knownheaderValues = headersDictionary[HeaderNames.AcceptLanguage];
-      string knownheaderValue = headersDictionary[HeaderNames.AcceptLanguage].ToString();
-
-      ````
+[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs?range=120-135)]
 
 **HttpContext.Request.UserAgent** translates to:
 
-[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs)]
-
-   ````csharp
-   string userAgent = headersDictionary[HeaderNames.UserAgent].ToString();
-
-      ````
+[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs?range=142)]
 
 **HttpContext.Request.UrlReferrer** translates to:
 
-[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs)]
-
-   ````csharp
-   string urlReferrer = headersDictionary[HeaderNames.Referer].ToString();
-
-      ````
+[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs?range=147)]
 
 **HttpContext.Request.ContentType** translates to:
 
-[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs)]
-
-   ````csharp
-   // using Microsoft.Net.Http.Headers;
-
-      MediaTypeHeaderValue mediaHeaderValue = requestHeaders.ContentType;
-      string contentType = mediaHeaderValue?.MediaType;   // ex. application/x-www-form-urlencoded
-      string contentMainType = mediaHeaderValue?.Type;    // ex. application
-      string contentSubType = mediaHeaderValue?.SubType;  // ex. x-www-form-urlencoded
-
-      System.Text.Encoding requestEncoding = mediaHeaderValue?.Encoding;
-
-      ````
+[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs?range=152-159)]
 
 **HttpContext.Request.Form** translates to:
 
-[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs)]
+[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs?range=167-177)]
 
-   ````csharp
-   if (httpContext.Request.HasFormContentType)
-      {
-          IFormCollection form;
-
-          form = httpContext.Request.Form; // sync
-          // Or
-          form = await httpContext.Request.ReadFormAsync(); // async
-
-          string firstName = form["firstname"];
-          string lastName = form["lastname"];
-      }
-
-      ````
-
-Caution: Read form values only if the content sub type is *x-www-form-urlencoded* or *form-data*.
+> [!WARNING]
+> Read form values only if the content sub type is *x-www-form-urlencoded* or *form-data*.
 
 **HttpContext.Request.InputStream** translates to:
 
-[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs)]
+[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs?range=191-196)]
 
-   ````csharp
-   string inputBody;
-      using (var reader = new System.IO.StreamReader(
-          httpContext.Request.Body, System.Text.Encoding.UTF8))
-      {
-          inputBody = reader.ReadToEnd();
-      }
-
-      ````
-
-Caution: Use this code only in a handler type middleware, at the end of a pipeline.You can read the raw body as shown above only once per request. Middleware trying to read the body after the first read will read an empty body.This does not apply to reading a form as shown earlier, because that is done from a buffer.
+> [!WARNING]
+> Use this code only in a handler type middleware, at the end of a pipeline.
+>
+>You can read the raw body as shown above only once per request. Middleware trying to read the body after the first read will read an empty body.
+>
+>This does not apply to reading a form as shown earlier, because that is done from a buffer.
 
 **HttpContext.Request.RequestContext.RouteData**
 
@@ -875,44 +322,19 @@ RouteData is not available in middleware in RC1.
 
 **HttpContext.Response.Status and HttpContext.Response.StatusDescription** translate to:
 
-[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs)]
-
-   ````csharp
-   // using Microsoft.AspNet.Http;
-      httpContext.Response.StatusCode = StatusCodes.Status200OK;
-
-      ````
+[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs?range=208-209)]
 
 **HttpContext.Response.ContentEncoding and HttpContext.Response.ContentType** translate to:
 
-[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs)]
-
-   ````csharp
-   // using Microsoft.Net.Http.Headers;
-      var mediaType = new MediaTypeHeaderValue("application/json");
-      mediaType.Encoding = System.Text.Encoding.UTF8;
-      httpContext.Response.ContentType = mediaType.ToString();
-
-      ````
+[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs?range=214-217)]
 
 **HttpContext.Response.ContentType** on its own also translates to:
 
-[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs)]
-
-   ````csharp
-   httpContext.Response.ContentType = "text/html";
-
-      ````
+[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs?range=222)]
 
 **HttpContext.Response.Output** translates to:
 
-[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs)]
-
-   ````csharp
-   string responseContent = GetResponseContent();
-      await httpContext.Response.WriteAsync(responseContent);
-
-      ````
+[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs?range=229-230)]
 
 **HttpContext.Response.TransmitFile**
 
@@ -926,87 +348,32 @@ The solution is to set a callback method that will be called right before writin
 
 The following code sets a callback method called `SetHeaders`:
 
-
-   ````csharp
-   public async Task Invoke(HttpContext httpContext)
-      {
-          // ...
-          httpContext.Response.OnStarting(SetHeaders, state: httpContext);
-      ````
+````csharp
+public async Task Invoke(HttpContext httpContext)
+{
+    // ...
+    httpContext.Response.OnStarting(SetHeaders, state: httpContext);
+````
 
 The `SetHeaders` callback method would look like this:
 
-[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs)]
-
-   ````csharp
-   // using Microsoft.AspNet.Http.Headers;
-      // using Microsoft.Net.Http.Headers;
-
-      private Task SetHeaders(object context)
-      {
-          var httpContext = (HttpContext)context;
-
-          // Set header with single value
-          httpContext.Response.Headers["ResponseHeaderName"] = "headerValue";
-
-          // Set header with multiple values
-          string[] responseHeaderValues = new string[] { "headerValue1", "headerValue1" };
-          httpContext.Response.Headers["ResponseHeaderName"] = responseHeaderValues;
-
-          // Translating ASP.NET 4's HttpContext.Response.RedirectLocation  
-          httpContext.Response.Headers[HeaderNames.Location] = "http://www.example.com";
-          // Or
-          httpContext.Response.Redirect("http://www.example.com");
-
-          // GetTypedHeaders extension method provides strongly typed access to many headers
-          var responseHeaders = httpContext.Response.GetTypedHeaders();
-
-          // Translating ASP.NET 4's HttpContext.Response.CacheControl 
-          responseHeaders.CacheControl = new CacheControlHeaderValue
-          {
-              MaxAge = new System.TimeSpan(365, 0, 0, 0)
-              // Many more properties available 
-          };
-
-          // If you use .Net 4.6+, Task.CompletedTask will be a bit faster
-          return Task.FromResult(0);
-      }
-
-      ````
+[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs?range=235-266)]
 
 **HttpContext.Response.Cookies**
 
 Cookies travel to the browser in a *Set-Cookie* response header. As a result, sending cookies requires the same callback as used for sending response headers:
 
-
-   ````csharp
-   public async Task Invoke(HttpContext httpContext)
-      {
-          // ...
-          httpContext.Response.OnStarting(SetCookies, state: httpContext);
-          httpContext.Response.OnStarting(SetHeaders, state: httpContext);
-      ````
+````csharp
+public async Task Invoke(HttpContext httpContext)
+{
+    // ...
+    httpContext.Response.OnStarting(SetCookies, state: httpContext);
+    httpContext.Response.OnStarting(SetHeaders, state: httpContext);
+````
 
 The `SetCookies` callback method would look like the following:
 
-[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs)]
-
-   ````csharp
-   private Task SetCookies(object context)
-      {
-          var httpContext = (HttpContext)context;
-
-          IResponseCookies responseCookies = httpContext.Response.Cookies;
-
-          responseCookies.Append("cookie1name", "cookie1value");
-          responseCookies.Append("cookie2name", "cookie2value",
-              new CookieOptions { Expires = System.DateTime.Now.AddDays(5), HttpOnly = true });
-
-          // If you use .Net 4.6+, Task.CompletedTask will be a bit faster
-          return Task.FromResult(0); 
-      }
-
-      ````
+[!code-csharp[Main](http-modules/sample/Asp.Net5/src/Asp.Net5/Middleware/HttpContextDemoMiddleware.cs?range=270-282)]
 
 ## Additional Resources
 

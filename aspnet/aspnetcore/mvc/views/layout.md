@@ -25,90 +25,11 @@ An example `_Layout.cshtml`:
 
 [!code-html[Main](../../common/samples/WebApplication1/src/WebApplication1/Views/Shared/_Layout.cshtml?highlight=42,66)]
 
-````html
-<!DOCTYPE html>
-   <html>
-   <head>
-       <meta charset="utf-8" />
-       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-       <title>@ViewData["Title"] - WebApplication1</title>
-
-       <environment names="Development">
-           <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-           <link rel="stylesheet" href="~/css/site.css" />
-       </environment>
-       <environment names="Staging,Production">
-           <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
-                 asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-                 asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-           <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-       </environment>
-   </head>
-   <body>
-       <div class="navbar navbar-inverse navbar-fixed-top">
-           <div class="container">
-               <div class="navbar-header">
-                   <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                       <span class="sr-only">Toggle navigation</span>
-                       <span class="icon-bar"></span>
-                       <span class="icon-bar"></span>
-                       <span class="icon-bar"></span>
-                   </button>
-                   <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">WebApplication1</a>
-               </div>
-               <div class="navbar-collapse collapse">
-                   <ul class="nav navbar-nav">
-                       <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                       <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                       <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                   </ul>
-                   @await Html.PartialAsync("_LoginPartial")
-               </div>
-           </div>
-       </div>
-       <div class="container body-content">
-           @RenderBody()
-           <hr />
-           <footer>
-               <p>&copy; 2016 - WebApplication1</p>
-           </footer>
-       </div>
-
-       <environment names="Development">
-           <script src="~/lib/jquery/dist/jquery.js"></script>
-           <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-           <script src="~/js/site.js" asp-append-version="true"></script>
-       </environment>
-       <environment names="Staging,Production">
-           <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
-                   asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                   asp-fallback-test="window.jQuery">
-           </script>
-           <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"
-                   asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                   asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
-           </script>
-           <script src="~/js/site.min.js" asp-append-version="true"></script>
-       </environment>
-
-       @RenderSection("scripts", required: false)
-   </body>
-   </html>
-
-   ````
-
 ## Specifying a Layout
 
 Razor views have a `Layout` property. Individual views specify a layout by setting this property:
 
 [!code-html[Main](../../common/samples/WebApplication1/src/WebApplication1/Views/_ViewStart.cshtml?highlight=2)]
-
-````html
-@{
-       Layout = "_Layout";
-   }
-
-   ````
 
 The layout specified can use a full path (example: `/Views/Shared/_Layout.cshtml`) or a partial name (example: `_Layout`). When a partial name is provided, the Razor view engine will search for the layout file using its standard discovery process. The controller-associated folder is searched first, followed by the `Shared` folder. This discovery process is identical to the one used to discover [partial views](partial.md).
 
@@ -166,16 +87,6 @@ A sample `_ViewImports.cshtml` file:
 
 [!code-html[Main](../../common/samples/WebApplication1/src/WebApplication1/Views/_ViewImports.cshtml)]
 
-````html
-@using WebApplication1
-   @using WebApplication1.Models
-   @using WebApplication1.Models.AccountViewModels
-   @using WebApplication1.Models.ManageViewModels
-   @using Microsoft.AspNetCore.Identity
-   @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-
-   ````
-
 The `_ViewImports.cshtml` file for an ASP.NET Core MVC app is typically placed in the `Views` folder. A `_ViewImports.cshtml` file can be placed within any folder, in which case it will only be applied to views within that folder and its subfolders. `_ViewImports` files are processed starting at the root level, and then for each folder leading up to the location of the view itself, so settings specified at the root level may be overridden at the folder level.
 
 For example, if a root level `_ViewImports.cshtml` file specifies `@model` and `@addTagHelper`, and another `_ViewImports.cshtml` file in the controller-associated folder of the view specifies a different `@model` and adds another `@addTagHelper`, the view will have access to both tag helpers and will use the latter `@model`.
@@ -203,13 +114,6 @@ If you have code you need to run before every view, this should be placed in the
 A sample `_ViewStart.cshtml` file:
 
 [!code-html[Main](../../common/samples/WebApplication1/src/WebApplication1/Views/_ViewStart.cshtml)]
-
-````html
-@{
-       Layout = "_Layout";
-   }
-
-   ````
 
 The file above specifies that all views will use the `_Layout.cshtml` layout.
 

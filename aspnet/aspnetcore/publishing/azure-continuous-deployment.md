@@ -56,22 +56,22 @@ The following steps will guide you through creating a web app in the Azure Porta
 2. TAP **NEW** at the top left of the Portal
 3. TAP **Web + Mobile** > **Web App**
 
-   ![image](azure-continuous-deployment/_static/05-azure-newwebapp.png)
+    ![image](azure-continuous-deployment/_static/05-azure-newwebapp.png)
 
-4. In the **Web App** blade, enter a unique value for the **App Service Name**.
+4.  In the **Web App** blade, enter a unique value for the **App Service Name**.
 
-   ![image](azure-continuous-deployment/_static/06-azure-newappblade.png)
+    ![image](azure-continuous-deployment/_static/06-azure-newappblade.png)
 
+    >[!NOTE]
+    >The **App Service Name** name needs to be unique. The portal will enforce this rule when you attempt to enter the name. After you enter a different value, you'll need to substitute that value for each occurrence of **SampleWebAppDemo** that you see in this tutorial.
 
+	&nbsp;
+	
+    Also in the **Web App** blade, select an existing **App Service Plan/Location** or create a new one. If you create a new plan, select the pricing tier, location, and other options. For more information on App Service plans, [Azure App Service plans in-depth overview](https://azure.microsoft.com/en-us/documentation/articles/azure-web-sites-web-hosting-plans-in-depth-overview/).
 
->[!NOTE]
->The **App Service Name** name needs to be unique. The portal will enforce this rule when you attempt to enter the name. After you enter a different value, you'll need to substitute that value for each occurrence of **SampleWebAppDemo** that you see in this tutorial.
+5.  Click **Create**. Azure will provision and start your web app.
 
-   Also in the **Web App** blade, select an existing **App Service Plan/Location** or create a new one. If you create a new plan, select the pricing tier, location, and other options. For more information on App Service plans, [Azure App Service plans in-depth overview](https://azure.microsoft.com/en-us/documentation/articles/azure-web-sites-web-hosting-plans-in-depth-overview/).
-
-5. Click **Create**. Azure will provision and start your web app.
-
-![image](azure-continuous-deployment/_static/07-azure-webappblade.png)
+    ![image](azure-continuous-deployment/_static/07-azure-webappblade.png)
 
 ## Enable Git publishing for the new web app
 
@@ -117,62 +117,61 @@ In this section, you will create a local Git repository using Visual Studio and 
 
    * Push your project changes from your local repository to your remote repository on Azure.
 
-1. In **Solution Explorer** right-click **Solution 'SampleWebAppDemo'** and select **Commit**. The **Team Explorer** will be displayed.
+&nbsp;
+   
+1.  In **Solution Explorer** right-click **Solution 'SampleWebAppDemo'** and select **Commit**. The **Team Explorer** will be displayed.
 
-   ![image](azure-continuous-deployment/_static/10-team-explorer.png)
+    ![image](azure-continuous-deployment/_static/10-team-explorer.png)
 
-2. In **Team Explorer**, select the **Home** (home icon) > **Settings** > **Repository Settings**.
+2.  In **Team Explorer**, select the **Home** (home icon) > **Settings** > **Repository Settings**.
 
-3. In the **Remotes** section of the **Repository Settings** select **Add**. The **Add Remote** dialog box will be displayed.
+3.  In the **Remotes** section of the **Repository Settings** select **Add**. The **Add Remote** dialog box will be displayed.
 
-4. Set the **Name** of the remote to **Azure-SampleApp**.
+4.  Set the **Name** of the remote to **Azure-SampleApp**.
 
-5. Set the value for **Fetch** to the **Git URL** that you copied from Azure earlier in this tutorial. Note that this is the URL that ends with **.git**.
+5.  Set the value for **Fetch** to the **Git URL** that you copied from Azure earlier in this tutorial. Note that this is the URL that ends with **.git**.
 
-   ![image](azure-continuous-deployment/_static/11-add-remote.png)
+    ![image](azure-continuous-deployment/_static/11-add-remote.png)
 
+    >[!NOTE]
+    >As an alternative, you can specify the remote repository from the **Command Window** by opening the **Command Window**, changing to your project directory, and entering the command. For example:`git remote add Azure-SampleApp https://me@sampleapp.scm.azurewebsites.net:443/SampleApp.git`
 
+6.  Select the **Home** (home icon) > **Settings** > **Global Settings**. Make sure you have your name and your email address set. You may also need to select **Update**.
 
->[!NOTE]
->As an alternative, you can specify the remote repository from the **Command Window** by opening the **Command Window**, changing to your project directory, and entering the command. For example:`git remote add Azure-SampleApp https://me@sampleapp.scm.azurewebsites.net:443/SampleApp.git`
+7.  Select **Home** > **Changes** to return to the **Changes** view.
 
-6. Select the **Home** (home icon) > **Settings** > **Global Settings**. Make sure you have your name and your email address set. You may also need to select **Update**.
+8.  Enter a commit message, such as **Initial Push #1** and click **Commit**. This action will create a *commit* locally. Next, you need to *sync* with Azure.
 
-7. Select **Home** > **Changes** to return to the **Changes** view.
+    ![image](azure-continuous-deployment/_static/12-initial-commit.png)
 
-8. Enter a commit message, such as **Initial Push #1** and click **Commit**. This action will create a *commit* locally. Next, you need to *sync* with Azure.
+    >[!NOTE]
+    >As an alternative, you can commit your changes from the **Command Window** by opening the **Command Window**, changing to your project directory, and entering the git commands. For example:`git add .``git commit -am "Initial Push #1"`
 
-   ![image](azure-continuous-deployment/_static/12-initial-commit.png)
+9.  Select **Home** > **Sync** > **Actions** > **Open Command Prompt**. The command prompt will open to your project directory.
 
+10.  Enter the following command in the command window:
 
+    `git push -u Azure-SampleApp master`
 
->[!NOTE]
->As an alternative, you can commit your changes from the **Command Window** by opening the **Command Window**, changing to your project directory, and entering the git commands. For example:`git add .``git commit -am "Initial Push #1"`
+11.  Enter your Azure **deployment credentials** password that you created earlier in Azure.
 
-9. Select **Home** > **Sync** > **Actions** > **Open Command Prompt**. The command prompt will open to your project directory.
+    >[!NOTE]
+    >Your password will not be visible as you enter it.
 
-10. Enter the following command in the command window:
+    This command will start the process of pushing your local project files to Azure. The output from the above command ends with a message that deployment was successful.
+        
+        remote: Finished successfully.
+        remote: Running post deployment command(s)...
+        remote: Deployment successful.
+        To https://username@samplewebappdemo01.scm.azurewebsites.net:443/SampleWebAppDemo01.git
+        * [new branch]      master -> master
+        Branch master set up to track remote branch master from Azure-SampleApp.
 
-   `git push -u Azure-SampleApp master`
+    &nbsp;
 
-11. Enter your Azure **deployment credentials** password that you created earlier in Azure.
-
->[!NOTE]
->Your password will not be visible as you enter it.
-
-This command will start the process of pushing your local project files to Azure. The output from the above command ends with a message that deployment was successful.
-
-   remote: Finished successfully.
-   remote: Running post deployment command(s)...
-   remote: Deployment successful.
-   To https://username@samplewebappdemo01.scm.azurewebsites.net:443/SampleWebAppDemo01.git
-   * [new branch]      master -> master
-   Branch master set up to track remote branch master from Azure-SampleApp.
-
-
-> [!NOTE]
-> If you need to collaborate on a project, you should consider pushing to [GitHub](https://github.com) in between pushing to Azure.
-
+    > [!NOTE]
+    > If you need to collaborate on a project, you should consider pushing to [GitHub](https://github.com) in between pushing to Azure.
+ 
 ### Verify the Active Deployment
 
 You can verify that you successfully transferred the web app from your local environment to Azure. You'll see the listed successful deployment.
@@ -197,30 +196,31 @@ This can be done in two ways:
 
 After you make changes to your local code, you can republish.
 
-1. In **Solution Explorer** of Visual Studio, open the *Startup.cs* file.
+1.  In **Solution Explorer** of Visual Studio, open the *Startup.cs* file.
 
-2. In the `Configure` method, modify the `Response.WriteAsync` method so that it appears as follows:
+2.  In the `Configure` method, modify the `Response.WriteAsync` method so that it appears as follows:
 
-````aspx-cs
-await context.Response.WriteAsync("Hello World! Deploy to Azure.");
-   ````
+    ````aspx-cs
+    await context.Response.WriteAsync("Hello World! Deploy to Azure.");
+    ````
+3.  Save changes to *Startup.cs*.
 
-3. Save changes to *Startup.cs*.
+4.  In **Solution Explorer**, right-click **Solution 'SampleWebAppDemo'** and select **Commit**. The **Team Explorer** will be displayed.
 
-4. In **Solution Explorer**, right-click **Solution 'SampleWebAppDemo'** and select **Commit**. The **Team Explorer** will be displayed.
+5.  Enter a commit message, such as:
 
-5. Enter a commit message, such as:
+    ````none
+    Update #2
+    ````
 
-````none
-Update #2
-   ````
+6.  Press the **Commit** button to commit the project changes.
 
-6. Press the **Commit** button to commit the project changes.
-
-7. Select **Home** > **Sync** > **Actions** > **Push**.
+7.  Select **Home** > **Sync** > **Actions** > **Push**.
 
 >[!NOTE]
->As an alternative, you can push your changes from the **Command Window** by opening the **Command Window**, changing to your project directory, and entering a git command. For example:`git push -u Azure-SampleApp master`
+>As an alternative, you can push your changes from the **Command Window** by opening the **Command Window**, changing to your project directory, and entering a git command. For example:
+>
+>`git push -u Azure-SampleApp master`
 
 ## View the updated web app in Azure
 

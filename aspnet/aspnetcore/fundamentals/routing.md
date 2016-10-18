@@ -7,7 +7,7 @@ By [Ryan Nowak](https://github.com/rynowak), [Steve Smith](http://ardalis.com), 
 
 Routing is used to map requests to route handlers. Routes are configured when the application starts up, and can extract values from the URL that will be used for request processing. Routing functionality is also responsible for generating links using the defined routes in ASP.NET apps.
 
-This document covers the low level ASP.NET Core routing. For ASP.NET Core MVC routing, see [ðŸ”§ Routing to Controller Actions](../mvc/controllers/routing.md)
+This document covers the low level ASP.NET Core routing. For ASP.NET Core MVC routing, see [ðŸ"§ Routing to Controller Actions](../mvc/controllers/routing.md)
 
 [View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnet/fundamentals/routing/sample)
 
@@ -76,7 +76,7 @@ Routing provides the [`Route`](http://docs.asp.net/projects/api/en/latest/autoap
 Most applications will create routes by calling `MapRoute` or one of the similar extension methods defined on [`IRouteBuilder`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Routing/IRouteBuilder/index.html#Microsoft.AspNetCore.Routing.IRouteBuilder). All of these methods will create an instance of `Route` and add it to the route collection.
 
 > [!NOTE]
-> [`MapRoute`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/MapRouteRouteBuilderExtensions/index.html#Microsoft.AspNetCore.Builder.MapRouteRouteBuilderExtensions.MapRoute) doesn't take a route handler parameter - it only adds routes that will be handled by the [`DefaultHandler`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Routing/IRouteBuilder/index.html#Microsoft.AspNetCore.Routing.IRouteBuilder.DefaultHandler). Since the default handler is an [`IRouter`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Routing/IRouter/index.html#Microsoft.AspNetCore.Routing.IRouter), it may decide not to handle the request. For example, ASP.NET MVC is typically configured as a default handler that only handles requests that match an available controller and action. To learn more about routing to MVC, see [ðŸ”§ Routing to Controller Actions](../mvc/controllers/routing.md).
+> [`MapRoute`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/MapRouteRouteBuilderExtensions/index.html#Microsoft.AspNetCore.Builder.MapRouteRouteBuilderExtensions.MapRoute) doesn't take a route handler parameter - it only adds routes that will be handled by the [`DefaultHandler`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Routing/IRouteBuilder/index.html#Microsoft.AspNetCore.Routing.IRouteBuilder.DefaultHandler). Since the default handler is an [`IRouter`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Routing/IRouter/index.html#Microsoft.AspNetCore.Routing.IRouter), it may decide not to handle the request. For example, ASP.NET MVC is typically configured as a default handler that only handles requests that match an available controller and action. To learn more about routing to MVC, see [ðŸ"§ Routing to Controller Actions](../mvc/controllers/routing.md).
 
 This is an example of a `MapRoute` call used by a typical ASP.NET MVC route definition:
 
@@ -331,26 +331,7 @@ The following table demonstrates some route constraints and their expected behav
 
 The example below shows how to generate a link to a route given a dictionary of route values and a `RouteCollection`.
 
-<!-- literal_block {"xml:space": "preserve", "source": "fundamentals/routing/sample/RoutingSample/Startup.cs", "ids": [], "linenos": false, "highlight_args": {"linenostart": 1}} -->
-
-````
-app.Run(async (context) =>
-   {
-       var dictionary = new RouteValueDictionary
-       {
-           { "operation", "create" },
-           { "id", 123}
-       };
-
-       var vpc = new VirtualPathContext(context, null, dictionary, "Track Package Route");
-       var path = routes.GetVirtualPath(vpc).VirtualPath;
-
-       context.Response.ContentType = "text/html";
-       await context.Response.WriteAsync("Menu<hr/>");
-       await context.Response.WriteAsync($"<a href='{path}'>Create Package 123</a><br/>");
-   });
-
-   ````
+[!code-csharp[Main](../fundamentals/routing/sample/RoutingSample/Startup.cs?range=45-59)]
 
 The `VirtualPath` generated at the end of the sample above is `/package/create/123`.
 
