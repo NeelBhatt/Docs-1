@@ -21,35 +21,7 @@ Open the *Movie.cs* file. DataAnnotations provides a built-in set of validation 
 
 Update the `Movie` class to take advantage of the built-in `Required`, `StringLength`, `RegularExpression`, and `Range` validation attributes.
 
-[!code-none[Main](../../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Models/MovieDateRatingDA.cs?highlight=5,12,13,14,17,18,21,22)]
-
-````none
-public class Movie
-   {
-       public int ID { get; set; }
-
-       [StringLength(60, MinimumLength = 3)]
-       public string Title { get; set; }
-
-       [Display(Name = "Release Date")]
-       [DataType(DataType.Date)]
-       public DateTime ReleaseDate { get; set; }
-
-       [RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$")]
-       [Required]
-       [StringLength(30)]
-       public string Genre { get; set; }
-
-       [Range(1, 100)]
-       [DataType(DataType.Currency)]
-       public decimal Price { get; set; }
-
-       [RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$")]
-       [StringLength(5)]
-       public string Rating { get; set; }
-   }
-
-   ````
+[!code-none[Main](../../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Models/MovieDateRatingDA.cs?highlight=5,12,13,14,17,18,21,22&range=9-32)]
 
 The validation attributes specify behavior that you want to enforce on the model properties they are applied to. The `Required` and `MinimumLength` attributes indicates that a property must have a value; but nothing prevents a user from entering white space to satisfy this validation. The `RegularExpression` attribute is used to limit what characters can be input. In the code above, `Genre` and `Rating` must use only letters (white space, numbers and special characters are not allowed). The `Range` attribute constrains a value to within a specified range. The `StringLength` attribute lets you set the maximum length of a string property, and optionally its minimum length. Value types (such as `decimal`, `int`, `float`, `DateTime`) are inherently required and don't need the `[Required]` attribute.
 
@@ -76,32 +48,7 @@ The form data is not sent to the server until there are no client side validatio
 
 You might wonder how the validation UI was generated without any updates to the code in the controller or views. The next listing shows the two `Create` methods.
 
-[!code-csharp[Main](start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs)]
-
-````csharp
-public IActionResult Create()
-   {
-       return View();
-   }
-
-   // POST: Movies/Create
-   // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-   // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-   [HttpPost]
-   [ValidateAntiForgeryToken]
-   public async Task<IActionResult> Create([Bind("ID,Genre,Price,ReleaseDate,Title,Rating")] Movie movie)
-   {
-       if (ModelState.IsValid)
-       {
-           _context.Add(movie);
-           await _context.SaveChangesAsync();
-           return RedirectToAction("Index");
-       }
-       return View(movie);
-   }
-   #region snippet_edit_get
-
-   ````
+[!code-csharp[Main](start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs?range=56-76)]
 
 The first (HTTP GET) `Create` action method displays the initial Create form. The second (`[HttpPost]`) version handles the form post. The second `Create` method (The `[HttpPost]` version) calls `ModelState.IsValid` to check whether the movie has any validation errors. Calling this method evaluates any validation attributes that have been applied to the object. If the object has validation errors, the `Create` method re-displays the form. If there are no errors, the method saves the new movie in the database. In our movie example, the form is not posted to the server when there are validation errors detected on the client side; the second `Create` method is never called when there are client side validation errors. If you disable JavaScript in your browser, client validation is disabled and you can test the HTTP POST `Create` method `ModelState.IsValid` detecting any validation errors.
 
@@ -123,38 +70,7 @@ After you disable JavaScript, post invalid data and step through the debugger.
 
 Below is portion of the *Create.cshtml* view template that you scaffolded earlier in the tutorial. It's used by the action methods shown above both to display the initial form and to redisplay it in the event of an error.
 
-[!code-HTML[Main](../../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Views/Movies/CreateRatingBrevity.cshtml?highlight=9,10,17,18,13)]
-
-````HTML
-<form asp-action="Create">
-       <div class="form-horizontal">
-           <h4>Movie</h4>
-           <hr />
-           <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-           <div class="form-group">
-               <label asp-for="Genre" class="col-md-2 control-label"></label>
-               <div class="col-md-10">
-                   <input asp-for="Genre" class="form-control" />
-                   <span asp-validation-for="Genre" class="text-danger"></span>
-               </div>
-           </div>
-           @*Markup removed for brevity.*@
-           <div class="form-group">
-               <label asp-for="Rating" class="col-md-2 control-label"></label>
-               <div class="col-md-10">
-                   <input asp-for="Rating" class="form-control" />
-                   <span asp-validation-for="Rating" class="text-danger"></span>
-               </div>
-           </div>
-           <div class="form-group">
-               <div class="col-md-offset-2 col-md-10">
-                   <input type="submit" value="Create" class="btn btn-default" />
-               </div>
-           </div>
-       </div>
-   </form>
-
-   ````
+[!code-HTML[Main](../../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Views/Movies/CreateRatingBrevity.cshtml?highlight=9,10,17,18,13&range=9-35)]
 
 The [Input Tag Helper](../../mvc/views/working-with-forms.md) consumes the [DataAnnotations](http://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx) attributes and produces HTML attributes needed for jQuery Validation on the client side. The [Validation Tag Helper](../../mvc/views/working-with-forms.md) displays a validation errors. See [Validation](../../mvc/models/validation.md) for more information.
 
@@ -166,18 +82,7 @@ When you need to change validation logic, you can do so in exactly one place by 
 
 Open the *Movie.cs* file and examine the `Movie` class. The `System.ComponentModel.DataAnnotations` namespace provides formatting attributes in addition to the built-in set of validation attributes. We've already applied a `DataType` enumeration value to the release date and to the price fields. The following code shows the `ReleaseDate` and `Price` properties with the appropriate `DataType` attribute.
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Models/MovieDateRatingDA.cs?highlight=2,6)]
-
-````csharp
-[Display(Name = "Release Date")]
-   [DataType(DataType.Date)]
-   public DateTime ReleaseDate { get; set; }
-
-   [Range(1, 100)]
-   [DataType(DataType.Currency)]
-   public decimal Price { get; set; }
-
-   ````
+[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Models/MovieDateRatingDA.cs?highlight=2,6&range=16-19,25-27)]
 
 The `DataType` attributes only provide hints for the view engine to format the data (and supply attributes such as `<a>` for URL's and `<a href="mailto:EmailAddress.com">` for email. You can use the `RegularExpression` attribute to validate the format of the data. The `DataType` attribute is used to specify a data type that is more specific than the database intrinsic type, they are not validation attributes. In this case we only want to keep track of the date, not the time. The `DataType` Enumeration provides for many data types, such as Date, Time, PhoneNumber, Currency, EmailAddress and more. The `DataType` attribute can also enable the application to automatically provide type-specific features. For example, a `mailto:` link can be created for `DataType.EmailAddress`, and a date selector can be provided for `DataType.Date` in browsers that support HTML5. The `DataType` attributes emits HTML 5 `data-` (pronounced data dash) attributes that HTML 5 browsers can understand. The
 `DataType` attributes do **not** provide any validation.
@@ -188,8 +93,8 @@ The `DisplayFormat` attribute is used to explicitly specify the date format:
 
 ````csharp
 [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-   public DateTime ReleaseDate { get; set; }
-   ````
+public DateTime ReleaseDate { get; set; }
+````
 
 The `ApplyFormatInEditMode` setting specifies that the formatting should also be applied when the value is displayed in a text box for editing. (You might not want that for some fields — for example, for currency values, you probably do not want the currency symbol in the text box for editing.)
 
@@ -212,30 +117,7 @@ You will need to disable jQuery date validation to use the `Range` attribute wit
 
 The following code shows combining attributes on one line:
 
-[!code-none[Main](../../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Models/MovieDateRatingDAmult.cs?highlight=5,8,11,14,17)]
-
-````none
-public class Movie
-   {
-       public int ID { get; set; }
-
-       [StringLength(60, MinimumLength = 3)]
-       public string Title { get; set; }
-
-       [Display(Name = "Release Date"), DataType(DataType.Date)]
-       public DateTime ReleaseDate { get; set; }
-
-       [RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$"), Required, StringLength(30)]
-       public string Genre { get; set; }
-
-       [Range(1, 100), DataType(DataType.Currency)]
-       public decimal Price { get; set; }
-
-       [RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$"), StringLength(5)]
-       public string Rating { get; set; }
-   }
-
-   ````
+[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Models/MovieDateRatingDAmult.cs?highlight=5,8,11,14,17&range=7-25)]
 
 In the next part of the series, we'll review the application and make some improvements to the automatically generated `Details` and `Delete` methods.
 

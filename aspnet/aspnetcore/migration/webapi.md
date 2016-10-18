@@ -17,58 +17,10 @@ In *Global.asax.cs*, a call is made to `WebApiConfig.Register`:
 
 [!code-csharp[Main](../migration/webapi/sample/ProductsApp/Global.asax.cs?highlight=14)]
 
-````csharp
-using System;
-   using System.Collections.Generic;
-   using System.Linq;
-   using System.Web;
-   using System.Web.Http;
-   using System.Web.Routing;
-
-   namespace ProductsApp
-   {
-       public class WebApiApplication : System.Web.HttpApplication
-       {
-           protected void Application_Start()
-           {
-               GlobalConfiguration.Configure(WebApiConfig.Register);
-           }
-       }
-   }
-
-   ````
-
 `WebApiConfig` is defined in *App_Start*, and has just one static `Register` method:
 
 [!code-csharp[Main](../migration/webapi/sample/ProductsApp/App_Start/WebApiConfig.cs?highlight=15,16,17,18,19,20)]
 
-````csharp
-using System;
-   using System.Collections.Generic;
-   using System.Linq;
-   using System.Web.Http;
-
-   namespace ProductsApp
-   {
-       public static class WebApiConfig
-       {
-           public static void Register(HttpConfiguration config)
-           {
-               // Web API configuration and services
-
-               // Web API routes
-               config.MapHttpAttributeRoutes();
-
-               config.Routes.MapHttpRoute(
-                   name: "DefaultApi",
-                   routeTemplate: "api/{controller}/{id}",
-                   defaults: new { id = RouteParameter.Optional }
-               );
-           }
-       }
-   }
-
-   ````
 
 This class configures [attribute routing](http://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2), although it's not actually being used in the project. It also configures the routing table which is used by ASP.NET Web API. In this case, ASP.NET Web API will expect URLs to match the format */api/{controller}/{id}*, with *{id}* being optional.
 
@@ -76,62 +28,9 @@ The *ProductsApp* project includes just one simple controller, which inherits fr
 
 [!code-csharp[Main](../migration/webapi/sample/ProductsApp/Controllers/ProductsController.cs?highlight=19,24)]
 
-````csharp
-using ProductsApp.Models;
-   using System;
-   using System.Collections.Generic;
-   using System.Linq;
-   using System.Net;
-   using System.Web.Http;
-
-   namespace ProductsApp.Controllers
-   {
-       public class ProductsController : ApiController
-       {
-           Product[] products = new Product[] 
-           { 
-               new Product { Id = 1, Name = "Tomato Soup", Category = "Groceries", Price = 1 }, 
-               new Product { Id = 2, Name = "Yo-yo", Category = "Toys", Price = 3.75M }, 
-               new Product { Id = 3, Name = "Hammer", Category = "Hardware", Price = 16.99M } 
-           };
-
-           public IEnumerable<Product> GetAllProducts()
-           {
-               return products;
-           }
-
-           public IHttpActionResult GetProduct(int id)
-           {
-               var product = products.FirstOrDefault((p) => p.Id == id);
-               if (product == null)
-               {
-                   return NotFound();
-               }
-               return Ok(product);
-           }
-       }
-   }
-
-   ````
-
 Finally, the model, *Product*, used by the *ProductsApp*, is a simple class:
 
 [!code-csharp[Main](webapi/sample/ProductsApp/Models/Product.cs)]
-
-````csharp
-
-
-   namespace ProductsApp.Models
-   {
-       public class Product
-       {
-           public int Id { get; set; }
-           public string Name { get; set; }
-           public string Category { get; set; }
-           public decimal Price { get; set; }
-       }
-   }
-   ````
 
 Now that we have a simple project from which to start, we can demonstrate how to migrate this Web API project to ASP.NET Core MVC.
 
@@ -155,104 +54,9 @@ ASP.NET Core no longer uses *Global.asax*, *web.config*, or *App_Start* folders.
 
 [!code-none[Main](../migration/webapi/sample/ProductsCore/Startup.cs?highlight=40)]
 
-````none
-using System;
-   using System.Collections.Generic;
-   using System.Linq;
-   using System.Threading.Tasks;
-   using Microsoft.AspNetCore.Builder;
-   using Microsoft.AspNetCore.Hosting;
-   using Microsoft.Extensions.Configuration;
-   using Microsoft.Extensions.DependencyInjection;
-   using Microsoft.Extensions.Logging;
-
-   namespace ProductsCore
-   {
-       public class Startup
-       {
-           public Startup(IHostingEnvironment env)
-           {
-               var builder = new ConfigurationBuilder()
-                   .SetBasePath(env.ContentRootPath)
-                   .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                   .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-                   .AddEnvironmentVariables();
-               Configuration = builder.Build();
-           }
-
-           public IConfigurationRoot Configuration { get; }
-
-           // This method gets called by the runtime. Use this method to add services to the container.
-           public void ConfigureServices(IServiceCollection services)
-           {
-               // Add framework services.
-               services.AddMvc();
-           }
-
-           // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-           public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
-           {
-               loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-               loggerFactory.AddDebug();
-
-               app.UseMvc();
-           }
-       }
-   }
-
-   ````
-
 Assuming you want to use attribute routing in your project going forward, no additional configuration is needed. Simply apply the attributes as needed to your controllers and actions, as is done in the sample `ValuesController` class that is included in the Web API starter project:
 
 [!code-csharp[Main](../migration/webapi/sample/ProductsCore/Controllers/ValuesController.cs?highlight=9,13,20,27,33,39)]
-
-````csharp
-using System;
-   using System.Collections.Generic;
-   using System.Linq;
-   using System.Threading.Tasks;
-   using Microsoft.AspNetCore.Mvc;
-
-   namespace ProductsCore.Controllers
-   {
-       [Route("api/[controller]")]
-       public class ValuesController : Controller
-       {
-           // GET api/values
-           [HttpGet]
-           public IEnumerable<string> Get()
-           {
-               return new string[] { "value1", "value2" };
-           }
-
-           // GET api/values/5
-           [HttpGet("{id}")]
-           public string Get(int id)
-           {
-               return "value";
-           }
-
-           // POST api/values
-           [HttpPost]
-           public void Post([FromBody]string value)
-           {
-           }
-
-           // PUT api/values/5
-           [HttpPut("{id}")]
-           public void Put(int id, [FromBody]string value)
-           {
-           }
-
-           // DELETE api/values/5
-           [HttpDelete("{id}")]
-           public void Delete(int id)
-           {
-           }
-       }
-   }
-
-   ````
 
 Note the presence of *[controller]* on line 8. Attribute-based routing now supports certain tokens, such as *[controller]* and *[action]*. These tokens are replaced at runtime with the name of the controller or action, respectively, to which the attribute has been applied. This serves to reduce the number of magic strings in the project, and it ensures the routes will be kept synchronized with their corresponding controllers and actions when automatic rename refactorings are applied.
 
@@ -260,18 +64,18 @@ To migrate the Products API controller, we must first copy *ProductsController* 
 
 ````csharp
 [Route("api/[controller]")]
-   ````
+````
 
 You also need to add the `[HttpGet]` attribute to the two methods, since they both should be called via HTTP Get. Include the expectation of an "id" parameter in the attribute for `GetProduct()`:
 
 ````csharp
 // /api/products
-   [HttpGet]
-   ...
+[HttpGet]
+...
 
-   // /api/products/1
-   [HttpGet("{id}")]
-   ````
+// /api/products/1
+[HttpGet("{id}")]
+````
 
 At this point, routing is configured correctly; however, we can't yet test it. Additional changes must be made before *ProductsController* will compile.
 
@@ -296,47 +100,6 @@ Fortunately, these are all very easy to correct:
 Once these changes have been made and unused using statements removed, the migrated *ProductsController* class looks like this:
 
 [!code-csharp[Main](../migration/webapi/sample/ProductsCore/Controllers/ProductsController.cs?highlight=1,2,6,8,9,27)]
-
-````csharp
-using Microsoft.AspNetCore.Mvc;
-   using ProductsCore.Models;
-   using System.Collections.Generic;
-   using System.Linq;
-
-   namespace ProductsCore.Controllers
-   {
-       [Route("api/[controller]")]
-       public class ProductsController : Controller
-       {
-           Product[] products = new Product[]
-           {
-               new Product { Id = 1, Name = "Tomato Soup", Category = "Groceries", Price = 1 },
-               new Product { Id = 2, Name = "Yo-yo", Category = "Toys", Price = 3.75M },
-               new Product { Id = 3, Name = "Hammer", Category = "Hardware", Price = 16.99M }
-           };
-
-           // /api/products
-           [HttpGet]
-           public IEnumerable<Product> GetAllProducts()
-           {
-               return products;
-           }
-
-           // /api/products/1
-           [HttpGet("{id}")]
-           public IActionResult GetProduct(int id)
-           {
-               var product = products.FirstOrDefault((p) => p.Id == id);
-               if (product == null)
-               {
-                   return NotFound();
-               }
-               return Ok(product);
-           }
-       }
-   }
-
-   ````
 
 You should now be able to run the migrated project and browse to */api/products*; and, you should see the full list of 3 products. Browse to */api/products/1* and you should see the first product.
 
