@@ -11,7 +11,7 @@ namespace StaticFiles
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        // >Configure
+        #region snippet1
         public void Configure(IApplicationBuilder app)
         {
             // Serve my app-specific default file, if present.
@@ -21,6 +21,6 @@ namespace StaticFiles
             app.UseDefaultFiles(options);
             app.UseStaticFiles();
         }
-        // <Configure
+        #endregion
     }
 }

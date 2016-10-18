@@ -6,6 +6,6 @@
 - [Building your first ASP.NET Core MVC app with Visual Studio](first-mvc-app/index.md)
 - [ASP.NET Core on Nano Server](nano-server.md)
 - [ASP.NET Core and Azure Service Fabric](https://azure.microsoft.com/documentation/articles/service-fabric-add-a-web-frontend/.md)
-- [🔧 Creating Backend Services for Native Mobile Applications](../mobile/native-mobile-backend.md)
+- [Creating Backend Services for Native Mobile Applications](../mobile/native-mobile-backend.md)
 - [Developing ASP.NET Core applications using dotnet watch](dotnet-watch.md)
 - [ASP.NET Web API Help Pages using Swagger](web-api-help-pages-using-swagger.md)

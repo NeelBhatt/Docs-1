@@ -219,13 +219,13 @@ Configure Swagger to use the generated XML file.
 > [!NOTE]
 > For Linux or non-Windows operating systems, file names and paths can be case sensitive. So `ToDoApi.XML` would be found on Windows but not CentOS for example.
 
-[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Startup.cs?highlight=29,32&range=17-65)]
+[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Startup.cs?name=snippet_Configure&highlight=29,32)]
 
 In the code above, ApplicationBasePath gets the base path of the app, which is needed to set the full path to the XML comments. `TodoApi.xml` only works for this example, the name of the generated XML comments file is based on the name of your application.
 
 Adding the triple slash comments to the method enhances the Swagger UI by adding the description to the header of the section.
 
-[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Controllers/TodoController.cs?highlight=2&range=116-124)]
+[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Controllers/TodoController.cs?name=Delete_Method&highlight=2)]
 
 ![image](web-api-help-pages-using-swagger/_static/triple-slash-comments.png)
 
@@ -262,7 +262,7 @@ Note that the UI is driven by the generated JSON file, and these comments are al
 
 Here is a more robust example, adding `<remarks />` where the content can be just text or adding the JSON or XML object for further documentation of the method.
 
-[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Controllers/TodoController.cs?highlight=4,5,6,7,8,9,10,11,12,13,14&range=57-86)]
+[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Controllers/TodoController.cs?name=Create_Method&highlight=4-14)]
 
 Notice the enhancement of the UI with these additional comments.
 
@@ -276,13 +276,14 @@ Adding the `[Required]` annotation to the `Name` property of the `TodoItem` clas
 
 [!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Models/TodoItem.cs?highlight=10)]
 
+
 ### Describing Response Types
 
 Consuming developers are probably most concerned with what is returned; specifically response types, error codes (if not standard). These are handled in the XML comments and DataAnnotations.
 
 Take the `Create()` method for example, currently it returns only "201 Created" response by default. That is of course if the item is in fact created, or a "204 No Content" if no data is passed in the POST Body.  However, there is no documentation to know that or any other response. That can be fixed by adding the following piece of code.
 
-[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Controllers/TodoController.cs?highlight=17,18,20,21&range=57-86)]
+[!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/src/TodoApi/Controllers/TodoController.cs?name=Create_Method&highlight=17,18,20,21)]
 
 ![image](web-api-help-pages-using-swagger/_static/data-annotations-response-types.png)
 
@@ -302,6 +303,7 @@ Enable static files middleware.
 // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
    public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
    {
+       // Enable static files middleware.
        app.UseStaticFiles();
 
        app.UseMvcWithDefaultRoute();
@@ -311,7 +313,6 @@ Enable static files middleware.
 
        // Enable middleware to serve swagger-ui assets (HTML, JS, CSS etc.)
        app.UseSwaggerUi();
-
    }
    ````
 

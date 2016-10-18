@@ -15,17 +15,16 @@ Static files, such as HTML, CSS, image, and JavaScript, are assets that an ASP.N
 
 Static files are typically located in the `web root` (*<content-root>/wwwroot*) folder. See Content root and Web root in  [Introduction to ASP.NET Core](../intro.md) for more information. You generally set the content root to be the current directory so that your project's `web root` will be found while in development.
 
-[!code-csharp[Main](../common/samples/WebApplication1/src/WebApplication1/Program.cs?highlight=5&range=12-22)]
+[!code-csharp[Main](../common/samples/WebApplication1/src/WebApplication1/Program.cs?highlight=5&start=12&end=22)]
 
 Static files can be stored in any folder under the `web root` and accessed with a relative path to that root. For example, when you create a default Web application project using Visual Studio, there are several folders created within the *wwwroot*  folder - *css*, *images*, and *js*. The URI to access an image in the *images* subfolder:
 
-* http://<app>/images/<imageFileName>
-
-* http://localhost:9189/images/banner3.svg
+* `http://\<app>/images/\<imageFileName>`
+* `http://localhost:9189/images/banner3.svg`
 
 In order for static files to be served, you must configure the [`Middleware](middleware.md) to add static files to the pipeline. The static file middleware can be configured by adding a dependency on the *Microsoft.AspNetCore.StaticFiles* package to your project and then calling the [UseStaticFiles`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/StaticFileExtensions/index.html#Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles) extension method from `Startup.Configure`:
 
-[!code-csharp[Main](../fundamentals/static-files/sample/StartupStaticFiles.cs?highlight=3&range=20-23)]
+[!code-csharp[Main](../fundamentals/static-files/sample/StartupStaticFiles.cs?highlight=3&name=snippet1)]
 
 `app.UseStaticFiles();` makes the files in `web root` (*wwwroot* by default) servable. Later I'll show how to make other directory contents servable with `UseStaticFiles`.
 
@@ -50,7 +49,7 @@ Suppose you have a project hierarchy where the static files you wish to serve ar
 
 For a request to access *test.png*, configure the static files middleware as follows:
 
-[!code-csharp[Main](../fundamentals/static-files/sample/StartupTwoStaticFiles.cs?highlight=5,6,7,8,9,10&range=20-30)]
+[!code-csharp[Main](../fundamentals/static-files/sample/StartupTwoStaticFiles.cs?highlight=5,6,7,8,9,10&name=snippet1)]
 
 A request to `http://<app>/StaticFiles/test.png` will serve the *test.png* file.
 
@@ -66,11 +65,11 @@ The static file module provides **no** authorization checks. Any files served by
 
 Directory browsing allows the user of your web app to see a list of directories and files within a specified directory. Directory browsing is disabled by default for security reasons (see [`Considerations](#considerations)). To enable directory browsing, call the [UseDirectoryBrowser`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/DirectoryBrowserExtensions/index.html#Microsoft.AspNetCore.Builder.DirectoryBrowserExtensions.UseDirectoryBrowser) extension method from  `Startup.Configure`:
 
-[!code-csharp[Main](static-files/sample/StartupBrowse.cs?range=23-40)]
+[!code-csharp[Main](static-files/sample/StartupBrowse.cs?name=snippet1)]
 
 And add required services by calling [`AddDirectoryBrowser`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/DependencyInjection/DirectoryBrowserServiceExtensions/index.html#Microsoft.Extensions.DependencyInjection.DirectoryBrowserServiceExtensions.AddDirectoryBrowser) extension method from  `Startup.ConfigureServices`:
 
-[!code-csharp[Main](static-files/sample/StartupBrowse.cs?range=15-18)]
+[!code-csharp[Main](static-files/sample/StartupBrowse.cs?name=snippet2)]
 
 The code above allows directory browsing of the *wwwroot/images* folder using the URL http://<app>/MyImages, with links to each file and folder:
 
@@ -80,13 +79,13 @@ See [Considerations](#considerations) on the security risks when enabling browsi
 
 Note the two `app.UseStaticFiles` calls. The first one is required to serve the CSS, images and JavaScript in the *wwwroot* folder, and the second call for directory browsing of the *wwwroot/images* folder using the URL http://<app>/MyImages:
 
-[!code-csharp[Main](static-files/sample/StartupBrowse.cs?highlight=3,5&range=23-40)]
+[!code-csharp[Main](static-files/sample/StartupBrowse.cs?highlight=3,5&name=snippet1)]
 
 ## Serving a default document
 
 Setting a default home page gives site visitors a place to start when visiting your site. In order for your Web app to serve a default page without the user having to fully qualify the URI, call the `UseDefaultFiles` extension method from `Startup.Configure` as follows.
 
-[!code-csharp[Main](../fundamentals/static-files/sample/StartupEmpty.cs?highlight=3&range=15-19)]
+[!code-csharp[Main](../fundamentals/static-files/sample/StartupEmpty.cs?highlight=3&name=snippet1)]
 
 > [!NOTE]
 > [`UseDefaultFiles`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/DefaultFilesExtensions/index.html#Microsoft.AspNetCore.Builder.DefaultFilesExtensions.UseDefaultFiles) must be called before `UseStaticFiles` to serve the default file. `UseDefaultFiles` is a URL re-writer that doesn't actually serve the file. You must enable the static file middleware (`UseStaticFiles`) to serve the file.
@@ -105,7 +104,7 @@ The first file found from the list will be served as if the request was the full
 
 The following code shows how to change the default file name to *mydefault.html*.
 
-[!code-csharp[Main](static-files/sample/StartupDefault.cs?range=15-23)]
+[!code-csharp[Main](static-files/sample/StartupDefault.cs?name=snippet1)]
 
 ## UseFileServer
 
@@ -141,11 +140,11 @@ See [`Considerations](#considerations) on the security risks when enabling brows
 
 Using the hierarchy example above, you might want to enable static files, default files, and browsing for the `MyStaticFiles` directory. In the following code snippet, that is accomplished with a single call to [`FileServerOptions`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/FileServerOptions/index.html#Microsoft.AspNetCore.Builder.FileServerOptions).
 
-[!code-csharp[Main](static-files/sample/StartupUseFileServer.cs?highlight=5,6,7,8,9,10,11&range=23-34)]
+[!code-csharp[Main](static-files/sample/StartupUseFileServer.cs?highlight=5,6,7,8,9,10,11&name=snippet1)]
 
 If `enableDirectoryBrowsing` is set to `true` you are required to call [`AddDirectoryBrowser`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/DependencyInjection/DirectoryBrowserServiceExtensions/index.html#Microsoft.Extensions.DependencyInjection.DirectoryBrowserServiceExtensions.AddDirectoryBrowser) extension method from  `Startup.ConfigureServices`:
 
-[!code-csharp[Main](static-files/sample/StartupUseFileServer.cs?range=15-18)]
+[!code-csharp[Main](static-files/sample/StartupUseFileServer.cs?name=snippet2)]
 
 Using the file hierarchy and code above:
 
@@ -153,6 +152,11 @@ Using the file hierarchy and code above:
 |---|---|
 |http://\<app>/StaticFiles/test.png|MyStaticFiles/test.png|
 |http://\<app>/StaticFiles|MyStaticFiles/default.html|
+
+| URI            |                             Response  |
+| ------- | ------|
+| `http://<app>/StaticFiles/test.png`    |      MyStaticFiles/test.png |
+| `http://<app>/StaticFiles`              |     MyStaticFiles/default.html |
 
 If no default named files are in the *MyStaticFiles* directory, http://<app>/StaticFiles returns the directory listing with clickable links:
 
@@ -165,7 +169,7 @@ If no default named files are in the *MyStaticFiles* directory, http://<app>/Sta
 
 The [`FileExtensionContentTypeProvider`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/StaticFiles/FileExtensionContentTypeProvider/index.html#Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider) class contains a  collection that maps file extensions to MIME content types. In the following sample, several file extensions are registered to known MIME types, the ".rtf" is replaced, and ".mp4" is removed.
 
-[!code-csharp[Main](../fundamentals/static-files/sample/StartupFileExtensionContentTypeProvider.cs?range=24-51&highlight=3,4,5,6,7,8,9,10,11,12,19)]
+[!code-csharp[Main](../fundamentals/static-files/sample/StartupFileExtensionContentTypeProvider.cs?highlight=3,4,5,6,7,8,9,10,11,12,19&name=snippet1)]
 
 See   [MIME content types](http://www.iana.org/assignments/media-types/media-types.xhtml).
 
@@ -175,7 +179,7 @@ The ASP.NET static file middleware understands almost 400 known file content typ
 
 The following code enables serving unknown types and will render the unknown file as an image.
 
-[!code-csharp[Main](static-files/sample/StartupServeUnknownFileTypes.cs?range=17-24)]
+[!code-csharp[Main](static-files/sample/StartupServeUnknownFileTypes.cs?name=snippet1)]
 
 With the code above, a request for a file with an unknown content type will be returned as an image.
 

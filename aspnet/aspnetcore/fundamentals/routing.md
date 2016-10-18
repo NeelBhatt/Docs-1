@@ -182,16 +182,13 @@ To use routing middleware, add it to the **dependencies** in *project.json*:
 
 Add routing to the service container in *Startup.cs*:
 
-[!code-csharp[Main](../fundamentals/routing/sample/RoutingSample/Startup.cs?highlight=3&range=11-14)]
+[!code-csharp[Main](../fundamentals/routing/sample/RoutingSample/Startup.cs?highlight=3&start=11&end=14)]
 
 Routes must configured in the `Configure` method in the `Startup` class. The sample below uses these APIs:
 
 * [`RouteBuilder`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Routing/RouteBuilder/index.html#Microsoft.AspNetCore.Routing.RouteBuilder)
-
 * [`Build`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Routing/RouteBuilder/index.html#Microsoft.AspNetCore.Routing.RouteBuilder.Build)
-
 * [`MapGet`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Routing/RequestDelegateRouteBuilderExtensions/index.html#Microsoft.AspNetCore.Routing.RequestDelegateRouteBuilderExtensions.MapGet)  Matches only HTTP GET requests
-
 * [`UseRouter`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/RoutingBuilderExtensions/index.html#Microsoft.AspNetCore.Builder.RoutingBuilderExtensions.UseRouter)
 
 <!-- literal_block {"xml:space": "preserve", "source": "fundamentals/routing/sample/RoutingSample/Startup.cs", "ids": [], "linenos": false, "highlight_args": {"linenostart": 1}} -->
@@ -229,30 +226,25 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
 
 The table below shows the responses with the given URIs.
 
-|URI|Response|
-|---|---|
-|/package/create/3|Hello! Route values: [operation, create], [id, 3]|
-|/package/track/-3|Hello! Route values: [operation, track], [id, -3]|
-|/package/track/-3/|Hello! Route values: [operation, track], [id, -3]|
-|/package/track/|\<Fall through, no match>|
-|GET /hello/Joe|Hi, Joe!|
-|POST /hello/Joe|\<Fall through, matches HTTP GET only>|
-|GET /hello/Joe/Smith|\<Fall through, no match>|
+| URI | Response  |
+| ------- | -------- |
+| /package/create/3  | Hello! Route values: [operation, create], [id, 3] |
+| /package/track/-3  | Hello! Route values: [operation, track], [id, -3] |
+| /package/track/-3/ | Hello! Route values: [operation, track], [id, -3]  |
+| /package/track/ | \<Fall through, no match> |
+| GET /hello/Joe | Hi, Joe! |
+| POST /hello/Joe | \<Fall through, matches HTTP GET only> |
+| GET /hello/Joe/Smith | \<Fall through, no match> |
 
 If you are configuring a single route, call `app.UseRouter` passing in an `IRouter` instance. You won't need to call `RouteBuilder`.
 
 The framework provides a set of extension methods for creating routes such as:
 
 * [`MapRoute`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Builder/MapRouteRouteBuilderExtensions/index.html#Microsoft.AspNetCore.Builder.MapRouteRouteBuilderExtensions.MapRoute)
-
 * [`MapGet`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Routing/RequestDelegateRouteBuilderExtensions/index.html#Microsoft.AspNetCore.Routing.RequestDelegateRouteBuilderExtensions.MapGet)
-
 * [`MapPost`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Routing/RequestDelegateRouteBuilderExtensions/index.html#Microsoft.AspNetCore.Routing.RequestDelegateRouteBuilderExtensions.MapPost)
-
 * [`MapPut`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Routing/RequestDelegateRouteBuilderExtensions/index.html#Microsoft.AspNetCore.Routing.RequestDelegateRouteBuilderExtensions.MapPut)
-
 * [`MapDelete`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Routing/RequestDelegateRouteBuilderExtensions/index.html#Microsoft.AspNetCore.Routing.RequestDelegateRouteBuilderExtensions.MapDelete)
-
 * [`MapVerb`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Routing/RequestDelegateRouteBuilderExtensions/index.html#Microsoft.AspNetCore.Routing.RequestDelegateRouteBuilderExtensions.MapVerb)
 
 Some of these methods such as `MapGet` require a [`RequestDelegate`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Http/RequestDelegate/index.html#Microsoft.AspNetCore.Http.RequestDelegate) to be provided. The `RequestDelegate` will be used as the *route handler* when the route matches. Other methods in this family allow configuring a middleware pipeline which will be used as the route handler. If the *Map* method doesn't accept a handler, such as `MapRoute`, then it will use the [`DefaultHandler`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Routing/IRouteBuilder/index.html#Microsoft.AspNetCore.Routing.IRouteBuilder.DefaultHandler).
@@ -270,9 +262,7 @@ Literal text other than route parameters (for example, `{id}`) and the path sepa
 URL patterns that attempt to capture a filename with an optional file extension have additional considerations. For example, using the template `files/{filename}.{ext?}` - When both `filename` and `ext` exist, both values will be populated. If only `filename` exists in the URL, the route matches because the trailing period `.` is  optional. The following URLs would match this route:
 
 * `/files/myFile.txt`
-
 * `/files/myFile.`
-
 * `/files/myFile`
 
 You can use the `*` character as a prefix to a route parameter to bind to the rest of the URI - this is called a *catch-all* parameter. For example, `blog/{*slug}` would match any URI that started with `/blog` and had any value following it (which would be assigned to the `slug` route value). Catch-all parameters can also match the empty string.
@@ -284,14 +274,14 @@ Route parameters may also have constraints, which must match the route value bou
 
 The following table demonstrates some route templates and their behavior.
 
-|Route Template|Example Matching URL|Notes|
-|---|---|---|
-|hello|/hello|Only matches the single path '/hello'|
-|{Page=Home}|/|Matches and sets `Page` to `Home`|
-|{Page=Home}|/Contact|Matches and sets `Page` to `Contact`|
-|{controller}/{action}/{id?}|/Products/List|Maps to `Products` controller and `List` action|
-|{controller}/{action}/{id?}|/Products/Details/123|Maps to `Products` controller and `Details` action. `id` set to 123|
-|{controller=Home}/<br />{action=Index}/{id?}|/|Maps to `Home` controller and `Index` method; `id` is ignored.|
+| Route Template | Example Matching URL | Notes |
+| -------- | -------- | ------- |
+| hello  | /hello  | Only matches the single path `/hello` |
+| {Page=Home} | / | Matches and sets `Page` to `Home` |
+| {Page=Home}  | /Contact  \ Matches and sets `Page` to `Contact` |
+| {controller}/{action}/{id?} | /Products/List | Maps to `Products` controller and `List`  action |
+| {controller}/{action}/{id?} | /Products/Details/123  |  Maps to `Products` controller and  `Details` action.  `id` set to 123 |
+| {controller=Home}/{action=Index}/{id?} | /  |  Maps to `Home` controller and `Index`  method; `id` is ignored. |
 
 Using a template is generally the simplest approach to routing. Constraints and defaults can also be specified outside the route template.
 
@@ -309,27 +299,25 @@ Route constraints execute when a `Route` has matched the syntax of the incoming 
 
 The following table demonstrates some route constraints and their expected behavior.
 
-*Inline Route Constraints*
-
-|constraint|Example|Example Match|Notes|
-|---|---|---|---|
-|`int`|{id:int}|123|Matches any integer|
-|`bool`|{active:bool}|TRUE|Matches `true` or `false`|
-|`datetime`|{dob:datetime}|1/1/2016|Matches a valid `DateTime` value (in the invariant culture - see options)|
-|`decimal`|{price:decimal}|49.99|Matches a valid `decimal` value|
-|`double`|{weight:double}|4.234|Matches a valid `double` value|
-|`float`|{weight:float}|3.14|Matches a valid `float` value|
-|`guid`|{id:guid}|7342570B-\<snip>|Matches a valid `Guid` value|
-|`long`|{ticks:long}|123456789|Matches a valid `long` value|
-|`minlength(value)`|{username:minlength(5)}|steve|String must be at least 5 characters long.|
-|`maxlength(value)`|{filename:maxlength(8)}|somefile|String must be no more than 8 characters long.|
-|`length(min,max)`|{filename:length(4,16)}|Somefile.txt|String must be at least 8 and no more than 16 characters long.|
-|`min(value)`|{age:min(18)}|19|Value must be at least 18.|
-|`max(value)`|{age:max(120)}|91|Value must be no more than 120.|
-|`range(min,max)`|{age:range(18,120)}|91|Value must be at least 18 but no more than 120.|
-|`alpha`|{name:alpha}|Steve|String must consist of alphabetical characters.|
-|`regex(expression)`|{ssn:regex(^d{3}-d{2}-d{4}$)}|123-45-6789|String must match the provided regular expression.|
-|`required`|{name:required}|Steve|Used to enforce that a non-parameter value is present during URL generation.|
+| constraint | Example | Example Match | Notes |
+| --------   | ------- | ------------- | ----- |
+| `int` | {id:int} | 123 | Matches any integer |
+| bool  | {active:bool} | true | Matches `true` or `false` |
+| datetime | {dob:datetime} | 2016-01-01  | Matches a valid DateTime value (in the invariant culture - see options) |
+| decimal | {price:decimal} | 49.99 | Matches a valid decimal value |
+| double  | {weight:double} | 4.234 | Matches a valid double value |
+| float  | {weight:float} | 3.14 | Matches a valid float value |
+| guid  | {id:guid} | CD2C1638-1638-72D5-1638-DEADBEEF1638 | Matches a valid Guid value |
+| long | {ticks:long} | 123456789 | Matches a valid long value |
+| minlength(value) | {username:minlength(4)} | Rick | String must be at least 4 characters |
+| maxlength(value) | {filename:maxlength(8)} | somefile | String must be no more than 8 characters |
+| length(min,max) | {filename:length(4,16)} | *Somefile.txt* | String must be at least 8 and no more than 16 characters long |
+| min(value) | {age:min(18)} | 19 | Value must be at least 18 |
+| max(value) | {age:max(120)} |  91 | Value must be no more than 120 |
+| range(min,max) | {age:range(18,120)} | 91 | Value must be at least 18 but no more than 120 |
+| alpha | {name:alpha} | Rick | String must consist of alphabetical characters |
+| regex(expression) | {ssn:regex(^d{3}-d{2}-d{4}$)} | 123-45-6789 | String must match the regular expression |
+| required  | {name:required} | Rick |  Used to enforce that a non-parameter value is present during URL generation |
 
 >[!WARNING]
 > Route constraints that verify the URL can be converted to a CLR type (such as `int` or `DateTime`) always use the invariant culture - they assume the URL is non-localizable. The framework-provided route constraints do not modify the values stored in route values. All route values parsed from the URL will be stored as strings. For example, the [Float route constraint](https://github.com/aspnet/Routing/blob/1.0.0/src/Microsoft.AspNetCore.Routing/Constraints/FloatRouteConstraint.cs#L44-L60) will attempt to convert the route value to a float, but the converted value is used only to verify it can be converted to a float.
@@ -353,14 +341,12 @@ Ambient values that don't match a parameter are ignored, and ambient values are 
 
 Values that are explicitly provided but which don't match anything are added to the query string. The following table shows the result when using the route template `{controller}/{action}/{id?}`.
 
-*Generating links with `{controller}/{action}/{id?}` template*
-
-|Ambient Values|Explicit Values|Result|
-|---|---|---|
-|controller="Home"|action="About"|`/Home/About`|
-|controller="Home"|controller="Order",action="About"|`/Order/About`|
-|controller="Home",color="Red"|action="About"|`/Home/About`|
-|controller="Home"|action="About",color="Red"|`/Home/About?color=Red`|
+| Ambient Values | Explicit Values | Result |
+| -------------   | -------------- | ------ |
+| controller="Home" | action="About" | `/Home/About` |
+| controller="Home" | controller="Order",action="About" | `/Order/About` |
+| controller="Home",color="Red" | action="About" | `/Home/About` |
+| controller="Home" | action="About",color="Red" | `/Home/About?color=Red`
 
 If a route has a default value that doesn't correspond to a parameter and that value is explicitly provided, it must match the default value. For example:
 

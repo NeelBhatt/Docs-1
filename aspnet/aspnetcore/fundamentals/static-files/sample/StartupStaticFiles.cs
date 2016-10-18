@@ -16,11 +16,11 @@ namespace StaticFiles
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        // >Configure
+        #region snippet1
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             app.UseStaticFiles();
         }
-        // <Configure
+        #endregion
     }
 }

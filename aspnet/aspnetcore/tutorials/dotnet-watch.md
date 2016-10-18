@@ -20,9 +20,7 @@ Start by downloading [the sample application](https://github.com/aspnet/Docs/tre
 In a console, open the folder where you downloaded the sample application and run:
 
 1. `dotnet restore`
-
 2. `cd WebApp`
-
 3. `dotnet run`
 
 The console output will show messages similar to the ones below, indicating that the application is now running and waiting for requests:
@@ -52,17 +50,7 @@ We'll fix that.
 
 ## Adding `dotnet watch` to a project
 
-1. Add `Microsoft.DotNet.Watcher.Tools` to the `tools` section of the *WebApp/project.json* file as in the example below:
-
-[!code-javascript[Main](../tutorials/dotnet-watch/sample/WebAppTests/project.json?highlight=2)]
-
-````javascript
-"tools": {
-     "Microsoft.DotNet.Watcher.Tools": "1.0.0-preview2-final"
-   },
-
-   ````
-
+1. Add `Microsoft.DotNet.Watcher.Tools` to the `tools` section of the *WebApp/project.json* file.
 2. Run `dotnet restore`.
 
 The console output will show messages similar to the ones below:
@@ -79,6 +67,13 @@ log  : Restoring packages for /Users/user/dev/aspnet/Docs/aspnet/tutorials/dotne
 Any `dotnet` command can be run with  `dotnet watch`:  For example:
 
 <!--     Command  Command with watch  dotnet run  dotnet watch run  dotnet run -f net451  dotnet watch run -f net451  dotnet run -f net451 -- --arg1  dotnet watch run -f net451 -- --arg1  dotnet test  dotnet watch test -->
+
+| Command | Command with watch |
+| ---- | ----- |
+| dotnet run  | dotnet watch run |
+| dotnet run -f net451 | dotnet watch run -f net451 |
+| dotnet run -f net451 -- --arg1 | dotnet watch run -f net451 -- --arg1 |
+| dotnet test | dotnet watch test |
 
 To run `WebApp` using the watcher, run `dotnet watch run` in the `WebApp` folder. The console output will show messages similar to the ones below, indicating that `dotnet watch` is now watching code files:
 
@@ -97,13 +92,7 @@ user$ dotnet watch run
 
 Make sure `dotnet watch` is running.
 
-Let's fix the bug that we discovered when we tried to compute the product of two number.
-
-Open *WebApp/Controllers/MathController.cs*.
-
-We've intentionally introduced a bug in the code.
-
-[!code-csharp[Main](../tutorials/dotnet-watch/sample/WebApp/Controllers/MathController.cs?highlight=5)]
+Let's fix the bug in *WebApp/Controllers/MathController.cs* that we discovered when we tried to compute the product of two number:
 
 ````csharp
     public static int Product(int a, int b)
