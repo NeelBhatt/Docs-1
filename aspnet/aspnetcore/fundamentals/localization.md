@@ -269,23 +269,15 @@ Internationalization is often abbreviated to "I18N". The abbreviation takes the 
 Terms:
 
 * Globalization (G11N): The process of making an app support different languages and regions.
-
 * Localization (L10N): The process of customizing an app for a given language and region.
-
 * Internationalization (I18N): Describes both globalization and localization.
-
 * Culture: It is a language and, optionally, a region.
-
 * Neutral culture: A culture that has a specified language, but not a region. (for example "en", "es")
-
 * Specific culture: A culture that has a specified language and region. (for example "en-US", "en-GB", "es-CL")
-
 * Locale: A locale is the same as a culture.
 
 ## Additional Resources
 
 * [Localization.StarterWeb project](https://github.com/aspnet/entropy) used in the article.
-
 * [Resource Files in Visual Studio](https://msdn.microsoft.com/en-us/library/xbx3z216(v=vs.110).aspx#VSResFiles)
-
 * [Resources in .resx Files](https://msdn.microsoft.com/en-us/library/xbx3z216(v=vs.110).aspx#ResourcesFiles)
