@@ -36,32 +36,15 @@ Partial views are created like any other view: you create a *.cshtml* file withi
 
 From within a view page, there are several ways in which you can render a partial view. The simplest is to use `Html.Partial`, which returns an `IHtmlString` and can be referenced by prefixing the call with `@`:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/partial/sample/src/PartialViewsSample/Views/Home/About.cshtml", "ids": [], "linenos": false, "highlight_args": {"linenostart": 1}} -->
-
-````
-@Html.Partial("AuthorPartial")
-
-   ````
+[!code-html[Main](partial/sample/src/PartialViewsSample/Views/Home/About.cshtml?range=9)]
 
 The [`PartialAsync`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Rendering/IHtmlHelper/index.html#Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper.PartialAsync) method is available for partial views containing asynchronous code (although code in views is generally discouraged):
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/partial/sample/src/PartialViewsSample/Views/Home/About.cshtml", "ids": [], "linenos": false, "highlight_args": {"linenostart": 1}} -->
-
-````
-@await Html.PartialAsync("AuthorPartial")
-
-   ````
+[!code-html[Main](partial/sample/src/PartialViewsSample/Views/Home/About.cshtml?range=8)]
 
 You can render a partial view with [`RenderPartial`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Rendering/HtmlHelperPartialExtensions/index.html#Microsoft.AspNetCore.Mvc.Rendering.HtmlHelperPartialExtensions.RenderPartial). This method doesn't return a result; it streams the rendered output directly to the response. Because it doesn't return a result, it must be called within a Razor code block (you can also call `RenderPartialAsync` if necessary):
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/partial/sample/src/PartialViewsSample/Views/Home/About.cshtml", "ids": [], "linenos": false, "highlight_args": {"linenostart": 1}} -->
-
-````
-@{
-       Html.RenderPartial("AuthorPartial");
-   }
-
-   ````
+[!code-html[Main](partial/sample/src/PartialViewsSample/Views/Home/About.cshtml?range=10-12)]
 
 Because it streams the result directly, `RenderPartial` and `RenderPartialAsync` may perform better in some scenarios. However, in most cases it's recommended you use `Partial` and `PartialAsync`.
 
@@ -74,20 +57,20 @@ When referencing a partial view, you can refer to its location in several ways:
 
 ````text
 // Uses a view in current folder with this name
-   // If none is found, searches the Shared folder
-   @Html.Partial("ViewName")
+// If none is found, searches the Shared folder
+@Html.Partial("ViewName")
 
-   // A view with this name must be in the same folder
-   @Html.Partial("ViewName.cshtml")
+// A view with this name must be in the same folder
+@Html.Partial("ViewName.cshtml")
 
-   // Locate the view based on the application root
-   // Paths that start with "/" or "~/" refer to the application root
-   @Html.Partial("~/Views/Folder/ViewName.cshtml")
-   @Html.Partial("/Views/Folder/ViewName.cshtml")
+// Locate the view based on the application root
+// Paths that start with "/" or "~/" refer to the application root
+@Html.Partial("~/Views/Folder/ViewName.cshtml")
+@Html.Partial("/Views/Folder/ViewName.cshtml")
 
-   // Locate the view using relative paths
-   @Html.Partial("../Account/LoginPartial.cshtml")
-   ````
+// Locate the view using relative paths
+@Html.Partial("../Account/LoginPartial.cshtml")
+````
 
 If desired, you can have different partial views with the same name in different view folders. When referencing the views by name (without file extension), views in each folder will use the partial view in the same folder with them. You can also specify a default partial view to use, placing it in the *Shared* folder. This view will be used by any views that don't have their own copy of the partial view in their folder. In this way, you can have a default partial view (in *Shared*), which can be overridden by a partial view with the same name in the same folder as the parent view.
 
@@ -122,49 +105,15 @@ You can pass an instance of `ViewDataDictionary` and a view model to a partial v
 
 The following view specifies a view model of type `Article`. `Article` has an `AuthorName` property that is passed to a partial view named *AuthorPartial*, and a property of type `List<ArticleSection>`, which is passed (in a loop) to a partial devoted to rendering that type:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/partial/sample/src/PartialViewsSample/Views/Articles/Read.cshtml", "ids": [], "linenos": false, "highlight_args": {"hl_lines": [2, 5, 10], "linenostart": 1}} -->
-
-````
-@using PartialViewsSample.ViewModels
-   @model Article
-
-   <h2>@Model.Title</h2>
-   @Html.Partial("AuthorPartial", Model.AuthorName)
-   @Model.PublicationDate
-
-   @foreach (var section in @Model.Sections)
-   {
-       @Html.Partial("ArticleSection", section)
-   }
-
-   ````
+[!code-html[Main](partial/sample/src/PartialViewsSample/Views/Articles/Read.cshtml?highlight=2,5,10)]
 
 The *AuthorPartial* (which in this case is in the */Views/Shared* folder):
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/partial/sample/src/PartialViewsSample/Views/Shared/AuthorPartial.cshtml", "ids": [], "linenos": false, "highlight_args": {"hl_lines": [1], "linenostart": 1}} -->
-
-````
-@model string
-   <div>
-       <h3>@Model</h3>
-       This partial view came from /Views/Shared/AuthorPartial.cshtml.<br/>
-   </div>
-
-   ````
+[!code-html[Main](partial/sample/src/PartialViewsSample/Views/Shared/AuthorPartial.cshtml?highlight=1)]
 
 The *ArticleSection* partial:
 
-<!-- literal_block {"xml:space": "preserve", "source": "mvc/views/partial/sample/src/PartialViewsSample/Views/Articles/ArticleSection.cshtml", "ids": [], "linenos": false, "highlight_args": {"hl_lines": [2], "linenostart": 1}} -->
-
-````
-@using PartialViewsSample.ViewModels
-   @model ArticleSection
-
-   <h3>@Model.Title</h3>
-   <div>
-       @Model.Content
-   </div>
-   ````
+[!code-html[Main](partial/sample/src/PartialViewsSample/Views/Articles/ArticleSection.cshtml?highlight=2)]
 
 At runtime, the partials are rendered into the parent view, which itself is rendered within the shared *_Layout.cshtml*, resulting in output like this:
 

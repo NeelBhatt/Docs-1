@@ -22,7 +22,7 @@ An example of `@inject` in action:
 
 This view displays a list of `ToDoItem` instances, along with a summary showing overall statistics. The summary is populated from the injected `StatisticsService`. This service is registered for dependency injection in `ConfigureServices` in *Startup.cs*:
 
-[!code-csharp[Main](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Startup.cs?highlight=6,7,range=15-22)]
+[!code-csharp[Main](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Startup.cs?highlight=6,7&range=15-22)]
 
 The `StatisticsService` performs some calculations on the set of `ToDoItem` instances, which it accesses via a repository:
 

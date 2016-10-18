@@ -46,16 +46,20 @@ The `ConfigureServices` method is also where you should add configuration option
 
 ASP.NET Core provides certain application services and objects during your application's startup. You can request certain sets of these services by simply including the appropriate interface as a parameter on your `Startup` class's constructor or one of its `Configure` or `ConfigureServices` methods. The services available to each method in the `Startup` class are described below. The framework services and objects include:
 
-IApplicationBuilder
+**IApplicationBuilder**
+
    Used to build the application request pipeline. Available only to the `Configure` method in `Startup`. Learn more about [Request Features](request-features.md).
 
-IHostingEnvironment
+**IHostingEnvironment**
+
    Provides the current `EnvironmentName`, `ContentRootPath`, `WebRootPath`, and web root file provider. Available to the `Startup` constructor and `Configure` method.
 
-ILoggerFactory
+**ILoggerFactory**
+
    Provides a mechanism for creating loggers. Available to the `Startup` constructor and `Configure` method. Learn more about [Logging](logging.md).
 
-IServiceCollection
+**IServiceCollection**
+
    The current set of services configured in the container. Available only to the `ConfigureServices` method, and used by that method to configure the services available to an application.
 
 Looking at each method in the `Startup` class in the order in which they are called, the following services may be requested as parameters:

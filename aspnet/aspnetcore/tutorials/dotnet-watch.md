@@ -27,20 +27,20 @@ The console output will show messages similar to the ones below, indicating that
 
 ````bash
 $ dotnet run
-   Project WebApp (.NETCoreApp,Version=v1.0) will be compiled because inputs were modified
-   Compiling WebApp for .NETCoreApp,Version=v1.0
+Project WebApp (.NETCoreApp,Version=v1.0) will be compiled because inputs were modified
+Compiling WebApp for .NETCoreApp,Version=v1.0
 
-   Compilation succeeded.
-     0 Warning(s)
-     0 Error(s)
+Compilation succeeded.
+  0 Warning(s)
+  0 Error(s)
 
-   Time elapsed 00:00:02.6049991
+Time elapsed 00:00:02.6049991
 
-   Hosting environment: Production
-   Content root path: /Users/user/dev/aspnet/Docs/aspnet/tutorials/dotnet-watch/sample/WebApp
-   Now listening on: http://localhost:5000
-   Application started. Press Ctrl+C to shut down.
-   ````
+Hosting environment: Production
+Content root path: /Users/user/dev/aspnet/Docs/aspnet/tutorials/dotnet-watch/sample/WebApp
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+````
 
 In a web browser, navigate to `http://localhost:5000/api/math/sum?a=4&b=5` and you should see the result `9`.
 
@@ -57,10 +57,10 @@ The console output will show messages similar to the ones below:
 
 ````bash
 log  : Restoring packages for /Users/user/dev/aspnet/Docs/aspnet/tutorials/dotnet-watch/sample/WebApp/project.json...
-   log  : Restoring packages for tool 'Microsoft.DotNet.Watcher.Tools' in /Users/user/dev/aspnet/Docs/aspnet/tutorials/dotnet-watch/sample/WebApp/project.json...
-   log  : Installing Microsoft.DotNet.Watcher.Core 1.0.0-preview2-final.
-   log  : Installing Microsoft.DotNet.Watcher.Tools 1.0.0-preview2-final.
-   ````
+log  : Restoring packages for tool 'Microsoft.DotNet.Watcher.Tools' in /Users/user/dev/aspnet/Docs/aspnet/tutorials/dotnet-watch/sample/WebApp/project.json...
+log  : Installing Microsoft.DotNet.Watcher.Core 1.0.0-preview2-final.
+log  : Installing Microsoft.DotNet.Watcher.Tools 1.0.0-preview2-final.
+````
 
 ## Running `dotnet` commands using `dotnet watch`
 
@@ -79,14 +79,14 @@ To run `WebApp` using the watcher, run `dotnet watch run` in the `WebApp` folder
 
 ````bash
 user$ dotnet watch run
-   [DotNetWatcher] info: Running dotnet with the following arguments: run
-   [DotNetWatcher] info: dotnet process id: 39746
-   Project WebApp (.NETCoreApp,Version=v1.0) was previously compiled. Skipping compilation.
-   Hosting environment: Production
-   Content root path: /Users/user/dev/aspnet/Docs/aspnet/tutorials/dotnet-watch/sample/WebApp
-   Now listening on: http://localhost:5000
-   Application started. Press Ctrl+C to shut down.
-   ````
+[DotNetWatcher] info: Running dotnet with the following arguments: run
+[DotNetWatcher] info: dotnet process id: 39746
+Project WebApp (.NETCoreApp,Version=v1.0) was previously compiled. Skipping compilation.
+Hosting environment: Production
+Content root path: /Users/user/dev/aspnet/Docs/aspnet/tutorials/dotnet-watch/sample/WebApp
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+````
 
 ## Making changes with `dotnet watch`
 
@@ -94,15 +94,7 @@ Make sure `dotnet watch` is running.
 
 Let's fix the bug in *WebApp/Controllers/MathController.cs* that we discovered when we tried to compute the product of two number:
 
-````csharp
-    public static int Product(int a, int b)
-       {
-           // We have an intentional bug here
-           // + should be *
-           return a + b; 
-       }
-
-   ````
+[!code-csharp[Main](dotnet-watch/sample/WebApp/Controllers/MathController.cs?range=12-17&highlight=5)]
 
 Fix the code by replacing `a + b` with `a * b`.
 
@@ -110,20 +102,20 @@ Save the file. The console output will show messages similar to the ones below, 
 
 ````bash
 [DotNetWatcher] info: File changed: /Users/user/dev/aspnet/Docs/aspnet/tutorials/dotnet-watch/sample/WebApp/Controllers/MathController.cs
-   [DotNetWatcher] info: Running dotnet with the following arguments: run
-   [DotNetWatcher] info: dotnet process id: 39940
-   Project WebApp (.NETCoreApp,Version=v1.0) will be compiled because inputs were modified
-   Compiling WebApp for .NETCoreApp,Version=v1.0
-   Compilation succeeded.
-     0 Warning(s)
-     0 Error(s)
-   Time elapsed 00:00:03.3312829
+[DotNetWatcher] info: Running dotnet with the following arguments: run
+[DotNetWatcher] info: dotnet process id: 39940
+Project WebApp (.NETCoreApp,Version=v1.0) will be compiled because inputs were modified
+Compiling WebApp for .NETCoreApp,Version=v1.0
+Compilation succeeded.
+  0 Warning(s)
+  0 Error(s)
+Time elapsed 00:00:03.3312829
 
-   Hosting environment: Production
-   Content root path: /Users/user/dev/aspnet/Docs/aspnet/tutorials/dotnet-watch/sample/WebApp
-   Now listening on: http://localhost:5000
-   Application started. Press Ctrl+C to shut down.
-   ````
+Hosting environment: Production
+Content root path: /Users/user/dev/aspnet/Docs/aspnet/tutorials/dotnet-watch/sample/WebApp
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+````
 
 Verify `http://localhost:5000/api/math/product?a=4&b=5` returns the correct result.
 
@@ -135,27 +127,27 @@ The file watcher can run other `dotnet` commands like `test` or `publish`.
 
 2. Run `dotnet watch test`.
 
-If you previously fixed the bug in the `MathController` then you'll see an output similar to the one below, otherwise you'll see a test failure:
-
-````bash
-WebAppTests user$ dotnet watch test
-   [DotNetWatcher] info: Running dotnet with the following arguments: test
-   [DotNetWatcher] info: dotnet process id: 40193
-   Project WebApp (.NETCoreApp,Version=v1.0) was previously compiled. Skipping compilation.
-   Project WebAppTests (.NETCoreApp,Version=v1.0) was previously compiled. Skipping compilation.
-   xUnit.net .NET CLI test runner (64-bit .NET Core osx.10.11-x64)
-     Discovering: WebAppTests
-     Discovered:  WebAppTests
-     Starting:    WebAppTests
-     Finished:    WebAppTests
-   === TEST EXECUTION SUMMARY ===
-      WebAppTests  Total: 2, Errors: 0, Failed: 0, Skipped: 0, Time: 0.259s
-   SUMMARY: Total: 1 targets, Passed: 1, Failed: 0.
-   [DotNetWatcher] info: dotnet exit code: 0
-   [DotNetWatcher] info: Waiting for a file to change before restarting dotnet...
-   ````
-
-Once all the tests run, the watcher will indicate that it's waiting for a file to change before restarting `dotnet test`.
+    If you previously fixed the bug in the `MathController` then you'll see an output similar to the one below, otherwise you'll see a test failure:
+    
+    ````bash
+    WebAppTests user$ dotnet watch test
+    [DotNetWatcher] info: Running dotnet with the following arguments: test
+    [DotNetWatcher] info: dotnet process id: 40193
+    Project WebApp (.NETCoreApp,Version=v1.0) was previously compiled. Skipping compilation.
+    Project WebAppTests (.NETCoreApp,Version=v1.0) was previously compiled. Skipping compilation.
+    xUnit.net .NET CLI test runner (64-bit .NET Core osx.10.11-x64)
+      Discovering: WebAppTests
+      Discovered:  WebAppTests
+      Starting:    WebAppTests
+      Finished:    WebAppTests
+    === TEST EXECUTION SUMMARY ===
+       WebAppTests  Total: 2, Errors: 0, Failed: 0, Skipped: 0, Time: 0.259s
+    SUMMARY: Total: 1 targets, Passed: 1, Failed: 0.
+    [DotNetWatcher] info: dotnet exit code: 0
+    [DotNetWatcher] info: Waiting for a file to change before restarting dotnet...
+    ````
+    
+    Once all the tests run, the watcher will indicate that it's waiting for a file to change before restarting `dotnet test`.
 
 3. Open the controller file in *WebApp/Controllers/MathController.cs* and change some code. If you haven't fixed the product bug, do it now. Save the file.
 
@@ -163,30 +155,30 @@ Once all the tests run, the watcher will indicate that it's waiting for a file t
 
 ````bash
 [DotNetWatcher] info: File changed: /Users/user/dev/aspnet/Docs/aspnet/tutorials/dotnet-watch/sample/WebApp/Controllers/MathController.cs
-   [DotNetWatcher] info: Running dotnet with the following arguments: test
-   [DotNetWatcher] info: dotnet process id: 40233
-   Project WebApp (.NETCoreApp,Version=v1.0) will be compiled because inputs were modified
-   Compiling WebApp for .NETCoreApp,Version=v1.0
-   Compilation succeeded.
-     0 Warning(s)
-     0 Error(s)
-   Time elapsed 00:00:03.2127590
-   Project WebAppTests (.NETCoreApp,Version=v1.0) will be compiled because dependencies changed
-   Compiling WebAppTests for .NETCoreApp,Version=v1.0
-   Compilation succeeded.
-     0 Warning(s)
-     0 Error(s)
-   Time elapsed 00:00:02.1204052
+[DotNetWatcher] info: Running dotnet with the following arguments: test
+[DotNetWatcher] info: dotnet process id: 40233
+Project WebApp (.NETCoreApp,Version=v1.0) will be compiled because inputs were modified
+Compiling WebApp for .NETCoreApp,Version=v1.0
+Compilation succeeded.
+  0 Warning(s)
+  0 Error(s)
+Time elapsed 00:00:03.2127590
+Project WebAppTests (.NETCoreApp,Version=v1.0) will be compiled because dependencies changed
+Compiling WebAppTests for .NETCoreApp,Version=v1.0
+Compilation succeeded.
+  0 Warning(s)
+  0 Error(s)
+Time elapsed 00:00:02.1204052
 
-   xUnit.net .NET CLI test runner (64-bit .NET Core osx.10.11-x64)
-     Discovering: WebAppTests
-     Discovered:  WebAppTests
-     Starting:    WebAppTests
-     Finished:    WebAppTests
-   === TEST EXECUTION SUMMARY ===
-      WebAppTests  Total: 2, Errors: 0, Failed: 0, Skipped: 0, Time: 0.260s
-   SUMMARY: Total: 1 targets, Passed: 1, Failed: 0.
-   [DotNetWatcher] info: dotnet exit code: 0
+xUnit.net .NET CLI test runner (64-bit .NET Core osx.10.11-x64)
+  Discovering: WebAppTests
+  Discovered:  WebAppTests
+  Starting:    WebAppTests
+  Finished:    WebAppTests
+=== TEST EXECUTION SUMMARY ===
+   WebAppTests  Total: 2, Errors: 0, Failed: 0, Skipped: 0, Time: 0.260s
+SUMMARY: Total: 1 targets, Passed: 1, Failed: 0.
+[DotNetWatcher] info: dotnet exit code: 0
 
-   [DotNetWatcher] info: Waiting for a file to change before restarting dotnet...
-   ````
+[DotNetWatcher] info: Waiting for a file to change before restarting dotnet...
+````
