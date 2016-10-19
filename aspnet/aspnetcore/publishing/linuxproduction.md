@@ -164,13 +164,13 @@ The default distribution of Nginx doesn't enable SSL. To enable all the security
 
 ````bash
 # Install the build dependencies
-   sudo apt-get update
-   sudo apt-get install build-essential zlib1g-dev libpcre3-dev libssl-dev libxslt1-dev libxml2-dev libgd2-xpm-dev libgeoip-dev libgoogle-perftools-dev libperl-dev
+sudo apt-get update
+sudo apt-get install build-essential zlib1g-dev libpcre3-dev libssl-dev libxslt1-dev libxml2-dev libgd2-xpm-dev libgeoip-dev libgoogle-perftools-dev libperl-dev
 
-   # Download nginx 1.10.0 or latest
-   wget http://www.nginx.org/download/nginx-1.10.0.tar.gz
-   tar zxf nginx-1.10.0.tar.gz
-   ````
+# Download nginx 1.10.0 or latest
+wget http://www.nginx.org/download/nginx-1.10.0.tar.gz
+tar zxf nginx-1.10.0.tar.gz
+````
 
 #### Change the Nginx response name
 
@@ -178,8 +178,8 @@ Edit *src/http/ngx_http_header_filter_module.c*
 
 ````c
 static char ngx_http_server_string[] = "Server: Your Web Server" CRLF;
-   static char ngx_http_server_full_string[] = "Server: Your Web Server" CRLF;
-   ````
+static char ngx_http_server_full_string[] = "Server: Your Web Server" CRLF;
+````
 
 #### Configure the options and build
 
