@@ -13,23 +13,7 @@ When you use EF Code First to automatically create a database, Code First adds a
 
 Open the *Models/Movie.cs* file and add a `Rating` property:
 
-[!code-csharp[Main](./start-mvc/sample2/src/MvcMovie/Models/MovieDateRating.cs?highlight=11)]
-
-````csharp
-public class Movie
-   {
-       public int ID { get; set; }
-       public string Title { get; set; }
-
-       [Display(Name = "Release Date")]
-       [DataType(DataType.Date)]
-       public DateTime ReleaseDate { get; set; }
-       public string Genre { get; set; }
-       public decimal Price { get; set; }
-       public string Rating { get; set; }
-   }
-
-   ````
+[!code-csharp[Main](./start-mvc/sample2/src/MvcMovie/Models/MovieDateRating.cs?highlight=11&range=7-18)]
 
 Build the app (Ctrl+Shift+B).
 
@@ -43,49 +27,7 @@ You also need to update the view templates in order to display, create and edit 
 
 Edit the */Views/Movies/Index.cshtml* file and add a `Rating` field:
 
-[!code-HTML[Main](../../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Views/Movies/IndexGenreRating.cshtml?highlight=16,37)]
-
-````HTML
-<table class="table">
-       <tr>
-           <th>
-               @Html.DisplayNameFor(model => model.movies[0].Genre)
-           </th>
-           <th>
-               @Html.DisplayNameFor(model => model.movies[0].Price)
-           </th>
-           <th>
-               @Html.DisplayNameFor(model => model.movies[0].ReleaseDate)
-           </th>
-           <th>
-               @Html.DisplayNameFor(model => model.movies[0].Title)
-           </th>
-           <th>
-               @Html.DisplayNameFor(model => model.movies[0].Rating)
-           </th>
-           <th></th>
-       </tr>
-       <tbody>
-           @foreach (var item in Model.movies)
-           {
-               <tr>
-                   <td>
-                       @Html.DisplayFor(modelItem => item.Genre)
-                   </td>
-                   <td>
-                       @Html.DisplayFor(modelItem => item.Price)
-                   </td>
-                   <td>
-                       @Html.DisplayFor(modelItem => item.ReleaseDate)
-                   </td>
-                   <td>
-                       @Html.DisplayFor(modelItem => item.Title)
-                   </td>
-                   <td>
-                       @Html.DisplayFor(modelItem => item.Rating)
-                   </td>
-
-   ````
+[!code-HTML[Main](../../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/Views/Movies/IndexGenreRating.cshtml?highlight=16,37&range=24-61)]
 
 Update the */Views/Movies/Create.cshtml* with a `Rating` field. You can copy/paste the previous "form group" and let intelliSense help you update the fields. IntelliSense works with [Tag Helpers](../../mvc/views/tag-helpers/intro.md).
 
@@ -109,19 +51,7 @@ For this tutorial, we'll use Code First Migrations.
 
 Update the `SeedData` class so that it provides a value for the new column. A sample change is shown below, but you'll want to make this change for each `new Movie`.
 
-[!code-csharp[Main](./start-mvc/sample2/src/MvcMovie/Models/SeedDataRating.cs?highlight=6)]
-
-````csharp
-     new Movie
-        {
-            Title = "When Harry Met Sally",
-            ReleaseDate = DateTime.Parse("1989-1-11"),
-            Genre = "Romantic Comedy",
-            Rating = "R",
-            Price = 7.99M
-        },
-
-   ````
+[!code-csharp[Main](./start-mvc/sample2/src/MvcMovie/Models/SeedDataRating.cs?highlight=6&range=25-32)]
 
 >[!WARNING]
 > You must stop IIS Express before you run the `dotnet ef` commands.   See [To Stop IIS Express:](adding-model.md#stop-iis-express-reference-label)
@@ -130,8 +60,8 @@ Build the solution then open a command prompt. Enter the following commands:
 
 ````console
 dotnet ef migrations add Rating
-   dotnet ef database update
-   ````
+dotnet ef database update
+````
 
 The `migrations add` command tells the migration framework to examine the current `Movie` model with the current `Movie` DB schema and create the necessary code to migrate the DB to the new model. The name "Rating" is arbitrary and is used to name the migration file. It's helpful to use a meaningful name for the migration step.
 

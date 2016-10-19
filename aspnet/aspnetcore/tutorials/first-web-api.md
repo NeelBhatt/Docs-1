@@ -20,13 +20,13 @@ Here is the API that you’ll create:
 
 <!-- QAfix fix table -->
 
-API | Description    | Request body    | Response body   
---- | ---- | ---- | ---- 
-GET /api/todo  | Get all to-do items | None | Array of to-do items
-GET /api/todo/{id}  | Get an item by ID | None | To-do item
-POST /api/todo | Add a new item | To-do item  | To-do item 
-PUT /api/todo/{id} | Update an existing item &nbsp;  | To-do item 
-DELETE /api/todo/{id}  &nbsp;  &nbsp; | Delete an item &nbsp;  &nbsp;  | None. No request body-  | None
+|API | Description    | Request body    | Response body   |
+|--- | ---- | ---- | ---- |
+|GET /api/todo  | Get all to-do items | None | Array of to-do items|
+|GET /api/todo/{id}  | Get an item by ID | None | To-do item|
+|POST /api/todo | Add a new item | To-do item  | To-do item |
+|PUT /api/todo/{id} | Update an existing item &nbsp;  | To-do item |
+|DELETE /api/todo/{id}  &nbsp;  &nbsp; | Delete an item &nbsp;  &nbsp;  | None. No request body-  | None|
      
 <br>     
     
@@ -223,7 +223,6 @@ You can use the Location header URI to access the resource you just created. Rec
 
 ![image](first-web-api/_static/pmcput.png)
 
-  
 ### Delete
 
 [!code-csharp[Main](first-web-api/sample/src/TodoApi/Controllers/TodoController.cs?name=snippet_Delete)]

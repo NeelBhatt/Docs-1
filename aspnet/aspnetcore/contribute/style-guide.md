@@ -27,14 +27,14 @@ Subsection headings can be used to organize content within a section. *Headings*
 
 ````rst
 Title (H1)
-   ==========
+==========
 
-   Section heading (H2)
-   --------------------
+Section heading (H2)
+--------------------
 
-   Subsection heading (H3)
-   ^^^^^^^^^^^^^^^^^^^^^^^
-   ````
+Subsection heading (H3)
+^^^^^^^^^^^^^^^^^^^^^^^
+````
 
 For section headings, only the first word should be capitalized:
 
@@ -52,11 +52,11 @@ The following ReStructuredText elements are commonly used in ASP.NET documentati
 
 Surround text with:
 
-* One asterisk for *emphasis* (*italics*)
+* One asterisk for \*emphasis\* (*italics*)
 
-* Two asterisks for **strong emphasis** (**bold**)
+* Two asterisks for \*\*strong emphasis\*\* (**bold**)
 
-* Two backticks for ``code samples``(an `<html>` element)
+* Two backticks for \`\`code samples\`\`(an `<html>` element)
 
 > [!NOTE]
 > Inline markup cannot be nested, nor can surrounded content start or end with whitespace (`* foo*` is wrong).
@@ -223,40 +223,6 @@ External file references can specify a language, emphasize certain lines, displa
    ````
 
 [!code-csharp[Main](../contribute/style-guide/_static/startup.cs?highlight=19,25,26,27)]
-
-````csharp
-using System;
-   using Microsoft.AspNet.Builder;
-   using Microsoft.AspNet.Hosting;
-   using Microsoft.AspNet.Http;
-   using Microsoft.Framework.DependencyInjection;
-
-   namespace ProductsDnx
-   {
-       public class Startup
-       {
-           public Startup(IHostingEnvironment env)
-           {
-           }
-
-           // This method gets called by a runtime.
-           // Use this method to add services to the container
-           public void ConfigureServices(IServiceCollection services)
-           {
-               services.AddMvc();
-           }
-
-           // Configure is called after ConfigureServices is called.
-           public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-           {
-               app.UseStaticFiles();
-               // Add MVC to the request pipeline.
-               app.UseMvc();
-           }
-       }
-   }
-
-   ````
 
 You can also include just a section of a larger file, if desired:
 

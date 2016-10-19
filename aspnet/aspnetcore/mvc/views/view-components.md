@@ -102,15 +102,7 @@ View components are typically invoked from a view, but you can invoke them direc
 
 In this example, the view component is called directly from the controller:
 
-[!code-csharp[Main](view-components/sample/ViewCompFinal/Controllers/ToDoController.cs)]
-
-````csharp
-  public IActionResult IndexVC()
-     {
-         return ViewComponent("PriorityList", new { maxPriority = 3, isDone = false });
-     }
-
-   ````
+[!code-csharp[Main](view-components/sample/ViewCompFinal/Controllers/ToDoController.cs?range=23-26)]
 
 ## Walkthrough: Creating a simple view component
 
@@ -122,42 +114,7 @@ In this example, the view component is called directly from the controller:
 
 Create a *ViewComponents* folder and add the following `PriorityListViewComponent` class.
 
-[!code-csharp[Main](view-components/sample/ViewCompFinal/ViewComponents/PriorityListViewComponent1.cs)]
-
-````csharp
-using Microsoft.AspNet.Mvc;
-   using Microsoft.Data.Entity;
-   using System.Collections.Generic;
-   using System.Linq;
-   using System.Threading.Tasks;
-   using ViewComponentSample.Models;
-
-   namespace ViewComponentSample.ViewComponents
-   {
-       public class PriorityListViewComponent : ViewComponent
-       {
-           private readonly ToDoContext db;
-
-           public PriorityListViewComponent(ToDoContext context)
-           {
-               db = context;
-           }
-
-           public async Task<IViewComponentResult> InvokeAsync(
-           int maxPriority, bool isDone)
-           {
-               var items = await GetItemsAsync(maxPriority, isDone);
-               return View(items);
-           }
-           private Task<List<TodoItem>> GetItemsAsync(int maxPriority, bool isDone)
-           {
-               return db.ToDo.Where(x => x.IsDone == isDone &&
-                                    x.Priority <= maxPriority).ToListAsync();
-           }       
-       }
-   }
-
-   ````
+[!code-csharp[Main](view-components/sample/ViewCompFinal/ViewComponents/PriorityListViewComponent1.cs?range=3-33)]
 
 Notes on the code:
 
@@ -184,42 +141,21 @@ Notes on the code:
 
 ### Create the view component Razor view
 
-1. Create the *Views/Shared/Components* folder. This folder **must** be named *Components*.
+1.  Create the *Views/Shared/Components* folder. This folder **must** be named *Components*.
 
-2. Create the *Views/Shared/Components/PriorityList* folder. This folder name must match the name of the view component class, or the name of the class minus the suffix (if we followed convention and used the *ViewComponent* suffix in the class name). If you used the `ViewComponent` attribute, the class name would need to match the attribute designation.
+2.  Create the *Views/Shared/Components/PriorityList* folder. This folder name must match the name of the view component class, or the name of the class minus the suffix (if we followed convention and used the *ViewComponent* suffix in the class name). If you used the `ViewComponent` attribute, the class name would need to match the attribute designation.
 
-3. Create a *Views/Shared/Components/PriorityList/Default.cshtml* Razor view.
+3.  Create a *Views/Shared/Components/PriorityList/Default.cshtml* Razor view.
 
-[!code-html[Main](view-components/sample/ViewCompFinal/Views/Shared/Components/PriorityList/Default1.cshtml)]
+    [!code-html[Main](view-components/sample/ViewCompFinal/Views/Shared/Components/PriorityList/Default1.cshtml)]
+    
+    The Razor view takes a list of `TodoItem` and displays them. If the view component `InvokeAsync` method doesn't pass the name of the view (as in our sample), *Default* is used for the view name by convention. Later in the tutorial, I'll show you how to pass the name of the view. To override the default styling for a specific controller, add a view to the controller specific view folder (for example *Views/Todo/Components/PriorityList/Default.cshtml)*.
+    
+    If the view component was controller specific, you could add it to the controller specific folder (*Views/Todo/Components/PriorityList/Default.cshtml*)
 
-````html
-@model IEnumerable<ViewComponentSample.Models.TodoItem>
+4.  Add a `div` containing a call to the priority list component to the bottom of the *Views/Todo/index.cshtml* file:
 
-   <h3>Priority Items</h3>
-   <ul>
-       @foreach (var todo in Model)
-       {
-           <li>@todo.Name</li>
-       }
-   </ul>
-   ````
-
-The Razor view takes a list of `TodoItem` and displays them. If the view component `InvokeAsync` method doesn't pass the name of the view (as in our sample), *Default* is used for the view name by convention. Later in the tutorial, I'll show you how to pass the name of the view. To override the default styling for a specific controller, add a view to the controller specific view folder (for example *Views/Todo/Components/PriorityList/Default.cshtml)*.
-
-If the view component was controller specific, you could add it to the controller specific folder (*Views/Todo/Components/PriorityList/Default.cshtml*)
-
-4. Add a `div` containing a call to the priority list component to the bottom of the *Views/Todo/index.cshtml* file:
-
-[!code-html[Main](view-components/sample/ViewCompFinal/Views/Todo/IndexFirst.cshtml)]
-
-````html
-    }
-   </table>
-   <div >
-       @await Component.InvokeAsync("PriorityList", new { maxPriority = 2, isDone = false })
-   </div>
-
-   ````
+    [!code-html[Main](view-components/sample/ViewCompFinal/Views/Todo/IndexFirst.cshtml?range=34-38)]
 
 The markup `@Component.InvokeAsync` shows the syntax for calling view components. The first argument is the name of the component we want to invoke or call. Subsequent parameters are passed to the component. `InvokeAsync` can take an arbitrary number of arguments.
 
@@ -229,67 +165,21 @@ The following image shows the priority items:
 
 You can also call the view component directly from the controller:
 
-[!code-csharp[Main](view-components/sample/ViewCompFinal/Controllers/ToDoController.cs)]
-
-````csharp
-  public IActionResult IndexVC()
-     {
-         return ViewComponent("PriorityList", new { maxPriority = 3, isDone = false });
-     }
-
-   ````
+[!code-csharp[Main](view-components/sample/ViewCompFinal/Controllers/ToDoController.cs?range=23-26)]
 
 ### Specifying a view name
 
 A complex view component might need to specify a non-default view under some conditions. The following code shows how to specify the "PVC" view  from the `InvokeAsync` method. Update the `InvokeAsync` method in the `PriorityListViewComponent` class.
 
-[!code-csharp[Main](../../mvc/views/view-components/sample/ViewCompFinal/ViewComponents/PriorityListViewComponentFinal.cs?highlight=4,5,6,7,8,9)]
-
-````csharp
-public async Task<IViewComponentResult> InvokeAsync(
-       int maxPriority, bool isDone)
-   {
-       string MyView = "Default";
-       // If asking for all completed tasks, render with the "PVC" view.
-       if (maxPriority > 3 && isDone == true)
-       {
-           MyView = "PVC";
-       }
-       var items = await GetItemsAsync(maxPriority, isDone);
-       return View(MyView, items);
-   }
-
-   ````
+[!code-csharp[Main](../../mvc/views/view-components/sample/ViewCompFinal/ViewComponents/PriorityListViewComponentFinal.cs?highlight=4,5,6,7,8,9&range=28-39)]
 
 Copy the *Views/Shared/Components/PriorityList/Default.cshtml* file to a view named *Views/Shared/Components/PriorityList/PVC.cshtml*. Add a heading to indicate the PVC view is being used.
 
 [!code-html[Main](../../mvc/views/view-components/sample/ViewCompFinal/Views/Shared/Components/PriorityList/PVC.cshtml?highlight=3)]
 
-````html
-@model IEnumerable<ViewComponentSample.Models.TodoItem>
-
-   <h2> PVC Named Priority Component View</h2>
-   <h4>@ViewBag.PriorityMessage</h4>
-   <ul>
-       @foreach (var todo in Model)
-       {
-           <li>@todo.Name</li>
-       }
-   </ul>
-   ````
-
 Update *Views/TodoList/Index.cshtml*
 
-[!code-html[Main](view-components/sample/ViewCompFinal/Views/Todo/IndexFinal.cshtml)]
-
-````html
-</table>
-
-   <div>
-       @await Component.InvokeAsync("PriorityList", new { maxPriority = 4, isDone = true })
-   </div>
-
-   ````
+[!code-html[Main](view-components/sample/ViewCompFinal/Views/Todo/IndexFinal.cshtml?range=31-)]
 
 Run the app and verify PVC view.
 
@@ -329,63 +219,11 @@ If the PVC view is not rendered, verify you are calling the view component with 
 
 If you want compile time safety you can replace the hard coded view component name with the class name. Create the view component without the "ViewComponent" suffix:
 
-[!code-csharp[Main](../../mvc/views/view-components/sample/ViewCompFinal/ViewComponents/PriorityList.cs?highlight=10,14)]
-
-````csharp
-using Microsoft.AspNet.Mvc;
-   using Microsoft.Data.Entity;
-   using System.Collections.Generic;
-   using System.Linq;
-   using System.Threading.Tasks;
-   using ViewComponentSample.Models;
-
-   namespace ViewComponentSample.ViewComponents
-   {
-       public class PriorityList : ViewComponent
-       {
-           private readonly ToDoContext db;
-
-           public PriorityList(ToDoContext context)
-           {
-               db = context;
-           }
-
-           public async Task<IViewComponentResult> InvokeAsync(
-           int maxPriority, bool isDone)
-           {
-               var items = await GetItemsAsync(maxPriority, isDone);
-               return View(items);
-           }
-           private Task<List<TodoItem>> GetItemsAsync(int maxPriority, bool isDone)
-           {
-               return db.ToDo.Where(x => x.IsDone == isDone &&
-                                    x.Priority <= maxPriority).ToListAsync();
-           }
-       }
-   }
-
-   ````
+[!code-csharp[Main](../../mvc/views/view-components/sample/ViewCompFinal/ViewComponents/PriorityList.cs?highlight=10,14&range=4-34)]
 
 Add a `using` statement to your Razor view file and use the `nameof` operator:
 
-[!code-html[Main](view-components/sample/ViewCompFinal/Views/Todo/IndexNameof.cshtml)]
-
-````html
-@using ViewComponentSample.Models
-   @using ViewComponentSample.ViewComponents
-   @model IEnumerable<TodoItem>
-
-   <h2>ToDo nameof</h2>
-   <!-- Markup removed for brevity.  -->
-       }
-   </table>
-
-   <div>
-
-       @await Component.InvokeAsync(nameof(PriorityList), new { maxPriority = 4, isDone = true })
-   </div>
-
-   ````
+[!code-html[Main](view-components/sample/ViewCompFinal/Views/Todo/IndexNameof.cshtml?range=1-6,33-)]
 
 ## Additional Resources
 

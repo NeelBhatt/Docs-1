@@ -47,66 +47,28 @@ An ASP.NET Core app is simply a console app that creates a web server in its `Ma
 
 [!code-csharp[Main](getting-started/sample/aspnetcoreapp/Program.cs)]
 
-````csharp
-using System;
-   using Microsoft.AspNetCore.Hosting;
-
-   namespace aspnetcoreapp
-   {
-       public class Program
-       {
-           public static void Main(string[] args)
-           {
-               var host = new WebHostBuilder()
-                   .UseKestrel()
-                   .UseStartup<Startup>()
-                   .Build();
-
-               host.Run();
-           }
-       }
-   }
-
-   ````
-
 `Main` uses [`WebHostBuilder`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/WebHostBuilder/index.html#Microsoft.AspNetCore.Hosting.WebHostBuilder), which follows the builder pattern, to create a web application host. The builder has methods that define the web server (for example `UseKestrel`) and the startup class (`UseStartup`). In the example above, the Kestrel web server is used, but other web servers can be specified. We'll show more about `UseStartup` in the next section. `WebHostBuilder` provides many optional methods including `UseIISIntegration` for hosting in IIS and IIS Express and `UseContentRoot` for specifying the root content directory. The `Build` and `Run` methods build the `IWebHost` that will host the app and start it listening for incoming HTTP requests.
 
 ## Startup
 
 The `UseStartup` method on `WebHostBuilder` specifies the `Startup` class for your app.
 
-[!code-csharp[Main](./getting-started/sample/aspnetcoreapp/Program.cs?highlight=7)]
-
-````csharp
-public class Program
-   {
-       public static void Main(string[] args)
-       {
-           var host = new WebHostBuilder()
-               .UseKestrel()
-               .UseStartup<Startup>()
-               .Build();
-
-           host.Run();
-       }
-   }
-
-   ````
+[!code-csharp[Main](./getting-started/sample/aspnetcoreapp/Program.cs?highlight=7&range=6-17)]
 
 The `Startup` class is where you define the request handling pipeline and where any services needed by the app are configured. The `Startup` class must be public and contain the following methods:
 
 ````csharp
 public class Startup
-   {
-       public void ConfigureServices(IServiceCollection services)
-       {
-       }
+{
+    public void ConfigureServices(IServiceCollection services)
+    {
+    }
 
-       public void Configure(IApplicationBuilder app)
-       {
-       }
-   }
-   ````
+    public void Configure(IApplicationBuilder app)
+    {
+    }
+}
+````
 
 * `ConfigureServices` defines the services (see [Services](#services) below) used by your app (such as the ASP.NET MVC Core framework, Entity Framework Core, Identity, etc.)
 

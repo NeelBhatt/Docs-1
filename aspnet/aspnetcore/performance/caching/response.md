@@ -18,13 +18,16 @@ uid: performance/caching/response
 
 The primary HTTP header used for caching is `Cache-Control`. The [HTTP 1.1 specification](https://tools.ietf.org/html/rfc7234#section-5.2) details many options for this directive. Three common directives are:
 
-public
+**public**
+
    Indicates that the response may be cached.
 
-private
+**private**
+
    Indicates the response is intended for a single user and **must not** be cached by a shared cache. The response could still be cached in a private cache (for instance, by the user's browser).
 
-no-cache
+**no-cache**
+
    Indicates the response **must not** be used by a cache to satisfy any subsequent request (without successful revalidation with the origin server).
 
 > [!NOTE]
@@ -36,22 +39,28 @@ Additional HTTP headers used for caching include `Pragma` and `Vary`, which are 
 
 The [`ResponseCacheAttribute`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ResponseCacheAttribute/index.html) is used to specify how a controller action's headers should be set to control its cache behavior. The attribute has the following properties, all of which are optional unless otherwise noted.
 
-Duration `int`
+**Duration `int`**
+
    The maximum duration (in seconds) the response should be cached. **Required** unless `NoStore` is `true`.
 
-Location `ResponseCacheLocation`
+**Location `ResponseCacheLocation`**
+
    The location where the response may be cached. May be `Any`, `None`, or `Client`. Default is `Any`.
 
-NoStore `bool`
+**NoStore `bool`**
+
    Determines whether the value should be stored or not, and overrides other property values. When `true`, `Duration` is ignored and `Location` is ignored for values other than `None`.
 
-VaryByHeader `string`
+**VaryByHeader `string`**
+
    When set, a `vary` response header will be written with the response.
 
-CacheProfileName `string`
+**CacheProfileName `string`**
+
    When set, determines the name of the cache profile to use.
 
-Order `int`
+**Order `int`**
+
    The order of the filter (from [`IOrderedFilter`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Filters/IOrderedFilter/index.html)).
 
 The [`ResponseCacheAttribute`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ResponseCacheAttribute/index.html) is used to configure and create (via [`IFilterFactory`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Filters/IFilterFactory/index.html)) a [`ResponseCacheFilter`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Filters/ResponseCacheFilter/index.html), which performs the work of writing the appropriate HTTP headers to the response. The filter will first remove any existing headers for `Vary`, `Cache-Control`, and `Pragma`, and then will write out the appropriate headers based on the properties set in the [`ResponseCacheAttribute`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ResponseCacheAttribute/index.html).
@@ -66,23 +75,14 @@ This header is only written when the `VaryByHeader` property is set, in which ca
 
 A good scenario in which to set `NoStore` to `true` is error pages. It's unlikely you would want to respond to a user's request with the error response a different user previously generated, and such responses may include stack traces and other sensitive information that shouldn't be stored on intermediate servers. For example:
 
-[!code-csharp[Main](./response/sample/src/ResponseCacheSample/Controllers/HomeController.cs?highlight=1)]
-
-````csharp
-[ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
-   public IActionResult Error()
-   {
-       return View();
-   }
-
-   ````
+[!code-csharp[Main](./response/sample/src/ResponseCacheSample/Controllers/HomeController.cs?highlight=1&range=30-34)]
 
 This will result in the following headers:
 
 ````javascript
 Cache-Control: no-store,no-cache
-   Pragma: no-cache
-   ````
+Pragma: no-cache
+````
 
 ### Location and Duration
 
@@ -93,18 +93,7 @@ To enable caching, `Duration` must be set to a positive value and `Location` mus
 
 Below is an example showing the headers produced by setting `Duration` and leaving the default `Location` value.
 
-[!code-csharp[Main](./response/sample/src/ResponseCacheSample/Controllers/HomeController.cs?highlight=1)]
-
-````csharp
-[ResponseCache(Duration = 60)]
-   public IActionResult Contact()
-   {
-       ViewData["Message"] = "Your contact page.";
-
-       return View();
-   }
-
-   ````
+[!code-csharp[Main](./response/sample/src/ResponseCacheSample/Controllers/HomeController.cs?highlight=1&range=22-28)]
 
 Produces the following headers:
 
@@ -118,46 +107,11 @@ Instead of duplicating `ResponseCache` settings on many controller action attrib
 
 Setting up a cache profile:
 
-[!code-csharp[Main](./response/sample/src/ResponseCacheSample/Startup.cs?highlight=5,6,7,8,9,10,11,12,13,14,15)]
-
-````csharp
-public void ConfigureServices(IServiceCollection services)
-   {
-       services.AddMvc(options =>
-       {
-           options.CacheProfiles.Add("Default", 
-               new CacheProfile()
-               {
-                   Duration=60
-               });
-           options.CacheProfiles.Add("Never",
-               new CacheProfile()
-               {
-                   Location = ResponseCacheLocation.None,
-                   NoStore = true
-               });
-       });
-   }
-
-
-   ````
+[!code-csharp[Main](./response/sample/src/ResponseCacheSample/Startup.cs?highlight=5,6,7,8,9,10,11,12,13,14,15&range=12-28)]
 
 Referencing a cache profile:
 
-[!code-csharp[Main](./response/sample/src/ResponseCacheSample/Controllers/HomeController.cs?highlight=1,4)]
-
-````csharp
-[ResponseCache(Duration = 30)]
-   public class HomeController : Controller
-   {
-       [ResponseCache(CacheProfileName = "Default")]
-       public IActionResult Index()
-       {
-           return View();
-       }
-   }
-
-   ````
+[!code-csharp[Main](./response/sample/src/ResponseCacheSample/Controllers/HomeController.cs?highlight=1,4&range=5-12,35)]
 
 >[!TIP]
 > The `ResponseCache` attribute can be applied both to actions (methods) as well as controllers (classes). Method-level attributes will override the settings specified in class-level attributes.

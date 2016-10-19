@@ -43,7 +43,8 @@ $nanoServerIpAddress = "10.83.181.14"
    Set-Item WSMan:\localhost\Client\TrustedHosts "$nanoServerIpAddress" -Concatenate -Force
    ````
 
-`NOTE:` Replace the variable `$nanoServerIpAddress` with the correct IP address.
+> [!NOTE]
+> Replace the variable `$nanoServerIpAddress` with the correct IP address.
 
 Once you have added your Nano Server instance to your `TrustedHosts`, you can connect to it using PowerShell remoting
 
@@ -165,7 +166,8 @@ Run the following script in the remote session:
 
    ````
 
-`NOTE:` Delete the files `aspnetcore.dll` and `aspnetcore_schema.xml` from the share after the above step.
+> [!NOTE]
+> Delete the files `aspnetcore.dll` and `aspnetcore_schema.xml` from the share after the above step.
 
 ## Installing .NET Core Framework
 

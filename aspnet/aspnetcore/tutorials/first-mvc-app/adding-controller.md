@@ -47,7 +47,7 @@ MVC invokes controller classes (and the action methods within them) depending on
 
 You set the format for routing in the *Startup.cs* file.
 
-[!code-csharp[Main](start-mvc/sample/src/MvcMovie/Startup.cs?name=snippet_1)]
+[!code-csharp[Main](start-mvc/sample/src/MvcMovie/Startup.cs?name=snippet_1&highlight=5)]
 
 When you run the app and don't supply any URL segments, it defaults to the "Home" controller and the "Index" method specified in the template line highlighted above.
 
@@ -87,7 +87,7 @@ Run the app and enter the following URL:  `http://localhost:xxx/HelloWorld/Welco
 
 This time the third URL segment  matched the route parameter `id`. The `Welcome`  method contains a parameter  `id` that matched the URL template in the `MapRoute` method. The trailing `?`  (in `id?`) indicates the `id` parameter is optional.
 
-[!code-csharp[Main](start-mvc/sample2/src/MvcMovie/Startup.cs?name=snippet_1)]
+[!code-csharp[Main](start-mvc/sample2/src/MvcMovie/Startup.cs?name=snippet_1&highlight=5)]
 
 In these examples the controller has been doing the "VC" portion  of MVC - that is, the view and controller work. The controller is returning HTML  directly. Generally you don't want controllers returning HTML directly, since  that becomes very cumbersome to code and maintain. Instead we'll typically use a separate Razor view template file to help generate the HTML response. We'll do that in the next tutorial.
 

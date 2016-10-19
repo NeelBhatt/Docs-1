@@ -38,11 +38,11 @@ For the action associated with the endpoint, don't explicitly decorate the `IAct
 
 ````csharp
 [Route("/Error")]
-   public IActionResult Index()
-   {
-       // Handle error here
-   }
-   ````
+public IActionResult Index()
+{
+    // Handle error here
+}
+````
 
 ## Using the Developer Exception Page
 
@@ -76,9 +76,9 @@ The middleware supports several different extension methods. You can pass it a c
 
 ````csharp
 app.UseStatusCodePages(context =>
-     context.HttpContext.Response.SendAsync("Handler, status code: " +
-     context.HttpContext.Response.StatusCode, "text/plain"));
-   ````
+  context.HttpContext.Response.SendAsync("Handler, status code: " +
+  context.HttpContext.Response.StatusCode, "text/plain"));
+````
 
 Alternately, you can simply pass it a content type and a format string:
 
@@ -106,11 +106,11 @@ If you need to disable status code pages for certain requests, you can do so usi
 
 ````csharp
 var statusCodePagesFeature = context.Features.Get<IStatusCodePagesFeature>();
-   if (statusCodePagesFeature != null)
-   {
-     statusCodePagesFeature.Enabled = false;
-   }
-   ````
+if (statusCodePagesFeature != null)
+{
+  statusCodePagesFeature.Enabled = false;
+}
+````
 
 ## Limitations of Exception Handling During Client-Server Interaction
 

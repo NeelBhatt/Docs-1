@@ -54,8 +54,7 @@ Follow the instructions in [Change the title and menu link in the layout file](a
 
 In Solution Explorer, right click the *Models* folder > **Add** > **Class**. Name the class **Movie** and add the following properties:
 
-
-[!code-csharp[Main](start-mvc/sample2/src/MvcMovie/Models/MovieNoEF.cs?name=snippet_1)]
+[!code-csharp[Main](start-mvc/sample2/src/MvcMovie/Models/MovieNoEF.cs?name=snippet_1&highlight=7)]
 
 In addition to the properties you'd expect to model a movie, the `ID` field is required by the DB for the primary key. Build the project. If you don't build the app, you'll get an error in the next section. We've finally added a **M**odel to our **M**VC app.
 
@@ -143,7 +142,6 @@ We'll follow those instructions to get the database ready for our Movie app.
 * Run the following commands in the command prompt:
 
 ````console
-
 dotnet ef migrations add Initial
 dotnet ef database update
    ````
@@ -258,8 +256,7 @@ This `@model` directive allows you to access the movie that the controller passe
 
 Examine the *Index.cshtml* view and the `Index` method in the Movies controller. Notice how the code creates a `List` object when it calls the View method. The code passes this `Movies` list from the `Index` action method to the view:
 
-
-[!code-csharp[Main](start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs?name=snippet_index)]
+[!code-csharp[Main](start-mvc/sample2/src/MvcMovie/Controllers/MoviesController.cs?name=snippet_index&highlight=1)]
 
 When you created the movies controller, Visual Studio automatically included the following `@model` statement at the top of the *Index.cshtml* file:
 

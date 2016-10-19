@@ -7,30 +7,11 @@ By [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 The `ApplicationDbContext` class handles the task of connecting to the database and mapping `Movie` objects to database records. The database context is registered with the [Dependency Injection](../../fundamentals/dependency-injection.md) container in the `ConfigureServices` method in the *Startup.cs* file:
 
-[!code-csharp[Main](start-mvc/sample2/src/MvcMovie/Startup.cs)]
-
-````csharp
-public void ConfigureServices(IServiceCollection services)
-   {
-       // Add framework services.
-       services.AddDbContext<ApplicationDbContext>(options =>
-           options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
-   ````
+[!code-csharp[Main](start-mvc/sample2/src/MvcMovie/Startup.cs?name=snippet_details)]
 
 The ASP.NET Core [Configuration](../../fundamentals/configuration.md) system reads the `ConnectionString`. For local development, it gets the connection string from the *appsettings.json* file:
 
-[!code-javascript[Main](../../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/appsettings.json?highlight=3)]
-
-````javascript
-{
-     "ConnectionStrings": {
-       "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=aspnet-MvcMovie-4ae3798a;Trusted_Connection=True;MultipleActiveResultSets=true"
-     },
-     "Logging": {
-       "IncludeScopes": false,
-
-   ````
+[!code-javascript[Main](../../tutorials/first-mvc-app/start-mvc/sample2/src/MvcMovie/appsettings.json?highlight=3&range=1-6)]
 
 When you deploy the app to a test or production server, you can use an environment variable or another approach to set the connection string to a real SQL Server. See [Configuration](../../fundamentals/configuration.md) .
 
@@ -60,100 +41,20 @@ Note the key icon next to `ID`. By default, EF will make a property named `ID` t
 
 Create a new class named `SeedData` in the *Models* folder. Replace the generated code with the following:
 
-[!code-csharp[Main](start-mvc/sample2/src/MvcMovie/Models/SeedData.cs)]
-
-````csharp
-using Microsoft.EntityFrameworkCore;
-   using Microsoft.Extensions.DependencyInjection;
-   using MvcMovie.Data;
-   using System;
-   using System.Linq;
-
-   namespace MvcMovie.Models
-   {
-       public static class SeedData
-       {
-           public static void Initialize(IServiceProvider serviceProvider)
-           {
-               using (var context = new ApplicationDbContext(
-                   serviceProvider.GetRequiredService<DbContextOptions<ApplicationDbContext>>()))
-               {
-                   // Look for any movies.
-                   if (context.Movie.Any())
-                   {
-                       return;   // DB has been seeded
-                   }
-
-                   context.Movie.AddRange(
-                        new Movie
-                        {
-                            Title = "When Harry Met Sally",
-                            ReleaseDate = DateTime.Parse("1989-1-11"),
-                            Genre = "Romantic Comedy",
-                            Price = 7.99M
-                        },
-
-                        new Movie
-                        {
-                            Title = "Ghostbusters ",
-                            ReleaseDate = DateTime.Parse("1984-3-13"),
-                            Genre = "Comedy",
-                            Price = 8.99M
-                        },
-
-                        new Movie
-                        {
-                            Title = "Ghostbusters 2",
-                            ReleaseDate = DateTime.Parse("1986-2-23"),
-                            Genre = "Comedy",
-                            Price = 9.99M
-                        },
-
-                      new Movie
-                      {
-                          Title = "Rio Bravo",
-                          ReleaseDate = DateTime.Parse("1959-4-15"),
-                          Genre = "Western",
-                          Price = 3.99M
-                      }
-                   );
-                   context.SaveChanges();
-               }
-           }
-       }
-   }
-
-   ````
+[!code-csharp[Main](start-mvc/sample2/src/MvcMovie/Models/SeedData.cs?name=snippet_1)]
 
 Notice if there are any movies in the DB, the seed initializer returns.
 
 ````csharp
 if (context.Movie.Any())
-   {
-       return;   // DB has been seeded.
-   }
-   ````
+{
+    return;   // DB has been seeded.
+}
+````
 
 Add the seed initializer to the end of the `Configure` method in the *Startup.cs* file:
 
-<!-- literal_block {"xml:space": "preserve", "source": "start-mvc/sample2/src/MvcMovie/Startup.cs", "ids": [], "linenos": false, "highlight_args": {"hl_lines": [9], "linenostart": 1}} -->
-
-````
-    app.UseMvc(routes =>
-       {
-           routes.MapRoute(
-               name: "default",
-               template: "{controller=Home}/{action=Index}/{id?}");
-       });
-       #endregion
-
-       SeedData.Initialize(app.ApplicationServices);
-   }
-   // End of Configure.
-
-
-
-   ````
+[!code-csharp[Main](start-mvc/sample2/src/MvcMovie/Startup.cs?highlight=9&range=79-)]
 
 Test the app
 

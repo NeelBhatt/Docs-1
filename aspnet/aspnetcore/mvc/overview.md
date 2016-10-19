@@ -83,7 +83,7 @@ ASP.NET Core MVC is built on top of [ASP.NET Core's routing](../fundamentals/rou
 
 ````csharp
 routes.MapRoute(name: "Default", template: "{controller=Home}/{action=Index}/{id?}");
-   ````
+````
 
 *Attribute routing* enables you to specify routing information by decorating your controllers and actions with attributes that define your application's routes. This means that your route definitions are placed next to the controller and action with which they're associated.
 
@@ -91,15 +91,15 @@ routes.MapRoute(name: "Default", template: "{controller=Home}/{action=Index}/{id
 
 ````csharp
 [Route("api/[controller]")]
-   public class ProductsController : Controller
-   {
-     [HttpGet("{id}")]
-     public IActionResult GetProduct(int id)
-     {
-       ...
-     }
-   }
-   ````
+public class ProductsController : Controller
+{
+  [HttpGet("{id}")]
+  public IActionResult GetProduct(int id)
+  {
+    ...
+  }
+}
+````
 
 ### Model binding
 
@@ -117,20 +117,20 @@ ASP.NET Core MVC supports [validation](models/validation.md) by decorating your 
 
 ````csharp
 using System.ComponentModel.DataAnnotations;
-   public class LoginViewModel
-   {
-       [Required]
-       [EmailAddress]
-       public string Email { get; set; }
+public class LoginViewModel
+{
+    [Required]
+    [EmailAddress]
+    public string Email { get; set; }
 
-       [Required]
-       [DataType(DataType.Password)]
-       public string Password { get; set; }
+    [Required]
+    [DataType(DataType.Password)]
+    public string Password { get; set; }
 
-       [Display(Name = "Remember me?")]
-       public bool RememberMe { get; set; }
-   }
-   ````
+    [Display(Name = "Remember me?")]
+    public bool RememberMe { get; set; }
+}
+````
 
 A controller action:
 
@@ -138,15 +138,15 @@ A controller action:
 
 ````csharp
 public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
-   {
-       if (ModelState.IsValid)
-       {
-         // work with the model
-       }
-       // If we got this far, something failed, redisplay form
-       return View(model);
-   }
-   ````
+{
+    if (ModelState.IsValid)
+    {
+      // work with the model
+    }
+    // If we got this far, something failed, redisplay form
+    return View(model);
+}
+````
 
 The framework will handle validating request data both on the client and on the server. Validation logic specified on model types is added to the rendered views as unobtrusive annotations and is enforced in the browser with [jQuery Validation](http://jqueryvalidation.org/).
 
@@ -160,16 +160,16 @@ Your app can also use [dependency injection in view files](views/dependency-inje
 
 ````html
 @inject SomeService ServiceName
-   <!DOCTYPE html>
-   <html>
-   <head>
-     <title>@ServiceName.GetTitle</title>
-   </head>
-   <body>
-     <h1>@ServiceName.GetTitle</h1>
-   </body>
-   </html>
-   ````
+<!DOCTYPE html>
+<html>
+<head>
+  <title>@ServiceName.GetTitle</title>
+</head>
+<body>
+  <h1>@ServiceName.GetTitle</h1>
+</body>
+</html>
+````
 
 ### Filters
 
@@ -177,11 +177,11 @@ Your app can also use [dependency injection in view files](views/dependency-inje
 
 
 ````csharp
-    [Authorize]
-       public class AccountController : Controller
-       {
+[Authorize]
+   public class AccountController : Controller
+   {
 
-   ````
+````
 
 ### Areas
 
@@ -205,11 +205,11 @@ The framework's use of interfaces and dependency injection make it well-suited t
 
 ````text
 <ul>
-     @for (int i = 0; i < 5; i++) {
-       <li>List item @i</li>
-     }
-   </ul>
-   ````
+  @for (int i = 0; i < 5; i++) {
+    <li>List item @i</li>
+  }
+</ul>
+````
 
 Using the Razor view engine you can define [layouts](views/layout.md), [partial views](views/partial.md) and replaceable sections.
 
@@ -221,13 +221,13 @@ For example, the following view defines a model of type `IEnumerable<Product>`:
 
 ````html
 @model IEnumerable<Product>
-   <ul>
-       @foreach (Product p in Model)
-       {
-           <li>@p.Name</li>
-       }
-   </ul>
-   ````
+<ul>
+    @foreach (Product p in Model)
+    {
+        <li>@p.Name</li>
+    }
+</ul>
+````
 
 ### Tag Helpers
 
@@ -239,10 +239,10 @@ There are many built-in Tag Helpers for common tasks - such as creating forms, l
 
 ````html
 <p>
-       Thank you for confirming your email.
-       Please <a asp-controller="Account" asp-action="Login">Click here to Log in</a>.
-   </p>
-   ````
+    Thank you for confirming your email.
+    Please <a asp-controller="Account" asp-action="Login">Click here to Log in</a>.
+</p>
+````
 
 The `EnvironmentTagHelper` can be used to include different scripts in your views (for example, raw or minified) based on the runtime environment, such as Development, Staging, or Production:
 
@@ -250,15 +250,15 @@ The `EnvironmentTagHelper` can be used to include different scripts in your view
 
 ````html
 <environment names="Development">
-       <script src="~/lib/jquery/dist/jquery.js"></script>
-   </environment>
-   <environment names="Staging,Production">
-       <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"
-               asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-               asp-fallback-test="window.jQuery">
-       </script>
-   </environment>
-   ````
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+</environment>
+<environment names="Staging,Production">
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"
+            asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+            asp-fallback-test="window.jQuery">
+    </script>
+</environment>
+````
 
 Tag Helpers provide an HTML-friendly development experience and a rich IntelliSense environment for creating HTML and Razor markup. Most of the built-in Tag Helpers target existing HTML elements and provide server-side attributes for the element.
 

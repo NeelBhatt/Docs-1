@@ -30,35 +30,6 @@ launchSettings.json
 
 [!code-javascript[Main](../fundamentals/environments/sample/src/Environments/Properties/launchSettings.json?highlight=15,22)]
 
-````javascript
-{
-     "iisSettings": {
-       "windowsAuthentication": false,
-       "anonymousAuthentication": true,
-       "iisExpress": {
-         "applicationUrl": "http://localhost:40088/",
-         "sslPort": 0
-       }
-     },
-     "profiles": {
-       "IIS Express": {
-         "commandName": "IISExpress",
-         "launchBrowser": true,
-         "environmentVariables": {
-           "ASPNETCORE_ENVIRONMENT": "Development"
-         }
-       },
-       "IIS Express (Staging)": {
-         "commandName": "IISExpress",
-         "launchBrowser": true,
-         "environmentVariables": {
-           "ASPNETCORE_ENVIRONMENT": "Staging"
-         }
-       }
-     }
-   }
-   ````
-
 > [!NOTE]
 > Changes made to project profiles or to *launchSettings.json* directly may not take effect until the web server used is restarted (in particular, Kestrel must be restarted before it will detect changes made to its environment).
 
@@ -97,44 +68,13 @@ The [`IHostingEnvironment`](http://docs.asp.net/projects/api/en/latest/autoapi/M
 
 For example, you can use the following code in your Configure method to setup environment specific error handling:
 
-[!code-csharp[Main](environments/sample/src/Environments/Startup.cs)]
-
-````csharp
-public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-   {
-       if (env.IsDevelopment())
-       {
-           app.UseDeveloperExceptionPage();
-           app.UseDatabaseErrorPage();
-           app.UseBrowserLink();
-       }
-       else
-       {
-           app.UseExceptionHandler("/Home/Error");
-       }
-       // ...
-
-   ````
+[!code-csharp[Main](environments/sample/src/Environments/Startup.cs?range=19-30)]
 
 If the app is running in a `Development` environment, then it enables the runtime support necessary to use the "BrowserLink" feature in Visual Studio, development-specific error pages (which typically should not be run in production) and special database error pages (which provide a way to apply migrations and should therefore only be used in development). Otherwise, if the app is not running in a development environment, a standard error handling page is configured to be displayed in response to any unhandled exceptions.
 
 You may need to determine which content to send to the client at runtime, depending on the current environment. For example, in a development environment you generally serve non-minimized scripts and style sheets, which makes debugging easier. Production and test environments should serve the minified versions and generally from a CDN. You can do this using the Environment [tag helper](../mvc/views/tag-helpers/intro.md). The Environment tag helper will only render its contents if the current environment matches one of the environments specified using the `names` attribute.
 
-[!code-html[Main](environments/sample/src/Environments/Views/Shared/_Layout.cshtml)]
-
-````html
-<environment names="Development">
-       <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-       <link rel="stylesheet" href="~/css/site.css" />
-   </environment>
-   <environment names="Staging,Production">
-       <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
-             asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-             asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-       <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-   </environment>
-
-   ````
+[!code-html[Main](environments/sample/src/Environments/Views/Shared/_Layout.cshtml?range=13-22)]
 
 To get started with using tag helpers in your application see [Introduction to Tag Helpers](../mvc/views/tag-helpers/intro.md).
 

@@ -21,80 +21,15 @@ ASP.NET Core's built-in support for constructor-based dependency injection exten
 
 [!code-csharp[Main](dependency-injection/sample/src/ControllerDI/Interfaces/IDateTime.cs)]
 
-````csharp
-using System;
-
-   namespace ControllerDI.Interfaces
-   {
-       public interface IDateTime
-       {
-           DateTime Now { get; }
-       }
-   }
-
-   ````
 
 Implementing an interface like this one so that it uses the system clock at runtime is trivial:
 
 [!code-csharp[Main](dependency-injection/sample/src/ControllerDI/Services/SystemDateTime.cs)]
 
-````csharp
-using System;
-   using ControllerDI.Interfaces;
-
-   namespace ControllerDI.Services
-   {
-       public class SystemDateTime : IDateTime
-       {
-           public DateTime Now
-           {
-               get { return DateTime.Now; }
-           }
-       }
-   }
-
-   ````
 
 With this in place, we can use the service in our controller. In this case, we have added some logic to the `HomeController` `Index` method to display a greeting to the user based on the time of day.
 
-[!code-csharp[Main](./dependency-injection/sample/src/ControllerDI/Controllers/HomeController.cs?highlight=8,10,12,17,18,19,20,21,22,23,24,25,26,27,28,29,30)]
-
-````csharp
-using ControllerDI.Interfaces;
-   using Microsoft.AspNetCore.Mvc;
-
-   namespace ControllerDI.Controllers
-   {
-       public class HomeController : Controller
-       {
-           private readonly IDateTime _dateTime;
-
-           public HomeController(IDateTime dateTime)
-           {
-               _dateTime = dateTime;
-           }
-
-           public IActionResult Index()
-           {
-               var serverTime = _dateTime.Now;
-               if (serverTime.Hour < 12)
-               {
-                   ViewData["Message"] = "It's morning here - Good Morning!";
-               }
-               else if (serverTime.Hour < 17)
-               {
-                   ViewData["Message"] = "It's afternoon here - Good Afternoon!";
-               }
-               else
-               {
-                   ViewData["Message"] = "It's evening here - Good Evening!";
-               }
-               return View();
-           }
-       }
-   }
-
-   ````
+[!code-csharp[Main](./dependency-injection/sample/src/ControllerDI/Controllers/HomeController.cs?highlight=8,10,12,17,18,19,20,21,22,23,24,25,26,27,28,29,30&range=1-31,51-52)]
 
 If we run the application now, we will most likely encounter an error:
 
@@ -103,22 +38,13 @@ If we run the application now, we will most likely encounter an error:
 ````
 An unhandled exception occurred while processing the request.
 
-   InvalidOperationException: Unable to resolve service for type 'ControllerDI.Interfaces.IDateTime' while attempting to activate 'ControllerDI.Controllers.HomeController'.
-   Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceProvider sp, Type type, Type requiredBy, Boolean isDefaultParameterRequired)
-   ````
+InvalidOperationException: Unable to resolve service for type 'ControllerDI.Interfaces.IDateTime' while attempting to activate 'ControllerDI.Controllers.HomeController'.
+Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceProvider sp, Type type, Type requiredBy, Boolean isDefaultParameterRequired)
+````
 
 This error occurs when we have not configured a service in the `ConfigureServices` method in our `Startup` class. To specify that requests for `IDateTime` should be resolved using an instance of `SystemDateTime`, add the highlighted line in the listing below to your `ConfigureServices` method:
 
-[!code-csharp[Main](./dependency-injection/sample/src/ControllerDI/Startup.cs?highlight=4)]
-
-````csharp
-public void ConfigureServices(IServiceCollection services)
-   {
-       // Add application services.
-       services.AddTransient<IDateTime, SystemDateTime>();
-   }
-
-   ````
+[!code-csharp[Main](./dependency-injection/sample/src/ControllerDI/Startup.cs?highlight=4&range=26-27,42-44)]
 
 > [!NOTE]
 > This particular service could be implemented using any of several different lifetime options (`Transient`, `Scoped`, or `Singleton`). See [Dependency Injection](../../fundamentals/dependency-injection.md) to understand how each of these scope options will affect the behavior of your service.
@@ -137,9 +63,9 @@ ASP.NET Core's built-in dependency injection supports having only a single const
 ````
 An unhandled exception occurred while processing the request.
 
-   InvalidOperationException: Multiple constructors accepting all given argument types have been found in type 'ControllerDI.Controllers.HomeController'. There should only be one applicable constructor.
-   Microsoft.Extensions.DependencyInjection.ActivatorUtilities.FindApplicableConstructor(Type instanceType, Type[] argumentTypes, ConstructorInfo& matchingConstructor, Nullable`1[]& parameterMap)
-   ````
+InvalidOperationException: Multiple constructors accepting all given argument types have been found in type 'ControllerDI.Controllers.HomeController'. There should only be one applicable constructor.
+Microsoft.Extensions.DependencyInjection.ActivatorUtilities.FindApplicableConstructor(Type instanceType, Type[] argumentTypes, ConstructorInfo& matchingConstructor, Nullable`1[]& parameterMap)
+````
 
 As the error message states, you can correct this problem having just a single constructor. You can also [replace the default dependency injection support with a third party implementation](../../fundamentals/dependency-injection.md#replacing-the-default-services-container), many of which support multiple constructors.
 
@@ -147,17 +73,7 @@ As the error message states, you can correct this problem having just a single c
 
 Sometimes you don't need a service for more than one action within your controller. In this case, it may make sense to inject the service as a parameter to the action method. This is done by marking the parameter with the attribute `[FromServices]` as shown here:
 
-[!code-csharp[Main](./dependency-injection/sample/src/ControllerDI/Controllers/HomeController.cs?highlight=1)]
-
-````csharp
-public IActionResult About([FromServices] IDateTime dateTime)
-   {
-       ViewData["Message"] = "Currently on the server the time is " + dateTime.Now;
-
-       return View();
-   }
-
-   ````
+[!code-csharp[Main](./dependency-injection/sample/src/ControllerDI/Controllers/HomeController.cs?highlight=1&range=33-38)]
 
 ## Accessing Settings from a Controller
 
@@ -167,82 +83,15 @@ To work with the options pattern, you need to create a class that represents the
 
 [!code-csharp[Main](dependency-injection/sample/src/ControllerDI/Model/SampleWebSettings.cs)]
 
-````csharp
-namespace ControllerDI.Model
-   {
-       public class SampleWebSettings
-       {
-           public string Title { get; set; }
-           public int Updates { get; set; }
-       }
-   }
-
-   ````
-
 Then you need to configure the application to use the options model and add your configuration class to the services collection in `ConfigureServices`:
 
-[!code-csharp[Main](./dependency-injection/sample/src/ControllerDI/Startup.cs?highlight=3,4,5,6,9,16,19)]
-
-````csharp
-public Startup(IHostingEnvironment env)
-   {
-       var builder = new ConfigurationBuilder()
-           .SetBasePath(env.ContentRootPath)
-           .AddJsonFile("samplewebsettings.json");
-       Configuration = builder.Build();
-   }
-
-   public IConfigurationRoot Configuration { get; set; }
-
-   // This method gets called by the runtime. Use this method to add services to the container.
-   // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
-   public void ConfigureServices(IServiceCollection services)
-   {
-       // Required to use the Options<T> pattern
-       services.AddOptions();
-
-       // Add settings from configuration
-       services.Configure<SampleWebSettings>(Configuration);
-
-       // Uncomment to add settings from code
-       //services.Configure<SampleWebSettings>(settings =>
-       //{
-       //    settings.Updates = 17;
-       //});
-
-       services.AddMvc();
-
-       // Add application services.
-       services.AddTransient<IDateTime, SystemDateTime>();
-   }
-
-   ````
+[!code-csharp[Main](./dependency-injection/sample/src/ControllerDI/Startup.cs?highlight=3,4,5,6,9,16,19&range=14-44)]
 
 > [!NOTE]
 > In the above listing, we are configuring the application to read the settings from a JSON-formatted file. You can also configure the settings entirely in code, as is shown in the commented code above. See [Configuration](../../fundamentals/configuration.md) for further configuration options.
 
 Once you've specified a strongly-typed configuration object (in this case, `SampleWebSettings`) and added it to the services collection, you can request it from any Controller or Action method by requesting an instance of `IOptions<T>` (in this case, `IOptions<SampleWebSettings>`). The following code shows how one would request the settings from a controller:
 
-[!code-csharp[Main](./dependency-injection/sample/src/ControllerDI/Controllers/SettingsController.cs?highlight=3,5,7)]
-
-````csharp
-    public class SettingsController : Controller
-       {
-           private readonly SampleWebSettings _settings;
-
-           public SettingsController(IOptions<SampleWebSettings> settingsOptions)
-           {
-               _settings = settingsOptions.Value;
-           }
-
-           public IActionResult Index()
-           {
-               ViewData["Title"] = _settings.Title;
-               ViewData["Updates"] = _settings.Updates;
-               return View();
-           }
-       }
-
-   ````
+[!code-csharp[Main](./dependency-injection/sample/src/ControllerDI/Controllers/SettingsController.cs?highlight=3,5,7&range=7-22)]
 
 Following the Options pattern allows settings and configuration to be decoupled from one another, and ensures the controller is following [separation of concerns](http://deviq.com/separation-of-concerns/), since it doesn't need to know how or where to find the settings information. It also makes the controller easier to unit test [Testing Controller Logic](testing.md), since there is no [static cling](http://deviq.com/static-cling/) or direct instantiation of settings classes within the controller class.

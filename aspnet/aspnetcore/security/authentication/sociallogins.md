@@ -40,10 +40,10 @@ Enabling these credentials in your web sites provides a significant advantage be
 
 ````csharp
 services.AddMvc(options =>
-   {
-       options.Filters.Add(new RequireHttpsAttribute ());
-   });
-   ````
+{
+    options.Filters.Add(new RequireHttpsAttribute ());
+});
+````
 
 * Test the app
 
@@ -111,28 +111,7 @@ Follow these steps to add the Facebook AppId and AppSecret to the Secret Manager
 
 The following code reads the configuration values stored by the [Secret Manager](../app-secrets.md#security-app-secrets).
 
-[!code-none[Main](../../common/samples/WebApplication1/src/WebApplication1/Startup.cs?highlight=11)]
-
-````none
-public Startup(IHostingEnvironment env)
-   {
-       var builder = new ConfigurationBuilder()
-           .SetBasePath(env.ContentRootPath)
-           .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-           .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
-
-       if (env.IsDevelopment())
-       {
-           // For more details on using the user secret store see http://go.microsoft.com/fwlink/?LinkID=532709
-           builder.AddUserSecrets();
-       }
-
-       builder.AddEnvironmentVariables();
-       Configuration = builder.Build();
-   }
-
-
-   ````
+[!code-csharp[Main](../../common/samples/WebApplication1/src/WebApplication1/Startup.cs?highlight=11&range=20-36)]
 
 ## Enable Facebook middleware
 
@@ -140,46 +119,7 @@ public Startup(IHostingEnvironment env)
 
 Add the Facebook middleware in the `Configure` method in `Startup`:
 
-[!code-csharp[Main](./sociallogins/sample/Startup.cs?highlight=21,22,23,24,25)]
-
-````csharp
-public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
-   {
-       loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-       loggerFactory.AddDebug();
-
-       if (env.IsDevelopment())
-       {
-           app.UseDeveloperExceptionPage();
-           app.UseDatabaseErrorPage();
-           app.UseBrowserLink();
-       }
-       else
-       {
-           app.UseExceptionHandler("/Home/Error");
-       }
-
-       app.UseStaticFiles();
-
-       app.UseIdentity();
-
-       app.UseFacebookAuthentication(new FacebookOptions()
-       {
-           AppId = Configuration["Authentication:Facebook:AppId"],
-           AppSecret = Configuration["Authentication:Facebook:AppSecret"]
-       });
-
-       app.UseMvc(routes =>
-       {
-           routes.MapRoute(
-               name: "default",
-               template: "{controller=Home}/{action=Index}/{id?}");
-       });
-   }
-
-
-
-   ````
+[!code-csharp[Main](./sociallogins/sample/Startup.cs?highlight=21,22,23,24,25&range=64-96)]
 
 ## Login with Facebook
 

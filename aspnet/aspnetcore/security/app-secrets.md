@@ -50,10 +50,10 @@ The Secret Manager tool operates on project specific configuration settings that
 
 ````json
 {
-   "userSecretsId": "aspnet-WebApp1-c23d27a4-eb88-4b18-9b77-2a93f3b15119",
+"userSecretsId": "aspnet-WebApp1-c23d27a4-eb88-4b18-9b77-2a93f3b15119",
 
-   "dependencies": {
-   ````
+"dependencies": {
+````
 
 * Use the Secret Manager tool to set a secret. For example, in a command window from the project directory enter the following:
 
@@ -85,27 +85,7 @@ You access Secret Manager secrets through the configuration system. Add the `Mic
 
 Add the user secrets configuration source to the `Startup` method:
 
-[!code-none[Main](../common/samples/WebApplication1/src/WebApplication1/Startup.cs?highlight=11)]
-
-````none
-public Startup(IHostingEnvironment env)
-   {
-       var builder = new ConfigurationBuilder()
-           .SetBasePath(env.ContentRootPath)
-           .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-           .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
-
-       if (env.IsDevelopment())
-       {
-           // For more details on using the user secret store see http://go.microsoft.com/fwlink/?LinkID=532709
-           builder.AddUserSecrets();
-       }
-
-       builder.AddEnvironmentVariables();
-       Configuration = builder.Build();
-   }
-
-   ````
+[!code-csharp[Main](../common/samples/WebApplication1/src/WebApplication1/Startup.cs?highlight=11&range=20-35)]
 
 You can now access user secrets via the configuration API:
 
