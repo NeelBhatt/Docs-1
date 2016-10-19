@@ -61,17 +61,17 @@ We will be modifying the `/etc/nginx/sites-available/default`, so open it up in 
 
 ````nginx
 server {
-       listen 80;
-       location / {
-           proxy_pass http://localhost:5000;
-           proxy_http_version 1.1;
-           proxy_set_header Upgrade $http_upgrade;
-           proxy_set_header Connection keep-alive;
-           proxy_set_header Host $host;
-           proxy_cache_bypass $http_upgrade;
-       }
-   }
-   ````
+    listen 80;
+    location / {
+        proxy_pass http://localhost:5000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection keep-alive;
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+````
 
 This is one of the simplest configuration files for Nginx that forwards incoming public traffic on your port `80` to a port `5000` that your web application will listen on.
 
@@ -100,25 +100,25 @@ To have supervisor monitor our application, we will add a file to the `/etc/supe
 
 ````ini
 [program:hellomvc]
-   command=/usr/bin/dotnet /var/aspnetcore/HelloMVC/HelloMVC.dll
-   directory=/var/aspnetcore/HelloMVC/
-   autostart=true
-   autorestart=true
-   stderr_logfile=/var/log/hellomvc.err.log
-   stdout_logfile=/var/log/hellomvc.out.log
-   environment=HOME=/var/www/,ASPNETCORE_ENVIRONMENT=Production
-   user=www-data
-   stopsignal=INT
-   stopasgroup=true
-   killasgroup=true
-   ````
+command=/usr/bin/dotnet /var/aspnetcore/HelloMVC/HelloMVC.dll
+directory=/var/aspnetcore/HelloMVC/
+autostart=true
+autorestart=true
+stderr_logfile=/var/log/hellomvc.err.log
+stdout_logfile=/var/log/hellomvc.out.log
+environment=HOME=/var/www/,ASPNETCORE_ENVIRONMENT=Production
+user=www-data
+stopsignal=INT
+stopasgroup=true
+killasgroup=true
+````
 
 Once you are done editing the configuration file, restart the `supervisord` process to change the set of programs controlled by supervisord.
 
 ````bash
 sudo service supervisor stop
-   sudo service supervisor start
-   ````
+sudo service supervisor start
+````
 
 ## Start our web application on startup
 
@@ -150,11 +150,11 @@ Close off all external ports that are not in use. Uncomplicated firewall (ufw) p
 
 ````bash
 sudo apt-get install ufw
-   sudo ufw enable
+sudo ufw enable
 
-   sudo ufw allow 80/tcp
-   sudo ufw allow 443/tcp
-   ````
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+````
 
 ### Securing Nginx
 
@@ -189,12 +189,12 @@ Consider using a web application firewall like *ModSecurity* to harden your appl
 
 ````bash
 ./configure
-   --with-pcre=../pcre-8.38
-   --with-zlib=../zlib-1.2.8
-   --with-http_ssl_module
-   --with-stream
-   --with-mail=dynamic
-   ````
+--with-pcre=../pcre-8.38
+--with-zlib=../zlib-1.2.8
+--with-http_ssl_module
+--with-stream
+--with-mail=dynamic
+````
 
 #### Configure SSL
 
