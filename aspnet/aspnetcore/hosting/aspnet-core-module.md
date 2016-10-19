@@ -5,7 +5,7 @@ uid: hosting/aspnet-core-module
 
 By [Luke Latham](https://github.com/GuardRex), [Rick Anderson](https://twitter.com/RickAndMSFT) and [Sourabh Shirhatti](https://twitter.com/sshirhatti)
 
-In ASP.NET Core, the web application is hosted by an external process outside of IIS. The ASP.NET Core Module is an IIS 7.5+ module, which is responsible for process management of ASP.NET Core http listeners and to proxy requests to processes that it manages. This document provides an overview of how to configure the ASP.NET Core Module for shared hosting of ASP.NET Core.
+In ASP.NET Core, the web application is hosted by an external process outside of IIS. The ASP.NET Core Module is an IIS 7.5+ module, which is responsible for process management of ASP.NET Core http listeners and to proxy requests to processes that it manages. This document provides an overview of how to configure the ASP.NET Core Module for shared hosting of ASP.NET Core applications.
 
 ## Installing the ASP.NET Core Module
 
@@ -13,7 +13,7 @@ Install the [.NET Core Windows Server Hosting](https://go.microsoft.com/fwlink/?
 
 ## Configuring the ASP.NET Core Module
 
-The ASP.NET Core Module is configured via a site or application *web.config* file and has its own configuration section within `system.webServer - aspNetCore`.
+The ASP.NET Core Module is configured via a site or application *web.config* file and has its own `aspNetCore` configuration section within `system.webServer`.
 
 ### Configuration Attributes
 
@@ -21,21 +21,20 @@ The ASP.NET Core Module is configured via a site or application *web.config* fil
 |---|---|
 | processPath             |<p>Required string attribute.</p><p>Path to the executable or script that will launch a process listening for HTTP requests. Relative paths are supported. If the path begins with '.', the path is considered to be relative to the site root.</p><p>There is no default value.</p>|
 | arguments               |<p>Optional string attribute.</p><p>Arguments to the executable or script specified in **processPath**. The default value is an empty string.</p>|
-| startupTimeLimit        |<p>Optional integer attribute.</p><p>Duration in seconds for which the the handler will wait for the executable or script to start a process listening on the port. If this time limit is exceeded, the handler will kill the process and attempt to launch it again **startupRetryCount** times.</p><p>The default valueis 120.</p>|
-| shutdownTimeLimit       |<p>Optional integer attribute.</p><p>Duration in seconds for which the the handler will wait for the executable or script to gracefully shutdown when the *app_offline.htm* file is detected.</p><p>The default valueis 10.</p>|
-| rapidFailsPerMinute     |<p>Optional integer attribute.</p><p>Specifies the number of times the process specified in **processPath** is allowed to crash per minute. If this limit is exceeded, the handler will stop launching the process for the remainder of the minute.</p><p>The default valueis 10.</p>|
+| startupTimeLimit        |<p>Optional integer attribute.</p><p>Duration in seconds for which the the module will wait for the executable or script to start a process listening on the port. If this time limit is exceeded, the module will kill the process. The module will attempt launch the process again when it receives a new request and will continue to attempt to restart the process on subsequent incoming requests unless the application failed to start **rapidFailsPerMinute** number of times in the last rolling minute.</p><p>The default valueis 120.</p>|
+| shutdownTimeLimit       |<p>Optional integer attribute.</p><p>Duration in seconds for which the the module will wait for the executable or script to gracefully shutdown when the *app_offline.htm* file is detected.</p><p>The default valueis 10.</p>|
+| rapidFailsPerMinute     |<p>Optional integer attribute.</p><p>Specifies the number of times the process specified in **processPath** is allowed to crash per minute. If this limit is exceeded, the module will stop launching the process for the remainder of the minute.</p><p>The default valueis 10.</p>|
 | requestTimeout          |<p>Optional timespan attribute.</p><p>Specifies the duration for which the ASP.NET Core Module will wait for a response from the process listening on %ASPNETCORE_PORT%.</p><p>The default valueis "00:02:00".</p>|
 | stdoutLogEnabled        |<p>Optional Boolean attribute.</p><p>If true, **stdout** and **stderr** for the process specified in **processPath** will be redirected to the file specified in **stdoutLogFile**.</p><p>The default valueis false.</p>|
-| stdoutLogFile           |<p>Optional string attribute.</p><p>Specifies the relative or absolute file path for which **stdout** and **stderr** from the process specified in **processPath** will be logged. Relative paths are relative to the root of the site. Any path starting with '.' will be relative to the site root and all other paths will be treated as absolute paths.</p><p>The default valueis ``aspnetcore-stdout``.</p>|
-| forwardWindowsAuthToken |True or False.</p><p>If true, the token will be forwarded to the child process listening on %ASPNETCORE_PORT% as aheader 'MS-ASPNETCORE-WINAUTHTOKEN' per request. It is the responsibility of that process to call CloseHandle on this token per request.</p><p>The default valueis false.</p>|
-| disableStartUpErrorPage |True or False.</p><p>If true, the **502.5 - Process Failure** page will be supressed and the 502 status code page configured in your *web.config* will take precedence.</p><p>The default valueis false.</p>|
+| stdoutLogFile           |<p>Optional string attribute.</p><p>Specifies the relative or absolute file path for which **stdout** and **stderr** from the process specified in **processPath** will be logged. Relative paths are relative to the root of the site. Any path starting with '.' will be relative to the site root and all other paths will be treated as absolute paths. A timestamp and the file extension will automatically be added to the filename provided. Any folders provided in the path must exist in order for the module to create the log file.</p><p>The default value is ``aspnetcore-stdout``.</p>|
+| forwardWindowsAuthToken |true or false.</p><p>If true, the token will be forwarded to the child process listening on %ASPNETCORE_PORT% as aheader 'MS-ASPNETCORE-WINAUTHTOKEN' per request. It is the responsibility of that process to call CloseHandle on this token per request.</p><p>The default valueis false.</p>|
+| disableStartUpErrorPage |true or false.</p><p>If true, the **502.5 - Process Failure** page will be supressed and the 502 status code page configured in your *web.config* will take precedence.</p><p>The default valueis false.</p>|
 
 ### Child Elements
 
 |Attribute|Description|
 |--- |--- |
-|environmentVariables|Configures **environmentVariables** collection for the process specified in **processPath**.|
-|recycleOnFileChange|Specify a list of files to monitor. If any of these files are updated/deleted, the ASP.NET Core Module will restart the backend process.|
+|environmentVariables|Configures an **environmentVariables** collection of one or more **environmentVariable** elements for the process specified in **processPath**.|
 
 ## ASP.NET Core Module *app_offline.htm*
 
@@ -55,7 +54,7 @@ If the ASP.NET Core Module fails to launch the backend process or the backend pr
 
 ### Log creation and redirection
 
-To save logs, you must create the *logs* directory. The ASP.NET Core Module can redirect `stdout` and `stderr` logs to disk by setting the `stdoutLogEnabled` and `stdoutLogFile` attributes of the `aspNetCore` element. Logs are not rotated (unless process recycling/restart occurs). It is the responsibilty of the hoster to limit the disk space the logs consume.
+The ASP.NET Core Module can redirect `stdout` and `stderr` logs to disk by setting the `stdoutLogEnabled` and `stdoutLogFile` attributes of the `aspNetCore` element. Any folders in the `stdoutLogFile` path, *logs* in the example below, must exist in order for the module to create the log file. A timestamp and file extension will be added automatically when the log file is created. Logs are not rotated (unless process recycling/restart occurs). It is the responsibilty of the hoster to limit the disk space the logs consume. Using the `stdout` log is only recommended for troubleshooting application startup issues and not for general application logging purposes.
 
 <!-- literal_block {"ids": [], "names": [], "highlight_args": {"linenostart": 1}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "xml", "source": "/Users/shirhatti/src/Docs/aspnet/hosting/aspnet-core-module/sample/web.config"} -->
 
@@ -69,17 +68,18 @@ To save logs, you must create the *logs* directory. The ASP.NET Core Module can 
 
 ### Setting environment variables
 
-The ASP.NET Core Module allows you specify environment variables for the process specified in the `processPath` setting by specifying them in `environmentVariables` child attribute to the `aspNetCore` attribute.
+The ASP.NET Core Module allows you specify environment variables for the process specified in the `processPath` attribute by specifying them in one or more `environmentVariable` child elements of an `environmentVariables` collection element under the `aspNetCore` element. Environment variables set in this section take precedence over system environment variables for the process.
 
 <!-- literal_block {"ids": [], "names": [], "highlight_args": {"linenostart": 1}, "backrefs": [], "dupnames": [], "linenos": false, "classes": [], "xml:space": "preserve", "language": "xml", "source": "/Users/shirhatti/src/Docs/aspnet/hosting/aspnet-core-module/sample/web.config"} -->
 
 ````xml
 <aspNetCore processPath="dotnet"
         arguments=".\MyApp.dll"
-        stdoutLogEnabled="true"
+        stdoutLogEnabled="false"
         stdoutLogFile=".\logs\stdout">
   <environmentVariables>
-    <environmentVariable name="DEMO" value="demo_value" />
+    <environmentVariable name="ENV_VAR_1" value="VALUE_1" />
+    <environmentVariable name="ENV_VAR_2" value="VALUE_2" />
   </environmentVariables>
 </aspNetCore>
 ````
@@ -90,7 +90,9 @@ The ASP.NET Core Module installer, which is included in the .NET Core Windows Se
 
 The unsupported workaround is to disable the IIS Shared Configuration, run the installer, export the updated *applicationHost.config* file to the share, and re-enable the IIS Shared Configuration.
 
-## Module, schema, and configuration file locations  ### Module
+## Module, schema, and configuration file locations
+
+### Module
 
 **IIS (x86/amd64):**
 
