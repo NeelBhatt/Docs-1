@@ -3,7 +3,7 @@ title: Partial Views
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: 4be1b12c-b74e-44ff-826b-99ce86e8d464
 ms.prod: aspnet-core

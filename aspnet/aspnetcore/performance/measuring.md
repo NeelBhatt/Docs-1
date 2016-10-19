@@ -3,7 +3,7 @@ title: 🔧 Measuring Application Performance
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: f9267eab-2762-42ac-8415-4a25d2c9d67c
 ms.prod: aspnet-core

@@ -3,7 +3,7 @@ title: Publishing to IIS with Web Deploy using Visual Studio
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: a4449ad3-5bad-410c-afa7-dc32d832b552
 ms.prod: aspnet-core

@@ -3,7 +3,7 @@ title: 🔧 Publishing to a Windows Virtual Machine on Azure
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: 17219af5-dad9-49fb-be4b-e94a78668e57
 ms.prod: aspnet-core

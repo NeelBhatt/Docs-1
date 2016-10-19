@@ -3,7 +3,7 @@ title: Dependency Injection
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: fccd69be-7ad1-47fb-b203-b3633b6b9a9b
 ms.prod: aspnet-core

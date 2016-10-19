@@ -3,7 +3,7 @@ title: Publishing to IIS
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: fd06569c-e8d0-4fd2-a506-98ce44bf1af5
 ms.prod: aspnet-core

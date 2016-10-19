@@ -3,7 +3,7 @@ title: Contoso University sample app
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: b67c3d4a-f2bf-4132-a48b-4b0d599d7981
 ms.prod: aspnet-core

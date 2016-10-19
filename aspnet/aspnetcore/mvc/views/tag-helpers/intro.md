@@ -3,7 +3,7 @@ title: Introduction to Tag Helpers
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: 7a47f0b9-dd1e-4d25-97ec-2346a5d3ce2c
 ms.prod: aspnet-core

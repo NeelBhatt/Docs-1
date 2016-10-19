@@ -3,7 +3,7 @@ title: Views
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: 0945327b-f295-49e6-8969-54828e297bae
 ms.prod: aspnet-core

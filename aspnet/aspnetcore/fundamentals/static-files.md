@@ -3,7 +3,7 @@ title: Working with Static Files
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: e32245c7-4eee-4831-bd2e-915dbf9f5f70
 ms.prod: aspnet-core

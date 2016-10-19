@@ -3,7 +3,7 @@ title: Areas
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: 5e16d5e8-5696-4cb2-8ec7-d36be305c922
 ms.prod: aspnet-core

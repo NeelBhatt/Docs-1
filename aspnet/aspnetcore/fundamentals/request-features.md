@@ -3,7 +3,7 @@ title: Request Features
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: d1fbd23c-2ff9-4216-b908-0201ff3afb7c
 ms.prod: aspnet-core

@@ -3,7 +3,7 @@ title: 🔧 HTML Helpers
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: 2d90dd5d-3f2d-47d5-9fc4-4e0513cf0f92
 ms.prod: aspnet-core

@@ -3,7 +3,7 @@ title: Non DI Aware Scenarios
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: a7d8a962-80ff-48e3-96f6-8472b7ba2df9
 ms.prod: aspnet-core

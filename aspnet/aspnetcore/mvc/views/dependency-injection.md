@@ -3,7 +3,7 @@ title: Dependency injection into views
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: 80fb9e43-e4db-4af2-b2a8-e1364a712f69
 ms.prod: aspnet-core

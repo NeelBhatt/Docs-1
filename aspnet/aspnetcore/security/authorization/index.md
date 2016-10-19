@@ -3,7 +3,7 @@ title: Authorization
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: 1abd456b-2199-4ba3-9698-3241e0bd4afc
 ms.prod: aspnet-core

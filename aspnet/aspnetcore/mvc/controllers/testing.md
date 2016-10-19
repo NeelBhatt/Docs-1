@@ -3,7 +3,7 @@ title: Testing Controller Logic
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: dd4135ec-2b15-410c-b3fb-3d12eed4a1ac
 ms.prod: aspnet-core

@@ -3,7 +3,7 @@ title: Key Immutability and Changing Settings
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: fc911ae3-feca-4ffe-8b43-362bc632fe04
 ms.prod: aspnet-core

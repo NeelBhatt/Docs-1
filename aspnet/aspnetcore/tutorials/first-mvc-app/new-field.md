@@ -3,7 +3,7 @@ title: Adding a New Field
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: 16efbacf-fe7b-4b41-84b0-06a1574b95c2
 ms.prod: aspnet-core

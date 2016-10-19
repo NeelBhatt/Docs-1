@@ -3,7 +3,7 @@ title: Miscellaneous APIs
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: 512c6ba7-88ec-47e4-a656-6b30350b34e6
 ms.prod: aspnet-core

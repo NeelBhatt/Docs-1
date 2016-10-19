@@ -3,7 +3,7 @@ title: Data Protection
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: 3a169d99-a93b-4cb8-9585-4df3f5e31e40
 ms.prod: aspnet-core

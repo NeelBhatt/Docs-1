@@ -3,7 +3,7 @@ title: Controller methods and views
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: c7313211-b271-4adf-bab8-8e72603cc0ce
 ms.prod: aspnet-core

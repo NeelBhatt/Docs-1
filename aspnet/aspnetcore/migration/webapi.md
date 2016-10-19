@@ -3,7 +3,7 @@ title: Migrating from ASP.NET Web API
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: 4f0564b4-ed4e-4e1e-9755-c1144d21a0ef
 ms.prod: aspnet-core

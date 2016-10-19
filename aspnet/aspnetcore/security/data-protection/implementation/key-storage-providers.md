@@ -3,7 +3,7 @@ title: Key Storage Providers
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: 423e0a79-2f34-44c4-aaf3-146a53c39251
 ms.prod: aspnet-core

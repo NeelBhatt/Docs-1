@@ -3,7 +3,7 @@ title: Custom Policy-Based Authorization
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: e422a1b2-dc4a-4bcc-b8d9-7ee62009b6a3
 ms.prod: aspnet-core

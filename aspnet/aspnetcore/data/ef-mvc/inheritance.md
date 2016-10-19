@@ -3,7 +3,7 @@ title: Inheritance
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: 41dc0db7-6f17-453e-aba6-633430609c74
 ms.prod: aspnet-core

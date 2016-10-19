@@ -3,7 +3,7 @@ title: Integration Testing
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: 40d534f2-89b3-4b09-9c2c-3494bf9991c9
 ms.prod: aspnet-core

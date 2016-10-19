@@ -3,7 +3,7 @@ title: Model Validation
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: 3a8676dd-7ed8-4a05-bca2-44e288ab99ee
 ms.prod: aspnet-core

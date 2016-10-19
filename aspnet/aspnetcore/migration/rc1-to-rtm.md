@@ -3,7 +3,7 @@ title: Migrating from ASP.NET 5 RC1 to ASP.NET Core 1.0
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: b09c8cc7-8baa-44bf-97b2-6e160243b3d3
 ms.prod: aspnet-core

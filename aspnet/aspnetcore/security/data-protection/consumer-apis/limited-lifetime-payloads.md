@@ -3,7 +3,7 @@ title: Limiting the lifetime of protected payloads
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: 000175e2-10fc-43dd-bfc2-51e004b97b44
 ms.prod: aspnet-core

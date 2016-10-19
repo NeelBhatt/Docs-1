@@ -3,7 +3,7 @@ title: Purpose hierarchy and multi-tenancy
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: c96ed361-c382-4980-8933-800e740cfc38
 ms.prod: aspnet-core

@@ -3,7 +3,7 @@ title: Logging
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: 585a6214-9696-43e7-9f26-cd12454f4671
 ms.prod: aspnet-core

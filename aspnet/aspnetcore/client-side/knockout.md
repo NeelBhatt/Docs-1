@@ -3,7 +3,7 @@ title: Knockout.js MVVM Framework
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: b20e3b23-1c51-47bf-adac-91b5048567e0
 ms.prod: aspnet-core

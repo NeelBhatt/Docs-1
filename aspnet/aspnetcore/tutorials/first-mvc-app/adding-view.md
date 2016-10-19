@@ -3,7 +3,7 @@ title: Adding a view
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: 6942432b-bac0-41e6-9ad7-cad313abf4db
 ms.prod: aspnet-core

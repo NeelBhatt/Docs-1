@@ -3,7 +3,7 @@ title: Authenticated encryption details.
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: 826e6d5d-9620-44e6-ad93-3b1d9969b70b
 ms.prod: aspnet-core

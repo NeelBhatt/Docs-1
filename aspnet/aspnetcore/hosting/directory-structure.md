@@ -3,7 +3,7 @@ title: Directory Structure
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: e55eb131-d42e-4bf6-b130-fd626082243c
 ms.prod: aspnet-core

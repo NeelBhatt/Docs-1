@@ -3,7 +3,7 @@ title: Sorting, filtering, paging, and grouping
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: e6c1ff3c-5673-43bf-9c2d-077f6ada1f29
 ms.prod: aspnet-core

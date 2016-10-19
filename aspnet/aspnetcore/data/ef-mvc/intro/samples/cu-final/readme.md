@@ -3,7 +3,7 @@ title: Getting started with ASP.NET Core MVC and Entity Framework Core using Vis
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: 6282a1d3-1796-4958-a2e6-afdf3364fcbf
 ms.prod: aspnet-core

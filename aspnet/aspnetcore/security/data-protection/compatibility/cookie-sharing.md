@@ -3,7 +3,7 @@ title: Sharing cookies between applications
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: 9a7aae45-8e21-4c54-950c-3c29df6c1082
 ms.prod: aspnet-core

@@ -3,7 +3,7 @@ title: Ephemeral data protection providers
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: af6ea1d0-0d9d-41df-a870-5dda24978e2f
 ms.prod: aspnet-core

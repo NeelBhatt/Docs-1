@@ -3,7 +3,7 @@ title: 🔧 Anti-Request Forgery
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: 43844a0f-d6d3-44d0-8ced-597c33d4c52d
 ms.prod: aspnet-core

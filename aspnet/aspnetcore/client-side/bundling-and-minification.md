@@ -3,7 +3,7 @@ title: Bundling and Minification
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: d54230f9-8e5f-4861-a29c-1d3a14e0b0d9
 ms.prod: aspnet-core

@@ -3,7 +3,7 @@ title: Consumer APIs Overview
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: f69beb9d-a519-43a8-857c-f6b01886a903
 ms.prod: aspnet-core

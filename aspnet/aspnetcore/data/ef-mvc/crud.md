@@ -3,7 +3,7 @@ title: Create, Read, Update, and Delete operations
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: 6e1cd570-40f1-4b24-8b6e-7d2d27758f18
 ms.prod: aspnet-core

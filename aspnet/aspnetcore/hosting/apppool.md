@@ -3,7 +3,7 @@ title: Application Pools
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: a641f75c-38fe-4936-aff0-c825c407570f
 ms.prod: aspnet-core

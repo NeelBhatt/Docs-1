@@ -3,7 +3,7 @@ title: Purpose Strings
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: 9d18c287-e0e6-4541-b09c-7fed45c902d9
 ms.prod: aspnet-core

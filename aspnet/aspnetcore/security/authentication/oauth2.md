@@ -3,7 +3,7 @@ title: 🔧 Supporting Third Party Clients using OAuth 2.0
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: 5e125e1c-4872-4c9d-a7cd-769292f79f20
 ms.prod: aspnet-core

@@ -3,7 +3,7 @@ title: Resource Based Authorization
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: 0902ba17-5304-4a12-a2d4-e0904569e988
 ms.prod: aspnet-core

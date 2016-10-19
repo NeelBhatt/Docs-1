@@ -3,7 +3,7 @@ title: Choosing the Right .NET For You on the Server
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: 7227b82f-9275-4006-85bc-be55f5e4d39e
 ms.prod: aspnet-core

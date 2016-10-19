@@ -3,7 +3,7 @@ title: Models
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: 713ee7c8-5249-4335-8626-55bf10a980a2
 ms.prod: aspnet-core

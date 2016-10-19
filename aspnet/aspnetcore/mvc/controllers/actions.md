@@ -3,7 +3,7 @@ title: Controllers, Actions, and Action Results
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: 9da9eb52-8583-4069-af91-155ba3529d7f
 ms.prod: aspnet-core

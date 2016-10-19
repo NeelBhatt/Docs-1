@@ -3,7 +3,7 @@ title: Open Web Interface for .NET (OWIN)
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: 70c4e6bc-a773-4039-96ec-6fe557c9369d
 ms.prod: aspnet-core

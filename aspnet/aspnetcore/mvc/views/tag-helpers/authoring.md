@@ -3,7 +3,7 @@ title: Authoring Tag Helpers
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: 4f16d978-5695-4abf-a785-fdaabf3bbcb9
 ms.prod: aspnet-core

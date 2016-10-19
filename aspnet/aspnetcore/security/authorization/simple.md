@@ -3,7 +3,7 @@ title: Simple Authorization
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: 391bcaad-205f-43e4-badc-fa592d6f79f3
 ms.prod: aspnet-core

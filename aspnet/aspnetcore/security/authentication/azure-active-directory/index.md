@@ -3,7 +3,7 @@ title: Azure Active Directory
 author: rick-anderson
 ms.author: riande
 manager: wpickett
-ms.date: 42657
+ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: bd272e10-7b7d-43cf-85e2-42a7f87fedb5
 ms.prod: aspnet-core
