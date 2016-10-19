@@ -1,4 +1,12 @@
 ---
+title: Working with SQL Server LocalDB
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: ff8fd9b8-7c98-424d-8641-7524e23bf541
+ms.prod: aspnet-core
 uid: tutorials/first-mvc-app/working-with-sql
 ---
 # Working with SQL Server LocalDB

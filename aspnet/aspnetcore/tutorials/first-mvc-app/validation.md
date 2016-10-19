@@ -1,5 +1,13 @@
 ﻿---
-uid: tutorials/first-mvc-app/validation
+title: Adding Validation
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: edbed483-6858-4f19-8082-3ac7d2752986
+ms.prod: aspnet-core
+﻿uid: tutorials/first-mvc-app/validation
 ---
 # Adding Validation
 

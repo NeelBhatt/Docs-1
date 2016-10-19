@@ -1,4 +1,12 @@
 ---
+title: Application Pools
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: a641f75c-38fe-4936-aff0-c825c407570f
+ms.prod: aspnet-core
 uid: hosting/apppool
 ---
 <a name=apppool></a>

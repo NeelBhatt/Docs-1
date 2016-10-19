@@ -1,4 +1,12 @@
 ---
+title: Migrations
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 81f6c9c2-a819-4f3a-97a4-4b0503b56c26
+ms.prod: aspnet-core
 uid: data/ef-mvc/migrations
 ---
 # Migrations

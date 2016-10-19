@@ -1,5 +1,13 @@
 ﻿---
-uid: client-side/bundling-and-minification
+title: Bundling and Minification
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: d54230f9-8e5f-4861-a29c-1d3a14e0b0d9
+ms.prod: aspnet-core
+﻿uid: client-side/bundling-and-minification
 ---
 >[!WARNING]
 > This page documents version 1.0.0-rc2 and has not yet been updated for version 1.0.0

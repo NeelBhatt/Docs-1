@@ -1,5 +1,13 @@
 ﻿---
-uid: publishing/iis-with-msdeploy
+title: Publishing to IIS
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: fd06569c-e8d0-4fd2-a506-98ce44bf1af5
+ms.prod: aspnet-core
+﻿uid: publishing/iis-with-msdeploy
 ---
 # Publishing to IIS with Web Deploy using Visual Studio
 

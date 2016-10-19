@@ -1,5 +1,13 @@
 ﻿---
-uid: mvc/views/view-components
+title: View Components
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: ab4705b7-59d7-4f31-bc97-ea7f292fe926
+ms.prod: aspnet-core
+﻿uid: mvc/views/view-components
 ---
 >[!WARNING]
 > This page documents version 1.0.0-rc1 and has not yet been updated for version 1.0.0

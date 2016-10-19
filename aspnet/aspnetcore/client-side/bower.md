@@ -1,4 +1,12 @@
----
+﻿---
+title: Manage Client-Side Packages with Bower
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: df7c43da-280e-4df6-86cb-eecec8f12bfc
+ms.prod: aspnet-core
 uid: client-side/bower
 ---
 <a name=bower-index></a>

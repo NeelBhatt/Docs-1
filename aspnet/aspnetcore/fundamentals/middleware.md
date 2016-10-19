@@ -1,5 +1,13 @@
 ﻿---
-uid: fundamentals/middleware
+title: Middleware
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: db9a86ab-46c2-40e0-baed-86e38c16af1f
+ms.prod: aspnet-core
+﻿uid: fundamentals/middleware
 ---
 <a name=fundamentals-middleware></a>
 

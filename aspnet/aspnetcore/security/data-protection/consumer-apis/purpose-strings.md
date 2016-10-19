@@ -1,4 +1,12 @@
 ---
+title: Purpose hierarchy and multi-tenancy
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: c96ed361-c382-4980-8933-800e740cfc38
+ms.prod: aspnet-core
 uid: security/data-protection/consumer-apis/purpose-strings
 ---
 <a name=data-protection-consumer-apis-purposes></a>

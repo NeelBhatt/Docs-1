@@ -1,4 +1,12 @@
 ---
+title: Key Storage Format
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: e8996478-f7bf-4b58-bab4-7fdb5d8556c5
+ms.prod: aspnet-core
 uid: security/data-protection/implementation/key-storage-format
 ---
 <a name=data-protection-implementation-key-storage-format></a>

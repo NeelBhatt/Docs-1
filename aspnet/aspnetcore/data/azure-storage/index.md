@@ -1,4 +1,12 @@
 ---
+title: Azure Storage
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: eae8a3d0-c361-4de4-883c-040879fce6d1
+ms.prod: aspnet-core
 uid: data/azure-storage/index
 ---
 # Azure Storage

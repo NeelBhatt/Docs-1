@@ -1,5 +1,13 @@
 ﻿---
-uid: client-side/knockout
+title: Knockout.js MVVM Framework
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: b20e3b23-1c51-47bf-adac-91b5048567e0
+ms.prod: aspnet-core
+﻿uid: client-side/knockout
 ---
 # Knockout.js MVVM Framework
 

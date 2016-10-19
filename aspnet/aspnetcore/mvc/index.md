@@ -1,3 +1,12 @@
+---
+title: MVC
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 64bc7105-36d0-4afa-98ac-af64f044567f
+ms.prod: aspnet-core
 # mvc
 
 - [Overview of ASP.NET Core MVC](overview.md)

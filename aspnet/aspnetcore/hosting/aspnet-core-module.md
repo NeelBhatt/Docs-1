@@ -1,4 +1,12 @@
 ---
+title: ASP.NET Core Module Configuration Reference
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 5de0c8f7-50ce-4e2c-b3d4-a1bd9fdfcff5
+ms.prod: aspnet-core
 uid: hosting/aspnet-core-module
 ---
 # ASP.NET Core Module Configuration Reference

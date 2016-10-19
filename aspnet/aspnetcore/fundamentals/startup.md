@@ -1,4 +1,12 @@
 ---
+title: Application Startup
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 6538df00-4ec2-45e4-811a-d7ce2ee608ed
+ms.prod: aspnet-core
 uid: fundamentals/startup
 ---
 >[!WARNING]

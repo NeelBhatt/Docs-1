@@ -1,4 +1,12 @@
 ---
+title: Subkey Derivation and Authenticated Encryption
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 34bb58a3-5a9a-41e5-b090-08f75b4bbefa
+ms.prod: aspnet-core
 uid: security/data-protection/implementation/subkeyderivation
 ---
 <a name=data-protection-implementation-subkey-derivation></a>

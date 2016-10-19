@@ -1,3 +1,12 @@
+---
+title: Contoso University sample app
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: eedd3ea9-4da8-41ca-8080-45cdbc28f480
+ms.prod: aspnet-core
 # Contoso University sample app
 
 Contoso University demonstrates how to use Entity Framework Core 1.0 in an

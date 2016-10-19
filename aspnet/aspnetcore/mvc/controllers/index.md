@@ -1,4 +1,12 @@
 ---
+title: Controllers
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: aef3982c-3b42-4464-8d5d-388c36701f6c
+ms.prod: aspnet-core
 uid: mvc/controllers/index
 ---
 # Controllers

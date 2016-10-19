@@ -1,4 +1,12 @@
 ---
+title: Key Management
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: fb9b807a-d143-4861-9ddb-005d8796afa3
+ms.prod: aspnet-core
 uid: security/data-protection/implementation/key-management
 ---
 <a name=data-protection-implementation-key-management></a>

@@ -1,4 +1,12 @@
 ---
+title: Caching
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 1e73cf62-8862-4341-8816-83be1a3edc96
+ms.prod: aspnet-core
 uid: performance/caching/index
 ---
 # Caching

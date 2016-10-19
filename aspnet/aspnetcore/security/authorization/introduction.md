@@ -1,4 +1,12 @@
 ---
+title: Introduction
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: a6a556ed-ba59-4107-9358-44cf20e5931b
+ms.prod: aspnet-core
 uid: security/authorization/introduction
 ---
 <a name=security-authorization-introduction></a>

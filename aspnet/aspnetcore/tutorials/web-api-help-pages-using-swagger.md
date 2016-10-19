@@ -1,4 +1,12 @@
 ---
+title: ASP.NET Web API Help Pages using Swagger
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 54bb961d-29d9-4dee-8e2c-a93fc33c16f2
+ms.prod: aspnet-core
 uid: tutorials/web-api-help-pages-using-swagger
 ---
 <a name=web-api-help-pages-using-swagger></a>

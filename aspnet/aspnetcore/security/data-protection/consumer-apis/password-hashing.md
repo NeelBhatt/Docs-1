@@ -1,5 +1,13 @@
 ﻿---
-uid: security/data-protection/consumer-apis/password-hashing
+title: Password Hashing
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 982a1eb2-1e6f-4909-896f-82784364472d
+ms.prod: aspnet-core
+﻿uid: security/data-protection/consumer-apis/password-hashing
 ---
 # Password Hashing
 

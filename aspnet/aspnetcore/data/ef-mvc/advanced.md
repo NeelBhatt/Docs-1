@@ -1,4 +1,12 @@
 ---
+title: Advanced topics
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 92a2986a-d005-4ff6-9559-6657fd466bb7
+ms.prod: aspnet-core
 uid: data/ef-mvc/advanced
 ---
 # Advanced topics

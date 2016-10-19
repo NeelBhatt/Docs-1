@@ -1,4 +1,12 @@
----
+﻿---
+title: Getting Started with ASP.NET Core and Entity Framework 6
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 016cc836-4c43-45a4-b9a7-9efaf53350df
+ms.prod: aspnet-core
 uid: data/entity-framework-6
 ---
 

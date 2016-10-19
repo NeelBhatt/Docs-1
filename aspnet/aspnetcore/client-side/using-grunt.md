@@ -1,5 +1,13 @@
 ﻿---
-uid: client-side/using-grunt
+title: Using Grunt
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 471112e9-2c33-454b-96fc-32916102ce73
+ms.prod: aspnet-core
+﻿uid: client-side/using-grunt
 ---
 # Using Grunt
 

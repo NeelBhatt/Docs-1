@@ -1,3 +1,12 @@
+---
+title: Getting started with ASP.NET Core MVC and Entity Framework Core using Visual Studio
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 6282a1d3-1796-4958-a2e6-afdf3364fcbf
+ms.prod: aspnet-core
 # Contoso University sample app
 
 Contoso University demonstrates how to use Entity Framework Core 1.0 in an

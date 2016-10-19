@@ -1,4 +1,12 @@
 ---
+title: 🔧 Authorization Filters
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 0bf1ddf4-9d16-4ac8-a4df-9549e8031d19
+ms.prod: aspnet-core
 uid: security/authorization/authorization-filters
 ---
 # 🔧 Authorization Filters

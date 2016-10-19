@@ -1,5 +1,13 @@
 ﻿---
-uid: tutorials/your-first-mac-aspnet
+title: Your First ASP.NET Core Application on a Mac Using Visual Studio Code
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: dcc08e09-e73e-4feb-84ce-8219b7e544ef
+ms.prod: aspnet-core
+﻿uid: tutorials/your-first-mac-aspnet
 ---
 # Your First ASP.NET Core Application on a Mac Using Visual Studio Code
 

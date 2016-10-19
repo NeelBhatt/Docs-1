@@ -1,4 +1,12 @@
 ---
+title: Getting started with ASP.NET Core and Entity Framework Core using Visual Studio
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 9918be4c-2096-404f-9b2a-ed5cde90042a
+ms.prod: aspnet-core
 uid: data/ef-mvc/index
 ---
 # Getting started with ASP.NET Core and Entity Framework Core using Visual Studio

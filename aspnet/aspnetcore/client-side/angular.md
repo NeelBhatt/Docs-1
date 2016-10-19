@@ -1,5 +1,13 @@
 ﻿---
-uid: client-side/angular
+title: Using Angular for Single Page Applications (SPAs)
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 4b30576b-2718-4c39-9253-a59966747893
+ms.prod: aspnet-core
+﻿uid: client-side/angular
 ---
 >[!WARNING]
 > This page documents version 1.0.0-rc1 and has not yet been updated for version 1.0.0

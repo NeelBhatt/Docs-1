@@ -1,4 +1,12 @@
 ---
+title: In Memory Caching
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 819511cf-d33e-410a-b5a9-bef7fa64d2f3
+ms.prod: aspnet-core
 uid: performance/caching/memory
 ---
 >[!WARNING]

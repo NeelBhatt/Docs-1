@@ -1,4 +1,12 @@
 ---
+title: Views Overview
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 668c320d-c050-45e3-8161-2f460dc93b2f
+ms.prod: aspnet-core
 uid: mvc/views/overview
 ---
 # Views Overview

@@ -1,4 +1,12 @@
 ---
+title: Examining the Details and Delete methods
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 870192b4-8d4f-45c7-8c14-83d02bc0ad79
+ms.prod: aspnet-core
 uid: tutorials/first-mvc-app/details
 ---
 # Examining the Details and Delete methods

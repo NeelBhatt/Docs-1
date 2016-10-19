@@ -1,4 +1,12 @@
 ---
+title: Default Settings
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: ef7dad2a-7029-4ae5-8f06-1fbebedccaa4
+ms.prod: aspnet-core
 uid: security/data-protection/configuration/default-settings
 ---
 <a name=data-protection-default-settings></a>

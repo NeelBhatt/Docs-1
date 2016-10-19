@@ -1,4 +1,12 @@
 ---
+title: Response Caching
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: cb42035a-60b0-472e-a614-cb79f443f654
+ms.prod: aspnet-core
 uid: performance/caching/response
 ---
 >[!WARNING]

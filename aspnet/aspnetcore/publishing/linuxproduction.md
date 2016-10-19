@@ -1,5 +1,13 @@
 ﻿---
-uid: publishing/linuxproduction
+title: Publish to a Linux Production Environment
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 1c33e576-33de-481a-8ad3-896b94fde0e3
+ms.prod: aspnet-core
+﻿uid: publishing/linuxproduction
 ---
 # Publish to a Linux Production Environment
 

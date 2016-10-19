@@ -1,5 +1,13 @@
 ﻿---
-uid: security/cross-site-scripting
+title: Preventing Cross-Site Scripting
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 95790927-2bfe-445e-b1fd-429c2c7030ce
+ms.prod: aspnet-core
+﻿uid: security/cross-site-scripting
 ---
 <a name=security-cross-site-scripting></a>
 

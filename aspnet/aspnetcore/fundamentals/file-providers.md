@@ -1,4 +1,12 @@
 ---
+title: File Providers
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 1e35d362-0005-4f84-a187-274ca203a787
+ms.prod: aspnet-core
 uid: fundamentals/file-providers
 ---
 

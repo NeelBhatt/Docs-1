@@ -1,4 +1,12 @@
 ---
+title: Adding Search
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: d69e5529-8ef6-4628-855d-200206d962b9
+ms.prod: aspnet-core
 uid: tutorials/first-mvc-app/search
 ---
 # Adding Search

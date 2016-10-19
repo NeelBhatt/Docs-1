@@ -1,4 +1,12 @@
 ---
+title: Configuration
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: b3a5984d-e172-42eb-8a48-547e4acb6806
+ms.prod: aspnet-core
 uid: fundamentals/configuration
 ---
 <a name=fundamentals-configuration></a>

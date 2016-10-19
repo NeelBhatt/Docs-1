@@ -1,4 +1,12 @@
 ---
+title: Data Protection
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 1f402da8-1052-4970-9835-9f9f16a02dbc
+ms.prod: aspnet-core
 uid: security/data-protection/index
 ---
 # Data Protection

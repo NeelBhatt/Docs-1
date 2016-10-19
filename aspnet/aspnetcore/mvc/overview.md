@@ -1,5 +1,13 @@
 ﻿---
-uid: mvc/overview
+title: Overview of ASP.NET Core MVC
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 89af38d1-52e0-4db7-b791-dbce909b0714
+ms.prod: aspnet-core
+﻿uid: mvc/overview
 ---
 # Overview of ASP.NET Core MVC
 

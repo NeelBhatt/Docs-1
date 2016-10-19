@@ -1,4 +1,12 @@
 ---
+title: Reading related data
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 71fec30f-8ea7-4ca8-96e3-d2e26c5be44e
+ms.prod: aspnet-core
 uid: data/ef-mvc/read-related-data
 ---
 # Reading related data

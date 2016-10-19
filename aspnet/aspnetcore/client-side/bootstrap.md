@@ -1,5 +1,13 @@
 ﻿---
-uid: client-side/bootstrap
+title: Building Beautiful, Responsive Sites with Bootstrap
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: bd27832c-2877-4b7b-9337-e009361d845f
+ms.prod: aspnet-core
+﻿uid: client-side/bootstrap
 ---
 <a name=bootstrap-index></a>
 

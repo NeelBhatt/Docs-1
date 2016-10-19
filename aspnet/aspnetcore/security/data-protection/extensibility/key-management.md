@@ -1,4 +1,12 @@
 ---
+title: Key management extensibility
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 3606b251-8324-4485-8d52-582a2cd5cffb
+ms.prod: aspnet-core
 uid: security/data-protection/extensibility/key-management
 ---
 <a name=data-protection-extensibility-key-management></a>

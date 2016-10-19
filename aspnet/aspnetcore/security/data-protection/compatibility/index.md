@@ -1,4 +1,12 @@
 ---
+title: Compatibility
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 132f1834-db4c-4874-af6f-9a57cc0a8e83
+ms.prod: aspnet-core
 uid: security/data-protection/compatibility/index
 ---
 # Compatibility

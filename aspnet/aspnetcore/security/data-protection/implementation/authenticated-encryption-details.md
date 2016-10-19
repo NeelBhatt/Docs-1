@@ -1,4 +1,12 @@
 ---
+title: Authenticated encryption details.
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 826e6d5d-9620-44e6-ad93-3b1d9969b70b
+ms.prod: aspnet-core
 uid: security/data-protection/implementation/authenticated-encryption-details
 ---
 <a name=data-protection-implementation-authenticated-encryption-details></a>

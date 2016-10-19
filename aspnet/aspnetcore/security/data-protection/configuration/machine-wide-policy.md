@@ -1,5 +1,13 @@
 ﻿---
-uid: security/data-protection/configuration/machine-wide-policy
+title: Machine Wide Policy
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 285ae47d-e0bf-4b03-b0a8-2b1fb18bc3a1
+ms.prod: aspnet-core
+﻿uid: security/data-protection/configuration/machine-wide-policy
 ---
 <a name=data-protection-configuration-machinewidepolicy></a>
 

@@ -1,4 +1,12 @@
 ---
+title: Inheritance
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 41dc0db7-6f17-453e-aba6-633430609c74
+ms.prod: aspnet-core
 uid: data/ef-mvc/inheritance
 ---
 # Inheritance

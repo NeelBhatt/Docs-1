@@ -1,5 +1,13 @@
 ﻿---
-uid: publishing/web-publishing-vs
+title: How Web Publishing In Visual Studio Works
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 0377a02d-8fda-47a5-929a-24a16e1d2c93
+ms.prod: aspnet-core
+﻿uid: publishing/web-publishing-vs
 ---
 # How Web Publishing In Visual Studio Works
 

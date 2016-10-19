@@ -1,4 +1,12 @@
 ---
+title: Publishing to an Azure Web App with Continuous Deployment
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 2707c7a8-2350-4304-9856-fda58e5c0a16
+ms.prod: aspnet-core
 uid: publishing/azure-continuous-deployment
 ---
 # Publishing to an Azure Web App with Continuous Deployment

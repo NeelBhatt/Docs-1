@@ -1,4 +1,12 @@
 ---
+title: Migrating from ASP.NET Core RC2 to ASP.NET Core 1.0
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: b672bd6e-7ecf-4504-9ecf-58ae9ec0153f
+ms.prod: aspnet-core
 uid: migration/rc2-to-rtm
 ---
 # Migrating from ASP.NET Core RC2 to ASP.NET Core 1.0

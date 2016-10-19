@@ -1,4 +1,12 @@
 ---
+title: Updating related data
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 67bd162b-bfb7-4750-9e7f-705228b5288c
+ms.prod: aspnet-core
 uid: data/ef-mvc/update-related-data
 ---
 # Updating related data

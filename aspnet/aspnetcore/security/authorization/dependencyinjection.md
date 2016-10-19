@@ -1,4 +1,12 @@
 ---
+title: Dependency Injection in requirement handlers
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 5fb6625c-173a-4feb-8380-73c9844dc23c
+ms.prod: aspnet-core
 uid: security/authorization/dependencyinjection
 ---
 <a name=security-authorization-di></a>

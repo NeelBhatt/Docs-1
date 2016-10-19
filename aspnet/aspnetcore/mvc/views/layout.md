@@ -1,4 +1,12 @@
 ---
+title: Layout
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 29f12d1f-9734-48bd-bf1a-cee53a8ab700
+ms.prod: aspnet-core
 uid: mvc/views/layout
 ---
 # Layout

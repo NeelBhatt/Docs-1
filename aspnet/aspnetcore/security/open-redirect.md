@@ -1,4 +1,12 @@
 ---
+title: 🔧 Preventing Open Redirect Attacks
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: b22c838f-19f4-4685-a977-d621b4b739c9
+ms.prod: aspnet-core
 uid: security/open-redirect
 ---
 # 🔧 Preventing Open Redirect Attacks

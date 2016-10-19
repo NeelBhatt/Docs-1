@@ -1,4 +1,12 @@
 ---
+title: Formatting Response Data
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: c056df45-d013-4826-91a1-4a092bae1ea5
+ms.prod: aspnet-core
 uid: mvc/models/formatting
 ---
 # Formatting Response Data

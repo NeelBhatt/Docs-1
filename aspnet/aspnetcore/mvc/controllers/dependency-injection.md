@@ -1,4 +1,12 @@
 ---
+title: Dependency Injection and Controllers
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: bc8b4ba3-e9ba-48fd-b1eb-cd48ff6bc7a1
+ms.prod: aspnet-core
 uid: mvc/controllers/dependency-injection
 ---
 <a name=dependency-injection-controllers></a>

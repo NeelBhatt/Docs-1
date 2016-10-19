@@ -1,4 +1,12 @@
 ---
+title: Role based Authorization
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 5e014da1-8bc0-409b-951a-88b92c661fdf
+ms.prod: aspnet-core
 uid: security/authorization/roles
 ---
 <a name=security-authorization-role-based></a>

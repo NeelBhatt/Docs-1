@@ -1,5 +1,13 @@
 ﻿---
-uid: fundamentals/localization
+title: Globalization and localization
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 7f275a09-f118-41c9-88d1-8de52d6a5aa1
+ms.prod: aspnet-core
+﻿uid: fundamentals/localization
 ---
 # Globalization and localization
 

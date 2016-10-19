@@ -1,6 +1,14 @@
+﻿---
+title: Adding a view
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 6942432b-bac0-41e6-9ad7-cad313abf4db
+ms.prod: aspnet-core
 ﻿<!-- manual conversion almost complete -->
 
----
 uid: tutorials/first-mvc-app/adding-view
 ---
 # Adding a view

@@ -1,4 +1,12 @@
 ---
+title: Working with a Distributed Cache
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 870f082d-6d43-453d-b311-45f3aeb4d2c5
+ms.prod: aspnet-core
 uid: performance/caching/distributed
 ---
 # Working with a Distributed Cache

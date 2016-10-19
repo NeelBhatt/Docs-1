@@ -1,4 +1,12 @@
----
+﻿---
+title: Working with Forms
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 25595059-4fac-4785-8152-f88590e3169b
+ms.prod: aspnet-core
 uid: mvc/views/working-with-forms
 ---
 >[!WARNING]

@@ -1,4 +1,12 @@
 ---
+title: Account Confirmation and Password Recovery
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: d794500b-86f7-4229-a237-e0dd00e2dc08
+ms.prod: aspnet-core
 uid: security/authentication/accconfirm
 ---
 >[!WARNING]

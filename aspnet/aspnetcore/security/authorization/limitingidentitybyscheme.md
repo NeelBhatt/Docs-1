@@ -1,4 +1,12 @@
 ---
+title: Limiting identity by scheme
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: d3d6ca1b-b4b5-4bf7-898e-dcd90ec1bf8c
+ms.prod: aspnet-core
 uid: security/authorization/limitingidentitybyscheme
 ---
 <a name=security-authorization-limiting-by-scheme></a>

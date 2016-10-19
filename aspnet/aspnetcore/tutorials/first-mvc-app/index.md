@@ -1,4 +1,12 @@
 ---
+title: Building your first ASP.NET Core MVC app with Visual Studio
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 959ff4ca-be2d-444c-ac04-789e787146f3
+ms.prod: aspnet-core
 uid: tutorials/first-mvc-app/index
 ---
 # Building your first ASP.NET Core MVC app with Visual Studio

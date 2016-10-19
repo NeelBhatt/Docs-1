@@ -1,4 +1,12 @@
 ---
+title: Authentication
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 981852c9-78f9-4590-aaee-9d50a2838dfe
+ms.prod: aspnet-core
 uid: security/authentication/index
 ---
 # Authentication

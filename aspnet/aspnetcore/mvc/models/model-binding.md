@@ -1,4 +1,12 @@
 ---
+title: Model Binding
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: b355a48e-a15c-4d58-b69c-899763613a97
+ms.prod: aspnet-core
 uid: mvc/models/model-binding
 ---
 # Model Binding

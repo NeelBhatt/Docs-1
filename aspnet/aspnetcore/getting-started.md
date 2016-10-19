@@ -1,4 +1,12 @@
 ---
+title: Getting Started
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 73543e9d-d9d5-47d6-9664-17a9beea6cd3
+ms.prod: aspnet-core
 uid: getting-started
 ---
 # Getting Started

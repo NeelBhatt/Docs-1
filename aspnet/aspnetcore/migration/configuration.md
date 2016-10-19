@@ -1,4 +1,12 @@
 ---
+title: Migrating Configuration
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 8468d859-ff32-4a92-9e62-08c4a9e36594
+ms.prod: aspnet-core
 uid: migration/configuration
 ---
 # Migrating Configuration

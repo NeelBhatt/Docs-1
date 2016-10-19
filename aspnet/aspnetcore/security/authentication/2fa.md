@@ -1,4 +1,12 @@
 ---
+title: Two-factor authentication with SMS
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: ff1c22d1-d1f2-4616-84dd-94ba61ec299a
+ms.prod: aspnet-core
 uid: security/authentication/2fa
 ---
 >[!WARNING]

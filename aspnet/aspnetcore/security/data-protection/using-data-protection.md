@@ -1,4 +1,12 @@
 ---
+title: Getting Started with the Data Protection APIs
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 39b7a73c-29d4-4137-b311-49529adcf3cb
+ms.prod: aspnet-core
 uid: security/data-protection/using-data-protection
 ---
 <a name=security-data-protection-getting-started></a>

@@ -1,4 +1,12 @@
 ---
+title: Migrating Authentication and Identity
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 0db145cb-41a5-448a-b889-72e2d789ad7f
+ms.prod: aspnet-core
 uid: migration/identity
 ---
 <a name=migration-identity></a>

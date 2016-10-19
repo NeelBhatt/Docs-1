@@ -1,4 +1,12 @@
 ---
+title: Introduction to Data Protection
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 4542cd37-b47c-454c-be19-d1b5810d67fe
+ms.prod: aspnet-core
 uid: security/data-protection/introduction
 ---
 # Introduction to Data Protection

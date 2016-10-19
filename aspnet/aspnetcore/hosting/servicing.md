@@ -1,4 +1,12 @@
 ---
+title: Servicing
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 0141b1ed-7746-46bf-8c26-59726dcd7ae3
+ms.prod: aspnet-core
 uid: hosting/servicing
 ---
 <a name=hosting-servicing></a>

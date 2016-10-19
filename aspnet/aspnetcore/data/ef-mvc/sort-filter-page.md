@@ -1,4 +1,12 @@
 ---
+title: Sorting, filtering, paging, and grouping
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: e6c1ff3c-5673-43bf-9c2d-077f6ada1f29
+ms.prod: aspnet-core
 uid: data/ef-mvc/sort-filter-page
 ---
 # Sorting, filtering, paging, and grouping

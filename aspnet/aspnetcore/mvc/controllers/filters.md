@@ -1,4 +1,12 @@
 ---
+title: Filters
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 531bda08-aa5b-4471-8f08-96add22c8683
+ms.prod: aspnet-core
 uid: mvc/controllers/filters
 ---
 # Filters

@@ -1,4 +1,12 @@
 ---
+title: Contoso University sample app
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: b67c3d4a-f2bf-4132-a48b-4b0d599d7981
+ms.prod: aspnet-core
 uid: data/ef-mvc/intro
 ---
 # Getting started with ASP.NET Core MVC and Entity Framework Core using Visual Studio

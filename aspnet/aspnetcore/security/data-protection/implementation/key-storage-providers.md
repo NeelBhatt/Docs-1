@@ -1,4 +1,12 @@
 ---
+title: Key Storage Providers
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 423e0a79-2f34-44c4-aaf3-146a53c39251
+ms.prod: aspnet-core
 uid: security/data-protection/implementation/key-storage-providers
 ---
 <a name=data-protection-implementation-key-storage-providers></a>

@@ -1,4 +1,12 @@
 ---
+title: Introduction to ASP.NET Core
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 1c50e94f-114a-4cd3-ad39-0a5790b4e764
+ms.prod: aspnet-core
 uid: intro
 ---
 # Introduction to ASP.NET Core

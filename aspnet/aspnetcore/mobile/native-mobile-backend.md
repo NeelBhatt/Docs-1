@@ -1,4 +1,12 @@
 ---
+title: Creating Backend Services for Native Mobile Applications
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 3b6a32f2-5af9-4ede-9b7f-17ab300526d0
+ms.prod: aspnet-core
 uid: mobile/native-mobile-backend
 ---
 

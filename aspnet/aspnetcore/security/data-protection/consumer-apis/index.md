@@ -1,4 +1,12 @@
 ---
+title: Consumer APIs
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: dff0cde2-6612-4b32-bafc-c00bf6d370f2
+ms.prod: aspnet-core
 uid: security/data-protection/consumer-apis/index
 ---
 # Consumer APIs

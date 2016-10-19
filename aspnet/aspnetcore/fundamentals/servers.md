@@ -1,4 +1,12 @@
 ---
+title: Servers
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: dba74f39-58cd-4dee-a061-6d15f7346959
+ms.prod: aspnet-core
 uid: fundamentals/servers
 ---
 # Servers

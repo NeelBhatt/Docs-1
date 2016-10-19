@@ -1,4 +1,12 @@
 ---
+title: View Based Authorization
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 24ce40d8-9b83-4bae-9d4c-a66350fcc8f8
+ms.prod: aspnet-core
 uid: security/authorization/views
 ---
 <a name=security-authorization-views></a>

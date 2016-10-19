@@ -1,5 +1,13 @@
 ﻿---
-uid: client-side/yeoman
+title: Building Projects with Yeoman
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: fda0c2a8-1743-4505-be1a-7f8ceeef8647
+ms.prod: aspnet-core
+﻿uid: client-side/yeoman
 ---
 # Building Projects with Yeoman
 

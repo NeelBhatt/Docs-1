@@ -1,4 +1,12 @@
 ---
+title: Deploy an ASP.NET Core web app to Azure using Visual Studio
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: 78571e4a-a143-452d-9cf2-0860f85972e6
+ms.prod: aspnet-core
 uid: tutorials/publish-to-azure-webapp-using-vs
 ---
 # Deploy an ASP.NET Core web app to Azure using Visual Studio

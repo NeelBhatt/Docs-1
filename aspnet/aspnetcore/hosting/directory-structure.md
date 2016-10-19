@@ -1,4 +1,12 @@
 ---
+title: Directory Structure
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: e55eb131-d42e-4bf6-b130-fd626082243c
+ms.prod: aspnet-core
 uid: hosting/directory-structure
 ---
 <a name=directory-structure></a>

@@ -1,5 +1,13 @@
 ﻿---
-uid: security/cors
+title: Enabling Cross-Origin Requests (CORS)
+author: rick-anderson
+ms.author: riande
+manager: wpickett
+ms.date: 42657
+ms.topic: article
+ms.assetid: f9d95e88-4d7e-4d0c-a8e1-47de1128d505
+ms.prod: aspnet-core
+﻿uid: security/cors
 ---
 # Enabling Cross-Origin Requests (CORS)
 
