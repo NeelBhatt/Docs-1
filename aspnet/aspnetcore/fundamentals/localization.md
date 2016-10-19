@@ -138,7 +138,7 @@ Localization is configured in the `ConfigureServices` method:
 
 ### Localization middleware
 
-The current culture on a request is set in the localization [Middleware](middleware.md). The localization middleware is enabled in the `Configure` method of *Startup.cs* file.
+The current culture on a request is set in the localization [Middleware](middleware.md). The localization middleware is enabled in the `Configure` method of *Startup.cs* file. Note,  the localization middleware must be configured before any middleware which might check the request culture (for example, `app.UseMvc()`).
 
 [!code-csharp[Main](localization/sample/Startup.cs?range=107,136-159)]
 
