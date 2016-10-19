@@ -1,7 +1,7 @@
 ---
 uid: data/ef-mvc/read-related-data
 ---
-  # Reading related data
+# Reading related data
 
 The Contoso University sample web application demonstrates how to create ASP.NET Core 1.0 MVC web applications using Entity Framework Core 1.0 and Visual Studio 2015. For information about the tutorial series, see [the first tutorial in the series](intro.md).
 
@@ -15,7 +15,7 @@ The following illustrations show the pages that you'll work with.
 ![Instructors Index page](read-related-data/_static/instructors-index.png)
 ![image](read-related-data/_static/instructors-index.png)
 
-  ## Eager, explicit, and lazy Loading of related data
+## Eager, explicit, and lazy Loading of related data
 
 There are several ways that Object-Relational Mapping (ORM) software such as Entity Framework can load related data into the navigation properties of an entity:
 
@@ -33,13 +33,13 @@ There are several ways that Object-Relational Mapping (ORM) software such as Ent
 
 * Lazy loading. When the entity is first read, related data isn't retrieved. However, the first time you attempt to access a navigation property, the data required for that navigation property is automatically retrieved. A query is sent to the database each time you try to get data from a navigation property for the first time. Entity Framework Core 1.0 does not support lazy loading.
 
-  ### Performance considerations
+### Performance considerations
 
 If you know you need related data for every entity retrieved, eager loading often offers the best performance, because a single query sent to the database is typically more efficient than separate queries for each entity retrieved. For example, suppose that each department has ten related courses. Eager loading of all related data would result in just a single (join) query and a single round trip to the database. A separate query for courses for each department would result in eleven round trips to the database. The extra round trips to the database are especially detrimental to performance when latency is high.
 
 On the other hand, in some scenarios separate queries is more efficient. Eager loading of all related data in one query might cause a very complex join to be generated, which SQL Server can't process efficiently. Or if you need to access an entity's navigation properties only for a subset of a set of the entities you're processing, separate queries might perform better because eager loading of everything up front would retrieve more data than you need. If performance is critical, it's best to test performance both ways in order to make the best choice.
 
-  ## Create a Courses page that displays Department name
+## Create a Courses page that displays Department name
 
 The Course entity includes a navigation property that contains the Department entity of the department that the course is assigned to. To display the name of the assigned department in a list of courses, you need to get the Name property from the Department entity that is in the `Course.Department` navigation property.
 
@@ -148,7 +148,7 @@ Run the page (select the Courses tab on the Contoso University home page) to see
 ![Courses Index page](read-related-data/_static/courses-index.png)
 ![image](read-related-data/_static/courses-index.png)
 
-  ## Create an Instructors page that shows Courses and Enrollments
+## Create an Instructors page that shows Courses and Enrollments
 
 In this section you'll create a controller and view for the Instructor entity in order to display the Instructors page:
 
@@ -163,7 +163,7 @@ This page reads and displays related data in the following ways:
 
 * When the user selects a course, related data from the Enrollments entity set is displayed. The Course and Enrollment entities are in a one-to-many relationship. You'll use separate queries for Enrollment entities and their related Student entities.
 
-  ### Create a view model for the Instructor Index view
+### Create a view model for the Instructor Index view
 
 The Instructors page shows data from three different tables. Therefore, you'll create a view model that includes three properties, each holding the data for one of the tables.
 
@@ -189,7 +189,7 @@ In the *SchoolViewModels* folder, create *InstructorIndexData.cs* and replace th
    }
    ````
 
-  ### Create the Instructor controller and views
+### Create the Instructor controller and views
 
 Create an Instructors controller with EF read/write actions as shown in the following illustration:
 
@@ -324,7 +324,7 @@ Next, if a course was selected, the selected course is retrieved from the list o
 
    ````
 
-  ### Modify the Instructor Index view
+### Modify the Instructor Index view
 
 In *Views/Instructor/Index.cshtml*, replace the template code with the following code. The changes (other than column reordering)are highlighted.
 
@@ -544,7 +544,7 @@ Run the page and select an instructor. Then select a course to see the list of e
 ![Instructors Index page instructor and course selected](read-related-data/_static/instructors-index.png)
 ![image](read-related-data/_static/instructors-index.png)
 
-  ## Use multiple queries
+## Use multiple queries
 
 When you retrieved the list of instructors in *InstructorsController.cs*, you specified eager loading for the `Courses` navigation property.
 
@@ -600,6 +600,6 @@ Notice that the original query on the Instructors entity set now omits the `AsNo
 
 Run the Instructor Index page now and you'll see no difference in what's displayed on the page, although you've changed how the data is retrieved.
 
-  ## Summary
+## Summary
 
 You've now used eager loading with one query and with multiple queries to read related data into navigation properties. In the next tutorial you'll learn how to update related data.

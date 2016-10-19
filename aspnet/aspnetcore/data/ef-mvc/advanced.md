@@ -1,13 +1,13 @@
 ---
 uid: data/ef-mvc/advanced
 ---
-  # Advanced topics
+# Advanced topics
 
 The Contoso University sample web application demonstrates how to create ASP.NET Core 1.0 MVC web applications using Entity Framework Core 1.0 and Visual Studio 2015. For information about the tutorial series, see [the first tutorial in the series](intro.md).
 
 In the previous tutorial you implemented table-per-hierarchy inheritance. This tutorial introduces several topics that are useful to be aware of when you go beyond the basics of developing ASP.NET web applications that use Entity Framework Core.
 
-  ## Raw SQL Queries
+## Raw SQL Queries
 
 One of the advantages of using the Entity Framework is that it avoids tying your code too closely to a particular method of storing data. It does this by generating SQL queries and commands for you, which also frees you from having to write them yourself. But there are exceptional scenarios when you need to run specific SQL queries that you have manually created. For these scenarios, the Entity Framework Code First API includes methods that enable you to pass SQL commands directly to the database. You have the following options in EF Core 1.0:
 
@@ -19,7 +19,7 @@ If you need to run a query that returns types that aren't entities, you can use 
 
 As is always true when you execute SQL commands in a web application, you must take precautions to protect your site against SQL injection attacks. One way to do that is to use parameterized queries to make sure that strings submitted by a web page can't be interpreted as SQL commands. In this tutorial you'll use parameterized queries when integrating user input into a query.
 
-  ## Call a query that returns entities
+## Call a query that returns entities
 
 The `DbSet<TEntity>` class provides a method that you can use to execute a query that returns an entity of type `TEntity`. To see how this works you'll change the code in the `Details` method of the Department controller.
 
@@ -58,7 +58,7 @@ To verify that the new code works correctly, select the **Departments** tab and 
 ![Department Details](advanced/_static/department-details.png)
 ![image](advanced/_static/department-details.png)
 
-  ## Call a query that returns other types
+## Call a query that returns other types
 
 Earlier you created a student statistics grid for the About page that showed the number of students for each enrollment date. You got the data from the Students entity set (`_context.Students`) and used LINQ to project the results into a list of `EnrollmentDatGroup` view model objects. Suppose you want to write the SQL itself rather than using LINQ. To do that you need to run a SQL query that returns something other than entity objects. In EF Core 1.0, one way to do that is write ADO.NET code and get the database connection from EF.
 
@@ -119,7 +119,7 @@ Run the About page. It displays the same data it did before.
 ![About page](advanced/_static/about.png)
 ![image](advanced/_static/about.png)
 
-  ## Call an update query
+## Call an update query
 
 Suppose Contoso University administrators want to perform global changes in the database, such as changing the number of credits for every course. If the university has a large number of courses, it would be inefficient to retrieve them all as entities and change them individually. In this section you'll implement a web page that enables the user to specify a factor by which to change the number of credits for all courses, and you'll make the change by executing a SQL UPDATE statement. The web page will look like the following illustration:
 
@@ -219,7 +219,7 @@ Click **Back to List** to see the list of courses with the revised number of cre
 
 For more information about raw SQL queries, see [Raw SQL Queries](https://ef.readthedocs.io/en/latest/querying/raw-sql.html).
 
-  ## Examine SQL sent to the database
+## Examine SQL sent to the database
 
 Sometimes it's helpful to be able to see the actual SQL queries that are sent to the database. Built-in logging functionality for ASP.NET Core is automatically used by EF Core to write logs that contain the SQL for queries and updates. In this section you'll see some examples of SQL logging.
 
@@ -251,7 +251,7 @@ You'll notice something here that might surprise you: the SQL selects up to 2 ro
 
 Note that you don't have to use debug mode and stop at a breakpoint to get logging output in the **Output** window. It's just a convenient way to stop the logging at the point you want to look at the output. If you don't do that, logging continues and you have to scroll back to find the parts you're interested in.
 
-  ## Repository and unit of work patterns
+## Repository and unit of work patterns
 
 Many developers write code to implement the repository and unit of work patterns as a wrapper around code that works with the Entity Framework. These patterns are intended to create an abstraction layer between the data access layer and the business logic layer of an application. Implementing these patterns can help insulate your application from changes in the data store and can facilitate automated unit testing or test-driven development (TDD). However, writing additional code to implement these patterns is not always the best choice for applications that use EF, for several reasons:
 
@@ -265,7 +265,7 @@ For information about how to implement the repository and unit of work patterns,
 
 Entity Framework Core implements an in-memory database provider that can be used for testing. For more information, see [Testing with InMemory](https://ef.readthedocs.io/en/latest/miscellaneous/testing.html).
 
-  ## Automatic change detection
+## Automatic change detection
 
 The Entity Framework determines how an entity has changed (and therefore which updates need to be sent to the database) by comparing the current values of an entity with the original values. The original values are stored when the entity is queried or attached. Some of the methods that cause automatic change detection are the following:
 
@@ -284,17 +284,17 @@ If you're tracking a large number of entities and you call one of these methods 
    _context.ChangeTracker.AutoDetectChangesEnabled = false;
    ````
 
-  ## Entity Framework Core source code
+## Entity Framework Core source code
 
 The source code for Entity Framework Core is available at [https://github.com/aspnet/EntityFramework](https://github.com/aspnet/EntityFramework). Besides source code, you can get nightly builds, issue tracking, feature specs, design meeting notes, and more. You can file bugs, and you can contribute your own enhancements to the EF source code.
 
 Although the source code is open, Entity Framework Core is fully supported as a Microsoft product. The Microsoft Entity Framework team keeps control over which contributions are accepted and tests all code changes to ensure the quality of each release.
 
-  ## Reverse engineer from existing database
+## Reverse engineer from existing database
 
 To reverse engineer a data model including entity classes from an existing database, use the [scaffold-dbcontext](https://ef.readthedocs.io/en/latest/miscellaneous/cli/powershell.html#scaffold-dbcontext) command. See the [getting-started tutorial](https://docs.efproject.net/en/latest/platforms/aspnetcore/existing-db.html).
 
-  ## Summary
+## Summary
 
 This completes this series of tutorials on using the Entity Framework Core in an ASP.NET MVC application. For more information about how to work with data using the Entity Framework, see the [EF documentation](https://ef.readthedocs.io/).
 
@@ -302,11 +302,11 @@ For information about how to deploy your web application after you've built it, 
 
 For information about other topics related to ASP.NET Core MVC, such as authentication and authorization, see the [ASP.NET Core documentation](https://docs.asp.net/).
 
-  ## Acknowledgments
+## Acknowledgments
 
 Tom Dykstra and Rick Anderson (twitter @RickAndMSFT) wrote this tutorial. Rowan Miller, Diego Vega, and other members of the Entity Framework team assisted with code reviews and helped debug issues that arose while we were writing code for the tutorials.
 
-  ## Common errors  ### ContosoUniversity.dll used by another process
+## Common errors  ### ContosoUniversity.dll used by another process
 
 Error message:
 
@@ -327,7 +327,7 @@ Solution:
 
 Stop the site in IIS Express. Go to the Windows System Tray, find IIS Express and right-click its icon, select the Contoso University site, and then click **Stop Site**.
 
-  ### Migration scaffolded with no code in Up and Down methods
+### Migration scaffolded with no code in Up and Down methods
 
 Possible cause:
 
@@ -337,7 +337,7 @@ Solution:
 
 Run the `migrations remove` command, save your code changes and rerun the `migrations add` command.
 
-  ### Errors while running database update
+### Errors while running database update
 
 It's possible to get other errors when making schema changes in a database that has existing data. If you get migration errors you can't resolve, you can either change the database name in the connection string or delete the database. With a new database, there is no data to migrate, and the update-database command is much more likely to complete without errors.
 
@@ -354,7 +354,7 @@ To delete a database by using the CLI, run the `database drop` CLI command:
       dotnet ef database drop -c SchoolContext
       ````
 
-  ### Error locating SQL Server instance
+### Error locating SQL Server instance
 
 Error Message:
 

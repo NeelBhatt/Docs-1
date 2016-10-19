@@ -1,7 +1,7 @@
 ---
 uid: data/ef-mvc/inheritance
 ---
-  # Inheritance
+# Inheritance
 
 The Contoso University sample web application demonstrates how to create ASP.NET Core 1.0 MVC web applications using Entity Framework Core 1.0 and Visual Studio 2015. For information about the tutorial series, see [the first tutorial in the series](intro.md).
 
@@ -9,7 +9,7 @@ In the previous tutorial you handled concurrency exceptions. This tutorial will 
 
 In object-oriented programming, you can use inheritance to facilitate code reuse. In this tutorial, you'll change the `Instructor` and `Student` classes so that they derive from a `Person` base class which contains properties such as `LastName` that are common to both instructors and students. You won't add or change any web pages, but you'll change some of the code and those changes will be automatically reflected in the database.
 
-  ## Options for mapping inheritance to database tables
+## Options for mapping inheritance to database tables
 
 The `Instructor` and `Student` classes in the School data model have several properties that are identical:
 
@@ -41,7 +41,7 @@ TPC and TPH inheritance patterns generally deliver better performance than TPT i
 
 This tutorial demonstrates how to implement TPH inheritance. TPH is the only inheritance pattern that the Entity Framework Core supports.  What you'll do is create a `Person` class, change the `Instructor` and `Student` classes to derive from `Person`, add the new class to the `DbContext`, and create a migration.
 
-  ## Create the Person class
+## Create the Person class
 
 In the Models folder, create Person.cs and replace the template code with the following code:
 
@@ -80,7 +80,7 @@ In the Models folder, create Person.cs and replace the template code with the fo
    }
    ````
 
-  ## Make Student and Instructor classes inherit from Person
+## Make Student and Instructor classes inherit from Person
 
 In *Instructor.cs*, derive the Instructor class from the Person class and remove the key and name fields. The code will look like the following example:
 
@@ -136,7 +136,7 @@ Make the same changes in *Student.cs*.
 
    ````
 
-  ## Add the Person entity type to the data model
+## Add the Person entity type to the data model
 
 Add the Person entity type to *SchoolContext.cs*. The new lines are highlighted.
 
@@ -185,7 +185,7 @@ Add the Person entity type to *SchoolContext.cs*. The new lines are highlighted.
 
 This is all that the Entity Framework needs in order to configure table-per-hierarchy inheritance. As you'll see, when the database is updated, it will have a Person table in place of the Student and Instructor tables.
 
-  ## Create and customize migration code
+## Create and customize migration code
 
 Save your changes and build the project. Then open the command window in the project folder and enter the following command:
 
@@ -299,7 +299,7 @@ Run the `database update` command again:
 
 Note: It's possible to get other errors when making schema changes in a database that has existing data. If you get migration errors that you can't resolve, you can either change the database name in the connection string or delete the database. With a new database, there is no data to migrate, and the update-database command is more likely to complete without errors. To delete the database, use SSOX or run the `database drop` CLI command.
 
-  ## Test with inheritance implemented
+## Test with inheritance implemented
 
 Run the site and try various pages. Everything works the same as it did before.
 
@@ -313,6 +313,6 @@ Right-click the Person table, and then click **Show Table Data** to see the disc
 ![Person table in SSOX - table data](inheritance/_static/ssox-person-data.png)
 ![image](inheritance/_static/ssox-person-data.png)
 
-  ## Summary
+## Summary
 
 You've implemented table-per-hierarchy inheritance for the `Person`, `Student`, and `Instructor` classes. For more information about inheritance in Entity Framework Core, see [Inheritance](https://ef.readthedocs.io/en/latest/modeling/inheritance.html). In the next tutorial you'll see how to handle a variety of relatively advanced Entity Framework scenarios.

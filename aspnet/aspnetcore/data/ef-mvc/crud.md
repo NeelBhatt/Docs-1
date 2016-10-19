@@ -1,7 +1,7 @@
 ---
 uid: data/ef-mvc/crud
 ---
-  # Create, Read, Update, and Delete operations
+# Create, Read, Update, and Delete operations
 
 By [Tom Dykstra](https://github.com/tdykstra)
 
@@ -25,7 +25,7 @@ In this tutorial, you'll work with the following web pages:
 ![Student Delete page](crud/_static/student-delete.png)
 ![image](crud/_static/student-delete.png)
 
-  ## Customize the Details page
+## Customize the Details page
 
 The scaffolded code for the Students Index page left out the `Enrollments` property, because that property holds a collection. In the `Details` page you'll display the contents of the collection in an HTML table.
 
@@ -116,7 +116,7 @@ Note: The key value that is passed to the `Details` method comes from *route dat
      <a asp-action="Edit" asp-route-studentID="@item.ID">Edit</a>
      ````
 
-  ### Add enrollments to the Details view
+### Add enrollments to the Details view
 
 Open *Views/Students/Details.cshtml*. Each field is displayed using `DisplayNameFor` and `DisplayFor` helper, as shown in the following example:
 
@@ -173,7 +173,7 @@ Run the application, select the **Students** tab, and click the **Details** link
 ![Student Details page](crud/_static/student-details.png)
 ![image](crud/_static/student-details.png)
 
-  ## Update the Create page
+## Update the Create page
 
 In *StudentsController.cs*, modify the HttpPost `Create` method by adding a try-catch block and removing ID from the `Bind` attribute.
 
@@ -215,7 +215,7 @@ Other than the `Bind` attribute, the try-catch block is the only change you've m
 
 The `ValidateAntiForgeryToken` attribute helps prevent cross-site request forgery (CSRF) attacks. The token is automatically injected into the view by the [FormTagHelper](https://github.com/aspnet/Mvc/blob/dev/src/Microsoft.AspNetCore.Mvc.TagHelpers/FormTagHelper.cs) and is included when the form is submitted by the user. The token is validated by the `ValidateAntiForgeryToken` attribute. For more information about CSRF, see [🔧 Anti-Request Forgery](../../security/anti-request-forgery.md).
 
-  ### Security note about overposting
+### Security note about overposting
 
 The `Bind` attribute that the scaffolded code includes on the `Create` method is one way to protect against overposting in create scenarios. For example, suppose the Student entity includes a `Secret` property that you don't want this web page to set.
 
@@ -246,7 +246,7 @@ You can prevent overposting in edit scenarios by reading the entity from the dat
 
 An alternative way to prevent overposting that is preferrred by many developers is to use view models rather than entity classes with model binding. Include only the properties you want to update in the view model. Once the MVC model binder has finished, copy the view model properties to the entity instance, optionally using a tool such as AutoMapper. Use `_context.Entry` on the entity instance to set its state to `Unchanged`, and then set `Property("PropertyName").IsModified` to true on each entity property that is included in the view model. This method works in both edit and create scenarios.
 
-  ### Modify the Create view
+### Modify the Create view
 
 The code in *Views/Students/Create.cshtml* uses `label`, `input`, and `span` (for validation messages) tag helpers for each field.
 
@@ -323,11 +323,11 @@ This is server-side validation that you get by default; in a later tutorial you'
 
 Change the date to a valid value and click **Create** to see the new student appear in the **Index** page.
 
-  ## Update the Edit page
+## Update the Edit page
 
 In *StudentController.cs*, the HttpGet `Edit` method (the one without the `HttpPost` attribute) uses the `SingleOrDefaultAsync` method to retrieve the selected Student entity, as you saw in the `Details` method. You don't need to change this method.
 
-  ### Recommended HttpPost Edit code: Read and update
+### Recommended HttpPost Edit code: Read and update
 
 Replace the HttpPost Edit action method with the following code. The changes are highlighted.
 
@@ -375,7 +375,7 @@ As a best practice to prevent overposting, the fields that you want to be update
 
 As a result of these changes, the method signature of the HttpPost `Edit` method is the same as the HttpGet `Edit` method; therefore you've renamed the method `EditPost`.
 
-  ### Alternative HttpPost Edit code: Create and attach
+### Alternative HttpPost Edit code: Create and attach
 
 The recommended HttpPost edit code ensures that only changed columns get updated and preserves data in properties that you don't want included for model binding. However, the read-first approach requires an extra database read, and can result in more complex code for handling concurrency conflicts. An alternative is to use the approach adopted by the MVC controller scaffolding engine. The following code shows how to implement code for an HttpPost `Edit` method that attaches an entity created by the model binder to the EF context and marks it as modified. (Don't update your project with this code, it's only shown to illustrate an optional approach.)
 
@@ -412,7 +412,7 @@ The recommended HttpPost edit code ensures that only changed columns get updated
 
 You can use this approach when the web page UI includes all of the fields in the entity and can update any of them.
 
-  ### Entity States
+### Entity States
 
 The database context keeps track of whether entities in memory are in sync with their corresponding rows in the database, and this information determines what happens when you call the `SaveChanges` method. For example, when you pass a new entity to the `Add` method, that entity's state is set to `Added`. Then when you call the `SaveChanges` method, the database context issues a SQL INSERT command.
 
@@ -436,7 +436,7 @@ But if you don't want to do the extra read operation, you have to use the entity
 
 If you want to avoid the read-first approach, but you also want the SQL UPDATE statement to update only the fields that the user actually changed, the code is more complex. You have to save the original values in some way (such as by using hidden fields) so that they are available when the HttpPost `Edit` method is called. Then you can create a Student entity using the original values, call the `Attach` method with that original version of the entity, update the entity's values to the new values, and then call `SaveChanges`.
 
-  ### Test the Edit page
+### Test the Edit page
 
 The HTML and Razor code in *Views/Students/Edit.cshtml* is similar to what you saw in *Create.cshtml*, and no changes are required.
 
@@ -447,7 +447,7 @@ Run the application and select the **Students** tab, then click an **Edit** hype
 
 Change some of the data and click **Save**. The **Index** page opens and you see the changed data.
 
-  ## Update the Delete page
+## Update the Delete page
 
 In *StudentController.cs*, the template code for the HttpGet `Delete` method uses the `SingleOrDefaultAsync` method to retrieve the selected Student entity, as you saw in the Details and Edit methods. However, to implement a custom error message when the call to `SaveChanges` fails, you'll add some functionality to this method and its corresponding view.
 
@@ -490,7 +490,7 @@ Replace the HttpGet `Delete` action method with the following code, which manage
 
 This code accepts an optional parameter that indicates whether the method was called after a failure to save changes. This parameter is false when the HttpGet `Delete` method is called without a previous failure. When it is called by the HttpPost `Delete` method in response to a database update error, the parameter is true and an error message is passed to the view.
 
-  ### The read-first approach to HttpPost Delete
+### The read-first approach to HttpPost Delete
 
 Replace the HttpPost `Delete` action method (named `DeleteConfirmed`) with the following code, which performs the actual delete operation and catches any database update errors.
 
@@ -527,7 +527,7 @@ Replace the HttpPost `Delete` action method (named `DeleteConfirmed`) with the f
 
 This code retrieves the selected entity, then calls the `Remove` method to set the entity's status to `Deleted`. When `SaveChanges` is called, a SQL DELETE command is generated.
 
-  ### The create-and-attach approach to HttpPost Delete
+### The create-and-attach approach to HttpPost Delete
 
 If improving performance in a high-volume application is a priority, you could avoid an unnecessary SQL query by instantiating a Student entity using only the primary key value and then setting the entity state to `Deleted`. That's all that the Entity Framework needs in order to delete the entity. (Don't put this code in your project; it's here just to illustrate an alternative.)
 
@@ -557,7 +557,7 @@ If improving performance in a high-volume application is a priority, you could a
 
 If the entity has related data that should also be deleted, make sure that cascade delete is configured in the database. With this approach to entity deletion, EF might not realize there are related entities to be deleted.
 
-  ### Update the Delete view
+### Update the Delete view
 
 In *Views/Student/Delete.cshtml*, add an error message between the h2 heading and the h3 heading, as shown in the following example:
 
@@ -578,17 +578,17 @@ Run the page by selecting the **Students** tab and clicking a **Delete** hyperli
 
 Click **Delete**. The Index page is displayed without the deleted student. (You'll see an example of the error handling code in action in the concurrency tutorial.)
 
-  ## Closing database connections
+## Closing database connections
 
 To free up the resources that a database connection holds, the context instance must be disposed as soon as possible when you are done with it. The ASP.NET Core built-in [dependency injection](../../fundamentals/dependency-injection.md) takes care of that task for you.
 
 In *Startup.cs* you call the [AddDbContext extension method](https://github.com/aspnet/EntityFramework/blob/03bcb5122e3f577a84498545fcf130ba79a3d987/src/Microsoft.EntityFrameworkCore/EntityFrameworkServiceCollectionExtensions.cs) to provision the `DbContext` class in the ASP.NET DI container. That method sets the service lifetime to `Scoped` by default. `Scoped` means the context object lifetime coincides with the web request life time, and the `Dispose` method will be called automatically at the end of the web request.
 
-  ## Handling Transactions
+## Handling Transactions
 
 By default the Entity Framework implicitly implements transactions. In scenarios where you make changes to multiple rows or tables and then call `SaveChanges`, the Entity Framework automatically makes sure that either all of your changes succeed or they all fail. If some changes are done first and then an error happens, those changes are automatically rolled back. For scenarios where you need more control -- for example, if you want to include operations done outside of Entity Framework in a transaction -- see [Transactions](http://ef.readthedocs.io/en/latest/saving/transactions.html).
 
-  ## No-tracking queries
+## No-tracking queries
 
 When a database context retrieves table rows and creates entity objects that represent them, by default it keeps track of whether the entities in memory are in sync with what's in the database. The data in memory acts as a cache and is used when you update an entity. This caching is often unnecessary in a web application because context instances are typically short-lived (a new one is created and disposed for each request) and the context that reads an entity is typically disposed before that entity is used again.
 
@@ -602,6 +602,6 @@ You can disable tracking of entity objects in memory by calling the `AsNoTrackin
 
 For more information, see [Tracking vs. No-Tracking](https://ef.readthedocs.io/en/latest/querying/tracking.html).
 
-  ## Summary
+## Summary
 
 You now have a complete set of pages that perform simple CRUD operations for Student entities. In the next tutorial you'll expand the functionality of the **Index** page by adding sorting, filtering, and paging.

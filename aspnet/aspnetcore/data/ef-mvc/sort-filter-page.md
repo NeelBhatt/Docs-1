@@ -1,7 +1,7 @@
 ---
 uid: data/ef-mvc/sort-filter-page
 ---
-  # Sorting, filtering, paging, and grouping
+# Sorting, filtering, paging, and grouping
 
 By [Tom Dykstra](https://github.com/tdykstra)
 
@@ -14,11 +14,11 @@ The following illustration shows what the page will look like when you're done. 
 ![Students index page](sort-filter-page/_static/paging.png)
 ![image](sort-filter-page/_static/paging.png)
 
-  ## Add Column Sort Links to the Students Index Page
+## Add Column Sort Links to the Students Index Page
 
 To add sorting to the Student Index page, you'll change the `Index` method of the Students controller and add code to the Student Index view.
 
-  ### Add sorting Functionality to the Index method
+### Add sorting Functionality to the Index method
 
 In *StudentsController.cs*, replace the `Index` method with the following code:
 
@@ -94,7 +94,7 @@ These are ternary statements. The first one specifies that if the `sortOrder` pa
 
 The method uses LINQ to Entities to specify the column to sort by. The code creates an `IQueryable` variable before the switch statement, modifies it in the switch statement, and calls the `ToListAsync` method after the `switch` statement. When you create and modify `IQueryable` variables, no query is sent to the database. The query is not executed until you convert the `IQueryable` object into a collection by calling a method such as `ToListAsync`. Therefore, this code results in a single query that is not executed until the `return View` statement.
 
-  ### Add column heading hyperlinks to the Student Index view
+### Add column heading hyperlinks to the Student Index view
 
 Replace the code in *Views/Students/Index.cshtml*, with the following code to rearrange the column order and add column heading hyperlinks. The new column headings are highlighted.
 
@@ -160,11 +160,11 @@ Run the page and click the **Last Name** and **Enrollment Date** column headings
 ![Students index page in name order](sort-filter-page/_static/name-order.png)
 ![image](sort-filter-page/_static/name-order.png)
 
-  ## Add a Search Box to the Students Index page
+## Add a Search Box to the Students Index page
 
 To add filtering to the Students Index page, you'll add a text box and a submit button to the view and make corresponding changes in the `Index` method. The text box will let you enter a string to search for in the first name and last name fields.
 
-  ### Add filtering functionality to the Index method
+### Add filtering functionality to the Index method
 
 In *StudentsController.cs*, replace the `Index` method with the following code (the changes are highlighted).
 
@@ -210,7 +210,7 @@ You've added a `searchString` parameter to the `Index` method. The search string
 Note: Here you are calling the `Where` method on an `IQueryable` object, and the filter will be processed on the server. In some scenarios you might be calling the `Where` method as an extension method on an in-memory collection. (For example, suppose you change the reference to `_context.Students` so that instead of an EF `DbSet` it references a repository method that returns an `IEnumerable` collection.) The result would normally be the same but in some cases may be different.For example, the .NET Framework implementation of the `Contains` method performs a case-sensitive comparison by default, but in SQL Server this is determined by the collation setting of the SQL Server instance. That setting defaults to case-insensitive. You could call the `ToUpper` method to make the test explicitly case-insensitive:  *Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper())*. That would ensure that results stay the same if you change the code later to use a repository which returns
   an `IEnumerable` collection instead of an `IQueryable` object. (When you call the `Contains` method on an `IEnumerable` collection, you get the .NET Framework implementation; when you call it on an `IQueryable` object, you get the database provider implementation.) However, there is a performance penalty for this solution. The `ToUpper` code would put a function in the WHERE clause of the TSQL SELECT statement. That would prevent the optimizer from using an index. Given that SQL is mostly installed as case-insensitive, it's best to avoid the `ToUpper` code until you migrate to a case-sensitive data store.
 
-  ### Add a Search Box to the Student Index View
+### Add a Search Box to the Student Index View
 
 In *Views/Student/Index.cshtml*, add the highlighted code immediately before the opening table tag in order to create a caption, a text box, and a **Search** button.
 
@@ -255,7 +255,7 @@ If you bookmark this page, you'll get the filtered list when you use the bookmar
 
 At this stage, if you click a column heading sort link you'll lose the filter value that you entered in the **Search** box. You'll fix that in the next section.
 
-  ## Add paging functionality to the Students Index page
+## Add paging functionality to the Students Index page
 
 To add paging to the Students Index page, you'll create a `PaginatedList` class that uses `Skip` and `Take` statements to filter data on the server instead of always retrieving all rows of the table. Then you'll make additional changes in the `Index` method and add paging buttons to the `Index` view. The following illustration shows the paging buttons.
 
@@ -316,7 +316,7 @@ The `CreateAsync` method in this code takes page size and page number and applie
 
 A `CreateAsync` method is used instead of a constructor to create the `PaginatedList<T>` object because constructors can't run asynchronous code.
 
-  ## Add paging functionality to the Index method
+## Add paging functionality to the Index method
 
 In *StudentsController.cs*, replace the `Index` method with the following code.
 
@@ -420,7 +420,7 @@ At the end of the `Index` method, the `PaginatedList.CreateAsync` method convert
 
 The `PaginatedList.CreateAsync` method takes a page number. The two question marks represent the null-coalescing operator. The null-coalescing operator defines a default value for a nullable type; the expression `(page ?? 1)` means return the value of `page` if it has a value, or return 1 if `page` is null.
 
-  ## Add paging links to the Student Index view
+## Add paging links to the Student Index view
 
 In *Views/Students/Index.cshtml*, replace the existing code with the following code. The changes are highlighted.
 
@@ -543,7 +543,7 @@ Run the page.
 
 Click the paging links in different sort orders to make sure paging works. Then enter a search string and try paging again to verify that paging also works correctly with sorting and filtering.
 
-  ## Create an About page that shows Student statistics
+## Create an About page that shows Student statistics
 
 For the Contoso University website's **About** page, you'll display how many students have enrolled for each enrollment date. This requires grouping and simple calculations on the groups. To accomplish this, you'll do the following:
 
@@ -553,7 +553,7 @@ For the Contoso University website's **About** page, you'll display how many stu
 
 * Modify the About view.
 
-  ### Create the view model
+### Create the view model
 
 Create a *SchoolViewModels* folder in the *Models* folder.
 
@@ -578,7 +578,7 @@ In the new folder, add a class file EnrollmentDateGroup.cs and replace the templ
    }
    ````
 
-  ### Modify the Home Controller
+### Modify the Home Controller
 
 In *HomeController.cs*, add the following using statements at the top of the file:
 
@@ -634,7 +634,7 @@ The LINQ statement groups the student entities by enrollment date, calculates th
 
 Note: In the 1.0 version of Entity Framework Core, the entire result set is returned to the client, and grouping is done on the client. In some scenarios this could create performance problems. Be sure to test performance with production volumes of data, and if necessary use raw SQL to do the grouping on the server. For information about how to use raw SQL, see [the last tutorial in this series](advanced.md).
 
-  ### Modify the About View
+### Modify the About View
 
 Replace the code in the *Views/Home/About.cshtml* file with the following code:
 
@@ -679,6 +679,6 @@ Run the app and click the **About** link. The count of students for each enrollm
 ![About page](sort-filter-page/_static/about.png)
 ![image](sort-filter-page/_static/about.png)
 
-  ## Summary
+## Summary
 
 In this tutorial you've seen how to perform sorting, filtering, paging, and grouping. In the next tutorial you'll learn how to handle data model changes by using migrations.

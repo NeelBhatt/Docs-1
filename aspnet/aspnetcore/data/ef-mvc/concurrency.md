@@ -1,7 +1,7 @@
 ---
 uid: data/ef-mvc/concurrency
 ---
-  # Handling concurrency conflicts
+# Handling concurrency conflicts
 
 The Contoso University sample web application demonstrates how to create ASP.NET Core 1.0 MVC web applications using Entity Framework Core 1.0 and Visual Studio 2015. For information about the tutorial series, see [the first tutorial in the series](intro.md).
 
@@ -15,17 +15,17 @@ You'll create web pages that work with the Department entity and handle concurre
 ![Department Delete page](concurrency/_static/delete-error.png)
 ![image](concurrency/_static/delete-error.png)
 
-  ## Concurrency conflicts
+## Concurrency conflicts
 
 A concurrency conflict occurs when one user displays an entity's data in order to edit it, and then another user updates the same entity's data before the first user's change is written to the database. If you don't enable the detection of such conflicts, whoever updates the database last overwrites the other user's changes. In many applications, this risk is acceptable: if there are few users, or few updates, or if isn't really critical if some changes are overwritten, the cost of programming for concurrency might outweigh the benefit. In that case, you don't have to configure the application to handle concurrency conflicts.
 
-  ### Pessimistic concurrency (locking)
+### Pessimistic concurrency (locking)
 
 If your application does need to prevent accidental data loss in concurrency scenarios, one way to do that is to use database locks. This is called pessimistic concurrency. For example, before you read a row from a database, you request a lock for read-only or for update access. If you lock a row for update access, no other users are allowed to lock the row either for read-only or update access, because they would get a copy of data that's in the process of being changed. If you lock a row for read-only access, others can also lock it for read-only access but not for update.
 
 Managing locks has disadvantages. It can be complex to program. It requires significant database management resources, and it can cause performance problems as the number of users of an application increases. For these reasons, not all database management systems support pessimistic concurrency. Entity Framework Core provides no built-in support for it, and this tutorial doesn't show you how to implement it.
 
-  ### Optimistic Concurrency
+### Optimistic Concurrency
 
 The alternative to pessimistic concurrency is optimistic concurrency. Optimistic concurrency means allowing concurrency conflicts to happen, and then reacting appropriately if they do. For example, John runs the Departments Edit page, changes the Budget amount for the English department from $350,000.00 to $0.00.
 
@@ -58,7 +58,7 @@ Some of the options include the following:
 
      Typically, you would display an error message, show her the current state of the data, and allow her to reapply her changes if she still wants to make them. This is called a *Store Wins* scenario. (The data-store values take precedence over the values submitted by the client.) You'll implement the Store Wins scenario in this tutorial. This method ensures that no changes are overwritten without a user being alerted to what's happening.
 
-  ### Detecting concurrency conflicts
+### Detecting concurrency conflicts
 
 You can resolve conflicts by handling `DbConcurrencyException` exceptions that the Entity Framework throws. In order to know when to throw these exceptions, the Entity Framework must be able to detect conflicts. Therefore, you must configure the database and the data model appropriately. Some options for enabling conflict detection include the following:
 
@@ -74,7 +74,7 @@ You can resolve conflicts by handling `DbConcurrencyException` exceptions that t
 
 In the remainder of this tutorial you'll add a `rowversion` tracking property to the Department entity, create a controller and views, and test to verify that everything works correctly.
 
-  ## Add a tracking property to the Department entity
+## Add a tracking property to the Department entity
 
 In *Models/Department.cs*, add a tracking property named RowVersion:
 
@@ -141,7 +141,7 @@ Save your changes and build the project, and then enter the following commands i
    dotnet ef database update -c SchoolContext
    ````
 
-  ## Create a Departments controller and views
+## Create a Departments controller and views
 
 Scaffold a Departments controller and views as you did earlier for Students, Courses, and Instructors.
 
@@ -158,7 +158,7 @@ In the *DepartmentsController.cs* file, change all four occurrences of "FirstMid
 
    ````
 
-  ## Update the Departments Index view
+## Update the Departments Index view
 
 The scaffolding engine created a RowVersion column in the Index view.  What you want there is to show the Administrator, not the RowVersion.
 
@@ -226,7 +226,7 @@ Replace the code in *Views/Departments/Index.cshtml* with the following code.
 
 This changes the heading to "Departments", reorders the fields, and replaces the RowVersion column with an Administrator column.
 
-  ## Update the Edit methods in the Departments controller
+## Update the Edit methods in the Departments controller
 
 In both the HttpGet `Edit` method and the `Details` method, do eager loading for the `Administrator` navigation property.
 
@@ -399,7 +399,7 @@ Finally, the code sets the `RowVersion` value of the `departmentToUpdate` to the
 
 The `ModelState.Remove` statement is required because `ModelState` has the old `RowVersion` value. In the view, the `ModelState` value for a field takes precedence over the model property values when both are present.
 
-  ## Update the Department Edit view
+## Update the Department Edit view
 
 In *Views/Departments/Edit.cshtml*, make the following changes:
 
@@ -477,7 +477,7 @@ In *Views/Departments/Edit.cshtml*, make the following changes:
    }
    ````
 
-  ## Test concurrency conflicts in the Edit page
+## Test concurrency conflicts in the Edit page
 
 Run the site and click Departments to go to the Departments Index page.
 
@@ -502,11 +502,11 @@ Click **Save**. You see an error message:
 
 Click **Save** again. The value you entered in the second browser tab is saved along with the original value of the data you changed in the first browser. You see the saved values when the Index page appears.
 
-  ## Update the Delete page
+## Update the Delete page
 
 For the Delete page, the Entity Framework detects concurrency conflicts caused by someone else editing the department in a similar manner. When the HttpGet `Delete` method displays the confirmation view, the view includes the original `RowVersion` value in a hidden field. That value is then available to the HttpPost `Delete` method that's called when the user confirms the deletion. When the Entity Framework creates the SQL DELETE command, it includes a WHERE clause with the original `RowVersion` value. If the command results in zero rows affected (meaning the row was changed after the Delete confirmation page was displayed), a concurrency exception is thrown, and the HttpGet `Delete` method is called with an error flag set to true in order to redisplay the confirmation page with an error message. It's also possible that zero rows were affected because the row was deleted by another user, so in that case no error message is displayed.
 
-  ### Update the Delete methods in the Departments controller
+### Update the Delete methods in the Departments controller
 
 In *DepartmentController.cs*, replace the HttpGet `Delete` method with the following code:
 
@@ -603,7 +603,7 @@ If the department is already deleted, the `AnyAsync` method returns false and th
 
 If a concurrency error is caught, the code redisplays the Delete confirmation page and provides a flag that indicates it should display a concurrency error message.
 
-  ### Update the Delete view
+### Update the Delete view
 
 In *Views/Department/Delete.cshtml*, replace the scaffolded code with the following code that adds an error message field and hidden fields for the DepartmentID and RowVersion properties. The changes are highlighted.
 
@@ -686,7 +686,7 @@ In the second tab, click **Delete**. You see the concurrency error message, and 
 
 If you click **Delete** again, you're redirected to the Index page, which shows that the department has been deleted.
 
-  ## Update Details and Create views
+## Update Details and Create views
 
 You can optionally clean up scaffolded code in the Details and Create views.
 
@@ -807,6 +807,6 @@ Replace the code in *Views/Departments/Create.cshtml* to add a Select option to 
 
    ````
 
-  ## Summary
+## Summary
 
 This completes the introduction to handling concurrency conflicts. For more information about how to handle concurrency in EF Core, see [Concurrency conflicts](https://ef.readthedocs.io/en/latest/saving/concurrency.html). The next tutorial shows how to implement table-per-hierarchy inheritance for the Instructor and Student entities.

@@ -1,7 +1,7 @@
 ---
 uid: data/ef-mvc/update-related-data
 ---
-  # Updating related data
+# Updating related data
 
 The Contoso University sample web application demonstrates how to create ASP.NET Core 1.0 MVC web applications using Entity Framework Core 1.0 and Visual Studio 2015. For information about the tutorial series, see [the first tutorial in the series](intro.md).
 
@@ -15,7 +15,7 @@ The following illustrations show some of the pages that you'll work with.
 ![Instructor Edit page](update-related-data/_static/instructor-edit-courses.png)
 ![image](update-related-data/_static/instructor-edit-courses.png)
 
-  ## Customize the Create and Edit Pages for Courses
+## Customize the Create and Edit Pages for Courses
 
 When a new course entity is created, it must have a relationship to an existing department. To facilitate this, the scaffolded code includes controller methods and Create and Edit views that include a drop-down list for selecting the department. The drop-down list sets the `Course.DepartmentID` foreign key property, and that's all the Entity Framework needs in order to load the `Department` navigation property with the appropriate Department entity. You'll use the scaffolded code, but change it slightly to add error handling and sort the drop-down list.
 
@@ -176,7 +176,7 @@ The HttpGet `Edit` method sets the selected item, based on the ID of the departm
 
 The HttpPost methods for both `Create` and `Edit` also include code that sets the selected item when they redisplay the page after an error. This ensures that when the page is redisplayed to show the error message, whatever department was selected stays selected.
 
-  ### Add eager loading to Details and Delete methods
+### Add eager loading to Details and Delete methods
 
 To enable the Course Details and Delete pages to display department data, open `CoursesController.cs` and add eager loading for department data, as shown below. Also add `AsNoTracking` to optimize performance.
 
@@ -230,7 +230,7 @@ To enable the Course Details and Delete pages to display department data, open `
 
    ````
 
-  ### Modify the Course views
+### Modify the Course views
 
 In *Views/Courses/Create.cshtml*, add a field for the course ID before the **Credits** field:
 
@@ -324,7 +324,7 @@ In *Views/Course/Delete.cshtml*, add a course number field at the top and a depa
 
 In *Views/Course/Details.cshtml*, make the same change that you just did for *Delete.cshtml*.
 
-  ### Test the Course pages
+### Test the Course pages
 
 Run the **Create** page (display the Course Index page and click **Create New**) and enter data for a new course:
 
@@ -340,7 +340,7 @@ Run the **Edit** page (click **Edit** on a course in the Course Index page ).
 
 Change data on the page and click **Save**. The Courses Index page is displayed with the updated course data.
 
-  ## Add an Edit Page for Instructors
+## Add an Edit Page for Instructors
 
 When you edit an instructor record, you want to be able to update the instructor's office assignment. The Instructor entity has a one-to-zero-or-one relationship with the OfficeAssignment entity, which means your code has to handle the following situations:
 
@@ -350,7 +350,7 @@ When you edit an instructor record, you want to be able to update the instructor
 
 * If the user changes the value of an office assignment, change the value in an existing OfficeAssignment entity.
 
-  ### Update the Instructors controller
+### Update the Instructors controller
 
 In *InstructorsController.cs*, change the code in the HttpGet `Edit` method so that it loads the Instructor entity's `OfficeAssignment` navigation property and calls `AsNoTracking`:
 
@@ -458,7 +458,7 @@ The code does the following:
 
 * Saves the changes to the database.
 
-  ### Update the Instructor Edit view
+### Update the Instructor Edit view
 
 In *Views/Instructors/Edit.cshtml*, add a new field for editing the office location, at the end before the **Save** button :
 
@@ -481,7 +481,7 @@ Run the page (select the **Instructors** tab and then click **Edit** on an instr
 ![Instructor Edit page](update-related-data/_static/instructor-edit-office.png)
 ![image](update-related-data/_static/instructor-edit-office.png)
 
-  ## Add Course assignments to the Instructor Edit page
+## Add Course assignments to the Instructor Edit page
 
 Instructors may teach any number of courses. Now you'll enhance the Instructor Edit page by adding the ability to change course assignments using a group of check boxes, as shown in the following screen shot:
 
@@ -492,7 +492,7 @@ The relationship between the Course and Instructor entities is many-to-many. To 
 
 The UI that enables you to change which courses an instructor is assigned to is a group of check boxes. A check box for every course in the database is displayed, and the ones that the instructor is currently assigned to are selected. The user can select or clear check boxes to change course assignments. If the number of courses were much greater, you would probably want to use a different method of presenting the data in the view, but you'd use the same method of manipulating a join entity to create or delete relationships.
 
-  ### Update the Instructors controller
+### Update the Instructors controller
 
 To provide data to the view for the list of check boxes, you'll use a view model class.
 
@@ -780,7 +780,7 @@ If the check box for a course wasn't selected, but the course is in the `Instruc
 
    ````
 
-  ### Update the Instructor views
+### Update the Instructor views
 
 In *Views/Instructors/Edit.cshtml*, add a **Courses** field with an array of check boxes by adding the following code immediately after the `div` elements for the **Office** field and before the `div` element for the **Save** button.
 
@@ -836,7 +836,7 @@ Change some course assignments and click Save. The changes you make are reflecte
 
 Note: The approach taken here to edit instructor course data works well when there is a limited number of courses. For collections that are much larger, a different UI and a different updating method would be required.
 
-  ## Update the Delete page
+## Update the Delete page
 
 In *InstructorsController.cs*, delete the `DeleteConfirmed` method and insert the following code in its place.
 
@@ -871,7 +871,7 @@ This code makes the following changes:
 
 * If the instructor to be deleted is assigned as administrator of any departments, removes the instructor assignment from those departments.
 
-  ## Add office location and courses to the Create page
+## Add office location and courses to the Create page
 
 In *InstructorController.cs*, delete the HttpGet and HttpPost `Create` methods, and then add the following code in their place:
 
@@ -993,10 +993,10 @@ In *Views/Instructor/Create.cshtml*, add an office location text box and check b
 
 Test by running the **Create** page and adding an instructor.
 
-  ## Handling Transactions
+## Handling Transactions
 
 As explained in the [CRUD tutorial](crud.md), the Entity Framework implicitly implements transactions. For scenarios where you need more control -- for example, if you want to include operations done outside of Entity Framework in a transaction -- see [Transactions](https://ef.readthedocs.io/en/latest/saving/transactions.html).
 
-  ## Summary
+## Summary
 
 You have now completed the introduction to working with related data. In the next tutorial you'll see how to handle concurrency conflicts.
