@@ -15,7 +15,7 @@ By [Ryan Nowak](https://github.com/rynowak), [Steve Smith](http://ardalis.com), 
 
 Routing is used to map requests to route handlers. Routes are configured when the application starts up, and can extract values from the URL that will be used for request processing. Routing functionality is also responsible for generating links using the defined routes in ASP.NET apps.
 
-This document covers the low level ASP.NET Core routing. For ASP.NET Core MVC routing, see [ðŸ"§ Routing to Controller Actions](../mvc/controllers/routing.md)
+This document covers the low level ASP.NET Core routing. For ASP.NET Core MVC routing, see [Routing to Controller Actions](../mvc/controllers/routing.md)
 
 [View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnet/fundamentals/routing/sample)
 
