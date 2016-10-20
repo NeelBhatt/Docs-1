@@ -469,7 +469,7 @@ The following HTML is generated:
 
 ### Option Group
 
-The HTML  [\<optgroup>](https://www.w3.org/wiki/HTML/Elements/optgroup) element is generated when the view model contains one or more [SelectListGroup`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Rendering/SelectListGroup/index.html) objects.
+The HTML  [\<optgroup>](https://www.w3.org/wiki/HTML/Elements/optgroup) element is generated when the view model contains one or more [`SelectListGroup`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Rendering/SelectListGroup/index.html) objects.
 
 The `CountryViewModelGroup` groups the `SelectListItem` elements into the "North America" and "Europe" groups:
 
