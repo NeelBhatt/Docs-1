@@ -35,6 +35,7 @@ The ASP.NET Core Module is configured via a site or application *web.config* fil
 |Attribute|Description|
 |--- |--- |
 |environmentVariables|Configures an **environmentVariables** collection of one or more **environmentVariable** elements for the process specified in **processPath**.|
+|recycleOnFileChange|This setting does nothing (no-op) and is included in the schema for backwards compatibility. Formerly, this element defined a collection of files, which when changed, would prompt a recycle of the worker process.|
 
 ## ASP.NET Core Module *app_offline.htm*
 
