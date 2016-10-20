@@ -150,7 +150,7 @@ Later in the tutorial I'll show how you can view the HTTP response using [Postma
 
 ### Routing and URL paths
 
-The `[`HttpGet]` attribute ([HttpGetAttribute`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/HttpGetAttribute/index.html#Microsoft.AspNetCore.Mvc.HttpGetAttribute)) specifies an HTTP GET method. The URL path for each method is constructed as follows:
+The `[HttpGet]` attribute ([`HttpGetAttribute`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/HttpGetAttribute/index.html#Microsoft.AspNetCore.Mvc.HttpGetAttribute)) specifies an HTTP GET method. The URL path for each method is constructed as follows:
 
 * Take the template string in the controller’s route attribute,  `[Route("api/[controller]")]`
 
@@ -162,8 +162,8 @@ In the `GetById` method:
 
 ````csharp
 [HttpGet("{id}", Name = "GetTodo")]
-   public IActionResult GetById(string id)
-   ````
+public IActionResult GetById(string id)
+````
 
 `"{id}"` is a placeholder variable for the ID of the `todo` item. When `GetById` is invoked, it assigns the value of "{id}" in the URL to the method's `id` parameter.
 
@@ -220,8 +220,8 @@ You can use the Location header URI to access the resource you just created. Rec
 
 ````csharp
 [HttpGet("{id}", Name = "GetTodo")]
-   public IActionResult GetById(string id)
-   ````
+public IActionResult GetById(string id)
+````
 
 ### Update
 

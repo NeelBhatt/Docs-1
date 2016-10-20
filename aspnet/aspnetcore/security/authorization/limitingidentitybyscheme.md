@@ -57,7 +57,7 @@ In this case only the middleware with the Bearer scheme would run, and any cooki
 
 ## Selecting the scheme with policies
 
-If you prefer to specify the desired schemes in [`policy](policies.md#security-authorization-policies-based) you can set the [AuthenticationSchemes`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizationPolicyBuilder/index.html#Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder.AuthenticationSchemes) collection when adding your policy.
+If you prefer to specify the desired schemes in [policy](policies.md#security-authorization-policies-based) you can set the [`AuthenticationSchemes`](http://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Authorization/AuthorizationPolicyBuilder/index.html#Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder.AuthenticationSchemes) collection when adding your policy.
 
 ````csharp
 options.AddPolicy("Over18", policy =>
