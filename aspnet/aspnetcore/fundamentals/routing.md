@@ -90,9 +90,9 @@ This is an example of a `MapRoute` call used by a typical ASP.NET MVC route defi
 
 ````csharp
 routes.MapRoute(
-       name: "default",
-       template: "{controller=Home}/{action=Index}/{id?}");
-   ````
+    name: "default",
+    template: "{controller=Home}/{action=Index}/{id?}");
+````
 
 This template will match a URL path like `/Products/Details/17` and extract the route values `{ controller = Products, action = Details, id = 17 }`. The route values are determined by splitting the URL path into segments, and matching each segment with the *route parameter* name in the route template. Route parameters are named. They are defined by enclosing the parameter name in braces `{ }`.
 
@@ -104,9 +104,9 @@ This example includes a *route constraint*:
 
 ````csharp
 routes.MapRoute(
-       name: "default",
-       template: "{controller=Home}/{action=Index}/{id:int}");
-   ````
+    name: "default",
+    template: "{controller=Home}/{action=Index}/{id:int}");
+````
 
 This template will match a URL path like `/Products/Details/17`, but not `/Products/Details/Apples`. The route parameter definition `{id:int}` defines a *route constraint* for the `id` route parameter. Route constraints implement `IRouteConstraint` and inspect route values to verify them. In this example the route value `id` must be convertable to an integer. See [route-constraint-reference](#route-constraint-reference) for a more detailed explaination of route constraints that are provided by the framework.
 
@@ -116,14 +116,14 @@ The following two examples create equivalent routes:
 
 ````csharp
 routes.MapRoute(
-       name: "default_route",
-       template: "{controller}/{action}/{id?}",
-       defaults: new { controller = "Home", action = "Index" });
+    name: "default_route",
+    template: "{controller}/{action}/{id?}",
+    defaults: new { controller = "Home", action = "Index" });
 
-   routes.MapRoute(
-       name: "default_route",
-       template: "{controller=Home}/{action=Index}/{id?}");
-   ````
+routes.MapRoute(
+    name: "default_route",
+    template: "{controller=Home}/{action=Index}/{id?}");
+````
 
 >[!TIP]
 > The inline syntax for defining constraints and defaults can be more convenient for simple routes. However, there are features such as data tokens which are not supported by inline syntax.
@@ -132,10 +132,10 @@ This example demonstrates a few more features:
 
 ````csharp
 routes.MapRoute(
-     name: "blog",
-     template: "Blog/{*article}",
-     defaults: new { controller = "Blog", action = "ReadArticle" });
-   ````
+  name: "blog",
+  template: "Blog/{*article}",
+  defaults: new { controller = "Blog", action = "ReadArticle" });
+````
 
 This template will match a URL path like `/Blog/All-About-Routing/Introduction` and will extract the values `{ controller = Blog, action = ReadArticle, article = All-About-Routing/Introduction }`. The default route values for `controller` and `action` are produced by the route even though there are no corresponding route parameters in the template. Default values can be specified in the route template. The `article` route parameter is defined as a *catch-all* by the appearance of an asterix `*` before the route parameter name. Catch-all route parameters capture the remainder of the URL path, and can also match the empty string.
 
@@ -143,12 +143,12 @@ This example adds route constraints and data tokens:
 
 ````csharp
 routes.MapRoute(
-       name: "us_english_products",
-       template: "en-US/Products/{id}",
-       defaults: new { controller = "Products", action = "Details" },
-       constraints: new { id = new IntRouteConstraint() },
-       dataTokens: new { locale = "en-US" });
-   ````
+    name: "us_english_products",
+    template: "en-US/Products/{id}",
+    defaults: new { controller = "Products", action = "Details" },
+    constraints: new { id = new IntRouteConstraint() },
+    dataTokens: new { locale = "en-US" });
+````
 
 This template will match a URL path like `/en-US/Products/5` and will extract the values `{ controller = Products, action = Details, id = 5 }` and the data tokens `{ locale = en-US }`.
 
@@ -167,9 +167,9 @@ This example uses a basic ASP.NET MVC style route:
 
 ````csharp
 routes.MapRoute(
-       name: "default",
-       template: "{controller=Home}/{action=Index}/{id?}");
-   ````
+    name: "default",
+    template: "{controller=Home}/{action=Index}/{id?}");
+````
 
 With the route values `{ controller = Products, action = List }`, this route will generate the URL `/Products/List`. The route values are substituted for the corresponding route parameters to form the URL path. Since `id` is an optional route parameter, it's no problem that it doesn't have a value.
 
@@ -203,34 +203,32 @@ Routes must configured in the `Configure` method in the `Startup` class. The sam
 
 ````
 public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
-   {
-       var trackPackageRouteHandler = new RouteHandler(context =>
-       {
-           var routeValues = context.GetRouteData().Values;
-           return context.Response.WriteAsync(
-               $"Hello! Route values: {string.Join(", ", routeValues)}");
-       });
+{
+    var trackPackageRouteHandler = new RouteHandler(context =>
+    {
+        var routeValues = context.GetRouteData().Values;
+        return context.Response.WriteAsync(
+            $"Hello! Route values: {string.Join(", ", routeValues)}");
+    });
 
-       var routeBuilder = new RouteBuilder(app, trackPackageRouteHandler);
+    var routeBuilder = new RouteBuilder(app, trackPackageRouteHandler);
 
-       routeBuilder.MapRoute(
-           "Track Package Route",
-           "package/{operation:regex(^track|create|detonate$)}/{id:int}");
+    routeBuilder.MapRoute(
+        "Track Package Route",
+        "package/{operation:regex(^track|create|detonate$)}/{id:int}");
 
-       routeBuilder.MapGet("hello/{name}", context =>
-       {
-           var name = context.GetRouteValue("name");
-           // This is the route handler when HTTP GET "hello/<anything>"  matches
-           // To match HTTP GET "hello/<anything>/<anything>, 
-           // use routeBuilder.MapGet("hello/{*name}"
-           return context.Response.WriteAsync($"Hi, {name}!");
-       });            
+    routeBuilder.MapGet("hello/{name}", context =>
+    {
+        var name = context.GetRouteValue("name");
+        // This is the route handler when HTTP GET "hello/<anything>"  matches
+        // To match HTTP GET "hello/<anything>/<anything>, 
+        // use routeBuilder.MapGet("hello/{*name}"
+        return context.Response.WriteAsync($"Hi, {name}!");
+    });            
 
-       var routes = routeBuilder.Build();
-       app.UseRouter(routes);
-
-
-   ````
+    var routes = routeBuilder.Build();
+    app.UseRouter(routes);
+````
 
 The table below shows the responses with the given URIs.
 
@@ -360,7 +358,7 @@ If a route has a default value that doesn't correspond to a parameter and that v
 
 ````csharp
 routes.MapRoute("blog_route", "blog/{*slug}",
-     defaults: new { controller = "Blog", action = "ReadPost" });
-   ````
+  defaults: new { controller = "Blog", action = "ReadPost" });
+````
 
 Link generation would only generate a link for this route when the matching values for controller and action are provided.
