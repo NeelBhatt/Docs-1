@@ -28,7 +28,7 @@ If you're on a 64-bit operating system and want to affect the behavior of 32-bit
 
 The supported values are:
 
-* EncryptionType [string] - specifies which algorithms should be used for data protection. This value must be "CNG-CBC", "CNG-GCM", or "Managed" and is described in more detail [below](xref:security/data-protection/configuration/machine-wide-policy#data-protection-encryption-types).
+* EncryptionType [string] - specifies which algorithms should be used for data protection. This value must be "CNG-CBC", "CNG-GCM", or "Managed" and is described in more detail [below](#data-protection-encryption-types).
 
 * DefaultKeyLifetime [DWORD] - specifies the lifetime for newly-generated keys. This value is specified in days and must be ≥ 7.
 

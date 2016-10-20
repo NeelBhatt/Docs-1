@@ -54,7 +54,7 @@ sc.AddDataProtection()
        .ProtectKeysWithCertificate("3BCE558E2AD3E0E34A7743EAB5AEA2A9BD2575A0");
    ````
 
-Because this mechanism uses [X509Certificate2](https://msdn.microsoft.com/en-us/library/system.security.cryptography.x509certificates.x509certificate2(v=vs.110).aspx) and [EncryptedXml](https://msdn.microsoft.com/en-us/library/system.security.cryptography.xml.encryptedxml(v=vs.110).aspx) under the covers, this feature is currently only available on Desktop CLR. Additionally, due to .NET Framework limitations only certificates with CAPI private keys are supported. See [Certificate-based encryption with Windows DPAPI-NG](xref:security/data-protection/implementation/key-encryption-at-rest#data-protection-implementation-key-encryption-at-rest-dpapi-ng) below for possible workarounds to these limitations.
+Because this mechanism uses [X509Certificate2](https://msdn.microsoft.com/en-us/library/system.security.cryptography.x509certificates.x509certificate2(v=vs.110).aspx) and [EncryptedXml](https://msdn.microsoft.com/en-us/library/system.security.cryptography.xml.encryptedxml(v=vs.110).aspx) under the covers, this feature is currently only available on Desktop CLR. Additionally, due to .NET Framework limitations only certificates with CAPI private keys are supported. See [Certificate-based encryption with Windows DPAPI-NG](#data-protection-implementation-key-encryption-at-rest-dpapi-ng) below for possible workarounds to these limitations.
 
 <a name=data-protection-implementation-key-encryption-at-rest-dpapi-ng></a>
 

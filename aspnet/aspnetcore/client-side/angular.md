@@ -328,7 +328,7 @@ You can [view the application's structure on GitHub](https://github.com/aspnet/D
 
 ### Routing and Multiple Views
 
-AngularJS has a built-in route provider to handle SPA (Single Page Application) based navigation. To work with routing in AngularJS, you must add the `angular-route` library using Bower. You can see in the [bower.json](xref:client-side/angular#angular-bower-json) file referenced at the start of this article that we are already referencing it in our project.
+AngularJS has a built-in route provider to handle SPA (Single Page Application) based navigation. To work with routing in AngularJS, you must add the `angular-route` library using Bower. You can see in the [bower.json](#angular-bower-json) file referenced at the start of this article that we are already referencing it in our project.
 
 After you install the package, add the script reference (`angular-route.js`) to your view.
 
