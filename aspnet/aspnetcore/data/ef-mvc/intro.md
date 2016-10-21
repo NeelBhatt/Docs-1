@@ -812,3 +812,6 @@ For more information about asynchronous programming in .NET, see [Async Overview
 ## Summary
 
 You've now created a simple application that uses the Entity Framework Core and SQL Server Express LocalDB to store and display data. In the following tutorial, you'll learn how to perform basic CRUD (create, read, update, delete) operations.
+
+>[!div class="step-by-step"]
+[Next](crud.md)  

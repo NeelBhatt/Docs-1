@@ -818,3 +818,7 @@ Replace the code in *Views/Departments/Create.cshtml* to add a Select option to 
 ## Summary
 
 This completes the introduction to handling concurrency conflicts. For more information about how to handle concurrency in EF Core, see [Concurrency conflicts](https://ef.readthedocs.io/en/latest/saving/concurrency.html). The next tutorial shows how to implement table-per-hierarchy inheritance for the Instructor and Student entities.
+
+>[!div class="step-by-step"]
+[Previous](update-related-data.md)
+[Next](inheritance.md)  

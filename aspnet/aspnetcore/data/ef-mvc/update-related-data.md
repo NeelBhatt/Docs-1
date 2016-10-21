@@ -1008,3 +1008,7 @@ As explained in the [CRUD tutorial](crud.md), the Entity Framework implicitly im
 ## Summary
 
 You have now completed the introduction to working with related data. In the next tutorial you'll see how to handle concurrency conflicts.
+
+>[!div class="step-by-step"]
+[Previous](read-related-data.md)
+[Next](concurrency.md)  

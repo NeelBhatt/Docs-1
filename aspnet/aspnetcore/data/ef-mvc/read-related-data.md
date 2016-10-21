@@ -611,3 +611,7 @@ Run the Instructor Index page now and you'll see no difference in what's display
 ## Summary
 
 You've now used eager loading with one query and with multiple queries to read related data into navigation properties. In the next tutorial you'll learn how to update related data.
+
+>[!div class="step-by-step"]
+>[Previous](complex-data-model.md)
+>[Next](update-related-data.md)  
