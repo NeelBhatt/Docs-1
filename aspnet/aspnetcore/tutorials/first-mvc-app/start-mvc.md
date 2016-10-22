@@ -7,6 +7,9 @@ ms.date: 10/14/2016
 ms.topic: article
 ms.assetid: 1d18b589-e3fd-4dc6-bde6-fb0f41998d78
 ms.prod: aspnet-core
+﻿uid: tutorials/first-mvc-app/start
+---
+
 <!--manual conversion complete -->
 
 uid: tutorials/first-mvc-app/start-mvc
